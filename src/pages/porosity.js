@@ -13,22 +13,20 @@ class porosity extends React.Component {
     super(props);
 
     this.state = {
-      nonsense: 10,
+      points: 0,
       counter: 0,
       questionId: 1,
       question: '',
       answerOptions: [],
       answer: '',
       answersCount: {
-        Nintendo: 0,
-        Microsoft: 0,
-        Sony: 0
+        Low: 0,
+        Normal: 0,
+        High: 0
       },
       result: ''
     };
 
-        console.log(this.props);
-        console.log("FML");
 
 
    this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
@@ -66,6 +64,7 @@ class porosity extends React.Component {
   handleAnswerSelected(event) {
     this.setUserAnswer(event.currentTarget.value);
     console.log("answer slected");
+    console.log(event.currentTarget);
 
     if (this.state.questionId < quizQuestions.length) {
         setTimeout(() => this.setNextQuestion(), 300);
@@ -77,15 +76,24 @@ class porosity extends React.Component {
   }
 
 
-
   setUserAnswer(answer) {
+    console.log("answer points is")
+    console.log(answer);
+
     const updatedAnswersCount = update(this.state.answersCount, {
-      [answer]: {$apply: (currentValue) => currentValue + 1}
+      [answer]: {$apply: (currentValue) => currentValue + 1},
     });
+    console.log("old points is");
+    console.log(this.state.points );
+    const addPoints = this.state.points + Number(answer);
+    console.log('new points is');
+    console.log(addPoints);
+
 
     this.setState({
         answersCount: updatedAnswersCount,
-        answer: answer
+        answer: answer,
+        points: addPoints
     });
   }
 
@@ -109,7 +117,7 @@ class porosity extends React.Component {
     const maxAnswerCount = Math.max.apply(null, answersCountValues);
     console.log("answersCount="+ answersCount);
     console.log("answersCountKeys="+ answersCountKeys);
-        console.log("answersCountValues="+ answersCountValues);
+    console.log("answersCountValues="+ answersCountValues);
 
     const stupidNonsense = answersCountKeys.filter((key) => answersCount[key] === maxAnswerCount);
     console.log(stupidNonsense.toString());
@@ -120,11 +128,9 @@ class porosity extends React.Component {
     console.log("set results is running");
     console.log(result);
     if (result.length === 1) {
-      console.log("determined");
-      this.setState({ result: result[0] });
+      this.setState({ result: result[0] + ' porosity' });
     } else {
-      console.log("undetermined");
-      this.setState({ result: 'Undetermined' });
+      this.setState({ result: 'a mixture of different porosities' });
     }
   }
 
@@ -146,7 +152,7 @@ class porosity extends React.Component {
     console.log("render result");
     console.log(this.state.result);
     return (
-      <Result quizResult={this.state.result} />
+      <Result quizResult={this.state.result} quizStats={this.state.answersCount} />
     );
   }
 

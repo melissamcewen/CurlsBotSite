@@ -1,86 +1,74 @@
 var quizQuestions = [
   {
-      question: "What franchise would you rather play a game from?",
+      question: "Take a strand of hair that's still attached to your head and slide your fingers from the bottom up the shaft towards the scalp",
       answers: [
           {
-              type: "Microsoft",
-              content: "Halo"
+              type: "High",
+              content: "I feel little bumps",
+              points: 0
           },
           {
-              type: "Nintendo",
-              content: "Pokemon"
-          },
-          {
-              type: "Sony",
-              content: "Uncharted"
+              type: "Normal",
+              content: "It feels smooth",
+              points: 1
           }
       ]
   },
   {
-      question: "Which console would you prefer to play with friends?",
+      question: "Splash some water on your hair, does it bead up or absorb right away?",
       answers: [
           {
-              type: "Microsoft",
-              content: "X-Box"
+              type: "Low",
+              content: "Beads up",
+              points: 2
           },
           {
-              type: "Nintendo",
-              content: "Nintendo 64"
-          },
-          {
-              type: "Sony",
-              content: "Playstation 1"
+              type: "High",
+              content: "Absorbs right away",
+              points: 4
           }
       ]
   },
   {
-      question: "Which of these racing franchises would you prefer to play a game from?",
+      question: "Take a strand of clean shed hair and drop it in a glass of water for 3-5 minutes, this works best if the hair has no product on it",
       answers: [
           {
-              type: "Microsoft",
-              content: "Forza"
+              type: "Low",
+              content: "The hair floats"
           },
           {
-              type: "Nintendo",
-              content: "Mario Kart"
+              type: "Normal",
+              content: "The hair sinks to the middle"
           },
           {
-              type: "Sony",
-              content: "Gran Turismo"
+              type: "High",
+              content: "This hair sinks to the bottom"
           }
       ]
   },
   {
-      question: "Which of these games do you think is best?",
+      question: "Products sit on my hair and end up looking like grease or buildup",
       answers: [
           {
-              type: "Microsoft",
-              content: "BioShock"
+              type: "Low",
+              content: "True"
           },
           {
-              type: "Nintendo",
-              content: "The Legend of Zelda: Ocarina of Time"
-          },
-          {
-              type: "Sony",
-              content: "Final Fantasy VII"
+              type: "Normal",
+              content: "False"
           }
       ]
   },
   {
-      question: "What console would you prefer to own?",
+      question: "I do not absorb hair color or treatments easily",
       answers: [
           {
-              type: "Microsoft",
-              content: "X-Box One"
+              type: "Low",
+              content: "True"
           },
           {
-              type: "Nintendo",
-              content: "Wii U"
-          },
-          {
-              type: "Sony",
-              content: "Playstation 4"
+              type: "Normal",
+              content: "False"
           }
       ]
   }

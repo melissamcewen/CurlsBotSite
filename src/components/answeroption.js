@@ -9,7 +9,7 @@ function AnswerOption(props) {
           name="radioGroup"
           checked={props.answerType === props.answer}
           id={props.answerType}
-          value={props.answerType}
+          value={props.points}
           disabled={props.answer}
           onChange={props.onAnswerSelected}
         />
@@ -23,7 +23,9 @@ function AnswerOption(props) {
 AnswerOption.propTypes = {
     answerType: React.PropTypes.string.isRequired,
     answerContent: React.PropTypes.string.isRequired,
-    answer: React.PropTypes.string.isRequired,
+    answer: React.PropTypes.number.isRequired,
+    points: React.PropTypes.number,
+
     onAnswerSelected: React.PropTypes.func.isRequired
 };
 

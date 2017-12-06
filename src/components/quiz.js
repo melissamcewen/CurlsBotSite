@@ -6,7 +6,7 @@ import AnswerOption from '../components/answeroption'
 
 
 function Quiz(props) {
-  
+
 
   function renderAnswerOptions(key) {
     return (
@@ -14,6 +14,7 @@ function Quiz(props) {
         key={key.content}
         answerContent={key.content}
         answerType={key.type}
+        points={key.points}
         answer={props.answer}
         questionId={props.questionId}
         onAnswerSelected={props.onAnswerSelected}
@@ -38,9 +39,10 @@ function Quiz(props) {
 }
 
 Quiz.propTypes = {
-  answer: React.PropTypes.string.isRequired,
+  answer: React.PropTypes.number.isRequired,
   answerOptions: React.PropTypes.array.isRequired,
   counter: React.PropTypes.number.isRequired,
+  points: React.PropTypes.number,
   question: React.PropTypes.string.isRequired,
   questionId: React.PropTypes.number.isRequired,
   questionTotal: React.PropTypes.number.isRequired,
