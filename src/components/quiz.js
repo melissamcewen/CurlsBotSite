@@ -9,9 +9,10 @@ function Quiz(props) {
 
 
   function renderAnswerOptions(key) {
+
     return (
       <AnswerOption
-        key={key.content}
+        key={key.content} 
         answerContent={key.content}
         answerType={key.type}
         points={key.points}

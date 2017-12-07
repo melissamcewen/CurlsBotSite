@@ -115,9 +115,9 @@ class porosity extends React.Component {
     console.log("set results is running");
     console.log(result);
     if (result > 2) {
-      this.setState({ result: 'probably high porosity' });
+      this.setState({ result: 'probably high porosity. Check back soon for customized product recommendations.' });
     } else if (result < -2)  {
-      this.setState({ result: 'probably low porosity' });
+      this.setState({ result: 'probably low porosity. <a href="/cglite">Check out some of our favorite light products for low porosity hair.</a>' });
     } else {
       this.setState({ result: 'probably normal porosity' });
     }
@@ -149,7 +149,10 @@ class porosity extends React.Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h2>React Quiz</h2>
+          <h2>Hair Porosity Quiz</h2>
+          <p>Confused about hair porosity? Well it's just how able your hair is to absorb moisture, which is affected by the cuticle structure. A raised cuticle means your hair easily absorbs moisture and is <em>high porosity</em>. A tight cuticle means your hair is relucant to absorb moisture and is <em>low porosity</em>. If you're somewhere in the middle you are <em>normal porosity</em>.</p>
+
+          <p>Most "tests" of porosity just deal with how your hair floats in water, but they can be <a href="">inaccurate</a>. This quiz focuses on how your hair behaves so it can get a more complete picture of your porosity.</p>
         </div>
         {this.state.result ? this.renderResult() : this.renderQuiz()}
 

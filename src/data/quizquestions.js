@@ -11,6 +11,11 @@ var quizQuestions = [
               type: "Normal",
               content: "It feels smooth",
               points: 0
+          },
+          {
+              type: "Normal",
+              content: "Hmm...I can't quite say",
+              points: 0
           }
       ]
   },
@@ -79,7 +84,114 @@ var quizQuestions = [
               points: 0
           }
       ]
+  },
+  {
+    question: "My hair takes a long time to dry compared to other people with similar hair density",
+      answers: [
+          {
+              type: "Low",
+              content: "True",
+              points: -2
+          },
+          {
+              type: "Normal",
+              content: "False",
+              points: 0
+          }
+      ]
+  }, 
+  {
+    question: "My hair appears healthy but has little volume",
+      answers: [
+          {
+              type: "Low",
+              content: "True",
+              points: -2
+          },
+          {
+              type: "Normal",
+              content: "False",
+              points: 0
+          }
+      ]
+  }, 
+  {
+    question: "My hair looks dull and dry",
+      answers: [
+          {
+              type: "High",
+              content: "True",
+              points: 2
+          },
+          {
+              type: "Normal",
+              content: "False",
+              points: 0
+          }
+      ]
+  }, 
+  {
+    question: "My hair was previously bleached, colored, or permed or otherwise heavily processed/heat damaged",
+      answers: [
+          {
+              type: "High",
+              content: "True",
+              points: 2
+          },
+          {
+              type: "Normal",
+              content: "False",
+              points: 0
+          }
+      ]
+  }, 
+  {
+    question: "Putting oil directly in my hair works great for me and doesn't make my hair look greasy or limp",
+      answers: [
+          {
+              type: "High",
+              content: "True",
+              points: 2
+          },
+          {
+              type: "Normal",
+              content: "False",
+              points: 0
+          }
+      ]
+  }, 
+  {
+    question: "I seem to need to remove buildup from my hair with clarifying treatments often",
+      answers: [
+          {
+              type: "Low",
+              content: "True",
+              points: -2
+          },
+          {
+              type: "Normal",
+              content: "False",
+              points: 0
+          }
+      ]
+  }, 
+  {
+    question: "I seem to need to wash my hair often or it looks greasy",
+      answers: [
+          {
+              type: "Low",
+              content: "True",
+              points: -2
+          },
+          {
+              type: "Normal",
+              content: "False",
+              points: 0
+          }
+      ]
   }
+
+
 ];
 
 export default quizQuestions;
