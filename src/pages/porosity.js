@@ -58,33 +58,33 @@ class porosity extends React.Component {
 
   handleAnswerSelected(event) {
     this.setUserAnswer(event.currentTarget.value);
-    console.log("answer slected");
-    console.log(event.currentTarget);
-        console.log(event.currentTarget);
+    //console.log("answer slected");
+    //console.log(event.currentTarget);
+        //console.log(event.currentTarget);
 
     if (this.state.questionId < quizQuestions.length) {
         setTimeout(() => this.setNextQuestion(), 300);
-        console.log("set next");
+        //console.log("set next");
     } else {
         setTimeout(() => this.setResults(this.getResults()), 300);
-        console.log("SetResults");
+        //console.log("SetResults");
     }
   }
 
 
   setUserAnswer(answer) {
-    console.log("answer points is")
-    console.log(answer);
+   // console.log("answer points is")
+    //console.log(answer);
 
-        console.log("answer type is")
-    console.log(this.state);
+      //  console.log("answer type is")
+    //console.log(this.state);
 
 
-    console.log("old points is");
-    console.log(this.state.points );
+    //console.log("old points is");
+    //console.log(this.state.points );
     const addPoints = this.state.points + Number(answer);
-    console.log('new points is');
-    console.log(addPoints);
+   // console.log('new points is');
+    //console.log(addPoints);
 
 
     this.setState({
@@ -115,9 +115,9 @@ class porosity extends React.Component {
     console.log("set results is running");
     console.log(result);
     if (result > 2) {
-      this.setState({ result: 'probably high porosity. Check back soon for customized product recommendations.' });
+      this.setState({ result: 'probably high porosity. ' });
     } else if (result < -2)  {
-      this.setState({ result: 'probably low porosity. <a href="/cglite">Check out some of our favorite light products for low porosity hair.</a>' });
+      this.setState({ result: 'probably low porosity.' });
     } else {
       this.setState({ result: 'probably normal porosity' });
     }
@@ -138,8 +138,8 @@ class porosity extends React.Component {
   }
 
   renderResult() {
-    console.log("render result");
-    console.log(this.state.result);
+   // console.log("render result");
+    //console.log(this.state.result);
     return (
       <Result quizResult={this.state.result} />
     );

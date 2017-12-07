@@ -31,6 +31,11 @@ var quizQuestions = [
               type: "High",
               content: "Absorbs right away",
               points: 2
+          },
+          {
+              type: "Normal",
+              content: "I'd prefer not to do this right now",
+              points: 0
           }
       ]
   },
@@ -52,6 +57,11 @@ var quizQuestions = [
               content: "This hair sinks to the bottom",
               points: 2
 
+          },
+          {
+              type: "Normal",
+              content: "I'd prefer not to do this right now",
+              points: 0
           }
       ]
   },
