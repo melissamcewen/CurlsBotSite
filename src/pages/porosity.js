@@ -18,12 +18,7 @@ class porosity extends React.Component {
       questionId: 1,
       question: '',
       answerOptions: [],
-      answer: '',
-      answersCount: {
-        Low: 0,
-        Normal: 0,
-        High: 0
-      },
+      answer: 0,
       result: ''
     };
 
@@ -65,6 +60,7 @@ class porosity extends React.Component {
     this.setUserAnswer(event.currentTarget.value);
     console.log("answer slected");
     console.log(event.currentTarget);
+        console.log(event.currentTarget);
 
     if (this.state.questionId < quizQuestions.length) {
         setTimeout(() => this.setNextQuestion(), 300);
@@ -80,9 +76,10 @@ class porosity extends React.Component {
     console.log("answer points is")
     console.log(answer);
 
-    const updatedAnswersCount = update(this.state.answersCount, {
-      [answer]: {$apply: (currentValue) => currentValue + 1},
-    });
+        console.log("answer type is")
+    console.log(this.state);
+
+
     console.log("old points is");
     console.log(this.state.points );
     const addPoints = this.state.points + Number(answer);
@@ -91,7 +88,6 @@ class porosity extends React.Component {
 
 
     this.setState({
-        answersCount: updatedAnswersCount,
         answer: answer,
         points: addPoints
     });
@@ -111,26 +107,19 @@ class porosity extends React.Component {
   }
 
   getResults() {
-    const answersCount = this.state.answersCount;
-    const answersCountKeys = Object.keys(answersCount);
-    const answersCountValues = answersCountKeys.map((key) => answersCount[key]);
-    const maxAnswerCount = Math.max.apply(null, answersCountValues);
-    console.log("answersCount="+ answersCount);
-    console.log("answersCountKeys="+ answersCountKeys);
-    console.log("answersCountValues="+ answersCountValues);
-
-    const stupidNonsense = answersCountKeys.filter((key) => answersCount[key] === maxAnswerCount);
-    console.log(stupidNonsense.toString());
-    return answersCountKeys.filter((key) => answersCount[key] === maxAnswerCount);
+    const points = this.state.points;
+    return  points;
   }
 
   setResults(result) {
     console.log("set results is running");
     console.log(result);
-    if (result.length === 1) {
-      this.setState({ result: result[0] + ' porosity' });
+    if (result > 2) {
+      this.setState({ result: 'probably high porosity' });
+    } else if (result < -2)  {
+      this.setState({ result: 'probably low porosity' });
     } else {
-      this.setState({ result: 'a mixture of different porosities' });
+      this.setState({ result: 'probably normal porosity' });
     }
   }
 
@@ -152,7 +141,7 @@ class porosity extends React.Component {
     console.log("render result");
     console.log(this.state.result);
     return (
-      <Result quizResult={this.state.result} quizStats={this.state.answersCount} />
+      <Result quizResult={this.state.result} />
     );
   }
 

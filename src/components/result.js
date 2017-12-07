@@ -12,20 +12,13 @@ function ListItem(props) {
       <div className="result">
         Your hair is: <strong>{props.quizResult}</strong>!
           <Line percent="10"  strokeColor="#b44d12" />
-            <ul>
-      {Object.keys(answers).map((keyName, keyIndex) =>
-        <ListItem key={keyIndex}
-                  value={answers[keyName]}
-                  other= {keyName} />
-      )}
-    </ul>
+
       </div>
     );
   }
 
   Result.propTypes = {
     quizResult: React.PropTypes.string.isRequired,
-    quizStats: React.PropTypes.object.isRequired
   };
 
   export default Result;

@@ -5,12 +5,12 @@ var quizQuestions = [
           {
               type: "High",
               content: "I feel little bumps",
-              points: 0
+              points: 2
           },
           {
               type: "Normal",
               content: "It feels smooth",
-              points: 1
+              points: 0
           }
       ]
   },
@@ -20,12 +20,12 @@ var quizQuestions = [
           {
               type: "Low",
               content: "Beads up",
-              points: 2
+              points: -2
           },
           {
               type: "High",
               content: "Absorbs right away",
-              points: 4
+              points: 2
           }
       ]
   },
@@ -34,15 +34,19 @@ var quizQuestions = [
       answers: [
           {
               type: "Low",
-              content: "The hair floats"
+              content: "The hair floats",
+              points: -2
           },
           {
               type: "Normal",
-              content: "The hair sinks to the middle"
+              content: "The hair sinks to the middle",
+              points: 0
           },
           {
               type: "High",
-              content: "This hair sinks to the bottom"
+              content: "This hair sinks to the bottom",
+              points: 2
+
           }
       ]
   },
@@ -51,11 +55,13 @@ var quizQuestions = [
       answers: [
           {
               type: "Low",
-              content: "True"
+              content: "True",
+              points: -2
           },
           {
               type: "Normal",
-              content: "False"
+              content: "False",
+              points: 0
           }
       ]
   },
@@ -64,11 +70,13 @@ var quizQuestions = [
       answers: [
           {
               type: "Low",
-              content: "True"
+              content: "True",
+              points: -2
           },
           {
               type: "Normal",
-              content: "False"
+              content: "False",
+              points: 0
           }
       ]
   }
