@@ -66,16 +66,21 @@ var quizQuestions = [
       ]
   },
   {
-      question: "Products sit on my hair and end up looking like grease or buildup",
+      question: "Which sounds more like your experience with products:",
       answers: [
           {
               type: "Low",
-              content: "True",
-              points: -2
+              content: "Products sit on my hair and end up looking like grease or buildup",
+              points: -4
+          },
+          {
+              type: "High",
+              content: "My hair absorbs products like a sponge, so I have to use a lot of product",
+              points: 4
           },
           {
               type: "Normal",
-              content: "False",
+              content: "I don't really have either of these issues",
               points: 0
           }
       ]
@@ -85,12 +90,17 @@ var quizQuestions = [
       answers: [
           {
               type: "Low",
-              content: "True",
+              content: "Yes",
               points: -2
           },
           {
               type: "Normal",
-              content: "False",
+              content: "No, they absorb just fine",
+              points: 0
+          },
+          {
+              type: "Normal",
+              content: "I don't color so this doesn't apply to me",
               points: 0
           }
       ]
@@ -100,12 +110,12 @@ var quizQuestions = [
       answers: [
           {
               type: "Low",
-              content: "True",
+              content: "Yes, ugh it takes forever to dry",
               points: -2
           },
           {
               type: "Normal",
-              content: "False",
+              content: "No, it seems to take a pretty normal amount of time to dry",
               points: 0
           }
       ]
@@ -115,12 +125,12 @@ var quizQuestions = [
       answers: [
           {
               type: "Low",
-              content: "True",
+              content: "Yes",
               points: -2
           },
           {
               type: "Normal",
-              content: "False",
+              content: "No",
               points: 0
           }
       ]
@@ -130,12 +140,12 @@ var quizQuestions = [
       answers: [
           {
               type: "High",
-              content: "True",
+              content: "Yes",
               points: 2
           },
           {
               type: "Normal",
-              content: "False",
+              content: "Nope",
               points: 0
           }
       ]
@@ -145,12 +155,12 @@ var quizQuestions = [
       answers: [
           {
               type: "High",
-              content: "True",
+              content: "Yes",
               points: 2
           },
           {
               type: "Normal",
-              content: "False",
+              content: "Nope",
               points: 0
           }
       ]
@@ -160,13 +170,13 @@ var quizQuestions = [
       answers: [
           {
               type: "High",
-              content: "True",
+              content: "Yes!",
               points: 2
           },
           {
               type: "Normal",
-              content: "False",
-              points: 0
+              content: "No",
+              points: -1
           }
       ]
   }, 
@@ -175,12 +185,12 @@ var quizQuestions = [
       answers: [
           {
               type: "Low",
-              content: "True",
+              content: "Yes",
               points: -2
           },
           {
               type: "Normal",
-              content: "False",
+              content: "No",
               points: 0
           }
       ]
@@ -190,12 +200,12 @@ var quizQuestions = [
       answers: [
           {
               type: "Low",
-              content: "True",
+              content: "Yes",
               points: -2
           },
           {
               type: "Normal",
-              content: "False",
+              content: "No",
               points: 0
           }
       ]
