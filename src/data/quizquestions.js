@@ -20,52 +20,6 @@ var quizQuestions = [
       ]
   },
   {
-      question: "Splash some water on your hair, does it bead up or absorb right away?",
-      answers: [
-          {
-              type: "Low",
-              content: "Beads up",
-              points: -2
-          },
-          {
-              type: "High",
-              content: "Absorbs right away",
-              points: 2
-          },
-          {
-              type: "Normal",
-              content: "I'd prefer not to do this right now",
-              points: 0
-          }
-      ]
-  },
-  {
-      question: "Take a strand of clean shed hair and drop it in a glass of water for 3-5 minutes, this works best if the hair has no product on it",
-      answers: [
-          {
-              type: "Low",
-              content: "The hair floats",
-              points: -2
-          },
-          {
-              type: "Normal",
-              content: "The hair sinks to the middle",
-              points: 0
-          },
-          {
-              type: "High",
-              content: "This hair sinks to the bottom",
-              points: 2
-
-          },
-          {
-              type: "Normal",
-              content: "I'd prefer not to do this right now",
-              points: 0
-          }
-      ]
-  },
-  {
       question: "Which sounds more like your experience with products:",
       answers: [
           {
@@ -119,24 +73,29 @@ var quizQuestions = [
               points: 0
           }
       ]
-  }, 
+  },
   {
-    question: "My hair appears healthy but has little volume",
+    question: "Which describes your hair better?",
       answers: [
           {
+              type: "High",
+              content: "My hair looks dull and dry",
+              points: 2
+          },
+          {
               type: "Low",
-              content: "Yes",
+              content: "My hair appears healthy and shiny, but has little volume",
               points: -2
           },
           {
               type: "Normal",
-              content: "No",
+              content: "My hair has a good amount of volume and looks pretty healthy",
               points: 0
           }
       ]
-  }, 
+  },
   {
-    question: "My hair looks dull and dry",
+    question: "My hair was previously bleached, colored, or permed or otherwise heavily processed/heat damaged within the past year",
       answers: [
           {
               type: "High",
@@ -151,63 +110,116 @@ var quizQuestions = [
       ]
   }, 
   {
-    question: "My hair was previously bleached, colored, or permed or otherwise heavily processed/heat damaged",
+    question: "Have you tried oils in your hair?",
       answers: [
           {
+              type: "Low",
+              content: "Yes, and they made my hair look limp and greasy",
+              points: -2
+          },
+          {
               type: "High",
-              content: "Yes",
+              content: "Oils make my hair look healthy and shiny",
               points: 2
           },
           {
               type: "Normal",
-              content: "Nope",
+              content: "Some oils work well in my hair but I have to be careful and use only some types and/or in small amounts",
+              points: 0
+          },
+          {
+              type: "Normal",
+              content: "Hmm I've never tried oil on my hair before",
               points: 0
           }
       ]
   }, 
   {
-    question: "Putting oil directly in my hair works great for me and doesn't make my hair look greasy or limp",
+    question: "Which do you need more of?",
       answers: [
           {
+              type: "Low",
+              content: "Clarifying treatments",
+              points: -2
+          },
+          {
               type: "High",
-              content: "Yes!",
+              content: "Deep conditioning",
               points: 2
           },
           {
               type: "Normal",
-              content: "No",
+              content: "I use both equally or I don't use either",
+              points: 0
+          }
+      ]
+  }, 
+  {
+    question: "How often do you need to wish your hair?",
+      answers: [
+          {
+              type: "Low",
+              content: "I seem to need to wash my hair often or it looks greasy",
+              points: -2
+          },
+          {
+              type: "Normal",
+              content: "I can go a few days (3-4) without washing and my hair looks great",
+              points: 0
+          },
+          {
+              type: "High",
+              content: "I can go over 4 days without washing and my hair looks great",
+              points: 2
+          },
+
+      ]
+  },
+  {
+    question: "How does your hair respond to sulfate-containing shampoo?",
+      answers: [
+          {
+              type: "Low",
+              content: "It looks fine or great!",
+              points: -2
+          },
+          {
+              type: "Normal",
+              content: "It seems a little dry",
+              points: 0
+          },
+          {
+              type: "High",
+              content: "Sulfate-containg shampoos make my hair look very dry and unhealthy",
+              points: 2
+          },
+
+      ]
+  },
+  {
+    question: "Low-poo or co-wash",
+      answers: [
+          {
+              type: "Low",
+              content: "Low-poo",
               points: -1
-          }
-      ]
-  }, 
-  {
-    question: "I seem to need to remove buildup from my hair with clarifying treatments often",
-      answers: [
-          {
-              type: "Low",
-              content: "Yes",
-              points: -2
           },
           {
               type: "Normal",
-              content: "No",
+              content: "I don't know about this or I haven't tried both",
               points: 0
-          }
-      ]
-  }, 
-  {
-    question: "I seem to need to wash my hair often or it looks greasy",
-      answers: [
-          {
-              type: "Low",
-              content: "Yes",
-              points: -2
+          },
+         {
+              type: "Normal",
+              content: "I alternate the two",
+              points: 0
           },
           {
-              type: "Normal",
-              content: "No",
-              points: 0
-          }
+              type: "High",
+              content: "Co-wash",
+              points: 1
+          },
+
       ]
   }
 
