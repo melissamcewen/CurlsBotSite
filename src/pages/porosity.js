@@ -121,21 +121,22 @@ class porosity extends React.Component {
       ReactGA.event({
         category: 'quiz',
         action: 'High porosity',
-        label: result
+        label: 'points: ' + result
+
       });
     } else if (result < -2)  {
       this.setState({ result: 'probably low porosity.' });
       ReactGA.event({
         category: 'quiz',
         action: 'Low porosity',
-        label: result
+        label: 'points: ' + result
       });
     } else {
       this.setState({ result: 'probably normal porosity' });
       ReactGA.event({
         category: 'quiz',
         action: 'Normal porosity',
-        label: result 
+        label: 'points: ' + result
       });
     }
   }
