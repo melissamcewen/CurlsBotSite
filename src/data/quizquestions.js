@@ -1,25 +1,5 @@
 var quizQuestions = [
   {
-      question: "Take a strand of hair that's still attached to your head and slide your fingers from the bottom up the shaft towards the scalp",
-      answers: [
-          {
-              type: "High",
-              content: "I feel little bumps",
-              points: 2
-          },
-          {
-              type: "Normal",
-              content: "It feels smooth",
-              points: 0
-          },
-          {
-              type: "Normal",
-              content: "Hmm...I can't quite say",
-              points: 0
-          }
-      ]
-  },
-  {
       question: "Which sounds more like your experience with products:",
       answers: [
           {
