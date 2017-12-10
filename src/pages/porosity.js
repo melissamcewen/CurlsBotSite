@@ -4,6 +4,7 @@ import Quiz from '../components/quiz'
 import Result from '../components/result'
 import quizQuestions from '../data/quizquestions'
 import Question from '../components/question'
+import ReactGA from 'react-ga'
 
 
 
@@ -38,8 +39,9 @@ class porosity extends React.Component {
   shuffleArray(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
+    //removing this for now
     // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
+    /*while (0 !== currentIndex) {
 
       // Pick a remaining element...
       randomIndex = Math.floor(Math.random() * currentIndex);
@@ -49,7 +51,7 @@ class porosity extends React.Component {
       temporaryValue = array[currentIndex];
       array[currentIndex] = array[randomIndex];
       array[randomIndex] = temporaryValue;
-    }
+    }*/
 
     return array;
   };
@@ -116,10 +118,25 @@ class porosity extends React.Component {
     console.log(result);
     if (result > 2) {
       this.setState({ result: 'probably high porosity. ' });
+      ReactGA.event({
+        category: 'quiz',
+        action: 'High porosity',
+        label: result
+      });
     } else if (result < -2)  {
       this.setState({ result: 'probably low porosity.' });
+      ReactGA.event({
+        category: 'quiz',
+        action: 'Low porosity',
+        label: result
+      });
     } else {
       this.setState({ result: 'probably normal porosity' });
+      ReactGA.event({
+        category: 'quiz',
+        action: 'Normal porosity',
+        label: result 
+      });
     }
   }
 
@@ -152,7 +169,7 @@ class porosity extends React.Component {
           <h2>Hair Porosity Quiz</h2>
           <p>Confused about hair porosity? Well it's just how able your hair is to absorb moisture, which is affected by the cuticle structure. A raised cuticle means your hair easily absorbs moisture and is <em>high porosity</em>. A tight cuticle means your hair is relucant to absorb moisture and is <em>low porosity</em>. If you're somewhere in the middle you are <em>normal porosity</em>.</p>
 
-          <p>Most "tests" of porosity just deal with how your hair floats in water, but they can be <a href="">inaccurate</a>. This quiz focuses on how your hair behaves so it can get a more complete picture of your porosity.</p>
+          <p>Most "tests" of porosity just deal with how your hair floats in water, but they can be <a href="http://hairmomentum.com/hair-porosity-test-not-accurate/">inaccurate</a>. This quiz focuses on how your hair behaves so it can get a more complete picture of your porosity.</p>
         </div>
         {this.state.result ? this.renderResult() : this.renderQuiz()}
 
