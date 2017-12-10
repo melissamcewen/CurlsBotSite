@@ -135,7 +135,7 @@ var quizQuestions = [
       ]
   }, 
   {
-    question: "How often do you need to wish your hair?",
+    question: "How often do you need to wash your hair?",
       answers: [
           {
               type: "Low",
