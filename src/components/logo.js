@@ -6,11 +6,9 @@ import logo from '../images/logo-small.png'
 
 
 const Logo = () => (
-  <div className={styles.logo}>
     <Link to="/" className={styles.link}>
-      <img src={logo} alt="Logo" className={styles.image} />
+      <img src={logo} alt="Logo" className="img-fluid" />
     </Link>
-  </div>
 )
 
 export default Logo

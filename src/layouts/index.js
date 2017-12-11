@@ -7,7 +7,6 @@ import Logo from '../components/logo'
 
 import ReactGA from 'react-ga'
 
-//import './index.css'
 
 const Header = () => (
   <div
@@ -24,7 +23,6 @@ const Header = () => (
       }}
     >
 
-      <Logo/>
       <Nav/>
     </div>
   </div>
@@ -64,7 +62,9 @@ export default class TemplateWrapper extends React.Component {
             { name: 'description', content: 'A hair care chatbot!' },
             { name: 'keywords', content: 'chatbots, curly girl' },
           ]}
-        />
+        >
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous" />
+      </Helmet>
         <Header />
         <div
           style={{

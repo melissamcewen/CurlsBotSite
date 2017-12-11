@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "bootstrap": "^3.3.7",
     "gatsby": "^1.9.45",
     "gatsby-link": "^1.6.17",
     "gatsby-plugin-react-helmet": "^1.0.5",
@@ -11,6 +12,7 @@
     "immutability-helper": "^2.4.0",
     "rc-progress": "^2.2.2",
     "react-ga": "^2.3.5",
+    "reactstrap": "^5.0.0-alpha.4",
     "typography-theme-bootstrap": "^0.16.7"
   },
   "keywords": [
