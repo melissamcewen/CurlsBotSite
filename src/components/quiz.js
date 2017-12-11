@@ -2,7 +2,7 @@ import React from 'react'
 import Question from '../components/question'
 import QuestionCount from '../components/questioncount'
 import AnswerOption from '../components/answeroption'
-
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 
 function Quiz(props) {
@@ -25,16 +25,18 @@ function Quiz(props) {
 
   return (
 
-      <div key={props.questionId}>
+      <Form key={props.questionId}>
+        <FormGroup tag="fieldset">
         <QuestionCount
           counter={props.questionId}
           total={props.questionTotal}
         />
         <Question content={props.question} />
-        <ul className="answerOptions">
+        <div className="answerOptions">
           {props.answerOptions.map(renderAnswerOptions)}
-        </ul>
-      </div>
+        </div>
+        </FormGroup>
+      </Form>
 
   );
 }

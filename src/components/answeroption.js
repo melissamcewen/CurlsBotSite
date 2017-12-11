@@ -1,9 +1,11 @@
 import React from 'react'
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 function AnswerOption(props) {
     return (
-      <li className="answerOption">
-        <input
+      <FormGroup check className="answerOption">
+        <Label check>
+        <Input
           type="radio"
           className="radioCustomButton"
           name="radioGroup"
@@ -13,10 +15,12 @@ function AnswerOption(props) {
           disabled={props.answer}
           onChange={props.onAnswerSelected}
         />
-        <label className="radioCustomLabel" htmlFor={props.answerType}>
+        <span className="radioCustomLabel" htmlFor={props.answerType}>
           {props.answerContent}
-        </label>
-      </li>
+        </span>
+        </Label>
+
+      </FormGroup >
     );
   }
 
