@@ -1,0 +1,66 @@
+{
+  "assetsByChunkName": {
+    "component---src-pages-privacy-policy-js": [
+      "component---src-pages-privacy-policy-js-bcedfd8717ca15c83424.js",
+      "component---src-pages-privacy-policy-js-bcedfd8717ca15c83424.js.map"
+    ],
+    "component---src-pages-index-js": [
+      "component---src-pages-index-js-85a3af81e8b2b772e3e0.js",
+      "component---src-pages-index-js-85a3af81e8b2b772e3e0.js.map"
+    ],
+    "component---src-pages-porosity-js": [
+      "component---src-pages-porosity-js-9e34ec2fac29865ec1be.js",
+      "component---src-pages-porosity-js-9e34ec2fac29865ec1be.js.map"
+    ],
+    "path---cg-lite": [
+      "path---cg-lite-a0e39f21c11f6a62c5ab.js",
+      "path---cg-lite-a0e39f21c11f6a62c5ab.js.map"
+    ],
+    "path---": [
+      "path----557518bd178906f8d58a.js",
+      "path----557518bd178906f8d58a.js.map"
+    ],
+    "component---src-layouts-index-js": [
+      "component---src-layouts-index-js-032e74a5e708fe78aba9.js",
+      "component---src-layouts-index-js-032e74a5e708fe78aba9.js.map"
+    ],
+    "path---porosity": [
+      "path---porosity-a0e39f21c11f6a62c5ab.js",
+      "path---porosity-a0e39f21c11f6a62c5ab.js.map"
+    ],
+    "path---index": [
+      "path---index-a0e39f21c11f6a62c5ab.js",
+      "path---index-a0e39f21c11f6a62c5ab.js.map"
+    ],
+    "component---src-pages-404-js": [
+      "component---src-pages-404-js-4503918ea3a16cfcdb75.js",
+      "component---src-pages-404-js-4503918ea3a16cfcdb75.js.map"
+    ],
+    "commons": [
+      "commons-29afe5c7c7046f024436.js",
+      "commons-29afe5c7c7046f024436.js.map"
+    ],
+    "path---404-html": [
+      "path---404-html-a0e39f21c11f6a62c5ab.js",
+      "path---404-html-a0e39f21c11f6a62c5ab.js.map"
+    ],
+    "app": [
+      "app-ad07eb029acf2d297638.js",
+      "build-js-styles.css",
+      "app-ad07eb029acf2d297638.js.map",
+      "build-js-styles.css.map"
+    ],
+    "path---privacy-policy": [
+      "path---privacy-policy-a0e39f21c11f6a62c5ab.js",
+      "path---privacy-policy-a0e39f21c11f6a62c5ab.js.map"
+    ],
+    "path---404": [
+      "path---404-a0e39f21c11f6a62c5ab.js",
+      "path---404-a0e39f21c11f6a62c5ab.js.map"
+    ],
+    "component---src-pages-cg-lite-js": [
+      "component---src-pages-cg-lite-js-59cf9feaf117f3c7c812.js",
+      "component---src-pages-cg-lite-js-59cf9feaf117f3c7c812.js.map"
+    ]
+  }
+}
