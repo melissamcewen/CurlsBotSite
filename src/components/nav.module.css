@@ -1,0 +1,20 @@
+.nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  display: inline-block;
+  padding: 10px;
+  margin-right: 2em;
+  background-color: #50629C;
+
+}
+
+.link {
+  display: block;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+}

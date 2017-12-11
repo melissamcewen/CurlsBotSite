@@ -7,9 +7,11 @@
     "gatsby": "^1.9.45",
     "gatsby-link": "^1.6.17",
     "gatsby-plugin-react-helmet": "^1.0.5",
+    "gatsby-plugin-typography": "^1.7.10",
     "immutability-helper": "^2.4.0",
     "rc-progress": "^2.2.2",
-    "react-ga": "^2.3.5"
+    "react-ga": "^2.3.5",
+    "typography-theme-bootstrap": "^0.16.7"
   },
   "keywords": [
     "gatsby"

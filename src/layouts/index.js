@@ -2,10 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
-import logo from '../images/logo-small.png'
+import Nav from '../components/nav'
+import Logo from '../components/logo'
+
 import ReactGA from 'react-ga'
 
-import './index.css'
+//import './index.css'
 
 const Header = () => (
   <div
@@ -21,17 +23,9 @@ const Header = () => (
         padding: '1rem 1.0875rem',
       }}
     >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: 'black',
-            textDecoration: 'none',
-          }}
-        >
-          <img src={logo} alt="Logo" />
-        </Link>
-      </h1>
+
+      <Logo/>
+      <Nav/>
     </div>
   </div>
 )
@@ -78,8 +72,10 @@ export default class TemplateWrapper extends React.Component {
             maxWidth: 960,
             padding: '0px 1.0875rem 1.45rem',
             paddingTop: 0,
+            clear: 'both'
           }}
         >
+
           {this.props.children()}
         </div>
       </div>
