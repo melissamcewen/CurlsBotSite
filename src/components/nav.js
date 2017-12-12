@@ -13,6 +13,8 @@ import {
   DropdownItem } from 'reactstrap';
 import Logo from '../components/logo'
 import styles from './nav.module.css'
+import logo from '../images/logo-small.png'
+
 
 
 export default class Example extends React.Component {
@@ -33,7 +35,9 @@ export default class Example extends React.Component {
     return (
       <div>
         <Navbar color="faded" light expand="md">
-          <NavbarBrand className={styles.brand} href="/"><Logo /></NavbarBrand>
+          <NavbarBrand className={styles.brand} href="/">
+            <img src={logo} alt="Logo" className="img-fluid" />
+          </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
@@ -41,7 +45,7 @@ export default class Example extends React.Component {
                 <NavLink href="/porosity">Porosity quiz</NavLink>
               </NavItem>
 
-              <UncontrolledDropdown nav inNavbar>
+              <UncontrolledDropdown nav>
                 <DropdownToggle nav caret>
                   Product Recs
                 </DropdownToggle>
