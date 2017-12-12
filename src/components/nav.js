@@ -12,6 +12,8 @@ import {
   DropdownMenu,
   DropdownItem } from 'reactstrap';
 import Logo from '../components/logo'
+import styles from './nav.module.css'
+
 
 export default class Example extends React.Component {
   constructor(props) {
@@ -31,7 +33,7 @@ export default class Example extends React.Component {
     return (
       <div>
         <Navbar color="faded" light expand="md">
-          <NavbarBrand href="/"><Logo /></NavbarBrand>
+          <NavbarBrand className={styles.brand} href="/"><Logo /></NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
