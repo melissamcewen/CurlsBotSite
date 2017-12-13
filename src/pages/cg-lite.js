@@ -70,21 +70,40 @@ const litePage = () => (
           <li>Styler:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2AqAoaN" to="http://amzn.to/2AqAoaN" target="_blank">Curling Custard </ReactGA.OutboundLink></li>
           <li>Styler:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2C2blYM" to="http://amzn.to/2C2blYM" target="_blank">Spiral Spritz </ReactGA.OutboundLink></li>
         </ul>
-     {/* end revised */}
+
+
+      <h2>Broo $$</h2>
+      <p>I use the Thickening Shampoo most of the time, but it is VERY gentle, so every week or other week I use my  <ReactGA.OutboundLink eventLabel="http://amzn.to/2kLT3H0" to="http://amzn.to/2kLT3H0" target="_blank">Kinky Curly Come Clean to do a gentle clarify</ReactGA.OutboundLink></p>
+        <ul>
+          <li>Cleanser:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2iWUbmZ" to="http://amzn.to/2iWUbmZ" target="_blank">Thickening Shampoo* </ReactGA.OutboundLink></li>
+          <li>Cleanser:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2BVICUE" to="http://amzn.to/2BVICUE" target="_blank"> Moisturizing Shampoo</ReactGA.OutboundLink></li>
+        </ul>
+
+      <h2>Devacurl $$$</h2>
+        <p> Devacurl's Delight line is targeted for fine/wavy hair, but personally I find the low-poo and conditioner still too oily for me and I know a lot of others who have had issues with them. That said these two products are great:</p>
+
+        <ul>
+          <li>Styler:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2iVQ9ew" to="http://amzn.to/2iVQ9ew" target="_blank">B Leave In* </ReactGA.OutboundLink> (contains hydrogenated castor oil as last ingredient which should not build up)</li>
+          <li>Styler:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2BYoIs1" to="http://amzn.to/2BYoIs1" target="_blank">Frizz-Free Volumizing Foam* </ReactGA.OutboundLink></li>
+        </ul>
 
 
       <h2>Jessicurl $$</h2>
         <ul>
-          <li> <ReactGA.OutboundLink eventLabel="https://www.jessicurl.com/product/gentle-lather-shampoo" to="https://www.jessicurl.com/product/gentle-lather-shampoo" target="_blank">Cleanser: Gentle Lather Shampoo- no fragrance </ReactGA.OutboundLink></li>
+          <li> <ReactGA.OutboundLink eventLabel="http://amzn.to/2AdArlV" to="http://amzn.to/2AdArlV" target="_blank">Cleanser: Gentle Lather Shampoo- no fragrance </ReactGA.OutboundLink></li>
 
         </ul>
 
-      <h2>Sweet Curls Elixirs</h2>
-      <p> <ReactGA.OutboundLink eventLabel="https://www.etsy.com/shop/SweetCurlsElixirs?ref=l2-shopheader-name" to="https://www.etsy.com/shop/SweetCurlsElixirs?ref=l2-shopheader-name" target="_blank">This is an etsy shop where the products are custom made. Most are available oil free! </ReactGA.OutboundLink></p>
+      <h2>Innersense $$$</h2>
+      <ul>
+        <li>Styler: <ReactGA.OutboundLink eventLabel="http://amzn.to/2BYccc7" to="http://amzn.to/2BYccc7" target="_blank">I Create Hold</ReactGA.OutboundLink></li>
+        <li>Styler: <ReactGA.OutboundLink eventLabel="http://amzn.to/2yjnHIN" to="http://amzn.to/2yjnHIN" target="_blank">I Create Volume</ReactGA.OutboundLink></li>
+      </ul>
+
 
       <h2>Budget Option</h2>
       <ul>
-        <li>Cleanser: It's hard to find a cheap "low poo" under $10. One option is  <ReactGA.OutboundLink eventLabel="http://amzn.to/2iYUVf7" to="http://amzn.to/2iYUVf7" target="_blank">Johnson's Baby Gentle Shampoo With Calming Lavender (some consider the sulfate it has, sodium trideceth sulfate, too harsh, but it should be OK for those with low-porosity/greasy skin).  </ReactGA.OutboundLink> Another option is Trader Joe's Tea Tree Tingle.</li>
+        <li>Cleanser: It's hard to find a cheap "low poo" under $10. One option is  <ReactGA.OutboundLink eventLabel="http://amzn.to/2BYVeKn" to="http://amzn.to/2BYVeKn" target="_blank">Johnson's Baby Gentle Shampoo With Calming Lavender (some consider the sulfate it has, sodium trideceth sulfate, too harsh, but it should be OK for those with low-porosity/greasy skin).  </ReactGA.OutboundLink> Another option is Trader Joe's Tea Tree Tingle.</li>
         <li>Conditioner:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2iWmsxD" to="http://amzn.to/2iWmsxD" target="_blank">Suave Essentials Conditioner, Tropical Coconut </ReactGA.OutboundLink></li>
         <li>Styler:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2krQaL4" to="http://amzn.to/2krQaL4" target="_blank">Herbal Essences Totally Twisted Curl Boosting Hair Mousse </ReactGA.OutboundLink></li>
         <li>Styler:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2zTIvbs" to="http://amzn.to/2zTIvbs" target="_blank">Aussie Instant Freeze Gel </ReactGA.OutboundLink></li>
@@ -102,18 +121,18 @@ const litePage = () => (
 
       <h2>Moptop $$$</h2>
         <ul>
-          <li>Conditioner:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2BNGdMs" to="http://amzn.to/2BNGdMs" target="_blank">Daily Conditioner  </ReactGA.OutboundLink></li>
+          <li>Conditioner:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2BXG5cl" to="http://amzn.to/2BXG5cl" target="_blank">Daily Conditioner  </ReactGA.OutboundLink></li>
         </ul>
 
       <h2>Giovanni $</h2>
         <ul>
-          <li>Cleanser:  <ReactGA.OutboundLink eventLabel="hhttp://amzn.to/2itE0gC" to="hhttp://amzn.to/2itE0gC" target="_blank">50:50 Balanced Shampoo </ReactGA.OutboundLink></li>
-          <li>Conditioner:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2iWryd9" to="http://amzn.to/2iWryd9" target="_blank">50:50 Balanced Conditioner </ReactGA.OutboundLink></li>
-          <li>Styler:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2AvBy3k" to="http://amzn.to/2AvBy3k" target="_blank">Hair Styling Mousse </ReactGA.OutboundLink></li>
-          <li>Styler:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2BOB2vt" to="http://amzn.to/2BOB2vt" target="_blank">LA Natural Gel </ReactGA.OutboundLink></li>
+          <li>Cleanser:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2AfVRPs" to="http://amzn.to/2AfVRPs" target="_blank">50:50 Balanced Shampoo </ReactGA.OutboundLink></li>
+          <li>Conditioner:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2C5oXSW" to="http://amzn.to/2C5oXSW" target="_blank">50:50 Balanced Conditioner </ReactGA.OutboundLink></li>
+          <li>Styler:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2yiPOYH" to="http://amzn.to/2yiPOYH" target="_blank">Hair Styling Mousse </ReactGA.OutboundLink></li>
+          <li>Styler:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2AwkkEe" to="http://amzn.to/2AwkkEe" target="_blank">LA Natural Gel </ReactGA.OutboundLink></li>
 
         </ul>
-     {/* start revised */}
+
 
         <h2>Jessicurl $$</h2>
         <ul>
@@ -122,33 +141,25 @@ const litePage = () => (
           <li>Styler: <ReactGA.OutboundLink eventLabel="http://amzn.to/2Aotpip" to="http://amzn.to/2Aotpip" target="_blank">Styler: Spiralicious Styling Gel</ReactGA.OutboundLink></li>
         </ul>
 
-     {/* end revisted */}
 
       <h2>Not Your Mothers Naturals Tahitian Gardenia Flower and Mango Butter $</h2>
       <p> Some ingredients in this line have been known to build up. I recommend you use a weekly clarifying low-poo if you use this line like  <ReactGA.OutboundLink eventLabel="http://amzn.to/2kLT3H0" to="http://amzn.to/2kLT3H0" target="_blank">Kinky Curly Come Clean </ReactGA.OutboundLink> </p>
 
       <ul>
-        <li>Cleanser:  <ReactGA.OutboundLink eventLabel="hhttp://amzn.to/2kqN61P" to="hhttp://amzn.to/2kqN61P" target="_blank">Shampoo </ReactGA.OutboundLink></li>
-        <li>Conditioner:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2kqN61P" to="http://amzn.to/2kqN61P" target="_blank">Conditioner* </ReactGA.OutboundLink></li>
-        <li>Styler:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2kqN61P" to="http://amzn.to/2kqN61P" target="_blank">Combing Cream* </ReactGA.OutboundLink> - use as a cream without combing</li>
-        <li>Styler:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2ATSu4p" to="http://amzn.to/2ATSu4p" target="_blank">Detangler* </ReactGA.OutboundLink>- use in very small amounts as a gel-like product or refresher</li>
+        <li>Cleanser:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2AhNQcY" to="http://amzn.to/2AhNQcY" target="_blank">Shampoo </ReactGA.OutboundLink></li>
+        <li>Conditioner:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2AdXxJd" to="http://amzn.to/2AdXxJd" target="_blank">Conditioner* </ReactGA.OutboundLink></li>
+        <li>Styler:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2AdXxJd" to="http://amzn.to/2AdXxJd" target="_blank">Combing Cream* </ReactGA.OutboundLink> - use as a cream without combing</li>
+        <li>Styler:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2AOWuR2" to="http://amzn.to/2AOWuR2" target="_blank">Detangler* </ReactGA.OutboundLink>- use in very small amounts as a gel-like product or refresher</li>
 
       </ul>
 
        <h2>Shea Moisture Fruit Fusion Coconut Water Weightless $</h2>
        <p> Warning some items in this line are not CG (the spray has drying alcohol) and in general it is one of the heavier lines on this list.</p>
         <ul>
-          <li>Cleanser:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2zWT0dV" to="http://amzn.to/2zWT0dV" target="_blank">Shampoo </ReactGA.OutboundLink></li>
-          <li>Conditioner:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2zY9aDO" to="http://amzn.to/2zY9aDO" target="_blank">Creme Rinse  </ReactGA.OutboundLink></li>
-          <li>Styler:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2kqpP05" to="http://amzn.to/2kqpP05" target="_blank">Mousse </ReactGA.OutboundLink></li>
+          <li>Cleanser:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2Ay4vx3" to="http://amzn.to/2Ay4vx3" target="_blank">Shampoo </ReactGA.OutboundLink></li>
+          <li>Conditioner:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2AOBtpD" to="http://amzn.to/2AOBtpD" target="_blank">Creme Rinse  </ReactGA.OutboundLink></li>
+          <li>Styler:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2AOBMAN" to="http://amzn.to/2AOBMAN" target="_blank">Mousse </ReactGA.OutboundLink></li>
         </ul>
-
-        <h2>Innersense $$$</h2>
-        <p>A lot of people with fine hair love  <ReactGA.OutboundLink eventLabel="https://innersensebeauty.com/" to="https://innersensebeauty.com/" target="_blank">these products </ReactGA.OutboundLink>, but I don't know that much about them personally. </p>
-
-
-        <h2>Devacurl $$$</h2>
-        <p> <ReactGA.OutboundLink eventLabel="http://www.devacurl.com/" to="http://www.devacurl.com/" target="_blank">Devacurl </ReactGA.OutboundLink> has a few great light products like B'Leave In*, Foam*, and the Delight Conditioner and Low-Poo. But some of their products are heavy just in my personal experience like the Cream .</p>
 
 
 

@@ -11,7 +11,6 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem } from 'reactstrap';
-import Logo from '../components/logo'
 import styles from './nav.module.css'
 import logo from '../images/logo-small.png'
 
