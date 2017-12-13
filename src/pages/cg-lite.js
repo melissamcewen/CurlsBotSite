@@ -10,7 +10,7 @@ const litePage = () => (
       title="Curly Girl Lite"
       meta={[
         { name: 'description', content: 'Products that won\'t leave your hair greasy' },
-        { name: 'keywords', content: 'products, greasy hair, fine hair, wavy hair curly girl' },
+        { name: 'keywords', content: 'products, greasy hair, fine hair, low porosity, wavy hair curly girl' },
       ]}
     />
     <h1>Curly Girl = Greasy Hair? </h1>

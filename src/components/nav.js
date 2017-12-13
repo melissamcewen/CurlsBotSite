@@ -52,6 +52,9 @@ export default class Example extends React.Component {
                   <DropdownItem href="/cg-lite">
                     Light/Low-Porosity
                   </DropdownItem>
+                  <DropdownItem href="/high-porosity">
+                    Heavy/High-Porosity
+                  </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
             </Nav>
