@@ -1,0 +1,2 @@
+webpackJsonp([582280159698],{"./node_modules/json-loader/index.js!./.cache/json/ingredients.json":function(n,e){n.exports={pathContext:{}}}});
+//# sourceMappingURL=path---ingredients-a0e39f21c11f6a62c5ab.js.map

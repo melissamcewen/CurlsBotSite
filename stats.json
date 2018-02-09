@@ -1,5 +1,9 @@
 {
   "assetsByChunkName": {
+    "path---ingredients": [
+      "path---ingredients-a0e39f21c11f6a62c5ab.js",
+      "path---ingredients-a0e39f21c11f6a62c5ab.js.map"
+    ],
     "component---src-pages-high-porosity-js": [
       "component---src-pages-high-porosity-js-09b1e9915b28782a03a0.js",
       "component---src-pages-high-porosity-js-09b1e9915b28782a03a0.js.map"
@@ -69,14 +73,18 @@
       "component---src-pages-dye-js-f9158c7f3812339ec3f9.js.map"
     ],
     "app": [
-      "app-8dd46f139ab401a68e72.js",
+      "app-c00b294a8a68adca2bb4.js",
       "build-js-styles.css",
-      "app-8dd46f139ab401a68e72.js.map",
+      "app-c00b294a8a68adca2bb4.js.map",
       "build-js-styles.css.map"
     ],
     "path---privacy-policy": [
       "path---privacy-policy-a0e39f21c11f6a62c5ab.js",
       "path---privacy-policy-a0e39f21c11f6a62c5ab.js.map"
+    ],
+    "component---src-pages-ingredients-js": [
+      "component---src-pages-ingredients-js-dd4e0cd555cd701e1ddc.js",
+      "component---src-pages-ingredients-js-dd4e0cd555cd701e1ddc.js.map"
     ],
     "path---shea": [
       "path---shea-a0e39f21c11f6a62c5ab.js",
