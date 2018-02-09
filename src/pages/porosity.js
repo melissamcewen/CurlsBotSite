@@ -5,6 +5,8 @@ import Result from '../components/result'
 import quizQuestions from '../data/quizquestions'
 import Question from '../components/question'
 import ReactGA from 'react-ga'
+import Helmet from 'react-helmet'
+
 
 
 
@@ -166,6 +168,13 @@ class porosity extends React.Component {
   render() {
     return (
       <div className="App">
+            <Helmet
+      title="Curly Girl Porosity Test"
+      meta={[
+        { name: 'description', content: 'An easy quiz for determining hair porosity' },
+        { name: 'keywords', content: 'products, curly girl, hair porosity, low porosity, high porosity' },
+      ]}
+    />
         <div className="App-header">
           <h2>Hair Porosity Quiz</h2>
           <p>Confused about hair porosity? Well it's just how able your hair is to absorb moisture, which is affected by the cuticle structure. A raised cuticle means your hair easily absorbs moisture and is <em>high porosity</em>. A tight cuticle means your hair is relucant to absorb moisture and is <em>low porosity</em>. If you're somewhere in the middle you are <em>normal porosity</em>.</p>

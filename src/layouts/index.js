@@ -62,10 +62,11 @@ export default class TemplateWrapper extends React.Component {
             { name: 'keywords', content: 'chatbots, curly girl' },
             {
               property: 'og:image',
-              content: `${__PATH_PREFIX__ }/img/icon.png`,
+              content: 'http://www.curlsbot.com/img/icon.png',
             }
           ]}
         >
+          <meta name="google-site-verification" content="vFMnYOqnsQwevkYo--zeevG2gat6gN-QAqbauxy1N7A" />
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous" />
       </Helmet>
         <Header />

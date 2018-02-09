@@ -55,6 +55,12 @@ export default class Example extends React.Component {
                   <DropdownItem href="/high-porosity">
                     Heavy/High-Porosity
                   </DropdownItem>
+                 <DropdownItem href="/normal-porosity">
+                    Normal-Porosity
+                  </DropdownItem>
+                  <DropdownItem href="/dyes">
+                    Dyes
+                  </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
             </Nav>

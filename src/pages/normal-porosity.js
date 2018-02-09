@@ -4,34 +4,29 @@ import Helmet from 'react-helmet'
 import ReactGA from 'react-ga'
 
 
-const hpPage = () => (
+const npPage = () => (
   <div>
     <Helmet
-      title="High Porosity Products"
+      title="Normal Porosity Products"
       meta={[
-        { name: 'description', content: 'Products to nourish damaged, dry, and moisture hungry hair' },
-        { name: 'keywords', content: 'products, high porosity, dry hair, curly girl' },
+        { name: 'description', content: 'Products to balance healthy hair' },
+        { name: 'keywords', content: 'products, normal porosity, curly girl' },
       ]}
     />
-    <h1>High Porosity Recs </h1>
-    <p>If you're <ReactGA.OutboundLink eventLabel="https://www.wikihow.com/Follow-the-Curly-Girl-Method-for-Curly-Hair" to="https://www.wikihow.com/Follow-the-Curly-Girl-Method-for-Curly-Hair" target="_blank">curly girl  </ReactGA.OutboundLink> and have high porosity hair, you need a lot of nourishment. Often high porosity hair is:</p>
-      <ul>
-        <li>Previously chemically processed</li>
-        <li>Constantly dry</li>
-        <li>Looks dull</li>
-      </ul>
+    <h1>Normal Porosity Products </h1>
+    <p>If you're <ReactGA.OutboundLink eventLabel="https://www.wikihow.com/Follow-the-Curly-Girl-Method-for-Curly-Hair" to="https://www.wikihow.com/Follow-the-Curly-Girl-Method-for-Curly-Hair" target="_blank">curly girl  </ReactGA.OutboundLink> and have normal porosity hair, your hair should be pretty easy to care for. </p>
 
-      <p>The advantage over low porosity hair is there are so many great products out there that it's hard to just recommend a few, so instead of recommending lines, I'm recommending types of products. For best results you'll want one of each:</p>
+      <p>Chose products that both cleanse lightly and nourish. Use co-wash most days and then use a light sulfate free shampoo (AKA a low-poo) once a week to make sure your hair is balanced. Use styling products that are lightly moisturizing and provide a good hold. The following products are enough for most people:</p>
       <ul>
-        <li>Cowash</li>
-        <li>Deep Conditioner</li>
+        <li>Low-Poo</li>
+        <li>Cowash/Cleaning Conditioner</li>
         <li>Nourishing styler</li>
         <li>Lock in styler</li>
 
       </ul>
 
       <h2>Cleansing Conditioner/Cowash</h2>
-      <p>If you have high porosity hair you will want to use the gentlest type of cleansing, which is a cleansing conditioner, AKA a "cowash" </p>
+      <p>This is the gentlest type of cleansing, which is a cleansing conditioner, AKA a "cowash." You can use this for most of your washes to keep your hair healthy and full of life: </p>
       <ul>
         <li><ReactGA.OutboundLink eventLabel="http://amzn.to/2AOMveD" to="http://amzn.to/2AOMveD" target="_blank"> Innersense Hydrating Hairbath $$$</ReactGA.OutboundLink></li>
         <li><ReactGA.OutboundLink eventLabel="http://amzn.to/2APlGqw" to="http://amzn.to/2APlGqw" target="_blank"> Shea Moisture Coconut & Hibiscus Co-Wash Conditioning Cleanser $$</ReactGA.OutboundLink></li>
@@ -39,12 +34,11 @@ const hpPage = () => (
       </ul>
 
 
-      <h2>Deep Conditioner</h2>
-      <p>Once a week or more you'll want to follow your cowash with a deep conditioner to help your hair retain moisture.</p>
+      <h2>Low Poo</h2>
+      <p>Normal porosity hair can usually benefit from some more deep cleansing to balance it out. Use a low-poo once a week to get your hair clean and refreshed:</p>
       <ul>
-        <li><ReactGA.OutboundLink eventLabel="http://amzn.to/2yjPKrn" to="http://amzn.to/2yjPKrn" target="_blank"> Jessicurl Deep Conditioning Treatment $$$</ReactGA.OutboundLink></li>
-        <li><ReactGA.OutboundLink eventLabel="http://amzn.to/2BXgjox" to="http://amzn.to/2BXgjox" target="_blank">Shea Moisture Manuka Honey & Mafura Oil Intensive Hydration Treatment $$</ReactGA.OutboundLink></li>
-        <li><ReactGA.OutboundLink eventLabel="http://amzn.to/2BYl8ht" to="http://amzn.to/2BYl8ht" target="_blank">Coconut Oil $</ReactGA.OutboundLink></li>
+        <li><ReactGA.OutboundLink eventLabel="http://amzn.to/2Bo2pPG" to="http://amzn.to/2Bo2pPG" target="_blank"> Innersense - Organic Color Awakening Hair Bath $$$</ReactGA.OutboundLink></li>
+        <li><ReactGA.OutboundLink eventLabel="http://amzn.to/2AfVRPs" to="http://amzn.to/2AfVRPs" target="_blank">Giovanni 50:50 Balanced Shampoo $</ReactGA.OutboundLink></li>
       </ul>
 
 
@@ -75,4 +69,4 @@ const hpPage = () => (
   </div>
 )
 
-export default hpPage
+export default npPage
