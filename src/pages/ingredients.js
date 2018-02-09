@@ -14,32 +14,122 @@ const siliconeList = [
 
 
 const badSiliconeList = [
-"dimethicone",
-"bisaminopropyl dimethicone",
-"cetearyl methicone",
-"cetyl dimethicone",
-"cyclopentasiloxane",
-"stearoxy dimethicone",
-"stearyl dimethicone",
-"trimethylsilylamodimethicone",
-"amodimethicone",
-"dimethiconol",
-"behenoxy dimethicone",
-"phenyl trimethicone",
-"aminopropyl triethoxysilane",
-"silicone"
+  "dimethicone",
+  "bisaminopropyl dimethicone",
+  "cetearyl methicone",
+  "cetyl dimethicone",
+  "cyclopentasiloxane",
+  "stearoxy dimethicone",
+  "stearyl dimethicone",
+  "trimethylsilylamodimethicone",
+  "amodimethicone",
+  "dimethiconol",
+  "behenoxy dimethicone",
+  "phenyl trimethicone",
+  "aminopropyl triethoxysilane",
+  "silicone"
 ];
 
 const goodSiliconeList =  [
-"peg-dimethicone",
-"dimethicone copolyol",
-"dimethicone-pg diethylmonium chloride",
-"pg-dimethicone", 
-"glycidoxy dimethicone crosspolymer", 
-"dimethicone hydroxypropyl trimonium chloride", 
-"hydroxyethyl acetomonium pg-dimethicone", 
-"stearalkonium dimethicone peg-8 phthalate", 
-"steardimonium hydroxypropyl panthenyl peg-7 dimethicone phosphate chloride",
+  "peg-dimethicone",
+  "dimethicone copolyol",
+  "dimethicone-pg diethylmonium chloride",
+  "pg-dimethicone", 
+  "glycidoxy dimethicone crosspolymer", 
+  "dimethicone hydroxypropyl trimonium chloride", 
+  "hydroxyethyl acetomonium pg-dimethicone", 
+  "stearalkonium dimethicone peg-8 phthalate", 
+  "steardimonium hydroxypropyl panthenyl peg-7 dimethicone phosphate chloride"
+];
+
+const sulfateList = [
+  "sulfate",
+  "sulfo",
+  "sarcosinate"
+
+]
+
+const goodSulfateList = [
+  "behentrimonium methosulfate",
+  "disodium laureth sulfosuccinate",
+  "magnesium sulfate",
+  "sodium lauroyl sarcosinate"
+];
+
+const badSulfateList = [
+  "alkylbenzene sulfonate",
+  "alkyl benzene sulfonate",
+  "ammonium laureth sulfate",
+  "ammonium lauryl sulfate",
+  "ammonium xylenesulfonate",
+  "sodium cocoyl sarcosinate",
+  "sodium laureth sulfate",
+  "sodium lauryl sulfate",
+  "sodium lauryl sulfoacetate",
+  "sodium myreth sulfate",
+  "sodium xylenesulfonate",
+  "tea-dodecylbenzenesulfonate",
+  "ethyl peg-15 cocamine sulfate",
+  "dioctyl sodium sulfosuccinate"
+];
+
+var alcoholList = [
+  "alcohol"
+];
+
+var badAlcoholList = [
+  "denatured alcohol",
+  "sd alcohol 40",
+  "witch hazel",
+  "isopropanol",
+  "ethanol",
+  "sd alcohol",
+  "propanol",
+  "propyl alcohol",
+  "isopropyl alcohol",
+  "alcohol denat."
+];
+
+var goodAlcoholList = [
+  "behenyl alcohol",
+  "cetearyl alcohol",
+  "ceteryl alcohol",
+  "cetyl alcohol",
+  "isocetyl alcohol",
+  "isostearyl alcohol",
+  "lauryl alcohol",
+  "myristyl alcohol",
+  "stearyl alcohol",
+  "c30-50 alcohols",
+  "lanolin alcohol",
+  "benzyl alcohol",
+  "stearyl alcohol",
+  "aminomethyl propanol"
+];
+
+var waxOilList = [
+  "castor",
+  "wax"
+]
+
+var badWaxOilList = [
+  "castor oil",
+  "mineral oil",
+  "huile minerale",
+  "parrifidium liquidium",
+  "petrolatum",
+  "bees wax",
+  "beeswax",
+  "candelia wax",
+  "cire dabeille",
+  "cera alba",
+  "paraffinum liquidum (mineral oil)",
+  "microcrystalline wax" 
+];
+
+
+var goodWaxOilList = [
+  "PEG-Hydrogenated Castor Oil"
 ];
 
 function analysis(source, unknown, good, bad){
@@ -53,7 +143,6 @@ function analysis(source, unknown, good, bad){
        return bad.includes( el );
     } ); 
   
-      console.log(badList);
 
     detected= detected.concat(badList);
   
@@ -66,9 +155,6 @@ function analysis(source, unknown, good, bad){
          });
     }); 
   
-  
-
-    
 
   
   let results = {
@@ -90,50 +176,24 @@ class Ingredients extends React.Component {
       results: '',
       unknownSiliconeResults: '',
       badSiliconeResults: '',
-      goodSiliconeResults: ''
+      goodSiliconeResults: '',
+      unknownSulfateResults: '',
+      badSulfateResults: '',
+      goodSulfateResults: '',
+      goodAlcoholResults: '',
+      badAlcoholResults: '',
+      unknownAlcoholResults: '',
+      goodWaxOilResults: '',
+      badWaxOilResults: '',
+      unknownWaxOilResults: '',
+
+      
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  containsAny(source,target){
-    let result = source.filter(
-      function(item){ 
-       return target.some(function(ff) { 
-            return item.indexOf(ff) > -1;
-      
-         });
-      
-      });   
-      
-    if (result.length > 0){
-      return result
-    }
- }  
-
-  contains(source,target){
-    let result = source.filter(
-      function(item){ 
-       return target.some(function(ff) { 
-            return item == ff;
-      
-         });
-      
-      });   
-    if (result.length > 0){
-      return result
-    }
-}  
-
-
- removeDupe(list, toRemove){
-      var result = list.filter( function( el ) {
-    return toRemove.indexOf( el ) < 0;
-
-} );
-    console.log(result);
-}
 
  process(text){
 
@@ -143,8 +203,16 @@ class Ingredients extends React.Component {
 
     let ingredientsList = text.split(',').map(x => x.trim().toLowerCase());
 
-    let siliconeAnalysis= analysis(ingredientsList, siliconeList, goodSiliconeList, badSiliconeList)
+    let siliconeAnalysis= analysis(ingredientsList, siliconeList, goodSiliconeList, badSiliconeList);
     console.log(siliconeAnalysis);
+
+    let sulfateAnalysis= analysis(ingredientsList, sulfateList, goodSulfateList, badSulfateList);
+
+
+    let alcoholAnalysis= analysis(ingredientsList, alcoholList, goodAlcoholList, badAlcoholList);
+
+    let waxOilAnalysis= analysis(ingredientsList, waxOilList, goodWaxOilList, badWaxOilList);
+
 
     if (siliconeAnalysis.good.length > 0) {
           this.setState({goodSiliconeResults: siliconeAnalysis.good});
@@ -162,26 +230,52 @@ class Ingredients extends React.Component {
           });
       }
 
-    /*/// test for silicone
-       var badSilicones = this.contains(ingredientsList, badSiliconeList); 
-       var goodSilicones = this.contains(ingredientsList, goodSiliconeList); 
-
-      if (goodSilicones) {
-        detectedSilicones.push(goodSilicones);
-          this.setState({goodSiliconeResults: goodSilicones});
+    if (sulfateAnalysis.good.length > 0) {
+          this.setState({goodSulfateResults: sulfateAnalysis.good});
       }
-      if (badSilicones) {
-          detectedSilicones.push(badSilicones);
-
+      if (sulfateAnalysis.bad.length > 0) {
           notCG = true;
-          this.setState({badSiliconeResults: badSilicones
+          this.setState({badSulfateResults: sulfateAnalysis.bad
+          });
+      }
+
+      if (sulfateAnalysis.unknown.length > 0) {
+          unknownCG = true;
+          this.setState({unknownSulfateResults: sulfateAnalysis.unknown
+          });
+      }
+
+      if (alcoholAnalysis.good.length > 0) {
+          this.setState({goodAlcoholResults: alcoholAnalysis.good});
+      }
+      if (alcoholAnalysis.bad.length > 0) {
+          notCG = true;
+          this.setState({badAlcoholResults: alcoholAnalysis.bad
+          });
+      }
+
+      if (alcoholAnalysis.unknown.length > 0) {
+          unknownCG = true;
+          this.setState({unknownAlcoholResults: alcoholAnalysis.unknown
+          });
+      }
+
+      if (waxOilAnalysis.good.length > 0) {
+          this.setState({goodWaxOilResults: waxOilAnalysis.good});
+      }
+      if (waxOilAnalysis.bad.length > 0) {
+          notCG = true;
+          this.setState({badWaxOilResults: waxOilAnalysis.bad
+          });
+      }
+
+      if (waxOilAnalysis.unknown.length > 0) {
+          unknownCG = true;
+          this.setState({unknownWaxOilResults: waxOilAnalysis.unknown
           });
       }
 
 
-      var someUnknowns = this.removeDupe(ingredientsList, detectedSilicones);
-      console.log(someUnknowns);
-   */
 
 
     
@@ -204,6 +298,15 @@ class Ingredients extends React.Component {
       unknownSiliconeResults: '',
       badSiliconeResults: '',
       goodSiliconeResults: '',
+      unknownSulfateResults: '',
+      badSulfateResults: '',
+      goodSulfateResults: '',
+      unknownAlcoholResults: '',
+      badAlcoholResults: '',
+      goodAlcoholResults: '',
+      unknownWaxOilResults: '',
+      badWaxOilResults: '',
+      goodWaxOilResults: '',
       results: ''
     });
   }
@@ -224,8 +327,8 @@ class Ingredients extends React.Component {
     return (
       <div>
         <FormGroup >
-          <Label for="exampleText">Curlsbot Alpha!</Label>
-          <Input type="textarea" name="text" id="exampleText" placeholder="Paste an ingredient list here" onChange={this.handleChange} />
+          <Label for="exampleText">Curlsbot Beta!</Label>
+          <Input type="textarea" name="text" id="exampleText" placeholder="Paste an ingredient list here" onChange={this.handleChange} rows="10" />
           <Button onClick={this.handleSubmit}>Submit</Button>
         </FormGroup>
 
@@ -245,7 +348,7 @@ class Ingredients extends React.Component {
           <Card body outline color="success">
             <CardTitle>OK Siliciones</CardTitle>
             <CardSubtitle>These look like 'good silicones' because they are water soluble, they are perfectly OK:</CardSubtitle>
-            <CardText><ResultListing list={this.state.goodSiliconeResults}/>}</CardText>
+            <CardText><ResultListing list={this.state.goodSiliconeResults}/></CardText>
            </Card>
    
          }
@@ -260,6 +363,102 @@ class Ingredients extends React.Component {
            </Card>
    
          }
+
+
+        {this.state.badSulfateResults.length > 0 &&
+          <Card body outline color="danger">
+            <CardTitle>Harsh Sulfates Detected</CardTitle>
+            <CardSubtitle>Yikes! These are either harsh sulfates or similar sulfer-based compounds which are not curly girl approved:</CardSubtitle>
+            <CardText><ResultListing list={this.state.badSulfateResults}/>
+
+            </CardText>
+           </Card>
+   
+         }
+
+        {this.state.goodSulfateResults.length > 0 &&
+          <Card body outline color="success">
+            <CardTitle>Curly Girl Approved Sulfates/Sulfate-like ingredients</CardTitle>
+            <CardSubtitle>These are sulfates or sulfate-like cleansers or other similar ingredients, but they are not harsh, so that means they are curly-girl approved!:</CardSubtitle>
+            <CardText><ResultListing list={this.state.goodSulfateResults}/></CardText>
+           </Card>
+   
+         }
+
+        {this.state.unknownSulfateResults.length > 0 &&
+          <Card body outline color="warning">
+            <CardTitle>Unknown Sulfate-like Ingredients</CardTitle>
+            <CardSubtitle>I can't tell you much about these sulfates or sulfate-like ingredients, you should look them up for more info:</CardSubtitle>
+            <CardText>
+                  <ResultListing list={this.state.unknownSulfateResults}/>
+            </CardText>
+           </Card>
+   
+         }
+
+
+        {this.state.badAlcoholResults.length > 0 &&
+          <Card body outline color="danger">
+            <CardTitle>Harsh Alcohols Detected</CardTitle>
+            <CardSubtitle>These alcohols will dry out your hair, they are not curly girl approved:</CardSubtitle>
+            <CardText><ResultListing list={this.state.badAlcoholResults}/>
+
+            </CardText>
+           </Card>
+   
+         }
+
+        {this.state.goodAlcoholResults.length > 0 &&
+          <Card body outline color="success">
+            <CardTitle>Curly Girl Approved Alcohols</CardTitle>
+            <CardSubtitle>These alcohols won't dry our your hair, they are curly girl approved:</CardSubtitle>
+            <CardText><ResultListing list={this.state.goodAlcoholResults}/></CardText>
+           </Card>
+   
+         }
+
+        {this.state.unknownAlcoholResults.length > 0 &&
+          <Card body outline color="warning">
+            <CardTitle>Unknown Alcohols</CardTitle>
+            <CardSubtitle>I don't know anything about these alcohols. I suggest you do more research:</CardSubtitle>
+            <CardText>
+                  <ResultListing list={this.state.unknownAlcoholResults}/>
+            </CardText>
+           </Card>
+   
+         }
+
+        {this.state.badWaxOilResults.length > 0 &&
+          <Card body outline color="danger">
+            <CardTitle>Non-Curly Girl Waxes and Oils Detected </CardTitle>
+            <CardSubtitle>These waxes and oils can cause buildup that is difficult to remove and keeps your hair from absorbing moisture properly:</CardSubtitle>
+            <CardText><ResultListing list={this.state.badWaxOilResults}/>
+
+            </CardText>
+           </Card>
+   
+         }
+
+        {this.state.goodWaxOilResults.length > 0 &&
+          <Card body outline color="success">
+            <CardTitle>Ok Oils</CardTitle>
+            <CardSubtitle>Castor oil is known to build up but if it has PEG in front of it, that means it has been modified so as not to cause buildup: </CardSubtitle>
+            <CardText><ResultListing list={this.state.goodWaxOilResults}/></CardText>
+           </Card>
+   
+         }
+
+        {this.state.unknownWaxOilResults.length > 0 &&
+          <Card body outline color="warning">
+            <CardTitle>Unknown Waxes and Oils</CardTitle>
+            <CardSubtitle>These are some waxes and castor oil types I don't know about. I recommend you do more research. </CardSubtitle>
+            <CardText>
+                  <ResultListing list={this.state.unknownWaxOilResults}/>
+            </CardText>
+           </Card>
+   
+         }
+
 
 
       {this.state.results == "not CG" &&
