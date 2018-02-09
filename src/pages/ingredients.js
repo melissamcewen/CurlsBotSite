@@ -186,6 +186,8 @@ class Ingredients extends React.Component {
       goodWaxOilResults: '',
       badWaxOilResults: '',
       unknownWaxOilResults: '',
+      invalidInput: false,
+
 
       
     };
@@ -202,6 +204,16 @@ class Ingredients extends React.Component {
     let detectedSilicones = []
 
     let ingredientsList = text.split(',').map(x => x.trim().toLowerCase());
+
+    function isBelowThreshold(currentValue) {
+      return currentValue.length < 150;
+    }
+
+    if (!ingredientsList.every(isBelowThreshold)){
+      this.setState({invalidInput: true});
+      return;
+
+    }
 
     let siliconeAnalysis= analysis(ingredientsList, siliconeList, goodSiliconeList, badSiliconeList);
     console.log(siliconeAnalysis);
@@ -295,6 +307,7 @@ class Ingredients extends React.Component {
   handleChange(event) {
     this.setState({
       value: event.target.value,
+      invalidInput: false,
       unknownSiliconeResults: '',
       badSiliconeResults: '',
       goodSiliconeResults: '',
@@ -308,6 +321,7 @@ class Ingredients extends React.Component {
       badWaxOilResults: '',
       goodWaxOilResults: '',
       results: ''
+
     });
   }
 
@@ -333,6 +347,14 @@ class Ingredients extends React.Component {
         </FormGroup>
 
         <h2>Results</h2>
+
+        {this.state.invalidInput &&
+          <Card body outline color="warning">
+            <CardTitle>Hmm is this an ingredient list?</CardTitle>
+            <CardSubtitle>I can't process this because it's either not an ingredient list or the ingredients aren't seperated by commas</CardSubtitle>
+           </Card>
+   
+         }
         {this.state.badSiliconeResults.length > 0 &&
           <Card body outline color="danger">
             <CardTitle>Silicones Detected</CardTitle>
