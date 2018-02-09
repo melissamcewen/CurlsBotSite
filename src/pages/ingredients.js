@@ -42,14 +42,51 @@ const goodSiliconeList =  [
 "steardimonium hydroxypropyl panthenyl peg-7 dimethicone phosphate chloride",
 ];
 
+function analysis(source, unknown, good, bad){
+    let detected = [];
+    let goodList = source.filter( function( el ) {
+       return good.includes( el );
+    } ); 
+    detected = detected.concat(goodList);  
+    
+    let badList= source.filter( function( el ) {
+       return bad.includes( el );
+    } ); 
+  
+      console.log(badList);
 
+    detected= detected.concat(badList);
+  
+    let unknownList = source.filter( function( el ) {
+      return detected.indexOf( el ) < 0;
+      } ).filter( function( el ) {
+        return unknown.some(function(ff) { 
+            return el.indexOf(ff) > -1;
+      
+         });
+    }); 
+  
+  
+
+    
+
+  
+  let results = {
+    good: goodList,
+    bad: badList,
+    unknown: unknownList
+  }
+
+  return results;
+  
+} 
 
 
 class Ingredients extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 'Please write an essay about your favorite DOM element.',
+      value: '',
       results: '',
       unknownSiliconeResults: '',
       badSiliconeResults: '',
@@ -61,7 +98,7 @@ class Ingredients extends React.Component {
   }
 
   containsAny(source,target){
-    var result = source.filter(
+    let result = source.filter(
       function(item){ 
        return target.some(function(ff) { 
             return item.indexOf(ff) > -1;
@@ -75,37 +112,79 @@ class Ingredients extends React.Component {
     }
  }  
 
+  contains(source,target){
+    let result = source.filter(
+      function(item){ 
+       return target.some(function(ff) { 
+            return item == ff;
+      
+         });
+      
+      });   
+    if (result.length > 0){
+      return result
+    }
+}  
+
+
+ removeDupe(list, toRemove){
+      var result = list.filter( function( el ) {
+    return toRemove.indexOf( el ) < 0;
+
+} );
+    console.log(result);
+}
 
  process(text){
 
     let notCG = false
     let unknownCG = false;
+    let detectedSilicones = []
 
     let ingredientsList = text.split(',').map(x => x.trim().toLowerCase());
 
-    /// test for silicone
-    let silicones = this.containsAny(ingredientsList, siliconeList);    
+    let siliconeAnalysis= analysis(ingredientsList, siliconeList, goodSiliconeList, badSiliconeList)
+    console.log(siliconeAnalysis);
 
-    if(silicones){
-      let badSilicones = this.containsAny(ingredientsList, badSiliconeList); 
-      let goodSilicones = this.containsAny(ingredientsList, goodSiliconeList); 
+    if (siliconeAnalysis.good.length > 0) {
+          this.setState({goodSiliconeResults: siliconeAnalysis.good});
+      }
+      if (siliconeAnalysis.bad.length > 0) {
+        console.log("bad")
+          notCG = true;
+          this.setState({badSiliconeResults: siliconeAnalysis.bad
+          });
+      }
+
+      if (siliconeAnalysis.unknown.length > 0) {
+          unknownCG = true;
+          this.setState({unknownSiliconeResults: siliconeAnalysis.unknown
+          });
+      }
+
+    /*/// test for silicone
+       var badSilicones = this.contains(ingredientsList, badSiliconeList); 
+       var goodSilicones = this.contains(ingredientsList, goodSiliconeList); 
+
       if (goodSilicones) {
+        detectedSilicones.push(goodSilicones);
           this.setState({goodSiliconeResults: goodSilicones});
       }
       if (badSilicones) {
+          detectedSilicones.push(badSilicones);
+
           notCG = true;
           this.setState({badSiliconeResults: badSilicones
           });
       }
-      if(!badSilicones && !goodSilicones){
-        unknownCG = true;
-          this.setState({unknownSiliconeResults: silicones
 
-          });
 
-      }
-    }
+      var someUnknowns = this.removeDupe(ingredientsList, detectedSilicones);
+      console.log(someUnknowns);
+   */
 
+
+    
 
     if (notCG) {
       this.setState({results: "not CG"});
@@ -120,7 +199,13 @@ class Ingredients extends React.Component {
 
 
   handleChange(event) {
-    this.setState({value: event.target.value});
+    this.setState({
+      value: event.target.value,
+      unknownSiliconeResults: '',
+      badSiliconeResults: '',
+      goodSiliconeResults: '',
+      results: ''
+    });
   }
 
   handleSubmit(event) {
