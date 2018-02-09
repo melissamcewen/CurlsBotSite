@@ -58,7 +58,7 @@ export default class Example extends React.Component {
                  <DropdownItem href="/normal-porosity">
                     Normal-Porosity
                   </DropdownItem>
-                  <DropdownItem href="/dyes">
+                  <DropdownItem href="/dye">
                     Dyes
                   </DropdownItem>
                 </DropdownMenu>
