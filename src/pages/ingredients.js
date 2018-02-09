@@ -1,5 +1,6 @@
 import React from 'react';
 import ResultListing from '../components/resultlisting';
+import ReactGA from 'react-ga';
 
 
 import { Button, Form, FormGroup, Label, Input, FormText, Card, CardTitle, CardText, CardSubtitle} from 'reactstrap';
@@ -286,6 +287,11 @@ class Ingredients extends React.Component {
           this.setState({unknownWaxOilResults: waxOilAnalysis.unknown
           });
       }
+
+     ReactGA.event({
+        category: 'curlsbot',
+        action: text,
+      });
 
 
 
