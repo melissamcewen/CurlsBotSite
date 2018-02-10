@@ -217,7 +217,6 @@ class Ingredients extends React.Component {
     }
 
     let siliconeAnalysis= analysis(ingredientsList, siliconeList, goodSiliconeList, badSiliconeList);
-    console.log(siliconeAnalysis);
 
     let sulfateAnalysis= analysis(ingredientsList, sulfateList, goodSulfateList, badSulfateList);
 
@@ -288,11 +287,6 @@ class Ingredients extends React.Component {
           });
       }
 
-     ReactGA.event({
-        category: 'curlsbot',
-        action: text,
-      });
-
 
 
 
@@ -333,11 +327,11 @@ class Ingredients extends React.Component {
 
   handleSubmit(event) {
    this.process(this.state.value);
-
-
-
-
-   // event.preventDefault();
+     ReactGA.event({
+        category: 'curlsbot',
+        label: this.state.value,
+      });
+    event.preventDefault();
   }
 
 
