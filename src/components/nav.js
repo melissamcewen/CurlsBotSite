@@ -66,6 +66,21 @@ export default class Example extends React.Component {
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
+
+              <UncontrolledDropdown nav>
+                <DropdownToggle nav caret>
+                  Etc
+                </DropdownToggle>
+                <DropdownMenu >
+                  <DropdownItem href="/about">
+                    About
+                  </DropdownItem>
+                  <DropdownItem href="/shea">
+                    Non-CG Shea Moisture Products
+                  </DropdownItem>
+
+                </DropdownMenu>
+              </UncontrolledDropdown>
             </Nav>
           </Collapse>
         </Navbar>
