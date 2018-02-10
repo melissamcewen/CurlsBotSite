@@ -13,8 +13,8 @@
       "component---src-pages-privacy-policy-js-bcedfd8717ca15c83424.js.map"
     ],
     "component---src-pages-index-js": [
-      "component---src-pages-index-js-85a3af81e8b2b772e3e0.js",
-      "component---src-pages-index-js-85a3af81e8b2b772e3e0.js.map"
+      "component---src-pages-index-js-a13fcc7e4e85ae31d414.js",
+      "component---src-pages-index-js-a13fcc7e4e85ae31d414.js.map"
     ],
     "component---src-pages-porosity-js": [
       "component---src-pages-porosity-js-460bce99ac245e34c654.js",
@@ -29,8 +29,8 @@
       "path----557518bd178906f8d58a.js.map"
     ],
     "component---src-layouts-index-js": [
-      "component---src-layouts-index-js-89f3b9fb378a6439e9cd.js",
-      "component---src-layouts-index-js-89f3b9fb378a6439e9cd.js.map"
+      "component---src-layouts-index-js-7268ba1f2a71717bce03.js",
+      "component---src-layouts-index-js-7268ba1f2a71717bce03.js.map"
     ],
     "path---normal-porosity": [
       "path---normal-porosity-a0e39f21c11f6a62c5ab.js",
@@ -73,9 +73,9 @@
       "component---src-pages-dye-js-f9158c7f3812339ec3f9.js.map"
     ],
     "app": [
-      "app-c00b294a8a68adca2bb4.js",
+      "app-efea433d29954da4f95d.js",
       "build-js-styles.css",
-      "app-c00b294a8a68adca2bb4.js.map",
+      "app-efea433d29954da4f95d.js.map",
       "build-js-styles.css.map"
     ],
     "path---privacy-policy": [
@@ -83,8 +83,8 @@
       "path---privacy-policy-a0e39f21c11f6a62c5ab.js.map"
     ],
     "component---src-pages-ingredients-js": [
-      "component---src-pages-ingredients-js-f2153b439b3acbcbae07.js",
-      "component---src-pages-ingredients-js-f2153b439b3acbcbae07.js.map"
+      "component---src-pages-ingredients-js-4851bc2d89313b13630b.js",
+      "component---src-pages-ingredients-js-4851bc2d89313b13630b.js.map"
     ],
     "path---shea": [
       "path---shea-a0e39f21c11f6a62c5ab.js",
@@ -98,9 +98,17 @@
       "component---src-pages-normal-porosity-js-28869ac3d1c4513f9258.js",
       "component---src-pages-normal-porosity-js-28869ac3d1c4513f9258.js.map"
     ],
+    "component---src-pages-about-js": [
+      "component---src-pages-about-js-8120f9ab09427263aad6.js",
+      "component---src-pages-about-js-8120f9ab09427263aad6.js.map"
+    ],
     "component---src-pages-cg-lite-js": [
       "component---src-pages-cg-lite-js-5dfa1de01987565b7f9c.js",
       "component---src-pages-cg-lite-js-5dfa1de01987565b7f9c.js.map"
+    ],
+    "path---about": [
+      "path---about-a0e39f21c11f6a62c5ab.js",
+      "path---about-a0e39f21c11f6a62c5ab.js.map"
     ]
   }
 }
