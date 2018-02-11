@@ -58,7 +58,8 @@ const goodSulfateList = [
   "behentrimonium methosulfate",
   "disodium laureth sulfosuccinate",
   "magnesium sulfate",
-  "sodium lauroyl sarcosinate"
+  "sodium lauroyl sarcosinate",
+  "sodium laurylglucosides hydroxypropylsulfonate"
 ];
 
 const badSulfateList = [
@@ -110,7 +111,8 @@ var goodAlcoholList = [
   "benzyl alcohol",
   "stearyl alcohol",
   "aminomethyl propanol",
-  "oleyl alcohol"
+  "oleyl alcohol",
+  "brassica alcohol"
 ];
 
 var waxOilList = [
@@ -419,7 +421,7 @@ class Index extends React.Component {
         {this.state.goodSulfateResults.length > 0 &&
           <Card body outline color="success">
             <CardTitle>Curly Girl Approved Sulfates/Sulfate-like ingredients</CardTitle>
-            <CardSubtitle>These are sulfates or sulfate-like cleansers or other similar ingredients, but they are not harsh, so that means they are curly-girl approved!:</CardSubtitle>
+            <CardSubtitle>These are either gentle CG-approved sulfates or non-cleanser sulfates (like magnesium sulfate which is used to provide texture)</CardSubtitle>
             <CardText><ResultListing list={this.state.goodSulfateResults}/></CardText>
            </Card>
    
