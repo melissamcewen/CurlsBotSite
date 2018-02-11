@@ -359,7 +359,7 @@ class Index extends React.Component {
       ]}
     />
         <h1>Curlsbot Ingredients Analyzer</h1>
-        <p>Paste in a list of product ingredients here and we'll see if it's "curly girl." We look for silicones, oils, and waxes that can build up, as well as harsh sulfates.</p>
+        <p>A lot of people are interested in properly caring for their naturally curly or wavy hair, but it can be confusing to find the right methods and products. CurlsBot aims to make it all easier by analyzing ingredient lists to see if they comply with the <a href="http://amzn.to/2nT3w1V">"curly girl" rules pioneered by Lorraine Massey</a>. We look for silicones, oils, and waxes that can build up, as well as harsh sulfates.</p>
         <FormGroup >
           <Label for="exampleText">Curlsbot Beta!</Label>
           <Input type="textarea" name="text" id="exampleText" placeholder="Paste an ingredient list here" onChange={this.handleChange} rows="10" />
