@@ -347,7 +347,7 @@ class Index extends React.Component {
           <Helmet
       title="Curlsbot: Ingredients Analysis"
       meta={[
-        { name: 'description', content: 'See ingredients meet the curly girl standard' },
+        { name: 'description', content: 'See if ingredients meet the curly girl standard' },
         { name: 'keywords', content: 'products, curly girl, sulfates, silicones, waxes, oils, hair' },
          {
               property: 'og:image',
