@@ -62,7 +62,7 @@ export default class TemplateWrapper extends React.Component {
             { name: 'keywords', content: 'chatbots, curly girl' },
             {
               property: 'og:image',
-              content: 'http://www.curlsbot.com/img/icon.png',
+              content: 'http://www.curlsbot.com/img/icon.png'
             }
           ]}
         >
