@@ -109,7 +109,8 @@ var goodAlcoholList = [
   "lanolin alcohol",
   "benzyl alcohol",
   "stearyl alcohol",
-  "aminomethyl propanol"
+  "aminomethyl propanol",
+  "oleyl alcohol"
 ];
 
 var waxOilList = [
