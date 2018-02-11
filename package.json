@@ -13,7 +13,8 @@
     "rc-progress": "^2.2.2",
     "react-ga": "^2.3.5",
     "reactstrap": "^5.0.0-alpha.4",
-    "typography-theme-bootstrap": "^0.16.7"
+    "typography-theme-bootstrap": "^0.16.7",
+    "bootstrap": "^4.0.0"
   },
   "keywords": [
     "gatsby"
@@ -28,6 +29,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
+
     "gh-pages": "^1.1.0",
     "prettier": "^1.6.1"
   }
