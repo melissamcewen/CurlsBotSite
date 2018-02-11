@@ -345,10 +345,14 @@ class Index extends React.Component {
     return (
       <div>
           <Helmet
-      title="Curlsbot: Ingredients Analsysi"
+      title="Curlsbot: Ingredients Analysis"
       meta={[
         { name: 'description', content: 'See ingredients meet the curly girl standard' },
         { name: 'keywords', content: 'products, curly girl, sulfates, silicones, waxes, oils, hair' },
+         {
+              property: 'og:image',
+              content: 'http://www.curlsbot.com/img/icon.png'
+        }
       ]}
     />
         <h1>Curlsbot Ingredients Analyzer</h1>
