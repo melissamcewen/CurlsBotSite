@@ -11,6 +11,10 @@ const dyePage = () => (
       meta={[
         { name: 'description', content: 'Curly girl friendly hair dye options' },
         { name: 'keywords', content: 'products, curly girl, hair dye, sulfate-free, silicone-free, henna' },
+        {
+              property: 'og:image',
+              content: 'http://www.curlsbot.com/img/icon.png'
+        }
       ]}
     />
     <h1>Curly Girl Dye Options </h1>

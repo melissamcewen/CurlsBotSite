@@ -3,6 +3,9 @@ import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 import ReactGA from 'react-ga'
 
+import { Card, CardTitle, CardText, CardSubtitle} from 'reactstrap'
+
+
 
 const litePage = () => (
   <div>
@@ -43,6 +46,12 @@ const litePage = () => (
         <li>Either two stylers: Styler: curl enhancer and Styler: hold</li>
         <li>OR just one Styler with both curl enhancement and hold</li>
       </ul>
+
+        <Card body>
+            <CardTitle>Could Hard Water Make Buildup Worse?</CardTitle>
+           <CardText>Another thing to consider is hard water. If your water is hard, it can turn products that are normally pretty light into oily buildup. Visit our  <Link to="hard-water">hard water</Link> page for more info. </CardText>
+        </Card>
+
 
       <p><b>* = I've tried this and like it. </b></p>
 
@@ -90,14 +99,6 @@ const litePage = () => (
           <li>Conditioner:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2kLs12z" to="http://amzn.to/2kLs12z" target="_blank">Knot Today </ReactGA.OutboundLink></li>
           <li>Styler (curl enhancer):  <ReactGA.OutboundLink eventLabel="http://amzn.to/2AqAoaN" to="http://amzn.to/2AqAoaN" target="_blank">Curling Custard </ReactGA.OutboundLink></li>
           <li>Styler (hold):  <ReactGA.OutboundLink eventLabel="http://amzn.to/2C2blYM" to="http://amzn.to/2C2blYM" target="_blank">Spiral Spritz </ReactGA.OutboundLink></li>
-        </ul>
-
-
-      <h2>Broo $$</h2>
-      <p>I use the Thickening Shampoo most of the time, but it is VERY gentle, so every week or other week I use my  <ReactGA.OutboundLink eventLabel="http://amzn.to/2kLT3H0" to="http://amzn.to/2kLT3H0" target="_blank">Kinky Curly Come Clean to do a gentle clarify</ReactGA.OutboundLink></p>
-        <ul>
-          <li>Cleanser:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2iWUbmZ" to="http://amzn.to/2iWUbmZ" target="_blank">Thickening Shampoo* </ReactGA.OutboundLink></li>
-          <li>Cleanser:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2BVICUE" to="http://amzn.to/2BVICUE" target="_blank"> Moisturizing Shampoo</ReactGA.OutboundLink></li>
         </ul>
 
       <h2>Not Your Mothers Naturals Blue Sea Kale & Pure Coconut Water Sea Minerals $</h2>

@@ -76,7 +76,8 @@ const badSulfateList = [
   "sodium xylenesulfonate",
   "tea-dodecylbenzenesulfonate",
   "ethyl peg-15 cocamine sulfate",
-  "dioctyl sodium sulfosuccinate"
+  "dioctyl sodium sulfosuccinate",
+  "sodium coco-sulfate"
 ];
 
 var alcoholList = [
@@ -307,6 +308,12 @@ class Index extends React.Component {
       this.setState({results: "CG"});
     }
 
+      ReactGA.event({
+        category: 'curlsbot',
+        action: text,
+        label: notCG
+      });
+
 
   }
 
@@ -334,10 +341,7 @@ class Index extends React.Component {
 
   handleSubmit(event) {
    this.process(this.state.value);
-     ReactGA.event({
-        category: 'curlsbot',
-        label: this.state.value,
-      });
+
     event.preventDefault();
   }
 

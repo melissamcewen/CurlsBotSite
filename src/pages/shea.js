@@ -1,8 +1,21 @@
 import React from 'react'
 import Link from 'gatsby-link'
+import Helmet from 'react-helmet'
+
 
 const Shea = () => (
   <div>
+    <Helmet
+      title="Non-Curly Girl Shea Moisture Products"
+      meta={[
+        { name: 'description', content: 'Shea Moisture products that are not curly girl approved' },
+        { name: 'keywords', content: 'products, Shea Moisture, curly girl, alcohols, sulfates' },
+        {
+          property: 'og:image',
+          content: 'http://www.curlsbot.com/img/icon.png'
+        }
+      ]}
+    />
     <h1>Non-Curly Girl Shea Moisture Products</h1>
     <p>Shea Moisture is a popular brand for many following the "curly girl" system but unfortunately a few products contain ingredients that <a href="https://www.wikihow.com/Determine-if-a-Hair-Product-is-Curly-Girl-Approved">can dry out hair (alcohols and harsh sulfates) or build up (waxes). </a> Message <a href="https://www.facebook.com/CurlsBot/">Curlsbot</a> if you know any others.</p>
     <h2>Sulfates</h2>

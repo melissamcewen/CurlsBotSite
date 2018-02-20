@@ -75,6 +75,10 @@ export default class Example extends React.Component {
                   <DropdownItem href="/about">
                     About
                   </DropdownItem>
+                   <DropdownItem href="/hard-water">
+                    Hard Water
+                  </DropdownItem>
+
                   <DropdownItem href="/shea">
                     Non-CG Shea Moisture Products
                   </DropdownItem>
