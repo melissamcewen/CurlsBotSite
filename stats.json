@@ -12,9 +12,13 @@
       "component---src-pages-privacy-policy-js-bcedfd8717ca15c83424.js",
       "component---src-pages-privacy-policy-js-bcedfd8717ca15c83424.js.map"
     ],
+    "path---map": [
+      "path---map-a0e39f21c11f6a62c5ab.js",
+      "path---map-a0e39f21c11f6a62c5ab.js.map"
+    ],
     "component---src-pages-index-js": [
-      "component---src-pages-index-js-4416e87d63116685717e.js",
-      "component---src-pages-index-js-4416e87d63116685717e.js.map"
+      "component---src-pages-index-js-a81ecdf697a942eb439c.js",
+      "component---src-pages-index-js-a81ecdf697a942eb439c.js.map"
     ],
     "component---src-pages-porosity-js": [
       "component---src-pages-porosity-js-8ec51a85fe88a66a49c1.js",
@@ -29,8 +33,8 @@
       "path----557518bd178906f8d58a.js.map"
     ],
     "component---src-layouts-index-js": [
-      "component---src-layouts-index-js-d33dd79a3e1c4f2876c0.js",
-      "component---src-layouts-index-js-d33dd79a3e1c4f2876c0.js.map"
+      "component---src-layouts-index-js-7e05306dae39c47505ee.js",
+      "component---src-layouts-index-js-7e05306dae39c47505ee.js.map"
     ],
     "path---normal-porosity": [
       "path---normal-porosity-a0e39f21c11f6a62c5ab.js",
@@ -47,6 +51,10 @@
     "path---porosity": [
       "path---porosity-a0e39f21c11f6a62c5ab.js",
       "path---porosity-a0e39f21c11f6a62c5ab.js.map"
+    ],
+    "path---highly-concentrated-products": [
+      "path---highly-concentrated-products-a0e39f21c11f6a62c5ab.js",
+      "path---highly-concentrated-products-a0e39f21c11f6a62c5ab.js.map"
     ],
     "path---index": [
       "path---index-a0e39f21c11f6a62c5ab.js",
@@ -73,17 +81,17 @@
       "path---404-html-a0e39f21c11f6a62c5ab.js.map"
     ],
     "component---src-pages-shea-js": [
-      "component---src-pages-shea-js-a5c99ad8e83dec1ad191.js",
-      "component---src-pages-shea-js-a5c99ad8e83dec1ad191.js.map"
+      "component---src-pages-shea-js-4acb8610c40320451f17.js",
+      "component---src-pages-shea-js-4acb8610c40320451f17.js.map"
     ],
     "component---src-pages-dye-js": [
       "component---src-pages-dye-js-aadf1ba4943d50a38d7e.js",
       "component---src-pages-dye-js-aadf1ba4943d50a38d7e.js.map"
     ],
     "app": [
-      "app-b2ed203e87b96962dca0.js",
+      "app-e99b62f360b730951bb4.js",
       "build-js-styles.css",
-      "app-b2ed203e87b96962dca0.js.map",
+      "app-e99b62f360b730951bb4.js.map",
       "build-js-styles.css.map"
     ],
     "path---privacy-policy": [
@@ -93,6 +101,14 @@
     "component---src-pages-ingredients-js": [
       "component---src-pages-ingredients-js-4851bc2d89313b13630b.js",
       "component---src-pages-ingredients-js-4851bc2d89313b13630b.js.map"
+    ],
+    "component---src-pages-highly-concentrated-products-js": [
+      "component---src-pages-highly-concentrated-products-js-1fb6dcb94aab48f90b32.js",
+      "component---src-pages-highly-concentrated-products-js-1fb6dcb94aab48f90b32.js.map"
+    ],
+    "component---src-pages-map-js": [
+      "component---src-pages-map-js-2f51ba0689972d26241f.js",
+      "component---src-pages-map-js-2f51ba0689972d26241f.js.map"
     ],
     "path---shea": [
       "path---shea-a0e39f21c11f6a62c5ab.js",
