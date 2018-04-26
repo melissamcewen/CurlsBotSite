@@ -122,7 +122,6 @@ var waxOilList = [
 ]
 
 var badWaxOilList = [
-  "castor oil",
   "mineral oil",
   "huile minerale",
   "parrifidium liquidium",
@@ -212,10 +211,20 @@ class Index extends React.Component {
     let unknownCG = false;
     let detectedSilicones = []
 
-    let ingredientsList = text.split(',').map(x => x.trim().toLowerCase());
+    let ingredientsList = text.split(',');
 
     function isBelowThreshold(currentValue) {
-      return currentValue.length < 150;
+      console.log("testing" + currentValue);
+      if (/^(?:\w+:)?\/\/([^\s\.]+\.\S{2}|localhost[\:?\d]*)\S*$/.test(currentValue)){
+        console.log("URL detected");
+        return false
+      }
+      else if (currentValue.length > 150) {
+        return false
+      }
+
+      return true
+
     }
 
     if (!ingredientsList.every(isBelowThreshold)){
@@ -223,6 +232,10 @@ class Index extends React.Component {
       return;
 
     }
+
+
+    ingredientsList= ingredientsList.map(x => x.trim().toLowerCase().replace(/[^0-9A-Za-z\s+()-]/g, ''));
+
 
     let siliconeAnalysis= analysis(ingredientsList, siliconeList, goodSiliconeList, badSiliconeList);
 
@@ -402,7 +415,7 @@ class Index extends React.Component {
         {this.state.unknownSiliconeResults.length > 0 &&
           <Card body outline color="warning">
             <CardTitle>Unknown Silicones</CardTitle>
-            <CardSubtitle>I don't know these silicones yet, i'll take a note and try to find out more about them. In the meantime you should do your own research:</CardSubtitle>
+            <CardSubtitle>I don't know these silicones yet, but if you <a href="http://m.me/curlsbot">message me I'll take a personalized look and get back to you ASAP!</a>.:</CardSubtitle>
             <CardText>
                   <ResultListing list={this.state.unknownSiliconeResults}/>
             </CardText>
@@ -434,7 +447,7 @@ class Index extends React.Component {
         {this.state.unknownSulfateResults.length > 0 &&
           <Card body outline color="warning">
             <CardTitle>Unknown Sulfate-like Ingredients</CardTitle>
-            <CardSubtitle>I can't tell you much about these sulfates or sulfate-like ingredients, you should look them up for more info:</CardSubtitle>
+            <CardSubtitle>I can't tell you much about these sulfates or sulfate-like ingredients right now, but if you <a href="http://m.me/curlsbot">message me I'll take a personalized look and get back to you ASAP!</a>:</CardSubtitle>
             <CardText>
                   <ResultListing list={this.state.unknownSulfateResults}/>
             </CardText>
@@ -466,7 +479,7 @@ class Index extends React.Component {
         {this.state.unknownAlcoholResults.length > 0 &&
           <Card body outline color="warning">
             <CardTitle>Unknown Alcohols</CardTitle>
-            <CardSubtitle>I don't know anything about these alcohols. I suggest you do more research:</CardSubtitle>
+            <CardSubtitle>I don't know anything about these alcohols, but if you <a href="http://m.me/curlsbot">message me I'll take a personalized look and get back to you ASAP!</a></CardSubtitle>
             <CardText>
                   <ResultListing list={this.state.unknownAlcoholResults}/>
             </CardText>
@@ -497,7 +510,7 @@ class Index extends React.Component {
         {this.state.unknownWaxOilResults.length > 0 &&
           <Card body outline color="warning">
             <CardTitle>Unknown Waxes and Oils</CardTitle>
-            <CardSubtitle>These are some waxes and castor oil types I don't know about. I recommend you do more research. </CardSubtitle>
+            <CardSubtitle>These are some waxes and castor oil types I don't know about, but if you <a href="http://m.me/curlsbot">message me I'll take a personalized look and get back to you ASAP!</a> </CardSubtitle>
             <CardText>
                   <ResultListing list={this.state.unknownWaxOilResults}/>
             </CardText>
@@ -517,7 +530,7 @@ class Index extends React.Component {
       {this.state.results == "unknown CG" &&
         <Card body inverse color="warning">
           <CardTitle>Result: Unknown</CardTitle>
-           <CardText>My final verdict? I can't say if this is approved or not, you'll need to do your own research by looking up the unknown ingredients and asking around. Try checking out one of our recommend products like  <ProductListing /> or take our  <Link to="/porosity/" className="btn btn-secondary">porosity quiz</Link> for customized recommendations. </CardText>
+           <CardText>My final verdict? I can't say if this is approved or not, you'll need to do your own research by looking up the unknown ingredients or <a href="http://m.me/curlsbot">messaging us</a>. Try checking out one of our recommend products like  <ProductListing /> or take our  <Link to="/porosity/" className="btn btn-secondary">porosity quiz</Link> for customized recommendations. </CardText>
         </Card>
       }
 
