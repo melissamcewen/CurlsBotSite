@@ -1,13 +1,9 @@
-# gatsby-starter-default
-The default Gatsby starter
+# Curlsbot Site
 
-For an overview of the project structure please refer to the [Gatsby documentation - Building with Components](https://www.gatsbyjs.org/docs/building-with-components/)
+Originally a FB bot, now migrated to a gatsby website.
 
-Install this starter (assuming Gatsby is installed) by running from your CLI:
-```
-gatsby new gatsby-example-site
-```
+# Todo
 
-## Deploy
+- tests
+- refactor index.js
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)

@@ -214,9 +214,7 @@ class Index extends React.Component {
     let ingredientsList = text.split(',');
 
     function isBelowThreshold(currentValue) {
-      console.log("testing" + currentValue);
       if (/^(?:\w+:)?\/\/([^\s\.]+\.\S{2}|localhost[\:?\d]*)\S*$/.test(currentValue)){
-        console.log("URL detected");
         return false
       }
       else if (currentValue.length > 150) {
@@ -364,17 +362,17 @@ class Index extends React.Component {
 
     return (
       <div>
-          <Helmet
+      <Helmet
       title="Curlsbot: Ingredients Analysis"
       meta={[
         { name: 'description', content: 'See if ingredients meet the curly girl standard' },
         { name: 'keywords', content: 'products, curly girl, sulfates, silicones, waxes, oils, hair' },
-         {
-              property: 'og:image',
-              content: 'http://www.curlsbot.com/img/icon.png'
+        {
+          property: 'og:image',
+          content: 'http://www.curlsbot.com/img/icon.png'
         }
-      ]}
-    />
+        ]}
+        />
         <h1>Curlsbot Ingredients Analyzer</h1>
         <p>A lot of people are interested in properly caring for their naturally curly or wavy hair, but it can be confusing to find the right methods and products. CurlsBot aims to make it all easier by analyzing ingredient lists to see if they comply with the <a href="http://amzn.to/2nT3w1V">"curly girl" rules pioneered by Lorraine Massey</a>. We look for silicones, oils, and waxes that can build up, as well as harsh sulfates.</p>
         <FormGroup >
