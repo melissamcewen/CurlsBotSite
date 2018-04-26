@@ -35,8 +35,10 @@ const badSiliconeList = [
   "silicone"
 ];
 
+/// todo refactor to detect quart and peg silicone better
 const goodSiliconeList =  [
   "peg-dimethicone",
+  "peg-8 distearmonium chloride pg-dimethicone",
   "dimethicone copolyol",
   "dimethicone-pg diethylmonium chloride",
   "pg-dimethicone", 
@@ -44,7 +46,54 @@ const goodSiliconeList =  [
   "dimethicone hydroxypropyl trimonium chloride", 
   "hydroxyethyl acetomonium pg-dimethicone", 
   "stearalkonium dimethicone peg-8 phthalate", 
-  "steardimonium hydroxypropyl panthenyl peg-7 dimethicone phosphate chloride"
+  "steardimonium hydroxypropyl panthenyl peg-7 dimethicone phosphate chloride",
+  "silicone quaternium-1", 
+  "silicone quaternium-2", 
+  "silicone quaternium-2 panthenol succinate", 
+  "silicone quaternium-3", 
+  "silicone quaternium-4", 
+  "silicone quaternium-5", 
+  "silicone quaternium-6", 
+  "silicone quaternium-7", 
+  "silicone quaternium-8", 
+  "silicone quaternium-9", 
+  "silicone quaternium-10", 
+  "silicone quaternium-11", 
+  "silicone quaternium-12", 
+  "silicone quaternium-15", 
+  "silicone quaternium-16", 
+  "silicone quaternium-16",
+  "silicone quaternium 2", 
+  "silicone quaternium 2 panthenol succinate", 
+  "silicone quaternium 3", 
+  "silicone quaternium 4", 
+  "silicone quaternium 5", 
+  "silicone quaternium 6", 
+  "silicone quaternium 7", 
+  "silicone quaternium 8", 
+  "silicone quaternium 9", 
+  "silicone quaternium 10", 
+  "silicone quaternium 11", 
+  "silicone quaternium 12", 
+  "silicone quaternium 15", 
+  "silicone quaternium 16", 
+  "silicone quaternium 16",
+  "silicone quaternium-18", 
+  "silicone quaternium-19", 
+  "silicone quaternium-20", 
+  "silicone quaternium-21",
+  "silicone quaternium 18", 
+  "silicone quaternium 19", 
+  "silicone quaternium 20", 
+  "silicone quaternium 21",
+  "peg-8 dimethicone",
+  "peg-12 dimethicone",
+  "peg-14 dimethicone",
+  "peg-20 dimethicone",
+  "peg-15 dimethicone"
+
+
+
 ];
 
 const sulfateList = [
@@ -60,7 +109,8 @@ const goodSulfateList = [
   "magnesium sulfate",
   "sodium lauroyl sarcosinate",
   "sodium laurylglucosides hydroxypropylsulfonate",
-  "isostearamidopropyl ethyldimonium ethosulfate"
+  "isostearamidopropyl ethyldimonium ethosulfate",
+  "disodium distyrylbiphenyl disulfonate"
 ];
 
 const badSulfateList = [
@@ -95,7 +145,8 @@ var badAlcoholList = [
   "propanol",
   "propyl alcohol",
   "isopropyl alcohol",
-  "alcohol denat."
+  "alcohol denat.",
+  "sd alcohol 40-b"
 ];
 
 var goodAlcoholList = [
@@ -114,7 +165,8 @@ var goodAlcoholList = [
   "stearyl alcohol",
   "aminomethyl propanol",
   "oleyl alcohol",
-  "brassica alcohol"
+  "brassica alcohol",
+  "cetyl alcohol2 polysorbate 60"
 ];
 
 var waxOilList = [
