@@ -59,7 +59,8 @@ const goodSulfateList = [
   "disodium laureth sulfosuccinate",
   "magnesium sulfate",
   "sodium lauroyl sarcosinate",
-  "sodium laurylglucosides hydroxypropylsulfonate"
+  "sodium laurylglucosides hydroxypropylsulfonate",
+  "isostearamidopropyl ethyldimonium ethosulfate"
 ];
 
 const badSulfateList = [
@@ -175,6 +176,18 @@ function analysis(source, unknown, good, bad){
   
 } 
 
+function isBelowThreshold(currentValue) {
+  if (/^(?:\w+:)?\/\/([^\s\.]+\.\S{2}|localhost[\:?\d]*)\S*$/.test(currentValue)){
+    return false
+  }
+  else if (currentValue.length > 150) {
+    return false
+  }
+
+  return true
+
+}
+
 
 class Index extends React.Component {
   constructor(props) {
@@ -213,17 +226,7 @@ class Index extends React.Component {
 
     let ingredientsList = text.split(',');
 
-    function isBelowThreshold(currentValue) {
-      if (/^(?:\w+:)?\/\/([^\s\.]+\.\S{2}|localhost[\:?\d]*)\S*$/.test(currentValue)){
-        return false
-      }
-      else if (currentValue.length > 150) {
-        return false
-      }
 
-      return true
-
-    }
 
     if (!ingredientsList.every(isBelowThreshold)){
       this.setState({invalidInput: true});
@@ -239,13 +242,13 @@ class Index extends React.Component {
 
     let sulfateAnalysis= analysis(ingredientsList, sulfateList, goodSulfateList, badSulfateList);
 
-
     let alcoholAnalysis= analysis(ingredientsList, alcoholList, goodAlcoholList, badAlcoholList);
 
     let waxOilAnalysis= analysis(ingredientsList, waxOilList, goodWaxOilList, badWaxOilList);
 
+    console.log(siliconeAnalysis);
 
-    if (siliconeAnalysis.good.length > 0) {
+      if (siliconeAnalysis.good.length > 0) {
           this.setState({goodSiliconeResults: siliconeAnalysis.good});
       }
       if (siliconeAnalysis.bad.length > 0) {
@@ -261,7 +264,7 @@ class Index extends React.Component {
           });
       }
 
-    if (sulfateAnalysis.good.length > 0) {
+      if (sulfateAnalysis.good.length > 0) {
           this.setState({goodSulfateResults: sulfateAnalysis.good});
       }
       if (sulfateAnalysis.bad.length > 0) {
@@ -445,7 +448,7 @@ class Index extends React.Component {
         {this.state.unknownSulfateResults.length > 0 &&
           <Card body outline color="warning">
             <CardTitle>Unknown Sulfate-like Ingredients</CardTitle>
-            <CardSubtitle>I can't tell you much about these sulfates or sulfate-like ingredients right now, but if you <a href="http://m.me/curlsbot">message me I'll take a personalized look and get back to you ASAP!</a>:</CardSubtitle>
+            <CardSubtitle>I can't tell you much about these sulfates or sulfate-like ingredients right now, but if you <a href="http://m.me/curlsbot">message me I'll take a personalized look and get back to you ASAP!</a></CardSubtitle>
             <CardText>
                   <ResultListing list={this.state.unknownSulfateResults}/>
             </CardText>
