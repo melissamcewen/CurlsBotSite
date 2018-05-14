@@ -32,7 +32,12 @@ const badSiliconeList = [
   "behenoxy dimethicone",
   "phenyl trimethicone",
   "aminopropyl triethoxysilane",
-  "silicone"
+  "silicone",
+  "bis-aminopropyl dimethicone",
+  "polysilicone-22",
+  "trimethylsiloxyamodimethicone",
+  "silica dimethicone silylate",
+  "cetrimonium dimethicone peg-8 olivate."
 ];
 
 /// todo refactor to detect quart and peg silicone better
@@ -91,9 +96,6 @@ const goodSiliconeList =  [
   "peg-14 dimethicone",
   "peg-20 dimethicone",
   "peg-15 dimethicone"
-
-
-
 ];
 
 const sulfateList = [
@@ -110,7 +112,10 @@ const goodSulfateList = [
   "sodium lauroyl sarcosinate",
   "sodium laurylglucosides hydroxypropylsulfonate",
   "isostearamidopropyl ethyldimonium ethosulfate",
-  "disodium distyrylbiphenyl disulfonate"
+  "disodium distyrylbiphenyl disulfonate",
+  "cocotrimonium methosulfate",
+  "sodium laneth-40 maleatestyrene sulfonate copolymer",
+  "isoalkylamidopropylethyldimonium ethosulfate"
 ];
 
 const badSulfateList = [
@@ -132,7 +137,8 @@ const badSulfateList = [
 ];
 
 var alcoholList = [
-  "alcohol"
+  "alcohol",
+  "witch"
 ];
 
 var badAlcoholList = [
@@ -146,7 +152,12 @@ var badAlcoholList = [
   "propyl alcohol",
   "isopropyl alcohol",
   "alcohol denat.",
-  "sd alcohol 40-b"
+  "sd alcohol 40-b",
+  "alcohol denat",
+  "sd alcohol 40b",
+  "alcohol",
+  "hamamellis virginiana (witch hazel) extract",
+  "ethyl alcohol"
 ];
 
 var goodAlcoholList = [
@@ -166,7 +177,9 @@ var goodAlcoholList = [
   "aminomethyl propanol",
   "oleyl alcohol",
   "brassica alcohol",
-  "cetyl alcohol2 polysorbate 60"
+  "cetyl alcohol2 polysorbate 60",
+  "benzyl alcohol",
+  "arachidyl alcohol"
 ];
 
 var waxOilList = [
@@ -185,13 +198,31 @@ var badWaxOilList = [
   "cire dabeille",
   "cera alba",
   "paraffinum liquidum (mineral oil)",
-  "microcrystalline wax" 
+  "microcrystalline wax" ,
+  "myrica pubescens fruit wax",
+  "synthetic beeswax",
+  "euphorbia cerifera (candelilla) wax",
+  "ricinus communis (castor) seed oil",
+  "stearoxytrimethyl silane and stearyl alcohol (silky wax)"
 ];
 
-
+// hmm maybe I need to refactor to remove hyphens haha
 var goodWaxOilList = [
-  "PEG-Hydrogenated Castor Oil"
+  "peg-hydrogenated castor oil",
+  "peg-8 beeswax",
+  "peg-60-hydrogenated castor oil",
+  "peg-40 hydrogenated castor oil",
+  "peg-40 castor oil"
 ];
+
+var waterInsoluble = [
+  "isohexadecane", 
+  "dimethcione", 
+  "stearoxytrimethyl silane",
+  "cyclopentasiloxane"
+];
+
+
 
 function analysis(source, unknown, good, bad){
     let detected = [];
@@ -228,6 +259,14 @@ function analysis(source, unknown, good, bad){
   
 } 
 
+function simpleAnalysis (source, find){
+      return source.filter( function( el ) {
+       return find.includes( el );
+    } ); 
+  
+}
+
+
 function isBelowThreshold(currentValue) {
   if (/^(?:\w+:)?\/\/([^\s\.]+\.\S{2}|localhost[\:?\d]*)\S*$/.test(currentValue)){
     return false
@@ -259,6 +298,7 @@ class Index extends React.Component {
       goodWaxOilResults: '',
       badWaxOilResults: '',
       unknownWaxOilResults: '',
+      waterInsolubleResults: '',
       invalidInput: false,
 
 
@@ -298,7 +338,10 @@ class Index extends React.Component {
 
     let waxOilAnalysis= analysis(ingredientsList, waxOilList, goodWaxOilList, badWaxOilList);
 
-    console.log(siliconeAnalysis);
+    let waterInsolubleAnalysis = simpleAnalysis(ingredientsList, waterInsoluble); 
+
+    console.log(waterInsolubleAnalysis);
+    console.log(ingredientsList);
 
       if (siliconeAnalysis.good.length > 0) {
           this.setState({goodSiliconeResults: siliconeAnalysis.good});
@@ -360,6 +403,14 @@ class Index extends React.Component {
           this.setState({unknownWaxOilResults: waxOilAnalysis.unknown
           });
       }
+
+      if (waterInsolubleAnalysis.length > 0) {
+        console.log("water insoluble");
+          notCG = true;
+          this.setState({waterInsolubleResults: waterInsolubleAnalysis
+          });
+      }
+
 
 
 
@@ -553,8 +604,8 @@ class Index extends React.Component {
 
         {this.state.goodWaxOilResults.length > 0 &&
           <Card body outline color="success">
-            <CardTitle>Ok Oils</CardTitle>
-            <CardSubtitle>Castor oil is known to build up but if it has PEG in front of it, that means it has been modified so as not to cause buildup: </CardSubtitle>
+            <CardTitle>Ok Waxes & Oils</CardTitle>
+            <CardSubtitle>These have been modified to make them water soluble: </CardSubtitle>
             <CardText><ResultListing list={this.state.goodWaxOilResults}/></CardText>
            </Card>
    
@@ -567,6 +618,15 @@ class Index extends React.Component {
             <CardText>
                   <ResultListing list={this.state.unknownWaxOilResults}/>
             </CardText>
+           </Card>
+   
+         }
+
+        {this.state.waterInsolubleResults.length > 0 &&
+          <Card body outline color="danger">
+            <CardTitle>Other Water Insoluble Ingredients</CardTitle>
+            <CardSubtitle>These ingredients are chemicals known to build up on hair: </CardSubtitle>
+            <CardText><ResultListing list={this.state.waterInsolubleResults}/></CardText>
            </Card>
    
          }
