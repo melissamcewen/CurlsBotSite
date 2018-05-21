@@ -359,20 +359,12 @@ class Index extends React.Component {
           });
       }
 
-      if (sulfateAnalysis.good.length > 0) {
-          this.setState({goodSulfateResults: sulfateAnalysis.good});
-      }
       if (sulfateAnalysis.bad.length > 0) {
           notCG = true;
           this.setState({badSulfateResults: sulfateAnalysis.bad
           });
       }
 
-      if (sulfateAnalysis.unknown.length > 0) {
-          unknownCG = true;
-          this.setState({unknownSulfateResults: sulfateAnalysis.unknown
-          });
-      }
 
       if (alcoholAnalysis.good.length > 0) {
           this.setState({goodAlcoholResults: alcoholAnalysis.good});
