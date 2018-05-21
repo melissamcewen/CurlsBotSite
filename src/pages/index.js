@@ -95,7 +95,8 @@ const goodSiliconeList =  [
   "peg-12 dimethicone",
   "peg-14 dimethicone",
   "peg-20 dimethicone",
-  "peg-15 dimethicone"
+  "peg-15 dimethicone",
+  "dimethicone peg-8 meadowfoamate"
 ];
 
 const sulfateList = [
