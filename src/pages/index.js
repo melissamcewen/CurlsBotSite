@@ -134,7 +134,8 @@ const badSulfateList = [
   "tea-dodecylbenzenesulfonate",
   "ethyl peg-15 cocamine sulfate",
   "dioctyl sodium sulfosuccinate",
-  "sodium coco-sulfate"
+  "sodium coco-sulfate",
+  "sodium coco sulfate"
 ];
 
 var alcoholList = [
@@ -512,7 +513,7 @@ class Index extends React.Component {
         {this.state.unknownSiliconeResults.length > 0 &&
           <Card body outline color="warning">
             <CardTitle>Unknown Silicones</CardTitle>
-            <CardSubtitle>I don't know these silicones yet, but if you <a href="http://m.me/curlsbot">message me I'll take a personalized look and get back to you ASAP!</a>.:</CardSubtitle>
+            <CardSubtitle>I don't know these silicones yet, but if you <a href="http://m.me/curlsbot">message me I'll take a personalized look and get back to you ASAP!</a>:</CardSubtitle>
             <CardText>
                   <ResultListing list={this.state.unknownSiliconeResults}/>
             </CardText>
@@ -651,7 +652,7 @@ class Index extends React.Component {
         <Card body outline color="success">
             <CardTitle>Questions? Concerns?</CardTitle>
 
-            <Button href="http://m.me/curlsbot">Message me</Button>
+            <Button href="https://www.facebook.com/groups/1804576666517325">Start a discussion at our group</Button>
             <CardText></CardText>
         </Card>
    
