@@ -1,9 +1,18 @@
 {
   "name": "gatsby-starter-default",
+  "jest": {
+    "verbose": true,
+    "testPathIgnorePatterns": [
+      "cache"
+    ]
+  },
   "description": "Gatsby default starter",
   "version": "1.0.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.2.0",
+    "bootstrap": "^4.0.0",
     "gatsby": "^1.9.45",
     "gatsby-link": "^1.6.17",
     "gatsby-plugin-react-helmet": "^1.0.5",
@@ -13,8 +22,8 @@
     "rc-progress": "^2.2.2",
     "react-ga": "^2.3.5",
     "reactstrap": "^5.0.0-alpha.4",
-    "typography-theme-bootstrap": "^0.16.7",
-    "bootstrap": "^4.0.0"
+    "regenerator-runtime": "^0.12.0",
+    "typography-theme-bootstrap": "^0.16.7"
   },
   "keywords": [
     "gatsby"
@@ -26,11 +35,11 @@
     "develop": "gatsby develop",
     "deploy": "gatsby build --prefix-paths && cp ./src/CNAME public/ && gh-pages -d public",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "devDependencies": {
-
     "gh-pages": "^1.1.0",
+    "jest": "^23.2.0",
     "prettier": "^1.6.1"
   }
 }
