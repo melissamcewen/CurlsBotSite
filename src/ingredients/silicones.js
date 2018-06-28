@@ -1,7 +1,5 @@
 const parser = require('./parser');
 
-
-
 const unknown = [
   "cone",
   "dimethicon"
