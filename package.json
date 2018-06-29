@@ -14,7 +14,9 @@
     "babel-jest": "^23.2.0",
     "bootstrap": "^4.0.0",
     "gatsby": "^1.9.45",
-    "gatsby-link": "^1.6.17",
+    "gatsby-link": "^1.6.45",
+    "gatsby-plugin-manifest": "^1.0.27",
+    "gatsby-plugin-offline": "^1.0.18",
     "gatsby-plugin-react-helmet": "^1.0.5",
     "gatsby-plugin-sitemap": "^1.2.12",
     "gatsby-plugin-typography": "^1.7.10",
@@ -34,6 +36,7 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "deploy": "gatsby build --prefix-paths && cp ./src/CNAME public/ && gh-pages -d public",
+    "deploybare": "gh-pages -d public",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js'",
     "test": "jest"
   },
