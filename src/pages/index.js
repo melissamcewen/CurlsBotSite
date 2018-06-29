@@ -8,278 +8,15 @@ import ReactGA from 'react-ga';
 
 
 import { Button, Form, FormGroup, Label, Input, FormText, Card, CardTitle, CardText, CardSubtitle} from 'reactstrap';
+// ingredients analysis includes
 
+import cleaner from '../ingredients/cleaner';
 
-//TODO refactor this
-
-const siliconeList = [
-  "cone",
-  "dimethicon"
-];
-
-
-const badSiliconeList = [
-  "dimethicone",
-  "bisaminopropyl dimethicone",
-  "cetearyl methicone",
-  "cetyl dimethicone",
-  "cyclopentasiloxane",
-  "stearoxy dimethicone",
-  "stearyl dimethicone",
-  "trimethylsilylamodimethicone",
-  "amodimethicone",
-  "dimethiconol",
-  "behenoxy dimethicone",
-  "phenyl trimethicone",
-  "aminopropyl triethoxysilane",
-  "silicone",
-  "bis-aminopropyl dimethicone",
-  "polysilicone-22",
-  "trimethylsiloxyamodimethicone",
-  "silica dimethicone silylate",
-  "cetrimonium dimethicone peg-8 olivate."
-];
-
-/// todo refactor to detect quart and peg silicone better
-const goodSiliconeList =  [
-  "peg-dimethicone",
-  "peg-8 distearmonium chloride pg-dimethicone",
-  "dimethicone copolyol",
-  "dimethicone-pg diethylmonium chloride",
-  "pg-dimethicone", 
-  "glycidoxy dimethicone crosspolymer", 
-  "dimethicone hydroxypropyl trimonium chloride", 
-  "hydroxyethyl acetomonium pg-dimethicone", 
-  "stearalkonium dimethicone peg-8 phthalate", 
-  "steardimonium hydroxypropyl panthenyl peg-7 dimethicone phosphate chloride",
-  "silicone quaternium-1", 
-  "silicone quaternium-2", 
-  "silicone quaternium-2 panthenol succinate", 
-  "silicone quaternium-3", 
-  "silicone quaternium-4", 
-  "silicone quaternium-5", 
-  "silicone quaternium-6", 
-  "silicone quaternium-7", 
-  "silicone quaternium-8", 
-  "silicone quaternium-9", 
-  "silicone quaternium-10", 
-  "silicone quaternium-11", 
-  "silicone quaternium-12", 
-  "silicone quaternium-15", 
-  "silicone quaternium-16", 
-  "silicone quaternium-16",
-  "silicone quaternium 2", 
-  "silicone quaternium 2 panthenol succinate", 
-  "silicone quaternium 3", 
-  "silicone quaternium 4", 
-  "silicone quaternium 5", 
-  "silicone quaternium 6", 
-  "silicone quaternium 7", 
-  "silicone quaternium 8", 
-  "silicone quaternium 9", 
-  "silicone quaternium 10", 
-  "silicone quaternium 11", 
-  "silicone quaternium 12", 
-  "silicone quaternium 15", 
-  "silicone quaternium 16", 
-  "silicone quaternium 16",
-  "silicone quaternium-18", 
-  "silicone quaternium-19", 
-  "silicone quaternium-20", 
-  "silicone quaternium-21",
-  "silicone quaternium 18", 
-  "silicone quaternium 19", 
-  "silicone quaternium 20", 
-  "silicone quaternium 21",
-  "peg-8 dimethicone",
-  "peg-12 dimethicone",
-  "peg-14 dimethicone",
-  "peg-20 dimethicone",
-  "peg-15 dimethicone",
-  "dimethicone peg-8 meadowfoamate"
-];
-
-const sulfateList = [
-  "sulfate",
-  "sulfo",
-  "sarcosinate"
-
-]
-
-const goodSulfateList = [
-  "behentrimonium methosulfate",
-  "disodium laureth sulfosuccinate",
-  "magnesium sulfate",
-  "sodium lauroyl sarcosinate",
-  "sodium laurylglucosides hydroxypropylsulfonate",
-  "isostearamidopropyl ethyldimonium ethosulfate",
-  "disodium distyrylbiphenyl disulfonate",
-  "cocotrimonium methosulfate",
-  "sodium laneth-40 maleatestyrene sulfonate copolymer",
-  "isoalkylamidopropylethyldimonium ethosulfate"
-];
-
-const badSulfateList = [
-  "alkylbenzene sulfonate",
-  "alkyl benzene sulfonate",
-  "ammonium laureth sulfate",
-  "ammonium lauryl sulfate",
-  "ammonium xylenesulfonate",
-  "sodium cocoyl sarcosinate",
-  "sodium laureth sulfate",
-  "sodium lauryl sulfate",
-  "sodium lauryl sulfoacetate",
-  "sodium myreth sulfate",
-  "sodium xylenesulfonate",
-  "tea-dodecylbenzenesulfonate",
-  "ethyl peg-15 cocamine sulfate",
-  "dioctyl sodium sulfosuccinate",
-  "sodium coco-sulfate",
-  "sodium coco sulfate"
-];
-
-var alcoholList = [
-  "alcohol",
-  "witch"
-];
-
-var badAlcoholList = [
-  "denatured alcohol",
-  "sd alcohol 40",
-  "witch hazel",
-  "isopropanol",
-  "ethanol",
-  "sd alcohol",
-  "propanol",
-  "propyl alcohol",
-  "isopropyl alcohol",
-  "alcohol denat.",
-  "sd alcohol 40-b",
-  "alcohol denat",
-  "sd alcohol 40b",
-  "alcohol",
-  "hamamellis virginiana (witch hazel) extract",
-  "ethyl alcohol"
-];
-
-var goodAlcoholList = [
-  "behenyl alcohol",
-  "cetearyl alcohol",
-  "ceteryl alcohol",
-  "cetyl alcohol",
-  "isocetyl alcohol",
-  "isostearyl alcohol",
-  "lauryl alcohol",
-  "myristyl alcohol",
-  "stearyl alcohol",
-  "c30-50 alcohols",
-  "lanolin alcohol",
-  "benzyl alcohol",
-  "stearyl alcohol",
-  "aminomethyl propanol",
-  "oleyl alcohol",
-  "brassica alcohol",
-  "cetyl alcohol2 polysorbate 60",
-  "benzyl alcohol",
-  "arachidyl alcohol"
-];
-
-var waxOilList = [
-  "castor",
-  "wax"
-]
-
-var badWaxOilList = [
-  "mineral oil",
-  "huile minerale",
-  "parrifidium liquidium",
-  "petrolatum",
-  "bees wax",
-  "beeswax",
-  "candelia wax",
-  "cire dabeille",
-  "cera alba",
-  "paraffinum liquidum (mineral oil)",
-  "microcrystalline wax" ,
-  "myrica pubescens fruit wax",
-  "synthetic beeswax",
-  "euphorbia cerifera (candelilla) wax",
-  "ricinus communis (castor) seed oil",
-  "stearoxytrimethyl silane and stearyl alcohol (silky wax)"
-];
-
-// hmm maybe I need to refactor to remove hyphens haha
-var goodWaxOilList = [
-  "peg-hydrogenated castor oil",
-  "peg-8 beeswax",
-  "peg-60-hydrogenated castor oil",
-  "peg-40 hydrogenated castor oil",
-  "peg-40 castor oil"
-];
-
-var waterInsoluble = [
-  "isohexadecane", 
-  "dimethcione", 
-  "stearoxytrimethyl silane",
-  "cyclopentasiloxane"
-];
-
-
-
-function analysis(source, unknown, good, bad){
-    let detected = [];
-    let goodList = source.filter( function( el ) {
-       return good.includes( el );
-    } ); 
-    detected = detected.concat(goodList);  
-    
-    let badList= source.filter( function( el ) {
-       return bad.includes( el );
-    } ); 
-  
-
-    detected= detected.concat(badList);
-  
-    let unknownList = source.filter( function( el ) {
-      return detected.indexOf( el ) < 0;
-      } ).filter( function( el ) {
-        return unknown.some(function(ff) { 
-            return el.indexOf(ff) > -1;
-      
-         });
-    }); 
-  
-
-  
-  let results = {
-    good: goodList,
-    bad: badList,
-    unknown: unknownList
-  }
-
-  return results;
-  
-} 
-
-function simpleAnalysis (source, find){
-      return source.filter( function( el ) {
-       return find.includes( el );
-    } ); 
-  
-}
-
-
-function isBelowThreshold(currentValue) {
-  if (/^(?:\w+:)?\/\/([^\s\.]+\.\S{2}|localhost[\:?\d]*)\S*$/.test(currentValue)){
-    return false
-  }
-  else if (currentValue.length > 150) {
-    return false
-  }
-
-  return true
-
-}
+import wax from '../ingredients/wax';
+import alcohol from '../ingredients/alcohol';
+import silicones from '../ingredients/silicones';
+import sulfates from '../ingredients/sulfates';
+import other from '../ingredients/other';
 
 
 class Index extends React.Component {
@@ -318,32 +55,29 @@ class Index extends React.Component {
     let unknownCG = false;
     let detectedSilicones = []
 
-    let ingredientsList = text.split(',');
 
+    //TODO ugh yeah this needs help
+    let valid = cleaner(text);
 
-
-    if (!ingredientsList.every(isBelowThreshold)){
+    if (valid < 0){
       this.setState({invalidInput: true});
       return;
 
     }
 
 
-    ingredientsList= ingredientsList.map(x => x.trim().toLowerCase().replace(/[^0-9A-Za-z\s+()-]/g, ''));
 
 
-    let siliconeAnalysis= analysis(ingredientsList, siliconeList, goodSiliconeList, badSiliconeList);
+    let siliconeAnalysis= silicones(text);
 
-    let sulfateAnalysis= analysis(ingredientsList, sulfateList, goodSulfateList, badSulfateList);
+    let sulfateAnalysis= sulfates(text);
 
-    let alcoholAnalysis= analysis(ingredientsList, alcoholList, goodAlcoholList, badAlcoholList);
+    let alcoholAnalysis= alcohol(text);
 
-    let waxOilAnalysis= analysis(ingredientsList, waxOilList, goodWaxOilList, badWaxOilList);
+    let waxOilAnalysis= wax(text);
 
-    let waterInsolubleAnalysis = simpleAnalysis(ingredientsList, waterInsoluble); 
+    let waterInsolubleAnalysis = other(text); 
 
-    console.log(waterInsolubleAnalysis);
-    console.log(ingredientsList);
 
       if (siliconeAnalysis.good.length > 0) {
           this.setState({goodSiliconeResults: siliconeAnalysis.good});
@@ -397,9 +131,7 @@ class Index extends React.Component {
           this.setState({unknownWaxOilResults: waxOilAnalysis.unknown
           });
       }
-
       if (waterInsolubleAnalysis.length > 0) {
-        console.log("water insoluble");
           notCG = true;
           this.setState({waterInsolubleResults: waterInsolubleAnalysis
           });
@@ -445,7 +177,9 @@ class Index extends React.Component {
       unknownWaxOilResults: '',
       badWaxOilResults: '',
       goodWaxOilResults: '',
-      results: ''
+      waterInsolubleResults: '',
+      results: '',
+
 
     });
   }
