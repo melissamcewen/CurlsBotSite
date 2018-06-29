@@ -59,7 +59,7 @@ class Index extends React.Component {
     //TODO ugh yeah this needs help
     let valid = cleaner(text);
 
-    if (valid < 0){
+    if (valid.length < 1){
       this.setState({invalidInput: true});
       return;
 
