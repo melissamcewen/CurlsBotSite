@@ -3,14 +3,10 @@ const silicones = require('./silicones');
 
 
 
-const listSilicones = "Cetrimonium Chloride, Ricinus Communis (Castor) Seed Oil, Apple Vinegar, silicone";
-
-const resultSilicones = {"bad": ["silicone"], "good": [], "unknown": []};
-
 
 test('should detect bad silicones', () => {
-  var list = "Cetrimonium Chloride, Ricinus Communis (Castor) Seed Oil, Apple Vinegar, silicone";
-  var result =  {"bad": ["silicone"], "good": [], "unknown": []};
+  var list = "Cetrimonium Chloride, Ricinus Communis (Castor) Seed Oil, Apple Vinegar, silicone, cyclomethicone";
+  var result =  {"bad": ["silicone", "cyclomethicone"], "good": [], "unknown": []}
   expect(silicones(list)).toEqual(result);
 });
 

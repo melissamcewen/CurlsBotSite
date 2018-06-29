@@ -25,7 +25,12 @@ const bad = [
   "polysilicone-22",
   "trimethylsiloxyamodimethicone",
   "silica dimethicone silylate",
-  "cetrimonium dimethicone peg-8 olivate."
+  "cetrimonium dimethicone peg-8 olivate.",
+  "cyclomethicone",
+  "propoxytetramethyl piperdinyl dimethicone",
+  "phenyl trimethicone",
+  "dimethiconol cysteine",
+  "caprylyl methicone"
 ];
 
 /// todo refactor to detect quart and peg silicone better
@@ -84,7 +89,9 @@ const good =  [
   "peg-14 dimethicone",
   "peg-20 dimethicone",
   "peg-15 dimethicone",
-  "dimethicone peg-8 meadowfoamate"
+  "peg-11 methyl ether dimethicone",
+  "dimethicone peg-8 meadowfoamate",
+  "polysilicone-15"
 ];
 
 function silicones(list) {

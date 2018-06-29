@@ -2,8 +2,8 @@ const alcohol = require('./alcohol');
 
 
 test('should detect drying alcohols', () => {
-  var list = "Isobutane, Propane, SD Alcohol 40-B (Alcohol Denat.), Aluminum Starch Octenylsuccinate, Citrus Grandis (Grapefruit) Fruit Extract*, Citrus Tangerina (Tangerine) Peel Extract*, Butane, Isopropyl Myristate, Silica, Fragrance, Amyl Cinnamal, Benzyl Alcohol, Butylphenyl Methylpropional, Citronellol, Geraniol, Hexyl Cinnamal, Limonene, Linalool.";
-  var result = {"bad": [], "good": ["benzyl alcohol"], "unknown": ["sd alcohol 40-b (alcohol denat)"]};
+  var list = "Isobutane, Propane, SD Alcohol 40-B (Alcohol Denat.), Aluminum Starch Octenylsuccinate, Citrus Grandis (Grapefruit) Fruit Extract*, Citrus Tangerina (Tangerine) Peel Extract*, Butane, Isopropyl Myristate, Silica, Fragrance, Amyl Cinnamal, Benzyl Alcohol, Butylphenyl Methylpropional, Citronellol, Geraniol, Hexyl Cinnamal, Limonene, Linalool., denatured alcohol (sd alcohol 40)";
+  var result = {"bad": ["sd alcohol 40-b (alcohol denat)", "denatured alcohol (sd alcohol 40)"], "good": ["benzyl alcohol"], "unknown": []};
   expect(alcohol(list)).toEqual(result);
 });
 

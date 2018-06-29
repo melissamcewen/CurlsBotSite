@@ -16,7 +16,9 @@ var bad = [
   "myrica pubescens fruit wax",
   "synthetic beeswax",
   "euphorbia cerifera (candelilla) wax",
-  "stearoxytrimethyl silane and stearyl alcohol (silky wax)"
+  "stearoxytrimethyl silane and stearyl alcohol (silky wax)",
+  "cera alba (beeswax)",
+  "microcrystalline wax (cera microcristallina)"
 ];
 
 // hmm maybe I need to refactor to remove hyphens haha
