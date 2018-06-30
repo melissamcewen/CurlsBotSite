@@ -11,6 +11,7 @@ import { Button, Form, FormGroup, Label, Input, FormText, Card, CardTitle, CardT
 // ingredients analysis includes
 
 import cleaner from '../ingredients/cleaner';
+import analyze from '../ingredients/analyze';
 
 import wax from '../ingredients/wax';
 import alcohol from '../ingredients/alcohol';
@@ -65,75 +66,65 @@ class Index extends React.Component {
 
     }
 
+   let results = analyze(text);
 
 
 
-    let siliconeAnalysis= silicones(text);
-
-    let sulfateAnalysis= sulfates(text);
-
-    let alcoholAnalysis= alcohol(text);
-
-    let waxOilAnalysis= wax(text);
-
-    let waterInsolubleAnalysis = other(text); 
-
-
-      if (siliconeAnalysis.good.length > 0) {
-          this.setState({goodSiliconeResults: siliconeAnalysis.good});
+      if (results.silicones.good.length > 0) {
+          this.setState({goodSiliconeResults: results.silicones.good
+                    });
       }
-      if (siliconeAnalysis.bad.length > 0) {
-        console.log("bad")
+      if (results.silicones.bad.length > 0) {
           notCG = true;
-          this.setState({badSiliconeResults: siliconeAnalysis.bad
+          this.setState({badSiliconeResults: results.silicones.bad
           });
       }
 
-      if (siliconeAnalysis.unknown.length > 0) {
+      if (results.silicones.unknown.length > 0) {
           unknownCG = true;
-          this.setState({unknownSiliconeResults: siliconeAnalysis.unknown
+          this.setState({unknownSiliconeResults: results.silicones.unknown
           });
       }
 
-      if (sulfateAnalysis.bad.length > 0) {
+      if (results.sulfates.bad.length > 0) {
           notCG = true;
-          this.setState({badSulfateResults: sulfateAnalysis.bad
+          this.setState({badSulfateResults: results.sulfates.bad
           });
       }
 
 
-      if (alcoholAnalysis.good.length > 0) {
-          this.setState({goodAlcoholResults: alcoholAnalysis.good});
+      if (results.alcohol.good.length > 0) {
+          this.setState({goodAlcoholResults: results.alcohol.good});
       }
-      if (alcoholAnalysis.bad.length > 0) {
+      if (results.alcohol.bad.length > 0) {
           notCG = true;
-          this.setState({badAlcoholResults: alcoholAnalysis.bad
+          this.setState({badAlcoholResults: results.alcohol.bad
           });
       }
 
-      if (alcoholAnalysis.unknown.length > 0) {
+      if (results.alcohol.unknown.length > 0) {
           unknownCG = true;
-          this.setState({unknownAlcoholResults: alcoholAnalysis.unknown
+          this.setState({unknownAlcoholResults: results.alcohol.unknown
           });
       }
 
-      if (waxOilAnalysis.good.length > 0) {
-          this.setState({goodWaxOilResults: waxOilAnalysis.good});
+      if (results.wax.good.length > 0) {
+          this.setState({goodWaxOilResults: results.wax.good});
       }
-      if (waxOilAnalysis.bad.length > 0) {
+      if (results.wax.bad.length > 0) {
           notCG = true;
-          this.setState({badWaxOilResults: waxOilAnalysis.bad
+          this.setState({badWaxOilResults: results.wax.bad
           });
       }
 
-      if (waxOilAnalysis.unknown.length > 0) {
+      if (results.wax.unknown.length > 0) {
           unknownCG = true;
-          this.setState({unknownWaxOilResults: waxOilAnalysis.unknown
+          this.setState({unknownWaxOilResults: results.wax.unknown
           });
       }
-      if (waterInsolubleAnalysis.length > 0) {
+      if (results.other.bad.length > 0) {
           notCG = true;
-          this.setState({waterInsolubleResults: waterInsolubleAnalysis
+          this.setState({waterInsolubleResults: results.other.bad
           });
       }
 
