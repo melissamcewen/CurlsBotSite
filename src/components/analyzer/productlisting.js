@@ -1,5 +1,5 @@
 import React from 'react';
-import list from '../data/products'
+import list from '../../data/products'
 import ReactGA from 'react-ga'
 
 

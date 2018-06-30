@@ -1,9 +1,9 @@
 import React from 'react'
 import update from 'immutability-helper'
-import Quiz from '../components/quiz'
-import Result from '../components/result'
+import Quiz from '../components/quiz/quiz'
+import Result from '../components/quiz/result'
 import quizQuestions from '../data/quizquestions'
-import Question from '../components/question'
+import Question from '../components/quiz/question'
 import ReactGA from 'react-ga'
 import Helmet from 'react-helmet'
 

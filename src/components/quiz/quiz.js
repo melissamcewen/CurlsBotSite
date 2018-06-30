@@ -1,7 +1,7 @@
 import React from 'react'
-import Question from '../components/question'
-import QuestionCount from '../components/questioncount'
-import AnswerOption from '../components/answeroption'
+import Question from './question'
+import QuestionCount from './questioncount'
+import AnswerOption from './answeroption'
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 

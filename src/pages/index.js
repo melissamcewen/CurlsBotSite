@@ -1,6 +1,6 @@
 import React from 'react';
-import ResultListing from '../components/resultlisting';
-import ProductListing from '../components/productlisting';
+import ResultListing from '../components/analyzer/resultlisting';
+import ProductListing from '../components/analyzer/productlisting';
 import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 
@@ -77,19 +77,16 @@ class Index extends React.Component {
                     });
       }
       if (results.silicones.bad.length > 0) {
-          notCG = true;
           this.setState({badSiliconeResults: results.silicones.bad
           });
       }
 
       if (results.silicones.unknown.length > 0) {
-          unknownCG = true;
           this.setState({unknownSiliconeResults: results.silicones.unknown
           });
       }
 
       if (results.sulfates.bad.length > 0) {
-          notCG = true;
           this.setState({badSulfateResults: results.sulfates.bad
           });
       }
@@ -99,13 +96,11 @@ class Index extends React.Component {
           this.setState({goodAlcoholResults: results.alcohol.good});
       }
       if (results.alcohol.bad.length > 0) {
-          notCG = true;
           this.setState({badAlcoholResults: results.alcohol.bad
           });
       }
 
       if (results.alcohol.unknown.length > 0) {
-          unknownCG = true;
           this.setState({unknownAlcoholResults: results.alcohol.unknown
           });
       }
@@ -114,18 +109,15 @@ class Index extends React.Component {
           this.setState({goodWaxOilResults: results.wax.good});
       }
       if (results.wax.bad.length > 0) {
-          notCG = true;
           this.setState({badWaxOilResults: results.wax.bad
           });
       }
 
       if (results.wax.unknown.length > 0) {
-          unknownCG = true;
           this.setState({unknownWaxOilResults: results.wax.unknown
           });
       }
       if (results.other.bad.length > 0) {
-          notCG = true;
           this.setState({waterInsolubleResults: results.other.bad
           });
       }
