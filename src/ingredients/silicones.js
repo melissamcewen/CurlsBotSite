@@ -1,8 +1,12 @@
 const parser = require('./parser');
+const cleaner = require('./cleaner');
+
 
 const unknown = [
   "cone",
-  "dimethicon"
+  "dimethicon",
+  "silane",
+  "siloxane"
 ];
 
 
@@ -30,11 +34,13 @@ const bad = [
   "propoxytetramethyl piperdinyl dimethicone",
   "phenyl trimethicone",
   "dimethiconol cysteine",
-  "caprylyl methicone"
+  "caprylyl methicone",
+  "polysilicone-15",
+  "polysilicone-1 crosspolymer"
 ];
 
 /// todo refactor to detect quart and peg silicone better
-const good =  [
+/*const good =  [
   "peg-dimethicone",
   "peg-8 distearmonium chloride pg-dimethicone",
   "dimethicone copolyol",
@@ -45,57 +51,61 @@ const good =  [
   "hydroxyethyl acetomonium pg-dimethicone", 
   "stearalkonium dimethicone peg-8 phthalate", 
   "steardimonium hydroxypropyl panthenyl peg-7 dimethicone phosphate chloride",
-  "silicone quaternium-1", 
-  "silicone quaternium-2", 
-  "silicone quaternium-2 panthenol succinate", 
-  "silicone quaternium-3", 
-  "silicone quaternium-4", 
-  "silicone quaternium-5", 
-  "silicone quaternium-6", 
-  "silicone quaternium-7", 
-  "silicone quaternium-8", 
-  "silicone quaternium-9", 
-  "silicone quaternium-10", 
-  "silicone quaternium-11", 
-  "silicone quaternium-12", 
-  "silicone quaternium-15", 
-  "silicone quaternium-16", 
-  "silicone quaternium-16",
-  "silicone quaternium 2", 
-  "silicone quaternium 2 panthenol succinate", 
-  "silicone quaternium 3", 
-  "silicone quaternium 4", 
-  "silicone quaternium 5", 
-  "silicone quaternium 6", 
-  "silicone quaternium 7", 
-  "silicone quaternium 8", 
-  "silicone quaternium 9", 
-  "silicone quaternium 10", 
-  "silicone quaternium 11", 
-  "silicone quaternium 12", 
-  "silicone quaternium 15", 
-  "silicone quaternium 16", 
-  "silicone quaternium 16",
-  "silicone quaternium-18", 
-  "silicone quaternium-19", 
-  "silicone quaternium-20", 
-  "silicone quaternium-21",
-  "silicone quaternium 18", 
-  "silicone quaternium 19", 
-  "silicone quaternium 20", 
-  "silicone quaternium 21",
   "peg-8 dimethicone",
   "peg-12 dimethicone",
   "peg-14 dimethicone",
   "peg-20 dimethicone",
   "peg-15 dimethicone",
   "peg-11 methyl ether dimethicone",
-  "dimethicone peg-8 meadowfoamate",
-  "polysilicone-15"
+  "dimethicone peg-8 meadowfoamate"
+];*/
+
+
+const good =  [
+  "peg",
+  "ppg",
+  "pg-"
 ];
 
-function silicones(list) {
-  return parser(list, unknown, good, bad);
-}
+
+//TODO refactor this
+function silicones(source){
+
+    let list = cleaner(source);
+    let detected = [];
+    let goodList = list.filter( function( el ) {
+        return good.some(function(ff) { 
+            return el.indexOf(ff) > -1;
+      
+         });
+    }); 
+    detected = detected.concat(goodList);  
+    
+    let badList = list.filter( function( el ) {
+      return detected.indexOf( el ) < 0;
+      } ).filter( function( el ) {
+        return unknown.some(function(ff) { 
+            return el.indexOf(ff) > -1;
+      
+         });
+    }); 
+
+    detected= detected.concat(badList);
+  
+    let unknownList =  [];
+  
+
+  
+  let results = {
+    good: goodList,
+    bad: badList,
+    unknown: unknownList
+  }
+
+  return results;
+  
+} 
+
+
 
 module.exports = silicones;

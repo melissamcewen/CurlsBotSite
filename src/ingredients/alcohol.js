@@ -2,7 +2,8 @@ const parser = require('./parser');
 
 var unknown = [
   "alcohol",
-  "witch"
+  "witch",
+  "propanol"
 ];
 
 var bad = [

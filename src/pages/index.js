@@ -227,7 +227,7 @@ class Index extends React.Component {
         {this.state.badSiliconeResults.length > 0 &&
           <Card body outline color="danger">
             <CardTitle>Silicones Detected</CardTitle>
-            <CardSubtitle>Yikes, it seems to me this product has these bad silicones, they can build up on your hair and mean this product is not curly girl approved:</CardSubtitle>
+            <CardSubtitle>Yikes, it seems to me this product has these bad silicones, they can build up on your hair and mean this product is not curly girl approved. If you believe they might actually be water soluble <a href="http://m.me/curlsbot">message me - I'll take a personalized look and get back to you ASAP!</a>:</CardSubtitle>
             <CardText><ResultListing list={this.state.badSiliconeResults}/>
 
             </CardText>
@@ -238,7 +238,7 @@ class Index extends React.Component {
         {this.state.goodSiliconeResults.length > 0 &&
           <Card body outline color="success">
             <CardTitle>OK Silicones</CardTitle>
-            <CardSubtitle>These look like 'good silicones' because they are water soluble, they are perfectly OK:</CardSubtitle>
+            <CardSubtitle>These look like 'good silicones' because they are water soluble, they are perfectly OK. You can tell these silicones are OK because they contain the prefixes ppg or peg:</CardSubtitle>
             <CardText><ResultListing list={this.state.goodSiliconeResults}/></CardText>
            </Card>
    

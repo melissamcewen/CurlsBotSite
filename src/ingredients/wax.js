@@ -3,7 +3,8 @@ const parser = require('./parser');
 var unknown = [
   "wax",
   "cire",
-  "cera"
+  "cera",
+  "paraffin"
 ]
 
 var bad = [
@@ -25,7 +26,8 @@ var bad = [
 var good = [
   "peg-8 beeswax",
   "emulsifying wax",
-  "emulsifying wax nf"
+  "emulsifying wax nf",
+  "peg 8 beeswax"
 ];
 
 function wax(list) {
