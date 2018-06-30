@@ -71,31 +71,37 @@ const good =  [
 //TODO refactor this
 function silicones(source){
 
-    let list = cleaner(source);
-    let detected = [];
-    let goodList = list.filter( function( el ) {
-        return good.some(function(ff) { 
-            return el.indexOf(ff) > -1;
-      
-         });
-    }); 
-    detected = detected.concat(goodList);  
-    
-    let badList = list.filter( function( el ) {
-      return detected.indexOf( el ) < 0;
-      } ).filter( function( el ) {
-        return unknown.some(function(ff) { 
-            return el.indexOf(ff) > -1;
-      
-         });
-    }); 
+  let list = cleaner(source);
+  let detected = [];
 
-    detected= detected.concat(badList);
-  
-    let unknownList =  [];
-  
+  // first let's see if anything is detected that might contain silicones
 
-  
+  let base = list.filter( function( el ) {
+    return unknown.some(function(ff) { 
+      return el.indexOf(ff) > -1;
+
+    });
+  }); 
+
+  // now let's whitelist anything containing peg/ppg/pg-
+  let goodList = base.filter( function( el ) {
+    return good.some(function(ff) { 
+      return el.indexOf(ff) > -1;
+
+    });
+  }); 
+
+  //finally, take the base list and remove anything from the good list
+
+  let badList = base.filter( function( el ) {
+    return goodList.includes(el) == false;
+  });
+
+
+  let unknownList =  [];
+
+
+
   let results = {
     good: goodList,
     bad: badList,
@@ -103,8 +109,9 @@ function silicones(source){
   }
 
   return results;
-  
+
 } 
+
 
 
 
