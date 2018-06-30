@@ -12,6 +12,8 @@ import { Button, Form, FormGroup, Label, Input, FormText, Card, CardTitle, CardT
 
 import cleaner from '../ingredients/cleaner';
 import analyze from '../ingredients/analyze';
+import detector from '../ingredients/detector';
+
 
 import wax from '../ingredients/wax';
 import alcohol from '../ingredients/alcohol';
@@ -132,11 +134,11 @@ class Index extends React.Component {
 
 
 
-    
+    let detect = detector(results);
 
-    if (notCG) {
+    if (detect == "bad") {
       this.setState({results: "not CG"});
-    } else if (unknownCG) {
+    } else if (detect == "unknown") {
       this.setState({results: "unknown CG"});
     } else {
       this.setState({results: "CG"});
