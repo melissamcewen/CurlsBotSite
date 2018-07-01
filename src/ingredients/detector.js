@@ -1,4 +1,8 @@
 function detector(data){
+  if (data == ""){
+    return "";
+  }
+
   var bad = false;
   var unknown = false;
   for (var list in data) {
@@ -10,7 +14,7 @@ function detector(data){
     }
   }
   
-  if(bad === true){
+  if (bad === true){
     return "bad";
   } else if(unknown === true) {
     return "unknown"

@@ -25,3 +25,12 @@ test('should show as good when the results have no bad or good ingredients', () 
 
   expect(detector(data3)).toEqual("good");
 });
+
+
+const data4 = "";
+test('should properly handle empty data', () => {
+  expect(detector(data4)).toEqual("");
+});
+
+
+

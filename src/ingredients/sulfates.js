@@ -1,4 +1,5 @@
 const parser = require('./parser');
+const cleaner = require('./cleaner');
 
 
 const unknown = [
@@ -42,8 +43,33 @@ const bad = [
 ];
 
 
-function sulfates(list) {
-  return parser(list, unknown, good, bad);
+function sulfates(source) {
+    let list = cleaner(source);
+    let detected = [];
+    let goodList = list.filter( function( el ) {
+       return good.includes( el );
+    } ); 
+    detected = detected.concat(goodList);  
+    
+    let badList= list.filter( function( el ) {
+       return bad.includes( el );
+    } ); 
+  
+
+    detected= detected.concat(badList);
+  
+    let unknownList = [];
+  
+
+  
+  let results = {
+    good: goodList,
+    bad: badList,
+    unknown: unknownList
+  }
+
+  return results;
+  
 }
 
 module.exports = sulfates;
