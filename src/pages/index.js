@@ -2,6 +2,7 @@ import React from 'react';
 import ResultListing from '../components/analyzer/resultlisting';
 import ProductListing from '../components/analyzer/productlisting';
 import Results from '../components/analyzer/results';
+import Verdict from '../components/analyzer/verdict';
 
 import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
@@ -29,8 +30,10 @@ class Index extends React.Component {
     super(props);
     this.state = {
       value: '',
-      result: '',
+      result: analyze(''),
       invalidInput: false,
+      verdict: '',
+      done: false
 
 
       
@@ -45,7 +48,6 @@ class Index extends React.Component {
   handleChange(event) {
     this.setState({
       value: event.target.value,
-      result: '',
       invalidInput: false,
 
 
@@ -58,7 +60,12 @@ class Index extends React.Component {
       this.setState({invalidInput: true});
 
    } else {
-      this.setState({result: this.state.value});
+      this.setState({done: true});
+
+      let results = analyze(this.state.value);
+      this.setState({result: results});
+      let verdict = detector(results);
+      this.setState({verdict: verdict});
 
    }
     event.preventDefault();
@@ -99,10 +106,12 @@ class Index extends React.Component {
            </Card>
    
          }
-      <Results test={this.state.result}/>
+      <Results data={this.state.result}/>
+      <Verdict data={this.state.verdict}/>
 
 
-      {this.state.result &&
+
+      {this.state.done &&
         <Card body outline color="success">
             <CardTitle>Questions? Concerns?</CardTitle>
 
