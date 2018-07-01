@@ -46,10 +46,7 @@ const bad = [
 function sulfates(source) {
     let list = cleaner(source);
     let detected = [];
-    let goodList = list.filter( function( el ) {
-       return good.includes( el );
-    } ); 
-    detected = detected.concat(goodList);  
+
     
     let badList= list.filter( function( el ) {
        return bad.includes( el );
@@ -57,7 +54,7 @@ function sulfates(source) {
   
 
     detected= detected.concat(badList);
-  
+    let goodList= [];
     let unknownList = [];
   
 
