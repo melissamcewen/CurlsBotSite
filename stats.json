@@ -12,13 +12,17 @@
       "component---src-pages-privacy-policy-js-bcedfd8717ca15c83424.js",
       "component---src-pages-privacy-policy-js-bcedfd8717ca15c83424.js.map"
     ],
+    "component---src-pages-howitworks-js": [
+      "component---src-pages-howitworks-js-3a5c582fe7c3f2ecc6c5.js",
+      "component---src-pages-howitworks-js-3a5c582fe7c3f2ecc6c5.js.map"
+    ],
     "path---map": [
       "path---map-a0e39f21c11f6a62c5ab.js",
       "path---map-a0e39f21c11f6a62c5ab.js.map"
     ],
     "component---src-pages-index-js": [
-      "component---src-pages-index-js-6183dcdbe83a189b3d7f.js",
-      "component---src-pages-index-js-6183dcdbe83a189b3d7f.js.map"
+      "component---src-pages-index-js-6e0509fe97f5697ead6a.js",
+      "component---src-pages-index-js-6e0509fe97f5697ead6a.js.map"
     ],
     "component---src-pages-porosity-js": [
       "component---src-pages-porosity-js-9262998735a5b5010900.js",
@@ -27,6 +31,10 @@
     "path---cg-lite": [
       "path---cg-lite-a0e39f21c11f6a62c5ab.js",
       "path---cg-lite-a0e39f21c11f6a62c5ab.js.map"
+    ],
+    "path---howitworks": [
+      "path---howitworks-a0e39f21c11f6a62c5ab.js",
+      "path---howitworks-a0e39f21c11f6a62c5ab.js.map"
     ],
     "path---": [
       "path----557518bd178906f8d58a.js",
@@ -97,9 +105,9 @@
       "component---src-pages-dye-js-aadf1ba4943d50a38d7e.js.map"
     ],
     "app": [
-      "app-183446e2a3383a3440d1.js",
+      "app-6c64c496fde1cb76abdb.js",
       "build-js-styles.css",
-      "app-183446e2a3383a3440d1.js.map",
+      "app-6c64c496fde1cb76abdb.js.map",
       "build-js-styles.css.map"
     ],
     "path---privacy-policy": [
