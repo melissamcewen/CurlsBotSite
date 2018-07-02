@@ -1,6 +1,6 @@
 const wax = require('./wax');
 
-const list = "Emulsifying Wax NF, beeswax, euphorbia cerifera (candelilla) wax"
+const list = "Emulsifying Wax NF, beeswax, euphorbia cerifera (candelilla) wax, lonincera japonica (honeysuckle) flower extract"
 
 
 
