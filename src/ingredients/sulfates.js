@@ -43,22 +43,39 @@ const bad = [
 ];
 
 
-function sulfates(source) {
-    let list = cleaner(source);
-    let detected = [];
+function sulfates(source){
 
-    
-    let badList= list.filter( function( el ) {
-       return bad.includes( el );
-    } ); 
-  
+  let list = cleaner(source);
+  let detected = [];
 
-    detected= detected.concat(badList);
-    let goodList= [];
-    let unknownList = [];
-  
+  // first let's see if anything is detected that might contain the bad sulfates
 
-  
+  let base = list.filter( function( el ) {
+    return bad.some(function(ff) { 
+      return el.indexOf(ff) > -1;
+
+    });
+  }); 
+
+  // now let's whitelist anything on the good list
+  let goodList = base.filter( function( el ) {
+    return good.some(function(ff) { 
+      return el.indexOf(ff) > -1;
+
+    });
+  }); 
+
+  //finally, take the base list and remove anything from the good list
+
+  let badList = base.filter( function( el ) {
+    return goodList.includes(el) == false;
+  });
+
+
+  let unknownList =  [];
+
+
+
   let results = {
     good: goodList,
     bad: badList,
@@ -66,8 +83,8 @@ function sulfates(source) {
   }
 
   return results;
-  
-}
+
+} 
 
 module.exports = sulfates;
 
