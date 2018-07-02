@@ -13,16 +13,10 @@ import ReactGA from 'react-ga';
 import { Button, Form, FormGroup, Label, Input, FormText, Card, CardTitle, CardText, CardSubtitle} from 'reactstrap';
 // ingredients analysis includes
 
-import cleaner from '../ingredients/cleaner';
 import analyze from '../ingredients/analyze';
 import detector from '../ingredients/detector';
+import cleaner from '../ingredients/cleaner';
 
-
-import wax from '../ingredients/wax';
-import alcohol from '../ingredients/alcohol';
-import silicones from '../ingredients/silicones';
-import sulfates from '../ingredients/sulfates';
-import other from '../ingredients/other';
 
 
 class Index extends React.Component {
