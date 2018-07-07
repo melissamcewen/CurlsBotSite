@@ -32,7 +32,6 @@ const bad = [
   "sodium cocoyl sarcosinate",
   "sodium laureth sulfate",
   "sodium lauryl sulfate",
-  "sodium lauryl sulfoacetate",
   "sodium myreth sulfate",
   "sodium xylenesulfonate",
   "tea-dodecylbenzenesulfonate",
