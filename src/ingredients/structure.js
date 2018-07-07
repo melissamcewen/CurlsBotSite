@@ -18,9 +18,10 @@ function structure(silicones, sulfates, alcohol, wax, other){
   data["alcohol"] = alcohol;
   data["wax"] = wax;
   data["other"] = {
-    bad: other,
+    bad: [],
     good: [],
-    unknown: []
+    unknown: [],
+    caution: other,
 
   };
 

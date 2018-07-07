@@ -1,6 +1,6 @@
 const detector = require('./detector');
 
-const data =  {"alcohol": {"bad": [], "good": [], "unknown": []}, "other": {"bad": [], "good": [], "unknown": []}, "silicones": {"bad": ["trisiloxane", "dimethicone"], "good": [], "unknown": ["test"]}, "sulfates": {"bad": [], "good": [], "unknown": []}, "wax": {"bad": [], "good": [], "unknown": []}}
+const data =   {"alcohol": {"bad": ["test"], "caution": [], "good": [], "unknown": []}, "other": {"bad": [], "caution": [], "good": [], "unknown": []}, "silicones": {"bad": [], "caution": [], "good": [], "unknown": []}, "sulfates": {"bad": [], "caution": [], "good": [], "unknown": []}, "wax": {"bad": [], "caution": [], "good": [], "unknown": []}}
 ;
 
 test('should show as bad when the results contain bad ingredients', () => {
@@ -9,8 +9,7 @@ test('should show as bad when the results contain bad ingredients', () => {
 });
 
 
-const data2 =  {"alcohol": {"bad": [], "good": [], "unknown": []}, "other": {"bad": [], "good": [], "unknown": []}, "silicones": {"bad": [], "good": [], "unknown": ["test"]}, "sulfates": {"bad": [], "good": [], "unknown": []}, "wax": {"bad": [], "good": [], "unknown": []}}
-;
+const data2 =  {"alcohol": {"bad": [], "caution": [], "good": [], "unknown": []}, "other": {"bad": [], "caution": [], "good": [], "unknown": []}, "silicones": {"bad": [], "caution": [], "good": [], "unknown": ["test"]}, "sulfates": {"bad": [], "caution": [], "good": [], "unknown": []}, "wax": {"bad": [], "caution": [], "good": [], "unknown": []}}
 
 test('should show as unknown when the results contain unknown but no bad ingredients', () => {
 
@@ -18,7 +17,7 @@ test('should show as unknown when the results contain unknown but no bad ingredi
 });
 
 
-const data3 =  {"alcohol": {"bad": [], "good": ["test"], "unknown": []}, "other": {"bad": [], "good": [], "unknown": []}, "silicones": {"bad": [], "good": [], "unknown": []}, "sulfates": {"bad": [], "good": ["test", "test2"], "unknown": []}, "wax": {"bad": [], "good": [], "unknown": []}}
+const data3 =   {"alcohol": {"bad": [], "caution": [], "good": [], "unknown": []}, "other": {"bad": [], "caution": [], "good": [], "unknown": []}, "silicones": {"bad": [], "caution": [], "good": [], "unknown": []}, "sulfates": {"bad": [], "caution": [], "good": [], "unknown": []}, "wax": {"bad": [], "caution": [], "good": [], "unknown": []}}
 ;
 
 test('should show as good when the results have no bad or good ingredients', () => {

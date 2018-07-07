@@ -20,7 +20,7 @@ const ot = other(list);
 
 
 test('should structure data correctly', () => {
-  var result =  {"alcohol": {"bad": [], "good": [], "unknown": []}, "other": {"bad": [], "good": [], "unknown": []}, "silicones": {"bad": ["trisiloxane", "dimethicone"], "good": [], "unknown": []}, "sulfates": {"bad": [], "good": [], "unknown": []}, "wax": {"bad": [], "good": [], "unknown": []}}
+  var result =   {"alcohol": {"bad": [], "caution": [], "good": [], "unknown": []}, "other": {"bad": [], "caution": [], "good": [], "unknown": []}, "silicones": {"bad": ["trisiloxane", "dimethicone"], "caution": [], "good": [], "unknown": []}, "sulfates": {"bad": [], "caution": [], "good": [], "unknown": []}, "wax": {"bad": [], "caution": [], "good": [], "unknown": []}}
 ;
   expect(structure(sil, sul, al, wa, ot)).toEqual(result);
 });

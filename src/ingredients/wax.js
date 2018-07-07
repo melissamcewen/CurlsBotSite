@@ -81,7 +81,8 @@ function wax(source){
   let results = {
     good: goodList,
     bad: badList,
-    unknown: unknownList
+    unknown: unknownList,
+    caution: []
   }
 
   return results;

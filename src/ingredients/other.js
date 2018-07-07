@@ -10,10 +10,8 @@ function simpleAnalysis (source, find){
 
 
 var others = [
-  "isohexadecane", 
-  "dimethcione", 
-  "stearoxytrimethyl silane",
-  "cyclopentasiloxane"
+  "sodium c14-16 olefin sulfonate", 
+  "sodium c14 16 olefin sulfonate"
 ];
 
 function other(list){

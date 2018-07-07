@@ -6,7 +6,7 @@ const list = "peg-8 distearmonium chloride pg-dimethicone, cetearyl methicone, s
 
 
 test('should detect and classify silicones', () => {
-  var result =  {"bad": ["cetearyl methicone", "silicone", "cyclomethicone", "aminopropyl triethoxysilane", "dimethicone", "silicone", "triethoxysilane", "coney", "mdimethicon"], "good": ["peg-8 distearmonium chloride pg-dimethicone", "pegppg-1818 dimethicone", "peg-12 dimethicone", "lauryl peg  ppg - 18  18 methicone"], "unknown": []};
+  var result =  {"bad": ["cetearyl methicone", "silicone", "cyclomethicone", "aminopropyl triethoxysilane", "dimethicone", "silicone", "triethoxysilane", "coney", "mdimethicon"], "caution": [], "good": ["peg-8 distearmonium chloride pg-dimethicone", "pegppg-1818 dimethicone", "peg-12 dimethicone", "lauryl peg  ppg - 18  18 methicone"], "unknown": []};
 ;
   expect(silicones(list)).toEqual(result);
 });

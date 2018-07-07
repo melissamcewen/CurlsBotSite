@@ -37,9 +37,17 @@ class Verdict extends React.Component {
       {detect == "unknown" &&
         <Card body inverse color="warning">
           <CardTitle>Result: Unknown</CardTitle>
-           <CardText>My final verdict? I can't say if this is approved or not, you'll need to do your own research by looking up the unknown ingredients or <a href="http://m.me/curlsbot">messaging us</a>. Try checking out one of our recommend products like  <ProductListing /> or take our  <Link to="/porosity/" className="btn btn-secondary">porosity quiz</Link> for customized recommendations. </CardText>
+           <CardText>You'll need to do your own research by looking up the unknown ingredients or <a href="http://m.me/curlsbot">messaging us</a>. Try checking out one of our recommend products like  <ProductListing /> or take our  <Link to="/porosity/" className="btn btn-secondary">porosity quiz</Link> for customized recommendations. </CardText>
         </Card>
       }
+
+      {detect == "caution" &&
+        <Card body inverse color="warning">
+          <CardTitle>Result: Caution</CardTitle>
+           <CardText>Some of these ingredients should be used with caution. Start a discussion at our <a href="https://www.facebook.com/groups/1804576666517325">Facebook Group</a> to get personalized advice. </CardText>
+        </Card>
+      }
+
 
       {detect == "good" &&
         <Card body inverse color="success">

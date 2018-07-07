@@ -22,6 +22,10 @@ class Results extends React.Component {
 
   render() {
     let results = this.props.data;
+    let sodiumc14 = false;
+    if (results.other.caution.includes("sodium c14-16 olefin sulfonate") || results.other.caution.includes("sodium c14 16 olefin sulfonate")){
+         sodiumc14 = true;
+    }
     return (
       <div >
 
@@ -130,11 +134,16 @@ class Results extends React.Component {
       </Card>
     }
 
-    {results.other.bad.length > 0 && 
-      <Card body outline color="danger">
-      <CardTitle>Other Water Insoluble Ingredients</CardTitle>
-      <CardSubtitle>These ingredients are chemicals known to build up on hair: </CardSubtitle>
-      <CardText><ResultListing list={results.other.bad}/></CardText>
+    {results.other.caution.length > 0 && 
+      <Card body outline color="warning">
+      <CardTitle>Use caution</CardTitle>
+
+      <CardText>
+        {sodiumc14 && <div>
+          <em>Sodium c14-16 olefin sulfonate</em> is not a traditional sulfate but some people find it drying. If you have high or normal porosity, use only for occasional clarifying.
+        </div> }
+        <ResultListing list={results.other.unknown}/>
+      </CardText>
       </Card>
     }
 
