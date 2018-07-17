@@ -38,7 +38,11 @@ const bad = [
   "ethyl peg-15 cocamine sulfate",
   "dioctyl sodium sulfosuccinate",
   "sodium coco-sulfate",
-  "sodium coco sulfate"
+  "sodium coco sulfate",
+  "sodium laureth",
+  "sodium lauryl",
+  "ammonium laureth",
+  "ammonium lauryl"
 ];
 
 

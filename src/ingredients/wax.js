@@ -6,7 +6,8 @@ var unknown = [
   "wax",
   "cire",
   "cera",
-  "paraffin"
+  "paraffin",
+  "lanolin"
 ]
 
 var bad = [

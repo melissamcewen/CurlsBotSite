@@ -32,7 +32,7 @@ class Results extends React.Component {
       {results.silicones.bad.length > 0 &&
         <Card body outline color="danger">
         <CardTitle>Silicones Detected</CardTitle>
-        <CardSubtitle>Yikes, it seems to me this product has these bad silicones, they can build up on your hair and mean this product is not curly girl approved. If you believe they might actually be water soluble <a href="http://m.me/curlsbot">message me - I'll take a personalized look and get back to you ASAP!</a>:</CardSubtitle>
+        <CardSubtitle>I'm 99% sure these are non-CG silicones, which means they are not water soluble and can build up in your hair.</CardSubtitle>
         <CardText><ResultListing list={results.silicones.bad}/>
 
         </CardText>
