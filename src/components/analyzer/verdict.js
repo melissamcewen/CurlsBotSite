@@ -22,7 +22,6 @@ class Verdict extends React.Component {
 
   render() {
     let detect = this.props.data;
-    console.log(detect);
     return (
       <div >
 

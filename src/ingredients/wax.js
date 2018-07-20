@@ -34,7 +34,8 @@ var good = [
 ];
 
 var not = [
-  "lonincera"
+  "lonincera",
+  "lonicera"
 ]
 
 //TODO refactor this
@@ -68,6 +69,7 @@ function wax(source){
 
     });
   }); 
+
   //finally, take the base list and remove anything from the good list
 
   let badList = base.filter( function( el ) {

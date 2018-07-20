@@ -33,11 +33,20 @@ test('analyze Ouidad Curl Recovery Meltdown correctly', () => {
 
 });
 
+test('analyze COCONUT & HIBISCUS CURL ENHANCING SMOOTHIE 12OZ correctly', () => {
+  var list = "Deionized Water, Butyrospermum Parkii (Shea Butter)*, Cocos Nucifera (Coconut ) Oil*, Macadamia Ternifolia Seed Oil, Magnifera Indica (Mango) Seed Butter*, Persea Gratissima (Avacado) Oil, Vegetable Glycerin, Aloe Barbadensis Leaf Extract, Silk Protein, Ammonium Salt, Melia Azadiratcha (Neem) Seed Oil,Daucus Carota Sativa (Carrot) Seed oil, Sorbitol Esters, Panthenol (Pro-Vitamin B-5), Caprylyl Glycol, Essential Oil Blend, Lonicera Caprifolium (honeysuckle) Flower (and) Lonicera Japonica (Japanese Honeysuckle) Flower Extract, Tocopherol (Vitamin E), Hibiscus Flower Extract ";
+  var expected = {"alcohol": {"bad": [], "caution": [], "good": [], "unknown": []}, "other": {"bad": [], "caution": [], "good": [], "unknown": []}, "silicones": {"bad": [], "caution": [], "good": [], "unknown": []}, "sulfates": {"bad": [], "caution": [], "good": [], "unknown": []}, "wax": {"bad": [], "caution": [], "good": [], "unknown": []}};
+
+  var results = analyze(list);
+  expect(analyze(list)).toEqual(expected);
+  expect(detector(results)).toEqual("good");
+
+});
 
 
 test('analyze Bounce Light Creme Gel correctly', () => {
   var list = "Water, VP/VA copolymer, Glycerin, Hydrolyzed Jojoba Esters, Jojoba Esters, Hydrolyzed wheat protein, Hydrolyzed Oat protein, Aloe Barbadensis Leaf Extract, Panax Ginseng root Extract, Salvia Officlnalis (Sage) Extract,*Nigella Sativa (Virgin Black Cumin) Oil, Boswellia Carter Oil, Polyquaternium-10, Polysorbate 20, Aminomethyl Propanol, Carbomer, Disodium Edta, Caprylyl Glycol, Hexylene Glycol, Phenoxyethanol, Citric Acid, Fragrance. ";
-  var expected = {"alcohol": {"bad": [], "caution": [], "good": ["aminomethyl propanol"], "unknown": []}, "other": {"bad": [], "caution": [], "good": [], "unknown": []}, "silicones": {"bad": [], "caution": [], "good": [], "unknown": []}, "sulfates": {"bad": [], "caution": [], "good": [], "unknown": []}, "wax": {"bad": [], "caution": [], "good": [], "unknown": []}}
+  var expected = {"alcohol": {"bad": [], "caution": [], "good": ["aminomethyl propanol"], "unknown": []}, "other": {"bad": [], "caution": [], "good": [], "unknown": []}, "silicones": {"bad": [], "caution": [], "good": [], "unknown": []}, "sulfates": {"bad": [], "caution": [], "good": [], "unknown": []}, "wax": {"bad": [], "caution": [], "good": [], "unknown": []}};
 
   var results = analyze(list);
   expect(analyze(list)).toEqual(expected);
