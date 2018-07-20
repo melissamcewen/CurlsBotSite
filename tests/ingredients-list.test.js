@@ -5,7 +5,7 @@ import detector from '../src/ingredients/detector';
 
 test('analyze Keratin shampoo correctly', () => {
   var list = "Water (Aqua), Disodium Laureth Sulfosuccinate, Sodium C14-16 Olefin Sulfonate, Cocamidopropyl Betaine, Cocamidopropyl Hydroxysultaine, PEG-12 Dimethicone, Cocamide MIPA, Glycol Distearate, Hydrolyzed Keratin, Theobroma Cacao (Cocoa) Seed Butter, Fragrance (Parfum), Cocos Nucifera (Coconut) Oil, Persea Gratissima (Avocado) Oil, Aloe Barbadensis Leaf Extract, Panthenol, Polyquaternium-11, DMDM Hydantoin, Sodium Chloride, Cetyl Alcohol, Guar Hydroxypropyltrimonium Chloride, PEG-14M, Blue 1 (CI 42090), Red 40 (CI 16035), Yellow 5 (CI 19140).";
-  var expected = {"alcohol": {"bad": [], "caution": [], "good": ["cetyl alcohol"], "unknown": []}, "other": {"bad": [], "caution": ["sodium c14-16 olefin sulfonate"], "good": [], "unknown": []}, "silicones": {"bad": [], "caution": [], "good": ["peg-12 dimethicone"], "unknown": []}, "sulfates": {"bad": [], "caution": [], "good": ["disodium laureth sulfosuccinate"], "unknown": []}, "wax": {"bad": [], "caution": [], "good": [], "unknown": []}};
+  var expected = {"alcohol": {"bad": [], "caution": [], "good": ["cetyl alcohol"], "unknown": []}, "other": {"bad": [], "caution": ["sodium c14-16 olefin sulfonate"], "good": [], "unknown": []}, "silicones": {"bad": [], "caution": ["peg-12 dimethicone"], "good": [], "unknown": []}, "sulfates": {"bad": [], "caution": [], "good": ["disodium laureth sulfosuccinate"], "unknown": []}, "wax": {"bad": [], "caution": [], "good": [], "unknown": []}};
 
   var results = analyze(list); 
   expect(results).toEqual(expected);
@@ -15,7 +15,7 @@ test('analyze Keratin shampoo correctly', () => {
 
 test('analyze Tresemme Runway Waves correctly', () => {
   var list = "Aqua (Water), Acrylates Copolymer, Glycerin, Propylene Glycol, Polysorbate 20, VP/Methacrylamide/Vinyl Imidazole Copolymer, Triethanolamine, Acrylates/C10-30 Alkyl Acrylate Crosspolymer, Ammonium Hydroxide, Caprylyl Glycol, Citric Acid, Disodium EDTA, Hydrolyzed Milk Protein, Hydroxyethylcellulose, Iodopropynyl Butylcarbamate, Lactic Acid, Laureth-7, Parfum (Fragrance), PEG/PPG-25/25 Dimethicone, PEG-10 Dimethicone, PEG-4 Dilaurate, PEG-4 Laurate, PEG-4, Phenoxyethanol, Phenylpropanol, Propanediol, Sodium Benzoate, Alpha-Isomethyl Ionone, Benzyl Alcohol, Butylphenyl Methylpropional, Citronellol, Geraniol, Hexyl Cinnamal, Hydroxycitronellal, Linalool, Contains Milk Protein";
-  var expected =  {"alcohol": {"bad": ["phenylpropanol"], "caution": [], "good": ["benzyl alcohol"], "unknown": []}, "other": {"bad": [], "caution": [], "good": [], "unknown": []}, "silicones": {"bad": [], "caution": [], "good": ["pegppg-2525 dimethicone", "peg-10 dimethicone"], "unknown": []}, "sulfates": {"bad": [], "caution": [], "good": [], "unknown": []}, "wax": {"bad": [], "caution": [], "good": [], "unknown": []}};
+  var expected =  {"alcohol": {"bad": ["phenylpropanol"], "caution": [], "good": ["benzyl alcohol"], "unknown": []}, "other": {"bad": [], "caution": [], "good": [], "unknown": []}, "silicones": {"bad": [], "caution": ["pegppg-2525 dimethicone", "peg-10 dimethicone"], "good": [], "unknown": []}, "sulfates": {"bad": [], "caution": [], "good": [], "unknown": []}, "wax": {"bad": [], "caution": [], "good": [], "unknown": []}};
   var results = analyze(list);
   expect(analyze(list)).toEqual(expected);
   expect(detector(results)).toEqual("bad");

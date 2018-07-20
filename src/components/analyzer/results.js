@@ -39,11 +39,11 @@ class Results extends React.Component {
         </Card>
 
       }
-      {results.silicones.good.length > 0 &&
-        <Card body outline color="success">
-        <CardTitle>OK Silicones</CardTitle>
-        <CardSubtitle>These look like 'good silicones' because they are water soluble, they are perfectly OK. You can tell these silicones are OK because they contain the prefixes ppg or peg:</CardSubtitle>
-        <CardText><ResultListing list={results.silicones.good}/></CardText>
+      {results.silicones.caution.length > 0 &&
+        <Card body outline color="warning">
+        <CardTitle>Water Soluble Silicones</CardTitle>
+        <CardSubtitle>These silicones are water soluble because they contain the prefixes ppg or peg. They may be fine for many people, but Lorraine Massey says <a href="https://www.facebook.com/eligenuario/photos/a.1108591662605744.1073741828.1108572312607679/1229058860559023/?type=3&theater">she doesn't recommend using them:</a></CardSubtitle>
+        <CardText><ResultListing list={results.silicones.caution}/></CardText>
         </Card>
       }
       {results.silicones.unknown.length > 0 && 

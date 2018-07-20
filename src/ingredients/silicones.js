@@ -105,10 +105,10 @@ function silicones(source){
 
 
   let results = {
-    good: goodList,
+    good: [],
     bad: badList,
     unknown: unknownList,
-    caution: []
+    caution: goodList
   }
 
   return results;
