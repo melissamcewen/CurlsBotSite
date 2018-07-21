@@ -23,8 +23,14 @@ class Results extends React.Component {
   render() {
     let results = this.props.data;
     let sodiumc14 = false;
-    if (results.other.caution.includes("sodium c14-16 olefin sulfonate") || results.other.caution.includes("sodium c14 16 olefin sulfonate")){
+    let parabens = false;
+
+    if (results.other.caution.includes("sodiumc14")){
          sodiumc14 = true;
+    }
+
+    if (results.other.caution.includes("parabens")){
+         parabens = true;
     }
     return (
       <div >
@@ -140,9 +146,13 @@ class Results extends React.Component {
 
       <CardText>
         {sodiumc14 && <div>
-          <em>Sodium c14-16 olefin sulfonate</em> is not a traditional sulfate but some people find it drying. If you have high or normal porosity, use only for occasional clarifying.
+          <strong>Sodium c14-16 olefin sulfonate</strong> is not a traditional sulfate but some people find it drying. If you have high or normal porosity, use only for occasional clarifying.
         </div> }
-        <ResultListing list={results.other.unknown}/>
+
+
+        {parabens && <div>
+          <strong>Parabens</strong>: Lorraine Massey cautions against these in the Curly Girl Handbook saying "In recent years, they’ve become controversial as experts question whether they are safe. (Some say they may be linked to cancer.)" We recommend we do your own research. 
+        </div> }
       </CardText>
       </Card>
     }

@@ -5,7 +5,7 @@ import detector from '../src/ingredients/detector';
 
 test('analyze Keratin shampoo correctly', () => {
   var list = "Water (Aqua), Disodium Laureth Sulfosuccinate, Sodium C14-16 Olefin Sulfonate, Cocamidopropyl Betaine, Cocamidopropyl Hydroxysultaine, PEG-12 Dimethicone, Cocamide MIPA, Glycol Distearate, Hydrolyzed Keratin, Theobroma Cacao (Cocoa) Seed Butter, Fragrance (Parfum), Cocos Nucifera (Coconut) Oil, Persea Gratissima (Avocado) Oil, Aloe Barbadensis Leaf Extract, Panthenol, Polyquaternium-11, DMDM Hydantoin, Sodium Chloride, Cetyl Alcohol, Guar Hydroxypropyltrimonium Chloride, PEG-14M, Blue 1 (CI 42090), Red 40 (CI 16035), Yellow 5 (CI 19140).";
-  var expected = {"alcohol": {"bad": [], "caution": [], "good": ["cetyl alcohol"], "unknown": []}, "other": {"bad": [], "caution": ["sodium c14-16 olefin sulfonate"], "good": [], "unknown": []}, "silicones": {"bad": [], "caution": ["peg-12 dimethicone"], "good": [], "unknown": []}, "sulfates": {"bad": [], "caution": [], "good": ["disodium laureth sulfosuccinate"], "unknown": []}, "wax": {"bad": [], "caution": [], "good": [], "unknown": []}};
+  var expected = {"alcohol": {"bad": [], "caution": [], "good": ["cetyl alcohol"], "unknown": []}, "other": {"bad": [], "caution": ["sodiumc14"], "good": [], "unknown": []}, "silicones": {"bad": [], "caution": ["peg-12 dimethicone"], "good": [], "unknown": []}, "sulfates": {"bad": [], "caution": [], "good": ["disodium laureth sulfosuccinate"], "unknown": []}, "wax": {"bad": [], "caution": [], "good": [], "unknown": []}};
 
   var results = analyze(list); 
   expect(results).toEqual(expected);
@@ -51,5 +51,16 @@ test('analyze Bounce Light Creme Gel correctly', () => {
   var results = analyze(list);
   expect(analyze(list)).toEqual(expected);
   expect(detector(results)).toEqual("good");
+
+});
+
+
+test('analyze GVP Balm correctly', () => {
+  var list = "Water (Aqua), Propylene Glycol, Myristyl Alcohol, Cetrimonium Chloride, Cetearyl Alcohol, Decyl Oleate, Phenoxyethanol, Fragrance (Parfum), Methylparaben, Propylparaben, Hexyl Cinnamal, Rosmarinus Officinalis (Rosemary) Leaf Extract, Hydrastis Canadensis (Golden Seal) Extract, Fucus Vesiculosus (Bladderwack) Extract, Methyl-2-Octynoate";
+  var expected = {"alcohol": {"bad": [], "caution": [], "good": ["myristyl alcohol", "cetearyl alcohol"], "unknown": []}, "other": {"bad": [], "caution": ["parabens"], "good": [], "unknown": []}, "silicones": {"bad": [], "caution": [], "good": [], "unknown": []}, "sulfates": {"bad": [], "caution": [], "good": [], "unknown": []}, "wax": {"bad": [], "caution": [], "good": [], "unknown": []}};
+
+  var results = analyze(list);
+  expect(analyze(list)).toEqual(expected);
+  expect(detector(results)).toEqual("caution");
 
 });
