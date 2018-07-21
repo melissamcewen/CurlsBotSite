@@ -33,7 +33,6 @@ const bad = [
   "sodium laureth sulfate",
   "sodium lauryl sulfate",
   "sodium myreth sulfate",
-  "sodium xylenesulfonate",
   "tea-dodecylbenzenesulfonate",
   "ethyl peg-15 cocamine sulfate",
   "dioctyl sodium sulfosuccinate",
@@ -42,12 +41,14 @@ const bad = [
   "sodium laureth",
   "sodium lauryl",
   "ammonium laureth",
-  "ammonium lauryl"
+  "ammonium lauryl",
+  "sodium xylene",
+  "tea lauryl sulfate"
 ];
 
 
 function sulfates(source){
-
+  console.log("hello");
   let list = cleaner(source);
   let detected = [];
 
