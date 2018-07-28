@@ -7,7 +7,12 @@ var unknown = [
   "cire",
   "cera",
   "paraffin",
-  "lanolin"
+  "lanolin",
+  "mineral oil",
+  "petrolatum",
+  "isohexadecane",
+  "isohexanedecane",
+  "isododecane"
 ]
 
 var bad = [

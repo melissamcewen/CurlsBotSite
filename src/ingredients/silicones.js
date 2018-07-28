@@ -8,7 +8,7 @@ const unknown = [
   "silane",
   "siloxane",
   "dimethcione",
-  "isohexadecane"
+  "botanisil"
 ];
 
 
@@ -38,7 +38,8 @@ const bad = [
   "dimethiconol cysteine",
   "caprylyl methicone",
   "polysilicone-15",
-  "polysilicone-1 crosspolymer"
+  "polysilicone-1 crosspolymer",
+  "botanisil"
 ];
 
 /// todo refactor to detect quart and peg silicone better

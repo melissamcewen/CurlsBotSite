@@ -48,7 +48,6 @@ const bad = [
 
 
 function sulfates(source){
-  console.log("hello");
   let list = cleaner(source);
   let detected = [];
 
