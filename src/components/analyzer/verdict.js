@@ -43,7 +43,7 @@ class Verdict extends React.Component {
       {detect == "caution" &&
         <Card body inverse color="warning">
           <CardTitle>Result: Caution</CardTitle>
-           <CardText>Some of these ingredients should be used with caution. Start a discussion at our <a href="https://www.facebook.com/groups/1804576666517325">Facebook Group</a> or <a href="http://m.me/curlsbot">message me</a> to get personalized advice. </CardText>
+           <CardText>Some of these ingredients are controversial in the curly girl community. Start a discussion at our <a href="https://www.facebook.com/groups/1804576666517325">Facebook Group</a> or <a href="http://m.me/curlsbot">message me</a> to get personalized advice. </CardText>
         </Card>
       }
 

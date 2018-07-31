@@ -8,7 +8,8 @@ const unknown = [
   "silane",
   "siloxane",
   "dimethcione",
-  "botanisil"
+  "botanisil",
+  "silicon"
 ];
 
 
@@ -42,26 +43,6 @@ const bad = [
   "botanisil"
 ];
 
-/// todo refactor to detect quart and peg silicone better
-/*const good =  [
-  "peg-dimethicone",
-  "peg-8 distearmonium chloride pg-dimethicone",
-  "dimethicone copolyol",
-  "dimethicone-pg diethylmonium chloride",
-  "pg-dimethicone", 
-  "glycidoxy dimethicone crosspolymer", 
-  "dimethicone hydroxypropyl trimonium chloride", 
-  "hydroxyethyl acetomonium pg-dimethicone", 
-  "stearalkonium dimethicone peg-8 phthalate", 
-  "steardimonium hydroxypropyl panthenyl peg-7 dimethicone phosphate chloride",
-  "peg-8 dimethicone",
-  "peg-12 dimethicone",
-  "peg-14 dimethicone",
-  "peg-20 dimethicone",
-  "peg-15 dimethicone",
-  "peg-11 methyl ether dimethicone",
-  "dimethicone peg-8 meadowfoamate"
-];*/
 
 
 const good =  [
