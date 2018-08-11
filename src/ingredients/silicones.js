@@ -9,12 +9,15 @@ const unknown = [
   "siloxane",
   "dimethcione",
   "botanisil",
-  "silicon"
+  "silicon",
+  "silica",
+  "silylate"
 ];
 
 
 const bad = [
   "dimethicone",
+  "silica silylate",
   "bisaminopropyl dimethicone",
   "cetearyl methicone",
   "cetyl dimethicone",
