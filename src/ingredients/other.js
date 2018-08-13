@@ -9,10 +9,30 @@ var parabenList = [
   "paraben"
 ]
 
+var soaps = [
+  "sodium palm",
+  "saponified"
+];
 
 
 function analysis(source){
-  var results = []
+  
+  let results = {
+    good: [],
+    bad: [],
+    unknown: [],
+    caution: []
+  }
+
+  var soap = source.filter( function( el ) {
+   return soaps.some(function(ff) { 
+      return el.indexOf(ff) > -1;
+    });
+  }); 
+  
+  if (soap.length > 0) {
+    results.bad.push("soap");
+  }
   
   var sodiumc14 = source.filter( function( el ) {
    return sodiumc14Vals.some(function(ff) { 
@@ -21,7 +41,7 @@ function analysis(source){
   }); 
   
   if (sodiumc14.length > 0) {
-    results.push("sodiumc14");
+    results.caution.push("sodiumc14");
   }
 
   var parabens = source.filter( function( el ) {
@@ -31,7 +51,7 @@ function analysis(source){
   }); 
   
   if (parabens.length > 0) {
-    results.push("parabens");
+    results.caution.push("parabens");
   }
   
   return results;

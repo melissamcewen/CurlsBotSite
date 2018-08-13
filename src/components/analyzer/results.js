@@ -24,6 +24,7 @@ class Results extends React.Component {
     let results = this.props.data;
     let sodiumc14 = false;
     let parabens = false;
+    let soap = false;
 
     if (results.other.caution.includes("sodiumc14")){
          sodiumc14 = true;
@@ -31,6 +32,10 @@ class Results extends React.Component {
 
     if (results.other.caution.includes("parabens")){
          parabens = true;
+    }
+
+    if (results.other.bad.includes("soap")){
+         soap = true;
     }
     return (
       <div >
@@ -153,6 +158,19 @@ class Results extends React.Component {
         {parabens && <div>
           <strong>Parabens</strong>: Lorraine Massey cautions against these in the Curly Girl Handbook saying "In recent years, they’ve become controversial as experts question whether they are safe. (Some say they may be linked to cancer.)" We recommend we do your own research. 
         </div> }
+      </CardText>
+      </Card>
+    }
+    {results.other.bad.length > 0 && 
+      <Card body outline color="danger">
+      <CardTitle>Other Non-CG ingredients</CardTitle>
+
+      <CardText>
+        {soap && <div>
+          <strong>Soap</strong> the ingredients indicate that this contains soap. Soap is as harsh as sulfates. In addition many soap bars are not properly pH balanced which can further damage hair. I have emailed Lorraine Massey and she says she considers it non-CG. <a href="http://m.me/curlsbot">If you don't think this contains soap, please message me and let me know.</a> 
+        </div> }
+
+
       </CardText>
       </Card>
     }

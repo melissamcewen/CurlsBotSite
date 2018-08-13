@@ -74,3 +74,14 @@ test('analyze Ulta Total Textures kit correctly', () => {
   expect(detector(results)).toEqual("bad");
 
 });
+
+
+test('analyze Shea soap bar correctly', () => {
+  var list = "Sodium Palmate, Sodium Palm Kernelate, Water, Glycerin (Vegetable), Fragrance (Essential Oil Blend), Sodium Gluconate, Butyrospermum Parkii (Shea) Butter*♥, Xanthan Gum, Palm Acid, Bentonite, Moroccan Lava Clay, Cocos Nucifera (Coconut) Oil, Sodium Chloride, Kaolinite, Palm Kernel Acid, Adansonia Digitata Seed Oil, Trichilia Emetica Seed Butter, Rosmarinus Officinalis (Rosemary) Leaf Extract, Ficus Carica (Fig) Fruit Extract *Certified Organic Ingredient ♥Fair Trade Ingredient";
+  var expected = {"alcohol": {"bad": [], "caution": [], "good": [], "unknown": []}, "other": {"bad": ["soap"], "caution": [], "good": [], "unknown": []}, "silicones": {"bad": [], "caution": [], "good": [], "unknown": []}, "sulfates": {"bad": [], "caution": [], "good": [], "unknown": []}, "wax": {"bad": [], "caution": [], "good": [], "unknown": []}};
+
+  var results = analyze(list);
+  expect(analyze(list)).toEqual(expected);
+  expect(detector(results)).toEqual("bad");
+
+});
