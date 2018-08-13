@@ -10,8 +10,8 @@
 <url> <loc>https://www.curlsbot.com/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.curlsbot.com/ingredients/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.curlsbot.com/map/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://www.curlsbot.com/normal-porosity/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.curlsbot.com/porosity/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://www.curlsbot.com/normal-porosity/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.curlsbot.com/privacy-policy/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.curlsbot.com/shea/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 </urlset>
