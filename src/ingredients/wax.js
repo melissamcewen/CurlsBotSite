@@ -35,7 +35,8 @@ var good = [
   "peg-8 beeswax",
   "emulsifying wax",
   "emulsifying wax nf",
-  "peg 8 beeswax"
+  "peg 8 beeswax",
+  "peg-75 lanolin"
 ];
 
 var not = [
