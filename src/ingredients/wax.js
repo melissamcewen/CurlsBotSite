@@ -41,7 +41,8 @@ var good = [
 
 var not = [
   "lonincera",
-  "lonicera"
+  "lonicera",
+  "acetylated lanolin alcohol"
 ]
 
 //TODO refactor this

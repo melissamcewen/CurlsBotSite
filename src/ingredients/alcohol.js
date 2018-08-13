@@ -25,7 +25,8 @@ var bad = [
   "ethyl alcohol",
   "denatured alcohol (sd alcohol 40)",
   "sd alcohol 40-b (alcohol denat)",
-  "phenylpropanol"
+  "phenylpropanol",
+  "witch hazel water"
 ];
 
 var good = [
