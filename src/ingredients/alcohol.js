@@ -54,7 +54,8 @@ var good = [
   "amyl cinnamyl alcohol",
   "amylcinnamyl alcohol",
   "amino-2-methyl-1-propanol",
-  "aminomethyl propanol"
+  "aminomethyl propanol",
+  "amino methyl propanol"
 ];
 
 function alcohol(list) {

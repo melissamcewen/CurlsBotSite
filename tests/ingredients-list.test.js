@@ -85,3 +85,13 @@ test('analyze Shea soap bar correctly', () => {
   expect(detector(results)).toEqual("bad");
 
 });
+
+test('analyze Deva Arc Angel correctly', () => {
+  var list = "Water, VP/VA Copolymer, Glycerin, PEG 7 Glyceryl Cocoate, PEG 40 Hydrogenated Castor Oil, Citrus Aurantium Dulcis (Orange) Peel Extract, Triticum Vulgare (Wheat Germ) Peptide, Avena Sativa (Oat) Protein, Glycine Soja (Soy) Peptide, Melissa Officinalis (Lemon Balm) Extract, Humulus Lupulas (Hops) Extract, Cymbopogon Citrarus (Lemongrass) Extract, Chamomilla Recutita (Matricaria) Extract, Rosmarinus Officinalis (Rosemary) Extract, Achillea Millefolium (Yarrow) Extract, DMDM Hydantoin, Amino Methyl Propanol, Acrylates/C10 30 Alkyl Acrylate Crosspolymer, Fragrance, Red 33 (CI 17200), Yellow 5 Lake.";
+  var expected = {"alcohol": {"bad": [], "caution": [], "good": ["amino methyl propanol"], "unknown": []}, "other": {"bad": [], "caution": [], "good": [], "unknown": []}, "silicones": {"bad": [], "caution": [], "good": [], "unknown": []}, "sulfates": {"bad": [], "caution": [], "good": [], "unknown": []}, "wax": {"bad": [], "caution": [], "good": [], "unknown": []}};
+
+  var results = analyze(list);
+  expect(analyze(list)).toEqual(expected);
+  expect(detector(results)).toEqual("good");
+
+});
