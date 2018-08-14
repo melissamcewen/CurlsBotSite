@@ -21,8 +21,8 @@
       "path---map-a0e39f21c11f6a62c5ab.js.map"
     ],
     "component---src-pages-index-js": [
-      "component---src-pages-index-js-f66b50508abcfda3f0c3.js",
-      "component---src-pages-index-js-f66b50508abcfda3f0c3.js.map"
+      "component---src-pages-index-js-aee8b0944f8686df0553.js",
+      "component---src-pages-index-js-aee8b0944f8686df0553.js.map"
     ],
     "component---src-pages-porosity-js": [
       "component---src-pages-porosity-js-9262998735a5b5010900.js",
@@ -45,8 +45,8 @@
       "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js.map"
     ],
     "component---src-layouts-index-js": [
-      "component---src-layouts-index-js-7e05306dae39c47505ee.js",
-      "component---src-layouts-index-js-7e05306dae39c47505ee.js.map"
+      "component---src-layouts-index-js-f6d32911a22ba5ba927c.js",
+      "component---src-layouts-index-js-f6d32911a22ba5ba927c.js.map"
     ],
     "path---normal-porosity": [
       "path---normal-porosity-a0e39f21c11f6a62c5ab.js",
@@ -64,9 +64,9 @@
       "path---porosity-a0e39f21c11f6a62c5ab.js",
       "path---porosity-a0e39f21c11f6a62c5ab.js.map"
     ],
-    "path---highly-concentrated-products": [
-      "path---highly-concentrated-products-a0e39f21c11f6a62c5ab.js",
-      "path---highly-concentrated-products-a0e39f21c11f6a62c5ab.js.map"
+    "component---src-pages-shampoo-bars-are-not-cg-js": [
+      "component---src-pages-shampoo-bars-are-not-cg-js-6ed1f01ed8eb0beae6f7.js",
+      "component---src-pages-shampoo-bars-are-not-cg-js-6ed1f01ed8eb0beae6f7.js.map"
     ],
     "path---index": [
       "path---index-a0e39f21c11f6a62c5ab.js",
@@ -104,10 +104,14 @@
       "component---src-pages-dye-js-aadf1ba4943d50a38d7e.js",
       "component---src-pages-dye-js-aadf1ba4943d50a38d7e.js.map"
     ],
+    "path---shampoo-bars-are-not-cg": [
+      "path---shampoo-bars-are-not-cg-a0e39f21c11f6a62c5ab.js",
+      "path---shampoo-bars-are-not-cg-a0e39f21c11f6a62c5ab.js.map"
+    ],
     "app": [
-      "app-174a2ffc98fa6656009b.js",
+      "app-e0ee0fd4a6c935f839fb.js",
       "build-js-styles.css",
-      "app-174a2ffc98fa6656009b.js.map",
+      "app-e0ee0fd4a6c935f839fb.js.map",
       "build-js-styles.css.map"
     ],
     "path---privacy-policy": [
@@ -117,10 +121,6 @@
     "component---src-pages-ingredients-js": [
       "component---src-pages-ingredients-js-4851bc2d89313b13630b.js",
       "component---src-pages-ingredients-js-4851bc2d89313b13630b.js.map"
-    ],
-    "component---src-pages-highly-concentrated-products-js": [
-      "component---src-pages-highly-concentrated-products-js-1fb6dcb94aab48f90b32.js",
-      "component---src-pages-highly-concentrated-products-js-1fb6dcb94aab48f90b32.js.map"
     ],
     "component---src-pages-map-js": [
       "component---src-pages-map-js-2f51ba0689972d26241f.js",
