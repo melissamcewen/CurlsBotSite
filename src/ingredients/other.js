@@ -11,7 +11,9 @@ var parabenList = [
 
 var soaps = [
   "sodium palm",
-  "saponified"
+  "saponified",
+  "saponification",
+  "soap"
 ];
 
 

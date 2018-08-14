@@ -167,7 +167,7 @@ class Results extends React.Component {
 
       <CardText>
         {soap && <div>
-          <strong>Soap</strong> the ingredients indicate that this contains soap. Soap is as harsh as sulfates. In addition many soap bars are not properly pH balanced which can further damage hair. I have emailed Lorraine Massey and she says she considers it non-CG. <a href="http://m.me/curlsbot">If you don't think this contains soap, please message me and let me know.</a> 
+          <strong>Soap</strong> the ingredients indicate that this contains soap. Soap is as harsh as sulfates. In addition many soap bars are not properly pH balanced which can further damage hair. Check out our <Link to="/shampoo-bars-are-not-cg/" className="btn btn-secondary">article on soap</Link> for more info. <a href="http://m.me/curlsbot">If you don't think this contains soap, please message me and let me know.</a> 
         </div> }
 
 

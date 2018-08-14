@@ -78,13 +78,14 @@ export default class Example extends React.Component {
                    <DropdownItem href="/hard-water">
                     Hard Water
                   </DropdownItem>
+                  <DropdownItem href="/shampoo-bars-are-not-cg">
+                    Shampoo Bars
+                  </DropdownItem>
 
                   <DropdownItem href="/shea">
                     Non-CG Shea Moisture Products
                   </DropdownItem>
-                  <DropdownItem href="/highly-concentrated-products">
-                    Too much product?
-                  </DropdownItem>
+
 
                 </DropdownMenu>
               </UncontrolledDropdown>
