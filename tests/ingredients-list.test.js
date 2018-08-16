@@ -95,3 +95,35 @@ test('analyze Deva Arc Angel correctly', () => {
   expect(detector(results)).toEqual("good");
 
 });
+
+
+test('analyze NYMN dry shampoo correctly', () => {
+  var list = "Isobutane, Propane, Alcohol Denat., Tapioca Starch & Polymethylsilsesquioxane, Oryza Sativa (Rice) Starch, Isopropyl Myristate, Salvia Hispanica (Chia) Extract, Linum Usitatissimum (Linseed) Seed Extract, Prunus Domestica (Plum) Fruit Oil, Silica.";
+  var expected = {"alcohol": {"bad": ["alcohol denat"], "caution": [], "good": [], "unknown": []}, "other": {"bad": [], "caution": [], "good": [], "unknown": []}, "silicones": {"bad": ["tapioca starch  polymethylsilsesquioxane", "silica"], "caution": [], "good": [], "unknown": []}, "sulfates": {"bad": [], "caution": [], "good": [], "unknown": []}, "wax": {"bad": [], "caution": [], "good": [], "unknown": []}};
+
+  var results = analyze(list);
+  expect(analyze(list)).toEqual(expected);
+  expect(detector(results)).toEqual("bad");
+
+});
+
+
+test('analyze Aveda Be Curly Controller correctly', () => {
+  var list = "Ingredients: Water\Aqua\Eau , Methyl Gluceth-10 , Glycerin , Hydroxypropyl Starch , Caprylyl Glycol , Propanediol , Aloe Barbadensis Leaf , Orbignya Oleifera (Babassu) Seed Oil , Hydrolyzed Wheat Protein , PEG-40 Hydrogenated Castor Oil , Dimethicone , Pullulan , Decyl Glucoside , Glyceryl Stearate , Hydroxyethylcellulose , PEG-100 Stearate , Isopropyl Alcohol , C14-22 Alcohols , C12-20 Alkyl Glucoside , Dimethiconol , Guar Hydroxypropyltrimonium Chloride , Polyquaternium-4 , Dicetyldimonium Chloride , Sodium Chloride , Fragrance (Parfum) , Citral , Geraniol , Linalool , Citronellol , Eugenol , Limonene , Phenoxyethanol <ILN42699>";
+  var expected = {"alcohol": {"bad": ["isopropyl alcohol"], "caution": [], "good": ["c14-22 alcohols"], "unknown": []}, "other": {"bad": [], "caution": [], "good": [], "unknown": []}, "silicones": {"bad": ["dimethicone", "dimethiconol"], "caution": [], "good": [], "unknown": []}, "sulfates": {"bad": [], "caution": [], "good": [], "unknown": []}, "wax": {"bad": [], "caution": [], "good": [], "unknown": []}};
+
+  var results = analyze(list);
+  expect(analyze(list)).toEqual(expected);
+  expect(detector(results)).toEqual("bad");
+
+});
+
+
+test('Analyse Innersense Dry Shampoo correctly', () => {
+  var list = "Water, Aqua- EAU, Hamamelis Virginiana (Witch Hazel) Extract, Tapioca Starch, Caprylyl/Capryl Glucoside, Citrus Aurantium Dulcis Peel Oil, Caprylic/Capric Triglyceride, Zea Maize Starch, Decyl Glucoside, Dehydroacetic Acid, Benzyl Alcohol, Galactoarabinan, Pullulan, Plant Glycerin, Xanthan Gum, Potassium Sorbate, Hydroxypropyltrimonium Honey, Panthenol (Vitamin B-5), Hydrolyzed Rice Protein, Hydrolyzed Quinoa, Chamomilla Recutita (Matricaria) Flower Extract*, Eucalyptus Globulus Leaf Extract*, Ginkgo Biloba Leaf Extract*, Aspalathus Linearis Leaf Extract*, Honey Extract*, Tocopheryl Acetate (Vitamin E). ";
+  var expected = {"alcohol": {"bad": ["hamamelis virginiana (witch hazel) extract"], "caution": [], "good": ["benzyl alcohol"], "unknown": []}, "other": {"bad": [], "caution": [], "good": [], "unknown": []}, "silicones": {"bad": [], "caution": [], "good": [], "unknown": []}, "sulfates": {"bad": [], "caution": [], "good": [], "unknown": []}, "wax": {"bad": [], "caution": [], "good": [], "unknown": []}};
+  var results = analyze(list);
+  expect(analyze(list)).toEqual(expected);
+  expect(detector(results)).toEqual("bad");
+
+});

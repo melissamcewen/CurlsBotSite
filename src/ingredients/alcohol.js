@@ -26,7 +26,8 @@ var bad = [
   "denatured alcohol (sd alcohol 40)",
   "sd alcohol 40-b (alcohol denat)",
   "phenylpropanol",
-  "witch hazel water"
+  "witch hazel water",
+  "hamamelis virginiana (witch hazel) extract"
 ];
 
 var good = [
@@ -55,7 +56,8 @@ var good = [
   "amylcinnamyl alcohol",
   "amino-2-methyl-1-propanol",
   "aminomethyl propanol",
-  "amino methyl propanol"
+  "amino methyl propanol",
+  "c14-22 alcohols"
 ];
 
 function alcohol(list) {

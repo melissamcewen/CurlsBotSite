@@ -11,7 +11,8 @@ const unknown = [
   "botanisil",
   "silicon",
   "silica",
-  "silylate"
+  "silylate",
+  "silsesquioxane"
 ];
 
 
@@ -43,7 +44,8 @@ const bad = [
   "caprylyl methicone",
   "polysilicone-15",
   "polysilicone-1 crosspolymer",
-  "botanisil"
+  "botanisil",
+  "polymethylsilsesquioxane"
 ];
 
 
