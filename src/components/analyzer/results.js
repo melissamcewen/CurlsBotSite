@@ -25,9 +25,14 @@ class Results extends React.Component {
     let sodiumc14 = false;
     let parabens = false;
     let soap = false;
+    let witch=false;
 
     if (results.other.caution.includes("sodiumc14")){
          sodiumc14 = true;
+    }
+
+    if (results.other.caution.includes("witch")){
+         witch = true;
     }
 
     if (results.other.caution.includes("parabens")){
@@ -157,6 +162,10 @@ class Results extends React.Component {
 
         {parabens && <div>
           <strong>Parabens</strong>: Lorraine Massey cautions against these in the Curly Girl Handbook saying "In recent years, they’ve become controversial as experts question whether they are safe. (Some say they may be linked to cancer.)" We recommend we do your own research. 
+        </div> }
+
+        {witch && <div>
+          <strong>Witch Hazel</strong>: Most types of witch hazel contain alcohol. Contact the manufactuerer to see if the witch hazel in this product contains alcohol. Even if it does not contain alcohol, many people find witch hazel drying. Use with caution if you have hair prone to dryness. 
         </div> }
       </CardText>
       </Card>

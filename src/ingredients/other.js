@@ -16,6 +16,11 @@ var soaps = [
   "soap"
 ];
 
+var witchHazel = [
+  "witch"
+];
+
+
 
 function analysis(source){
   
@@ -34,6 +39,16 @@ function analysis(source){
   
   if (soap.length > 0) {
     results.bad.push("soap");
+  }
+
+  var witch = source.filter( function( el ) {
+   return witchHazel.some(function(ff) { 
+      return el.indexOf(ff) > -1;
+    });
+  }); 
+  
+  if (witch.length > 0) {
+    results.caution.push("witch");
   }
   
   var sodiumc14 = source.filter( function( el ) {

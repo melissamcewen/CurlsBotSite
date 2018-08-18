@@ -2,14 +2,12 @@ const parser = require('./parser');
 
 var unknown = [
   "alcohol",
-  "witch",
   "propanol"
 ];
 
 var bad = [
   "denatured alcohol",
   "sd alcohol 40",
-  "witch hazel",
   "isopropanol",
   "ethanol",
   "sd alcohol",
@@ -21,13 +19,10 @@ var bad = [
   "alcohol denat",
   "sd alcohol 40b",
   "alcohol",
-  "hamamellis virginiana (witch hazel) extract",
   "ethyl alcohol",
   "denatured alcohol (sd alcohol 40)",
   "sd alcohol 40-b (alcohol denat)",
   "phenylpropanol",
-  "witch hazel water",
-  "hamamelis virginiana (witch hazel) extract"
 ];
 
 var good = [
