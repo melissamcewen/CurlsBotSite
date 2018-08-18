@@ -10,7 +10,6 @@ const unknown = [
   "dimethcione",
   "botanisil",
   "silicon",
-  "silica",
   "silylate",
   "silsesquioxane"
 ];
