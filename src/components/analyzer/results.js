@@ -165,7 +165,7 @@ class Results extends React.Component {
         </div> }
 
         {witch && <div>
-          <strong>Witch Hazel</strong>: Most types of witch hazel contain alcohol. Contact the manufactuerer to see if the witch hazel in this product contains alcohol. Even if it does not contain alcohol, many people find witch hazel drying. Use with caution if you have hair prone to dryness. 
+          <strong>Witch Hazel</strong>: Most types of witch hazel contain alcohol. Contact the manufacturer to see if the witch hazel in this product contains alcohol. Even if it does not contain alcohol, many people find witch hazel drying. Use with caution if you have hair prone to dryness. 
         </div> }
       </CardText>
       </Card>
