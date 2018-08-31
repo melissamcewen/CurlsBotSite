@@ -14,6 +14,7 @@
     "babel-jest": "^23.2.0",
     "bootstrap": "^4.0.0",
     "gatsby": "^1.9.45",
+    "gatsby-cli": "^1.1.58",
     "gatsby-link": "^1.6.45",
     "gatsby-plugin-manifest": "^1.0.27",
     "gatsby-plugin-offline": "^1.0.18",

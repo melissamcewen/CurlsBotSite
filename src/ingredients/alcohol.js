@@ -21,8 +21,7 @@ var bad = [
   "alcohol",
   "ethyl alcohol",
   "denatured alcohol (sd alcohol 40)",
-  "sd alcohol 40-b (alcohol denat)",
-  "phenylpropanol",
+  "sd alcohol 40-b (alcohol denat)"
 ];
 
 var good = [
@@ -52,7 +51,8 @@ var good = [
   "amino-2-methyl-1-propanol",
   "aminomethyl propanol",
   "amino methyl propanol",
-  "c14-22 alcohols"
+  "c14-22 alcohols",
+  "phenylpropanol"
 ];
 
 function alcohol(list) {
