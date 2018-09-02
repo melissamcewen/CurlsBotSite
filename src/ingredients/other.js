@@ -13,7 +13,8 @@ var soaps = [
   "sodium palm",
   "saponified",
   "saponification",
-  "soap"
+  "soap",
+  "sodium carboxylate"
 ];
 
 var witchHazel = [
