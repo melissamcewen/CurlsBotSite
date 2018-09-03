@@ -29,7 +29,7 @@ const Works = () => (
     <h2>3. Looks for waxes</h2>
     <p>Then it looks for ingredients with the words "wax", "cera", "cire", "lanolin," and "paraffin." It marks these non-CG unless they are emulsified or have a peg prefix to make them water soluble.</p>
     <h2>4. Looks for sulfates</h2>
-    <p>It looks for the sulfates mentioned in the curly girl handbook as well as alternative names for these sulfates. These include:</p>
+    <p>It looks for the sulfates mentioned in the curly girl handbook as well as alternative names for these sulfates and other detergents known to be harsh. These include:</p>
     <ul>
       <li>"alkylbenzene sulfonate",</li>
       <li>"alkyl benzene sulfonate",</li>
