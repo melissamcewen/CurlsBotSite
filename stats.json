@@ -8,21 +8,21 @@
       "component---src-pages-high-porosity-js-09b1e9915b28782a03a0.js",
       "component---src-pages-high-porosity-js-09b1e9915b28782a03a0.js.map"
     ],
-    "component---src-pages-privacy-policy-js": [
-      "component---src-pages-privacy-policy-js-bcedfd8717ca15c83424.js",
-      "component---src-pages-privacy-policy-js-bcedfd8717ca15c83424.js.map"
-    ],
     "component---src-pages-howitworks-js": [
-      "component---src-pages-howitworks-js-f5641e39618209e3e2ae.js",
-      "component---src-pages-howitworks-js-f5641e39618209e3e2ae.js.map"
+      "component---src-pages-howitworks-js-b90745d799a9491b2570.js",
+      "component---src-pages-howitworks-js-b90745d799a9491b2570.js.map"
     ],
     "path---map": [
       "path---map-a0e39f21c11f6a62c5ab.js",
       "path---map-a0e39f21c11f6a62c5ab.js.map"
     ],
     "component---src-pages-index-js": [
-      "component---src-pages-index-js-66c52bde07ad88bfce26.js",
-      "component---src-pages-index-js-66c52bde07ad88bfce26.js.map"
+      "component---src-pages-index-js-3623c1885022ee84a236.js",
+      "component---src-pages-index-js-3623c1885022ee84a236.js.map"
+    ],
+    "component---src-pages-cleansers-js": [
+      "component---src-pages-cleansers-js-3f6a2dad3ba922e802d3.js",
+      "component---src-pages-cleansers-js-3f6a2dad3ba922e802d3.js.map"
     ],
     "component---src-pages-porosity-js": [
       "component---src-pages-porosity-js-9262998735a5b5010900.js",
@@ -40,13 +40,17 @@
       "path----557518bd178906f8d58a.js",
       "path----557518bd178906f8d58a.js.map"
     ],
+    "component---src-pages-resources-js": [
+      "component---src-pages-resources-js-4cd25a0c0b5b029f2c0e.js",
+      "component---src-pages-resources-js-4cd25a0c0b5b029f2c0e.js.map"
+    ],
     "component---node-modules-gatsby-plugin-offline-app-shell-js": [
       "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js",
       "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js.map"
     ],
     "component---src-layouts-index-js": [
-      "component---src-layouts-index-js-f6d32911a22ba5ba927c.js",
-      "component---src-layouts-index-js-f6d32911a22ba5ba927c.js.map"
+      "component---src-layouts-index-js-81f61ad2ae857f5b93cb.js",
+      "component---src-layouts-index-js-81f61ad2ae857f5b93cb.js.map"
     ],
     "path---normal-porosity": [
       "path---normal-porosity-a0e39f21c11f6a62c5ab.js",
@@ -88,6 +92,10 @@
       "commons-e6161044c8acc044bfdb.js",
       "commons-e6161044c8acc044bfdb.js.map"
     ],
+    "path---resources": [
+      "path---resources-a0e39f21c11f6a62c5ab.js",
+      "path---resources-a0e39f21c11f6a62c5ab.js.map"
+    ],
     "path---404-html": [
       "path---404-html-a0e39f21c11f6a62c5ab.js",
       "path---404-html-a0e39f21c11f6a62c5ab.js.map"
@@ -109,14 +117,10 @@
       "path---shampoo-bars-are-not-cg-a0e39f21c11f6a62c5ab.js.map"
     ],
     "app": [
-      "app-e0ee0fd4a6c935f839fb.js",
+      "app-5e3512f4bddc91e06864.js",
       "build-js-styles.css",
-      "app-e0ee0fd4a6c935f839fb.js.map",
+      "app-5e3512f4bddc91e06864.js.map",
       "build-js-styles.css.map"
-    ],
-    "path---privacy-policy": [
-      "path---privacy-policy-a0e39f21c11f6a62c5ab.js",
-      "path---privacy-policy-a0e39f21c11f6a62c5ab.js.map"
     ],
     "component---src-pages-ingredients-js": [
       "component---src-pages-ingredients-js-4851bc2d89313b13630b.js",
@@ -149,6 +153,10 @@
     "path---about": [
       "path---about-a0e39f21c11f6a62c5ab.js",
       "path---about-a0e39f21c11f6a62c5ab.js.map"
+    ],
+    "path---cleansers": [
+      "path---cleansers-a0e39f21c11f6a62c5ab.js",
+      "path---cleansers-a0e39f21c11f6a62c5ab.js.map"
     ]
   }
 }
