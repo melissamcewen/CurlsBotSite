@@ -52,6 +52,9 @@ class Index extends React.Component {
 
    if(cleaner(this.state.value) < 1 ){
       this.setState({invalidInput: true});
+      this.setState({result: analyze('')});
+      this.setState({verdict: ''});
+
 
    } else {
       this.setState({done: true});
