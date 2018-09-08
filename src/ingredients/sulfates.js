@@ -1,50 +1,8 @@
 const parser = require('./parser');
 const cleaner = require('./cleaner');
 
+import cleansers from '../ingredient-data/cleansers';
 
-const unknown = [
-  "sulfate",
-  "sulfo",
-  "sarcosinate"
-
-]
-
-//these are no longer used
-const good = [
-  "behentrimonium methosulfate",
-  "disodium laureth sulfosuccinate",
-  "magnesium sulfate",
-  "sodium lauroyl sarcosinate",
-  "sodium laurylglucosides hydroxypropylsulfonate",
-  "isostearamidopropyl ethyldimonium ethosulfate",
-  "disodium distyrylbiphenyl disulfonate",
-  "cocotrimonium methosulfate",
-  "sodium laneth-40 maleatestyrene sulfonate copolymer",
-  "isoalkylamidopropylethyldimonium ethosulfate"
-];
-
-const bad = [
-  "alkylbenzene sulfonate",
-  "alkyl benzene sulfonate",
-  "ammonium laureth sulfate",
-  "ammonium lauryl sulfate",
-  "ammonium xylenesulfonate",
-  "sodium cocoyl sarcosinate",
-  "sodium laureth sulfate",
-  "sodium lauryl sulfate",
-  "sodium myreth sulfate",
-  "tea-dodecylbenzenesulfonate",
-  "ethyl peg-15 cocamine sulfate",
-  "dioctyl sodium sulfosuccinate",
-  "sodium coco-sulfate",
-  "sodium coco sulfate",
-  "sodium laureth",
-  "sodium lauryl",
-  "ammonium laureth",
-  "ammonium lauryl",
-  "sodium xylene",
-  "tea lauryl sulfate"
-];
 
 
 function sulfates(source){
@@ -53,16 +11,24 @@ function sulfates(source){
 
   // first let's see if anything is detected that might contain the bad sulfates
 
-  let base = list.filter( function( el ) {
-    return bad.some(function(ff) { 
+  let badList = list.filter( function( el ) {
+    return cleansers.bad.some(function(ff) { 
       return el.indexOf(ff) > -1;
 
     });
   }); 
 
-  // now let's whitelist anything on the good list
-  let goodList = base.filter( function( el ) {
-    return good.some(function(ff) { 
+  // now let's see what's on the good list
+  let goodList = list.filter( function( el ) {
+    return cleansers.good.some(function(ff) { 
+      return el.indexOf(ff) > -1;
+
+    });
+  }); 
+
+    // now let's see what's on the caution list
+  let cautionList = list.filter( function( el ) {
+    return cleansers.caution.some(function(ff) { 
       return el.indexOf(ff) > -1;
 
     });
@@ -70,20 +36,24 @@ function sulfates(source){
 
   //finally, take the base list and remove anything from the good list
 
-  let badList = base.filter( function( el ) {
-    return goodList.includes(el) == false;
+  let filteredList = list.filter( function( el ) {
+    return goodList.includes(el) == false && badList.includes(el) == false && cautionList.includes(el) == false;
   });
 
+  //see if anything needs to be on the unknown list
+  let unknownList = filteredList.filter( function( el ) {
+    return cleansers.partials.some(function(ff) { 
+      return el.indexOf(ff) > -1;
 
-  let unknownList =  [];
-
+    });
+  }); 
 
 
   let results = {
     good: goodList,
     bad: badList,
     unknown: unknownList,
-    caution: []
+    caution: cautionList
   }
 
   return results;

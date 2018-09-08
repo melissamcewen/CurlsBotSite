@@ -30,6 +30,23 @@ const Header = () => (
 )
 
 
+const Footer = () => (
+  <div
+  >
+    <div
+      style={{
+        margin: '0 auto',
+        maxWidth: 960,
+        padding: '1rem 1.0875rem',
+      }}
+    >
+
+      <small>Some links on Curlsbot are Amazon Affiliates links. Shopping through these links supports the further development of Curlsbot.</small>
+    </div>
+  </div>
+)
+
+
 const logPageView = (ReactGA) => {
   console.log("Logged view on: ", window.location.pathname)
   ReactGA.set({ page: window.location.pathname });
@@ -84,6 +101,7 @@ export default class TemplateWrapper extends React.Component {
 
           {this.props.children()}
         </div>
+        <Footer />
       </div>
     );
   }

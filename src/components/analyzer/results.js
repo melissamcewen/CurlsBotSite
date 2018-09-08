@@ -22,14 +22,9 @@ class Results extends React.Component {
 
   render() {
     let results = this.props.data;
-    let sodiumc14 = false;
     let parabens = false;
     let soap = false;
     let witch=false;
-
-    if (results.other.caution.includes("sodiumc14")){
-         sodiumc14 = true;
-    }
 
     if (results.other.caution.includes("witch")){
          witch = true;
@@ -74,18 +69,39 @@ class Results extends React.Component {
 
       {results.sulfates.bad.length > 0 && 
        <Card body outline color="danger">
-       <CardTitle>Harsh Sulfates Detected</CardTitle>
-       <CardSubtitle>Yikes! These are either harsh sulfates or similar sulfer-based compounds which are not curly girl approved:</CardSubtitle>
+       <CardTitle>Harsh Sulfates or other Detergents detected</CardTitle>
+       <CardSubtitle>Yikes! These are either sulfates or other harsh non-sulfate detergents that the curly girl community considers drying. See our <Link to="/cleansers" className="btn btn-secondary">cleansers article for more info</Link>:</CardSubtitle>
        <CardText><ResultListing list={results.sulfates.bad}/>
 
        </CardText>
        </Card>
      }
 
+     {results.sulfates.caution.length > 0 && 
+       <Card body outline color="warning">
+       <CardTitle>Clarifying cleansers detected</CardTitle>
+       <CardSubtitle>Some consider these CG-safe, others do not. They may be fine in low amounts or for clarifying. See our <Link to="/cleansers" className="btn btn-secondary">cleansers article for more info</Link>:</CardSubtitle>
+       <CardText><ResultListing list={results.sulfates.caution}/>
+
+       </CardText>
+       </Card>
+     }
+
+     {results.sulfates.unknown.length > 0 && 
+      <Card body outline color="warning">
+      <CardTitle>Unknown Cleansers</CardTitle>
+      <CardSubtitle>These may be misspelled non-CG sulfates or they may be fine, but if you <a href="http://m.me/curlsbot">message me I'll take a personalized look and get back to you ASAP!</a></CardSubtitle>
+      <CardText>
+      <ResultListing list={results.sulfates.unknown}/>
+      </CardText>
+      </Card>
+
+    }
+
      {results.sulfates.good.length > 0 && 
       <Card body outline color="success">
-      <CardTitle>Curly Girl Approved Sulfates/Sulfate-like ingredients</CardTitle>
-      <CardSubtitle>These are either gentle CG-approved sulfates or non-cleanser sulfates (like magnesium sulfate which is used to provide texture)</CardSubtitle>
+      <CardTitle>Curly Girl Approved Cleansers</CardTitle>
+      <CardSubtitle>These are considered gentle by most of the curly girl community:</CardSubtitle>
       <CardText><ResultListing list={results.sulfates.good}/></CardText>
       </Card>
     }
@@ -155,9 +171,6 @@ class Results extends React.Component {
       <CardTitle>Use caution</CardTitle>
 
       <CardText>
-        {sodiumc14 && <div>
-          <strong>Sodium c14-16 olefin sulfonate</strong> is not a traditional sulfate but some people find it drying. If you have high or normal porosity, use only for occasional clarifying.
-        </div> }
 
 
         {parabens && <div>

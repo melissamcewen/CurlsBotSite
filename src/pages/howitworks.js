@@ -28,26 +28,10 @@ const Works = () => (
     <p>Curlsbot sees if any ingredients contain the letters "cone", "demethicon", "silane" or "siloxane." If any ingredient has these, it's probably a silicone. Curlsbot will tell you it's not CG UNLESS it also has a peg/ppg/pg- prefix. These are PEG silicones and they are CG since they are modified to be water soluble.</p>
     <h2>3. Looks for waxes</h2>
     <p>Then it looks for ingredients with the words "wax", "cera", "cire", "lanolin," and "paraffin." It marks these non-CG unless they are emulsified or have a peg prefix to make them water soluble.</p>
-    <h2>4. Looks for sulfates</h2>
-    <p>It looks for the sulfates mentioned in the curly girl handbook as well as alternative names for these sulfates and other detergents known to be harsh. These include:</p>
-    <ul>
-      <li>"alkylbenzene sulfonate",</li>
-      <li>"alkyl benzene sulfonate",</li>
-      <li>"ammonium laureth sulfate",</li>
-      <li>"ammonium lauryl sulfate",</li>
-      <li>"ammonium xylenesulfonate",</li>
-      <li>"sodium cocoyl sarcosinate",</li>
-      <li>"sodium laureth sulfate",</li>
-      <li>"sodium lauryl sulfate",</li>
-      <li>"sodium myreth sulfate",</li>
-      <li>"sodium xylenesulfonate",</li>
-      <li>"tea-dodecylbenzenesulfonate",</li>
-      <li>"ethyl peg-15 cocamine sulfate",</li>
-      <li>"dioctyl sodium sulfosuccinate",</li>
-      <li>"sodium coco-sulfate",</li>
-      <li>"sodium coco sulfate"</li>
-    </ul>
-    <p>Right now it does not mark things like "sodium c14-16 olefin sulfonate" as non cg because it is not as harsh as the above listed sulfates.</p>
+    <h2>4. Looks for sulfates AND other detergents.</h2>
+    <p>It looks for the sulfates mentioned in the curly girl handbook as well as alternative names for these sulfates and other detergents known to be harsh. See our <Link to="/cleansers" className="btn btn-secondary">cleansers article for more info</Link>
+    </p>
+
      <h2>5. Looks for drying alcohols</h2>
      <p>Next Curlsbot looks for words that contain "alcohol", "witch," or "propanol." It then sees if they match our list of alcohols and if not marks them "unknown." Please message us if you see an unknown alcohol so we can add to our database:</p>
      <ul>
