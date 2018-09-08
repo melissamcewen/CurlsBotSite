@@ -1,2 +1,2 @@
-webpackJsonp([0xfb99f9e90070],{"./node_modules/json-loader/index.js!./.cache/json/cleansers.json":function(e,n){e.exports={pathContext:{}}}});
+webpackJsonp([0xfb99f9e90070],{408:function(t,e){t.exports={pathContext:{}}}});
 //# sourceMappingURL=path---cleansers-a0e39f21c11f6a62c5ab.js.map
