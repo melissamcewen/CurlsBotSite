@@ -1,62 +1,64 @@
 const parser = require('./parser');
+const cleaner = require('./cleaner');
 
-var unknown = [
-  "alcohol",
-  "propanol"
-];
+import alcohols from '../ingredient-data/alcohols';
 
-var bad = [
-  "denatured alcohol",
-  "sd alcohol 40",
-  "isopropanol",
-  "ethanol",
-  "sd alcohol",
-  "propanol",
-  "propyl alcohol",
-  "isopropyl alcohol",
-  "alcohol denat.",
-  "sd alcohol 40-b",
-  "alcohol denat",
-  "sd alcohol 40b",
-  "alcohol",
-  "ethyl alcohol",
-  "denatured alcohol (sd alcohol 40)",
-  "sd alcohol 40-b (alcohol denat)"
-];
+//TODO factor this
+function alcohol(source){
+  let list = cleaner(source);
+  let detected = [];
 
-var good = [
-  "behenyl alcohol",
-  "cetearyl alcohol",
-  "ceteryl alcohol",
-  "cetyl alcohol",
-  "isocetyl alcohol",
-  "isostearyl alcohol",
-  "lauryl alcohol",
-  "myristyl alcohol",
-  "stearyl alcohol",
-  "c30-50 alcohols",
-  "lanolin alcohol",
-  "benzyl alcohol",
-  "stearyl alcohol",
-  "aminomethyl propanol",
-  "oleyl alcohol",
-  "brassica alcohol",
-  "cetyl alcohol2 polysorbate 60",
-  "benzyl alcohol",
-  "arachidyl alcohol",
-  "phenethyl alcohol",
-  "undecyl alcohol",
-  "amyl cinnamyl alcohol",
-  "amylcinnamyl alcohol",
-  "amino-2-methyl-1-propanol",
-  "aminomethyl propanol",
-  "amino methyl propanol",
-  "c14-22 alcohols",
-  "phenylpropanol"
-];
 
-function alcohol(list) {
-  return parser(list, unknown, good, bad);
-}
+  // now let's see what's on the good list
+  let goodList = list.filter( function( el ) {
+    return alcohols.good.some(function(ff) { 
+      return el.indexOf(ff) > -1;
+    });
+  }); 
+
+  //remove anything on the good list from the base list
+  let newList = list.filter( function( el ) {
+    return goodList.includes(el) == false;
+  });
+
+  //see if anything on the list contains a partial match with the badContains list
+
+  let badContains = newList.filter( function( el ) {
+    return alcohols.badContains.some(function(ff) { 
+      return el.indexOf(ff) > -1;
+    });
+  }); 
+
+  let badExact = list.filter( function( el ) {
+    return alcohols.badExact.includes(el) == true;
+  });
+
+  let badList = badContains.concat(badExact);
+
+  //finally, take the base list and remove anything from the good list
+
+  let filteredList = list.filter( function( el ) {
+    return goodList.includes(el) == false && badList.includes(el) == false ;
+  });
+
+  //see if anything needs to be on the unknown list
+  let unknownList = filteredList.filter( function( el ) {
+    return alcohols.partials.some(function(ff) { 
+      return el.indexOf(ff) > -1;
+    });
+  }); 
+
+
+  let results = {
+    good: goodList,
+    bad: badList,
+    unknown: unknownList,
+    caution: []
+
+  }
+
+  return results;
+
+} 
 
 module.exports = alcohol;

@@ -75,7 +75,9 @@ const good = [
   "lauryl glucoside",
   "decyl polyglucose",
   "disodium cocoamphodipropionate",
-  "babassuamidopropyl betaine"
+  "babassuamidopropyl betaine",
+  //need more research
+  "sodium laurylglucosides hydroxypropylsulfonate"
 ]
 
 // Possibly bad or caution

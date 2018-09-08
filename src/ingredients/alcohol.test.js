@@ -13,3 +13,10 @@ test('should allow OK alcohols', () => {
   var result =  {"bad": [], "caution": [], "good": ["cetearyl alcohol"], "unknown": []};
   expect(alcohol(list)).toEqual(result);
 });
+
+
+test('should detect weird variations of alcohols', () => {
+  var list = "alcohol denat., alcohol, denatured alcohol (sd alcohol 40), sd alcohol 40-b (alcohol denat), hello alcohol, Steareth Alcohol-15, denatured alcohol (sd alcohol 40), lauryl alcohol diphosphonic acid, benzyl alcohol benzyl benzoate";
+  var result =  {"bad": ["alcohol denat", "denatured alcohol (sd alcohol 40)", "sd alcohol 40-b (alcohol denat)", "denatured alcohol (sd alcohol 40)", "alcohol"], "caution": [], "good": ["steareth alcohol-15", "lauryl alcohol diphosphonic acid", "benzyl alcohol benzyl benzoate"], "unknown": ["hello alcohol"]}
+  expect(alcohol(list)).toEqual(result);
+});

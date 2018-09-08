@@ -121,9 +121,19 @@ test('analyze Aveda Be Curly Controller correctly', () => {
 
 test('Analyse Innersense Dry Shampoo correctly', () => {
   var list = "Water, Aqua- EAU, Hamamelis Virginiana (Witch Hazel) Extract, Tapioca Starch, Caprylyl/Capryl Glucoside, Citrus Aurantium Dulcis Peel Oil, Caprylic/Capric Triglyceride, Zea Maize Starch, Decyl Glucoside, Dehydroacetic Acid, Benzyl Alcohol, Galactoarabinan, Pullulan, Plant Glycerin, Xanthan Gum, Potassium Sorbate, Hydroxypropyltrimonium Honey, Panthenol (Vitamin B-5), Hydrolyzed Rice Protein, Hydrolyzed Quinoa, Chamomilla Recutita (Matricaria) Flower Extract*, Eucalyptus Globulus Leaf Extract*, Ginkgo Biloba Leaf Extract*, Aspalathus Linearis Leaf Extract*, Honey Extract*, Tocopheryl Acetate (Vitamin E). ";
-  var expected =  {"alcohol": {"bad": [], "caution": [], "good": ["benzyl alcohol"], "unknown": []}, "other": {"bad": [], "caution": ["witch"], "good": [], "unknown": []}, "silicones": {"bad": [], "caution": [], "good": [], "unknown": []}, "sulfates": {"bad": [], "caution": [], "good": ["caprylylcapryl glucoside", "decyl glucoside"], "unknown": []}, "wax": {"bad": [], "caution": [], "good": [], "unknown": []}}
+  var expected =  {"alcohol": {"bad": [], "caution": [], "good": ["benzyl alcohol"], "unknown": []}, "other": {"bad": [], "caution": ["witch"], "good": [], "unknown": []}, "silicones": {"bad": [], "caution": [], "good": [], "unknown": []}, "sulfates": {"bad": [], "caution": [], "good": ["caprylylcapryl glucoside", "decyl glucoside"], "unknown": []}, "wax": {"bad": [], "caution": [], "good": [], "unknown": []}};
   var results = analyze(list);
   expect(analyze(list)).toEqual(expected);
   expect(detector(results)).toEqual("caution");
+
+});
+
+
+test('Analyse Jason Biotin Shampoo correctly', () => {
+  var list = "Aqua (water), cocamidopropyl hydroxysultaine, sodium cocoyl isethionate, glycerin, sodium laurylglucosides hydroxypropylsulfonate, mentha arvensis leaf oil, simmondsia chinensis (jojoba) seed oil¹ aloe barbadensis leaf juice¹, calendula officinalis (calendula) flower extract¹, chamomilla recutita (matricaria) flower extract¹, chenopodium quinoa seed¹, citrus grandis (grapefruit) fruit extract¹, equisetum arvense leaf extract¹, lavandula angustifolia (lavender) flower/leaf/stem extract¹, panax ginseng root extract, biotin, tocopheryl, tocopheryl acetate, alcohol¹, citric acid, guar hydroxypropyltrimonium chloride, linoleic acid, menthol, panthenol, phenethyl alcohol, sodium chloride triethyl citrate, benzyl alcohol, potassium sorbate, sodium benzoate. ";
+  var expected =   {"alcohol": {"bad": ["alcohol"], "caution": [], "good": ["phenethyl alcohol", "benzyl alcohol"], "unknown": []}, "other": {"bad": [], "caution": [], "good": [], "unknown": []}, "silicones": {"bad": [], "caution": [], "good": [], "unknown": []}, "sulfates": {"bad": [], "caution": [], "good": ["cocamidopropyl hydroxysultaine", "sodium cocoyl isethionate", "sodium laurylglucosides hydroxypropylsulfonate"], "unknown": []}, "wax": {"bad": [], "caution": [], "good": [], "unknown": []}};
+  var results = analyze(list);
+  expect(analyze(list)).toEqual(expected);
+  expect(detector(results)).toEqual("bad");
 
 });
