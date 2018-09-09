@@ -75,6 +75,13 @@ export default class Example extends React.Component {
                   <DropdownItem href="/about">
                     About
                   </DropdownItem>
+
+                  <DropdownItem href="/howitworks">
+                    How Curlsbot Works
+                  </DropdownItem>
+                  <DropdownItem href="/curly-girl-ingredient-list">
+                    Curly Girl Ingredient List
+                  </DropdownItem>
                    <DropdownItem href="/hard-water">
                     Hard Water
                   </DropdownItem>
