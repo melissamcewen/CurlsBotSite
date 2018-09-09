@@ -3,6 +3,8 @@ import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 import ReactGA from 'react-ga'
 
+import alcohols from '../ingredient-data/alcohols';
+import ResultListing from '../components/analyzer/resultlisting';
 
 
 const Works = () => (
@@ -25,7 +27,7 @@ const Works = () => (
     <h2>1. Sees if it's a valid ingredient list</h2>
     <p>First Curlsbot sees if it's a valid ingredient list - if it's a URL it won't analzye it. If it's a list where each ingredient isn't seperated by a comma, it can't analyze it. I may add more support for non comma seperated lists in the future.</p>
     <h2>2. Looks for silicones</h2>
-    <p>Curlsbot sees if any ingredients contain the letters "cone", "demethicon", "silane" or "siloxane." If any ingredient has these, it's probably a silicone. Curlsbot will tell you it's not CG UNLESS it also has a peg/ppg/pg- prefix. These are PEG silicones and they are CG since they are modified to be water soluble.</p>
+    <p>Curlsbot sees if any ingredients contain the letters "cone", "demethicon", "silane" or "siloxane." If any ingredient has these, it's probably a silicone. soluble.</p>
     <h2>3. Looks for waxes</h2>
     <p>Then it looks for ingredients with the words "wax", "cera", "cire", "lanolin," and "paraffin." It marks these non-CG unless they are emulsified or have a peg prefix to make them water soluble.</p>
     <h2>4. Looks for sulfates AND other detergents.</h2>
@@ -33,30 +35,19 @@ const Works = () => (
     </p>
 
      <h2>5. Looks for drying alcohols</h2>
-     <p>Next Curlsbot looks for words that contain "alcohol", "witch," or "propanol." It then sees if they match our list of alcohols and if not marks them "unknown." Please message us if you see an unknown alcohol so we can add to our database:</p>
-     <ul>
-        <li>"denatured alcohol",</li>
-        <li>"sd alcohol 40",</li>
-        <li>"witch hazel",</li>
-        <li>"isopropanol",</li>
-        <li>"ethanol",</li>
-        <li>"sd alcohol",</li>
-        <li>"propanol",</li>
-        <li>"propyl alcohol",</li>
-        <li>"isopropyl alcohol",</li>
-        <li>"alcohol denat.",</li>
-        <li>"sd alcohol 40-b",</li>
-        <li>"alcohol denat",</li>
-        <li>"sd alcohol 40b",</li>
-        <li>"alcohol",</li>
-        <li>"hamamellis virginiana (witch hazel) extract",</li>
-        <li>"ethyl alcohol",</li>
-        <li>"denatured alcohol (sd alcohol 40)",</li>
-        <li>"sd alcohol 40-b (alcohol denat)",</li>
-        <li>"phenylpropanol"</li>
+     <p>Next Curlsbot lookss to see if anything matches our list of drying alcohols. If marks it as non-CG if it detects a drying alcohol or unknown if the alcohol is an alcohol but not on our list of approved alcohols. Please message us if you see an unknown alcohol so we can add to our database:</p>
+     <h3>Drying Alcohols</h3>
+    <ul>
+        <ResultListing list={alcohols.fullList}/>
 
+    </ul>
+     <h3>CG approved moisturizing and preservative alcohols</h3>
 
-     </ul>
+    <ul>
+        <ResultListing list={alcohols.good.sort()}/>
+
+    </ul>
+
 
     <h2>6. Other ingredients</h2>
     <p>It also looks for common misspellings of sulfates, silicones and waxes like "dimethcione".</p>

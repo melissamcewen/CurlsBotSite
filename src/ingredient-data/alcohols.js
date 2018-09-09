@@ -1,27 +1,26 @@
 const badContains = [
-  "denatured alcohol",
-  "sd alcohol 40",
-  "sd alcohol",
-  "propyl alcohol",
-  "isopropyl alcohol",
-  "alcohol 40-b",
-  "alcohol denat",
-  "alcohol 40b",
-  "ethyl alcohol",
-  "isopropanol",
-  "alcohol-40b"
-
-]
+  "alcohol 40-b", 
+  "alcohol 40b", 
+  "alcohol denat", 
+  "alcohol-40b", 
+  "denatured alcohol", 
+  "ethyl alcohol", 
+  "isopropanol", 
+  "isopropyl alcohol", 
+  "propyl alcohol", 
+  "sd alcohol", 
+  "sd alcohol 40"]
 
 const badExact = [
-  "alcohol",
-  "alcohol1",
-  "isopropanol",
-  "ethanol",
-  "propanol",
-  "alcohol 1"
-] 
+  "alcohol", 
+  "alcohol 1", 
+  "alcohol1", 
+  "ethanol", 
+  "isopropanol", 
+  "propanol"
+]
 
+const fullList = badContains.concat(badExact).sort();
 
 const good = [
   "behenyl alcohol",
@@ -40,7 +39,6 @@ const good = [
   "aminomethyl propanol",
   "oleyl alcohol",
   "brassica alcohol",
-  "cetyl alcohol2 polysorbate 60",
   "benzyl alcohol",
   "arachidyl alcohol",
   "phenethyl alcohol",
@@ -73,6 +71,7 @@ const partials = [
 module.exports = {
    badExact,
    badContains,
+   fullList,
    good,
    partials
 }
