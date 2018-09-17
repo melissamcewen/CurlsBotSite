@@ -7,8 +7,9 @@ const unknown = [
   "botanisil",
   "silicon",
   "silylate",
-  "silsesquioxane"
-];
+  "silsesquioxane",
+  "siloxysilicate"
+  ];
 
 
 
