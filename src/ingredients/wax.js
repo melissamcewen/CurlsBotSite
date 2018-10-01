@@ -12,7 +12,9 @@ var unknown = [
   "petrolatum",
   "isohexadecane",
   "isohexanedecane",
-  "isododecane"
+  "isododecane",
+  "dodecene",
+  "dodecane"
 ]
 
 var bad = [

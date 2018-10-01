@@ -27,16 +27,16 @@ const Sulfates = () => (
     <p> If you want to know more I recommend starting a discussion at our <a href="https://www.facebook.com/groups/1804576666517325">Facebook Group</a> or joining one of the communities on our <Link to="/resources" >resources page for more guidance.</Link> </p>
     <h2>Non-Cg Cleasners (Harsh)</h2>
     <ul>
-        <ResultListing list={cleansers.bad}/>
+        <ResultListing list={cleansers.bad.sort()}/>
     </ul>
     <h2>Caution </h2>
     <em>Some find these drying, but they are NOT sulfates</em>
     <ul>
-        <ResultListing list={cleansers.caution}/>
+        <ResultListing list={cleansers.caution.sort()}/>
     </ul>
     <h2>Gentle CG Friendly Detergents</h2>
     <ul>
-        <ResultListing list={cleansers.good}/>
+        <ResultListing list={cleansers.good.sort()}/>
     </ul>
 
 

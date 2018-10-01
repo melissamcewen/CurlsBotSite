@@ -65,13 +65,15 @@ const partials = [
 ]
 
 
-
-
+const notAlcohol = [
+  "triisopropanolamine"
+]
 
 module.exports = {
    badExact,
    badContains,
    fullList,
    good,
-   partials
+   partials,
+   notAlcohol
 }

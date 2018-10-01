@@ -8,6 +8,13 @@ function alcohol(source){
   let list = cleaner(source);
   let detected = [];
 
+    //see if there are any "mistaken identity compounds" and remove them 
+  var noList = list.filter( function( el ) {
+    return alcohols.notAlcohol.some(function(ff) { 
+      return el.indexOf(ff) > -1;
+    });
+  }); 
+
 
   // now let's see what's on the good list
   let goodList = list.filter( function( el ) {
@@ -16,9 +23,11 @@ function alcohol(source){
     });
   }); 
 
-  //remove anything on the good list from the base list
+
+
+  //remove anything on the good list  or no listfrom the base list
   let newList = list.filter( function( el ) {
-    return goodList.includes(el) == false;
+    return goodList.includes(el) == false && noList.includes(el) == false ; 
   });
 
   //see if anything on the list contains a partial match with the badContains list

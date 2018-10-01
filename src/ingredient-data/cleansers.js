@@ -34,8 +34,8 @@ const bad = [
   "tea dodecylbenzenesulfonate",
   "ammonium cocoyl sulfate",
   "sodium c12-18 alkyl sulfate",
-  "sodium alkyl sulfate"
-
+  "sodium alkyl sulfate",
+  "sodium laureth-40 sulfate"
 ]
 
 const caution = [
@@ -43,6 +43,16 @@ const caution = [
   "sodium c14 16 olefin sulfonate",
   "sodium (c-14-16) olefin sulfonate",
   "sodium c14-16 oliefin sulfonate",
+  "sodium c12-14 olefin sulfonate",
+  "sodium c12 14 olefin sulfonate",
+  "sodium c14-26 olefin sulfonate",
+  "sodium c14 26 olefin sulfonate",
+  "sodium c 14-18 olefin sulfonate",
+  "sodium c14-18 olefin sulfonate",
+  "sodium c 14 18 olefin sulfonate",
+  "sodium c 16-18 olefin sulfonate",
+  "sodium c16-18 olefin sulfonate",
+  "sodium c 16 18 olefin sulfonate",
   "sodium olefin sulfonate",
   //unknown how harsh this is- previously listed as non-cg
   "sodium cocoyl sarcosinate",
@@ -53,12 +63,14 @@ const caution = [
   "sodium lauryl sulfoacetate",
   "sodium cocoyl glutamate",
   "sodium lauroyl methyl isethionate",
-  //misspelling
+  //misspellings
   "sodium lauryl methyl isothionate",
+  "sodium lauroyl methyl lsethionate",
   //Evidence needed 
   "dioctyl sodium sulfosuccinate",
   //Evidence needed
-  "disodium cocoyl glutamate"
+  "disodium cocoyl glutamate",
+  "sodium myristoyl sarcosinate"
 ]
 
 const good = [
@@ -90,7 +102,10 @@ const good = [
   "sodium laurylglucosides hydroxypropylsulfonate",
   //need more research- not a detergent need to filter
   "sodium lauroyl lactylate",
-  "sodium lauroyl hydrolyzed silk"
+  "sodium lauroyl hydrolyzed silk",
+  "sodium methyl 2-sulfolaurate",
+  "disodium 2-sulfolaurate",
+  "sodium lauroyl oat amino acids"
 ]
 
 // Possibly bad or caution
