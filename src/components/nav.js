@@ -86,7 +86,7 @@ export default class Example extends React.Component {
                     Hard Water
                   </DropdownItem>
                   <DropdownItem href="/shampoo-bars-are-not-cg">
-                    Shampoo Bars
+                    Shampoo Bars/Soap
                   </DropdownItem>
                   <DropdownItem href="/cleansers">
                     CG and non-CG Cleansers

@@ -1,21 +1,6 @@
 const cleaner = require('./cleaner');
 
-
-var parabenList = [
-  "paraben"
-]
-
-var soaps = [
-  "sodium palm",
-  "saponified",
-  "saponification",
-  "soap",
-  "sodium carboxylate"
-];
-
-var witchHazel = [
-  "witch"
-];
+import lists from '../ingredient-data/others';
 
 
 
@@ -29,7 +14,7 @@ function analysis(source){
   }
 
   var soap = source.filter( function( el ) {
-   return soaps.some(function(ff) { 
+   return lists.soaps.some(function(ff) { 
       return el.indexOf(ff) > -1;
     });
   }); 
@@ -39,7 +24,7 @@ function analysis(source){
   }
 
   var witch = source.filter( function( el ) {
-   return witchHazel.some(function(ff) { 
+   return lists.witchHazel.some(function(ff) { 
       return el.indexOf(ff) > -1;
     });
   }); 
@@ -50,7 +35,7 @@ function analysis(source){
   
 
   var parabens = source.filter( function( el ) {
-   return parabenList.some(function(ff) { 
+   return lists.parabenList.some(function(ff) { 
       return el.indexOf(ff) > -1;
     });
   }); 

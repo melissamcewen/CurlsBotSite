@@ -18,8 +18,8 @@ const Shea = () => (
     />
     <h1>Non-Curly Girl Shea Moisture Products</h1>
     <p>Shea Moisture is a popular brand for many following the "curly girl" system but unfortunately a few products contain ingredients that <a href="https://www.wikihow.com/Determine-if-a-Hair-Product-is-Curly-Girl-Approved">can dry out hair (alcohols and harsh sulfates) or build up (waxes). I recommend always checking the list and not assuming it's CG because it's Shea Moisture. </a> Message <a href="https://www.facebook.com/CurlsBot/">Curlsbot</a> if you know any others.</p>
-    <h2>Sulfates</h2>
-    <h3> Sodium cocoyl sarcosinate</h3>
+    <h2>Harsh cleansers</h2>
+    <h3>Sodium cocoyl sarcosinate</h3>
     <ul>
       <li>FRAGRANCE-FREE, GLUTEN FREE BABY WASH & SHAMPOO</li>
     </ul>

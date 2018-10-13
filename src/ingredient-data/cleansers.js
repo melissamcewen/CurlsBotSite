@@ -105,7 +105,8 @@ const good = [
   "sodium lauroyl hydrolyzed silk",
   "sodium methyl 2-sulfolaurate",
   "disodium 2-sulfolaurate",
-  "sodium lauroyl oat amino acids"
+  "sodium lauroyl oat amino acids",
+  "disodium lauryl sulfosuccinate"
 ]
 
 // Possibly bad or caution
