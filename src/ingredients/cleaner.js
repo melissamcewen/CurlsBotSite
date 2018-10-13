@@ -15,10 +15,21 @@ function isBelowThreshold(currentValue) {
 
 
 function cleaner(text) {
-    let ingredientsList = text.split(',');
+    let parentheses = / *\([^)]*\) */g;
+    let forbidden = /[^0-9A-Za-z\s+-]/g;
+    let and = /\band\b/ig;
+    let sepChar = /[|&]/ig;
+    let lineBreaks = /\r?\n|\r/g;
+    let excessSpaces = /\s\s+/g;
+
+
+    let ingredientsList = text.replace(lineBreaks, '').replace(excessSpaces, ' ').replace(and, ',').replace(sepChar, ',').split(',');
+
 
     if (ingredientsList.every(isBelowThreshold)){
-        ingredientsList= ingredientsList.map(x => x.trim().toLowerCase().replace(/[^0-9A-Za-z\s+()-]/g, ''));
+        ingredientsList= ingredientsList.map(x => x.trim().toLowerCase().replace(parentheses, ' ').replace(forbidden, '').trim());
+
+        
 
         return ingredientsList;
 

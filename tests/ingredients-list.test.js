@@ -99,7 +99,7 @@ test('analyze Deva Arc Angel correctly', () => {
 
 test('analyze NYMN dry shampoo correctly', () => {
   var list = "Isobutane, Propane, Alcohol Denat., Tapioca Starch & Polymethylsilsesquioxane, Oryza Sativa (Rice) Starch, Isopropyl Myristate, Salvia Hispanica (Chia) Extract, Linum Usitatissimum (Linseed) Seed Extract, Prunus Domestica (Plum) Fruit Oil, Silica.";
-  var expected =  {"alcohol": {"bad": ["alcohol denat"], "caution": [], "good": [], "unknown": []}, "other": {"bad": [], "caution": [], "good": [], "unknown": []}, "silicones": {"bad": ["tapioca starch  polymethylsilsesquioxane"], "caution": [], "good": [], "unknown": []}, "sulfates": {"bad": [], "caution": [], "good": [], "unknown": []}, "wax": {"bad": [], "caution": [], "good": [], "unknown": []}};
+  var expected =  {"alcohol": {"bad": ["alcohol denat"], "caution": [], "good": [], "unknown": []}, "other": {"bad": [], "caution": [], "good": [], "unknown": []}, "silicones": {"bad": ["polymethylsilsesquioxane"], "caution": [], "good": [], "unknown": []}, "sulfates": {"bad": [], "caution": [], "good": [], "unknown": []}, "wax": {"bad": [], "caution": [], "good": [], "unknown": []}};
 
   var results = analyze(list);
   expect(analyze(list)).toEqual(expected);
