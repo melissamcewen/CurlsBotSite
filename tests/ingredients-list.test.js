@@ -137,3 +137,15 @@ test('Analyse Jason Biotin Shampoo correctly', () => {
   expect(detector(results)).toEqual("bad");
 
 });
+
+
+test('Analyse badly formatted list correctly', () => {
+  var list = "Aqua (Water), Coco-Glucoside, Sodium Lauroyl Methyl Isethionate, Acrylates Copolymer, /n Parfum (Fragrance), Phenoxyethanol, Glycol Distearate, Laureth-4, Polyquaternium-10, Benzyl\nAlcohol, Hydroxypropyl Guar Hydroxypropyltrimonium Chloride, Sodium Hydroxide, Limonene, Disodium EDTA, Cocamidopropyl Betaine, Linalool, Geraniol, Dehydroacetic Acid, Sodium\n PCA, Sodium Lactate, Glycerin, PG-Hydroxyethylcellulose Cocodimonium Chloride, Arginine,\n Aspartic Acid, PCA, Formic Acid, Glycine, Alanine, Serine, Valine, Isoleucine, Proline,\nThreonine, Histidine, Phenylalanine";
+  var expected =      {"alcohol": {"bad": [], "caution": [], "good": ["benzyl alcohol"], "unknown": []}, "other": {"bad": [], "caution": [], "good": [], "unknown": []}, "silicones": {"bad": [], "caution": [], "good": [], "unknown": []}, "sulfates": {"bad": [], "caution": ["sodium lauroyl methyl isethionate"], "good": ["cocamidopropyl betaine"], "unknown": []}, "wax": {"bad": [], "caution": [], "good": [], "unknown": []}};
+  var results = analyze(list);
+  expect(analyze(list)).toEqual(expected);
+  expect(detector(results)).toEqual("caution");
+
+});
+
+

@@ -30,6 +30,11 @@ const Shea = () => (
 
     <hr />
     <h2>Alcohols</h2>
+    <h3>Unknown</h3>
+    <em>They claim these are "non-drying" but this is impossible to verify if they don't list the specific alcohol</em>
+    <ul>
+      <li>COCONUT & HIBISCUS FRIZZ-FREE CURL MOUSSE</li>
+    </ul>
     <h3>Denatured alcohol</h3>
     <ul>
       <li>MANUKA HONEY & MAFURA OIL INTENSIVE HYDRATION COMPLEX</li>

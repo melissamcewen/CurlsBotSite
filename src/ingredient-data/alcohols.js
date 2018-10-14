@@ -57,7 +57,8 @@ const good = [
   "phenylethyl alcohol",
   "acetylated lanolin alcohol",
   "cinnamyl alcohol",
-  "phenethyl alcohol"
+  "phenethyl alcohol",
+  "cinnamic alcohol"
 ]
 
 // Possibly bad or caution

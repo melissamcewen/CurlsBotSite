@@ -23,7 +23,7 @@ function cleaner(text) {
     let excessSpaces = /\s\s+/g;
 
 
-    let ingredientsList = text.replace(lineBreaks, '').replace(excessSpaces, ' ').replace(and, ',').replace(sepChar, ',').split(',');
+    let ingredientsList = text.replace(lineBreaks, ' ').replace(excessSpaces, ' ').replace(and, ',').replace(sepChar, ',').split(',');
 
 
     if (ingredientsList.every(isBelowThreshold)){

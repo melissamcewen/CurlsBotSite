@@ -90,7 +90,7 @@ class Index extends React.Component {
         <p>A lot of people are interested in properly caring for their naturally curly or wavy hair, but it can be confusing to find the right methods and products. CurlsBot aims to make it all easier by analyzing ingredient lists to see if they comply with the <a href="http://amzn.to/2nT3w1V">"curly girl" rules pioneered by Lorraine Massey</a>. We look for silicones, oils, and waxes that can build up, as well as harsh sulfates. <Link to="/howitworks/" >Click here for our disclaimer and info on how it works.</Link> </p>
         <FormGroup >
           <Label for="exampleText">Curlsbot Beta!</Label>
-          <Input type="textarea" name="text" id="exampleText" placeholder="Paste an ingredient list here" onChange={this.handleChange} rows="10" />
+          <Input type="textarea" name="text" id="exampleText" placeholder="Paste an ingredient list here- we recommend finding the list on the brand's website or ulta and pasting it here rather than trying to type yourself. Typing yourself may result in inaccuracies." onChange={this.handleChange} rows="10" />
           <Button onClick={this.handleSubmit}>Submit</Button>
         </FormGroup>
 
