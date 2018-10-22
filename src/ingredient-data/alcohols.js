@@ -9,7 +9,9 @@ const badContains = [
   "isopropyl alcohol", 
   "propyl alcohol", 
   "sd alcohol", 
-  "sd alcohol 40"]
+  "sd alcohol 40",
+  "sugarcane derived alcohol"
+  ]
 
 const badExact = [
   "alcohol", 
@@ -58,7 +60,10 @@ const good = [
   "acetylated lanolin alcohol",
   "cinnamyl alcohol",
   "phenethyl alcohol",
-  "cinnamic alcohol"
+  "cinnamic alcohol",
+  "behenyl alcohol",
+  "pantothenyl alcohol",
+  "coconut alcohol"
 ]
 
 // Possibly bad or caution

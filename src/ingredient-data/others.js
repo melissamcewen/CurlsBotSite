@@ -13,7 +13,9 @@ var soaps = [
 
 var witchHazel = [
   "witch",
-  "hamamelis"
+  "hamamelis",
+  "hamamellis",
+  "hazel"
 ];
 
 

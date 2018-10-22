@@ -39,17 +39,28 @@ const bad = [
 ]
 
 const caution = [
+// TODO UGH GUESS I COULD REGEX THIS
+// 14-16
   "sodium c14-16 olefin sulfonate", 
   "sodium c14 16 olefin sulfonate",
   "sodium (c-14-16) olefin sulfonate",
   "sodium c14-16 oliefin sulfonate",
+// 14-15
+  "sodium c14-15 olefin sulfonate", 
+  "sodium c14 15 olefin sulfonate",
+  "sodium (c-14-15) olefin sulfonate",
+  "sodium c14-15 oliefin sulfonate",
+// 12-14
   "sodium c12-14 olefin sulfonate",
   "sodium c12 14 olefin sulfonate",
+// 14-26
   "sodium c14-26 olefin sulfonate",
   "sodium c14 26 olefin sulfonate",
+//14-18
   "sodium c 14-18 olefin sulfonate",
   "sodium c14-18 olefin sulfonate",
   "sodium c 14 18 olefin sulfonate",
+// 16-18
   "sodium c 16-18 olefin sulfonate",
   "sodium c16-18 olefin sulfonate",
   "sodium c 16 18 olefin sulfonate",
@@ -66,6 +77,7 @@ const caution = [
   //misspellings
   "sodium lauryl methyl isothionate",
   "sodium lauroyl methyl lsethionate",
+  "sodium lauroylmethyl isethionate",
   //Evidence needed 
   "dioctyl sodium sulfosuccinate",
   //Evidence needed

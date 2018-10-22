@@ -141,11 +141,18 @@ test('Analyse Jason Biotin Shampoo correctly', () => {
 
 test('Analyse badly formatted list correctly', () => {
   var list = "Aqua (Water), Coco-Glucoside, Sodium Lauroyl Methyl Isethionate, Acrylates Copolymer, /n Parfum (Fragrance), Phenoxyethanol, Glycol Distearate, Laureth-4, Polyquaternium-10, Benzyl\nAlcohol, Hydroxypropyl Guar Hydroxypropyltrimonium Chloride, Sodium Hydroxide, Limonene, Disodium EDTA, Cocamidopropyl Betaine, Linalool, Geraniol, Dehydroacetic Acid, Sodium\n PCA, Sodium Lactate, Glycerin, PG-Hydroxyethylcellulose Cocodimonium Chloride, Arginine,\n Aspartic Acid, PCA, Formic Acid, Glycine, Alanine, Serine, Valine, Isoleucine, Proline,\nThreonine, Histidine, Phenylalanine";
-  var expected =      {"alcohol": {"bad": [], "caution": [], "good": ["benzyl alcohol"], "unknown": []}, "other": {"bad": [], "caution": [], "good": [], "unknown": []}, "silicones": {"bad": [], "caution": [], "good": [], "unknown": []}, "sulfates": {"bad": [], "caution": ["sodium lauroyl methyl isethionate"], "good": ["cocamidopropyl betaine"], "unknown": []}, "wax": {"bad": [], "caution": [], "good": [], "unknown": []}};
+  var expected = {"alcohol": {"bad": [], "caution": [], "good": ["benzyl alcohol"], "unknown": []}, "other": {"bad": [], "caution": [], "good": [], "unknown": []}, "silicones": {"bad": [], "caution": [], "good": [], "unknown": []}, "sulfates": {"bad": [], "caution": ["sodium lauroyl methyl isethionate"], "good": ["cocamidopropyl betaine"], "unknown": []}, "wax": {"bad": [], "caution": [], "good": [], "unknown": []}};
   var results = analyze(list);
   expect(analyze(list)).toEqual(expected);
   expect(detector(results)).toEqual("caution");
 
 });
 
+test('Analyse witch hazel with misspelling in Replenish Conditioning Spray', () => {
+  var list = "Water/Aqua/Eau, Polysorbate 20, Cetrimonium Chloride, Panthenol, Propylene Glycol, Fragrance/Parfum, Wheat Amino Acids, Glycerin, Cinnamidopropyltrimonium Chloride, Aloe Barbadensis Leaf Juice, Chamomilla Recutita (Matricaria) Flower Extract, Salvia Officinalis (Sage) Extract, Geranium Maculatum Extract, Achillea Millefolium Extract, Melissa Officinalis Leaf Extract, Cymbopogon Schoenanthus Extract, Quercus Alba Bark Extract, Hamamellis Virginiana (Witch Hazel) Extract, Rosa Canina Seed Extract, Symphytum Officinale Leaf Extract, Acrylates/Methoxy PEG-10 Maleate/Styrene Copolymer, Tetrasodium EDTA, Methylisothiazolinone, Methylchloroisothiazolinone, Yellow 5/CI 19140, Benzyl Alcohol, Coumarin, Potassium Sorbate, Phenoxyethanol.";
+  var expected =  {"alcohol": {"bad": [], "caution": [], "good": ["benzyl alcohol"], "unknown": []}, "other": {"bad": [], "caution": ["witch"], "good": [], "unknown": []}, "silicones": {"bad": [], "caution": [], "good": [], "unknown": []}, "sulfates": {"bad": [], "caution": [], "good": [], "unknown": []}, "wax": {"bad": [], "caution": [], "good": [], "unknown": []}};
+  var results = analyze(list);
+  expect(analyze(list)).toEqual(expected);
+  expect(detector(results)).toEqual("caution");
 
+});
