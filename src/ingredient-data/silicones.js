@@ -9,7 +9,8 @@ const unknown = [
   "silylate",
   "silsesquioxane",
   "siloxysilicate",
-  "poloxamer"
+  "poloxamer",
+  "microsil"
   ];
 
 
