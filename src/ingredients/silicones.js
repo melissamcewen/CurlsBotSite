@@ -20,7 +20,7 @@ function silicones(source){
     });
   }); 
 
-  // now let's whitelist anything containing peg/ppg/pg-
+  // now let's caution list anything containing peg/ppg/pg-
   let goodList = base.filter( function( el ) {
     return siliconesList.good.some(function(ff) { 
       return el.indexOf(ff) > -1;
@@ -28,10 +28,19 @@ function silicones(source){
     });
   }); 
 
-  //finally, take the base list and remove anything from the good list
+  //find things that this shouldn't detect all all
+  let nonList = base.filter( function( el ) {
+    return siliconesList.not.some(function(ff) { 
+      return el.indexOf(ff) > -1;
+
+    });
+  }); 
+
+
+  //finally, take the base list and remove anything from the good list or non list
 
   let badList = base.filter( function( el ) {
-    return goodList.includes(el) == false;
+    return goodList.includes(el) == false && nonList.includes(el) == false;
   });
 
 

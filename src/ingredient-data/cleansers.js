@@ -1,23 +1,65 @@
 //sulfates + those similar to sulfates
+//sulphate is used in UK and some other countries
 const bad = [
 "ammonium lauryl sulfate",
+"ammonium lauryl sulphate",
+
 "ammonium laureth sulfate",
+"ammonium laureth sulphate",
+
 "sodium lauryl sulfate",
+"sodium lauryl sulphate",
+
 "sodium laureth sulfate",
+"sodium laureth sulphate",
+
 //tea sulfate
 "tea lauryl sulfate",
+"tea lauryl sulphate",
+
 // tea sulfate
 "tea-dodecylbenzenesulfonate",
 // tea sulfate
 "triethanolamine lauryl sulfate",
+"triethanolamine lauryl sulphate",
+
 "sodium cetearyl sulfate",
+"sodium cetearyl sulphate",
+
 "sodium coco sulfate",
+"sodium coco sulphate",
+
 "sodium cocosulfate",
+"sodium cocosulphate",
+
 "sodium coco-sulfate",
+"sodium coco-sulphate",
+
 "ammonium laureth sulfate",
+"ammonium laureth sulphate",
+
 "ammonium lauryl sulfate",
+"ammonium lauryl sulphate",
+
 "sodium myreth sulfate",
+"sodium myreth sulphate",
+
 "sodium polystyrene sulfate",
+"sodium polystyrene sulphate",
+
+"ammonium cocoyl sulfate",
+"ammonium cocoyl sulphate",
+
+"sodium c12-18 alkyl sulfate",
+"sodium c12-18 alkyl sulphate",
+
+"sodium alkyl sulfate",
+"sodium alkyl sulphate",
+
+"sodium laureth-40 sulfate",
+"sodium laureth-40 sulphate",
+
+
 // Evidence needed 
   "alkylbenzene sulfonate",
   "alkyl benzene sulfonate",
@@ -32,10 +74,7 @@ const bad = [
 //Evidence needed
   "tea-dodecylbenzenesulfonate",
   "tea dodecylbenzenesulfonate",
-  "ammonium cocoyl sulfate",
-  "sodium c12-18 alkyl sulfate",
-  "sodium alkyl sulfate",
-  "sodium laureth-40 sulfate"
+
 ]
 
 const caution = [
@@ -127,18 +166,29 @@ const partials = [
   "ammonium lauryl",
 // "ammonium lauryl sulfate", TEA lauryl sulfate, sodium lauryl sulfate
   "lauryl sulfate",
+  "lauryl sulphate",
 // (Sodium) C14-16 Olefin Sulfonate
   "olefin sulfonate",
   "sodium c14-16",
   "sodium c1416",
 //"sodium cetearyl sulfate"
   "cetearyl sulfate",
+  "cetearyl sulphate",
+
 //sodium cocosulfate
   "cocosulfate",
   "coco-sulfate",
   "coco sulfate",
+  "cocoyl sulfate",
+  "cocosulphate",
+  "coco-sulphate",
+  "coco sulphate",
+  "cocoyl sulphate",
+
 //ammonium Laureth Sulfate, sodium Laureth Sulfate
   "laureth sulfate",
+  "laureth sulphate",
+
 //ammonium Laureth Sulfate,
   "ammonium laureth",
 // sarcosinates
@@ -148,12 +198,16 @@ const partials = [
 //"sodium myreth sulfate"
  "sodium myreth",
  "myreth sulfate",
+ "myreth sulphate",
+
  // "sodium lauroyl methyl isethionate"
   "sodium lauroyl",
  // "sodium laureth sulfate
   "sodium laureth",
 //"ammonium laureth sulfate", "sodium laureth sulfate",
   "laureth sulfate", 
+  "laureth sulphate", 
+
 // "ammonium lauryl sulfate",
   "ammonium lauryl",
 //ammonium xylenesulfonate/ AMMONIUM XYLENE-SULFONATe
@@ -163,12 +217,11 @@ const partials = [
   "cocoyl glutamate",
   //Sodium polystyrene sulfate
   "polystyrene sulfate",
-  //coco sulfates
-  "coco sulfate",
-  "coco-sulfate",
-  "cocoyl sulfate",
+  "polystyrene sulphate",
   //sodium c12-18 alkyl sulfate
-  "alkyl sulfate"
+  "alkyl sulfate",
+  "alkyl sulphate"
+
 ]
 
 

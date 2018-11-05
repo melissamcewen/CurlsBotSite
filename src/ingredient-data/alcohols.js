@@ -63,7 +63,10 @@ const good = [
   "cinnamic alcohol",
   "behenyl alcohol",
   "pantothenyl alcohol",
-  "coconut alcohol"
+  "coconut alcohol",
+  "butylene alcohol",
+  //misspellings
+  "steoryl alcohol"
 ]
 
 // Possibly bad or caution

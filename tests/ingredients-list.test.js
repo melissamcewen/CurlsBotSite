@@ -156,3 +156,13 @@ test('Analyse witch hazel with misspelling in Replenish Conditioning Spray', () 
   expect(detector(results)).toEqual("caution");
 
 });
+
+
+test('Analyse As I Am Olive & Tea Tree Oil Leave-In Conditioner', () => {
+  var list = "Aqua/Water/Eau, Glycerin, Aloe Barbadensis Leaf Juice, Betaine, Cetearyl Alcohol, Olea Europaea (Olive) Fruit Oil, Cocos Nucifera (Coconut) Oil, Melaleuca Alternifolia (Tea Tree) Leaf Oil, Linum Usitatissimum (Linseed) Seed Extract, Quaternium-18, Polysorbate 60, Mentha Piperita (Peppermint) Oil, Fragrance/Parfum, Polyquaternium-37, Phenoxyethanol, Caprylyl Glycol, Propylene Glycol Dicaprylate/Dicaprate, Piroctone Olamine, Phytosterols, Quaternium-80, Propanediol, Polyacrylamide, PPG-1 Trideceth-6, Citric Acid, Laureth-9, PEG-8, Ceramide NG, PEG-3 Distearate, Sodium Lauroyl Lactylate, Coconut Fatty Acids, Sodium Lauroyl Glutamate, Sodium Cocoyl Isethionate, Ceteareth-25, Disodium Ethylene Dicocamide PEG-15 Disulfate, Methyl Ionone, Benzyl Salicylate, Citronellol, Coumarin, Limonene, Geraniol, Hexyl Cinnamal, Hydroxy Citronellal, Lilial, Linalool";
+  var expected =  {"alcohol": {"bad": [], "caution": [], "good": ["cetearyl alcohol"], "unknown": []}, "other": {"bad": [], "caution": [], "good": [], "unknown": []}, "silicones": {"bad": [], "caution": [], "good": [], "unknown": []}, "sulfates": {"bad": [], "caution": [], "good": ["sodium lauroyl lactylate", "sodium lauroyl glutamate", "sodium cocoyl isethionate"], "unknown": []}, "wax": {"bad": [], "caution": [], "good": [], "unknown": []}};
+  var results = analyze(list);
+  expect(analyze(list)).toEqual(expected);
+  expect(detector(results)).toEqual("good");
+
+});

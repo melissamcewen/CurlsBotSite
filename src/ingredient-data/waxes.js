@@ -1,4 +1,4 @@
-var unknown = [
+let unknown = [
   "wax",
   "cire",
   "cera",
@@ -14,7 +14,7 @@ var unknown = [
 
 ]
 
-var bad = [
+let bad = [
   "bees wax",
   "beeswax",
   "candelia wax",
@@ -30,7 +30,7 @@ var bad = [
 ];
 
 // hmm maybe I need to refactor to remove hyphens haha
-var good = [
+let good = [
   "peg-8 beeswax",
   "emulsifying wax",
   "emulsifying wax nf",
@@ -38,11 +38,14 @@ var good = [
   "peg-75 lanolin"
 ];
 
-var not = [
+let not = [
   "lonincera",
   "lonicera",
   "acetylated lanolin alcohol",
-  "lanolin alcohol"
+  "lanolin alcohol",
+  "ceramide ng",
+  "ceramides",
+  "ceramide"
 ]
 
 
