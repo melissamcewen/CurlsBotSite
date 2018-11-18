@@ -10,8 +10,9 @@ let unknown = [
   "isohexanedecane",
   "isododecane",
   "dodecene",
-  "dodecane"
-
+  "dodecane",
+  "isohexad",
+  "shellac"
 ]
 
 let bad = [

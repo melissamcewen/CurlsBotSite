@@ -78,32 +78,21 @@ const bad = [
 ]
 
 const caution = [
-// TODO UGH GUESS I COULD REGEX THIS
+// should catch them all
+  "olefin sulfonate",
+  "oliefin sulfonate",
 // 14-16
   "sodium c14-16 olefin sulfonate", 
-  "sodium c14 16 olefin sulfonate",
-  "sodium (c-14-16) olefin sulfonate",
-  "sodium c14-16 oliefin sulfonate",
 // 14-15
   "sodium c14-15 olefin sulfonate", 
-  "sodium c14 15 olefin sulfonate",
-  "sodium (c-14-15) olefin sulfonate",
-  "sodium c14-15 oliefin sulfonate",
 // 12-14
   "sodium c12-14 olefin sulfonate",
-  "sodium c12 14 olefin sulfonate",
 // 14-26
   "sodium c14-26 olefin sulfonate",
-  "sodium c14 26 olefin sulfonate",
 //14-18
   "sodium c 14-18 olefin sulfonate",
-  "sodium c14-18 olefin sulfonate",
-  "sodium c 14 18 olefin sulfonate",
 // 16-18
   "sodium c 16-18 olefin sulfonate",
-  "sodium c16-18 olefin sulfonate",
-  "sodium c 16 18 olefin sulfonate",
-  "sodium olefin sulfonate",
   //unknown how harsh this is- previously listed as non-cg
   "sodium cocoyl sarcosinate",
   "sodium lauroyl sarcosinate",
@@ -167,10 +156,6 @@ const partials = [
 // "ammonium lauryl sulfate", TEA lauryl sulfate, sodium lauryl sulfate
   "lauryl sulfate",
   "lauryl sulphate",
-// (Sodium) C14-16 Olefin Sulfonate
-  "olefin sulfonate",
-  "sodium c14-16",
-  "sodium c1416",
 //"sodium cetearyl sulfate"
   "cetearyl sulfate",
   "cetearyl sulphate",
@@ -196,9 +181,9 @@ const partials = [
 //sodium lauryl sulfate, sodium lauryl sulfoacetate
   "sodium lauryl",
 //"sodium myreth sulfate"
- "sodium myreth",
- "myreth sulfate",
- "myreth sulphate",
+  "sodium myreth",
+  "myreth sulfate",
+  "myreth sulphate",
 
  // "sodium lauroyl methyl isethionate"
   "sodium lauroyl",

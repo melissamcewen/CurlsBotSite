@@ -9,7 +9,6 @@ let unknown = [
   "silylate",
   "silsesquioxane",
   "siloxysilicate",
-  "poloxamer",
   "microsil"
   ];
 

@@ -8,6 +8,7 @@ import cleansers from '../ingredient-data/cleansers';
 function sulfates(source){
   let list = cleaner(source);
   let detected = [];
+  console.log("test");
 
   // first let's see if anything is detected that might contain the bad sulfates
 
