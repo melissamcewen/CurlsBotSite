@@ -78,11 +78,11 @@ test('analyze Ulta Total Textures kit correctly', () => {
 
 test('analyze Shea soap bar correctly', () => {
   var list = "Sodium Palmate, Sodium Palm Kernelate, Water, Glycerin (Vegetable), Fragrance (Essential Oil Blend), Sodium Gluconate, Butyrospermum Parkii (Shea) Butter*♥, Xanthan Gum, Palm Acid, Bentonite, Moroccan Lava Clay, Cocos Nucifera (Coconut) Oil, Sodium Chloride, Kaolinite, Palm Kernel Acid, Adansonia Digitata Seed Oil, Trichilia Emetica Seed Butter, Rosmarinus Officinalis (Rosemary) Leaf Extract, Ficus Carica (Fig) Fruit Extract *Certified Organic Ingredient ♥Fair Trade Ingredient";
-  var expected = {"alcohol": {"bad": [], "caution": [], "good": [], "unknown": []}, "other": {"bad": ["soap"], "caution": [], "good": [], "unknown": []}, "silicones": {"bad": [], "caution": [], "good": [], "unknown": []}, "sulfates": {"bad": [], "caution": [], "good": [], "unknown": []}, "wax": {"bad": [], "caution": [], "good": [], "unknown": []}};
+  var expected = {"alcohol": {"bad": [], "caution": [], "good": [], "unknown": []}, "other": {"bad": [], "caution": ["soap"], "good": [], "unknown": []}, "silicones": {"bad": [], "caution": [], "good": [], "unknown": []}, "sulfates": {"bad": [], "caution": [], "good": [], "unknown": []}, "wax": {"bad": [], "caution": [], "good": [], "unknown": []}};
 
   var results = analyze(list);
   expect(analyze(list)).toEqual(expected);
-  expect(detector(results)).toEqual("bad");
+  expect(detector(results)).toEqual("caution");
 
 });
 
@@ -164,5 +164,15 @@ test('Analyse As I Am Olive & Tea Tree Oil Leave-In Conditioner', () => {
   var results = analyze(list);
   expect(analyze(list)).toEqual(expected);
   expect(detector(results)).toEqual("good");
+
+});
+
+
+test('Dr. Bronner\'s Pure Castile Liquid Soap Hemp Tea Tree', () => {
+  var list = "Water, Organic Coconut Oil*, Potassium Hydroxide**, Organic Palm Kernel Oil*, Organic Olive Oil*, Tea Tree Extract, Organic Hemp Oil, Organic Jojoba Oil, Citric Acid, Tocopherol";
+  var expected =  {"alcohol": {"bad": [], "caution": [], "good": [], "unknown": []}, "other": {"bad": [], "caution": ["soap"], "good": [], "unknown": []}, "silicones": {"bad": [], "caution": [], "good": [], "unknown": []}, "sulfates": {"bad": [], "caution": [], "good": [], "unknown": []}, "wax": {"bad": [], "caution": [], "good": [], "unknown": []}};
+  var results = analyze(list);
+  expect(analyze(list)).toEqual(expected);
+  expect(detector(results)).toEqual("caution");
 
 });

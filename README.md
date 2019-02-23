@@ -4,6 +4,11 @@ Originally a FB bot, now migrated to a gatsby website.
 
 # Todo
 
-- tests
-- refactor index.js
+- API!
 
+
+## How to update
+
+- test with ` gatsby develop` and then `npm test`
+- commit to git
+- run  `npm run deploy`

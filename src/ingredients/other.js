@@ -20,7 +20,7 @@ function analysis(source){
   }); 
   
   if (soap.length > 0) {
-    results.bad.push("soap");
+    results.caution.push("soap");
   }
 
   var witch = source.filter( function( el ) {
