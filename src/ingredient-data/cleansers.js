@@ -35,6 +35,10 @@ const bad = [
 "sodium coco-sulfate",
 "sodium coco-sulphate",
 
+"sodium coceth sulfate",
+"sodium coceth sulphate",
+
+
 "ammonium laureth sulfate",
 "ammonium laureth sulphate",
 
@@ -169,6 +173,8 @@ const partials = [
   "coco-sulphate",
   "coco sulphate",
   "cocoyl sulphate",
+  "coceth sulfate",
+  "coceth sulphate",
 
 //ammonium Laureth Sulfate, sodium Laureth Sulfate
   "laureth sulfate",
