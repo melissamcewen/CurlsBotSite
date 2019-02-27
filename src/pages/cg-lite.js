@@ -49,7 +49,7 @@ const litePage = () => (
 
         <Card body>
             <CardTitle>Could Hard Water Make Buildup Worse?</CardTitle>
-           <CardText>Another thing to consider is hard water. If your water is hard, it can turn products that are normally pretty light into oily buildup. Visit our  <Link to="hard-water">hard water</Link> page for more info. </CardText>
+           <CardText>Another thing to consider is hard water. If your water is hard, it can turn products that are normally pretty light into oily buildup. Visit our  <Link to="/hard-water/">hard water</Link> page for more info. </CardText>
         </Card>
 
 
