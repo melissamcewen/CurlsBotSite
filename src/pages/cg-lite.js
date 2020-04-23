@@ -10,14 +10,14 @@ import { Card, CardTitle, CardText, CardSubtitle} from 'reactstrap'
 const litePage = () => (
   <div>
     <Helmet
-      title="Curly Girl Lite"
+      title="curly hair Lite"
       meta={[
         { name: 'description', content: 'Products that won\'t leave your hair greasy' },
-        { name: 'keywords', content: 'products, greasy hair, fine hair, low porosity, wavy hair curly girl' },
+        { name: 'keywords', content: 'products, greasy hair, fine hair, low porosity, wavy hair curly hair' },
       ]}
     />
-    <h1>Curly Girl = Greasy Hair? </h1>
-    <p>One of the most common issues I see in the  <ReactGA.OutboundLink eventLabel="https://www.wikihow.com/Follow-the-Curly-Girl-Method-for-Curly-Hair" to="https://www.wikihow.com/Follow-the-Curly-Girl-Method-for-Curly-Hair" target="_blank">curly girl community </ReactGA.OutboundLink> is greasy hair. Some people say it is just your hair "getting used to it," but I don't think so. I think a lot of is caused by using products that are too heavy for your hair. If your hair is any of the following:</p>
+    <h1>curly hair = Greasy Hair? </h1>
+    <p>One of the most common issues I see in the  <ReactGA.OutboundLink eventLabel="https://www.wikihow.com/Follow-the-Curly-Girl-Method-for-Curly-Hair" to="https://www.wikihow.com/Follow-the-Curly-Girl-Method-for-Curly-Hair" target="_blank">curly hair community </ReactGA.OutboundLink> is greasy hair. Some people say it is just your hair "getting used to it," but I don't think so. I think a lot of is caused by using products that are too heavy for your hair. If your hair is any of the following:</p>
       <ul>
         <li>Fine</li>
         <li>Wavy</li>

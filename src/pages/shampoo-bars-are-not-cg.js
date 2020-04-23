@@ -14,17 +14,17 @@ import ResultListing from '../components/analyzer/resultlisting'
 const bars = () => (
   <div>
     <Helmet
-      title="Are Shampoo Bars and Soaps Curly Girl?"
+      title="Are Shampoo Bars and Soaps curly hair?"
       meta={[
-        { name: 'description', content: 'Soap, shampoo bars, and the curly girl method' },
-        { name: 'keywords', content: 'products, curly girl, shampoo bars, ph balance, sulfates' },
+        { name: 'description', content: 'Soap, shampoo bars, and the curly hair method' },
+        { name: 'keywords', content: 'products, curly hair, shampoo bars, ph balance, sulfates' },
         {
           property: 'og:image',
           content: 'http://www.curlsbot.com/img/icon.png'
         }
       ]}
     />
-    <h1>Soap, Shampoo Bars + Curly Girl</h1>
+    <h1>Soap, Shampoo Bars + curly hair</h1>
     <h2>Summary</h2>
     <ul>
       <li>Soap is made from saponification of oils/fats</li>

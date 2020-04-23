@@ -17,17 +17,17 @@ import ResultListing from '../components/analyzer/resultlisting';
 const list = () => (
   <div>
     <Helmet
-      title="Curlsbot List of Curly Girl Ingredients"
+      title="Curlsbot List of curly hair Ingredients"
       meta={[
-        { name: 'description', content: 'Full list of curly girl and non-curly girl ingredients' },
-        { name: 'keywords', content: 'products, curly girl' },
+        { name: 'description', content: 'Full list of curly hair and non-curly hair ingredients' },
+        { name: 'keywords', content: 'products, curly hair' },
         {
           property: 'og:image',
           content: 'http://www.curlsbot.com/img/icon.png'
         }
       ]}
     />
-    <h1>Curlsbot List of Curly Girl Ingredients</h1>
+    <h1>Curlsbot List of curly hair Ingredients</h1>
 
     <h2>Silicones</h2>
     <h3>Avoid</h3>
@@ -38,7 +38,7 @@ const list = () => (
 
     <em>So for example "dimethiconol" is forbidden because it contains "dimethicon"</em>
     <h3>Caution</h3>
-    <p>Any silicones that start with these words are water soluble, so they should wash out with cowashing. Some believe they are OK but Lorraine Massey has said to avoid them. It's up to you:</p>
+    <p>Any silicones that start with these words are water soluble, so they should wash out with cowashing. Some believe they are OK but others say to avoid them. It's up to you:</p>
     <ul>
         <ResultListing list={silicones.good.sort()}/>
     </ul>
@@ -86,7 +86,7 @@ const list = () => (
     </ul>
 
     <h3>Parabens</h3>
-    <p> Lorraine Massey cautions against these in the Curly Girl Handbook saying "In recent years, they’ve become controversial as experts question whether they are safe. (Some say they may be linked to cancer.)" We recommend we do your own research. </p>
+    <p> Lorraine Massey cautions against these in the curly hair <a href="https://amzn.to/2Y0pqDb">Handbook</a> saying "In recent years, they’ve become controversial as experts question whether they are safe. (Some say they may be linked to cancer.)" We recommend we do your own research. </p>
 
     <h3>Witch Hazel</h3>
     <p>Most types of witch hazel contain alcohol. Contact the manufacturer to see if the witch hazel in this product contains alcohol. Even if it does not contain alcohol, many people find witch hazel drying. Use with caution if you have hair prone to dryness. </p>

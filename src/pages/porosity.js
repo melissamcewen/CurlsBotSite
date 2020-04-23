@@ -169,10 +169,10 @@ class porosity extends React.Component {
     return (
       <div className="App">
             <Helmet
-      title="Curly Girl Porosity Test"
+      title="curly hair Porosity Test"
       meta={[
         { name: 'description', content: 'An easy quiz for determining hair porosity' },
-        { name: 'keywords', content: 'products, curly girl, hair porosity, low porosity, high porosity' },
+        { name: 'keywords', content: 'products, curly hair, hair porosity, low porosity, high porosity' },
       ]}
     />
         <div className="App-header">

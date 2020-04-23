@@ -10,11 +10,11 @@ const hpPage = () => (
       title="High Porosity Products"
       meta={[
         { name: 'description', content: 'Products to nourish damaged, dry, and moisture hungry hair' },
-        { name: 'keywords', content: 'products, high porosity, dry hair, curly girl' },
+        { name: 'keywords', content: 'products, high porosity, dry hair, curly hair' },
       ]}
     />
     <h1>High Porosity Recs </h1>
-    <p>If you're <ReactGA.OutboundLink eventLabel="https://www.wikihow.com/Follow-the-Curly-Girl-Method-for-Curly-Hair" to="https://www.wikihow.com/Follow-the-Curly-Girl-Method-for-Curly-Hair" target="_blank">curly girl  </ReactGA.OutboundLink> and have high porosity hair, you need a lot of nourishment. Often high porosity hair is:</p>
+    <p>If you're <ReactGA.OutboundLink eventLabel="https://www.wikihow.com/Follow-the-Curly-Girl-Method-for-Curly-Hair" to="https://www.wikihow.com/Follow-the-Curly-Girl-Method-for-Curly-Hair" target="_blank">curly hair  </ReactGA.OutboundLink> and have high porosity hair, you need a lot of nourishment. Often high porosity hair is:</p>
       <ul>
         <li>Previously chemically processed</li>
         <li>Constantly dry</li>

@@ -16,7 +16,7 @@ const Works = () => (
       title="How Curlsbot Works"
       meta={[
         { name: 'description', content: 'How Curlsbot works' },
-        { name: 'keywords', content: 'products, curly girl' },
+        { name: 'keywords', content: 'products, curly hair' },
         {
           property: 'og:image',
           content: 'http://www.curlsbot.com/img/icon.png'
@@ -37,8 +37,8 @@ const Works = () => (
      <h2>4. Why can't Curlsbot read my list?</h2>
       <p>Curlsbot can only read comma seperated lists like "ingredient 1, ingredient 2, ingredient 3." It cannot read lists like "ingredient 1/ingredient 2/ ingredient 3" or those seperated by line breaks. There are some tools online that can fix the list for you or you can do it yourself. </p>
 
-      <h2>5. Can you tell me if this picture is Curly Girl approved?</h2>
-      <p>Curlsbot cannot read pictures. If you send them to me I also cannot read them because it's not accurate to just have one person look at a bottle and often the picture is blurry. I recommend you find a list from the manufacturer's or a store website OR post the picture on one of the curly girl groups listed in our <Link to="/resources/" >resources page.</Link></p>
+      <h2>5. Can you tell me if this picture is curly hair approved?</h2>
+      <p>Curlsbot cannot read pictures. If you send them to me I also cannot read them because it's not accurate to just have one person look at a bottle and often the picture is blurry. I recommend you find a list from the manufacturer's or a store website OR post the picture on one of the curly hair groups listed in our <Link to="/resources/" >resources page.</Link></p>
 
       <h2>6. What does it mean if it says "Caution"?</h2>
       <p>We recommend you do your own research since many experts disagree on some ingredients. You can find helpful advice on many CG groups listed on our <Link to="/resources/" >resources page.</Link></p>

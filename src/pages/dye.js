@@ -7,18 +7,18 @@ import ReactGA from 'react-ga'
 const dyePage = () => (
   <div>
     <Helmet
-      title="Curly Girl Dye Options"
+      title="curly hair Dye Options"
       meta={[
-        { name: 'description', content: 'Curly girl friendly hair dye options' },
-        { name: 'keywords', content: 'products, curly girl, hair dye, sulfate-free, silicone-free, henna' },
+        { name: 'description', content: 'curly hair friendly hair dye options' },
+        { name: 'keywords', content: 'products, curly hair, hair dye, sulfate-free, silicone-free, henna' },
         {
               property: 'og:image',
               content: 'http://www.curlsbot.com/img/icon.png'
         }
       ]}
     />
-    <h1>Curly Girl Dye Options </h1>
-    <p>Many people want to follow the  <ReactGA.OutboundLink eventLabel="https://www.wikihow.com/Follow-the-Curly-Girl-Method-for-Curly-Hair" to="https://www.wikihow.com/Follow-the-Curly-Girl-Method-for-Curly-Hair" target="_blank">curly girl method </ReactGA.OutboundLink> but do not want to give up dying their hair. Most hair dyes contain harsh ingredients that may damage hair. In addition, many contain silicones that can deposit on your hair. Luckily there are several good options:</p>
+    <h1>curly hair Dye Options </h1>
+    <p>Many people want to follow the  <ReactGA.OutboundLink eventLabel="https://www.wikihow.com/Follow-the-Curly-Girl-Method-for-Curly-Hair" to="https://www.wikihow.com/Follow-the-Curly-Girl-Method-for-Curly-Hair" target="_blank">curly hair method </ReactGA.OutboundLink> but do not want to give up dying their hair. Most hair dyes contain harsh ingredients that may damage hair. In addition, many contain silicones that can deposit on your hair. Luckily there are several good options:</p>
     <h2>Pure Henna (and other herbal dyes)</h2>
     <p>Henna and other herbal dyes (indigo, cassia) are completely CG-friendly. They also do not do any damage to the hair. The disadvantage is it can be hard to predict the results, there is a learning curve for using them, and the color options are more limited.</p>
 

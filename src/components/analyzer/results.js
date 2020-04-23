@@ -54,7 +54,7 @@ import { Button, Form, FormGroup, Label, Input, FormText, Card, CardTitle, CardT
           {results.silicones.caution.length > 0 &&
             <Card body outline color="warning">
             <CardTitle>Water Soluble Silicones</CardTitle>
-            <CardSubtitle>These silicones are water soluble because they contain the prefixes ppg or peg. They may be fine for many people, but Lorraine Massey says <a href="https://www.facebook.com/eligenuario/photos/a.1108591662605744.1073741828.1108572312607679/1229058860559023/?type=3&theater">she doesn't recommend using them:</a></CardSubtitle>
+            <CardSubtitle>These silicones are water soluble because they contain the prefixes ppg or peg. They may be fine for many people, but some curly hair experts don't recommend them.</CardSubtitle>
             <CardText><ResultListing list={results.silicones.caution}/></CardText>
             </Card>
           }
@@ -71,7 +71,7 @@ import { Button, Form, FormGroup, Label, Input, FormText, Card, CardTitle, CardT
           {results.sulfates.bad.length > 0 && 
            <Card body outline color="danger">
            <CardTitle>Harsh Sulfates or other Detergents detected</CardTitle>
-           <CardSubtitle>Yikes! These are either sulfates or other harsh non-sulfate detergents that the curly girl community considers drying. See our <Link to="/cleansers" className="btn btn-secondary">cleansers article for more info</Link>:</CardSubtitle>
+           <CardSubtitle>Yikes! These are either sulfates or other harsh non-sulfate detergents that the curly hair community considers drying. See our <Link to="/cleansers" className="btn btn-secondary">cleansers article for more info</Link>:</CardSubtitle>
            <CardText><ResultListing list={results.sulfates.bad}/>
 
            </CardText>
@@ -101,8 +101,8 @@ import { Button, Form, FormGroup, Label, Input, FormText, Card, CardTitle, CardT
 
         {results.sulfates.good.length > 0 && 
           <Card body outline color="success">
-          <CardTitle>Curly Girl Approved Cleansers</CardTitle>
-          <CardSubtitle>These are considered gentle by most of the curly girl community:</CardSubtitle>
+          <CardTitle>curly hair Approved Cleansers</CardTitle>
+          <CardSubtitle>These are considered gentle by most of the curly hair community:</CardSubtitle>
           <CardText><ResultListing list={results.sulfates.good}/></CardText>
           </Card>
         }
@@ -111,7 +111,7 @@ import { Button, Form, FormGroup, Label, Input, FormText, Card, CardTitle, CardT
         {results.alcohol.bad.length > 0 && 
           <Card body outline color="danger">
           <CardTitle>Harsh Alcohols Detected</CardTitle>
-          <CardSubtitle>These alcohols will dry out your hair, they are not curly girl approved:</CardSubtitle>
+          <CardSubtitle>These alcohols will dry out your hair, they are not curly hair approved:</CardSubtitle>
           <CardText><ResultListing list={results.alcohol.bad}/>
 
           </CardText>
@@ -121,8 +121,8 @@ import { Button, Form, FormGroup, Label, Input, FormText, Card, CardTitle, CardT
 
         {results.alcohol.good.length > 0 && 
           <Card body outline color="success">
-          <CardTitle>Curly Girl Approved Alcohols</CardTitle>
-          <CardSubtitle>These alcohols won't dry our your hair, they are curly girl approved:</CardSubtitle>
+          <CardTitle>curly hair Approved Alcohols</CardTitle>
+          <CardSubtitle>These alcohols won't dry our your hair, they are curly hair approved:</CardSubtitle>
           <CardText><ResultListing list={results.alcohol.good}/></CardText>
           </Card>
         }
@@ -148,7 +148,7 @@ import { Button, Form, FormGroup, Label, Input, FormText, Card, CardTitle, CardT
 
         {results.wax.bad.length > 0 && 
           <Card body outline color="danger">
-          <CardTitle>Non-Curly Girl Waxes and Oils Detected </CardTitle>
+          <CardTitle>Non-curly hair Waxes and Oils Detected </CardTitle>
           <CardSubtitle>These waxes and oils can cause buildup that is difficult to remove and keeps your hair from absorbing moisture properly:</CardSubtitle>
           <CardText><ResultListing list={results.wax.bad}/>
 
@@ -175,7 +175,7 @@ import { Button, Form, FormGroup, Label, Input, FormText, Card, CardTitle, CardT
 
 
           {parabens && <div>
-            <strong>Parabens</strong>: Lorraine Massey cautions against these in the Curly Girl Handbook saying "In recent years, they’ve become controversial as experts question whether they are safe. (Some say they may be linked to cancer.)" We recommend we do your own research. 
+            <strong>Parabens</strong>: Lorraine Massey cautions against these in the curly hair <a href="https://amzn.to/2Y0pqDb">Handbook</a> saying "In recent years, they’ve become controversial as experts question whether they are safe. (Some say they may be linked to cancer.)" We recommend we do your own research. 
             </div> }
 
             {witch && <div>

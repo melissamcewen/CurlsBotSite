@@ -41,7 +41,7 @@ const Footer = () => (
       }}
     >
 
-      <small>Some links on Curlsbot are Amazon Affiliates links. Shopping through these links supports the further development of Curlsbot.</small>
+      <small>This web site is not endorsed by, directly affiliated with, maintained, authorized, or sponsored by The Curly Girl Method by Lorraine Massey™️. Some links on Curlsbot are Amazon Affiliates links. Shopping through these links supports the further development of Curlsbot.</small>
     </div>
   </div>
 )
@@ -78,7 +78,7 @@ export default class TemplateWrapper extends React.Component {
           title="CurlsBot"
           meta={[
             { name: 'description', content: 'A hair care chatbot!' },
-            { name: 'keywords', content: 'chatbots, curly girl' },
+            { name: 'keywords', content: 'chatbots, curly hair' },
             {
               property: 'og:image',
               content: 'http://www.curlsbot.com/img/icon.png'

@@ -10,11 +10,11 @@ const npPage = () => (
       title="Normal Porosity Products"
       meta={[
         { name: 'description', content: 'Products to balance healthy hair' },
-        { name: 'keywords', content: 'products, normal porosity, curly girl' },
+        { name: 'keywords', content: 'products, normal porosity, curly hair' },
       ]}
     />
     <h1>Normal Porosity Products </h1>
-    <p>If you're <ReactGA.OutboundLink eventLabel="https://www.wikihow.com/Follow-the-Curly-Girl-Method-for-Curly-Hair" to="https://www.wikihow.com/Follow-the-Curly-Girl-Method-for-Curly-Hair" target="_blank">curly girl  </ReactGA.OutboundLink> and have normal porosity hair, your hair should be pretty easy to care for. </p>
+    <p>If you're <ReactGA.OutboundLink eventLabel="https://www.wikihow.com/Follow-the-Curly-Girl-Method-for-Curly-Hair" to="https://www.wikihow.com/Follow-the-Curly-Girl-Method-for-Curly-Hair" target="_blank">curly hair  </ReactGA.OutboundLink> and have normal porosity hair, your hair should be pretty easy to care for. </p>
 
       <p>Chose products that both cleanse lightly and nourish. Use co-wash most days and then use a light sulfate free shampoo (AKA a low-poo) once a week to make sure your hair is balanced. Use styling products that are lightly moisturizing and provide a good hold. The following products are enough for most people:</p>
       <ul>

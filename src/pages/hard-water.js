@@ -7,18 +7,18 @@ import ReactGA from 'react-ga'
 const hardWater = () => (
   <div>
     <Helmet
-      title="Hard Water + Curly Girl"
+      title="Hard Water + Curly Hair"
       meta={[
-        { name: 'description', content: 'Your oily scalp on curly girl might be caused by hard water' },
-        { name: 'keywords', content: 'products, hard water, buildup curly girl' },
+        { name: 'description', content: 'Your oily scalp on curly hair might be caused by hard water' },
+        { name: 'keywords', content: 'products, hard water, buildup curly hair' },
         {
           property: 'og:image',
           content: 'http://www.curlsbot.com/img/icon.png'
         }
       ]}
     />
-    <h1>Hard Water + Curly Girl </h1>
-    <p>If you're <ReactGA.OutboundLink eventLabel="https://www.wikihow.com/Follow-the-Curly-Girl-Method-for-Curly-Hair" to="https://www.wikihow.com/Follow-the-Curly-Girl-Method-for-Curly-Hair" target="_blank">curly girl  </ReactGA.OutboundLink> and are frustrated with buildup even after switching to <Link to="cg-lite">lighter products</Link>, you may have hard water. </p>
+    <h1>Hard Water + Curly Hair </h1>
+    <p>If you're <ReactGA.OutboundLink eventLabel="https://www.wikihow.com/Follow-the-Curly-Girl-Method-for-Curly-Hair" to="https://www.wikihow.com/Follow-the-Curly-Girl-Method-for-Curly-Hair" target="_blank">following a curly hair method  </ReactGA.OutboundLink> and are frustrated with buildup even after switching to <Link to="cg-lite">lighter products</Link>, you may have hard water. </p>
 
     <h2>What is hard water?</h2>
     <p><a href="https://en.wikipedia.org/wiki/Hard_water">Hard water</a> has high mineral content. You know you have hard water if you get white buildup on things like faucets or tea kettles. Or you get lots of soap scum in the tub or shower that's hard to scrub off. <a href="http://homewater101.com/articles/hard-water-across-us">Check out this map of the USA, most states seem to have pretty hard water</a> If you're in doubt, <ReactGA.OutboundLink eventLabel="http://amzn.to/2CufGmr" to="http://amzn.to/2CufGmr" target="_blank">you can order hard water test strips.</ReactGA.OutboundLink> </p>
