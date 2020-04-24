@@ -1,2 +1,2 @@
-webpackJsonp([0xfebd3289bdf5],{416:function(t,e){t.exports={pathContext:{}}}});
+webpackJsonp([0xfebd3289bdf5],{"./node_modules/json-loader/index.js!./.cache/json/curly-girl-ingredient-list.json":function(e,n){e.exports={pathContext:{}}}});
 //# sourceMappingURL=path---curly-girl-ingredient-list-a0e39f21c11f6a62c5ab.js.map

@@ -1,2 +1,2 @@
-webpackJsonp([54416223813370],{414:function(t,n){t.exports={pathContext:{}}}});
+webpackJsonp([54416223813370],{"./node_modules/json-loader/index.js!./.cache/json/cg-lite.json":function(o,e){o.exports={pathContext:{}}}});
 //# sourceMappingURL=path---cg-lite-a0e39f21c11f6a62c5ab.js.map
