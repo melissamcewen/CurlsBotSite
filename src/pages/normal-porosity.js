@@ -37,6 +37,7 @@ const npPage = () => (
       <h2>Low Poo</h2>
       <p>Normal porosity hair can usually benefit from some more deep cleansing to balance it out. Use a low-poo once a week to get your hair clean and refreshed:</p>
       <ul>
+      <li><ReactGA.OutboundLink eventLabel="https://verellecos.com/products/hydrating-hairwash?utm_medium=prospecting&utm_source=affiliate&utm_content=curlyshamp&utm_campaign=curlsbot" to="https://verellecos.com/products/hydrating-hairwash?utm_medium=prospecting&utm_source=affiliate&utm_content=curlyshamp&utm_campaign=curlsbot" target="_blank"> Verelle - Hydrating Sulfate-Free Hairwash $$ <subscript>1</subscript></ReactGA.OutboundLink></li>
         <li><ReactGA.OutboundLink eventLabel="http://amzn.to/2Bo2pPG" to="http://amzn.to/2Bo2pPG" target="_blank"> Innersense - Organic Color Awakening Hair Bath $$$</ReactGA.OutboundLink></li>
         <li><ReactGA.OutboundLink eventLabel="http://amzn.to/2AfVRPs" to="http://amzn.to/2AfVRPs" target="_blank">Giovanni 50:50 Balanced Shampoo $</ReactGA.OutboundLink></li>
       </ul>
@@ -46,6 +47,7 @@ const npPage = () => (
       <h2>Nourishing Styler</h2>
       <p>A nourshing styler helps further nourish your hair. Most of these are classified as milks, creams, or leave ins. </p>
      <ul>
+        <li><ReactGA.OutboundLink eventLabel="https://verellecos.com/products/wavy-all-in-one-cream-v2?utm_medium=prospecting&utm_source=affiliate&utm_content=curlcream&utm_campaign=curlsbot" to="https://verellecos.com/products/wavy-all-in-one-cream-v2?utm_medium=prospecting&utm_source=affiliate&utm_content=curlcream&utm_campaign=curlsbot" target="_blank"> All-In-One Curl Cream for Wavy Hair by Verelle $$ <subscript>1</subscript></ReactGA.OutboundLink></li>
         <li><ReactGA.OutboundLink eventLabel="http://amzn.to/2yjHQ1r" to="http://amzn.to/2yjHQ1r" target="_blank"> Innersense Sweet Spirit Leave-In Conditioner $$$</ReactGA.OutboundLink></li>
         <li><ReactGA.OutboundLink eventLabel="http://amzn.to/2APaD0N" to="http://amzn.to/2APaD0N" target="_blank">Shea Moisture Coconut & Hibiscus Curl & Style Milk $$</ReactGA.OutboundLink></li>
         <li>Garnier Fructis Curl Sculpting Cream Gel $- CAUTION earlier formulations contain dimethicone, so make sure you're getting the new one by checking the ingredient list</li>
@@ -60,7 +62,8 @@ const npPage = () => (
         <li> <ReactGA.OutboundLink eventLabel="http://amzn.to/2zTIvbs" to="http://amzn.to/2zTIvbs" target="_blank">Aussie Instant Freeze Gel $ </ReactGA.OutboundLink></li>
       </ul>
 
-      
+
+      <subscript>1</subscript>: Verelle sent me some of their products to try
 
 
 

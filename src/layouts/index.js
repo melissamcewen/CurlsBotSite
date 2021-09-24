@@ -41,7 +41,7 @@ const Footer = () => (
       }}
     >
 
-      <small>This web site is not endorsed by, directly affiliated with, maintained, authorized, or sponsored by The Curly Girl Method by Lorraine Massey™️. Some links on Curlsbot are Amazon Affiliates links. Shopping through these links supports the further development of Curlsbot.</small>
+      <small>This web site is not endorsed by, directly affiliated with, maintained, authorized, or sponsored by The Curly Girl Method by Lorraine Massey™️. Some links on Curlsbot are Amazon Affiliate or Verelle Affiliate links. Shopping through these links supports the further development of Curlsbot.</small>
     </div>
   </div>
 )
@@ -86,7 +86,7 @@ export default class TemplateWrapper extends React.Component {
           ]}
         >
           <meta name="google-site-verification" content="vFMnYOqnsQwevkYo--zeevG2gat6gN-QAqbauxy1N7A" />
-         
+
       </Helmet>
         <Header />
         <div

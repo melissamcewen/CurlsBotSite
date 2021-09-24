@@ -25,11 +25,11 @@ class Verdict extends React.Component {
     return (
       <div >
 
-      
+
       {detect == "bad" &&
         <Card body inverse color="danger">
-            <CardTitle>Result: Not Curly Girl Approved</CardTitle>
-           <CardText>My final verdict? Looks like this product is NOT curly girl approved. Try checking out one of our recommend products like  <ProductListing /> or take our  <Link to="/porosity/" className="btn btn-secondary">porosity quiz</Link> for customized recommendations.</CardText>
+            <CardTitle>Result: Might Not Be Good For Curls</CardTitle>
+           <CardText>My final verdict? Looks like this product does not fit into most curly/wavy routine recommendations. Try checking out one of our recommend products like  <ProductListing /> or take our  <Link to="/porosity/" className="btn btn-secondary">porosity quiz</Link> for customized recommendations.</CardText>
         </Card>
       }
 

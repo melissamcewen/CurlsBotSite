@@ -24,7 +24,7 @@ const litePage = () => (
         <li>Low porosity</li>
       </ul>
 
-      <p>You may need lighter products. Think about last time you spilled oil on clothing. Hard to get out right? When you use oily products you're doing the same thing to your hair. 
+      <p>You may need lighter products. Think about last time you spilled oil on clothing. Hard to get out right? When you use oily products you're doing the same thing to your hair.
     </p>
 
      <p>Some common <em>oily</em> product lines include:</p>
@@ -37,7 +37,7 @@ const litePage = () => (
 
       <p>Using lighter products will help your hair curl or wave better, and prevent it from looking greasy.</p>
 
-      <p>Some people (like me!) also have naturally oily skin, which means that oily products just contribute to the problem. Removing them and adding in a sulfate-free cleanser (often called a low-poo) can make a huge difference.</p> 
+      <p>Some people (like me!) also have naturally oily skin, which means that oily products just contribute to the problem. Removing them and adding in a sulfate-free cleanser (often called a low-poo) can make a huge difference.</p>
 
       <p>Another way to lighten up your routine is limit your styling products to 1-2 products. Lighter products are mostly gels and mousses rather than creams and leave ins. My own routine is:</p>
       <ul>
@@ -58,18 +58,21 @@ const litePage = () => (
       <h1>Oil Free Products</h1>
       <p>These are the lightest products. They provide ample slip and moisture without oils or butters. </p>
 
+      <h2>Verelle $$$</h2>
+      <p>Verelle sent me some of their products to try and even though some of them contained some oil, I found they worked quite well on my oily wavy hair.</p>
+      <ul>
+          <li>Cleanser:
+            <ReactGA.OutboundLink eventLabel="https://verellecos.com/products/hydrating-hairwash?utm_medium=prospecting&utm_source=affiliate&utm_content=curlyshamp&utm_campaign=curlsbot" to="https://verellecos.com/products/hydrating-hairwash?utm_medium=prospecting&utm_source=affiliate&utm_content=curlyshamp&utm_campaign=curlsbot" target="_blank"> Hydrating Sulfate-Free Hairwash*  </ReactGA.OutboundLink>
+          </li>
+          <li>Conditioner:
+            <ReactGA.OutboundLink eventLabel="https://verellecos.com/products/curl-enhancing-conditioner?utm_medium=prospecting&utm_source=affiliate&utm_content=curlycond&utm_campaign=curlsbot" to="https://verellecos.com/products/curl-enhancing-conditioner?utm_medium=prospecting&utm_source=affiliate&utm_content=curlycond&utm_campaign=curlsbot" target="_blank"> Curl-Enhancing Conditioner* </ReactGA.OutboundLink></li>
 
-      <h2>Devacurl $$$</h2>
-        <p> Devacurl's Delight line is targeted for fine/wavy hair, but personally I find the low-poo and conditioner still too oily for me and I know a lot of others who have had issues with them. That said these two products are great:</p>
-
-        <ul>
-          <li>Styler (curl enhancer):  <ReactGA.OutboundLink eventLabel="http://amzn.to/2iVQ9ew" to="http://amzn.to/2iVQ9ew" target="_blank">B Leave In* </ReactGA.OutboundLink> (contains hydrogenated castor oil as last ingredient which should not build up)</li>
-          <li>Styler (curl enhancer + hold):  <ReactGA.OutboundLink eventLabel="http://amzn.to/2BYoIs1" to="http://amzn.to/2BYoIs1" target="_blank">Frizz-Free Volumizing Foam* </ReactGA.OutboundLink></li>
-        </ul>
+           <li>Styler (hold):  <ReactGA.OutboundLink eventLabel="https://verellecos.com/products/curly-all-in-one-cream-v2?utm_medium=prospecting&utm_source=affiliate&utm_content=milkycreme&utm_campaign=curlsbot3" to="https://verellecos.com/products/curly-all-in-one-cream-v2?utm_medium=prospecting&utm_source=affiliate&utm_content=milkycreme&utm_campaign=curlsbot" target="_blank">All-In-One Milky Curl Activating Cream for Curly Hair by Verelle* </ReactGA.OutboundLink></li>
+      </ul>
 
       <h2>Moptop $$$</h2>
         <ul>
-          <li>Cleanser: 
+          <li>Cleanser:
             <ReactGA.OutboundLink eventLabel="http://amzn.to/2B8cBMp" to="http://amzn.to/2B8cBMp" target="_blank"> Gentle Shampoo  </ReactGA.OutboundLink>
           </li>
           <li>Conditioner:
@@ -84,7 +87,7 @@ const litePage = () => (
         <li>Styler (curl enhancer): <ReactGA.OutboundLink eventLabel="http://amzn.to/2yjnHIN" to="http://amzn.to/2yjnHIN" target="_blank">I Create Volume</ReactGA.OutboundLink></li>
       </ul>
 
-      
+
       <h2>Jessicurl $$</h2>
         <ul>
           <li> <ReactGA.OutboundLink eventLabel="http://amzn.to/2AdArlV" to="http://amzn.to/2AdArlV" target="_blank">Cleanser: Gentle Lather Shampoo- no fragrance* </ReactGA.OutboundLink></li>
@@ -108,7 +111,13 @@ const litePage = () => (
           <li>Styler (curl enhancer + hold):  <ReactGA.OutboundLink eventLabel="http://amzn.to/2Bq2MJU" to="http://amzn.to/2Bq2MJU" target="_blank">Mousse </ReactGA.OutboundLink></li>
         </ul>
 
+      <h2>Devacurl $$$</h2>
+        <p> Devacurl's Delight line is targeted for fine/wavy hair, but personally I find the low-poo and conditioner still too oily for me and I know a lot of others who have had issues with them. That said these two products are great:</p>
 
+        <ul>
+          <li>Styler (curl enhancer):  <ReactGA.OutboundLink eventLabel="http://amzn.to/2iVQ9ew" to="http://amzn.to/2iVQ9ew" target="_blank">B Leave In* </ReactGA.OutboundLink> (contains hydrogenated castor oil as last ingredient which should not build up)</li>
+          <li>Styler (curl enhancer + hold):  <ReactGA.OutboundLink eventLabel="http://amzn.to/2BYoIs1" to="http://amzn.to/2BYoIs1" target="_blank">Frizz-Free Volumizing Foam* </ReactGA.OutboundLink></li>
+        </ul>
 
 
       <h2>Budget Option</h2>

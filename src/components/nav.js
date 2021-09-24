@@ -80,7 +80,7 @@ export default class Example extends React.Component {
                     How Curlsbot Works
                   </DropdownItem>
                   <DropdownItem href="/curly-girl-ingredient-list">
-                    Curly Girl Ingredient List
+                   Ingredient List
                   </DropdownItem>
                    <DropdownItem href="/hard-water">
                     Hard Water

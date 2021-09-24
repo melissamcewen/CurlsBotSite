@@ -42,6 +42,7 @@ const hpPage = () => (
       <h2>Deep Conditioner</h2>
       <p>Once a week or more you'll want to follow your cowash with a deep conditioner to help your hair retain moisture.</p>
       <ul>
+        <li><ReactGA.OutboundLink eventLabel="https://verellecos.com/products/self-care-hair-mask?utm_medium=prospecting&utm_source=affiliate&utm_content=mask&utm_campaign=curlsbot" to="https://verellecos.com/products/self-care-hair-mask?utm_medium=prospecting&utm_source=affiliate&utm_content=mask&utm_campaign=curlsbot" target="_blank">Verelle Restore & Repair Hair Mask $$<subscript>1</subscript></ReactGA.OutboundLink></li>
         <li><ReactGA.OutboundLink eventLabel="http://amzn.to/2yjPKrn" to="http://amzn.to/2yjPKrn" target="_blank"> Jessicurl Deep Conditioning Treatment $$$</ReactGA.OutboundLink></li>
         <li><ReactGA.OutboundLink eventLabel="http://amzn.to/2BXgjox" to="http://amzn.to/2BXgjox" target="_blank">Shea Moisture Manuka Honey & Mafura Oil Intensive Hydration Treatment $$</ReactGA.OutboundLink></li>
         <li><ReactGA.OutboundLink eventLabel="http://amzn.to/2BYl8ht" to="http://amzn.to/2BYl8ht" target="_blank">Coconut Oil $</ReactGA.OutboundLink></li>
@@ -61,13 +62,14 @@ const hpPage = () => (
       <h2>Lock in styler</h2>
       <p>Lock in stylers help your curls/waves hold and also to lock in moisture.</p>
        <ul>
+        <li><ReactGA.OutboundLink eventLabel="https://verellecos.com/products/coily-all-in-one-cream-v2?utm_medium=prospecting&utm_source=affiliate&utm_content=stylingcream&utm_campaign=curlsbot" to="https://verellecos.com/products/coily-all-in-one-cream-v2?utm_medium=prospecting&utm_source=affiliate&utm_content=stylingcream&utm_campaign=curlsbot" target="_blank"> Verelle COILY All-In-One Styling Cream $$$<subscript>1</subscript></ReactGA.OutboundLink></li>
         <li><ReactGA.OutboundLink eventLabel="http://amzn.to/2kK7lb3" to="http://amzn.to/2kK7lb3" target="_blank"> MopTop Anti-frizz Medium Hold Gel $$$ </ReactGA.OutboundLink></li>
         <li><ReactGA.OutboundLink eventLabel="http://amzn.to/2AwkkEe" to="http://amzn.to/2AwkkEe" target="_blank">Giovanni LA Natural Gel $$</ReactGA.OutboundLink></li>
         <li> <ReactGA.OutboundLink eventLabel="http://amzn.to/2zTIvbs" to="http://amzn.to/2zTIvbs" target="_blank">Aussie Instant Freeze Gel $ </ReactGA.OutboundLink></li>
       </ul>
 
-      
 
+      <subscript>1</subscript>: Verelle sent me some of their products to try
 
 
 
