@@ -25,7 +25,7 @@ const Sulfates = () => (
     <p>Curlsbot decides based on what's generally considered safe in the curly hair community (Facebook, Reddit) and data from studies comparing different detergents to sulfates.</p>
 
     <p> If you want to know more I recommend starting a discussion at our <a href="https://www.facebook.com/groups/1804576666517325">Facebook Group</a> or joining one of the communities on our <Link to="/resources" >resources page for more guidance.</Link> </p>
-    <h2>Non-Cg Cleasners (Harsh)</h2>
+    <h2>Harsh Cleansers (considered curl-unfriendly)</h2>
     <ul>
         <ResultListing list={cleansers.bad.sort()}/>
     </ul>
@@ -34,13 +34,13 @@ const Sulfates = () => (
     <ul>
         <ResultListing list={cleansers.caution.sort()}/>
     </ul>
-    <h2>Gentle CG Friendly Detergents</h2>
+    <h2>Gentle Detergents</h2>
     <ul>
         <ResultListing list={cleansers.good.sort()}/>
     </ul>
 
 
-  
+
   </div>
 )
 

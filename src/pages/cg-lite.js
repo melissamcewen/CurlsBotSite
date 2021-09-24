@@ -173,7 +173,7 @@ const litePage = () => (
       </ul>
 
        <h2>Shea Moisture Fruit Fusion Coconut Water Weightless $</h2>
-       <p> Warning some items in this line are not CG (the spray has drying alcohol) and in general it is one of the heavier lines on this list.</p>
+       <p> Warning some items in this line may not fit with most curly hair recommendations(the spray has drying alcohol) and in general it is one of the heavier lines on this list.</p>
         <ul>
           <li>Cleanser:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2Ay4vx3" to="http://amzn.to/2Ay4vx3" target="_blank">Shampoo </ReactGA.OutboundLink></li>
           <li>Conditioner:  <ReactGA.OutboundLink eventLabel="http://amzn.to/2AOBtpD" to="http://amzn.to/2AOBtpD" target="_blank">Creme Rinse  </ReactGA.OutboundLink></li>

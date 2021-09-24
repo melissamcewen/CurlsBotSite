@@ -17,7 +17,7 @@ const Shea = () => (
       ]}
     />
     <h1>Non-curly hair Shea Moisture Products</h1>
-    <p>Shea Moisture is a popular brand for many following the "curly hair" system but unfortunately a few products contain ingredients that <a href="https://www.wikihow.com/Determine-if-a-Hair-Product-is-Curly-Girl-Approved">can dry out hair (alcohols and harsh sulfates) or build up (waxes). I recommend always checking the list and not assuming it's CG because it's Shea Moisture. </a> Message <a href="https://www.facebook.com/CurlsBot/">Curlsbot</a> if you know any others.</p>
+    <p>Shea Moisture is a popular brand for many following the "curly hair" system but unfortunately a few products contain ingredients that <a href="https://www.wikihow.com/Determine-if-a-Hair-Product-is-Curly-Girl-Approved">can dry out hair (alcohols and harsh sulfates) or build up (waxes). I recommend always checking the list and not assuming it's curl-friendly just because it's Shea Moisture. </a> Message <a href="https://www.facebook.com/CurlsBot/">Curlsbot</a> if you know any others.</p>
     <h2>Harsh cleansers</h2>
     <h3>Sodium cocoyl sarcosinate</h3>
     <ul>
@@ -54,7 +54,7 @@ const Shea = () => (
        <li>AFRICAN BLACK SOAP DANDRUFF CONTROL PRE-POO RINSE</li>
 
     </ul>
-    
+
     <h3>Isopropyl alcohol</h3>
     <ul>
       <li>JOJOBA OIL & UCUUBA BUTTER TRACK TENSION & ITCH RELIEF SERUM</li>
@@ -93,7 +93,7 @@ const Shea = () => (
       <li>JOJOBA OIL & UCUUBA BUTTER BRAID-UP CONDITIONING GEL</li>
     </ul>
 
-    
+
   </div>
 )
 

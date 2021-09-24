@@ -31,7 +31,7 @@ const list = () => (
 
     <h2>Silicones</h2>
     <h3>Avoid</h3>
-    <p>All ingredients that <b>contain</b> the following words. The reason these are discouraged on CG is they can build up on the hair and it is not possible to remove them with just a cowash.</p>
+    <p>All ingredients that <b>contain</b> the following words. The reason these are discouraged on curl friendly routines is they can build up on the hair and it is not possible to remove them with just a cowash.</p>
     <ul>
         <ResultListing list={silicones.unknown.sort()}/>
     </ul>
@@ -45,13 +45,13 @@ const list = () => (
 
     <h2>Waxes/Hair Coating Ingredients</h2>
     <h3>Avoid</h3>
-    <p>All ingredients that <b>contain</b> the following words. The reason these are forbidden on CG is they can build up on the hair and it is not possible to remove them with just a cowash.</p>
+    <p>All ingredients that <b>contain</b> the following words. The reason these are forbidden on curl friendly routines is they can build up on the hair and it is not possible to remove them with just a cowash.</p>
     <ul>
         <ResultListing list={waxes.unknown.sort()}/>
     </ul>
 
     <em>So for example "almond wax" is marked "avoid" because it contains "wax". Cire is a French word for waxes and Cera is a Latin word for wax.</em>
-    <h3>CG Approved Waxes</h3>
+    <h3>Approved Waxes</h3>
     <p>There are a few exceptions which are these water-soluble waxes:</p>
     <ul>
         <ResultListing list={waxes.good.sort()}/>
@@ -70,7 +70,7 @@ const list = () => (
     <ul>
         <ResultListing list={cleansers.caution.sort()}/>
     </ul>
-    <h3>Gentle CG Friendly Detergents</h3>
+    <h3>Gentle Detergents</h3>
     <ul>
         <ResultListing list={cleansers.good.sort()}/>
     </ul>
@@ -78,8 +78,8 @@ const list = () => (
 
     <h2>Other</h2>
     <p>Curlsbot also detects the following questionable ingredients</p>
-    <h3>Soap</h3> 
-    <p>Not CG, as potentially drying as sulfates. Check out our <Link to="/shampoo-bars-are-not-cg/" className="btn btn-secondary">article on soap</Link> for more info. We detect by looking for the following, but this may not catch all soap. We recommend contacting the manufacturer to ask if something contains soap :</p>
+    <h3>Soap</h3>
+    <p>Soap can be as drying as sulfates. Check out our <Link to="/shampoo-bars-are-not-cg/" className="btn btn-secondary">article on soap</Link> for more info. We detect by looking for the following, but this may not catch all soap. We recommend contacting the manufacturer to ask if something contains soap :</p>
 
     <ul>
         <ResultListing list={others.soaps.sort()}/>
@@ -93,8 +93,8 @@ const list = () => (
 
 
 
-    
-    
+
+
   </div>
 )
 

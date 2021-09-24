@@ -89,14 +89,14 @@ export default class Example extends React.Component {
                     Shampoo Bars/Soap
                   </DropdownItem>
                   <DropdownItem href="/cleansers">
-                    CG and non-CG Cleansers
+                    Cleansers
                   </DropdownItem>
                   <DropdownItem href="/resources">
                     Other Resources
                   </DropdownItem>
 
                   <DropdownItem href="/shea">
-                    Non-CG Shea Moisture Products
+                    Curl Unfriendly Shea Moisture Products
                   </DropdownItem>
 
 

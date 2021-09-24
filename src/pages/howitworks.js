@@ -41,14 +41,14 @@ const Works = () => (
       <p>Curlsbot cannot read pictures. If you send them to me I also cannot read them because it's not accurate to just have one person look at a bottle and often the picture is blurry. I recommend you find a list from the manufacturer's or a store website OR post the picture on one of the curly hair groups listed in our <Link to="/resources/" >resources page.</Link></p>
 
       <h2>6. What does it mean if it says "Caution"?</h2>
-      <p>We recommend you do your own research since many experts disagree on some ingredients. You can find helpful advice on many CG groups listed on our <Link to="/resources/" >resources page.</Link></p>
+      <p>We recommend you do your own research since many experts disagree on some ingredients. You can find helpful advice on many curly hair groups listed on our <Link to="/resources/" >resources page.</Link></p>
 
       <h2>7.Can Curlsbot read other languages besides English?</h2>
 
-      <p>Curlsbot currently only supports English language lists. We recommend finding a group for your language online and posting your product there. I have listed some groups on the <Link to="/resources/" >resources page.</Link></p> 
+      <p>Curlsbot currently only supports English language lists. We recommend finding a group for your language online and posting your product there. I have listed some groups on the <Link to="/resources/" >resources page.</Link></p>
 
 
-    
+
   </div>
 )
 
