@@ -24,7 +24,7 @@ const Sulfates = () => (
     <p>These detergents include ingredients like sodium lauryl sulfoacetate and sodium cocoyl sarcosinate. Curlsbot lists these cleansers as "caution." It's up to you to decide whether they are right for your hair or not. Hair that's low porosity might be fine with these, but they might dry out hair that's high porosity. Also how harsh they are depends on their concentration in the shampoo and the presence of other ingredients. </p>
     <p>Curlsbot decides based on what's generally considered safe in the curly hair community (Facebook, Reddit) and data from studies comparing different detergents to sulfates.</p>
 
-    <p> If you want to know more I recommend starting a discussion at our <a href="https://www.facebook.com/groups/1804576666517325">Facebook Group</a> or joining one of the communities on our <Link to="/resources" >resources page for more guidance.</Link> </p>
+    <p> If you want to know more I recommend starting a discussion at one of the communities on our <Link to="/resources" >resources page for more guidance.</Link> </p>
     <h2>Harsh Cleansers (considered curl-unfriendly)</h2>
     <ul>
         <ResultListing list={cleansers.bad.sort()}/>
