@@ -5,28 +5,24 @@
       "path---ingredients-a0e39f21c11f6a62c5ab.js.map"
     ],
     "component---src-pages-high-porosity-js": [
-      "component---src-pages-high-porosity-js-deebc7c2ed90b221ae28.js",
-      "component---src-pages-high-porosity-js-deebc7c2ed90b221ae28.js.map"
+      "component---src-pages-high-porosity-js-8c0dd56cca831cfa0914.js",
+      "component---src-pages-high-porosity-js-8c0dd56cca831cfa0914.js.map"
     ],
     "component---src-pages-howitworks-js": [
-      "component---src-pages-howitworks-js-58a8c4263dfd3e94dce2.js",
-      "component---src-pages-howitworks-js-58a8c4263dfd3e94dce2.js.map"
-    ],
-    "path---map": [
-      "path---map-a0e39f21c11f6a62c5ab.js",
-      "path---map-a0e39f21c11f6a62c5ab.js.map"
+      "component---src-pages-howitworks-js-76656369d58734941446.js",
+      "component---src-pages-howitworks-js-76656369d58734941446.js.map"
     ],
     "component---src-pages-index-js": [
-      "component---src-pages-index-js-59e3d3c5d73a120502cf.js",
-      "component---src-pages-index-js-59e3d3c5d73a120502cf.js.map"
+      "component---src-pages-index-js-7ca95c2a514e5e172625.js",
+      "component---src-pages-index-js-7ca95c2a514e5e172625.js.map"
     ],
     "component---src-pages-cleansers-js": [
       "component---src-pages-cleansers-js-02390804d92b8b0fe630.js",
       "component---src-pages-cleansers-js-02390804d92b8b0fe630.js.map"
     ],
     "component---src-pages-porosity-js": [
-      "component---src-pages-porosity-js-f07d82a817965774ec90.js",
-      "component---src-pages-porosity-js-f07d82a817965774ec90.js.map"
+      "component---src-pages-porosity-js-8db381202fb5e6252889.js",
+      "component---src-pages-porosity-js-8db381202fb5e6252889.js.map"
     ],
     "path---cg-lite": [
       "path---cg-lite-a0e39f21c11f6a62c5ab.js",
@@ -49,8 +45,8 @@
       "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js.map"
     ],
     "component---src-layouts-index-js": [
-      "component---src-layouts-index-js-4756370fb7b0671f4305.js",
-      "component---src-layouts-index-js-4756370fb7b0671f4305.js.map"
+      "component---src-layouts-index-js-fe4ef51284d9038ab649.js",
+      "component---src-layouts-index-js-fe4ef51284d9038ab649.js.map"
     ],
     "path---normal-porosity": [
       "path---normal-porosity-a0e39f21c11f6a62c5ab.js",
@@ -117,22 +113,18 @@
       "path---shampoo-bars-are-not-cg-a0e39f21c11f6a62c5ab.js.map"
     ],
     "component---src-pages-curly-girl-ingredient-list-js": [
-      "component---src-pages-curly-girl-ingredient-list-js-1fd8226d39021ef4f0c5.js",
-      "component---src-pages-curly-girl-ingredient-list-js-1fd8226d39021ef4f0c5.js.map"
+      "component---src-pages-curly-girl-ingredient-list-js-e34ac06961c64edf2426.js",
+      "component---src-pages-curly-girl-ingredient-list-js-e34ac06961c64edf2426.js.map"
     ],
     "app": [
-      "app-04a403d89f123c3b4575.js",
+      "app-3e9d7565a0e7fb55cd55.js",
       "build-js-styles.css",
-      "app-04a403d89f123c3b4575.js.map",
+      "app-3e9d7565a0e7fb55cd55.js.map",
       "build-js-styles.css.map"
     ],
     "component---src-pages-ingredients-js": [
       "component---src-pages-ingredients-js-4851bc2d89313b13630b.js",
       "component---src-pages-ingredients-js-4851bc2d89313b13630b.js.map"
-    ],
-    "component---src-pages-map-js": [
-      "component---src-pages-map-js-b65f0df1fc2780777b65.js",
-      "component---src-pages-map-js-b65f0df1fc2780777b65.js.map"
     ],
     "path---shea": [
       "path---shea-a0e39f21c11f6a62c5ab.js",
@@ -143,8 +135,8 @@
       "path---404-a0e39f21c11f6a62c5ab.js.map"
     ],
     "component---src-pages-normal-porosity-js": [
-      "component---src-pages-normal-porosity-js-0cb6692d058d22c2beff.js",
-      "component---src-pages-normal-porosity-js-0cb6692d058d22c2beff.js.map"
+      "component---src-pages-normal-porosity-js-e750b74d848de9d40b4f.js",
+      "component---src-pages-normal-porosity-js-e750b74d848de9d40b4f.js.map"
     ],
     "component---src-pages-about-js": [
       "component---src-pages-about-js-e90d730afa59cccdd017.js",
