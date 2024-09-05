@@ -58,17 +58,6 @@ const litePage = () => (
       <h1>Oil Free Products</h1>
       <p>These are the lightest products. They provide ample slip and moisture without oils or butters. </p>
 
-      <h2>Verelle $$$</h2>
-      <p>Verelle sent me some of their products to try and even though some of them contained some oil, I found they worked quite well on my oily wavy hair.</p>
-      <ul>
-          <li>Cleanser:
-            <ReactGA.OutboundLink eventLabel="https://verellecos.com/products/hydrating-hairwash?utm_medium=prospecting&utm_source=affiliate&utm_content=curlyshamp&utm_campaign=curlsbot" to="https://verellecos.com/products/hydrating-hairwash?utm_medium=prospecting&utm_source=affiliate&utm_content=curlyshamp&utm_campaign=curlsbot" target="_blank"> Hydrating Sulfate-Free Hairwash*  </ReactGA.OutboundLink>
-          </li>
-          <li>Conditioner:
-            <ReactGA.OutboundLink eventLabel="https://verellecos.com/products/curl-enhancing-conditioner?utm_medium=prospecting&utm_source=affiliate&utm_content=curlycond&utm_campaign=curlsbot" to="https://verellecos.com/products/curl-enhancing-conditioner?utm_medium=prospecting&utm_source=affiliate&utm_content=curlycond&utm_campaign=curlsbot" target="_blank"> Curl-Enhancing Conditioner* </ReactGA.OutboundLink></li>
-
-           <li>Styler (hold):  <ReactGA.OutboundLink eventLabel="https://verellecos.com/products/curly-all-in-one-cream-v2?utm_medium=prospecting&utm_source=affiliate&utm_content=milkycreme&utm_campaign=curlsbot3" to="https://verellecos.com/products/curly-all-in-one-cream-v2?utm_medium=prospecting&utm_source=affiliate&utm_content=milkycreme&utm_campaign=curlsbot" target="_blank">All-In-One Milky Curl Activating Cream for Curly Hair by Verelle* </ReactGA.OutboundLink></li>
-      </ul>
 
       <h2>Moptop $$$</h2>
         <ul>
