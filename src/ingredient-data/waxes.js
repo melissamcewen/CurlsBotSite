@@ -8,7 +8,6 @@ let unknown = [
   "petrolatum",
   "isohexadecane",
   "isohexanedecane",
-  "isododecane",
   "dodecene",
   "dodecane",
   "isohexad",

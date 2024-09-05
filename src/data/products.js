@@ -18,9 +18,12 @@ var products = [
     name: "Innersense I Create Hold",
     type: "styler",
     url: "http://amzn.to/2BYccc7"
+  },
+  {
+    name: "Kristin Ess Moisture Rich Curl Shampoo",
+    type: "shampoo",
+    url: "https://amzn.to/3ARk1Ux"
   }
-
-
 ];
 
 export default products;
