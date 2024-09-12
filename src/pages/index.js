@@ -30,7 +30,7 @@ class Index extends React.Component {
       done: false
 
 
-      
+
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -101,29 +101,21 @@ class Index extends React.Component {
             <CardTitle>Hmm is this an ingredient list?</CardTitle>
             <CardSubtitle>I can't process this because it's either not an ingredient list or the ingredients aren't seperated by commas</CardSubtitle>
            </Card>
-   
+
          }
       <Results data={this.state.result}/>
       <Verdict data={this.state.verdict}/>
 
 
 
-      {this.state.done &&
-        <Card body outline color="success">
-            <CardTitle>Questions? Concerns?</CardTitle>
-
-            <Button href="https://www.facebook.com/groups/1804576666517325">Start a discussion at our group</Button>
-            <CardText></CardText>
-        </Card>
-   
-      }
+    
 
 
 
 
-       
+
       </div>
-      
+
     );
   }
 }
