@@ -80,64 +80,121 @@ export default async function IngredientPage({ params }: PageProps) {
         <div className="card bg-base-100 text-base-content shadow-xl border border-base-300">
           <div className="card-body">
             {!markdownContent && (
-              <h1 className="card-title text-3xl">{ingredient.name}</h1>
+              <h1 className="card-title text-3xl mb-6">{ingredient.name}</h1>
             )}
 
-            {/* Categories */}
-            <div className="mt-2">
-              {categories.map((category) => (
-                <div
-                  key={category.id}
-                  className="badge badge-primary mr-2 mb-2"
-                >
-                  {category.name}
-                </div>
-              ))}
+            {/* Basic Information Table */}
+            <div className="overflow-x-auto">
+              <table className="table table-zebra">
+                <tbody>
+                  {/* ID */}
+                  <tr>
+                    <th className="w-1/4">ID</th>
+                    <td>{ingredient.id}</td>
+                  </tr>
+
+                  {/* Name */}
+                  <tr>
+                    <th>Name</th>
+                    <td>{ingredient.name}</td>
+                  </tr>
+
+                  {/* Categories */}
+                  <tr>
+                    <th>Categories</th>
+                    <td>
+                      <div className="flex flex-wrap gap-2">
+                        {categories.map((category) => (
+                          <div
+                            key={category.id}
+                            className="badge badge-primary"
+                          >
+                            {category.name}
+                          </div>
+                        ))}
+                      </div>
+                    </td>
+                  </tr>
+
+                  {/* Synonyms */}
+                  {ingredient.synonyms.length > 0 && (
+                    <tr>
+                      <th>Also Known As</th>
+                      <td>
+                        <ul className="list-disc list-inside">
+                          {ingredient.synonyms.map((synonym) => (
+                            <li key={synonym} className="text-sm">
+                              {synonym}
+                            </li>
+                          ))}
+                        </ul>
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
             </div>
 
-            {/* Category Descriptions */}
-            {categories.map(
-              (category) =>
-                category.description && (
-                  <div key={category.id} className="mt-2">
-                    <h3 className="font-medium">{category.name}</h3>
-                    <p className="text-sm opacity-70">{category.description}</p>
-                  </div>
-                ),
-            )}
-
-            {/* Alternative Names */}
-            {ingredient.synonyms.length > 0 && (
-              <div className="mt-4">
-                <h2 className="text-xl font-semibold mb-2">Also Known As</h2>
-                <ul className="list-disc list-inside space-y-1">
-                  {ingredient.synonyms.map((synonym) => (
-                    <li key={synonym} className="text-sm opacity-70">
-                      {synonym}
-                    </li>
-                  ))}
-                </ul>
+            {/* Category Details Table */}
+            {categories.some(category => category.description) && (
+              <div className="mt-6">
+                <h2 className="text-xl font-semibold mb-4">Category Details</h2>
+                <div className="overflow-x-auto">
+                  <table className="table table-zebra">
+                    <thead>
+                      <tr>
+                        <th>Category</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {categories.map((category) =>
+                        category.description ? (
+                          <tr key={category.id}>
+                            <td className="font-medium w-1/4">{category.name}</td>
+                            <td>{category.description}</td>
+                          </tr>
+                        ) : null
+                      )}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             )}
 
-            {/* References */}
+            {/* References Table */}
             {ingredient.references && ingredient.references.length > 0 && (
               <div className="mt-6">
-                <h2 className="text-xl font-semibold mb-2">Learn More</h2>
-                <ul className="space-y-2">
-                  {ingredient.references.map((ref) => (
-                    <li key={ref}>
-                      <a
-                        href={ref}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="link link-primary text-sm"
-                      >
-                        {new URL(ref).hostname.replace('www.', '')}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+                <h2 className="text-xl font-semibold mb-4">Learn More</h2>
+                <div className="overflow-x-auto">
+                  <table className="table table-zebra">
+                    <thead>
+                      <tr>
+                        <th>Source</th>
+                        <th>Link</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {ingredient.references.map((ref) => (
+                        <tr key={ref}>
+                          <td className="w-1/4">
+                            {new URL(ref).hostname.replace('www.', '')}
+                          </td>
+                          <td>
+                            <a
+                              href={ref}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="link link-primary"
+                            >
+                              View Source
+                            </a>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             )}
           </div>
