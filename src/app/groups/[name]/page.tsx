@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { getBundledDatabase } from 'haircare-ingredients-analyzer';
 import { getGroupContent } from '@/utils/markdown';
 import { Metadata } from 'next';
+import { slugToId, idToSlug } from '@/utils/slugs';
 
 interface PageProps {
   params: {
@@ -13,33 +14,31 @@ interface PageProps {
 // Generate metadata
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const decodedName = decodeURIComponent(params.name);
+  const groupId = slugToId(decodedName.toLowerCase());
   const database = getBundledDatabase();
 
-  // Convert hyphenated URL to space-separated group name
-  const groupNameFormatted = decodedName.replace(/-/g, ' ');
+  const dbGroupId = Object.keys(database.groups).find(
+    id => id.toLowerCase() === groupId
+  );
 
-  // Find all categories in this group
-  const categories = Object.entries(database.categories)
-    .filter(([_, category]) =>
-      category.group?.toLowerCase() === groupNameFormatted.toLowerCase()
-    )
-    .map(([id, category]) => ({
-      ...category,
-      id
-    }));
-
-  if (categories.length === 0) {
+  if (!dbGroupId) {
     notFound();
   }
 
-  const groupName = categories[0].group;
-  const markdownContent = await getGroupContent(decodedName);
+  const group = database.groups[dbGroupId];
+  const markdownContent = await getGroupContent(dbGroupId);
 
   return {
-    title: markdownContent?.frontmatter?.title || groupName,
-    description: markdownContent?.frontmatter?.description || `Hair care ingredient categories in the ${groupName} group`,
+    title: markdownContent?.frontmatter?.title || group.name,
+    description: markdownContent?.frontmatter?.description || group.description || `Hair care ingredients in the ${group.name} group`,
     robots: markdownContent ? undefined : 'noindex',
   };
+}
+
+interface Group {
+  id: string;
+  name: string;
+  description?: string;
 }
 
 interface Category {
@@ -51,36 +50,33 @@ interface Category {
 
 export default async function GroupPage({ params }: PageProps) {
   const decodedName = decodeURIComponent(params.name);
+  const groupId = slugToId(decodedName.toLowerCase());
   const database = getBundledDatabase();
 
-  // Convert hyphenated URL to space-separated group name
-  const groupNameFormatted = decodedName.replace(/-/g, ' ');
+  // Find the group
+  const dbGroupId = Object.keys(database.groups).find(
+    id => id.toLowerCase() === groupId
+  );
 
-  // Find all categories in this group
-  const categories = Object.entries(database.categories)
-    .filter(([_, category]) =>
-      category.group?.toLowerCase() === groupNameFormatted.toLowerCase()
-    )
-    .map(([id, category]) => ({
-      ...category,
-      id
-    }));
-
-  if (categories.length === 0) {
+  if (!dbGroupId) {
     notFound();
   }
 
-  // Get the group name from the first category (they all have the same group)
-  const groupName = categories[0].group;
+  const group = database.groups[dbGroupId];
+
+  // Find all categories in this group
+  const categories = Object.values(database.categories).filter(
+    (cat: Category) => cat.group === dbGroupId
+  );
 
   // Try to get markdown content
-  const markdownContent = await getGroupContent(decodedName);
+  const markdownContent = await getGroupContent(dbGroupId);
 
   return (
     <div className="container mx-auto p-4 max-w-4xl">
       <div className="mb-4">
-        <Link href="/categories" className="btn btn-ghost btn-sm">
-          ← Back to Categories
+        <Link href="/groups" className="btn btn-ghost btn-sm">
+          ← Back to Groups
         </Link>
       </div>
 
@@ -89,7 +85,7 @@ export default async function GroupPage({ params }: PageProps) {
         <div className="card bg-base-100 shadow-xl text-base-content">
           <div className="card-body">
             <h1 className="card-title text-3xl">
-              {markdownContent?.frontmatter?.title || groupName}
+              {markdownContent?.frontmatter?.title || group.name}
             </h1>
             {markdownContent ? (
               <>
@@ -104,9 +100,11 @@ export default async function GroupPage({ params }: PageProps) {
                 />
               </>
             ) : (
-              <p className="text-base-content/70 mt-2">
-                A collection of categories related to {groupName?.toLowerCase()}.
-              </p>
+              <>
+                {group.description && (
+                  <p className="text-base-content/70 mt-2">{group.description}</p>
+                )}
+              </>
             )}
           </div>
         </div>
@@ -119,33 +117,31 @@ export default async function GroupPage({ params }: PageProps) {
               <table className="table table-zebra">
                 <thead>
                   <tr>
-                    <th>Category</th>
+                    <th>Name</th>
                     <th>Description</th>
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {categories
-                    .sort((a, b) => a.name.localeCompare(b.name))
-                    .map(category => (
-                      <tr key={category.id}>
-                        <td className="font-medium">{category.name}</td>
-                        <td className="max-w-md">
-                          {category.description ? (
-                            <p className="truncate">{category.description}</p>
-                          ) : (
-                            <span className="text-base-content/50">No description available</span>
-                          )}
-                        </td>
-                        <td>
-                          <Link
-                            href={`/categories/${encodeURIComponent(category.id)}`}
-                            className="btn btn-primary btn-sm"
-                          >
-                            View Category
-                          </Link>
-                        </td>
-                      </tr>
+                  {categories.map((category) => (
+                    <tr key={category.id}>
+                      <td className="font-medium">{category.name}</td>
+                      <td className="max-w-md">
+                        {category.description ? (
+                          <p className="truncate">{category.description}</p>
+                        ) : (
+                          <span className="text-base-content/50">No description available</span>
+                        )}
+                      </td>
+                      <td>
+                        <Link
+                          href={`/categories/${idToSlug(category.id)}`}
+                          className="btn btn-primary btn-sm"
+                        >
+                          View Details
+                        </Link>
+                      </td>
+                    </tr>
                   ))}
                 </tbody>
               </table>

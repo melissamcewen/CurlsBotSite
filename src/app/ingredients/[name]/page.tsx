@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { getBundledDatabase } from 'haircare-ingredients-analyzer';
 import { getIngredientContent } from '@/utils/markdown';
 import { Metadata } from 'next';
-import { Card, CardTitle, CardContent, CardDescription } from '@/components/ui/Card';
+import { slugToId, idToSlug } from '@/utils/slugs';
 
 interface PageProps {
   params: {
@@ -13,21 +13,20 @@ interface PageProps {
 
 // Generate metadata
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const decodedName = decodeURIComponent(params.name).toLowerCase();
+  const decodedName = decodeURIComponent(params.name);
+  const ingredientId = slugToId(decodedName.toLowerCase());
   const database = getBundledDatabase();
 
-  const ingredient = Object.values(database.ingredients).find(
-    (ing: any) => ing.id.toLowerCase() === decodedName ||
-           ing.name.toLowerCase() === decodedName ||
-           ing.synonyms.some((syn: string) => syn.toLowerCase() === decodedName)
+  const dbIngredientId = Object.keys(database.ingredients).find(
+    id => id.toLowerCase() === ingredientId
   );
 
-  if (!ingredient) {
+  if (!dbIngredientId) {
     notFound();
   }
 
-  // Check for markdown content
-  const markdownContent = await getIngredientContent(ingredient.id);
+  const ingredient = database.ingredients[dbIngredientId];
+  const markdownContent = await getIngredientContent(dbIngredientId);
 
   return {
     title: markdownContent?.frontmatter?.title || ingredient.name,
@@ -41,188 +40,99 @@ interface Ingredient {
   name: string;
   categories: string[];
   synonyms: string[];
-  references?: string[];
   description?: string;
 }
 
 export default async function IngredientPage({ params }: PageProps) {
-  const decodedName = decodeURIComponent(params.name).toLowerCase();
+  const decodedName = decodeURIComponent(params.name);
+  const ingredientId = slugToId(decodedName.toLowerCase());
   const database = getBundledDatabase();
 
-  // Find the ingredient in our data
-  const ingredient = Object.values(database.ingredients).find(
-    (ing: Ingredient) => ing.id.toLowerCase() === decodedName ||
-           ing.name.toLowerCase() === decodedName ||
-           ing.synonyms.some(syn => syn.toLowerCase() === decodedName)
+  // Find the ingredient
+  const dbIngredientId = Object.keys(database.ingredients).find(
+    id => id.toLowerCase() === ingredientId
   );
 
-  if (!ingredient) {
+  if (!dbIngredientId) {
     notFound();
   }
 
-  // Get category information
-  const categories = ingredient.categories.map(categoryId => {
-    const category = database.categories[categoryId];
-    return {
-      id: categoryId,
-      name: category?.name || categoryId,
-      description: category?.description,
-      group: category?.group
-    };
-  });
+  const ingredient = database.ingredients[dbIngredientId];
 
   // Try to get markdown content
-  const markdownContent = await getIngredientContent(ingredient.id);
+  const markdownContent = await getIngredientContent(dbIngredientId);
 
   return (
     <div className="container mx-auto p-4 max-w-4xl">
       <div className="mb-4">
         <Link href="/ingredients" className="btn btn-ghost btn-sm">
-          ← Back to Search
+          ← Back to Ingredients
         </Link>
       </div>
 
       <div className="space-y-6">
-        {/* Markdown Content Card (if available) */}
-        {markdownContent && (
-          <Card>
-            <CardTitle>
-              {markdownContent.frontmatter.title || ingredient.name}
-            </CardTitle>
-            {markdownContent.frontmatter.description && (
-              <CardDescription>
-                {markdownContent.frontmatter.description}
-              </CardDescription>
+        {/* Ingredient Information */}
+        <div className="card bg-base-100 shadow-xl text-base-content">
+          <div className="card-body">
+            <h1 className="card-title text-3xl">
+              {markdownContent?.frontmatter?.title || ingredient.name}
+            </h1>
+            {markdownContent ? (
+              <>
+                {markdownContent.frontmatter.description && (
+                  <p className="text-base-content/70 mt-2">
+                    {markdownContent.frontmatter.description}
+                  </p>
+                )}
+                <div
+                  className="prose prose-base mt-4 max-w-none"
+                  dangerouslySetInnerHTML={{ __html: markdownContent.content }}
+                />
+              </>
+            ) : (
+              <>
+                {ingredient.description && (
+                  <p className="text-base-content/70 mt-2">{ingredient.description}</p>
+                )}
+              </>
             )}
-            <CardContent className="prose prose-base mt-4 max-w-none">
-              <div dangerouslySetInnerHTML={{ __html: markdownContent.content }} />
-            </CardContent>
-          </Card>
-        )}
 
-        {/* Database Content Card */}
-        <Card className="border border-base-300">
-          <CardContent>
-            {!markdownContent && (
-              <CardTitle className="mb-6">{ingredient.name}</CardTitle>
-            )}
-
-            {/* Basic Information Table */}
-            <div className="overflow-x-auto">
-              <table className="table table-zebra">
-                <tbody>
-                  {/* ID */}
-                  <tr>
-                    <th className="w-1/4">ID</th>
-                    <td>{ingredient.id}</td>
-                  </tr>
-
-                  {/* Name */}
-                  <tr>
-                    <th>Name</th>
-                    <td>{ingredient.name}</td>
-                  </tr>
-
-                  {/* Categories */}
-                  <tr>
-                    <th>Categories</th>
-                    <td>
-                      <div className="flex flex-wrap gap-2">
-                        {categories.map((category) => (
-                          <div
-                            key={category.id}
-                            className="badge badge-primary"
-                          >
-                            {category.name}
-                          </div>
-                        ))}
-                      </div>
-                    </td>
-                  </tr>
-
-                  {/* Synonyms */}
-                  {ingredient.synonyms.length > 0 && (
-                    <tr>
-                      <th>Also Known As</th>
-                      <td>
-                        <ul className="list-disc list-inside">
-                          {ingredient.synonyms.map((synonym) => (
-                            <li key={synonym} className="text-sm">
-                              {synonym}
-                            </li>
-                          ))}
-                        </ul>
-                      </td>
-                    </tr>
-                  )}
-                </tbody>
-              </table>
-            </div>
-
-            {/* Category Details Table */}
-            {categories.some(category => category.description) && (
-              <div className="mt-6">
-                <CardTitle className="mb-4">Category Details</CardTitle>
-                <div className="overflow-x-auto">
-                  <table className="table table-zebra">
-                    <thead>
-                      <tr>
-                        <th>Category</th>
-                        <th>Description</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {categories.map((category) =>
-                        category.description ? (
-                          <tr key={category.id}>
-                            <td className="font-medium w-1/4">{category.name}</td>
-                            <td>{category.description}</td>
-                          </tr>
-                        ) : null
-                      )}
-                    </tbody>
-                  </table>
+            {/* Categories */}
+            {ingredient.categories.length > 0 && (
+              <div className="mt-4">
+                <h2 className="text-xl font-semibold mb-2">Categories</h2>
+                <div className="flex flex-wrap gap-2">
+                  {ingredient.categories.map(categoryId => {
+                    const category = database.categories[categoryId];
+                    return (
+                      <Link
+                        key={categoryId}
+                        href={`/categories/${idToSlug(categoryId)}`}
+                        className="badge badge-primary"
+                      >
+                        {category.name}
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             )}
 
-            {/* References Table */}
-            {ingredient.references && ingredient.references.length > 0 && (
-              <div className="mt-6">
-                <CardTitle className="mb-4">Learn More</CardTitle>
-                <div className="overflow-x-auto">
-                  <table className="table table-zebra">
-                    <thead>
-                      <tr>
-                        <th>Source</th>
-                        <th>Link</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {ingredient.references.map((ref) => (
-                        <tr key={ref}>
-                          <td className="w-1/4">
-                            {new URL(ref).hostname.replace('www.', '')}
-                          </td>
-                          <td>
-                            <a
-                              href={ref}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="link link-primary"
-                            >
-                              View Source
-                            </a>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+            {/* Synonyms */}
+            {ingredient.synonyms.length > 0 && (
+              <div className="mt-4">
+                <h2 className="text-xl font-semibold mb-2">Also Known As</h2>
+                <div className="flex flex-wrap gap-2">
+                  {ingredient.synonyms.map(synonym => (
+                    <span key={synonym} className="badge badge-ghost">
+                      {synonym}
+                    </span>
+                  ))}
                 </div>
               </div>
             )}
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { getBundledDatabase } from 'haircare-ingredients-analyzer';
 import { getCategoryContent } from '@/utils/markdown';
 import { Metadata } from 'next';
+import { slugToId, idToSlug } from '@/utils/slugs';
 
 interface PageProps {
   params: {
@@ -12,19 +13,20 @@ interface PageProps {
 
 // Generate metadata
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const decodedName = decodeURIComponent(params.name).toLowerCase();
+  const decodedName = decodeURIComponent(params.name);
+  const categoryId = slugToId(decodedName.toLowerCase());
   const database = getBundledDatabase();
 
-  const categoryId = Object.keys(database.categories).find(
-    id => id.toLowerCase() === decodedName
+  const dbCategoryId = Object.keys(database.categories).find(
+    id => id.toLowerCase() === categoryId
   );
 
-  if (!categoryId) {
+  if (!dbCategoryId) {
     notFound();
   }
 
-  const category = database.categories[categoryId];
-  const markdownContent = await getCategoryContent(categoryId);
+  const category = database.categories[dbCategoryId];
+  const markdownContent = await getCategoryContent(dbCategoryId);
 
   return {
     title: markdownContent?.frontmatter?.title || category.name,
@@ -49,27 +51,28 @@ interface Ingredient {
 }
 
 export default async function CategoryPage({ params }: PageProps) {
-  const decodedName = decodeURIComponent(params.name).toLowerCase();
+  const decodedName = decodeURIComponent(params.name);
+  const categoryId = slugToId(decodedName.toLowerCase());
   const database = getBundledDatabase();
 
   // Find the category
-  const categoryId = Object.keys(database.categories).find(
-    id => id.toLowerCase() === decodedName
+  const dbCategoryId = Object.keys(database.categories).find(
+    id => id.toLowerCase() === categoryId
   );
 
-  if (!categoryId) {
+  if (!dbCategoryId) {
     notFound();
   }
 
-  const category = database.categories[categoryId];
+  const category = database.categories[dbCategoryId];
 
   // Find all ingredients in this category
   const ingredients = Object.values(database.ingredients).filter(
-    (ing: Ingredient) => ing.categories.includes(categoryId)
+    (ing: Ingredient) => ing.categories.includes(dbCategoryId)
   );
 
   // Try to get markdown content
-  const markdownContent = await getCategoryContent(categoryId);
+  const markdownContent = await getCategoryContent(dbCategoryId);
 
   return (
     <div className="container mx-auto p-4 max-w-4xl">
@@ -106,7 +109,11 @@ export default async function CategoryPage({ params }: PageProps) {
               </>
             )}
             {category.group && (
-              <div className="badge badge-secondary mt-2">Group: {category.group}</div>
+              <div className="badge badge-secondary mt-2">
+                <Link href={`/groups/${idToSlug(category.group)}`}>
+                  Group: {category.group}
+                </Link>
+              </div>
             )}
           </div>
         </div>
@@ -137,7 +144,7 @@ export default async function CategoryPage({ params }: PageProps) {
                       </td>
                       <td>
                         <Link
-                          href={`/ingredients/${encodeURIComponent(ingredient.id)}`}
+                          href={`/ingredients/${idToSlug(ingredient.id)}`}
                           className="btn btn-primary btn-sm"
                         >
                           View Details

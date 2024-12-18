@@ -11,7 +11,7 @@
   "dependencies": {
     "fuse.js": "^7.0.0",
     "gray-matter": "^4.0.3",
-    "haircare-ingredients-analyzer": "file:../curlsbotAPI",
+    "haircare-ingredients-analyzer": "file:../CurlsBotAPI",
     "next": "15.1.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
