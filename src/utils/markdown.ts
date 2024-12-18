@@ -4,7 +4,7 @@ import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
 
-export interface IngredientContent {
+export interface MarkdownContent {
   content: string;
   frontmatter: {
     title?: string;
@@ -13,10 +13,12 @@ export interface IngredientContent {
   };
 }
 
-export async function getIngredientContent(id: string): Promise<IngredientContent | null> {
-  const filePath = path.join(process.cwd(), 'src/content/ingredients', `${id}.md`);
+type ContentType = 'ingredients' | 'categories' | 'groups';
 
-  // Check if markdown file exists for this ingredient
+export async function getMarkdownContent(type: ContentType, id: string): Promise<MarkdownContent | null> {
+  const filePath = path.join(process.cwd(), 'src/content', type, `${id}.md`);
+
+  // Check if markdown file exists
   if (!fs.existsSync(filePath)) {
     return null;
   }
@@ -37,3 +39,8 @@ export async function getIngredientContent(id: string): Promise<IngredientConten
     frontmatter
   };
 }
+
+// Convenience functions for specific content types
+export const getIngredientContent = (id: string) => getMarkdownContent('ingredients', id);
+export const getCategoryContent = (id: string) => getMarkdownContent('categories', id);
+export const getGroupContent = (name: string) => getMarkdownContent('groups', name);

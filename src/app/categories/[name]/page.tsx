@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getBundledDatabase } from 'haircare-ingredients-analyzer';
+import { getCategoryContent } from '@/utils/markdown';
 
 interface PageProps {
   params: {
@@ -23,7 +24,7 @@ interface Ingredient {
   description?: string;
 }
 
-export default function CategoryPage({ params }: PageProps) {
+export default async function CategoryPage({ params }: PageProps) {
   const decodedName = decodeURIComponent(params.name).toLowerCase();
   const database = getBundledDatabase();
 
@@ -43,6 +44,9 @@ export default function CategoryPage({ params }: PageProps) {
     (ing: Ingredient) => ing.categories.includes(categoryId)
   );
 
+  // Try to get markdown content
+  const markdownContent = await getCategoryContent(categoryId);
+
   return (
     <div className="container mx-auto p-4 max-w-4xl">
       <div className="mb-4">
@@ -55,9 +59,27 @@ export default function CategoryPage({ params }: PageProps) {
         {/* Category Information */}
         <div className="card bg-base-100 shadow-xl text-base-content">
           <div className="card-body">
-            <h1 className="card-title text-3xl">{category.name}</h1>
-            {category.description && (
-              <p className="text-base-content/70 mt-2">{category.description}</p>
+            <h1 className="card-title text-3xl">
+              {markdownContent?.frontmatter?.title || category.name}
+            </h1>
+            {markdownContent ? (
+              <>
+                {markdownContent.frontmatter.description && (
+                  <p className="text-base-content/70 mt-2">
+                    {markdownContent.frontmatter.description}
+                  </p>
+                )}
+                <div
+                  className="prose prose-base mt-4 max-w-none"
+                  dangerouslySetInnerHTML={{ __html: markdownContent.content }}
+                />
+              </>
+            ) : (
+              <>
+                {category.description && (
+                  <p className="text-base-content/70 mt-2">{category.description}</p>
+                )}
+              </>
             )}
             {category.group && (
               <div className="badge badge-secondary mt-2">Group: {category.group}</div>
