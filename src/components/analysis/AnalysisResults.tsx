@@ -3,6 +3,9 @@
 import { AnalysisResult } from '../../types/analysis';
 import Link from 'next/link';
 import { Card, CardTitle, CardContent } from '@/components/ui/Card';
+import { ProductRecommendation } from '@/components/ui/product/ProductRecommendation';
+import { getBundledProducts } from 'haircare-ingredients-analyzer';
+import { ProductCategory } from '@/components/ui/product/ProductRecommendations';
 
 interface Props {
   result: AnalysisResult;
@@ -10,6 +13,17 @@ interface Props {
 
 export default function AnalysisResults({ result }: Props) {
   if (!result) return null;
+
+  // Get a random product recommendation from all products
+  const products = getBundledProducts();
+  const allProducts = Object.values(products.products);
+  const randomProduct = allProducts[Math.floor(Math.random() * allProducts.length)];
+  const productRecommendation = randomProduct ? {
+    category: randomProduct.product_categories[0] as ProductCategory,
+    name: randomProduct.name,
+    brand: randomProduct.brand,
+    buyUrl: randomProduct.buy_url
+  } : null;
 
   const getStatusClasses = (status: string) => {
     switch (status) {
@@ -106,6 +120,21 @@ export default function AnalysisResults({ result }: Props) {
                 </div>
               ))}
             </div>
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Product Recommendation */}
+      {productRecommendation && (
+        <Card>
+          <CardContent>
+            <CardTitle className="mb-4">Try This Product</CardTitle>
+            <ProductRecommendation
+              category={productRecommendation.category}
+              brand={productRecommendation.brand}
+              name={productRecommendation.name}
+              buyUrl={productRecommendation.buyUrl}
+            />
           </CardContent>
         </Card>
       )}
