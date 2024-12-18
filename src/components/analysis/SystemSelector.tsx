@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { getBundledSystems } from '../../../../src/data/bundledData';
+import { getBundledSystems } from 'haircare-ingredients-analyzer';
 import CustomSystemForm from './CustomSystemForm';
 
 interface System {
@@ -59,7 +59,7 @@ export default function SystemSelector({ value, onChange }: SystemSelectorProps)
           </span>
         </label>
         <select
-          className="select select-bordered w-full"
+          className="select select-bordered bg-base-200 text-base-content w-full"
           value={value}
           onChange={(e) => handleSystemChange(e.target.value)}
         >
@@ -73,9 +73,8 @@ export default function SystemSelector({ value, onChange }: SystemSelectorProps)
       </div>
 
       {showCustomForm && (
-        <div className="card bg-base-100 shadow-lg">
+        <div className="card bg-base-100 border border-base-300 shadow-lg">
           <div className="card-body">
-            <h3 className="card-title">Customize Your System</h3>
             <CustomSystemForm
               onSave={handleCustomSettings}
               initialSettings={systems.find(s => s.id === value)?.settings || defaultSettings}

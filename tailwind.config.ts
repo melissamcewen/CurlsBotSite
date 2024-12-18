@@ -1,6 +1,6 @@
 import type { Config } from "tailwindcss";
 
-export default {
+const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,10 +8,6 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
@@ -21,6 +17,10 @@ export default {
   },
   plugins: [require("daisyui")],
   daisyui: {
-    themes: ["light", "dark"],
+    themes: ["cupcake", "synthwave"],
+    darkTheme: "synthwave",
   },
 } satisfies Config;
+
+export default config;
+
