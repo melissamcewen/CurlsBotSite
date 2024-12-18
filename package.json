@@ -1,48 +1,28 @@
 {
-  "name": "gatsby-starter-default",
-  "jest": {
-    "verbose": true,
-    "testPathIgnorePatterns": [
-      "cache"
-    ]
-  },
-  "description": "Gatsby default starter",
-  "version": "1.0.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
-  "dependencies": {
-    "babel-core": "^6.26.3",
-    "babel-jest": "^23.2.0",
-    "bootstrap": "^4.0.0",
-    "gatsby": "^1.9.45",
-    "gatsby-cli": "^1.1.58",
-    "gatsby-link": "^1.6.45",
-    "gatsby-plugin-offline": "^1.0.18",
-    "gatsby-plugin-react-helmet": "^1.0.5",
-    "gatsby-plugin-sitemap": "^1.2.12",
-    "gatsby-plugin-typography": "^1.7.10",
-    "immutability-helper": "^2.4.0",
-    "rc-progress": "^2.2.2",
-    "react-ga": "^2.3.5",
-    "reactstrap": "^5.0.0-alpha.4",
-    "regenerator-runtime": "^0.12.0",
-    "typography-theme-bootstrap": "^0.16.7"
-  },
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "MIT",
-  "main": "n/a",
+  "name": "next",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "deploy": "gatsby build --prefix-paths && cp ./src/CNAME public/ && gh-pages -d public",
-    "deploybare": "gh-pages -d public",
-    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js'",
-    "test": "jest"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "15.1.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "gh-pages": "^1.2.0",
-    "jest": "^23.2.0",
-    "prettier": "^1.6.1"
+    "@eslint/eslintrc": "^3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "daisyui": "^4.12.22",
+    "eslint": "^9",
+    "eslint-config-next": "15.1.1",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
   }
 }
