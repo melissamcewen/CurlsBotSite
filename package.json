@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "fuse.js": "^7.0.0",
     "haircare-ingredients-analyzer": "file:../curlsbotAPI",
     "next": "15.1.1",
     "react": "^19.0.0",

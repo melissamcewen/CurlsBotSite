@@ -1,23 +1,55 @@
 'use client';
 
-import { useState } from 'react';
-import { getBundledDatabase, findIngredient } from 'haircare-ingredients-analyzer';
+import { useState, useMemo } from 'react';
+import { getBundledDatabase } from 'haircare-ingredients-analyzer';
+import Fuse from 'fuse.js';
 import Link from 'next/link';
+
+interface Ingredient {
+  id: string;
+  name: string;
+  categories?: string[];
+  synonyms?: string[];
+  description?: string;
+}
+
+interface SearchResult {
+  item: Ingredient;
+  refIndex: number;
+  score?: number;
+}
 
 export default function IngredientsPage() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [searchResult, setSearchResult] = useState<any>(null);
+  const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
+
+  // Initialize Fuse instance with ingredients data
+  const fuse = useMemo(() => {
+    const database = getBundledDatabase();
+    const ingredients = Object.values(database.ingredients);
+
+    return new Fuse(ingredients, {
+      keys: [
+        { name: 'name', weight: 2 },
+        { name: 'id', weight: 1 },
+        { name: 'synonyms', weight: 1 }
+      ],
+      includeScore: true,
+      threshold: 0.4,
+      ignoreLocation: true
+    });
+  }, []);
 
   const handleSearch = (term: string) => {
     setSearchTerm(term);
+
     if (!term.trim()) {
-      setSearchResult(null);
+      setSearchResults([]);
       return;
     }
 
-    const database = getBundledDatabase();
-    const result = findIngredient(database, term);
-    setSearchResult(result);
+    const results = fuse.search(term);
+    setSearchResults(results);
   };
 
   return (
@@ -37,26 +69,40 @@ export default function IngredientsPage() {
         />
       </div>
 
-      {searchResult && (
+      {searchResults.length > 0 ? (
         <div className="space-y-4">
-          {searchResult.ingredient ? (
-            <div className="card bg-base-100 shadow-xl border border-base-300">
+          {searchResults.map((result, index) => (
+            <div key={index} className="card bg-base-100 shadow-xl border border-base-300">
               <div className="card-body">
                 <h2 className="card-title text-base-content">
-                  {searchResult.ingredient.name}
                   <Link
-                    href={`/ingredients/${encodeURIComponent(searchResult.ingredient.id)}`}
+                    href={`/ingredients/${encodeURIComponent(result.item.id)}`}
+                    className="hover:text-primary transition-colors"
+                  >
+                    {result.item.name}
+                  </Link>
+                  <Link
+                    href={`/ingredients/${encodeURIComponent(result.item.id)}`}
                     className="badge badge-primary"
                   >
                     View Details
                   </Link>
+                  {result.score && (
+                    <span className="badge badge-ghost text-xs">
+                      Match: {((1 - result.score) * 100).toFixed(0)}%
+                    </span>
+                  )}
                 </h2>
 
-                {searchResult.ingredient.categories?.length > 0 && (
+                {result.item.description && (
+                  <p className="text-sm opacity-70 mt-2">{result.item.description}</p>
+                )}
+
+                {result.item.categories?.length > 0 && (
                   <div className="mt-2">
                     <h3 className="font-semibold mb-1 text-base-content">Categories:</h3>
                     <div className="flex flex-wrap gap-2">
-                      {searchResult.ingredient.categories.map((category: string) => (
+                      {result.item.categories.map((category: string) => (
                         <span key={category} className="badge badge-secondary">
                           {category.replace(/_/g, ' ')}
                         </span>
@@ -65,11 +111,11 @@ export default function IngredientsPage() {
                   </div>
                 )}
 
-                {searchResult.ingredient.synonyms?.length > 0 && (
+                {result.item.synonyms?.length > 0 && (
                   <div className="mt-4">
                     <h3 className="font-semibold mb-1 text-base-content">Also known as:</h3>
                     <div className="flex flex-wrap gap-2">
-                      {searchResult.ingredient.synonyms.map((synonym: string) => (
+                      {result.item.synonyms.map((synonym: string) => (
                         <span key={synonym} className="badge badge-ghost">
                           {synonym}
                         </span>
@@ -79,11 +125,11 @@ export default function IngredientsPage() {
                 )}
               </div>
             </div>
-          ) : (
-            <div className="alert alert-info">
-              <span>No ingredient found matching "{searchTerm}"</span>
-            </div>
-          )}
+          ))}
+        </div>
+      ) : searchTerm && (
+        <div className="alert alert-info">
+          <span>No ingredients found matching "{searchTerm}"</span>
         </div>
       )}
     </div>
