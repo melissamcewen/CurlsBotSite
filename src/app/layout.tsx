@@ -47,6 +47,7 @@ export default function RootLayout({
             </div>
             <div className="navbar-center">
               <a href="/ingredients" className="btn btn-ghost normal-case">Ingredients</a>
+              <a href="/categories" className="btn btn-ghost normal-case">Categories</a>
             </div>
             <div className="navbar-end">
               <ThemeToggle />
