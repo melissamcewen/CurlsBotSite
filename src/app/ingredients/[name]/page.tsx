@@ -2,10 +2,36 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getBundledDatabase } from 'haircare-ingredients-analyzer';
 import { getIngredientContent } from '@/utils/markdown';
+import { Metadata } from 'next';
 
 interface PageProps {
   params: {
     name: string;
+  };
+}
+
+// Generate metadata
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const decodedName = decodeURIComponent(params.name).toLowerCase();
+  const database = getBundledDatabase();
+
+  const ingredient = Object.values(database.ingredients).find(
+    (ing: any) => ing.id.toLowerCase() === decodedName ||
+           ing.name.toLowerCase() === decodedName ||
+           ing.synonyms.some((syn: string) => syn.toLowerCase() === decodedName)
+  );
+
+  if (!ingredient) {
+    notFound();
+  }
+
+  // Check for markdown content
+  const markdownContent = await getIngredientContent(ingredient.id);
+
+  return {
+    title: markdownContent?.frontmatter?.title || ingredient.name,
+    description: markdownContent?.frontmatter?.description || ingredient.description || `Information about ${ingredient.name} in hair care products`,
+    robots: markdownContent ? undefined : 'noindex',
   };
 }
 

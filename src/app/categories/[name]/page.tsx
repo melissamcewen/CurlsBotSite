@@ -2,10 +2,34 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getBundledDatabase } from 'haircare-ingredients-analyzer';
 import { getCategoryContent } from '@/utils/markdown';
+import { Metadata } from 'next';
 
 interface PageProps {
   params: {
     name: string;
+  };
+}
+
+// Generate metadata
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const decodedName = decodeURIComponent(params.name).toLowerCase();
+  const database = getBundledDatabase();
+
+  const categoryId = Object.keys(database.categories).find(
+    id => id.toLowerCase() === decodedName
+  );
+
+  if (!categoryId) {
+    notFound();
+  }
+
+  const category = database.categories[categoryId];
+  const markdownContent = await getCategoryContent(categoryId);
+
+  return {
+    title: markdownContent?.frontmatter?.title || category.name,
+    description: markdownContent?.frontmatter?.description || category.description || `Hair care ingredients in the ${category.name} category`,
+    robots: markdownContent ? undefined : 'noindex',
   };
 }
 
