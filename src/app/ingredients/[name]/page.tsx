@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { getBundledDatabase } from 'haircare-ingredients-analyzer';
 import { getIngredientContent } from '@/utils/markdown';
 import { Metadata } from 'next';
+import { Card, CardTitle, CardContent, CardDescription } from '@/components/ui/Card';
 
 interface PageProps {
   params: {
@@ -84,29 +85,26 @@ export default async function IngredientPage({ params }: PageProps) {
       <div className="space-y-6">
         {/* Markdown Content Card (if available) */}
         {markdownContent && (
-          <div className="card bg-base-100 shadow-xl text-base-content">
-            <div className="card-body">
-              <h1 className="card-title text-3xl">
-                {markdownContent.frontmatter.title || ingredient.name}
-              </h1>
-              {markdownContent.frontmatter.description && (
-                <p className="text-base-content/70">
-                  {markdownContent.frontmatter.description}
-                </p>
-              )}
-              <div
-                className="prose prose-base mt-4 max-w-none"
-                dangerouslySetInnerHTML={{ __html: markdownContent.content }}
-              />
-            </div>
-          </div>
+          <Card>
+            <CardTitle>
+              {markdownContent.frontmatter.title || ingredient.name}
+            </CardTitle>
+            {markdownContent.frontmatter.description && (
+              <CardDescription>
+                {markdownContent.frontmatter.description}
+              </CardDescription>
+            )}
+            <CardContent className="prose prose-base mt-4 max-w-none">
+              <div dangerouslySetInnerHTML={{ __html: markdownContent.content }} />
+            </CardContent>
+          </Card>
         )}
 
         {/* Database Content Card */}
-        <div className="card bg-base-100 text-base-content shadow-xl border border-base-300">
-          <div className="card-body">
+        <Card className="border border-base-300">
+          <CardContent>
             {!markdownContent && (
-              <h1 className="card-title text-3xl mb-6">{ingredient.name}</h1>
+              <CardTitle className="mb-6">{ingredient.name}</CardTitle>
             )}
 
             {/* Basic Information Table */}
@@ -164,7 +162,7 @@ export default async function IngredientPage({ params }: PageProps) {
             {/* Category Details Table */}
             {categories.some(category => category.description) && (
               <div className="mt-6">
-                <h2 className="text-xl font-semibold mb-4">Category Details</h2>
+                <CardTitle className="mb-4">Category Details</CardTitle>
                 <div className="overflow-x-auto">
                   <table className="table table-zebra">
                     <thead>
@@ -191,7 +189,7 @@ export default async function IngredientPage({ params }: PageProps) {
             {/* References Table */}
             {ingredient.references && ingredient.references.length > 0 && (
               <div className="mt-6">
-                <h2 className="text-xl font-semibold mb-4">Learn More</h2>
+                <CardTitle className="mb-4">Learn More</CardTitle>
                 <div className="overflow-x-auto">
                   <table className="table table-zebra">
                     <thead>
@@ -223,8 +221,8 @@ export default async function IngredientPage({ params }: PageProps) {
                 </div>
               </div>
             )}
-          </div>
-        </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

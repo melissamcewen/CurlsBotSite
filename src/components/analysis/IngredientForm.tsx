@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { Analyzer } from 'haircare-ingredients-analyzer';
 import { getBundledSystems } from 'haircare-ingredients-analyzer';
 import SystemSelector from './SystemSelector';
@@ -16,6 +16,7 @@ export default function IngredientForm() {
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
   const searchParams = useSearchParams();
+  const initialLoadDone = useRef(false);
 
   const handleAnalysis = useCallback((ingredientList: string, system: string, settings?: string[]) => {
     setIsAnalyzing(true);
@@ -80,21 +81,24 @@ export default function IngredientForm() {
   }, []);
 
   useEffect(() => {
-    // Get ingredients and system from URL parameters
-    const urlIngredients = searchParams.get('ingredients');
-    const urlSystem = searchParams.get('system');
+    // Only load from URL params on initial load
+    if (!initialLoadDone.current) {
+      const urlIngredients = searchParams.get('ingredients');
+      const urlSystem = searchParams.get('system');
 
-    // Only update if the values are different from current state
-    if (urlIngredients && urlIngredients !== ingredients) {
-      setIngredients(urlIngredients);
-      if (urlSystem && urlSystem !== systemId) {
+      if (urlIngredients) {
+        setIngredients(urlIngredients);
+        if (urlSystem) {
+          setSystemId(urlSystem);
+        }
+        handleAnalysis(urlIngredients, urlSystem || systemId);
+      } else if (urlSystem) {
         setSystemId(urlSystem);
       }
-      handleAnalysis(urlIngredients, urlSystem || systemId);
-    } else if (urlSystem && urlSystem !== systemId) {
-      setSystemId(urlSystem);
+
+      initialLoadDone.current = true;
     }
-  }, [searchParams, systemId, ingredients, handleAnalysis]);
+  }, [searchParams, systemId, handleAnalysis]);
 
   const handleSystemChange = (newSystemId: string, settings?: string[]) => {
     setSystemId(newSystemId);

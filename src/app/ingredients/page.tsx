@@ -4,6 +4,7 @@ import { useState, useMemo } from 'react';
 import { getBundledDatabase } from 'haircare-ingredients-analyzer';
 import Fuse from 'fuse.js';
 import Link from 'next/link';
+import { Card, CardTitle, CardContent, CardDescription } from '@/components/ui/Card';
 
 interface Ingredient {
   id: string;
@@ -56,46 +57,54 @@ export default function IngredientsPage() {
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6 text-base-content">Search Ingredients</h1>
 
-      <div className="form-control w-full max-w-xl mb-8">
-        <label className="label">
-          <span className="label-text">Enter an ingredient name</span>
-        </label>
-        <input
-          type="text"
-          placeholder="Type ingredient name..."
-          className="input input-bordered bg-base-200 text-base-content w-full"
-          value={searchTerm}
-          onChange={(e) => handleSearch(e.target.value)}
-        />
-      </div>
+      <Card className="mb-8">
+        <CardContent>
+          <div className="form-control w-full max-w-xl">
+            <label className="label">
+              <span className="label-text">Enter an ingredient name</span>
+            </label>
+            <input
+              type="text"
+              placeholder="Type ingredient name..."
+              className="input input-bordered bg-base-200 text-base-content w-full"
+              value={searchTerm}
+              onChange={(e) => handleSearch(e.target.value)}
+            />
+          </div>
+        </CardContent>
+      </Card>
 
       {searchResults.length > 0 ? (
         <div className="space-y-4">
           {searchResults.map((result, index) => (
-            <div key={index} className="card bg-base-100 shadow-xl border border-base-300">
-              <div className="card-body">
-                <h2 className="card-title text-base-content">
-                  <Link
-                    href={`/ingredients/${encodeURIComponent(result.item.id)}`}
-                    className="hover:text-primary transition-colors"
-                  >
-                    {result.item.name}
-                  </Link>
+            <Card key={index}>
+              <CardContent>
+                <div className="flex justify-between items-start mb-4">
+                  <div>
+                    <CardTitle>
+                      <Link
+                        href={`/ingredients/${encodeURIComponent(result.item.id)}`}
+                        className="hover:text-primary transition-colors"
+                      >
+                        {result.item.name}
+                      </Link>
+                    </CardTitle>
+                    {result.score && (
+                      <span className="badge badge-ghost text-xs">
+                        Match: {((1 - result.score) * 100).toFixed(0)}%
+                      </span>
+                    )}
+                  </div>
                   <Link
                     href={`/ingredients/${encodeURIComponent(result.item.id)}`}
                     className="badge badge-primary"
                   >
                     View Details
                   </Link>
-                  {result.score && (
-                    <span className="badge badge-ghost text-xs">
-                      Match: {((1 - result.score) * 100).toFixed(0)}%
-                    </span>
-                  )}
-                </h2>
+                </div>
 
                 {result.item.description && (
-                  <p className="text-sm opacity-70 mt-2">{result.item.description}</p>
+                  <CardDescription>{result.item.description}</CardDescription>
                 )}
 
                 {result.item.categories?.length > 0 && (
@@ -123,14 +132,18 @@ export default function IngredientsPage() {
                     </div>
                   </div>
                 )}
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
       ) : searchTerm && (
-        <div className="alert alert-info">
-          <span>No ingredients found matching "{searchTerm}"</span>
-        </div>
+        <Card>
+          <CardContent>
+            <div className="alert alert-info">
+              <span>No ingredients found matching "{searchTerm}"</span>
+            </div>
+          </CardContent>
+        </Card>
       )}
     </div>
   );

@@ -2,6 +2,7 @@
 
 import { AnalysisResult } from '../../types/analysis';
 import Link from 'next/link';
+import { Card, CardTitle, CardContent } from '@/components/ui/Card';
 
 interface Props {
   result: AnalysisResult;
@@ -23,6 +24,19 @@ export default function AnalysisResults({ result }: Props) {
     }
   };
 
+  const getStatusDescription = (status: string) => {
+    switch (status) {
+      case 'ok':
+        return "We haven't found any ingredients that might be of concern, so we think this product might be OK for your hair.";
+      case 'warning':
+        return "We've found some ingredients that might be problematic. You may want to research these ingredients further or consider alternatives.";
+      case 'caution':
+        return "Some ingredients in this product require caution. They may work for some people but could be problematic depending on your hair type and needs.";
+      default:
+        return "We couldn't determine the status of this product.";
+    }
+  };
+
   const getIngredientClasses = (status: string) => {
     switch (status) {
       case 'ok':
@@ -39,23 +53,22 @@ export default function AnalysisResults({ result }: Props) {
   return (
     <div className="space-y-6">
       {/* Overall Assessment */}
-      <div className={`card shadow-lg ${getStatusClasses(result.overallStatus)}`}>
-        <div className="card-body">
-          <h2 className="card-title">Overall Assessment</h2>
-          <div className="flex items-center gap-2">
-            <div
-              className="w-3 h-3 rounded-full bg-current"
-            />
+      <Card className={getStatusClasses(result.overallStatus)}>
+        <CardContent>
+          <CardTitle>Overall Assessment</CardTitle>
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-3 h-3 rounded-full bg-current" />
             <span className="capitalize font-medium">{result.overallStatus}</span>
           </div>
-        </div>
-      </div>
+          <p className="mt-2">{getStatusDescription(result.overallStatus)}</p>
+        </CardContent>
+      </Card>
 
       {/* Ingredient Status */}
       {result.ingredients && result.ingredients.length > 0 && (
-        <div className="card bg-base-100 shadow-xl border border-base-300">
-          <div className="card-body">
-            <h2 className="card-title text-base-content mb-4">Ingredients</h2>
+        <Card>
+          <CardContent>
+            <CardTitle className="mb-4">Ingredients</CardTitle>
             <div className="space-y-4">
               {result.ingredients.map((ingredient, index) => (
                 <div
@@ -93,8 +106,8 @@ export default function AnalysisResults({ result }: Props) {
                 </div>
               ))}
             </div>
-          </div>
-        </div>
+          </CardContent>
+        </Card>
       )}
     </div>
   );
