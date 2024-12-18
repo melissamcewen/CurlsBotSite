@@ -19,3 +19,14 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@layer components {
+  .container {
+    @apply text-base-content;
+
+    /* This applies to all descendants */
+    * {
+      @apply text-base-content;
+    }
+  }
+}
