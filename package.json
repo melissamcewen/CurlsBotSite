@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "haircare-ingredients-analyzer": "file:../curlsbotAPI",
     "next": "15.1.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
