@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ThemeToggle from "@/components/ThemeToggle";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,13 +42,13 @@ export default function RootLayout({
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} suppressHydrationWarning>
         <div className="min-h-screen bg-base-200">
-          <header className="navbar bg-primary text-primary-content shadow-lg">
+          <header className="navbar bg-accent text-accent-content shadow-lg">
             <div className="navbar-start">
-              <a href="/" className="btn btn-ghost normal-case text-xl">CurlsBot</a>
+              <Link href="/" className="btn btn-ghost normal-case text-xl">CurlsBot</Link>
             </div>
             <div className="navbar-center">
-              <a href="/ingredients" className="btn btn-ghost normal-case">Ingredients</a>
-              <a href="/categories" className="btn btn-ghost normal-case">Categories</a>
+              <Link href="/ingredients" className="btn btn-ghost normal-case">Ingredients</Link>
+              <Link href="/categories" className="btn btn-ghost normal-case">Categories</Link>
             </div>
             <div className="navbar-end">
               <ThemeToggle />
