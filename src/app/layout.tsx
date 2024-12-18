@@ -59,7 +59,7 @@ export default function RootLayout({
                 Your intelligent assistant for analyzing hair care ingredients
               </p>
             </div>
-            <div className="bg-base-100 rounded-box shadow-lg p-6">
+            <div className="">
               {children}
             </div>
           </main>

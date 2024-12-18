@@ -158,7 +158,9 @@ export default function IngredientForm() {
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="form-control w-full">
           <label className="label">
-            <span className="label-text">Paste your ingredients list</span>
+            <span className="label-text font-semibold">
+              Paste your ingredients list
+            </span>
           </label>
           <textarea
             className="textarea textarea-bordered bg-base-200 text-base-content h-32"
@@ -168,10 +170,7 @@ export default function IngredientForm() {
           />
         </div>
 
-        <SystemSelector
-          value={systemId}
-          onChange={handleSystemChange}
-        />
+        <SystemSelector value={systemId} onChange={handleSystemChange} />
 
         <button
           type="submit"
@@ -188,9 +187,7 @@ export default function IngredientForm() {
         </div>
       )}
 
-      {analysisResult && (
-        <AnalysisResults result={analysisResult} />
-      )}
+      {analysisResult && <AnalysisResults result={analysisResult} />}
     </div>
   );
 }
