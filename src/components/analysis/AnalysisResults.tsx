@@ -1,13 +1,14 @@
 'use client';
 
 import { AnalysisResult } from '../../types/analysis';
-import { Card, CardTitle, CardContent, CardDescription } from '@/components/ui/Card';
 import { ProductRecommendation } from '@/components/ui/product/ProductRecommendation';
 import { getBundledProducts } from 'haircare-ingredients-analyzer';
 import { ProductCategory } from '@/components/ui/product/ProductRecommendations';
 import { StatusIndicator } from './status/StatusIndicator';
 import { IngredientsList } from './ingredients/IngredientsList';
 import { getStatusConfig } from './utils/statusConfig';
+import { BeakerIcon, ShoppingBagIcon } from '@heroicons/react/24/outline';
+import { CheckCircleIcon, ExclamationCircleIcon, ExclamationTriangleIcon, InformationCircleIcon } from '@heroicons/react/24/solid';
 
 interface Props {
   result: AnalysisResult;
@@ -27,37 +28,57 @@ export default function AnalysisResults({ result }: Props) {
     buyUrl: randomProduct.buy_url
   } : null;
 
-  const { color, description } = getStatusConfig(result.overallStatus);
+  const { description, alertClass } = getStatusConfig(result.overallStatus);
+
+  const getStatusIcon = (status: string) => {
+    switch (status) {
+      case 'ok':
+        return <CheckCircleIcon className="w-6 h-6" />;
+      case 'warning':
+        return <ExclamationCircleIcon className="w-6 h-6" />;
+      case 'caution':
+        return <ExclamationTriangleIcon className="w-6 h-6" />;
+      default:
+        return <InformationCircleIcon className="w-6 h-6" />;
+    }
+  };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* Overall Assessment */}
-      <Card className={`bg-${color}/10 border-${color}`}>
-        <CardContent>
-          <CardTitle>Overall Assessment</CardTitle>
-          <StatusIndicator status={result.overallStatus} />
-          <CardDescription>{description}</CardDescription>
-        </CardContent>
-      </Card>
+      <div className={`alert ${alertClass}`}>
+        <div>
+          {getStatusIcon(result.overallStatus)}
+          <div>
+            <h2 className="text-lg font-bold">Overall Assessment</h2>
+            <p className="opacity-90">{description}</p>
+          </div>
+        </div>
+      </div>
 
       {/* Ingredients List */}
-      <IngredientsList ingredients={result.ingredients} />
+      <div>
+        <div className="flex items-center gap-2 mb-4">
+          <BeakerIcon className="w-6 h-6" />
+          <h2 className="text-2xl font-bold">Ingredients Analysis</h2>
+        </div>
+        <IngredientsList ingredients={result.ingredients} />
+      </div>
 
       {/* Product Recommendation */}
       {productRecommendation && (
-        <Card>
-          <CardContent>
-            <CardTitle className="mb-4">Try This Product</CardTitle>
-            <div className="bg-base-100 rounded-lg">
-              <ProductRecommendation
-                category={productRecommendation.category}
-                brand={productRecommendation.brand}
-                name={productRecommendation.name}
-                buyUrl={productRecommendation.buyUrl}
-              />
-            </div>
-          </CardContent>
-        </Card>
+        <div className="bg-base-100 rounded-lg p-6 border border-base-200">
+          <div className="flex items-center gap-2 mb-4">
+            <ShoppingBagIcon className="w-6 h-6" />
+            <h2 className="text-2xl font-bold">Try This Product</h2>
+          </div>
+          <ProductRecommendation
+            category={productRecommendation.category}
+            brand={productRecommendation.brand}
+            name={productRecommendation.name}
+            buyUrl={productRecommendation.buyUrl}
+          />
+        </div>
       )}
     </div>
   );
