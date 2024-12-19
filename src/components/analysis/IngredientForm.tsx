@@ -165,33 +165,37 @@ export default function IngredientForm() {
         imageUrl="/normal.svg"
       />
       <div className="chat chat-end">
-        <div className="chat-bubble chat-bubble-primary">
-          <form onSubmit={handleSubmit} className="space-y-4 chat">
-            <div className="form-control w-full">
-              <label className="label">
-                <span className="label-text font-semibold">
-                  Paste your ingredients list
-                </span>
-              </label>
+        <div className="chat-bubble chat-bubble-primary w-full">
+          <div className="w-full">
+            <form onSubmit={handleSubmit} className="space-y-4 w-full">
+              <div className="form-control w-full">
+                <label className="label">
+                  <span className="label-text font-semibold">
+                    Paste your ingredients list
+                  </span>
+                </label>
 
-              <textarea
-                className="textarea textarea-bordered bg-base-200 text-base-content h-32"
-                value={ingredients}
-                onChange={(e) => setIngredients(e.target.value)}
-                placeholder="Enter ingredients, one per line..."
-              />
-            </div>
+                <textarea
+                  className="textarea textarea-bordered bg-base-200 text-base-content h-32 w-full"
+                  value={ingredients}
+                  onChange={(e) => setIngredients(e.target.value)}
+                  placeholder="Enter ingredients, one per line..."
+                />
+              </div>
 
-            <SystemSelector value={systemId} onChange={handleSystemChange} />
+              <div className="w-full">
+                <SystemSelector value={systemId} onChange={handleSystemChange} />
+              </div>
 
-            <button
-              type="submit"
-              className="btn btn-secondary w-full"
-              disabled={isAnalyzing || !ingredients.trim()}
-            >
-              {isAnalyzing ? 'Analyzing...' : 'Analyze Ingredients'}
-            </button>
-          </form>
+              <button
+                type="submit"
+                className="btn btn-secondary w-full"
+                disabled={isAnalyzing || !ingredients.trim()}
+              >
+                {isAnalyzing ? 'Analyzing...' : 'Analyze Ingredients'}
+              </button>
+            </form>
+          </div>
         </div>
       </div>
 

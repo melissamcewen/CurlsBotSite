@@ -4,16 +4,10 @@ import { AnalysisResult } from '../../types/analysis';
 import { ProductRecommendation } from '@/components/ui/product/ProductRecommendation';
 import { getBundledProducts } from 'haircare-ingredients-analyzer';
 import { ProductCategory } from '@/components/ui/product/ProductRecommendations';
-import { StatusIndicator } from './status/StatusIndicator';
 import { IngredientsList } from './ingredients/IngredientsList';
 import { getStatusConfig } from './utils/statusConfig';
 import { BeakerIcon, ShoppingBagIcon } from '@heroicons/react/24/outline';
-import {
-  CheckCircleIcon,
-  ExclamationCircleIcon,
-  ExclamationTriangleIcon,
-  InformationCircleIcon,
-} from '@heroicons/react/24/solid';
+import ChatBubbleRobot from './ChatBubbleRobot';
 import { ContentCard } from '@/components/ui/ContentCard';
 
 interface Props {
@@ -23,7 +17,7 @@ interface Props {
 export default function AnalysisResults({ result }: Props) {
   if (!result) return null;
 
-  const { description, alertClass, alertContentClass } = getStatusConfig(result.overallStatus);
+  const { description, alertClass } = getStatusConfig(result.overallStatus);
   const shouldShowRecommendation =
     result.overallStatus === 'warning' || result.overallStatus === 'caution';
   const hasIngredients = result.ingredients && result.ingredients.length > 0;
@@ -46,29 +40,42 @@ export default function AnalysisResults({ result }: Props) {
       })()
     : null;
 
-  const getStatusIcon = (status: string) => {
+  const getAssessmentConfig = (status: string) => {
     switch (status) {
       case 'ok':
-        return <CheckCircleIcon className="h-6 w-6 flex-shrink-0" />;
+        return {
+          imageUrl: '/normal.png',
+          bubbleClass: 'chat-bubble bg-success text-success-content'
+        };
       case 'warning':
-        return <ExclamationCircleIcon className="h-6 w-6 flex-shrink-0" />;
+      case 'error':
+        return {
+          imageUrl: '/exclaim.svg',
+          bubbleClass: 'chat-bubble bg-error text-error-content'
+        };
       case 'caution':
-        return <ExclamationTriangleIcon className="h-6 w-6 flex-shrink-0" />;
+        return {
+          imageUrl: '/surprised.svg',
+          bubbleClass: 'chat-bubble bg-warning text-warning-content'
+        };
       default:
-        return <InformationCircleIcon className="h-6 w-6 flex-shrink-0" />;
+        return {
+          imageUrl: '/normal.png',
+          bubbleClass: 'chat-bubble bg-primary text-primary-content'
+        };
     }
   };
+
+  const assessmentConfig = getAssessmentConfig(result.overallStatus);
 
   return (
     <div className="space-y-8">
       {/* Overall Assessment */}
-      <div className={`alert ${alertClass}`}>
-        {getStatusIcon(result.overallStatus)}
-        <div>
-          <h2 className={`font-bold text-lg ${alertContentClass}`}>Overall Assessment</h2>
-          <p className={`text-sm ${alertContentClass} opacity-90`}>{description}</p>
-        </div>
-      </div>
+      <ChatBubbleRobot
+        message={description}
+        imageUrl={assessmentConfig.imageUrl}
+        bubbleClass={assessmentConfig.bubbleClass}
+      />
 
       {/* Product Recommendation */}
       {productRecommendation && (
@@ -78,7 +85,7 @@ export default function AnalysisResults({ result }: Props) {
             <h2 className="text-2xl font-bold">Try This Alternative</h2>
           </div>
           <p className="text-sm text-base-content/70 mb-4">
-            Since we found some ingredients that might be problematic, here's a
+            Since we found some ingredients that might be problematic, here&apos;s a
             product that might work better for your hair.
           </p>
           <ProductRecommendation
