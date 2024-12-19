@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { getBundledSystems } from 'haircare-ingredients-analyzer';
-import CustomSystemForm from './CustomSystemForm';
+import Link from 'next/link';
+import { InformationCircleIcon, ListBulletIcon } from '@heroicons/react/24/outline';
 
 interface System {
   id: string;
@@ -18,70 +19,44 @@ interface SystemSelectorProps {
 
 export default function SystemSelector({ value, onChange }: SystemSelectorProps) {
   const [systems, setSystems] = useState<System[]>([]);
-  const [showCustomForm, setShowCustomForm] = useState(false);
-  const [defaultSettings, setDefaultSettings] = useState<string[]>([]);
 
   useEffect(() => {
     // Load systems on component mount
     const bundledSystems = getBundledSystems();
     setSystems(bundledSystems);
-
-    // Get default system settings
-    const defaultSystem = bundledSystems.find(s => s.id === 'curly_default');
-    if (defaultSystem) {
-      setDefaultSettings(defaultSystem.settings);
-    }
   }, []);
 
-  const handleSystemChange = (newValue: string) => {
-    if (newValue === 'custom') {
-      setShowCustomForm(true);
-      // Initialize custom settings with the current system's settings
-      const currentSystem = systems.find(s => s.id === value);
-      onChange('custom', currentSystem?.settings || defaultSettings);
-    } else {
-      setShowCustomForm(false);
-      onChange(newValue);
-    }
-  };
-
-  const handleCustomSettings = (settings: string[]) => {
-    onChange('custom', settings);
-  };
+  const selectedSystem = systems.find(s => s.id === value);
 
   return (
     <div className="space-y-4">
       <div className="form-control w-full">
         <label className="label">
           <span className="label-text">Analysis System</span>
-          <span className="label-text-alt">
-            {value !== 'custom' && systems.find(s => s.id === value)?.description}
+          <span className="label-text-alt flex items-center gap-2">
+            {selectedSystem?.description}
+            <Link
+              href={`/systems/${value}`}
+              className="inline-flex items-center hover:text-primary"
+              title="Learn more about this system"
+            >
+              <InformationCircleIcon className="w-4 h-4" />
+            </Link>
+        
           </span>
         </label>
         <select
           className="select select-bordered bg-base-200 text-base-content w-full"
           value={value}
-          onChange={(e) => handleSystemChange(e.target.value)}
+          onChange={(e) => onChange(e.target.value)}
         >
           {systems.map(system => (
             <option key={system.id} value={system.id}>
               {system.name}
             </option>
           ))}
-          <option value="custom">Custom System</option>
         </select>
       </div>
-
-      {showCustomForm && (
-        <div className="card bg-base-100 border border-base-300 shadow-lg">
-          <div className="card-body">
-            <CustomSystemForm
-              onSave={handleCustomSettings}
-              initialSettings={systems.find(s => s.id === value)?.settings || defaultSettings}
-            />
-          </div>
-        </div>
-      )}
     </div>
   );
 }

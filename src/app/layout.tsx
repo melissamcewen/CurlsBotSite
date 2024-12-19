@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import ThemeToggle from '@/components/ThemeToggle';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -49,7 +50,8 @@ export default function RootLayout({
           <div className="absolute inset-0 bg-grid-pattern opacity-5 pointer-events-none" />
           <header className="navbar bg-accent/90 text-accent-content shadow-lg backdrop-blur-sm sticky top-0 z-50">
             <div className="navbar-start">
-              <Link href="/" className="btn btn-ghost normal-case text-xl">
+              <Link href="/" className="btn btn-ghost normal-case text-xl gap-2">
+                <Image src="/logo.svg" alt="CurlsBot Logo" width={24} height={24} />
                 CurlsBot
               </Link>
             </div>
@@ -59,6 +61,12 @@ export default function RootLayout({
               </Link>
               <Link href="/categories" className="btn btn-ghost normal-case">
                 Categories
+              </Link>
+              <Link href="/systems" className="btn btn-ghost normal-case">
+                Systems
+              </Link>
+              <Link href="/quiz" className="btn btn-ghost normal-case">
+                Porosity Quiz
               </Link>
             </div>
             <div className="navbar-end">

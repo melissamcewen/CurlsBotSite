@@ -4,43 +4,43 @@ import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
 
-export interface MarkdownContent {
-  content: string;
-  frontmatter: {
-    title?: string;
-    description?: string;
-    [key: string]: any;
-  };
-}
+const contentDirectory = path.join(process.cwd(), 'src/content');
 
-type ContentType = 'ingredients' | 'categories' | 'groups';
+export async function getMarkdownData(filePath: string) {
+  const fullPath = path.join(contentDirectory, filePath);
 
-export async function getMarkdownContent(type: ContentType, id: string): Promise<MarkdownContent | null> {
-  const filePath = path.join(process.cwd(), 'src/content', type, `${id}.md`);
-
-  // Check if markdown file exists
-  if (!fs.existsSync(filePath)) {
+  // Check if file exists
+  if (!fs.existsSync(fullPath)) {
     return null;
   }
 
-  // Read markdown file
-  const fileContents = fs.readFileSync(filePath, 'utf8');
-
-  // Parse frontmatter and content
-  const { data: frontmatter, content } = matter(fileContents);
+  const fileContents = fs.readFileSync(fullPath, 'utf8');
+  const { data, content } = matter(fileContents);
 
   // Convert markdown to HTML
   const processedContent = await remark()
     .use(html)
     .process(content);
+  const contentHtml = processedContent.toString();
 
   return {
-    content: processedContent.toString(),
-    frontmatter
+    ...data,
+    content: contentHtml
   };
 }
 
-// Convenience functions for specific content types
-export const getIngredientContent = (id: string) => getMarkdownContent('ingredients', id);
-export const getCategoryContent = (id: string) => getMarkdownContent('categories', id);
-export const getGroupContent = (name: string) => getMarkdownContent('groups', name);
+export async function getSystemContent(systemId: string) {
+  return getMarkdownData(`systems/${systemId}.md`);
+}
+
+export async function getCategoryContent(categoryId: string) {
+  return getMarkdownData(`categories/${categoryId}.md`);
+}
+
+export async function getIngredientContent(ingredientId: string) {
+  return getMarkdownData(`ingredients/${ingredientId}.md`);
+}
+
+export async function getGroupContent(groupId: string) {
+  return getMarkdownData(`groups/${groupId}.md`);
+}
