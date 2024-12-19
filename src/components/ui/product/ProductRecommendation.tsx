@@ -7,22 +7,23 @@ interface ProductRecommendationProps {
 
 export function ProductRecommendation({ category, brand, name, buyUrl }: ProductRecommendationProps) {
   return (
-    <div className="bg-base-100 border-l-4 border-primary p-4 shadow-lg hover:shadow-xl transition-shadow rounded-r-lg relative">
-      <div className="absolute inset-0 bg-primary/5 rounded-r-lg pointer-events-none" aria-hidden="true" />
-      <div className="flex justify-between items-start relative">
-        <div>
-          <p className="text-sm text-primary font-bold uppercase tracking-wide mb-1">{category.replace('_', ' ')}</p>
-          <p className="font-bold text-lg">{brand}</p>
-          <p className="text-base-content/70">{name}</p>
+    <div className="bg-base-200 rounded-lg shadow-sm hover:shadow-md transition-shadow border-l-4 border-primary">
+      <div className="p-4">
+        <div className="flex justify-between items-start gap-4">
+          <div className="space-y-1">
+            <p className="text-sm text-primary font-bold uppercase tracking-wide">{category.replace(/_/g, ' ')}</p>
+            <p className="font-bold text-lg text-base-content">{brand}</p>
+            <p className="text-base-content/70">{name}</p>
+          </div>
+          <a
+            href={buyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-primary btn-sm shrink-0"
+          >
+            Buy Now
+          </a>
         </div>
-        <a
-          href={buyUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn btn-primary btn-sm"
-        >
-          Buy Now
-        </a>
       </div>
     </div>
   );
