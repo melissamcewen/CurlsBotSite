@@ -27,7 +27,7 @@ export const getStatusConfig = (status: string): StatusConfig => {
         alertClass: 'alert-error',
         alertContentClass: 'text-error-content',
         description:
-          "We've found some ingredients that might be problematic. You may want to research these ingredients further or consider alternatives.",
+          "This product contains ingredients that may be problematic. You may want to research these ingredients further or consider alternatives.",
       };
     case 'caution':
       return {
@@ -47,7 +47,7 @@ export const getStatusConfig = (status: string): StatusConfig => {
         alertClass: 'alert-error',
         alertContentClass: 'text-error-content',
         description:
-          "We've found some ingredients that might be problematic. You may want to research these ingredients further or consider alternatives.",
+          "Huh is this an ingredients list?",
       };
     default:
       return {

@@ -7,7 +7,7 @@ import { ProductCategory } from '@/components/ui/product/ProductRecommendations'
 import { IngredientsList } from './ingredients/IngredientsList';
 import { getStatusConfig } from './utils/statusConfig';
 import { BeakerIcon } from '@heroicons/react/24/outline';
-import ChatBubbleRobot from './ChatBubbleRobot';
+import { ChatBubbleRobot, ChatHeader, ChatBubble, ChatFooter } from './ChatBubbleRobot';
 
 interface Props {
   result: AnalysisResult;
@@ -44,11 +44,22 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
     <div className="space-y-8">
       {/* Overall Assessment with Ingredients Analysis */}
       <ChatBubbleRobot
-        message={
+        imageUrl={
+          result.status === 'warning' || result.status === 'error'
+            ? '/exclaim.svg'
+            : result.status === 'caution'
+            ? '/surprised.svg'
+            : '/normal.png'
+        }
+        status={result.status}
+      >
+        <ChatHeader>
+          <h2 className="font-bold">Result: {result.status}</h2>
+        </ChatHeader>
+
+        {/* Ensure ChatBubble is wrapping the message content */}
+        <ChatBubble status={result.status}>
           <div className="space-y-4">
-            <h2 className="pt-2 text-lg font-bold">
-              Overall result: {result.status}
-            </h2>
             <p>{description}</p>
             <button
               onClick={onTryAnother}
@@ -56,6 +67,7 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
             >
               Try another ingredients list
             </button>
+
             {hasIngredients && (
               <div className="collapse collapse-arrow bg-base-100 bg-opacity-20">
                 <input type="checkbox" />
@@ -69,37 +81,27 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
               </div>
             )}
           </div>
-        }
-        imageUrl={
-          result.status === 'warning' || result.status === 'error'
-            ? '/exclaim.svg'
-            : result.status === 'caution'
-            ? '/surprised.svg'
-            : '/normal.png'
-        }
-        status={result.status}
-      />
+        </ChatBubble>
+
+      
+      </ChatBubbleRobot>
 
       {/* Product Recommendation */}
       {productRecommendation && (
-        <ChatBubbleRobot
-          message={
-            <div className="space-y-4">
-              <p>
-                Since we found some ingredients that might be problematic,
-                here&apos;s a product that might work better for your hair.
-              </p>
-              <ProductRecommendation
-                category={productRecommendation.category}
-                brand={productRecommendation.brand}
-                name={productRecommendation.name}
-                buyUrl={productRecommendation.buyUrl}
-              />
-            </div>
-          }
-          imageUrl="/normal.png"
-          status="ok"
-        />
+        <ChatBubbleRobot imageUrl="/normal.png" status="ok">
+          <div className="space-y-4">
+            <p>
+              Since we found some ingredients that might be problematic,
+              here&apos;s a product that might work better for your hair.
+            </p>
+            <ProductRecommendation
+              category={productRecommendation.category}
+              brand={productRecommendation.brand}
+              name={productRecommendation.name}
+              buyUrl={productRecommendation.buyUrl}
+            />
+          </div>
+        </ChatBubbleRobot>
       )}
     </div>
   );

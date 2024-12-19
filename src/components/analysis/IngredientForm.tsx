@@ -4,7 +4,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { Analyzer, AnalysisResult } from 'haircare-ingredients-analyzer';
 import AnalysisResults from './AnalysisResults';
-import ChatBubbleRobot from './ChatBubbleRobot';
+import { ChatBubbleRobot } from './ChatBubbleRobot';
 
 export default function IngredientForm() {
   const [ingredients, setIngredients] = useState('');
@@ -66,10 +66,9 @@ export default function IngredientForm() {
     <div className="space-y-6">
       {showForm && (
         <>
-          <ChatBubbleRobot
-            message="Enter your product ingredients to analyze them for various properties and potential concerns."
-            imageUrl="/normal.svg"
-          />
+          <ChatBubbleRobot imageUrl="/normal.svg">
+            Enter your product ingredients to analyze them for various properties and potential concerns.
+          </ChatBubbleRobot>
           <div className="chat chat-end">
             <div className="chat-bubble chat-bubble-primary w-full">
               <div className="w-full">
