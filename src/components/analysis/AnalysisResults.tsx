@@ -54,7 +54,10 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
         status={result.status}
       >
         <ChatHeader>
-          <h2 className="font-bold">Result: {result.status}</h2>
+          <h2 className="font-bold">
+            Result:{' '}
+            {result.status.charAt(0).toUpperCase() + result.status.slice(1)}
+          </h2>
         </ChatHeader>
 
         {/* Ensure ChatBubble is wrapping the message content */}
@@ -82,8 +85,6 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
             )}
           </div>
         </ChatBubble>
-
-
       </ChatBubbleRobot>
 
       {/* Product Recommendation */}

@@ -44,12 +44,16 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning
       >
-        <div className="min-h-screen bg-base-300">
+        <div className="min-h-screen bg-base-300 overflow-x-hidden">
           <div className="absolute inset-0 bg-grid-pattern opacity-5 pointer-events-none" />
           <Navbar />
-          <main className="container mx-auto p-8 relative bg-base-100 text-base-content rounded-lg mt-8">
-            {children}
-          </main>
+          <div className="pt-0 md:py-8 px-0 md:px-8">
+            <main className="max-w-[90rem] mx-auto bg-base-100 text-base-content rounded-none md:rounded-lg">
+              <div className="p-4 md:p-8">
+                {children}
+              </div>
+            </main>
+          </div>
         </div>
       </body>
     </html>
