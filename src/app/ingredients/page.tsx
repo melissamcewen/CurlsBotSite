@@ -2,9 +2,8 @@
 
 import { useState, useMemo } from 'react';
 import { getBundledDatabase } from 'haircare-ingredients-analyzer';
-import Fuse from 'fuse.js';
 import Link from 'next/link';
-import { Card, CardTitle, CardContent, CardDescription } from '@/components/ui/Card';
+import { Card, CardContent } from '@/components/ui/Card';
 
 interface Ingredient {
   id: string;
@@ -14,136 +13,161 @@ interface Ingredient {
   description?: string;
 }
 
-interface SearchResult {
-  item: Ingredient;
-  refIndex: number;
-  score?: number;
-}
+type SortField = 'name' | 'categories';
+type SortDirection = 'asc' | 'desc';
 
 export default function IngredientsPage() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
+  const [sortField, setSortField] = useState<SortField>('name');
+  const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
 
-  // Initialize Fuse instance with ingredients data
-  const fuse = useMemo(() => {
+  // Get all ingredients and memoize them
+  const ingredients = useMemo(() => {
     const database = getBundledDatabase();
-    const ingredients = Object.values(database.ingredients);
-
-    return new Fuse(ingredients, {
-      keys: [
-        { name: 'name', weight: 2 },
-        { name: 'id', weight: 1 },
-        { name: 'synonyms', weight: 1 }
-      ],
-      includeScore: true,
-      threshold: 0.4,
-      ignoreLocation: true
-    });
+    return Object.entries(database.ingredients).map(([id, ingredient]) => ({
+      ...ingredient,
+      id
+    }));
   }, []);
 
-  const handleSearch = (term: string) => {
-    setSearchTerm(term);
+  // Filter and sort ingredients
+  const filteredIngredients = useMemo(() => {
+    let filtered = [...ingredients];
 
-    if (!term.trim()) {
-      setSearchResults([]);
-      return;
+    // Apply search filter
+    if (searchTerm) {
+      const searchLower = searchTerm.toLowerCase();
+      filtered = filtered.filter(ingredient =>
+        ingredient.name.toLowerCase().includes(searchLower) ||
+        ingredient.description?.toLowerCase().includes(searchLower) ||
+        ingredient.synonyms?.some(syn => syn.toLowerCase().includes(searchLower)) ||
+        ingredient.categories?.some(cat => cat.toLowerCase().includes(searchLower))
+      );
     }
 
-    const results = fuse.search(term);
-    setSearchResults(results);
+    // Apply sorting
+    filtered.sort((a, b) => {
+      if (sortField === 'name') {
+        return sortDirection === 'asc'
+          ? a.name.localeCompare(b.name)
+          : b.name.localeCompare(a.name);
+      } else if (sortField === 'categories') {
+        const aCats = a.categories?.join(', ') || '';
+        const bCats = b.categories?.join(', ') || '';
+        return sortDirection === 'asc'
+          ? aCats.localeCompare(bCats)
+          : bCats.localeCompare(aCats);
+      }
+      return 0;
+    });
+
+    return filtered;
+  }, [ingredients, searchTerm, sortField, sortDirection]);
+
+  const toggleSort = (field: SortField) => {
+    if (sortField === field) {
+      setSortDirection(prev => prev === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortField(field);
+      setSortDirection('asc');
+    }
+  };
+
+  const getSortIcon = (field: SortField) => {
+    if (sortField !== field) return '↕️';
+    return sortDirection === 'asc' ? '↑' : '↓';
   };
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6 text-base-content">Search Ingredients</h1>
+      <h1 className="text-3xl font-bold mb-6 text-base-content">Ingredients Database</h1>
 
       <Card className="mb-8">
         <CardContent>
           <div className="form-control w-full max-w-xl">
             <label className="label">
-              <span className="label-text">Enter an ingredient name</span>
+              <span className="label-text">Search ingredients</span>
             </label>
             <input
               type="text"
-              placeholder="Type ingredient name..."
+              placeholder="Filter by name, category, or description..."
               className="input input-bordered bg-base-200 text-base-content w-full"
               value={searchTerm}
-              onChange={(e) => handleSearch(e.target.value)}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
         </CardContent>
       </Card>
 
-      {searchResults.length > 0 ? (
-        <div className="space-y-4">
-          {searchResults.map((result, index) => (
-            <Card key={index}>
-              <CardContent>
-                <div className="flex justify-between items-start mb-4">
-                  <div>
-                    <CardTitle>
-                      <Link
-                        href={`/ingredients/${encodeURIComponent(result.item.id)}`}
-                        className="hover:text-primary transition-colors"
-                      >
-                        {result.item.name}
-                      </Link>
-                    </CardTitle>
-                    {result.score && (
-                      <span className="badge badge-ghost text-xs">
-                        Match: {((1 - result.score) * 100).toFixed(0)}%
-                      </span>
-                    )}
-                  </div>
-                  <Link
-                    href={`/ingredients/${encodeURIComponent(result.item.id)}`}
-                    className="badge badge-primary"
-                  >
-                    View Details
-                  </Link>
-                </div>
-
-                {result.item.description && (
-                  <CardDescription>{result.item.description}</CardDescription>
-                )}
-
-                {result.item.categories?.length > 0 && (
-                  <div className="mt-2">
-                    <h3 className="font-semibold mb-1 text-base-content">Categories:</h3>
-                    <div className="flex flex-wrap gap-2">
-                      {result.item.categories.map((category: string) => (
-                        <span key={category} className="badge badge-secondary">
+      <div className="overflow-x-auto">
+        <table className="table table-zebra w-full">
+          <thead>
+            <tr>
+              <th>
+                <button
+                  className="flex items-center gap-2"
+                  onClick={() => toggleSort('name')}
+                >
+                  Name {getSortIcon('name')}
+                </button>
+              </th>
+              <th>
+                <button
+                  className="flex items-center gap-2"
+                  onClick={() => toggleSort('categories')}
+                >
+                  Categories {getSortIcon('categories')}
+                </button>
+              </th>
+              <th>Description</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredIngredients.map(ingredient => (
+              <tr key={ingredient.id}>
+                <td className="font-medium">
+                  {ingredient.name}
+                  {ingredient.synonyms && ingredient.synonyms.length > 0 && (
+                    <div className="text-sm text-base-content/70">
+                      Also: {ingredient.synonyms.join(', ')}
+                    </div>
+                  )}
+                </td>
+                <td>
+                  {ingredient.categories && ingredient.categories.length > 0 && (
+                    <div className="flex flex-wrap gap-1">
+                      {ingredient.categories.map(category => (
+                        <span key={category} className="badge badge-sm">
                           {category.replace(/_/g, ' ')}
                         </span>
                       ))}
                     </div>
-                  </div>
-                )}
+                  )}
+                </td>
+                <td className="max-w-md">
+                  {ingredient.description || (
+                    <span className="text-base-content/50">No description available</span>
+                  )}
+                </td>
+                <td>
+                  <Link
+                    href={`/ingredients/${encodeURIComponent(ingredient.id)}`}
+                    className="btn btn-primary btn-sm"
+                  >
+                    View Details
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
-                {result.item.synonyms?.length > 0 && (
-                  <div className="mt-4">
-                    <h3 className="font-semibold mb-1 text-base-content">Also known as:</h3>
-                    <div className="flex flex-wrap gap-2">
-                      {result.item.synonyms.map((synonym: string) => (
-                        <span key={synonym} className="badge badge-ghost">
-                          {synonym}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-          ))}
+      {filteredIngredients.length === 0 && (
+        <div className="alert alert-info">
+          <span>No ingredients found matching &quot;{searchTerm}&quot;</span>
         </div>
-      ) : searchTerm && (
-        <Card>
-          <CardContent>
-            <div className="alert alert-info">
-              <span>No ingredients found matching "{searchTerm}"</span>
-            </div>
-          </CardContent>
-        </Card>
       )}
     </div>
   );

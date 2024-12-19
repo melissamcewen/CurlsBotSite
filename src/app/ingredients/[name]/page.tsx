@@ -77,7 +77,12 @@ export default async function IngredientPage({ params }: PageProps) {
             <h1 className="card-title text-3xl">
               {markdownContent?.frontmatter?.title || ingredient.name}
             </h1>
-            {markdownContent ? (
+
+            {ingredient.description && (
+              <p className="text-base-content/70 mt-2">{ingredient.description}</p>
+            )}
+
+            {markdownContent && (
               <>
                 {markdownContent.frontmatter.description && (
                   <p className="text-base-content/70 mt-2">
@@ -88,12 +93,6 @@ export default async function IngredientPage({ params }: PageProps) {
                   className="prose prose-base mt-4 max-w-none"
                   dangerouslySetInnerHTML={{ __html: markdownContent.content }}
                 />
-              </>
-            ) : (
-              <>
-                {ingredient.description && (
-                  <p className="text-base-content/70 mt-2">{ingredient.description}</p>
-                )}
               </>
             )}
 

@@ -51,6 +51,24 @@ rules:
 This system provides a balanced approach...
 ```
 
+### Content Display Pattern
+
+The site follows a consistent pattern for displaying content:
+
+1. **List Pages**: When displaying lists of items (ingredients, categories, etc.), items with markdown content are prioritized and shown first. This helps highlight items with detailed documentation.
+
+2. **Detail Pages**: Each detail page (e.g., ingredient, category) shows:
+   - Basic information from the database (name, description, categories, etc.) always
+   - Additional markdown content (if available) for in-depth information
+   - The markdown content section is only rendered when a markdown file exists
+
+3. **Search and Filtering**: Items with markdown content are marked as indexed for search engines, while those without are marked with `noindex`.
+
+This pattern ensures that:
+- Essential information from the database is always accessible
+- Detailed documentation is prominently featured when available
+- Users can easily distinguish between basic and detailed entries
+
 The content is loaded using utility functions in `src/utils/markdown.ts`:
 - `getMarkdownData(path)`: Loads and parses a markdown file
 - `getCategoryContent(id)`: Loads category-specific content
