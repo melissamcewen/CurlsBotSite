@@ -35,7 +35,7 @@ const config: Config = {
           "--rounded-btn": "1.9rem",
           "--tab-border": "2px",
           "--tab-radius": "0.7rem",
-        },
+        }
       },
     ],
     darkTheme: 'mytheme',

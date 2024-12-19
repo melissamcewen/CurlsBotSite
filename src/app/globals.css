@@ -21,13 +21,6 @@ body {
 }
 
 @layer components {
-  .container {
-    @apply text-base-content;
-
-    /* This applies to all descendants */
-    * {
-      @apply text-base-content;
-    }
-  }
+  
 }
 
