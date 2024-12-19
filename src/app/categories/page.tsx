@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { getBundledDatabase } from 'haircare-ingredients-analyzer';
-import { getGroupContent } from '@/utils/markdown';
 
 interface Category {
   id: string;
@@ -9,7 +8,7 @@ interface Category {
   group?: string;
 }
 
-export default async function CategoriesPage() {
+export default function CategoriesPage() {
   const database = getBundledDatabase();
 
   // Group categories by their group property
@@ -32,53 +31,23 @@ export default async function CategoriesPage() {
     return a.localeCompare(b);
   });
 
-  // Get markdown content for each group
-  const groupsContent = await Promise.all(
-    sortedGroups.map(async (group) => ({
-      name: group,
-      urlName: group.toLowerCase().replace(/\s+/g, '-'),
-      markdown: await getGroupContent(group.toLowerCase().replace(/\s+/g, '-'))
-    }))
-  );
-
   return (
     <div className="container mx-auto p-4 max-w-4xl">
       <h1 className="text-3xl font-bold mb-6 text-base-content">Categories</h1>
 
       <div className="space-y-8">
-        {groupsContent.map(({ name: group, urlName, markdown }) => (
+        {sortedGroups.map(group => (
           <div key={group} className="card bg-base-100 shadow-xl text-base-content">
             <div className="card-body">
-              <div className="flex justify-between items-start mb-4">
-                <div>
-                  <Link
-                    href={`/groups/${encodeURIComponent(urlName)}`}
-                    className="hover:text-primary transition-colors"
-                  >
-                    <h2 className="card-title text-2xl">
-                      {markdown?.frontmatter?.title || group}
-                    </h2>
-                  </Link>
-                  {markdown?.frontmatter?.description && (
-                    <p className="text-base-content/70 mt-2">
-                      {markdown.frontmatter.description}
-                    </p>
-                  )}
-                </div>
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="card-title text-2xl">{group}</h2>
                 <Link
-                  href={`/groups/${encodeURIComponent(urlName)}`}
+                  href={`/groups/${encodeURIComponent(group.toLowerCase().replace(/\s+/g, '-'))}`}
                   className="btn btn-primary btn-sm"
                 >
                   View Group Details
                 </Link>
               </div>
-
-              {markdown && (
-                <div
-                  className="prose prose-base mb-6 max-w-none"
-                  dangerouslySetInnerHTML={{ __html: markdown.content }}
-                />
-              )}
 
               <div className="overflow-x-auto">
                 <table className="table table-zebra">
