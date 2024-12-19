@@ -11,9 +11,10 @@ import ChatBubbleRobot from './ChatBubbleRobot';
 
 interface Props {
   result: AnalysisResult;
+  onTryAnother: () => void;
 }
 
-export default function AnalysisResults({ result }: Props) {
+export default function AnalysisResults({ result, onTryAnother }: Props) {
   if (!result) return null;
 
   const { description, alertClass } = getStatusConfig(result.overallStatus);
@@ -76,7 +77,7 @@ export default function AnalysisResults({ result }: Props) {
             <p>{description}</p>
             {hasIngredients && (
               <div className="collapse collapse-arrow bg-base-100 bg-opacity-20">
-                <input type="checkbox" defaultChecked />
+                <input type="checkbox" />
                 <div className="collapse-title font-medium flex items-center gap-2">
                   <BeakerIcon className="w-5 h-5" />
                   View detailed ingredients analysis
@@ -86,6 +87,12 @@ export default function AnalysisResults({ result }: Props) {
                 </div>
               </div>
             )}
+            <button
+              onClick={onTryAnother}
+              className="btn btn-sm btn-ghost bg-base-100 bg-opacity-20 w-full"
+            >
+              Try another ingredients list
+            </button>
           </div>
         }
         imageUrl={assessmentConfig.imageUrl}
