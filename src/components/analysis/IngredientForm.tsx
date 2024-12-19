@@ -6,6 +6,7 @@ import { Analyzer } from 'haircare-ingredients-analyzer';
 import { getBundledSystems } from 'haircare-ingredients-analyzer';
 import SystemSelector from './SystemSelector';
 import AnalysisResults from './AnalysisResults';
+import ChatBubbleRobot from './ChatBubbleRobot';
 
 export default function IngredientForm() {
   const [ingredients, setIngredients] = useState('');
@@ -159,31 +160,40 @@ export default function IngredientForm() {
 
   return (
     <div className="space-y-6">
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="form-control w-full">
-          <label className="label">
-            <span className="label-text font-semibold">
-              Paste your ingredients list
-            </span>
-          </label>
-          <textarea
-            className="textarea textarea-bordered bg-base-200 text-base-content h-32"
-            value={ingredients}
-            onChange={(e) => setIngredients(e.target.value)}
-            placeholder="Enter ingredients, one per line..."
-          />
+      <ChatBubbleRobot
+        message="Enter your product ingredients to analyze them for various properties and potential concerns."
+        imageUrl="/normal.svg"
+      />
+      <div className="chat chat-end">
+        <div className="chat-bubble chat-bubble-primary">
+          <form onSubmit={handleSubmit} className="space-y-4 chat">
+            <div className="form-control w-full">
+              <label className="label">
+                <span className="label-text font-semibold">
+                  Paste your ingredients list
+                </span>
+              </label>
+
+              <textarea
+                className="textarea textarea-bordered bg-base-200 text-base-content h-32"
+                value={ingredients}
+                onChange={(e) => setIngredients(e.target.value)}
+                placeholder="Enter ingredients, one per line..."
+              />
+            </div>
+
+            <SystemSelector value={systemId} onChange={handleSystemChange} />
+
+            <button
+              type="submit"
+              className="btn btn-secondary w-full"
+              disabled={isAnalyzing || !ingredients.trim()}
+            >
+              {isAnalyzing ? 'Analyzing...' : 'Analyze Ingredients'}
+            </button>
+          </form>
         </div>
-
-        <SystemSelector value={systemId} onChange={handleSystemChange} />
-
-        <button
-          type="submit"
-          className="btn btn-primary w-full"
-          disabled={isAnalyzing || !ingredients.trim()}
-        >
-          {isAnalyzing ? 'Analyzing...' : 'Analyze Ingredients'}
-        </button>
-      </form>
+      </div>
 
       {error && (
         <div className="alert alert-error">
