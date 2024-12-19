@@ -6,10 +6,8 @@ import { getBundledProducts } from 'haircare-ingredients-analyzer';
 import { ProductCategory } from '@/components/ui/product/ProductRecommendations';
 import { IngredientsList } from './ingredients/IngredientsList';
 import { getStatusConfig } from './utils/statusConfig';
-import { BeakerIcon, ShoppingBagIcon } from '@heroicons/react/24/outline';
-import { ChevronDownIcon } from '@heroicons/react/24/solid';
+import { BeakerIcon } from '@heroicons/react/24/outline';
 import ChatBubbleRobot from './ChatBubbleRobot';
-import { ContentCard } from '@/components/ui/ContentCard';
 
 interface Props {
   result: AnalysisResult;
@@ -94,22 +92,21 @@ export default function AnalysisResults({ result }: Props) {
 
       {/* Product Recommendation */}
       {productRecommendation && (
-        <ContentCard>
-          <div className="flex items-center gap-2 mb-4">
-            <ShoppingBagIcon className="w-6 h-6 text-primary" />
-            <h2 className="text-2xl font-bold">Try This Alternative</h2>
-          </div>
-          <p className="text-sm text-base-content/70 mb-4">
-            Since we found some ingredients that might be problematic,
-            here&apos;s a product that might work better for your hair.
-          </p>
-          <ProductRecommendation
-            category={productRecommendation.category}
-            brand={productRecommendation.brand}
-            name={productRecommendation.name}
-            buyUrl={productRecommendation.buyUrl}
-          />
-        </ContentCard>
+        <ChatBubbleRobot
+          message={
+            <div className="space-y-4">
+              <p>Since we found some ingredients that might be problematic, here&apos;s a product that might work better for your hair.</p>
+              <ProductRecommendation
+                category={productRecommendation.category}
+                brand={productRecommendation.brand}
+                name={productRecommendation.name}
+                buyUrl={productRecommendation.buyUrl}
+              />
+            </div>
+          }
+          imageUrl="/normal.png"
+          bubbleClass="chat-bubble bg-primary text-primary-content"
+        />
       )}
     </div>
   );
