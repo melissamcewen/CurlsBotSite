@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "test": "jest --env=jsdom",
+    "test:watch": "jest --env=jsdom --watch"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",

@@ -3,7 +3,7 @@
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { Analyzer } from 'haircare-ingredients-analyzer';
-import type { AnalysisResult as LibAnalysisResult, IngredientResult } from 'haircare-ingredients-analyzer';
+import type { AnalysisResult as LibAnalysisResult } from 'haircare-ingredients-analyzer';
 import AnalysisResults from './AnalysisResults';
 import ChatBubbleRobot from './ChatBubbleRobot';
 import type { AnalysisResult } from '@/types/analysis';
@@ -19,14 +19,16 @@ export default function IngredientForm() {
   const initialLoadDone = useRef(false);
 
   const handleAnalysis = useCallback((ingredientList: string) => {
+    if (!ingredientList.trim()) return;
+
     setIsAnalyzing(true);
     setError(null);
 
     try {
       const analyzer = new Analyzer();
-      const result: LibAnalysisResult = analyzer.analyze(ingredientList.trim());
+      const result = analyzer.analyze(ingredientList.trim());
 
-      const formattedResult: AnalysisResult = {
+      setAnalysisResult({
         overallStatus: result.status === 'error' ? 'caution' : result.status,
         ingredients: result.ingredients.map(ingredient => ({
           name: ingredient.name,
@@ -41,15 +43,12 @@ export default function IngredientForm() {
             categories: ingredient.ingredient.categories
           } : undefined
         }))
-      };
-
-      setAnalysisResult(formattedResult);
+      });
       setShowForm(false);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Analysis failed. Please try again.');
-    } finally {
-      setIsAnalyzing(false);
+    } catch {
+      setError('Failed to analyze ingredients');
     }
+    setIsAnalyzing(false);
   }, []);
 
   const handleTryAnother = () => {
@@ -61,15 +60,12 @@ export default function IngredientForm() {
   };
 
   useEffect(() => {
-    // Only load from URL params on initial load
     if (!initialLoadDone.current) {
       const urlIngredients = searchParams.get('ingredients');
-
       if (urlIngredients) {
         setIngredients(urlIngredients);
         handleAnalysis(urlIngredients);
       }
-
       initialLoadDone.current = true;
     }
   }, [searchParams, handleAnalysis]);
@@ -78,12 +74,9 @@ export default function IngredientForm() {
     e.preventDefault();
     if (!ingredients.trim()) return;
 
-    // Update URL without scrolling
     const params = new URLSearchParams();
     params.set('ingredients', ingredients.trim());
     router.replace(`/?${params.toString()}`, { scroll: false });
-
-    // Run analysis
     handleAnalysis(ingredients);
   };
 
@@ -100,17 +93,19 @@ export default function IngredientForm() {
               <div className="w-full">
                 <form onSubmit={handleSubmit} className="space-y-4 w-full">
                   <div className="form-control w-full">
-                    <label className="label">
+                    <label htmlFor="ingredients-input" className="label">
                       <span className="label-text font-semibold">
                         Paste your ingredients list
                       </span>
                     </label>
 
                     <textarea
+                      id="ingredients-input"
                       className="textarea textarea-bordered bg-base-200 text-base-content h-32 w-full"
                       value={ingredients}
                       onChange={(e) => setIngredients(e.target.value)}
                       placeholder="Enter ingredients, one per line..."
+                      aria-label="ingredients"
                     />
                   </div>
 
@@ -118,6 +113,7 @@ export default function IngredientForm() {
                     type="submit"
                     className="btn btn-secondary w-full"
                     disabled={isAnalyzing || !ingredients.trim()}
+                    data-testid="analyze-button"
                   >
                     {isAnalyzing ? 'Analyzing...' : 'Analyze Ingredients'}
                   </button>
@@ -129,7 +125,7 @@ export default function IngredientForm() {
       )}
 
       {error && (
-        <div className="alert alert-error">
+        <div className="alert alert-error" data-testid="error-message">
           <span>{error}</span>
         </div>
       )}

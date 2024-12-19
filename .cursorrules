@@ -5,3 +5,5 @@ haircare-ingredients-analyzer is a library I made, there might be issues with it
 this app uses a flat rounded design style so no shadows or sharp edges
 
 use types from the haircare-ingredient-analyzer library when working with it
+
+avoid async/await in tests when using haircare-ingredients-analyzer since it's a synchronous local library - this prevents unnecessary complexity and race conditions in tests
