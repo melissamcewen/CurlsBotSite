@@ -7,3 +7,7 @@ this app uses a flat rounded design style so no shadows or sharp edges
 use types from the haircare-ingredient-analyzer library when working with it
 
 avoid async/await in tests when using haircare-ingredients-analyzer since it's a synchronous local library - this prevents unnecessary complexity and race conditions in tests
+
+tests go in the tests/src library
+
+get ingredient data directly from haircare-ingredients-analyzer using getBundledDatabase() - do not create separate data files for ingredients
