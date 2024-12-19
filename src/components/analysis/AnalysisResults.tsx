@@ -14,6 +14,7 @@ import {
   ExclamationTriangleIcon,
   InformationCircleIcon,
 } from '@heroicons/react/24/solid';
+import { ContentCard } from '@/components/ui/ContentCard';
 
 interface Props {
   result: AnalysisResult;
@@ -71,7 +72,7 @@ export default function AnalysisResults({ result }: Props) {
 
       {/* Product Recommendation */}
       {productRecommendation && (
-        <div className="bg-base-100 rounded-lg p-6 border border-base-200 shadow-lg">
+        <ContentCard>
           <div className="flex items-center gap-2 mb-4">
             <ShoppingBagIcon className="w-6 h-6 text-primary" />
             <h2 className="text-2xl font-bold">Try This Alternative</h2>
@@ -86,18 +87,18 @@ export default function AnalysisResults({ result }: Props) {
             name={productRecommendation.name}
             buyUrl={productRecommendation.buyUrl}
           />
-        </div>
+        </ContentCard>
       )}
 
       {/* Ingredients List */}
       {hasIngredients && (
-        <div className="bg-base-100 rounded-lg p-6 border border-base-200 shadow-lg">
+        <ContentCard>
           <div className="flex items-center gap-2 mb-4">
             <BeakerIcon className="w-6 h-6" />
             <h2 className="text-2xl font-bold">Ingredients Analysis</h2>
           </div>
           <IngredientsList ingredients={result.ingredients} />
-        </div>
+        </ContentCard>
       )}
     </div>
   );

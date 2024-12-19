@@ -39,6 +39,7 @@ export default function RootLayout({
             `,
           }}
         />
+        <meta name="apple-mobile-web-app-title" content="Curlsbot" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

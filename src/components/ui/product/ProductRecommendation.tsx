@@ -7,7 +7,7 @@ interface ProductRecommendationProps {
 
 export function ProductRecommendation({ category, brand, name, buyUrl }: ProductRecommendationProps) {
   return (
-    <div className="card bg-base-100 rounded-lg border border-base-200 hover:border-base-300 transition-colors">
+    <div className="card bg-base-200/60 rounded-lg border border-base-200 transition-colors border-l-4 border-l-secondary">
       <div className="p-4">
         <div className="flex justify-between items-start gap-4">
           <div className="space-y-1">

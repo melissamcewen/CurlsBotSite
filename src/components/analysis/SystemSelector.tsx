@@ -3,12 +3,11 @@
 import { useEffect, useState } from 'react';
 import { getBundledSystems } from 'haircare-ingredients-analyzer';
 import CustomSystemForm from './CustomSystemForm';
-import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 
 interface System {
   id: string;
   name: string;
-  description?: string;
+  description: string;
   settings: string[];
 }
 
@@ -50,15 +49,15 @@ export default function SystemSelector({ value, onChange }: SystemSelectorProps)
     onChange('custom', settings);
   };
 
-  const currentSystem = systems.find(s => s.id === value);
-
   return (
     <div className="space-y-4">
-      <div className="space-y-2">
-        <div className="flex items-center gap-2">
-          <AdjustmentsHorizontalIcon className="w-5 h-5" />
-          <label className="font-medium">Analysis System</label>
-        </div>
+      <div className="form-control w-full">
+        <label className="label">
+          <span className="label-text">Analysis System</span>
+          <span className="label-text-alt">
+            {value !== 'custom' && systems.find(s => s.id === value)?.description}
+          </span>
+        </label>
         <select
           className="select select-bordered bg-base-200 text-base-content w-full"
           value={value}
@@ -71,11 +70,6 @@ export default function SystemSelector({ value, onChange }: SystemSelectorProps)
           ))}
           <option value="custom">Custom System</option>
         </select>
-        {value !== 'custom' && currentSystem?.description && (
-          <p className="text-sm text-base-content/70">
-            {currentSystem.description}
-          </p>
-        )}
       </div>
 
       {showCustomForm && (
