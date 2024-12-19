@@ -104,7 +104,7 @@ export function IngredientsList({ ingredients }: IngredientsListProps) {
       <table className="table w-full">
         <thead>
           <tr>
-            <th>
+            <th className="min-w-[200px]">
               <button
                 onClick={() => toggleSort('name')}
                 className="flex items-center gap-2"
@@ -112,7 +112,7 @@ export function IngredientsList({ ingredients }: IngredientsListProps) {
                 Name {getSortIcon('name')}
               </button>
             </th>
-            <th>
+            <th className="hidden sm:table-cell">
               <button
                 onClick={() => toggleSort('category')}
                 className="flex items-center gap-2"
@@ -128,7 +128,8 @@ export function IngredientsList({ ingredients }: IngredientsListProps) {
                 Status {getSortIcon('status')}
               </button>
             </th>
-            <th>Reason</th>
+            <th className="hidden md:table-cell">Description</th>
+            <th className="hidden sm:table-cell">Reason</th>
           </tr>
         </thead>
         <tbody>
@@ -136,20 +137,33 @@ export function IngredientsList({ ingredients }: IngredientsListProps) {
             const statusStyles = getStatusStyles(ingredient.status);
             return (
               <tr key={index} className={statusStyles.row}>
-                <td>
-                  {ingredient.name}
-                  {!ingredient.matched ? (
-                    <span className="badge badge-ghost badge-sm ml-2 gap-1">
-                      <QuestionMarkCircleIcon className="w-4 h-4" />
-                      Not Found
-                    </span>
-                  ) : ingredient.ingredient?.name ? (
-                    <span className={`badge badge-sm ml-2 ${statusStyles.badge}`}>
-                      {ingredient.ingredient.name}
-                    </span>
-                  ) : null}
+                <td className="min-w-[200px]">
+                  <div className="flex flex-col gap-1">
+                    <span>{ingredient.name}</span>
+                    {!ingredient.matched ? (
+                      <span className="badge badge-ghost badge-sm gap-1 whitespace-nowrap">
+                        <QuestionMarkCircleIcon className="w-4 h-4" />
+                        Not Found
+                      </span>
+                    ) : ingredient.ingredient?.name ? (
+                      <div className="text-sm opacity-50">
+                        {ingredient.ingredient.name}
+                      </div>
+                    ) : null}
+                    <div className="sm:hidden text-sm">
+                      {ingredient.ingredient?.categories?.map((category, i) => (
+                        <span key={i}>
+                          {i > 0 ? ', ' : ''}
+                          {normalizeCategory(category)}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="sm:hidden text-sm opacity-70">
+                      {ingredient.reason || '-'}
+                    </div>
+                  </div>
                 </td>
-                <td>
+                <td className="hidden sm:table-cell">
                   {ingredient.ingredient?.categories?.map((category, i) => (
                     <span key={i} className="text-sm">
                       {i > 0 ? ', ' : ''}
@@ -164,8 +178,11 @@ export function IngredientsList({ ingredients }: IngredientsListProps) {
                     </span>
                   )}
                 </td>
-                <td className="text-sm opacity-70">
-                  {ingredient.reason || ingredient.info || '-'}
+                <td className="hidden md:table-cell text-sm max-w-md">
+                  {ingredient.ingredient?.description || '-'}
+                </td>
+                <td className="hidden sm:table-cell text-sm opacity-70">
+                  {ingredient.reason || '-'}
                 </td>
               </tr>
             );
