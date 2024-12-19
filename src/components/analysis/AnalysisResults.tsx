@@ -55,8 +55,7 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
       >
         <ChatHeader>
           <h2 className="font-bold">
-            Result:{' '}
-            {result.status.charAt(0).toUpperCase() + result.status.slice(1)}
+            Result: {result.status.charAt(0).toUpperCase() + result.status.slice(1)}
           </h2>
         </ChatHeader>
 

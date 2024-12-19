@@ -43,7 +43,7 @@ export function ProductRecommendations({ porosityType, className = '' }: Product
 
   return (
     <div className={className}>
-      <h3 className="text-lg font-semibold mb-6">Recommended Products for Your Hair Type</h3>
+    
       <div className="space-y-4">
         {CATEGORIES.map((category) => {
           const product = recommendations[category];

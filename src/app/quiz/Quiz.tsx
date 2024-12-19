@@ -7,7 +7,7 @@ import { ChatBubbleRobot, ChatBubble } from '@/components/analysis/ChatBubbleRob
 import Link from 'next/link';
 
 // Easy to toggle development mode testing
-const DEV_MODE = false;
+const DEV_MODE = true;
 
 export default function Quiz() {
   // Initialize state with DEV_MODE values
@@ -64,10 +64,7 @@ export default function Quiz() {
 
     return (
       <div className="space-y-4">
-        <ChatBubbleRobot
-          imageUrl="/normal.svg"
-          status="ok"
-        >
+        <ChatBubbleRobot imageUrl="/normal.svg" status="ok">
           <ChatBubble status="ok">
             <div className="space-y-4">
               <p>
@@ -83,10 +80,7 @@ export default function Quiz() {
           </ChatBubble>
         </ChatBubbleRobot>
 
-        <ChatBubbleRobot
-          imageUrl="/normal.svg"
-          status="ok"
-        >
+        <ChatBubbleRobot imageUrl="/normal.svg" status="ok">
           <ChatBubble status="ok">
             <div className="space-y-4">
               <p>Based on your answers, your hair porosity is:</p>
@@ -98,42 +92,33 @@ export default function Quiz() {
                   ? 'Low porosity hair is resistant to moisture but retains it well once absorbed. Use lightweight products and consider applying products to damp hair to improve absorption.'
                   : 'Normal porosity hair maintains a good moisture balance. Continue with a balanced routine of moisturizing and protein treatments as needed.'}
               </p>
-            </div>
-          </ChatBubble>
-        </ChatBubbleRobot>
+              <div className="space-y-4">
+                <div>
+                  <Link
+                    href={`/products/${result.tag}`}
+                    className="text-inherit hover:opacity-80 underline font-medium"
+                  >
+                    View all recommended products for {result.type} hair →
+                  </Link>
+                </div>
 
-        <ChatBubbleRobot
-          imageUrl="/normal.svg"
-          status="ok"
-        >
-          <ChatBubble status="ok">
-            <div className="space-y-4">
-              <div>
-                <Link
-                  href={`/products/${result.tag}`}
-                  className="text-inherit hover:opacity-80 underline font-medium"
+                <button
+                  className="btn btn-sm btn-ghost bg-base-100 bg-opacity-20 w-full"
+                  onClick={restartQuiz}
                 >
-                  View all recommended products for {result.type} hair →
-                </Link>
+                  Take Quiz Again
+                </button>
               </div>
-
-              <button
-                className="btn btn-sm btn-ghost bg-base-100 bg-opacity-20 w-full"
-                onClick={restartQuiz}
-              >
-                Take Quiz Again
-              </button>
             </div>
           </ChatBubble>
         </ChatBubbleRobot>
 
-        <ChatBubbleRobot
-          imageUrl="/normal.svg"
-          status="ok"
-        >
+        <ChatBubbleRobot imageUrl="/normal.svg" status="ok">
           <ChatBubble status="ok">
             <div className="space-y-4">
-              <p className="font-bold text-lg mb-1">Recommended Products for Your Hair Type</p>
+              <p className="font-bold text-lg mb-1">
+                Recommended Products for Your Hair Type
+              </p>
               <ProductRecommendations porosityType={result.type} />
             </div>
           </ChatBubble>
