@@ -84,7 +84,7 @@ export default function IngredientForm() {
 
                     <textarea
                       id="ingredients-input"
-                      className="textarea textarea-bordered bg-base-200 text-base-content h-32 w-full"
+                      className="textarea textarea-bordered bg-base-300  text-base-content h-32 w-full"
                       value={ingredients}
                       onChange={(e) => setIngredients(e.target.value)}
                       placeholder="Enter ingredients, one per line..."
