@@ -17,7 +17,7 @@ interface Props {
 export default function AnalysisResults({ result, onTryAnother }: Props) {
   if (!result) return null;
 
-  const { description, alertClass, bgClass, textClass } = getStatusConfig(result.status);
+  const { description } = getStatusConfig(result.status);
   const shouldShowRecommendation =
     result.status === 'warning' || result.status === 'caution';
   const hasIngredients = result.ingredients && result.ingredients.length > 0;
@@ -40,25 +40,13 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
       })()
     : null;
 
-  const getAssessmentConfig = (status: string) => {
-    const { bgClass, textClass } = getStatusConfig(status);
-    return {
-      imageUrl: status === 'warning' || status === 'error' ? '/exclaim.svg' :
-               status === 'caution' ? '/surprised.svg' : '/normal.png',
-      state: (status === 'warning' || status === 'error' ? 'warning' :
-             status === 'caution' ? 'caution' : 'ok') as 'warning' | 'caution' | 'ok'
-    };
-  };
-
-  const assessmentConfig = getAssessmentConfig(result.status);
-
   return (
     <div className="space-y-8">
       {/* Overall Assessment with Ingredients Analysis */}
       <ChatBubbleRobot
         message={
           <div className="space-y-4">
-            <h2 className=" pt-2 text-lg font-bold">
+            <h2 className="pt-2 text-lg font-bold">
               Overall result: {result.status}
             </h2>
             <p>{description}</p>
@@ -82,8 +70,14 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
             )}
           </div>
         }
-        imageUrl={assessmentConfig.imageUrl}
-        state={assessmentConfig.state}
+        imageUrl={
+          result.status === 'warning' || result.status === 'error'
+            ? '/exclaim.svg'
+            : result.status === 'caution'
+            ? '/surprised.svg'
+            : '/normal.png'
+        }
+        status={result.status}
       />
 
       {/* Product Recommendation */}
@@ -104,7 +98,7 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
             </div>
           }
           imageUrl="/normal.png"
-          state="ok"
+          status="ok"
         />
       )}
     </div>

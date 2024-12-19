@@ -12,11 +12,12 @@ export const getStatusConfig = (status: string): StatusConfig => {
     case 'ok':
       return {
         color: 'success',
-        bgClass: 'bg-success',
-        textClass: 'text-success',
-        alertClass: 'alert-success',
-        alertContentClass: 'text-success-content',
-        description: "We haven't found any ingredients that might be of concern, so we think this product might be OK for your hair."
+        bgClass: 'bg-info',
+        textClass: 'text-info',
+        alertClass: 'alert-info',
+        alertContentClass: 'text-info-content',
+        description:
+          "We haven't found any ingredients that might be of concern, so we think this product might be OK for your hair.",
       };
     case 'warning':
       return {
@@ -25,7 +26,8 @@ export const getStatusConfig = (status: string): StatusConfig => {
         textClass: 'text-error',
         alertClass: 'alert-error',
         alertContentClass: 'text-error-content',
-        description: "We've found some ingredients that might be problematic. You may want to research these ingredients further or consider alternatives."
+        description:
+          "We've found some ingredients that might be problematic. You may want to research these ingredients further or consider alternatives.",
       };
     case 'caution':
       return {
@@ -34,7 +36,8 @@ export const getStatusConfig = (status: string): StatusConfig => {
         textClass: 'text-warning',
         alertClass: 'alert-warning',
         alertContentClass: 'text-warning-content',
-        description: "Some ingredients in this product require caution. They may work for some people but could be problematic depending on your hair type and needs."
+        description:
+          'Some ingredients in this product require caution. They may work for some people but could be problematic depending on your hair type and needs.',
       };
     case 'error':
       return {
@@ -43,7 +46,8 @@ export const getStatusConfig = (status: string): StatusConfig => {
         textClass: 'text-error',
         alertClass: 'alert-error',
         alertContentClass: 'text-error-content',
-        description: "We've found some ingredients that might be problematic. You may want to research these ingredients further or consider alternatives."
+        description:
+          "We've found some ingredients that might be problematic. You may want to research these ingredients further or consider alternatives.",
       };
     default:
       return {
@@ -52,7 +56,8 @@ export const getStatusConfig = (status: string): StatusConfig => {
         textClass: 'text-base-content',
         alertClass: 'alert-info',
         alertContentClass: 'text-info-content',
-        description: "We've analyzed your ingredients and found some items that may need attention. Check the detailed analysis below."
+        description:
+          "We've analyzed your ingredients and found some items that may need attention. Check the detailed analysis below.",
       };
   }
 };

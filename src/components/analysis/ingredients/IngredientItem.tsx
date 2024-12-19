@@ -1,14 +1,15 @@
 import { CardDescription } from '@/components/ui/Card';
 import { getStatusConfig } from '../utils/statusConfig';
-import {
-  ArrowRightIcon,
-  ExclamationTriangleIcon,
-} from '@heroicons/react/24/outline';
+import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 import { IngredientResult } from 'haircare-ingredients-analyzer';
 import Link from 'next/link';
 
 interface IngredientItemProps {
   ingredient: IngredientResult;
+}
+
+function normalizeCategory(category: string): string {
+  return category.replace(/_/g, ' ');
 }
 
 export function IngredientItem({ ingredient }: IngredientItemProps) {
@@ -26,7 +27,7 @@ export function IngredientItem({ ingredient }: IngredientItemProps) {
             {ingredient.name}
           </Link>
           {ingredient.ingredient?.categories && ingredient.ingredient.categories.length > 0 && (
-            <span className="badge badge-sm">{ingredient.ingredient.categories[0]}</span>
+            <span className="badge badge-sm">{normalizeCategory(ingredient.ingredient.categories[0])}</span>
           )}
           {ingredient.ingredient ? (
             <div>

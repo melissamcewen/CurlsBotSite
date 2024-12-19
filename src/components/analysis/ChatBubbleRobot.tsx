@@ -4,31 +4,27 @@ interface ChatBubbleRobotProps {
   message: string | React.ReactNode;
   imageUrl?: string;
   altText?: string;
-  error?: boolean;
-  warning?: boolean;
-  success?: boolean;
+  status?: 'ok' | 'caution' | 'warning' | 'error';
 }
 
 export default function ChatBubbleRobot({
   message,
   imageUrl = '/normal.svg',
   altText = 'CurlBot',
-  error,
-  warning,
-  success,
+  status = 'ok',
 }: ChatBubbleRobotProps) {
   let bubbleClass = 'chat-bubble bg-primary text-primary-content';
   let borderClass = 'border-primary';
 
-  if (error) {
+  if (status === 'warning' || status === 'error') {
     bubbleClass = 'chat-bubble bg-error text-error-content';
     borderClass = 'border-error';
-  } else if (warning) {
+  } else if (status === 'caution') {
     bubbleClass = 'chat-bubble bg-warning text-warning-content';
     borderClass = 'border-warning';
-  } else if (success) {
-    bubbleClass = 'chat-bubble bg-success text-success-content';
-    borderClass = 'border-success';
+  } else if (status === 'ok') {
+    bubbleClass = 'chat-bubble bg-info text-info-content';
+    borderClass = 'border-info';
   }
 
   return (
