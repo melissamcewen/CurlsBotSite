@@ -33,13 +33,13 @@ export default function AnalysisResults({ result }: Props) {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'ok':
-        return <CheckCircleIcon className="w-6 h-6" />;
+        return <CheckCircleIcon className="h-6 w-6 flex-shrink-0" />;
       case 'warning':
-        return <ExclamationCircleIcon className="w-6 h-6" />;
+        return <ExclamationCircleIcon className="h-6 w-6 flex-shrink-0" />;
       case 'caution':
-        return <ExclamationTriangleIcon className="w-6 h-6" />;
+        return <ExclamationTriangleIcon className="h-6 w-6 flex-shrink-0" />;
       default:
-        return <InformationCircleIcon className="w-6 h-6" />;
+        return <InformationCircleIcon className="h-6 w-6 flex-shrink-0" />;
     }
   };
 
@@ -47,12 +47,10 @@ export default function AnalysisResults({ result }: Props) {
     <div className="space-y-8">
       {/* Overall Assessment */}
       <div className={`alert ${alertClass}`}>
+        {getStatusIcon(result.overallStatus)}
         <div>
-          {getStatusIcon(result.overallStatus)}
-          <div>
-            <h2 className="text-lg font-bold">Overall Assessment</h2>
-            <p className="opacity-90">{description}</p>
-          </div>
+          <h2 className="font-bold text-lg">Overall Assessment</h2>
+          <p className="text-sm opacity-90">{description}</p>
         </div>
       </div>
 
@@ -67,7 +65,7 @@ export default function AnalysisResults({ result }: Props) {
 
       {/* Product Recommendation */}
       {productRecommendation && (
-        <div className="bg-base-100 rounded-lg p-6 border border-base-200">
+        <div>
           <div className="flex items-center gap-2 mb-4">
             <ShoppingBagIcon className="w-6 h-6" />
             <h2 className="text-2xl font-bold">Try This Product</h2>

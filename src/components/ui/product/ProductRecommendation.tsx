@@ -7,11 +7,13 @@ interface ProductRecommendationProps {
 
 export function ProductRecommendation({ category, brand, name, buyUrl }: ProductRecommendationProps) {
   return (
-    <div className="bg-base-200 rounded-lg shadow-sm hover:shadow-md transition-shadow border-l-4 border-primary">
+    <div className="card bg-base-100 rounded-lg border border-base-200 hover:border-base-300 transition-colors">
       <div className="p-4">
         <div className="flex justify-between items-start gap-4">
           <div className="space-y-1">
-            <p className="text-sm text-primary font-bold uppercase tracking-wide">{category.replace(/_/g, ' ')}</p>
+            <p className="text-sm text-primary font-bold uppercase tracking-wide">
+              {category.replace(/_/g, ' ')}
+            </p>
             <p className="font-bold text-lg text-base-content">{brand}</p>
             <p className="text-base-content/70">{name}</p>
           </div>

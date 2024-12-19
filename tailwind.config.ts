@@ -8,11 +8,6 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
     },
   },
   plugins: [
@@ -21,7 +16,7 @@ const config: Config = {
     require('daisyui'),
   ],
   daisyui: {
-    themes: ['cupcake', 'dark'],
+    themes: ['cupcake', 'synthwave'],
     darkTheme: 'dark',
   },
 } satisfies Config;
