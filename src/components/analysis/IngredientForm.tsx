@@ -2,11 +2,9 @@
 
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { Analyzer } from 'haircare-ingredients-analyzer';
-import type { AnalysisResult as LibAnalysisResult } from 'haircare-ingredients-analyzer';
+import { Analyzer, AnalysisResult } from 'haircare-ingredients-analyzer';
 import AnalysisResults from './AnalysisResults';
 import ChatBubbleRobot from './ChatBubbleRobot';
-import type { AnalysisResult } from '@/types/analysis';
 
 export default function IngredientForm() {
   const [ingredients, setIngredients] = useState('');
@@ -27,23 +25,7 @@ export default function IngredientForm() {
     try {
       const analyzer = new Analyzer();
       const result = analyzer.analyze(ingredientList.trim());
-
-      setAnalysisResult({
-        overallStatus: result.status === 'error' ? 'caution' : result.status,
-        ingredients: result.ingredients.map(ingredient => ({
-          name: ingredient.name,
-          matched: !!ingredient.ingredient,
-          status: ingredient.status,
-          info: ingredient.ingredient?.description,
-          reason: ingredient.reasons[0]?.reason,
-          ingredient: ingredient.ingredient ? {
-            id: ingredient.ingredient.id,
-            name: ingredient.ingredient.name,
-            description: ingredient.ingredient.description,
-            categories: ingredient.ingredient.categories
-          } : undefined
-        }))
-      });
+      setAnalysisResult(result);
       setShowForm(false);
     } catch {
       setError('Failed to analyze ingredients');

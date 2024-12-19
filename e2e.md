@@ -7,4 +7,9 @@ Water (Aqua), Disodium Laureth Sulfosuccinate, Sodium C14-16 Olefin Sulfonate, C
 ```
 
 Click the "Analyze" button.
-Overall results
+Overall results: caution
+Ingredients:
+- peg-12 dimethicone, caution
+- sodium c14-16 olefin sulfonate, caution
+
+

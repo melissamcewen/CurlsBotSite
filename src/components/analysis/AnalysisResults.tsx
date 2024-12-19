@@ -1,6 +1,6 @@
 'use client';
 
-import { AnalysisResult } from '../../types/analysis';
+import { AnalysisResult } from 'haircare-ingredients-analyzer';
 import { ProductRecommendation } from '@/components/ui/product/ProductRecommendation';
 import { getBundledProducts } from 'haircare-ingredients-analyzer';
 import { ProductCategory } from '@/components/ui/product/ProductRecommendations';
@@ -17,9 +17,9 @@ interface Props {
 export default function AnalysisResults({ result, onTryAnother }: Props) {
   if (!result) return null;
 
-  const { description, alertClass } = getStatusConfig(result.overallStatus);
+  const { description, alertClass, bgClass, textClass } = getStatusConfig(result.status);
   const shouldShowRecommendation =
-    result.overallStatus === 'warning' || result.overallStatus === 'caution';
+    result.status === 'warning' || result.status === 'caution';
   const hasIngredients = result.ingredients && result.ingredients.length > 0;
 
   // Only get product recommendation if needed
@@ -41,32 +41,16 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
     : null;
 
   const getAssessmentConfig = (status: string) => {
-    switch (status) {
-      case 'ok':
-        return {
-          imageUrl: '/normal.png',
-          bubbleClass: 'chat-bubble bg-success text-success-content'
-        };
-      case 'warning':
-      case 'error':
-        return {
-          imageUrl: '/exclaim.svg',
-          bubbleClass: 'chat-bubble bg-error text-error-content'
-        };
-      case 'caution':
-        return {
-          imageUrl: '/surprised.svg',
-          bubbleClass: 'chat-bubble bg-warning text-warning-content'
-        };
-      default:
-        return {
-          imageUrl: '/normal.png',
-          bubbleClass: 'chat-bubble bg-primary text-primary-content'
-        };
-    }
+    const { bgClass, textClass } = getStatusConfig(status);
+    return {
+      imageUrl: status === 'warning' || status === 'error' ? '/exclaim.svg' :
+               status === 'caution' ? '/surprised.svg' : '/normal.png',
+      state: (status === 'warning' || status === 'error' ? 'warning' :
+             status === 'caution' ? 'caution' : 'ok') as 'warning' | 'caution' | 'ok'
+    };
   };
 
-  const assessmentConfig = getAssessmentConfig(result.overallStatus);
+  const assessmentConfig = getAssessmentConfig(result.status);
 
   return (
     <div className="space-y-8">
@@ -75,7 +59,7 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
         message={
           <div className="space-y-4">
             <h2 className=" pt-2 text-lg font-bold">
-              Overall result: {result.overallStatus}
+              Overall result: {result.status}
             </h2>
             <p>{description}</p>
             <button
@@ -99,7 +83,7 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
           </div>
         }
         imageUrl={assessmentConfig.imageUrl}
-        bubbleClass={assessmentConfig.bubbleClass}
+        state={assessmentConfig.state}
       />
 
       {/* Product Recommendation */}
@@ -120,7 +104,7 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
             </div>
           }
           imageUrl="/normal.png"
-          bubbleClass="chat-bubble bg-primary text-primary-content"
+          state="ok"
         />
       )}
     </div>

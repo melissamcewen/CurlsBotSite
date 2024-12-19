@@ -23,9 +23,12 @@ export default function IngredientsPage() {
         ? aCategories.localeCompare(bCategories)
         : bCategories.localeCompare(aCategories);
     }
+
+    const aValue = a[sortConfig.key]?.toString() || '';
+    const bValue = b[sortConfig.key]?.toString() || '';
     return sortConfig.direction === 'asc'
-      ? a[sortConfig.key].toString().localeCompare(b[sortConfig.key].toString())
-      : b[sortConfig.key].toString().localeCompare(a[sortConfig.key].toString());
+      ? aValue.localeCompare(bValue)
+      : bValue.localeCompare(aValue);
   });
 
   const requestSort = (key: keyof Ingredient) => {

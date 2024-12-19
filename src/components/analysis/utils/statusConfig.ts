@@ -36,6 +36,15 @@ export const getStatusConfig = (status: string): StatusConfig => {
         alertContentClass: 'text-warning-content',
         description: "Some ingredients in this product require caution. They may work for some people but could be problematic depending on your hair type and needs."
       };
+    case 'error':
+      return {
+        color: 'error',
+        bgClass: 'bg-error',
+        textClass: 'text-error',
+        alertClass: 'alert-error',
+        alertContentClass: 'text-error-content',
+        description: "We've found some ingredients that might be problematic. You may want to research these ingredients further or consider alternatives."
+      };
     default:
       return {
         color: 'base',
@@ -43,7 +52,7 @@ export const getStatusConfig = (status: string): StatusConfig => {
         textClass: 'text-base-content',
         alertClass: 'alert-info',
         alertContentClass: 'text-info-content',
-        description: "We couldn't determine the status of this product."
+        description: "We've analyzed your ingredients and found some items that may need attention. Check the detailed analysis below."
       };
   }
 };

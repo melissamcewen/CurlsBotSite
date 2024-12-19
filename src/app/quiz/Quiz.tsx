@@ -68,11 +68,42 @@ export default function Quiz() {
           <ChatBubbleRobot
             message={
               <div className="space-y-4">
-                <div>
-                  <p className="font-bold text-lg mb-1">Based on your answers, you have {result.type} Hair</p>
-                  <p>{result.description}</p>
-                </div>
+                <p>
+                  Welcome to the Porosity Quiz! I&apos;ll help you determine your
+                  hair porosity.
+                </p>
+                <p>
+                  Hair porosity is how well your hair absorbs and retains
+                  moisture. Understanding your hair porosity can help you choose
+                  the right products and techniques for your hair.
+                </p>
+              </div>
+            }
+            imageUrl="/normal.svg"
+            state="ok"
+          />
 
+          <ChatBubbleRobot
+            message={
+              <div className="space-y-4">
+                <p>Based on your answers, your hair porosity is:</p>
+                <div className="text-2xl font-bold">{result.type}</div>
+                <p>
+                  {result.type === 'High Porosity'
+                    ? 'High porosity hair absorbs moisture quickly but also loses it quickly. Focus on protein treatments and moisturizing products that can help seal in moisture.'
+                    : result.type === 'Low Porosity'
+                    ? 'Low porosity hair is resistant to moisture but retains it well once absorbed. Use lightweight products and consider applying products to damp hair to improve absorption.'
+                    : 'Normal porosity hair maintains a good moisture balance. Continue with a balanced routine of moisturizing and protein treatments as needed.'}
+                </p>
+              </div>
+            }
+            imageUrl="/normal.svg"
+            state="ok"
+          />
+
+          <ChatBubbleRobot
+            message={
+              <div className="space-y-4">
                 <div>
                   <Link
                     href={`/products/${result.tag}`}
@@ -91,7 +122,7 @@ export default function Quiz() {
               </div>
             }
             imageUrl="/normal.svg"
-            bubbleClass="chat-bubble bg-primary text-primary-content"
+            state="ok"
           />
 
           <ChatBubbleRobot
@@ -102,7 +133,7 @@ export default function Quiz() {
               </div>
             }
             imageUrl="/normal.svg"
-            bubbleClass="chat-bubble bg-primary text-primary-content"
+            state="ok"
           />
         </div>
       );
@@ -138,7 +169,7 @@ export default function Quiz() {
       <ChatBubbleRobot
         message="Take this quiz to determine your hair porosity level. Hair porosity refers to your hair's ability to absorb and retain moisture. Understanding your hair porosity can help you choose the right products and treatments for your hair."
         imageUrl="/normal.svg"
-        bubbleClass="chat-bubble bg-primary text-primary-content"
+        state="ok"
       />
       {renderContent()}
     </div>

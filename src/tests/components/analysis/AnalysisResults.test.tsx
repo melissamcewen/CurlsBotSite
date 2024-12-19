@@ -1,18 +1,20 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import AnalysisResults from '@/components/analysis/AnalysisResults';
-import type { AnalysisResult } from '@/types/analysis';
+import { AnalysisResult } from 'haircare-ingredients-analyzer';
 
 describe('AnalysisResults', () => {
   const mockOnTryAnother = jest.fn();
 
   const baseResult: AnalysisResult = {
-    overallStatus: 'ok',
+    input: 'Water',
+    status: 'ok',
+    reasons: [],
     ingredients: [
       {
         name: 'Water',
-        matched: true,
+        normalized: 'water',
         status: 'ok',
-        info: 'Universal solvent',
+        reasons: [],
         ingredient: {
           id: 'water',
           name: 'Water',
@@ -48,7 +50,8 @@ describe('AnalysisResults', () => {
   it('shows product recommendation for warning status', () => {
     const warningResult: AnalysisResult = {
       ...baseResult,
-      overallStatus: 'warning',
+      status: 'warning',
+      reasons: [{ setting: 'test', reason: 'Test warning' }]
     };
     render(<AnalysisResults result={warningResult} onTryAnother={mockOnTryAnother} />);
     expect(screen.getByText(/here's a product that might work better/i)).toBeInTheDocument();
@@ -57,7 +60,8 @@ describe('AnalysisResults', () => {
   it('shows product recommendation for caution status', () => {
     const cautionResult: AnalysisResult = {
       ...baseResult,
-      overallStatus: 'caution',
+      status: 'caution',
+      reasons: [{ setting: 'test', reason: 'Test caution' }]
     };
     render(<AnalysisResults result={cautionResult} onTryAnother={mockOnTryAnother} />);
     expect(screen.getByText(/here's a product that might work better/i)).toBeInTheDocument();
