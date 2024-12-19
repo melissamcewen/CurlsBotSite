@@ -17,18 +17,21 @@ interface Props {
 export default function AnalysisResults({ result }: Props) {
   if (!result) return null;
 
-  // Get a random product recommendation
-  const products = getBundledProducts();
-  const allProducts = Object.values(products.products);
-  const randomProduct = allProducts[Math.floor(Math.random() * allProducts.length)];
-  const productRecommendation = randomProduct ? {
-    category: randomProduct.product_categories[0] as ProductCategory,
-    name: randomProduct.name,
-    brand: randomProduct.brand,
-    buyUrl: randomProduct.buy_url
-  } : null;
-
   const { description, alertClass } = getStatusConfig(result.overallStatus);
+  const shouldShowRecommendation = result.overallStatus === 'warning' || result.overallStatus === 'caution';
+
+  // Only get product recommendation if needed
+  const productRecommendation = shouldShowRecommendation ? (() => {
+    const products = getBundledProducts();
+    const allProducts = Object.values(products.products);
+    const randomProduct = allProducts[Math.floor(Math.random() * allProducts.length)];
+    return randomProduct ? {
+      category: randomProduct.product_categories[0] as ProductCategory,
+      name: randomProduct.name,
+      brand: randomProduct.brand,
+      buyUrl: randomProduct.buy_url
+    } : null;
+  })() : null;
 
   const getStatusIcon = (status: string) => {
     switch (status) {
@@ -54,22 +57,17 @@ export default function AnalysisResults({ result }: Props) {
         </div>
       </div>
 
-      {/* Ingredients List */}
-      <div>
-        <div className="flex items-center gap-2 mb-4">
-          <BeakerIcon className="w-6 h-6" />
-          <h2 className="text-2xl font-bold">Ingredients Analysis</h2>
-        </div>
-        <IngredientsList ingredients={result.ingredients} />
-      </div>
-
       {/* Product Recommendation */}
       {productRecommendation && (
-        <div>
+        <div className="bg-base-100 rounded-lg p-6 border border-base-200 shadow-lg">
           <div className="flex items-center gap-2 mb-4">
-            <ShoppingBagIcon className="w-6 h-6" />
-            <h2 className="text-2xl font-bold">Try This Product</h2>
+            <ShoppingBagIcon className="w-6 h-6 text-primary" />
+            <h2 className="text-2xl font-bold">Try This Alternative</h2>
           </div>
+          <p className="text-sm text-base-content/70 mb-4">
+            Since we found some ingredients that might be problematic, here's a
+            product that might work better for your hair.
+          </p>
           <ProductRecommendation
             category={productRecommendation.category}
             brand={productRecommendation.brand}
@@ -78,6 +76,15 @@ export default function AnalysisResults({ result }: Props) {
           />
         </div>
       )}
+
+      {/* Ingredients List */}
+      <div className="bg-base-100 rounded-lg p-6 border border-base-200 shadow-lg">
+        <div className="flex items-center gap-2 mb-4">
+          <BeakerIcon className="w-6 h-6" />
+          <h2 className="text-2xl font-bold">Ingredients Analysis</h2>
+        </div>
+        <IngredientsList ingredients={result.ingredients} />
+      </div>
     </div>
   );
 }

@@ -44,7 +44,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning
       >
-        <div className="min-h-screen bg-base-100">
+        <div className="min-h-screen bg-base-300">
           <div className="absolute inset-0 bg-grid-pattern opacity-5 pointer-events-none" />
           <header className="navbar bg-accent/90 text-accent-content shadow-lg backdrop-blur-sm sticky top-0 z-50">
             <div className="navbar-start">
