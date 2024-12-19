@@ -2,14 +2,21 @@
 
 import { useState } from 'react';
 import { quizQuestions } from './quizData';
-import { Card, CardTitle, CardContent, CardDescription } from '@/components/ui/Card';
 import { ProductRecommendations } from '@/components/ui/product/ProductRecommendations';
+import ChatBubbleRobot from '@/components/analysis/ChatBubbleRobot';
 import Link from 'next/link';
 
+// Easy to toggle development mode testing
+const DEV_MODE = true;
+
 export default function Quiz() {
+  // Initialize state with DEV_MODE values
+  const initialScore = DEV_MODE ? 4 : 0;
+  const initialShowResults = DEV_MODE;
+
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [score, setScore] = useState(process.env.NODE_ENV === 'development' ? 4 : 0);
-  const [showResults, setShowResults] = useState(process.env.NODE_ENV === 'development');
+  const [score, setScore] = useState(initialScore);
+  const [showResults, setShowResults] = useState(initialShowResults);
 
   const handleAnswerClick = (points: number) => {
     const newScore = score + points;
@@ -26,21 +33,21 @@ export default function Quiz() {
     if (score > 2) {
       return {
         type: 'High Porosity',
-        tag: 'high_porosity',
+        tag: 'high',
         description:
           'Your hair easily absorbs moisture but may also lose it quickly. Focus on moisturizing and sealing products. Deep conditioning treatments will be beneficial.'
       };
     } else if (score < -2) {
       return {
         type: 'Low Porosity',
-        tag: 'low_porosity',
+        tag: 'low',
         description:
           'Your hair has difficulty absorbing moisture and products. Focus on clarifying treatments and lightweight products. Use heat or steam to help products penetrate.'
       };
     } else {
       return {
         type: "Normal Porosity",
-        tag: 'normal_porosity',
+        tag: 'normal',
         description: "Your hair has a good balance of moisture absorption and retention. Continue with your current routine while monitoring any changes."
       };
     }
@@ -52,61 +59,88 @@ export default function Quiz() {
     setShowResults(false);
   };
 
-  if (showResults) {
-    const result = getResult(score);
+  const renderContent = () => {
+    if (showResults) {
+      const result = getResult(score);
+
+      return (
+        <div className="space-y-4">
+          <ChatBubbleRobot
+            message={
+              <div className="space-y-4">
+                <div>
+                  <p className="font-bold text-lg mb-1">Based on your answers, you have {result.type} Hair</p>
+                  <p>{result.description}</p>
+                </div>
+
+                <div>
+                  <Link
+                    href={`/porosity/${result.tag}-porosity`}
+                    className="text-inherit hover:opacity-80 underline font-medium"
+                  >
+                    View all recommended products for {result.type} hair →
+                  </Link>
+                </div>
+
+                <button
+                  className="btn btn-sm btn-ghost bg-base-100 bg-opacity-20 w-full"
+                  onClick={restartQuiz}
+                >
+                  Take Quiz Again
+                </button>
+              </div>
+            }
+            imageUrl="/normal.svg"
+            bubbleClass="chat-bubble bg-primary text-primary-content"
+          />
+
+          <ChatBubbleRobot
+            message={
+              <div className="space-y-4">
+                <p className="font-bold text-lg mb-1">Recommended Products for Your Hair Type</p>
+                <ProductRecommendations porosityType={result.type} />
+              </div>
+            }
+            imageUrl="/normal.svg"
+            bubbleClass="chat-bubble bg-primary text-primary-content"
+          />
+        </div>
+      );
+    }
+
+    const question = quizQuestions[currentQuestion];
 
     return (
-      <div className="max-w-2xl mx-auto p-4">
-        <Card>
-          <CardTitle>Your Results</CardTitle>
-          <CardContent>
-            <p className="text-xl font-bold mb-2">{result.type}</p>
-            <CardDescription>{result.description}</CardDescription>
-
-            <div className="mt-6 mb-6">
-              <Link
-                href={`/products/${result.tag}`}
-                className="text-primary hover:text-primary/80 font-medium"
-              >
-                View all recommended products for {result.type} hair →
-              </Link>
-            </div>
-
-            <ProductRecommendations porosityType={result.type} className="mt-6" />
-
-            <button
-              className="btn btn-primary mt-6"
-              onClick={restartQuiz}
-            >
-              Take Quiz Again
-            </button>
-          </CardContent>
-        </Card>
-      </div>
-    );
-  }
-
-  const question = quizQuestions[currentQuestion];
-
-  return (
-    <div className="max-w-2xl mx-auto p-4">
-      <Card>
-        <CardTitle>Question {currentQuestion + 1} of {quizQuestions.length}</CardTitle>
-        <CardContent>
-          <p className="text-lg mb-4">{question.question}</p>
+      <div className="chat chat-end">
+        <div className="chat-bubble chat-bubble-primary w-full max-w-none">
+          <div className="mb-4">
+            <p className="font-medium mb-2">Question {currentQuestion + 1} of {quizQuestions.length}</p>
+            <p className="text-lg">{question.question}</p>
+          </div>
           <div className="space-y-2">
             {question.answers.map((answer, index) => (
               <button
                 key={index}
-                className="btn btn-outline w-full text-left justify-start normal-case"
+                className="btn btn-ghost bg-base-100 bg-opacity-20 w-full text-left justify-start normal-case"
                 onClick={() => handleAnswerClick(answer.points)}
               >
                 {answer.content}
               </button>
             ))}
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <div className="space-y-6">
+      <ChatBubbleRobot
+        message="Take this quiz to determine your hair porosity level. Hair porosity refers to your hair's ability to absorb and retain moisture. Understanding your hair porosity can help you choose the right products and treatments for your hair."
+        imageUrl="/normal.svg"
+        bubbleClass="chat-bubble bg-primary text-primary-content"
+      />
+      {renderContent()}
     </div>
   );
 }
