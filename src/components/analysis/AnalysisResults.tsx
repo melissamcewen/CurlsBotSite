@@ -69,26 +69,28 @@ export default function AnalysisResults({ result }: Props) {
 
   return (
     <div className="space-y-8">
-      {/* Overall Assessment */}
+      {/* Overall Assessment with Ingredients Analysis */}
       <ChatBubbleRobot
-        message={description}
+        message={
+          <div className="space-y-4">
+            <p>{description}</p>
+            {hasIngredients && (
+              <div className="collapse collapse-arrow bg-base-100 bg-opacity-20">
+                <input type="checkbox" defaultChecked />
+                <div className="collapse-title font-medium flex items-center gap-2">
+                  <BeakerIcon className="w-5 h-5" />
+                  View detailed ingredients analysis
+                </div>
+                <div className="collapse-content">
+                  <IngredientsList ingredients={result.ingredients} />
+                </div>
+              </div>
+            )}
+          </div>
+        }
         imageUrl={assessmentConfig.imageUrl}
         bubbleClass={assessmentConfig.bubbleClass}
       />
-
-      {/* Ingredients List */}
-      {hasIngredients && (
-        <div className="collapse collapse-arrow bg-base-200">
-          <input type="checkbox" defaultChecked />
-          <div className="collapse-title flex items-center gap-2 text-xl font-medium">
-            <BeakerIcon className="w-6 h-6" />
-            <h2 className="font-bold">Ingredients Analysis</h2>
-          </div>
-          <div className="collapse-content">
-            <IngredientsList ingredients={result.ingredients} />
-          </div>
-        </div>
-      )}
 
       {/* Product Recommendation */}
       {productRecommendation && (
