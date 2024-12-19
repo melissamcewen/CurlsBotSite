@@ -1,21 +1,10 @@
-import Link from 'next/link';
 import { CardDescription } from '@/components/ui/Card';
 import { getStatusConfig } from '../utils/statusConfig';
-import { ArrowRightIcon } from '@heroicons/react/24/outline';
-import { ExclamationTriangleIcon } from '@heroicons/react/24/solid';
+import { ArrowRightIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline';
+import { AnalysisResult } from '../../../types/analysis';
 
 interface IngredientItemProps {
-  ingredient: {
-    name: string;
-    matched: boolean;
-    status: string;
-    reason?: string;
-    info?: string;
-    ingredient?: {
-      id: string;
-      name: string;
-    };
-  };
+  ingredient: AnalysisResult['ingredients'][0];
 }
 
 export function IngredientItem({ ingredient }: IngredientItemProps) {
@@ -27,15 +16,15 @@ export function IngredientItem({ ingredient }: IngredientItemProps) {
       <div className="flex-1 space-y-2">
         <div className="flex items-center gap-2 flex-wrap">
           <span className="font-medium text-base-content">{ingredient.name}</span>
+          {ingredient.categories && ingredient.categories.length > 0 && (
+            <span className="badge badge-sm">{ingredient.categories[0]}</span>
+          )}
           {ingredient.matched ? (
             <>
               <ArrowRightIcon className="w-4 h-4 text-base-content/50" />
-              <Link
-                href={`/ingredients/${encodeURIComponent(ingredient.ingredient?.id || '')}`}
-                className="font-medium text-primary hover:text-primary-focus transition-colors"
-              >
+              <span className="font-medium text-primary hover:text-primary-focus transition-colors">
                 {ingredient.ingredient?.name}
-              </Link>
+              </span>
             </>
           ) : (
             <span className="inline-flex items-center gap-1 text-sm px-2 py-0.5 rounded-full bg-warning/20 text-warning-content border border-warning/20">

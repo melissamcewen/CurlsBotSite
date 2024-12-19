@@ -74,7 +74,16 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
       <ChatBubbleRobot
         message={
           <div className="space-y-4">
+            <h2 className=" pt-2 text-lg font-bold">
+              Overall result: {result.overallStatus}
+            </h2>
             <p>{description}</p>
+            <button
+              onClick={onTryAnother}
+              className="btn btn-sm btn-ghost bg-base-100 bg-opacity-20 w-full"
+            >
+              Try another ingredients list
+            </button>
             {hasIngredients && (
               <div className="collapse collapse-arrow bg-base-100 bg-opacity-20">
                 <input type="checkbox" />
@@ -87,12 +96,6 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
                 </div>
               </div>
             )}
-            <button
-              onClick={onTryAnother}
-              className="btn btn-sm btn-ghost bg-base-100 bg-opacity-20 w-full"
-            >
-              Try another ingredients list
-            </button>
           </div>
         }
         imageUrl={assessmentConfig.imageUrl}
@@ -104,7 +107,10 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
         <ChatBubbleRobot
           message={
             <div className="space-y-4">
-              <p>Since we found some ingredients that might be problematic, here&apos;s a product that might work better for your hair.</p>
+              <p>
+                Since we found some ingredients that might be problematic,
+                here&apos;s a product that might work better for your hair.
+              </p>
               <ProductRecommendation
                 category={productRecommendation.category}
                 brand={productRecommendation.brand}
