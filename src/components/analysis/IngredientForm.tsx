@@ -3,12 +3,14 @@
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { Analyzer } from 'haircare-ingredients-analyzer';
+import type { AnalysisResult as LibAnalysisResult, IngredientResult } from 'haircare-ingredients-analyzer';
 import AnalysisResults from './AnalysisResults';
 import ChatBubbleRobot from './ChatBubbleRobot';
+import type { AnalysisResult } from '@/types/analysis';
 
 export default function IngredientForm() {
   const [ingredients, setIngredients] = useState('');
-  const [analysisResult, setAnalysisResult] = useState<any>(null);
+  const [analysisResult, setAnalysisResult] = useState<AnalysisResult | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showForm, setShowForm] = useState(true);
@@ -21,14 +23,10 @@ export default function IngredientForm() {
     setError(null);
 
     try {
-      // Create analyzer with default configuration
       const analyzer = new Analyzer();
+      const result: LibAnalysisResult = analyzer.analyze(ingredientList.trim());
 
-      // Analyze ingredients
-      const result = analyzer.analyze(ingredientList.trim());
-
-      // Convert the analysis result to our frontend format
-      const formattedResult = {
+      const formattedResult: AnalysisResult = {
         overallStatus: result.status === 'error' ? 'caution' : result.status,
         ingredients: result.ingredients.map(ingredient => ({
           name: ingredient.name,
@@ -40,8 +38,7 @@ export default function IngredientForm() {
             id: ingredient.ingredient.id,
             name: ingredient.ingredient.name,
             description: ingredient.ingredient.description,
-            categories: ingredient.ingredient.categories,
-            synonyms: ingredient.ingredient.synonyms
+            categories: ingredient.ingredient.categories
           } : undefined
         }))
       };

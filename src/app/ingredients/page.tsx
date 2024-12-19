@@ -2,15 +2,8 @@
 
 import { useState, useMemo } from 'react';
 import { getBundledDatabase } from 'haircare-ingredients-analyzer';
+import type { Ingredient } from 'haircare-ingredients-analyzer';
 import Link from 'next/link';
-
-interface Ingredient {
-  id: string;
-  name: string;
-  categories?: string[];
-  synonyms?: string[];
-  description?: string;
-}
 
 type SortField = 'name' | 'categories';
 type SortDirection = 'asc' | 'desc';
@@ -30,7 +23,7 @@ export default function IngredientsPage() {
 
   // Sort ingredients
   const sortedIngredients = useMemo(() => {
-    let sorted = [...ingredients];
+    const sorted = [...ingredients];
 
     // Apply sorting
     sorted.sort((a, b) => {

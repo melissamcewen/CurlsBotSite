@@ -1,12 +1,8 @@
+import type { Ingredient } from 'haircare-ingredients-analyzer';
+
 export type IngredientStatus = 'ok' | 'warning' | 'caution';
 
-export interface IngredientInfo {
-  id: string;
-  name: string;
-  description?: string;
-  categories?: string[];
-  synonyms?: string[];
-}
+export type IngredientInfo = Pick<Ingredient, 'id' | 'name' | 'description' | 'categories' | 'synonyms'>;
 
 export interface AnalyzedIngredient {
   name: string;

@@ -7,6 +7,7 @@ interface ChatBubbleRobotProps {
   error?: boolean;
   warning?: boolean;
   success?: boolean;
+  bubbleClass?: string;
 }
 
 export default function ChatBubbleRobot({
@@ -16,8 +17,9 @@ export default function ChatBubbleRobot({
   error,
   warning,
   success,
+  bubbleClass: customBubbleClass,
 }: ChatBubbleRobotProps) {
-  let bubbleClass = 'chat-bubble bg-primary text-primary-content';
+  let bubbleClass = customBubbleClass || 'chat-bubble bg-primary text-primary-content';
   let borderClass = 'border-primary';
 
   if (error) {

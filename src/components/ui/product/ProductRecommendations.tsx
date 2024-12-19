@@ -1,5 +1,6 @@
 import { ProductRecommendation } from './ProductRecommendation';
 import { getBundledProducts } from 'haircare-ingredients-analyzer';
+import type { Product, ProductDatabase } from 'haircare-ingredients-analyzer';
 
 export type ProductCategory = 'shampoos' | 'conditioners' | 'cowashes' | 'deep_conditioners' | 'leave_ins' | 'creams' | 'gels';
 
@@ -22,10 +23,10 @@ export function getProductRecommendations(porosityType: string) {
     gels: null
   };
 
-  const products = getBundledProducts();
-  Object.entries(products.products).forEach(([_, product]) => {
+  const products: ProductDatabase = getBundledProducts();
+  Object.entries(products.products).forEach(([_, product]: [string, Product]) => {
     const category = product.product_categories[0] as ProductCategory;
-    if (product.tags.includes(porosityTag) && !recommendations[category]) {
+    if (product.tags?.includes(porosityTag) && !recommendations[category]) {
       recommendations[category] = {
         name: product.name,
         brand: product.brand,
