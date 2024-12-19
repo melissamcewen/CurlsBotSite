@@ -11,21 +11,23 @@ export function ListingCard({
   label,
   title,
   subtitle,
-  actionLabel = "Learn More",
+  actionLabel = 'Learn More',
   actionUrl,
-  className = ""
+  className = '',
 }: ListingCardProps) {
   return (
-    <div className={`bg-base-100 border-t-4 border-accent p-4 shadow-md hover:shadow-xl transition-shadow ${className}`}>
+    <div
+      className={`bg-base-100 border-t-4 border-accent p-4  hover: transition-shadow ${className}`}
+    >
       <div className="flex justify-between items-start">
         <div>
           {label && (
-            <p className="text-sm text-accent uppercase tracking-wide mb-1">{label}</p>
+            <p className="text-sm text-accent uppercase tracking-wide mb-1">
+              {label}
+            </p>
           )}
           <p className="font-bold text-lg">{title}</p>
-          {subtitle && (
-            <p className="text-base-content/70">{subtitle}</p>
-          )}
+          {subtitle && <p className="text-base-content/70">{subtitle}</p>}
         </div>
         {actionUrl && (
           <a

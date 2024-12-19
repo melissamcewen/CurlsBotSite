@@ -20,8 +20,12 @@ interface SettingGroup {
   }>;
 }
 
-export default function CustomSystemForm({ onSave, initialSettings }: CustomSystemFormProps) {
-  const [selectedSettings, setSelectedSettings] = useState<string[]>(initialSettings);
+export default function CustomSystemForm({
+  onSave,
+  initialSettings,
+}: CustomSystemFormProps) {
+  const [selectedSettings, setSelectedSettings] =
+    useState<string[]>(initialSettings);
   const [settingGroups, setSettingGroups] = useState<SettingGroup[]>([]);
 
   useEffect(() => {
@@ -29,26 +33,26 @@ export default function CustomSystemForm({ onSave, initialSettings }: CustomSyst
 
     // Create groups based on setting types
     const groups: Record<string, SettingGroup> = {
-      'Detergents': {
+      Detergents: {
         name: 'Detergents',
         description: 'Control which types of cleansing agents are allowed',
-        settings: []
+        settings: [],
       },
-      'Silicones': {
+      Silicones: {
         name: 'Silicones',
         description: 'Manage silicone-related ingredients',
-        settings: []
+        settings: [],
       },
-      'Alcohols': {
+      Alcohols: {
         name: 'Alcohols',
         description: 'Control different types of alcohols',
-        settings: []
+        settings: [],
       },
-      'Other': {
+      Other: {
         name: 'Other Ingredients',
         description: 'Additional ingredient controls',
-        settings: []
-      }
+        settings: [],
+      },
     };
 
     // Sort settings into appropriate groups
@@ -58,7 +62,7 @@ export default function CustomSystemForm({ onSave, initialSettings }: CustomSyst
         name: setting.name,
         description: setting.description || '',
         categories: setting.categories,
-        groups: setting.groups
+        groups: setting.groups,
       };
 
       // Determine which group this setting belongs to
@@ -75,10 +79,10 @@ export default function CustomSystemForm({ onSave, initialSettings }: CustomSyst
 
     // Filter out empty groups and sort settings within each group
     const filteredGroups = Object.values(groups)
-      .filter(group => group.settings.length > 0)
-      .map(group => ({
+      .filter((group) => group.settings.length > 0)
+      .map((group) => ({
         ...group,
-        settings: group.settings.sort((a, b) => a.name.localeCompare(b.name))
+        settings: group.settings.sort((a, b) => a.name.localeCompare(b.name)),
       }));
 
     setSettingGroups(filteredGroups);
@@ -90,7 +94,7 @@ export default function CustomSystemForm({ onSave, initialSettings }: CustomSyst
 
   const handleSettingToggle = (settingId: string) => {
     const newSettings = selectedSettings.includes(settingId)
-      ? selectedSettings.filter(id => id !== settingId)
+      ? selectedSettings.filter((id) => id !== settingId)
       : [...selectedSettings, settingId];
 
     setSelectedSettings(newSettings);
@@ -100,27 +104,44 @@ export default function CustomSystemForm({ onSave, initialSettings }: CustomSyst
   return (
     <div className="space-y-4">
       <div className="text-base-content mb-4">
-        <h3 className="text-lg font-semibold mb-2">Customize Your Analysis System</h3>
-        <p className="text-sm text-base-content/70">Select the settings you want to include in your custom analysis system.</p>
+        <h3 className="text-lg font-semibold mb-2">
+          Customize Your Analysis System
+        </h3>
+        <p className="text-sm text-base-content/70">
+          Select the settings you want to include in your custom analysis
+          system.
+        </p>
       </div>
-      {settingGroups.map(group => (
-        <div key={group.name} className="collapse collapse-plus bg-base-100 border border-base-300 rounded-xl shadow-sm">
+      {settingGroups.map((group) => (
+        <div
+          key={group.name}
+          className="collapse collapse-plus bg-base-100 border border-base-300 rounded-xl "
+        >
           <input type="checkbox" defaultChecked={false} />
           <div className="collapse-title text-xl font-medium flex justify-between items-center text-base-content">
             <div>
               {group.name}
               <div className="text-sm font-normal text-base-content/70">
-                {group.settings.filter(s => selectedSettings.includes(s.id)).length} selected
+                {
+                  group.settings.filter((s) => selectedSettings.includes(s.id))
+                    .length
+                }{' '}
+                selected
               </div>
             </div>
           </div>
           <div className="collapse-content">
             {group.description && (
-              <p className="text-sm text-base-content/70 mb-4">{group.description}</p>
+              <p className="text-sm text-base-content/70 mb-4">
+                {group.description}
+              </p>
             )}
             <div className="space-y-3">
-              {group.settings.map(setting => (
-                <div key={setting.id} className="bg-base-200 p-4 rounded-lg border border-base-300">
+              {group.settings.map((setting) => (
+                <div
+                  key={setting.id}
+                  className="bg-base-200 p-4 rounded-lg border border-base-300"
+                >
                   <label className="label cursor-pointer justify-start gap-4">
                     <input
                       type="checkbox"
@@ -129,7 +150,9 @@ export default function CustomSystemForm({ onSave, initialSettings }: CustomSyst
                       onChange={() => handleSettingToggle(setting.id)}
                     />
                     <div className="flex-1">
-                      <span className="label-text font-medium text-base-content">{setting.name}</span>
+                      <span className="label-text font-medium text-base-content">
+                        {setting.name}
+                      </span>
                       {setting.description && (
                         <p className="text-sm text-base-content/70 mt-1">
                           {setting.description}

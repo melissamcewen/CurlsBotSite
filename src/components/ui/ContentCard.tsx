@@ -5,7 +5,9 @@ interface ContentCardProps {
 
 export function ContentCard({ children, className = '' }: ContentCardProps) {
   return (
-    <div className={`bg-base-100 rounded-lg p-6 border border-base-300 shadow-lg ${className}`}>
+    <div
+      className={`bg-base-100 rounded-lg p-6 border border-base-300  ${className}`}
+    >
       {children}
     </div>
   );

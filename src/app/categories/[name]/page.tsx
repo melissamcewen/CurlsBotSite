@@ -12,13 +12,15 @@ interface PageProps {
 }
 
 // Generate metadata
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const decodedName = decodeURIComponent(params.name);
   const categoryId = slugToId(decodedName.toLowerCase());
   const database = getBundledDatabase();
 
   const dbCategoryId = Object.keys(database.categories).find(
-    id => id.toLowerCase() === categoryId
+    (id) => id.toLowerCase() === categoryId,
   );
 
   if (!dbCategoryId) {
@@ -30,7 +32,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: markdownContent?.frontmatter?.title || category.name,
-    description: markdownContent?.frontmatter?.description || category.description || `Hair care ingredients in the ${category.name} category`,
+    description:
+      markdownContent?.frontmatter?.description ||
+      category.description ||
+      `Hair care ingredients in the ${category.name} category`,
     robots: markdownContent ? undefined : 'noindex',
   };
 }
@@ -57,7 +62,7 @@ export default async function CategoryPage({ params }: PageProps) {
 
   // Find the category
   const dbCategoryId = Object.keys(database.categories).find(
-    id => id.toLowerCase() === categoryId
+    (id) => id.toLowerCase() === categoryId,
   );
 
   if (!dbCategoryId) {
@@ -68,7 +73,7 @@ export default async function CategoryPage({ params }: PageProps) {
 
   // Find all ingredients in this category
   const ingredients = Object.values(database.ingredients).filter(
-    (ing: Ingredient) => ing.categories.includes(dbCategoryId)
+    (ing: Ingredient) => ing.categories.includes(dbCategoryId),
   );
 
   // Try to get markdown content
@@ -84,7 +89,7 @@ export default async function CategoryPage({ params }: PageProps) {
 
       <div className="space-y-6">
         {/* Category Information */}
-        <div className="card bg-base-100 shadow-xl text-base-content">
+        <div className="card bg-base-100  text-base-content">
           <div className="card-body">
             <h1 className="card-title text-3xl">
               {markdownContent?.frontmatter?.title || category.name}
@@ -104,7 +109,9 @@ export default async function CategoryPage({ params }: PageProps) {
             ) : (
               <>
                 {category.description && (
-                  <p className="text-base-content/70 mt-2">{category.description}</p>
+                  <p className="text-base-content/70 mt-2">
+                    {category.description}
+                  </p>
                 )}
               </>
             )}
@@ -119,9 +126,11 @@ export default async function CategoryPage({ params }: PageProps) {
         </div>
 
         {/* Ingredients Table */}
-        <div className="card bg-base-100 shadow-xl text-base-content">
+        <div className="card bg-base-100  text-base-content">
           <div className="card-body">
-            <h2 className="card-title text-2xl mb-4">Ingredients in this Category</h2>
+            <h2 className="card-title text-2xl mb-4">
+              Ingredients in this Category
+            </h2>
             <div className="overflow-x-auto">
               <table className="table table-zebra">
                 <thead>
@@ -139,7 +148,9 @@ export default async function CategoryPage({ params }: PageProps) {
                         {ingredient.description ? (
                           <p className="truncate">{ingredient.description}</p>
                         ) : (
-                          <span className="text-base-content/50">No description available</span>
+                          <span className="text-base-content/50">
+                            No description available
+                          </span>
                         )}
                       </td>
                       <td>

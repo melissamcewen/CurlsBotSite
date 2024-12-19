@@ -48,10 +48,18 @@ export default function RootLayout({
       >
         <div className="min-h-screen bg-base-300">
           <div className="absolute inset-0 bg-grid-pattern opacity-5 pointer-events-none" />
-          <header className="navbar bg-accent/90 text-accent-content shadow-lg backdrop-blur-sm sticky top-0 z-50">
+          <header className="navbar bg-accent/90 text-accent-content  backdrop-blur-sm sticky top-0 z-50">
             <div className="navbar-start">
-              <Link href="/" className="btn btn-ghost normal-case text-xl gap-2">
-                <Image src="/logo.svg" alt="CurlsBot Logo" width={24} height={24} />
+              <Link
+                href="/"
+                className="btn btn-ghost normal-case text-xl gap-2"
+              >
+                <Image
+                  src="/logo.svg"
+                  alt="CurlsBot Logo"
+                  width={24}
+                  height={24}
+                />
                 CurlsBot
               </Link>
             </div>
@@ -74,14 +82,7 @@ export default function RootLayout({
             </div>
           </header>
           <main className="container mx-auto px-4 py-8 relative">
-            <div className="prose prose-lg mx-auto mb-8">
-              <h1 className="text-4xl font-bold text-center text-primary">
-                CurlsBot
-              </h1>
-              <p className="text-center text-base-content/80">
-                Your intelligent assistant for analyzing hair care ingredients
-              </p>
-            </div>
+           
             <div className="relative">{children}</div>
           </main>
         </div>

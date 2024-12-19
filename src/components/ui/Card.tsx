@@ -5,9 +5,7 @@ interface CardProps {
 
 export function Card({ children, className = '' }: CardProps) {
   return (
-    <div
-      className={`card bg-base-100 shadow-xl text-base-content  ${className}`}
-    >
+    <div className={`card bg-base-100  text-base-content  ${className}`}>
       <div className="card-body">{children}</div>
     </div>
   );
@@ -19,9 +17,7 @@ interface CardTitleProps {
 }
 
 export function CardTitle({ children, className = '' }: CardTitleProps) {
-  return (
-    <h2 className={`card-title text-2xl ${className}`}>{children}</h2>
-  );
+  return <h2 className={`card-title text-2xl ${className}`}>{children}</h2>;
 }
 
 interface CardContentProps {
@@ -30,9 +26,7 @@ interface CardContentProps {
 }
 
 export function CardContent({ children, className = '' }: CardContentProps) {
-  return (
-    <div className={className}>{children}</div>
-  );
+  return <div className={className}>{children}</div>;
 }
 
 interface CardDescriptionProps {
@@ -40,7 +34,5 @@ interface CardDescriptionProps {
 }
 
 export function CardDescription({ children }: CardDescriptionProps) {
-  return (
-    <p className="text-base-content/70 mt-2">{children}</p>
-  );
+  return <p className="text-base-content/70 mt-2">{children}</p>;
 }

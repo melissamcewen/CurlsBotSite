@@ -12,13 +12,15 @@ interface PageProps {
 }
 
 // Generate metadata
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const decodedName = decodeURIComponent(params.name);
   const ingredientId = slugToId(decodedName.toLowerCase());
   const database = getBundledDatabase();
 
   const dbIngredientId = Object.keys(database.ingredients).find(
-    id => id.toLowerCase() === ingredientId
+    (id) => id.toLowerCase() === ingredientId,
   );
 
   if (!dbIngredientId) {
@@ -30,7 +32,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: markdownContent?.frontmatter?.title || ingredient.name,
-    description: markdownContent?.frontmatter?.description || ingredient.description || `Information about ${ingredient.name} in hair care products`,
+    description:
+      markdownContent?.frontmatter?.description ||
+      ingredient.description ||
+      `Information about ${ingredient.name} in hair care products`,
     robots: markdownContent ? undefined : 'noindex',
   };
 }
@@ -50,7 +55,7 @@ export default async function IngredientPage({ params }: PageProps) {
 
   // Find the ingredient
   const dbIngredientId = Object.keys(database.ingredients).find(
-    id => id.toLowerCase() === ingredientId
+    (id) => id.toLowerCase() === ingredientId,
   );
 
   if (!dbIngredientId) {
@@ -72,14 +77,16 @@ export default async function IngredientPage({ params }: PageProps) {
 
       <div className="space-y-6">
         {/* Ingredient Information */}
-        <div className="card bg-base-100 shadow-xl text-base-content">
+        <div className="card bg-base-100  text-base-content">
           <div className="card-body">
             <h1 className="card-title text-3xl">
               {markdownContent?.frontmatter?.title || ingredient.name}
             </h1>
 
             {ingredient.description && (
-              <p className="text-base-content/70 mt-2">{ingredient.description}</p>
+              <p className="text-base-content/70 mt-2">
+                {ingredient.description}
+              </p>
             )}
 
             {markdownContent && (
@@ -101,7 +108,7 @@ export default async function IngredientPage({ params }: PageProps) {
               <div className="mt-4">
                 <h2 className="text-xl font-semibold mb-2">Categories</h2>
                 <div className="flex flex-wrap gap-2">
-                  {ingredient.categories.map(categoryId => {
+                  {ingredient.categories.map((categoryId) => {
                     const category = database.categories[categoryId];
                     return (
                       <Link
@@ -122,7 +129,7 @@ export default async function IngredientPage({ params }: PageProps) {
               <div className="mt-4">
                 <h2 className="text-xl font-semibold mb-2">Also Known As</h2>
                 <div className="flex flex-wrap gap-2">
-                  {ingredient.synonyms.map(synonym => (
+                  {ingredient.synonyms.map((synonym) => (
                     <span key={synonym} className="badge badge-ghost">
                       {synonym}
                     </span>

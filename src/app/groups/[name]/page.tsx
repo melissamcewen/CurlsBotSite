@@ -12,13 +12,15 @@ interface PageProps {
 }
 
 // Generate metadata
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const decodedName = decodeURIComponent(params.name);
   const groupId = slugToId(decodedName.toLowerCase());
   const database = getBundledDatabase();
 
   const dbGroupId = Object.keys(database.groups).find(
-    id => id.toLowerCase() === groupId
+    (id) => id.toLowerCase() === groupId,
   );
 
   if (!dbGroupId) {
@@ -30,7 +32,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: markdownContent?.frontmatter?.title || group.name,
-    description: markdownContent?.frontmatter?.description || group.description || `Hair care ingredients in the ${group.name} group`,
+    description:
+      markdownContent?.frontmatter?.description ||
+      group.description ||
+      `Hair care ingredients in the ${group.name} group`,
     robots: markdownContent ? undefined : 'noindex',
   };
 }
@@ -55,7 +60,7 @@ export default async function GroupPage({ params }: PageProps) {
 
   // Find the group
   const dbGroupId = Object.keys(database.groups).find(
-    id => id.toLowerCase() === groupId
+    (id) => id.toLowerCase() === groupId,
   );
 
   if (!dbGroupId) {
@@ -66,7 +71,7 @@ export default async function GroupPage({ params }: PageProps) {
 
   // Find all categories in this group
   const categories = Object.values(database.categories).filter(
-    (cat: Category) => cat.group === dbGroupId
+    (cat: Category) => cat.group === dbGroupId,
   );
 
   // Try to get markdown content
@@ -82,7 +87,7 @@ export default async function GroupPage({ params }: PageProps) {
 
       <div className="space-y-6">
         {/* Group Information */}
-        <div className="card bg-base-100 shadow-xl text-base-content">
+        <div className="card bg-base-100  text-base-content">
           <div className="card-body">
             <h1 className="card-title text-3xl">
               {markdownContent?.frontmatter?.title || group.name}
@@ -102,7 +107,9 @@ export default async function GroupPage({ params }: PageProps) {
             ) : (
               <>
                 {group.description && (
-                  <p className="text-base-content/70 mt-2">{group.description}</p>
+                  <p className="text-base-content/70 mt-2">
+                    {group.description}
+                  </p>
                 )}
               </>
             )}
@@ -110,9 +117,11 @@ export default async function GroupPage({ params }: PageProps) {
         </div>
 
         {/* Categories Table */}
-        <div className="card bg-base-100 shadow-xl text-base-content">
+        <div className="card bg-base-100  text-base-content">
           <div className="card-body">
-            <h2 className="card-title text-2xl mb-4">Categories in this Group</h2>
+            <h2 className="card-title text-2xl mb-4">
+              Categories in this Group
+            </h2>
             <div className="overflow-x-auto">
               <table className="table table-zebra">
                 <thead>
@@ -130,7 +139,9 @@ export default async function GroupPage({ params }: PageProps) {
                         {category.description ? (
                           <p className="truncate">{category.description}</p>
                         ) : (
-                          <span className="text-base-content/50">No description available</span>
+                          <span className="text-base-content/50">
+                            No description available
+                          </span>
                         )}
                       </td>
                       <td>

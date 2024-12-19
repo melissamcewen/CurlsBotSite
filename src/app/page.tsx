@@ -7,9 +7,6 @@ export default function Home() {
       <Card>
         <CardTitle>Analyze Ingredients</CardTitle>
         <CardContent>
-          <p className="text-base-content/70 mb-6">
-            Enter your product ingredients to analyze them for various properties and potential concerns.
-          </p>
           <IngredientForm />
         </CardContent>
       </Card>

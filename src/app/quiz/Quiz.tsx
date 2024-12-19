@@ -33,21 +33,21 @@ export default function Quiz() {
     if (score > 2) {
       return {
         type: 'High Porosity',
-        tag: 'high',
+        tag: 'high_porosity',
         description:
           'Your hair easily absorbs moisture but may also lose it quickly. Focus on moisturizing and sealing products. Deep conditioning treatments will be beneficial.'
       };
     } else if (score < -2) {
       return {
         type: 'Low Porosity',
-        tag: 'low',
+        tag: 'low_porosity',
         description:
           'Your hair has difficulty absorbing moisture and products. Focus on clarifying treatments and lightweight products. Use heat or steam to help products penetrate.'
       };
     } else {
       return {
         type: "Normal Porosity",
-        tag: 'normal',
+        tag: 'normal_porosity',
         description: "Your hair has a good balance of moisture absorption and retention. Continue with your current routine while monitoring any changes."
       };
     }
@@ -75,7 +75,7 @@ export default function Quiz() {
 
                 <div>
                   <Link
-                    href={`/porosity/${result.tag}-porosity`}
+                    href={`/products/${result.tag}`}
                     className="text-inherit hover:opacity-80 underline font-medium"
                   >
                     View all recommended products for {result.type} hair →
