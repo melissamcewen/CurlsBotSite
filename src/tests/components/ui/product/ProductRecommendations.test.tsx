@@ -16,20 +16,22 @@ describe('getProductRecommendations', () => {
 });
 
 describe('ProductRecommendations', () => {
-  it('renders title correctly', () => {
+  it('renders product cards', () => {
     render(<ProductRecommendations porosityType="High Porosity" />);
-    expect(screen.getByText('Recommended Products for Your Hair Type')).toBeInTheDocument();
+    const productCards = screen.getAllByRole('link', { name: /buy now/i });
+    expect(productCards.length).toBeGreaterThan(0);
   });
 
   it('applies custom className', () => {
     render(<ProductRecommendations porosityType="High Porosity" className="test-class" />);
-    expect(screen.getByRole('heading').parentElement).toHaveClass('test-class');
+    const container = screen.getByTestId('product-recommendations');
+    expect(container).toHaveClass('test-class');
   });
 
-  it('renders product recommendations', () => {
+  it('renders product categories', () => {
     render(<ProductRecommendations porosityType="High Porosity" />);
-    // The actual number of recommendations will depend on the bundled data
-    const recommendations = screen.queryAllByRole('link');
-    expect(recommendations.length).toBeGreaterThanOrEqual(0);
+    // Check for at least one product category
+    const categories = screen.getAllByText(/shampoos|conditioners|gels/i);
+    expect(categories.length).toBeGreaterThan(0);
   });
 });

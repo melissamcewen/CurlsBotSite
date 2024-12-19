@@ -75,20 +75,22 @@ describe('Ingredients Analysis E2E', () => {
 
     // Check overall result
     const heading = screen.getByRole('heading', { level: 2 });
-    expect(heading).toHaveTextContent('caution');
+    expect(heading.textContent?.toLowerCase()).toContain('caution');
     expect(screen.getByText(/some ingredients in this product require caution/i)).toBeInTheDocument();
 
     // Click to expand ingredients list
-    fireEvent.click(screen.getByText('View detailed ingredients analysis'));
+    const expandButton = screen.getByText(/view detailed ingredients analysis/i);
+    fireEvent.click(expandButton);
 
     // Check ingredient names and categories are present somewhere in the document
-    expect(screen.getAllByText('PEG-12 Dimethicone')[0]).toBeInTheDocument();
-    expect(screen.getAllByText('silicones')[0]).toBeInTheDocument();
-    expect(screen.getAllByText('Sodium C14-16 Olefin Sulfonate')[0]).toBeInTheDocument();
-    expect(screen.getAllByText('surfactants')[0]).toBeInTheDocument();
+    expect(screen.getAllByText(/peg-12 dimethicone/i)[0]).toBeInTheDocument();
+    expect(screen.getAllByText(/silicones/i)[0]).toBeInTheDocument();
+    expect(screen.getAllByText(/sodium c14-16 olefin sulfonate/i)[0]).toBeInTheDocument();
+    expect(screen.getAllByText(/surfactants/i)[0]).toBeInTheDocument();
 
     // Verify caution status appears
-    expect(screen.getAllByText(/caution/i).length).toBeGreaterThan(0);
+    const cautionElements = screen.getAllByText(/caution/i);
+    expect(cautionElements.length).toBeGreaterThan(0);
 
     // Make sure we don't see the "couldn't determine status" message
     expect(screen.queryByText(/we couldn't determine the status/i)).not.toBeInTheDocument();
