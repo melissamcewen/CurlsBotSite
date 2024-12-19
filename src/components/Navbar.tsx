@@ -15,15 +15,16 @@ export default function Navbar() {
           <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-accent rounded-box w-52">
             <li>
               <details>
-                <summary>Database</summary>
+                <summary>Porosity</summary>
                 <ul className="p-2 bg-accent rounded-t-none">
-                  <li><Link href="/ingredients">Ingredients</Link></li>
-                  <li><Link href="/categories">Categories</Link></li>
-                  <li><Link href="/systems">Systems</Link></li>
+                  <li><Link href="/porosity/high-porosity">High Porosity</Link></li>
+                  <li><Link href="/porosity/low-porosity">Low Porosity</Link></li>
+                  <li><Link href="/porosity/normal-porosity">Normal Porosity</Link></li>
                 </ul>
               </details>
             </li>
             <li><Link href="/quiz">Porosity Quiz</Link></li>
+            <li><Link href="/blog">Blog</Link></li>
           </ul>
         </div>
         <Link
@@ -43,15 +44,16 @@ export default function Navbar() {
         <ul className="menu menu-horizontal px-1">
           <li>
             <details>
-              <summary>Database</summary>
+              <summary>Porosity</summary>
               <ul className="p-2 bg-accent rounded-t-none">
-                <li><Link href="/ingredients">Ingredients</Link></li>
-                <li><Link href="/categories">Categories</Link></li>
-                <li><Link href="/systems">Systems</Link></li>
+                <li><Link href="/porosity/high-porosity">High Porosity</Link></li>
+                <li><Link href="/porosity/low-porosity">Low Porosity</Link></li>
+                <li><Link href="/porosity/normal-porosity">Normal Porosity</Link></li>
               </ul>
             </details>
           </li>
           <li><Link href="/quiz">Porosity Quiz</Link></li>
+          <li><Link href="/blog">Blog</Link></li>
         </ul>
       </div>
       <div className="navbar-end">

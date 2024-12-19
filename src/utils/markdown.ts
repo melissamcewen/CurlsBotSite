@@ -24,9 +24,34 @@ export async function getMarkdownData(filePath: string) {
   const contentHtml = processedContent.toString();
 
   return {
-    ...data,
+    frontmatter: data,
     content: contentHtml
   };
+}
+
+export async function getBlogPosts() {
+  const postsDirectory = path.join(contentDirectory, 'blog');
+  const fileNames = fs.readdirSync(postsDirectory);
+
+  const posts = await Promise.all(
+    fileNames
+      .filter(fileName => fileName.endsWith('.md'))
+      .map(async fileName => {
+        const slug = fileName.replace(/\.md$/, '');
+        const post = await getMarkdownData(`blog/${fileName}`);
+        return {
+          slug,
+          frontmatter: post?.frontmatter || {},
+          content: post?.content || ''
+        };
+      })
+  );
+
+  return posts;
+}
+
+export async function getBlogPost(slug: string) {
+  return getMarkdownData(`blog/${slug}.md`);
 }
 
 export async function getSystemContent(systemId: string) {
