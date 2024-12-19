@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { quizQuestions } from './quizData';
 import { ProductRecommendations } from '@/components/ui/product/ProductRecommendations';
-import { ChatBubbleRobot } from '@/components/analysis/ChatBubbleRobot';
+import { ChatBubbleRobot, ChatBubble } from '@/components/analysis/ChatBubbleRobot';
 import Link from 'next/link';
 
 // Easy to toggle development mode testing
@@ -68,67 +68,75 @@ export default function Quiz() {
           imageUrl="/normal.svg"
           status="ok"
         >
-          <div className="space-y-4">
-            <p>
-              Welcome to the Porosity Quiz! I&apos;ll help you determine your
-              hair porosity.
-            </p>
-            <p>
-              Hair porosity is how well your hair absorbs and retains
-              moisture. Understanding your hair porosity can help you choose
-              the right products and techniques for your hair.
-            </p>
-          </div>
-        </ChatBubbleRobot>
-
-        <ChatBubbleRobot
-          imageUrl="/normal.svg"
-          status="ok"
-        >
-          <div className="space-y-4">
-            <p>Based on your answers, your hair porosity is:</p>
-            <div className="text-2xl font-bold">{result.type}</div>
-            <p>
-              {result.type === 'High Porosity'
-                ? 'High porosity hair absorbs moisture quickly but also loses it quickly. Focus on protein treatments and moisturizing products that can help seal in moisture.'
-                : result.type === 'Low Porosity'
-                ? 'Low porosity hair is resistant to moisture but retains it well once absorbed. Use lightweight products and consider applying products to damp hair to improve absorption.'
-                : 'Normal porosity hair maintains a good moisture balance. Continue with a balanced routine of moisturizing and protein treatments as needed.'}
-            </p>
-          </div>
-        </ChatBubbleRobot>
-
-        <ChatBubbleRobot
-          imageUrl="/normal.svg"
-          status="ok"
-        >
-          <div className="space-y-4">
-            <div>
-              <Link
-                href={`/products/${result.tag}`}
-                className="text-inherit hover:opacity-80 underline font-medium"
-              >
-                View all recommended products for {result.type} hair →
-              </Link>
+          <ChatBubble status="ok">
+            <div className="space-y-4">
+              <p>
+                Welcome to the Porosity Quiz! I&apos;ll help you determine your
+                hair porosity.
+              </p>
+              <p>
+                Hair porosity is how well your hair absorbs and retains
+                moisture. Understanding your hair porosity can help you choose
+                the right products and techniques for your hair.
+              </p>
             </div>
-
-            <button
-              className="btn btn-sm btn-ghost bg-base-100 bg-opacity-20 w-full"
-              onClick={restartQuiz}
-            >
-              Take Quiz Again
-            </button>
-          </div>
+          </ChatBubble>
         </ChatBubbleRobot>
 
         <ChatBubbleRobot
           imageUrl="/normal.svg"
           status="ok"
         >
-          <div className="space-y-4">
-            <p className="font-bold text-lg mb-1">Recommended Products for Your Hair Type</p>
-            <ProductRecommendations porosityType={result.type} />
-          </div>
+          <ChatBubble status="ok">
+            <div className="space-y-4">
+              <p>Based on your answers, your hair porosity is:</p>
+              <div className="text-2xl font-bold">{result.type}</div>
+              <p>
+                {result.type === 'High Porosity'
+                  ? 'High porosity hair absorbs moisture quickly but also loses it quickly. Focus on protein treatments and moisturizing products that can help seal in moisture.'
+                  : result.type === 'Low Porosity'
+                  ? 'Low porosity hair is resistant to moisture but retains it well once absorbed. Use lightweight products and consider applying products to damp hair to improve absorption.'
+                  : 'Normal porosity hair maintains a good moisture balance. Continue with a balanced routine of moisturizing and protein treatments as needed.'}
+              </p>
+            </div>
+          </ChatBubble>
+        </ChatBubbleRobot>
+
+        <ChatBubbleRobot
+          imageUrl="/normal.svg"
+          status="ok"
+        >
+          <ChatBubble status="ok">
+            <div className="space-y-4">
+              <div>
+                <Link
+                  href={`/products/${result.tag}`}
+                  className="text-inherit hover:opacity-80 underline font-medium"
+                >
+                  View all recommended products for {result.type} hair →
+                </Link>
+              </div>
+
+              <button
+                className="btn btn-sm btn-ghost bg-base-100 bg-opacity-20 w-full"
+                onClick={restartQuiz}
+              >
+                Take Quiz Again
+              </button>
+            </div>
+          </ChatBubble>
+        </ChatBubbleRobot>
+
+        <ChatBubbleRobot
+          imageUrl="/normal.svg"
+          status="ok"
+        >
+          <ChatBubble status="ok">
+            <div className="space-y-4">
+              <p className="font-bold text-lg mb-1">Recommended Products for Your Hair Type</p>
+              <ProductRecommendations porosityType={result.type} />
+            </div>
+          </ChatBubble>
         </ChatBubbleRobot>
       </div>
     );
@@ -142,7 +150,9 @@ export default function Quiz() {
         imageUrl="/normal.svg"
         status="ok"
       >
-        Take this quiz to determine your hair porosity level. Hair porosity refers to your hair&apos;s ability to absorb and retain moisture. Understanding your hair porosity can help you choose the right products and treatments for your hair.
+        <ChatBubble status="ok">
+          Take this quiz to determine your hair porosity level. Hair porosity refers to your hair&apos;s ability to absorb and retain moisture. Understanding your hair porosity can help you choose the right products and treatments for your hair.
+        </ChatBubble>
       </ChatBubbleRobot>
       <div className="chat chat-end">
         <div className="chat-bubble chat-bubble-primary w-full max-w-none">

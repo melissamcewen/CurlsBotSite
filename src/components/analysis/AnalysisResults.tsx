@@ -83,24 +83,26 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
           </div>
         </ChatBubble>
 
-      
+
       </ChatBubbleRobot>
 
       {/* Product Recommendation */}
       {productRecommendation && (
         <ChatBubbleRobot imageUrl="/normal.png" status="ok">
-          <div className="space-y-4">
-            <p>
-              Since we found some ingredients that might be problematic,
-              here&apos;s a product that might work better for your hair.
-            </p>
-            <ProductRecommendation
-              category={productRecommendation.category}
-              brand={productRecommendation.brand}
-              name={productRecommendation.name}
-              buyUrl={productRecommendation.buyUrl}
-            />
-          </div>
+          <ChatBubble status="ok">
+            <div className="space-y-4">
+              <p>
+                Since we found some ingredients that might be problematic,
+                here&apos;s a product that might work better for your hair.
+              </p>
+              <ProductRecommendation
+                category={productRecommendation.category}
+                brand={productRecommendation.brand}
+                name={productRecommendation.name}
+                buyUrl={productRecommendation.buyUrl}
+              />
+            </div>
+          </ChatBubble>
         </ChatBubbleRobot>
       )}
     </div>
