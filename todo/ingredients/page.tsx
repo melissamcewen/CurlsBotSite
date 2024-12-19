@@ -3,6 +3,7 @@
 import { useState, useMemo } from 'react';
 import { getBundledDatabase } from 'haircare-ingredients-analyzer';
 import Link from 'next/link';
+import { Card, CardContent } from '@/components/ui/Card';
 
 interface Ingredient {
   id: string;
@@ -16,6 +17,7 @@ type SortField = 'name' | 'categories';
 type SortDirection = 'asc' | 'desc';
 
 export default function IngredientsPage() {
+  const [searchTerm, setSearchTerm] = useState('');
   const [sortField, setSortField] = useState<SortField>('name');
   const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
 
@@ -28,12 +30,23 @@ export default function IngredientsPage() {
     }));
   }, []);
 
-  // Sort ingredients
-  const sortedIngredients = useMemo(() => {
-    let sorted = [...ingredients];
+  // Filter and sort ingredients
+  const filteredIngredients = useMemo(() => {
+    let filtered = [...ingredients];
+
+    // Apply search filter
+    if (searchTerm) {
+      const searchLower = searchTerm.toLowerCase();
+      filtered = filtered.filter(ingredient =>
+        ingredient.name.toLowerCase().includes(searchLower) ||
+        ingredient.description?.toLowerCase().includes(searchLower) ||
+        ingredient.synonyms?.some(syn => syn.toLowerCase().includes(searchLower)) ||
+        ingredient.categories?.some(cat => cat.toLowerCase().includes(searchLower))
+      );
+    }
 
     // Apply sorting
-    sorted.sort((a, b) => {
+    filtered.sort((a, b) => {
       if (sortField === 'name') {
         return sortDirection === 'asc'
           ? a.name.localeCompare(b.name)
@@ -48,8 +61,8 @@ export default function IngredientsPage() {
       return 0;
     });
 
-    return sorted;
-  }, [ingredients, sortField, sortDirection]);
+    return filtered;
+  }, [ingredients, searchTerm, sortField, sortDirection]);
 
   const toggleSort = (field: SortField) => {
     if (sortField === field) {
@@ -66,8 +79,25 @@ export default function IngredientsPage() {
   };
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold mb-6">Ingredients Database</h1>
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold mb-6 text-base-content">Ingredients Database</h1>
+
+      <Card className="mb-8">
+        <CardContent>
+          <div className="form-control w-full max-w-xl">
+            <label className="label">
+              <span className="label-text">Search ingredients</span>
+            </label>
+            <input
+              type="text"
+              placeholder="Filter by name, category, or description..."
+              className="input input-bordered bg-base-200 text-base-content w-full"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
+        </CardContent>
+      </Card>
 
       <div className="overflow-x-auto">
         <table className="table table-zebra w-full">
@@ -90,18 +120,14 @@ export default function IngredientsPage() {
                 </button>
               </th>
               <th>Description</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            {sortedIngredients.map(ingredient => (
+            {filteredIngredients.map(ingredient => (
               <tr key={ingredient.id}>
                 <td className="font-medium">
-                  <Link
-                    href={`/ingredients/${encodeURIComponent(ingredient.id)}`}
-                    className="hover:text-primary"
-                  >
-                    {ingredient.name}
-                  </Link>
+                  {ingredient.name}
                   {ingredient.synonyms && ingredient.synonyms.length > 0 && (
                     <div className="text-sm text-base-content/70">
                       Also: {ingredient.synonyms.join(', ')}
@@ -124,11 +150,25 @@ export default function IngredientsPage() {
                     <span className="text-base-content/50">No description available</span>
                   )}
                 </td>
+                <td>
+                  <Link
+                    href={`/ingredients/${encodeURIComponent(ingredient.id)}`}
+                    className="btn btn-primary btn-sm"
+                  >
+                    View Details
+                  </Link>
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+
+      {filteredIngredients.length === 0 && (
+        <div className="alert alert-info">
+          <span>No ingredients found matching &quot;{searchTerm}&quot;</span>
+        </div>
+      )}
     </div>
   );
 }

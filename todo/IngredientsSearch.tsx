@@ -3,6 +3,7 @@
 import { useState, useMemo } from 'react';
 import { getBundledDatabase } from 'haircare-ingredients-analyzer';
 import Link from 'next/link';
+import { Card, CardContent } from '@/components/ui/Card';
 
 interface Ingredient {
   id: string;
@@ -12,12 +13,8 @@ interface Ingredient {
   description?: string;
 }
 
-type SortField = 'name' | 'categories';
-type SortDirection = 'asc' | 'desc';
-
-export default function IngredientsPage() {
-  const [sortField, setSortField] = useState<SortField>('name');
-  const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
+export default function IngredientsSearch() {
+  const [searchTerm, setSearchTerm] = useState('');
 
   // Get all ingredients and memoize them
   const ingredients = useMemo(() => {
@@ -28,72 +25,54 @@ export default function IngredientsPage() {
     }));
   }, []);
 
-  // Sort ingredients
-  const sortedIngredients = useMemo(() => {
-    let sorted = [...ingredients];
+  // Filter ingredients
+  const filteredIngredients = useMemo(() => {
+    let filtered = [...ingredients];
 
-    // Apply sorting
-    sorted.sort((a, b) => {
-      if (sortField === 'name') {
-        return sortDirection === 'asc'
-          ? a.name.localeCompare(b.name)
-          : b.name.localeCompare(a.name);
-      } else if (sortField === 'categories') {
-        const aCats = a.categories?.join(', ') || '';
-        const bCats = b.categories?.join(', ') || '';
-        return sortDirection === 'asc'
-          ? aCats.localeCompare(bCats)
-          : bCats.localeCompare(aCats);
-      }
-      return 0;
-    });
-
-    return sorted;
-  }, [ingredients, sortField, sortDirection]);
-
-  const toggleSort = (field: SortField) => {
-    if (sortField === field) {
-      setSortDirection(prev => prev === 'asc' ? 'desc' : 'asc');
-    } else {
-      setSortField(field);
-      setSortDirection('asc');
+    // Apply search filter
+    if (searchTerm) {
+      const searchLower = searchTerm.toLowerCase();
+      filtered = filtered.filter(ingredient =>
+        ingredient.name.toLowerCase().includes(searchLower) ||
+        ingredient.description?.toLowerCase().includes(searchLower) ||
+        ingredient.synonyms?.some(syn => syn.toLowerCase().includes(searchLower)) ||
+        ingredient.categories?.some(cat => cat.toLowerCase().includes(searchLower))
+      );
     }
-  };
 
-  const getSortIcon = (field: SortField) => {
-    if (sortField !== field) return '↕️';
-    return sortDirection === 'asc' ? '↑' : '↓';
-  };
+    return filtered;
+  }, [ingredients, searchTerm]);
 
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-6">Ingredients Database</h1>
+      <Card className="mb-8">
+        <CardContent>
+          <div className="form-control w-full max-w-xl">
+            <label className="label">
+              <span className="label-text">Search ingredients</span>
+            </label>
+            <input
+              type="text"
+              placeholder="Filter by name, category, or description..."
+              className="input input-bordered bg-base-200 text-base-content w-full"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
+        </CardContent>
+      </Card>
 
       <div className="overflow-x-auto">
         <table className="table table-zebra w-full">
           <thead>
             <tr>
-              <th>
-                <button
-                  className="flex items-center gap-2"
-                  onClick={() => toggleSort('name')}
-                >
-                  Name {getSortIcon('name')}
-                </button>
-              </th>
-              <th>
-                <button
-                  className="flex items-center gap-2"
-                  onClick={() => toggleSort('categories')}
-                >
-                  Categories {getSortIcon('categories')}
-                </button>
-              </th>
+              <th>Name</th>
+              <th>Categories</th>
               <th>Description</th>
             </tr>
           </thead>
           <tbody>
-            {sortedIngredients.map(ingredient => (
+            {filteredIngredients.map(ingredient => (
               <tr key={ingredient.id}>
                 <td className="font-medium">
                   <Link
@@ -129,6 +108,12 @@ export default function IngredientsPage() {
           </tbody>
         </table>
       </div>
+
+      {filteredIngredients.length === 0 && (
+        <div className="alert alert-info">
+          <span>No ingredients found matching &quot;{searchTerm}&quot;</span>
+        </div>
+      )}
     </div>
   );
 }

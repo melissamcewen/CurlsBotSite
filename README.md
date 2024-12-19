@@ -80,7 +80,112 @@ If a markdown file doesn't exist for a particular item, the page will fall back 
 
 ## Custom Analysis Settings Feature
 
-The site includes a currently disabled custom analysis settings feature. To re-enable it:
+The site includes several currently disabled features that can be re-enabled:
+
+### System Selector
+The system selector allows users to choose between different analysis systems (e.g., curly hair, protein sensitive). To re-enable it:
+
+1. Move from `todo/` back to the components directory:
+   - `SystemSelector.tsx` → `src/components/analysis/SystemSelector.tsx`
+   - `CustomSystemForm.tsx` → `src/components/analysis/CustomSystemForm.tsx`
+
+2. In `src/components/analysis/IngredientForm.tsx`:
+   ```typescript
+   // Add imports
+   import { getBundledSystems } from 'haircare-ingredients-analyzer';
+   import SystemSelector from './SystemSelector';
+
+   // Add state
+   const [systemId, setSystemId] = useState('curly_default');
+   const [customSettings, setCustomSettings] = useState<string[]>([]);
+
+   // Update handleAnalysis to accept system
+   const handleAnalysis = useCallback((ingredientList: string, system: string, settings?: string[]) => {
+     // ... existing setup ...
+
+     // Handle system selection
+     if (system !== 'curly_default') {
+       const systems = getBundledSystems();
+       const selectedSystem = systems.find(s => s.id === system);
+       if (!selectedSystem) {
+         throw new Error('Invalid system selected');
+       }
+       analyzer.setSystem(selectedSystem);
+     }
+
+     // ... rest of analysis ...
+   }, []);
+
+   // Add to form
+   <div className="w-full">
+     <SystemSelector value={systemId} onChange={handleSystemChange} />
+   </div>
+   ```
+
+### Ingredients Search
+The ingredients search feature provides a search box above the ingredients table. To re-enable it:
+
+1. Move from `todo/` back to the components directory:
+   - `IngredientsSearch.tsx` → `src/components/ingredients/IngredientsSearch.tsx`
+
+2. In `src/app/ingredients/page.tsx`:
+   ```typescript
+   // Add imports
+   import { Card, CardContent } from '@/components/ui/Card';
+   import { useState } from 'react';
+
+   // Add search state
+   const [searchTerm, setSearchTerm] = useState('');
+
+   // Update sortedIngredients to include search
+   const sortedIngredients = useMemo(() => {
+     let filtered = [...ingredients];
+
+     // Apply search filter
+     if (searchTerm) {
+       const searchLower = searchTerm.toLowerCase();
+       filtered = filtered.filter(ingredient =>
+         ingredient.name.toLowerCase().includes(searchLower) ||
+         ingredient.description?.toLowerCase().includes(searchLower) ||
+         ingredient.synonyms?.some(syn => syn.toLowerCase().includes(searchLower)) ||
+         ingredient.categories?.some(cat => cat.toLowerCase().includes(searchLower))
+       );
+     }
+
+     // Apply sorting
+     // ... existing sorting code ...
+
+     return filtered;
+   }, [ingredients, searchTerm, sortField, sortDirection]);
+
+   // Add search box above table
+   <Card className="mb-8">
+     <CardContent>
+       <div className="form-control w-full max-w-xl">
+         <label className="label">
+           <span className="label-text">Search ingredients</span>
+         </label>
+         <input
+           type="text"
+           placeholder="Filter by name, category, or description..."
+           className="input input-bordered bg-base-200 text-base-content w-full"
+           value={searchTerm}
+           onChange={(e) => setSearchTerm(e.target.value)}
+         />
+       </div>
+     </CardContent>
+   </Card>
+
+   // Add empty state message
+   {sortedIngredients.length === 0 && (
+     <div className="alert alert-info">
+       <span>No ingredients found matching "{searchTerm}"</span>
+     </div>
+   )}
+   ```
+
+### Custom Settings Feature
+The custom settings feature allows users to create their own analysis system. To re-enable it:
 
 1. In `src/components/analysis/SystemSelector.tsx`:
    - Re-import the CustomSystemForm component
