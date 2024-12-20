@@ -49,7 +49,7 @@ export function IngredientsList({ ingredients }: IngredientsListProps) {
       <div className="flex justify-end">
         <button
           onClick={() => setIsAlphabetical(!isAlphabetical)}
-          className="btn btn-ghost btn-sm gap-2 normal-case"
+          className="btn cb-border btn-sm gap-2 normal-case"
           title={isAlphabetical ? "Sort by priority" : "Sort alphabetically"}
         >
           <ArrowsUpDownIcon className="w-4 h-4" />

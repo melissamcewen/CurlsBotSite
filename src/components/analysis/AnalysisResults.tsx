@@ -6,7 +6,7 @@ import { getBundledProducts } from 'haircare-ingredients-analyzer';
 import { ProductCategory } from '@/components/ui/product/ProductRecommendations';
 import { IngredientsList } from './ingredients/IngredientsList';
 import { getStatusConfig } from './utils/statusConfig';
-import { BeakerIcon, ExclamationTriangleIcon, ExclamationCircleIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
+import { BeakerIcon, ExclamationTriangleIcon, ExclamationCircleIcon, CheckCircleIcon } from '@heroicons/react/24/solid';
 import { ChatBubbleRobot, ChatHeader, ChatBubble, ChatFooter } from './ChatBubbleRobot';
 import { AnalysisFindings } from './findings/AnalysisFindings';
 
@@ -76,30 +76,18 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
         </ChatBubble>
       </ChatBubbleRobot>
       {hasIngredients && (
-        <div>
+        <div className="space-y-4">
           {hasIngredients && (
             <AnalysisFindings ingredients={result.ingredients} />
           )}
-          <BeakerIcon className="w-5 h-5" />
-          View detailed ingredients analysis
-          <IngredientsList ingredients={result.ingredients} />
-        </div>
-      )}
-      {/* Product Recommendation */}
-      {productRecommendation && (
-        <ChatBubbleRobot imageUrl="/normal.png" status="ok">
-          <ChatBubble status="ok">
-            <div className="space-y-4">
-              <p>Hey here&apos;s a product I think you might like:</p>
-              <ProductRecommendation
-                category={productRecommendation.category}
-                brand={productRecommendation.brand}
-                name={productRecommendation.name}
-                buyUrl={productRecommendation.buyUrl}
-              />
+          <div>
+            <div className="cb-header">
+              <BeakerIcon className="w-5 h-5" />
+              Ingredient Details
             </div>
-          </ChatBubble>
-        </ChatBubbleRobot>
+            <IngredientsList ingredients={result.ingredients} />
+          </div>
+        </div>
       )}
     </div>
   );

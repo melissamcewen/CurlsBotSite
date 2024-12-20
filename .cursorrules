@@ -4,7 +4,7 @@ haircare-ingredients-analyzer is a library I made, there might be issues with it
 
 this app uses a flat rounded design style so no shadows or sharp edges, also no opacity, just use solid colors from the daisy ui palette
 
-use heroicons for icons, from the heroicons library
+use solid heroicons for icons, from the heroicons library @heroicons/react/solid
 
 use types from the haircare-ingredient-analyzer library when working with it
 

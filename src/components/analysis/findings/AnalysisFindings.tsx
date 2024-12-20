@@ -7,6 +7,7 @@ import {
   DocumentChartBarIcon,
   StarIcon
 } from '@heroicons/react/24/solid';
+import { capitalizeFirstLetter } from '@/utils/text';
 
 interface Props {
   ingredients: IngredientResult[];
@@ -57,7 +58,7 @@ export function AnalysisFindings({ ingredients }: Props) {
       {/* Summary Stats Card */}
       <div className=" bg-base-100">
         <div className="">
-          <h2 className="cb-header mb-5 ">
+          <h2 className="cb-header ">
             <DocumentChartBarIcon className="cb-header-icon" />
             Analysis Summary
           </h2>
@@ -123,34 +124,30 @@ export function AnalysisFindings({ ingredients }: Props) {
       {hasFindings && (
         <div className="">
           <div className="">
-            <h2 className="cb-header mb-5">
-
-              <StarIcon
-                className="cb-header-icon"
-                aria-hidden="true"
-              />
+            <h2 className="cb-header ">
+              <StarIcon className="cb-header-icon" aria-hidden="true" />
               Highlights
             </h2>
             <div className="space-y-4">
               {Object.entries(groupedFindings).map(([setting, group]) => (
-                <div key={setting} className={`card bg-base-100 cb-border`}>
+                <div key={setting} className={`card bg-base-100 cb-border lg:max-w-sm`}>
                   <div className="card-body p-4">
                     <div className="flex items-center gap-3">
-                      <div
-                        className={`flex items-center justify-center ${
-                          group.status === 'warning'
-                            ? 'text-error'
-                            : 'text-warning'
-                        }`}
-                      >
-                        {group.status === 'warning' ? (
-                          <XCircleIcon className="w-8 h-8" />
-                        ) : (
-                          <ExclamationTriangleIcon className="w-8 h-8" />
-                        )}
-                      </div>
                       <div>
-                        <h3 className="font-bold text-lg">{group.name}</h3>
+                        <h3
+                          className={`cb-smaller-header ${
+                            group.status === 'warning'
+                              ? 'text-error'
+                              : 'text-warning'
+                          }`}
+                        >
+                          {group.status === 'warning' ? (
+                            <XCircleIcon className="cb-smaller-header-icon" />
+                          ) : (
+                            <ExclamationTriangleIcon className="cb-smaller-header-icon" />
+                          )}
+                          {capitalizeFirstLetter(group.status)}: {group.name}
+                        </h3>
                         <p className="text-sm text-base-content">
                           {group.reason}
                         </p>
@@ -161,11 +158,11 @@ export function AnalysisFindings({ ingredients }: Props) {
                       {group.ingredients.map((ingredient, index) => (
                         <div key={index} className={`stat p-4`}>
                           <div className="text-center ">
-                            <div className="font-medium">{ingredient.name}</div>
+                            <div className="cb-bold">{ingredient.name}</div>
                             {ingredient.ingredient &&
                               ingredient.name !==
                                 ingredient.ingredient.name && (
-                                <div className="text-sm text-base-content">
+                                <div className="text-sm ">
                                   matches {ingredient.ingredient.name}
                                 </div>
                               )}

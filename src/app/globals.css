@@ -31,12 +31,22 @@ body {
     @apply border-t-2 border-base-300;
   }
   .cb-header {
-    @apply text-xl leading-7 font-semibold flex items-center gap-1;
+    @apply text-xl leading-7 font-semibold flex items-center gap-1 mb-5;
   }
-
-
 
   .cb-header-icon {
     @apply w-6 h-6;
+  }
+
+  .cb-smaller-header {
+    @apply text-lg leading-7 font-semibold flex items-center gap-1 mb-2;
+  }
+
+  .cb-smaller-header-icon {
+    @apply w-5 h-5;
+  }
+
+  .cb-bold {
+    @apply font-bold;
   }
 }
