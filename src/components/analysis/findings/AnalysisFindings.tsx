@@ -7,7 +7,6 @@ import {
   DocumentChartBarIcon,
   StarIcon
 } from '@heroicons/react/24/solid';
-import { capitalizeFirstLetter } from '@/utils/text';
 
 interface Props {
   ingredients: IngredientResult[];
@@ -132,42 +131,32 @@ export function AnalysisFindings({ ingredients }: Props) {
               {Object.entries(groupedFindings).map(([setting, group]) => (
                 <div key={setting} className={`card bg-base-100 cb-border`}>
                   <div className="card-body p-4">
-                    <div className="flex items-center gap-3">
-                      <div>
-                        <h3
-                          className={`cb-smaller-header ${
-                            group.status === 'warning'
-                              ? 'text-error'
-                              : 'text-warning'
-                          }`}
-                        >
-                          {group.status === 'warning' ? (
-                            <XCircleIcon className="cb-smaller-header-icon" />
-                          ) : (
-                            <ExclamationTriangleIcon className="cb-smaller-header-icon" />
-                          )}
-                          {capitalizeFirstLetter(group.status)}: {group.name}
-                        </h3>
-                        <p className="text-sm text-base-content">
-                          {group.reason}
-                        </p>
-                      </div>
+                    <div className="flex items-center justify-between mb-1">
+                      <h3 className="text-lg font-semibold">
+                        {group.name}
+                      </h3>
+                      <span className={`cb-badge ${
+                        group.status === 'warning' ? 'text-error border-error' : 'text-warning border-warning'
+                      }`}>
+                        {group.status}
+                      </span>
                     </div>
+                    <p className="text-sm text-base-content/70">
+                      {group.reason}
+                    </p>
 
-                    <div className="stats stats-vertical">
+                    <div className="space-y-4 mt-4">
                       {group.ingredients.map((ingredient, index) => (
-                        <div key={index} className={`stat p-4`}>
-                          <div className="text-center ">
-                            <div className="cb-bold">{ingredient.name}</div>
-                            {ingredient.ingredient &&
-                              ingredient.name !==
-                                ingredient.ingredient.name && (
-                                <div className="">
-                                  <span className="cb-text-ghost text-sm">Matches:</span>
-                                  <span className="font-light text-sm">{ingredient.ingredient.name}</span>
-                                </div>
-                              )}
-                          </div>
+                        <div key={index} className={`border-l-4 pl-4 ${
+                          group.status === 'warning' ? 'border-error' : 'border-warning'
+                        }`}>
+                          <div className="font-medium">{ingredient.name}</div>
+                          {ingredient.ingredient &&
+                            ingredient.name !== ingredient.ingredient.name && (
+                              <div className="text-base-content/70 text-sm">
+                                matched {ingredient.ingredient.name}
+                              </div>
+                            )}
                         </div>
                       ))}
                     </div>
