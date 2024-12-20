@@ -31,7 +31,7 @@ export default function RootLayout({
             __html: `
               (function() {
                 try {
-                  var theme = localStorage.getItem('theme') || 'cupcake';
+                  var theme = localStorage.getItem('theme') || 'curlsbot';
                   document.documentElement.setAttribute('data-theme', theme);
                 } catch (e) {}
               })();
@@ -49,9 +49,7 @@ export default function RootLayout({
           <Navbar />
           <div className="pt-0 md:py-8 px-0 md:px-8">
             <main className="max-w-[90rem] mx-auto bg-base-100 text-base-content rounded-none md:rounded-lg">
-              <div className="p-4 md:p-8">
-                {children}
-              </div>
+              <div className="p-4 md:p-8">{children}</div>
             </main>
           </div>
         </div>
