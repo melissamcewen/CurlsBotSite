@@ -30,4 +30,13 @@ body {
   .cb-divider {
     @apply border-t-2 border-base-300;
   }
+  .cb-header {
+    @apply text-xl leading-7 font-semibold flex items-center gap-1;
+  }
+
+
+
+  .cb-header-icon {
+    @apply w-6 h-6;
+  }
 }

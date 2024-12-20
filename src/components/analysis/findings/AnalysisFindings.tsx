@@ -3,7 +3,9 @@ import {
   CheckCircleIcon,
   QuestionMarkCircleIcon,
   ExclamationTriangleIcon,
-  XCircleIcon
+  XCircleIcon,
+  DocumentChartBarIcon,
+  StarIcon
 } from '@heroicons/react/24/solid';
 
 interface Props {
@@ -53,9 +55,12 @@ export function AnalysisFindings({ ingredients }: Props) {
   return (
     <div className="space-y-6">
       {/* Summary Stats Card */}
-      <div className="card bg-base-100">
-        <div className="card-body">
-          <h2 className="card-title">Analysis Summary</h2>
+      <div className=" bg-base-100">
+        <div className="">
+          <h2 className="cb-header mb-5 ">
+            <DocumentChartBarIcon className="cb-header-icon" />
+            Analysis Summary
+          </h2>
           <div className="stats stats-vertical lg:stats-horizontal cb-border w-full">
             <div className="stat min-w-[200px]">
               <div className="stat-title">Total</div>
@@ -88,7 +93,9 @@ export function AnalysisFindings({ ingredients }: Props) {
             <div className="stat min-w-[200px]">
               <div className="flex-1">
                 <div className="stat-title">Caution</div>
-                <div className="stat-value text-warning">{cautionIngredients}</div>
+                <div className="stat-value text-warning">
+                  {cautionIngredients}
+                </div>
                 <div className="stat-desc">May be problematic</div>
               </div>
               <div className="stat-figure flex items-center justify-center text-warning">
@@ -99,7 +106,9 @@ export function AnalysisFindings({ ingredients }: Props) {
             <div className="stat min-w-[200px]">
               <div className="flex-1">
                 <div className="stat-title">Warning</div>
-                <div className="stat-value text-error">{warningIngredients}</div>
+                <div className="stat-value text-error">
+                  {warningIngredients}
+                </div>
                 <div className="stat-desc">Potentially harmful</div>
               </div>
               <div className="stat-figure flex items-center justify-center text-error">
@@ -112,22 +121,28 @@ export function AnalysisFindings({ ingredients }: Props) {
 
       {/* Findings Section */}
       {hasFindings && (
-        <div className="card bg-base-100">
-          <div className="card-body">
-            <h2 className="card-title">Highlights</h2>
+        <div className="">
+          <div className="">
+            <h2 className="cb-header mb-5">
+
+              <StarIcon
+                className="cb-header-icon"
+                aria-hidden="true"
+              />
+              Highlights
+            </h2>
             <div className="space-y-4">
               {Object.entries(groupedFindings).map(([setting, group]) => (
-                <div
-                  key={setting}
-                  className={`card bg-base-100 cb-border`}
-                >
+                <div key={setting} className={`card bg-base-100 cb-border`}>
                   <div className="card-body p-4">
                     <div className="flex items-center gap-3">
-                      <div className={`flex items-center justify-center ${
-                        group.status === 'warning'
-                          ? 'text-error'
-                          : 'text-warning'
-                      }`}>
+                      <div
+                        className={`flex items-center justify-center ${
+                          group.status === 'warning'
+                            ? 'text-error'
+                            : 'text-warning'
+                        }`}
+                      >
                         {group.status === 'warning' ? (
                           <XCircleIcon className="w-8 h-8" />
                         ) : (
@@ -136,7 +151,9 @@ export function AnalysisFindings({ ingredients }: Props) {
                       </div>
                       <div>
                         <h3 className="font-bold text-lg">{group.name}</h3>
-                        <p className="text-sm text-base-content">{group.reason}</p>
+                        <p className="text-sm text-base-content">
+                          {group.reason}
+                        </p>
                       </div>
                     </div>
 
@@ -144,14 +161,14 @@ export function AnalysisFindings({ ingredients }: Props) {
                       {group.ingredients.map((ingredient, index) => (
                         <div key={index} className={`stat p-4`}>
                           <div className="text-center ">
-                            <div className="font-medium">
-                              {ingredient.name}
-                            </div>
-                            {ingredient.ingredient && ingredient.name !== ingredient.ingredient.name && (
-                              <div className="text-sm text-base-content">
-                                matches {ingredient.ingredient.name}
-                              </div>
-                            )}
+                            <div className="font-medium">{ingredient.name}</div>
+                            {ingredient.ingredient &&
+                              ingredient.name !==
+                                ingredient.ingredient.name && (
+                                <div className="text-sm text-base-content">
+                                  matches {ingredient.ingredient.name}
+                                </div>
+                              )}
                             {ingredient.ingredient?.description && (
                               <div className="text-sm mt-2 max-w-[250px] text-base-content">
                                 {ingredient.ingredient.description}
