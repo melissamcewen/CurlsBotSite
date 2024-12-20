@@ -76,10 +76,10 @@ export function ChatBubble({
   className = '',
 }: ChatBubbleProps) {
   const statusClasses: Record<string, string> = {
-    ok: 'bg-info text-info-content',
+    ok: 'border-info',
     caution: 'border-warning ',
-    warning: 'bg-error text-error-content',
-    error: 'bg-error text-error-content',
+    warning: 'border-error',
+    error: 'border-error',
   };
 
   const bubbleClass =
