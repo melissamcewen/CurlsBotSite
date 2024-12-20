@@ -17,7 +17,7 @@ export const getStatusConfig = (status: string): StatusConfig => {
         alertClass: 'alert-info',
         alertContentClass: 'text-info-content',
         description:
-          "We haven't found any ingredients that might be of concern, so we think this product might be OK for your hair.",
+          "This ingredient list seems okay, but I'm only a robot! It's always a good idea to double-check and see if there's anything you're unsure about. Your hair is unique, so do what works best for you.",
       };
     case 'warning':
       return {
@@ -27,7 +27,7 @@ export const getStatusConfig = (status: string): StatusConfig => {
         alertClass: 'alert-error',
         alertContentClass: 'text-error-content',
         description:
-          "This product contains ingredients that may be problematic. You may want to research these ingredients further or consider alternatives.",
+          'Yikes, I found some ingredients in this list that might not be the best for your hair. You might want to consider a different product or check with a hair expert. Your hair deserves the best!',
       };
     case 'caution':
       return {
@@ -37,7 +37,7 @@ export const getStatusConfig = (status: string): StatusConfig => {
         alertClass: 'alert-warning',
         alertContentClass: 'text-warning-content',
         description:
-          'Some ingredients in this product require caution. They may work for some people but could be problematic depending on your hair type and needs.',
+          'Hmm, I found a few tricky ingredients in this list. They might be okay for most people, but it’s always a good idea to double-check! You know your hair best, so listen to it.',
       };
     case 'error':
       return {

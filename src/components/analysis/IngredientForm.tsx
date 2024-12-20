@@ -4,7 +4,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { Analyzer, AnalysisResult } from 'haircare-ingredients-analyzer';
 import AnalysisResults from './AnalysisResults';
-import { ChatBubbleRobot, ChatBubble } from './ChatBubbleRobot';
+import { ChatBubbleRobot, ChatBubble, ChatFooter } from './ChatBubbleRobot';
 import ChatBubbleUser from './ChatBubbleUser';
 
 export default function IngredientForm() {
@@ -69,8 +69,16 @@ export default function IngredientForm() {
         <>
           <ChatBubbleRobot imageUrl="/normal.svg" status="ok">
             <ChatBubble status="ok">
-              Enter your product ingredients to analyze them for various properties and potential concerns.
+              Hi! I&apos;m CurlsBot, your helpful hair care ingredient analyzer.
+              Just paste an ingredients list below and I&apos;ll analyze it for
+              you.
             </ChatBubble>
+            <ChatFooter>
+              <p>
+                Save time and avoid errors: Simply copy and paste the ingredient
+                list from the brand's website or a retailer such as Ulta Beauty.
+              </p>
+            </ChatFooter>
           </ChatBubbleRobot>
           <ChatBubbleUser
             message={
@@ -87,7 +95,7 @@ export default function IngredientForm() {
                     className="textarea textarea-bordered bg-base-300 text-base-content h-32 w-full"
                     value={ingredients}
                     onChange={(e) => setIngredients(e.target.value)}
-                    placeholder="Enter ingredients, one per line..."
+                    placeholder="Enter ingredients,ideally from a brand's website or a retailer such as Ulta Beauty"
                     aria-label="ingredients"
                   />
                 </div>
