@@ -56,7 +56,7 @@ export function AnalysisFindings({ ingredients }: Props) {
       <div className="card bg-base-100">
         <div className="card-body">
           <h2 className="card-title">Analysis Summary</h2>
-          <div className="stats stats-vertical lg:stats-horizontal shadow w-full">
+          <div className="stats stats-vertical lg:stats-horizontal cb-border w-full">
             <div className="stat min-w-[200px]">
               <div className="stat-title">Total</div>
               <div className="stat-value">{totalIngredients}</div>
@@ -119,11 +119,7 @@ export function AnalysisFindings({ ingredients }: Props) {
               {Object.entries(groupedFindings).map(([setting, group]) => (
                 <div
                   key={setting}
-                  className={`card bg-base-100 border-2 ${
-                    group.status === 'warning'
-                      ? 'border-error'
-                      : 'border-warning'
-                  }`}
+                  className={`card bg-base-100 cb-border`}
                 >
                   <div className="card-body p-4">
                     <div className="flex items-center gap-3">
@@ -144,14 +140,10 @@ export function AnalysisFindings({ ingredients }: Props) {
                       </div>
                     </div>
 
-                    <div className="join join-vertical lg:join-horizontal gap-2 mt-4">
+                    <div className="stats stats-vertical">
                       {group.ingredients.map((ingredient, index) => (
-                        <div key={index} className={`join-item card border-2 ${
-                          group.status === 'warning'
-                            ? 'border-error text-error'
-                            : 'border-warning text-warning'
-                        } p-4 bg-base-100`}>
-                          <div className="text-center">
+                        <div key={index} className={`stat p-4`}>
+                          <div className="text-center ">
                             <div className="font-medium">
                               {ingredient.name}
                             </div>

@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -21,6 +23,11 @@ body {
 }
 
 @layer components {
-  
-}
+  .cb-border {
+    @apply border-2 border-base-300;
+  }
 
+  .cb-divider {
+    @apply border-t-2 border-base-300;
+  }
+}
