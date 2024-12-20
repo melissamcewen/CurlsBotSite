@@ -16,52 +16,56 @@ export function IngredientItem({ ingredient }: IngredientItemProps) {
   const { bgClass } = getStatusConfig(ingredient.status);
 
   return (
-    <div className="flex items-start gap-4 p-4 bg-base-300 rounded-lg border border-base-200 hover:border-base-300 transition-colors">
-      <div className={`w-1 self-stretch rounded-full ${bgClass}`} />
-      <div className="flex-1 space-y-2">
-        <div className="flex items-center gap-2 flex-wrap">
-          <Link
-            href={`/ingredients/${ingredient.ingredient?.id || ''}`}
-            className="font-medium text-base-content hover:text-primary transition-colors"
-          >
-            {ingredient.name}
-          </Link>
+    <div className="flex flex-col gap-6 bg-base-200 rounded-box p-6">
+      {/* Header */}
+      <div className="flex justify-between items-center">
+        <Link
+          href={`/ingredients/${ingredient.ingredient?.id || ''}`}
+          className="font-medium text-base-content hover:text-primary transition-colors"
+        >
+          {ingredient.name}
+        </Link>
 
-          {ingredient.ingredient ? (
-            <div>
-              <div className="font-medium text-primary hover:text-primary-focus transition-colors">
-                {ingredient.ingredient.name}
-              </div>
-              {ingredient.ingredient.description && (
-                <div className="mt-1">
-                  <CardDescription>
-                    {ingredient.ingredient.description}
-                  </CardDescription>
-                </div>
-              )}
-            </div>
-          ) : (
-            <span className="inline-flex items-center gap-1 text-sm px-2 py-0.5 badge badge-warning badge-outline">
-              <ExclamationTriangleIcon className="w-4 h-4" />
-              Not Found
-            </span>
-          )}
+        {ingredient.ingredient?.categories && ingredient.ingredient.categories.length > 0 ? (
+          <span className="badge badge-primary badge-lg">
+            {normalizeCategory(ingredient.ingredient.categories[0])}
+          </span>
+        ) : null}
+      </div>
 
-          {ingredient.ingredient?.categories &&
-            ingredient.ingredient.categories.length > 0 && (
-              <span className="badge badge-sm badge-primary text-sm">
-                {normalizeCategory(ingredient.ingredient.categories[0])}
-              </span>
+      {/* Body */}
+      <div className="flex flex-col gap-2">
+        {ingredient.ingredient ? (
+          <>
+            <h3 className="font-bold text-lg text-primary">
+              {ingredient.ingredient.name}
+            </h3>
+            {ingredient.ingredient.description && (
+              <CardDescription>
+                {ingredient.ingredient.description}
+              </CardDescription>
             )}
-        </div>
+          </>
+        ) : (
+          <div className="flex items-center gap-2">
+            <ExclamationTriangleIcon className="w-5 h-5 text-warning" />
+            <span className="text-warning">Ingredient Not Found</span>
+          </div>
+        )}
+
         {ingredient.reasons?.length > 0 && (
-          <div className="space-y-1">
+          <div className="mt-2 space-y-1">
             {ingredient.reasons.map((reason, index) => (
-              <CardDescription key={index}>{reason.reason}</CardDescription>
+              <CardDescription key={index} className="text-sm">
+                {reason.reason}
+              </CardDescription>
             ))}
           </div>
         )}
       </div>
+
+      {/* Status Indicator */}
+      <div className={`h-1 rounded-full ${bgClass} mt-auto`} />
     </div>
   );
 }
