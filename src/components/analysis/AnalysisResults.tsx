@@ -81,10 +81,7 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
             <AnalysisFindings ingredients={result.ingredients} />
           )}
           <div>
-            <div className="cb-header">
-              <BeakerIcon className="w-5 h-5" />
-              Ingredient Details
-            </div>
+           
             <IngredientsList ingredients={result.ingredients} />
           </div>
         </div>

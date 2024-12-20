@@ -1,8 +1,5 @@
-import { CardDescription } from '@/components/ui/Card';
-import { getStatusConfig } from '../utils/statusConfig';
-import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 import { IngredientResult } from 'haircare-ingredients-analyzer';
-import Link from 'next/link';
+import { TagIcon, InformationCircleIcon, FolderIcon } from '@heroicons/react/24/solid';
 
 interface IngredientItemProps {
   ingredient: IngredientResult;
@@ -13,55 +10,75 @@ function normalizeCategory(category: string): string {
 }
 
 export function IngredientItem({ ingredient }: IngredientItemProps) {
-  const { bgClass } = getStatusConfig(ingredient.status);
-
   return (
-    <div className="flex flex-col gap-6 bg-base-200 rounded-box p-6">
-      {/* Header */}
-      <div className="flex justify-between items-center">
-        <h4 className="text-lg font-bold ">{ingredient.name}</h4>
-
-
-        {ingredient.ingredient?.categories && ingredient.ingredient.categories.length > 0 ? (
-          <span className="badge badge-primary badge-lg">
-            {normalizeCategory(ingredient.ingredient.categories[0])}
-          </span>
-        ) : null}
+    <div className="bg-base-100 rounded-box p-6 space-y-6">
+      {/* Header with Status */}
+      <div className="flex justify-between items-start">
+        <h2 className="text-xl font-bold">{ingredient.name}</h2>
+        <div className={`badge ${
+          ingredient.status === 'warning'
+            ? 'badge-error'
+            : ingredient.status === 'caution'
+            ? 'badge-warning'
+            : 'badge-info'
+        } badge-lg capitalize`}>
+          {ingredient.status}
+        </div>
       </div>
 
-      {/* Body */}
-      <div className="flex flex-col gap-2">
-        {ingredient.ingredient ? (
-          <>
-            <h3 className="font-bold text-lg text-primary">
+      {/* Matched Ingredient */}
+      <div className="space-y-2">
+        <div className="flex items-center gap-2 text-base-content/70">
+          <TagIcon className="w-5 h-5" />
+          <span className="font-semibold">Matched Ingredient</span>
+        </div>
+        <div className="pl-7">
+          {ingredient.ingredient ? (
+            <span className="font-medium">
               {ingredient.ingredient.name}
-            </h3>
-            {ingredient.ingredient.description && (
-              <CardDescription>
-                {ingredient.ingredient.description}
-              </CardDescription>
-            )}
-          </>
-        ) : (
-          <div className="flex items-center gap-2">
-            <ExclamationTriangleIcon className="w-5 h-5 text-warning" />
-            <span className="text-warning">Ingredient Not Found</span>
-          </div>
-        )}
-
-        {ingredient.reasons?.length > 0 && (
-          <div className="mt-2 space-y-1">
-            {ingredient.reasons.map((reason, index) => (
-              <CardDescription key={index} className="text-sm">
-                {reason.reason}
-              </CardDescription>
-            ))}
-          </div>
-        )}
+            </span>
+          ) : (
+            <span className="text-warning">Unknown {ingredient.name}</span>
+          )}
+        </div>
       </div>
 
-      {/* Status Indicator */}
-      <div className={`h-1 rounded-full ${bgClass} mt-auto`} />
+      {/* Category */}
+      {ingredient.ingredient?.categories && ingredient.ingredient.categories.length > 0 && (
+        <div className="space-y-2">
+          <div className="flex items-center gap-2 text-base-content/70">
+            <FolderIcon className="w-5 h-5" />
+            <span className="font-semibold">Category</span>
+          </div>
+          <div className="pl-7">
+            {normalizeCategory(ingredient.ingredient.categories[0])}
+          </div>
+        </div>
+      )}
+
+      {/* Description */}
+      {ingredient.ingredient?.description && (
+        <div className="space-y-2">
+          <div className="flex items-center gap-2 text-base-content/70">
+            <InformationCircleIcon className="w-5 h-5" />
+            <span className="font-semibold">Description</span>
+          </div>
+          <div className="pl-7">
+            {ingredient.ingredient.description}
+          </div>
+        </div>
+      )}
+
+      {/* Reasons */}
+      {ingredient.reasons?.length > 0 && (
+        <div className="pt-4">
+          {ingredient.reasons.map((reason, index) => (
+            <p key={index} className="text-sm mt-2">
+              {reason.reason}
+            </p>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

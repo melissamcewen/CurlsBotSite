@@ -1,7 +1,7 @@
 import { IngredientItem } from './IngredientItem';
 import { IngredientResult } from 'haircare-ingredients-analyzer';
 import { useState } from 'react';
-import { ArrowsUpDownIcon } from '@heroicons/react/24/outline';
+import { ArrowsUpDownIcon, BeakerIcon } from '@heroicons/react/24/outline';
 
 interface IngredientsListProps {
   ingredients: IngredientResult[];
@@ -47,13 +47,17 @@ export function IngredientsList({ ingredients }: IngredientsListProps) {
   return (
     <div className="space-y-4">
       <div className="flex justify-end">
+        <div className="cb-header">
+          <BeakerIcon className="w-5 h-5" />
+          Ingredient Details
+        </div>
         <button
           onClick={() => setIsAlphabetical(!isAlphabetical)}
           className="btn cb-border btn-sm gap-2 normal-case"
-          title={isAlphabetical ? "Sort by priority" : "Sort alphabetically"}
+          title={isAlphabetical ? 'Sort by priority' : 'Sort alphabetically'}
         >
           <ArrowsUpDownIcon className="w-4 h-4" />
-          {isAlphabetical ? "Priority Sort" : "A-Z Sort"}
+          {isAlphabetical ? 'Priority Sort' : 'A-Z Sort'}
         </button>
       </div>
       <div className="space-y-3">
