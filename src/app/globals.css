@@ -49,4 +49,12 @@ body {
   .cb-bold {
     @apply font-bold;
   }
+
+  .cb-grouping-header {
+    @apply font-semibold text-base-content/70;
+  }
+
+  .cb-badge {
+    @apply badge badge-outline;
+  }
 }

@@ -45,10 +45,10 @@ export function IngredientsList({ ingredients }: IngredientsListProps) {
   });
 
   return (
-    <div className="space-y-4">
-      <div className="flex justify-end">
-        <div className="cb-header">
-          <BeakerIcon className="w-5 h-5" />
+    <div className="space-y-4 mt-5">
+      <div className="flex justify-between items-center">
+        <div className="cb-header mb-0">
+          <BeakerIcon className="cb-header-icon" />
           Ingredient Details
         </div>
         <button

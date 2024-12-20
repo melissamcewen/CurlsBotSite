@@ -11,17 +11,17 @@ function normalizeCategory(category: string): string {
 
 export function IngredientItem({ ingredient }: IngredientItemProps) {
   return (
-    <div className="bg-base-100 rounded-box p-6 space-y-6">
+    <div className="bg-base-100 rounded-box p-6 space-y-6 cb-border lg:max-w-md">
       {/* Header with Status */}
       <div className="flex justify-between items-start">
-        <h2 className="text-xl font-bold">{ingredient.name}</h2>
+        <h2 className="cb-smaller-header">{ingredient.name}</h2>
         <div className={`badge ${
           ingredient.status === 'warning'
             ? 'badge-error'
             : ingredient.status === 'caution'
             ? 'badge-warning'
             : 'badge-info'
-        } badge-lg capitalize`}>
+        } cb-badge capitalize`}>
           {ingredient.status}
         </div>
       </div>
@@ -30,7 +30,7 @@ export function IngredientItem({ ingredient }: IngredientItemProps) {
       <div className="space-y-2">
         <div className="flex items-center gap-2 text-base-content/70">
           <TagIcon className="w-5 h-5" />
-          <span className="font-semibold">Matched Ingredient</span>
+          <span className="cb-grouping-header">Matched Ingredient</span>
         </div>
         <div className="pl-7">
           {ingredient.ingredient ? (
@@ -48,7 +48,7 @@ export function IngredientItem({ ingredient }: IngredientItemProps) {
         <div className="space-y-2">
           <div className="flex items-center gap-2 text-base-content/70">
             <FolderIcon className="w-5 h-5" />
-            <span className="font-semibold">Category</span>
+            <span className="cb-grouping-header">Category</span>
           </div>
           <div className="pl-7">
             {normalizeCategory(ingredient.ingredient.categories[0])}
@@ -69,16 +69,7 @@ export function IngredientItem({ ingredient }: IngredientItemProps) {
         </div>
       )}
 
-      {/* Reasons */}
-      {ingredient.reasons?.length > 0 && (
-        <div className="pt-4">
-          {ingredient.reasons.map((reason, index) => (
-            <p key={index} className="text-sm mt-2">
-              {reason.reason}
-            </p>
-          ))}
-        </div>
-      )}
+
     </div>
   );
 }
