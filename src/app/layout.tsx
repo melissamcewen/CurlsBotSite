@@ -45,7 +45,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <div className="min-h-screen bg-base-300 overflow-x-hidden">
-          <div className="absolute inset-0 bg-grid-pattern opacity-5 pointer-events-none" />
+          <div className="absolute inset-0 bg-grid-pattern pointer-events-none" />
           <Navbar />
           <div className="pt-0 md:py-8 px-0 md:px-8">
             <main className="max-w-[90rem] mx-auto bg-base-100 text-base-content rounded-none md:rounded-lg">

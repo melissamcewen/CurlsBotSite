@@ -81,14 +81,14 @@ export default function Quiz() {
                 <div>
                   <Link
                     href={`/products/${result.tag}`}
-                    className="text-inherit hover:opacity-80 underline font-medium"
+                    className="text-inherit  underline font-medium"
                   >
                     View all recommended products for {result.type} hair →
                   </Link>
                 </div>
 
                 <button
-                  className="btn btn-sm btn-ghost bg-base-100 bg-opacity-20 w-full"
+                  className="btn btn-sm btn-ghost bg-base-100 w-full"
                   onClick={restartQuiz}
                 >
                   Take Quiz Again
@@ -133,7 +133,7 @@ export default function Quiz() {
               {question.answers.map((answer, index) => (
                 <button
                   key={index}
-                  className="btn btn-ghost bg-base-100 bg-opacity-20 w-full text-left justify-start normal-case"
+                  className="btn btn-ghost bg-secondary  w-full text-left justify-start normal-case"
                   onClick={() => handleAnswerClick(answer.points)}
                 >
                   {answer.content}
