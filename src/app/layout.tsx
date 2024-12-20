@@ -42,14 +42,14 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="cupcake" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-base-100 text-base-content`}
         suppressHydrationWarning
       >
-        <div className="min-h-screen bg-base-300 overflow-x-hidden">
+        <div className="min-h-screen overflow-x-hidden">
           <div className="absolute inset-0 bg-grid-pattern pointer-events-none" />
           <Navbar />
           <div className="pt-0 md:py-8 px-0 md:px-8">
-            <main className="max-w-[90rem] mx-auto bg-base-100 text-base-content rounded-none md:rounded-lg">
+            <main>
               <div className="p-4 md:p-8">{children}</div>
             </main>
           </div>
@@ -109,7 +109,7 @@ export default function RootLayout({
               </form>
             </div>
             <nav>
-  
+
               <Link href="/about" className="link link-hover">
                 About
               </Link>
