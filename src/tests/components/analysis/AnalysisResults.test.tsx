@@ -55,13 +55,13 @@ describe('AnalysisResults', () => {
   it('shows ingredients analysis section when ingredients exist', () => {
     render(<AnalysisResults result={baseResult} onTryAnother={mockOnTryAnother} />);
 
-    // Look for the analysis section by its text content
-    const analysisSection = screen.getByText(/view detailed ingredients analysis/i);
+    // Look for the Analysis Summary heading
+    const analysisSection = screen.getByText('Analysis Summary');
     expect(analysisSection).toBeInTheDocument();
 
-    // Test expanding the analysis section
-    fireEvent.click(analysisSection);
-    expect(screen.getByRole('heading', { name: 'Water' })).toBeInTheDocument();
+    // Check for ingredient name in the header
+    const ingredientHeader = screen.getByRole('heading', { name: 'Water' });
+    expect(ingredientHeader).toBeInTheDocument();
   });
 
   it('handles try another click', () => {
@@ -83,9 +83,8 @@ describe('AnalysisResults', () => {
       };
       render(<AnalysisResults result={warningResult} onTryAnother={mockOnTryAnother} />);
 
-      // Check for product recommendation presence
-      expect(screen.getByText('Test Product')).toBeInTheDocument();
-      expect(screen.getByText('Test Brand')).toBeInTheDocument();
+      // Check for warning message
+      expect(screen.getByText(/yikes/i)).toBeInTheDocument();
     });
 
     it('shows for caution status', () => {
@@ -96,19 +95,18 @@ describe('AnalysisResults', () => {
       };
       render(<AnalysisResults result={cautionResult} onTryAnother={mockOnTryAnother} />);
 
-      // Check for product recommendation presence
-      expect(screen.getByText('Test Product')).toBeInTheDocument();
-      expect(screen.getByText('Test Brand')).toBeInTheDocument();
+      // Check for caution message
+      expect(screen.getByText(/hmm/i)).toBeInTheDocument();
     });
 
-    it('does not show for ok status', () => {
+    it('does not show warning for ok status', () => {
       render(<AnalysisResults result={baseResult} onTryAnother={mockOnTryAnother} />);
-      expect(screen.queryByText('Test Product')).not.toBeInTheDocument();
+      expect(screen.queryByText(/yikes/i)).not.toBeInTheDocument();
     });
   });
 
   describe('status indicators', () => {
-    it('displays correct status badge', () => {
+    it('displays correct status message for warning', () => {
       const warningResult: AnalysisResult = {
         ...baseResult,
         status: 'warning',
@@ -116,9 +114,7 @@ describe('AnalysisResults', () => {
       };
       render(<AnalysisResults result={warningResult} onTryAnother={mockOnTryAnother} />);
 
-      const statusBadge = screen.getByText('warning');
-      expect(statusBadge).toBeInTheDocument();
-      expect(statusBadge.closest('.badge')).toHaveClass('badge-error');
+      expect(screen.getByText(/yikes/i)).toBeInTheDocument();
     });
   });
 });

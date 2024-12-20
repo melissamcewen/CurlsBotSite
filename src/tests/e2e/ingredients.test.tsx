@@ -45,7 +45,7 @@ describe('Ingredients Analysis E2E', () => {
     const analyzeButton = screen.getByRole('button', { name: /analyze ingredients/i });
     fireEvent.click(analyzeButton);
 
-    // Basic check that analysis was performed
-    expect(screen.getByText(/caution/i)).toBeInTheDocument();
+    // Check for caution message
+    expect(screen.getByText(/hmm/i)).toBeInTheDocument();
   });
 });
