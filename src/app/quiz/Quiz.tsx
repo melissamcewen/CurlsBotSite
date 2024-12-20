@@ -72,10 +72,10 @@ export default function Quiz() {
               <div className="text-2xl font-bold">{result.type}</div>
               <p>
                 {result.type === 'High Porosity'
-                  ? 'High porosity hair absorbs moisture quickly but also loses it quickly. Focus on protein treatments and moisturizing products that can help seal in moisture.'
+                  ? 'Beep boop! Your hair is a thirsty sponge! 💧 It absorbs moisture quickly but also loses it quickly. Focus on protein treatments and moisturizing products that can help seal in moisture.'
                   : result.type === 'Low Porosity'
-                  ? 'Low porosity hair is resistant to moisture but retains it well once absorbed. Use lightweight products and consider applying products to damp hair to improve absorption.'
-                  : 'Normal porosity hair maintains a good moisture balance. Continue with a balanced routine of moisturizing and protein treatments as needed.'}
+                  ? "Beep boop! Your hair is a little picky drinker! 💧 It doesn't like to drink up moisture easily, but once it does, it holds on tight. 🔒 Use lightweight products and try applying them to damp hair to help it drink up better. 🚰."
+                  : 'Beep boop! Your hair is just right! 💧 It absorbs moisture well but doesn&apos;t hold on too tight. Continue with a balanced routine of moisturizing and protein treatments as needed. 🚰.'}
               </p>
               <div className="space-y-4">
                 <div>
@@ -83,7 +83,7 @@ export default function Quiz() {
                     href={`/products/${result.tag}`}
                     className="text-inherit  underline font-medium"
                   >
-                    View all recommended products for {result.type} hair →
+                    Explore my products and tips for {result.type} hair →
                   </Link>
                 </div>
 
@@ -116,19 +116,24 @@ export default function Quiz() {
 
   return (
     <div className="space-y-6">
-      <ChatBubbleRobot
-        imageUrl="/normal.svg"
-        status="ok"
-      >
+      <ChatBubbleRobot imageUrl="/normal.svg" status="ok">
         <ChatBubble status="ok">
-          Take this quiz to determine your hair porosity level. Hair porosity refers to your hair&apos;s ability to absorb and retain moisture. Understanding your hair porosity can help you choose the right products and treatments for your hair.
+          Beep boop! Confused about hair porosity? 🤖 It's like your hair's
+          drinkability! 🥤 High porosity hair is a thirsty sponge, soaking up
+          moisture. Low porosity hair is a picky eater, not wanting to drink up.
+          Normal porosity hair is just right, not too thirsty, not too picky.
+          Most water tests aren&apos;t always accurate, so let&apos;s try a
+          different approach! This quiz will help us figure out your hair&apos;s
+          personality and porosity level. Let&apos;s get started!
         </ChatBubble>
       </ChatBubbleRobot>
       <div className="max-w-2xl ml-auto">
         <ChatBubbleUser
           message={
             <div>
-              <p className="font-medium mb-2">Question {currentQuestion + 1} of {quizQuestions.length}</p>
+              <p className="font-medium mb-2">
+                Question {currentQuestion + 1} of {quizQuestions.length}
+              </p>
               <p className="text-lg">{question.question}</p>
               <div className="space-y-2 mt-4">
                 {question.answers.map((answer, index) => (
