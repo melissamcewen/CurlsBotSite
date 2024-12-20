@@ -55,7 +55,8 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
       >
         <ChatHeader>
           <h2 className="font-bold">
-            Result: {result.status.charAt(0).toUpperCase() + result.status.slice(1)}
+            Result:{' '}
+            {result.status.charAt(0).toUpperCase() + result.status.slice(1)}
           </h2>
         </ChatHeader>
 
@@ -65,13 +66,13 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
             <p>{description}</p>
             <button
               onClick={onTryAnother}
-              className="btn btn-sm btn-ghost bg-base-100 bg-opacity-20 w-full"
+              className="btn btn-sm bg-secondary text-secondary-content w-full"
             >
               Try another ingredients list
             </button>
 
             {hasIngredients && (
-              <div className="collapse collapse-arrow bg-base-100 bg-opacity-20">
+              <div className="collapse collapse-arrow bg-base-100 text-base-content border-t-2 border-primary">
                 <input type="checkbox" />
                 <div className="collapse-title font-medium flex items-center gap-2">
                   <BeakerIcon className="w-5 h-5" />

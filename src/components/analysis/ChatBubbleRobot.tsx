@@ -25,7 +25,7 @@ export function ChatBubbleRobot({
 
   const statusClasses: Record<string, string> = {
     ok: 'bg-info text-info-content border-info',
-    caution: 'bg-warning text-warning-content border-warning',
+    caution: 'bg-warning  border-warning',
     warning: 'bg-error text-error-content border-error',
     error: 'bg-error text-error-content border-error',
   };
@@ -34,7 +34,7 @@ export function ChatBubbleRobot({
   const borderClass = statusClasses[status]?.split(' ')[2] || 'border-primary';
 
   return (
-    <div className={`chat chat-${align}`}>
+    <div className={`chat text-neutral-content chat-${align}`}>
       <div className={`chat-image avatar rounded-full border-2 ${borderClass}`}>
         <div className="w-10 mask mask-circle bg-white">
           <Image src={finalImageUrl} alt={altText} width={40} height={40} />
@@ -77,7 +77,7 @@ export function ChatBubble({
 }: ChatBubbleProps) {
   const statusClasses: Record<string, string> = {
     ok: 'bg-info text-info-content',
-    caution: 'bg-warning text-warning-content',
+    caution: 'border-warning ',
     warning: 'bg-error text-error-content',
     error: 'bg-error text-error-content',
   };
@@ -86,7 +86,9 @@ export function ChatBubble({
     statusClasses[status] || 'bg-primary text-primary-content';
 
   return (
-    <div className={`chat-bubble p-6 ${bubbleClass} ${className}`}>
+    <div
+      className={`chat-bubble bg-neutral  border-t-2 p-6 ${bubbleClass} ${className}`}
+    >
       {children}
     </div>
   );
