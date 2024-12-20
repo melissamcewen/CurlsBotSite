@@ -49,9 +49,9 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
 
   return (
     <div className="space-y-8">
-      <div className="md:flex md:gap-8">
+      <div className="space-y-8 lg:space-y-0 lg:flex lg:gap-8">
         {/* Overall Assessment with Ingredients Analysis */}
-        <div className="md:flex-1">
+        <div className="lg:flex-1">
           <ChatBubbleRobot
             imageUrl={
               result.status === 'warning' || result.status === 'error'
@@ -94,7 +94,7 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
 
         {/* Analysis Summary */}
         {hasIngredients && (
-          <div className="md:w-[400px]">
+          <div className="lg:w-[400px]">
             <AnalysisSummary ingredients={result.ingredients} />
           </div>
         )}
