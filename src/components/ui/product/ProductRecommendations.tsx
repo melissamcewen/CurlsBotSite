@@ -43,7 +43,7 @@ export function ProductRecommendations({ porosityType, className = '' }: Product
 
   return (
     <div className={className} data-testid="product-recommendations">
-      <div className="space-y-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {CATEGORIES.map((category) => {
           const product = recommendations[category];
           if (!product) return null;

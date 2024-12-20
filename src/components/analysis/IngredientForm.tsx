@@ -73,12 +73,6 @@ export default function IngredientForm() {
               Just paste an ingredients list below and I&apos;ll analyze it for
               you.
             </ChatBubble>
-            <ChatFooter>
-              <p>
-                Save time and avoid errors: Simply copy and paste the ingredient
-                list from the brand's website or a retailer such as Ulta Beauty.
-              </p>
-            </ChatFooter>
           </ChatBubbleRobot>
           <ChatBubbleUser
             message={

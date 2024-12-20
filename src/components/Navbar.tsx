@@ -17,9 +17,9 @@ export default function Navbar() {
               <details>
                 <summary>Porosity</summary>
                 <ul className="p-2 bg-accent rounded-t-none">
-                  <li><Link href="/porosity/high-porosity">High Porosity</Link></li>
-                  <li><Link href="/porosity/low-porosity">Low Porosity</Link></li>
-                  <li><Link href="/porosity/normal-porosity">Normal Porosity</Link></li>
+                  <li><Link href="/porosity/high-porosity">High</Link></li>
+                  <li><Link href="/porosity/low-porosity">Low</Link></li>
+                  <li><Link href="/porosity/normal-porosity">Normal</Link></li>
                 </ul>
               </details>
             </li>
@@ -29,7 +29,7 @@ export default function Navbar() {
         </div>
         <Link
           href="/"
-          className="btn btn-ghost normal-case text-xl gap-2"
+          className="btn bg-white text-black normal-case text-xl gap-2 hover:bg-white/90"
         >
           <Image
             src="/logo.svg"
