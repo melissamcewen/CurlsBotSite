@@ -24,17 +24,17 @@ export function ChatBubbleRobot({
   };
 
   const statusClasses: Record<string, string> = {
-    ok: 'bg-info text-info-content border-info',
-    caution: 'bg-warning  border-warning',
-    warning: 'bg-error text-error-content border-error',
-    error: 'bg-error text-error-content border-error',
+    ok: 'border-info',
+    caution: 'border-warning',
+    warning: 'border-error',
+    error: 'border-error',
   };
 
   const finalImageUrl = imageUrl || statusImages[status];
-  const borderClass = statusClasses[status]?.split(' ')[2] || 'border-primary';
+  const borderClass = statusClasses[status] || 'border-primary';
 
   return (
-    <div className={`chat text-neutral-content chat-${align}`}>
+    <div className="chat chat-start">
       <div className={`chat-image avatar rounded-full border-2 ${borderClass}`}>
         <div className="w-10 mask mask-circle bg-white">
           <Image src={finalImageUrl} alt={altText} width={40} height={40} />
@@ -77,18 +77,15 @@ export function ChatBubble({
 }: ChatBubbleProps) {
   const statusClasses: Record<string, string> = {
     ok: 'border-info',
-    caution: 'border-warning ',
+    caution: 'border-warning',
     warning: 'border-error',
     error: 'border-error',
   };
 
-  const bubbleClass =
-    statusClasses[status] || 'bg-primary text-primary-content';
+  const bubbleClass = statusClasses[status] || 'border-primary';
 
   return (
-    <div
-      className={`chat-bubble bg-neutral  border-t-2 p-6 ${bubbleClass} ${className}`}
-    >
+    <div className={`chat-bubble bg-base-300 border-t-2 p-6 text-base-content ${bubbleClass} ${className}`}>
       {children}
     </div>
   );

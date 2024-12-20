@@ -16,6 +16,7 @@ const config: Config = {
   ],
   daisyui: {
     themes: [
+      'cupcake',
       {
         curlsbotdark: {
           primary: '#65c3c8', // Keep cupcake's primary
@@ -33,21 +34,7 @@ const config: Config = {
           '--rounded-btn': '1.9rem',
           '--tab-border': '2px',
           '--tab-radius': '0.7rem',
-        },
-        curlsbot: {
-          'color-scheme': 'light',
-          primary: '#65c3c8',
-          secondary: '#ef9fbc',
-          accent: '#eeaf3a',
-          neutral: '#70acc7',
-          'base-100': '#faf7f5',
-          'base-200': '#efeae6',
-          'base-300': '#e7e2df',
-          'base-content': '#291334',
-          '--rounded-btn': '1.9rem',
-          '--tab-border': '2px',
-          '--tab-radius': '0.7rem',
-        },
+        }
       },
     ],
     darkTheme: 'curlsbotdark',

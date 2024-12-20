@@ -3,17 +3,17 @@
 import { useEffect, useState } from 'react';
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState('curlsbot');
+  const [theme, setTheme] = useState('cupcake');
 
   useEffect(() => {
-    // Get initial theme from localStorage or default to 'curlsbot'
-    const savedTheme = localStorage.getItem('theme') || 'curlsbot';
+    // Get initial theme from localStorage or default to 'cupcake'
+    const savedTheme = localStorage.getItem('theme') || 'cupcake';
     setTheme(savedTheme);
     document.documentElement.setAttribute('data-theme', savedTheme);
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme === 'curlsbot' ? 'synthwave' : 'curlsbot';
+    const newTheme = theme === 'cupcake' ? 'synthwave' : 'cupcake';
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
     document.documentElement.setAttribute('data-theme', newTheme);

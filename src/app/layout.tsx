@@ -31,14 +31,14 @@ export default function RootLayout({
             __html: `
               (function() {
                 try {
-                  var theme = localStorage.getItem('theme') || 'curlsbot';
+                  var theme = localStorage.getItem('theme') || 'cupcake';
                   document.documentElement.setAttribute('data-theme', theme);
                 } catch (e) {}
               })();
             `,
           }}
         />
-        <meta name="apple-mobile-web-app-title" content="Curlsbot" />
+        <meta name="apple-mobile-web-app-title" content="cupcake" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

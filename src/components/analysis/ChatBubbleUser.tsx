@@ -9,12 +9,13 @@ export default function ChatBubbleUser({
   secondary,
   accent,
 }: ChatBubbleUserProps) {
-  let bubbleClass = 'chat-bubble bg-primary text-primary-content';
+  let bubbleClass =
+    'chat-bubble border-primary text-primary-content bg-base-300 text-base-content';
 
   if (secondary) {
-    bubbleClass = 'chat-bubble bg-secondary text-secondary-content';
+    bubbleClass = 'chat-bubble border-secondary';
   } else if (accent) {
-    bubbleClass = 'chat-bubble bg-accent text-accent-content';
+    bubbleClass = 'chat-bubble border-accent';
   }
 
   return (

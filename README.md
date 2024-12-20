@@ -227,3 +227,102 @@ This system is used across all dynamic routes:
 - `/groups/[name]`
 
 Each page converts the URL parameter to an internal ID for database lookups, and converts IDs back to slugs for generating links.
+
+## DaisyUI Chat Component Usage
+
+The site extensively uses DaisyUI's chat component for consistent message-style layouts. The chat component uses CSS Grid under the hood for proper alignment of avatars and messages.
+
+### Basic Structure
+
+The chat component requires a specific structure to maintain proper alignment:
+
+```jsx
+<div className="chat chat-start">
+  <div className="chat-image">
+    {/* Avatar content */}
+  </div>
+  <div className="chat-header">
+    {/* Optional header content */}
+  </div>
+  <div className="chat-bubble">
+    {/* Main message content */}
+  </div>
+  <div className="chat-footer">
+    {/* Optional footer content */}
+  </div>
+</div>
+```
+
+### Our Custom Implementation
+
+We've wrapped this in a `ChatBubbleRobot` component that handles:
+- Avatar styling with status-based borders
+- Consistent message styling
+- Proper grid alignment
+
+Key components:
+
+1. **ChatBubbleRobot**: The main wrapper component
+```typescript
+<ChatBubbleRobot
+  status="ok" // or 'caution', 'warning', 'error'
+  imageUrl="/normal.svg" // optional custom avatar
+>
+  {/* Chat content */}
+</ChatBubbleRobot>
+```
+
+2. **ChatBubble**: The message bubble component
+```typescript
+<ChatBubble status="ok">
+  {/* Message content */}
+</ChatBubble>
+```
+
+### Important Layout Notes
+
+1. **Grid Structure**:
+   - DaisyUI's chat uses CSS Grid for layout
+   - Direct children must use the proper chat-* classes
+   - Avoid adding extra wrapper divs that could break the grid
+
+2. **Proper Usage**:
+```typescript
+// ✅ Correct
+<ChatBubbleRobot>
+  <ChatBubble>Content</ChatBubble>
+</ChatBubbleRobot>
+
+// ❌ Incorrect - Extra wrapper breaks layout
+<ChatBubbleRobot>
+  <div>
+    <ChatBubble>Content</ChatBubble>
+  </div>
+</ChatBubbleRobot>
+```
+
+3. **Status Colors**:
+   - `ok`: info color theme
+   - `caution`: warning color theme
+   - `warning`: error color theme
+   - Colors affect both avatar border and message styling
+
+### Example Usage
+
+```typescript
+<ChatBubbleRobot status="ok">
+  <ChatHeader>
+    <h2 className="font-bold">Analysis Result</h2>
+  </ChatHeader>
+  <ChatBubble status="ok">
+    <div className="space-y-4">
+      <p>Your ingredient analysis is complete.</p>
+      <button className="btn btn-primary">
+        View Details
+      </button>
+    </div>
+  </ChatBubble>
+</ChatBubbleRobot>
+```
+
+This structure ensures consistent chat-style layouts across the application while maintaining proper alignment between avatars and messages.
