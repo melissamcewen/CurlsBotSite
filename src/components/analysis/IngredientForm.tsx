@@ -86,7 +86,7 @@ export default function IngredientForm() {
 
                   <textarea
                     id="ingredients-input"
-                    className="textarea textarea-bordered bg-base-300 text-base-content h-32 w-full"
+                    className="textarea textarea-bordered bg-base-100 text-base-content h-32 w-full"
                     value={ingredients}
                     onChange={(e) => setIngredients(e.target.value)}
                     placeholder="Enter ingredients,ideally from a brand's website or a retailer such as Ulta Beauty"
