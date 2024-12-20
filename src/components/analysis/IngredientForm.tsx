@@ -9,7 +9,9 @@ import ChatBubbleUser from './ChatBubbleUser';
 
 export default function IngredientForm() {
   const [ingredients, setIngredients] = useState('');
-  const [analysisResult, setAnalysisResult] = useState<AnalysisResult | null>(null);
+  const [analysisResult, setAnalysisResult] = useState<AnalysisResult | null>(
+    null,
+  );
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showForm, setShowForm] = useState(true);
@@ -74,39 +76,41 @@ export default function IngredientForm() {
               you.
             </ChatBubble>
           </ChatBubbleRobot>
-          <ChatBubbleUser
-            message={
-              <form onSubmit={handleSubmit} className="w-full">
-                <div className="form-control w-full">
-                  <label htmlFor="ingredients-input" className="label">
-                    <span className="label-text font-semibold">
-                      Paste your ingredients list
-                    </span>
-                  </label>
 
-                  <textarea
-                    id="ingredients-input"
-                    className="textarea textarea-bordered bg-base-100 text-base-content h-32 w-full"
-                    value={ingredients}
-                    onChange={(e) => setIngredients(e.target.value)}
-                    placeholder="Enter ingredients,ideally from a brand's website or a retailer such as Ulta Beauty"
-                    aria-label="ingredients"
-                  />
-                </div>
+          <div className="max-w-2xl ml-auto">
+            <ChatBubbleUser
+              message={
+                <form onSubmit={handleSubmit} className="w-full">
+                  <div className="form-control w-full">
+                    <label htmlFor="ingredients-input" className="label">
+                      <span className="label-text font-semibold">
+                        Paste your ingredients list
+                      </span>
+                    </label>
 
-                <button
-                  type="submit"
-                  className="btn btn-secondary w-full mt-4"
-                  disabled={isAnalyzing || !ingredients.trim()}
-                  data-testid="analyze-button"
-                >
-                  {isAnalyzing ? 'Analyzing...' : 'Analyze Ingredients'}
-                </button>
-              </form>
-            }
-            secondary
-            fullWidth
-          />
+                    <textarea
+                      id="ingredients-input"
+                      className="textarea textarea-bordered bg-base-100 text-base-content h-48 w-full"
+                      value={ingredients}
+                      onChange={(e) => setIngredients(e.target.value)}
+                      placeholder="Enter ingredients, ideally from a brand's website or a retailer such as Ulta Beauty"
+                      aria-label="ingredients"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="btn btn-secondary w-full mt-4"
+                    disabled={isAnalyzing || !ingredients.trim()}
+                    data-testid="analyze-button"
+                  >
+                    {isAnalyzing ? 'Analyzing...' : 'Analyze Ingredients'}
+                  </button>
+                </form>
+              }
+              secondary
+            />
+          </div>
         </>
       )}
 

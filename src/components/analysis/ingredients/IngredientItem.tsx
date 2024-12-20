@@ -11,7 +11,7 @@ function normalizeCategory(category: string): string {
 
 export function IngredientItem({ ingredient }: IngredientItemProps) {
   return (
-    <div className="bg-base-100 rounded-box p-6 space-y-6 cb-border lg:max-w-md">
+    <div className="bg-base-100 rounded-box p-6 space-y-6 cb-border">
       {/* Header with Status */}
       <div className="flex justify-between items-start">
         <h2 className="cb-smaller-header">{ingredient.name}</h2>
