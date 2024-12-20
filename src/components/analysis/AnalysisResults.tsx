@@ -8,6 +8,7 @@ import { IngredientsList } from './ingredients/IngredientsList';
 import { getStatusConfig } from './utils/statusConfig';
 import { BeakerIcon, ExclamationTriangleIcon, ExclamationCircleIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
 import { ChatBubbleRobot, ChatHeader, ChatBubble, ChatFooter } from './ChatBubbleRobot';
+import { AnalysisFindings } from './findings/AnalysisFindings';
 
 interface Props {
   result: AnalysisResult;
@@ -79,56 +80,7 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
         <ChatBubble status={result.status}>
           <div className="space-y-4">
             <p>{description}</p>
-            {hasIngredients &&
-              result.ingredients.some(
-                (i) => i.status === 'caution' || i.status === 'warning',
-              ) && (
-                <div className="space-y-2">
-                  <p className="font-medium">What I found:</p>
-                  <ul className="list-disc list-inside space-y-2">
-                    {result.ingredients
-                      .filter(
-                        (i) => i.status === 'caution' || i.status === 'warning',
-                      )
-                      .map((ingredient, index) => (
-                        <li
-                          key={index}
-                          className="text-sm flex items-start gap-2"
-                        >
-                          <span className="mt-1">•</span>
-                          <div className="flex-1">
-                            <div className="flex items-center gap-2 flex-wrap">
-                              <span className="font-medium">
-                                {ingredient.name}
-                              </span>
-                              {ingredient.ingredient &&
-                                ingredient.name !==
-                                  ingredient.ingredient.name && (
-                                  <span className="opacity-80">
-                                    (matched as {ingredient.ingredient.name})
-                                  </span>
-                                )}
-                              <span
-                                className={`badge badge-sm ${
-                                  ingredient.status === 'warning'
-                                    ? 'badge-error'
-                                    : 'badge-warning'
-                                }`}
-                              >
-                                {ingredient.status}
-                              </span>
-                            </div>
-                            {ingredient.reasons && ingredient.reasons[0] && (
-                              <p className="opacity-80 mt-0.5">
-                                {ingredient.reasons[0].reason}
-                              </p>
-                            )}
-                          </div>
-                        </li>
-                      ))}
-                  </ul>
-                </div>
-              )}
+            {hasIngredients && <AnalysisFindings ingredients={result.ingredients} />}
             <button
               onClick={onTryAnother}
               className="btn btn-sm bg-secondary text-secondary-content w-full hover:bg-primary"
@@ -158,8 +110,7 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
           <ChatBubble status="ok">
             <div className="space-y-4">
               <p>
-                I don&apos;t just find questionableproducts, there are
-                plenty of products I love! Here&apos;s one I think you might like:
+                Hey here&apos;s a product I think you might like:
               </p>
               <ProductRecommendation
                 category={productRecommendation.category}
