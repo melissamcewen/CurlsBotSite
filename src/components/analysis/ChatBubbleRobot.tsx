@@ -34,7 +34,7 @@ export function ChatBubbleRobot({
   const borderClass = statusClasses[status] || 'border-primary';
 
   return (
-    <div className="chat chat-start lg:max-w-md">
+    <div className="chat chat-start lg:max-w-3xl ">
       <div className={`chat-image avatar rounded-full border-2 ${borderClass}`}>
         <div className="w-10 mask mask-circle bg-white">
           <Image src={finalImageUrl} alt={altText} width={40} height={40} />
