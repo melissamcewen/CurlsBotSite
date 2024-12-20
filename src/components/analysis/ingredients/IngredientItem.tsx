@@ -1,5 +1,9 @@
 import { IngredientResult } from 'haircare-ingredients-analyzer';
-import { TagIcon, InformationCircleIcon, FolderIcon } from '@heroicons/react/24/solid';
+import {
+  TagIcon,
+  InformationCircleIcon,
+  FolderIcon,
+} from '@heroicons/react/24/solid';
 
 interface IngredientItemProps {
   ingredient: IngredientResult;
@@ -16,13 +20,15 @@ export function IngredientItem({ ingredient }: IngredientItemProps) {
       <div className="flex justify-between items-start">
         <h2 className="cb-smaller-header">{ingredient.name}</h2>
         {ingredient.ingredient ? (
-          <div className={`badge ${
-            ingredient.status === 'warning'
-              ? 'badge-error'
-              : ingredient.status === 'caution'
-              ? 'badge-warning'
-              : 'badge-info'
-          } cb-badge capitalize`}>
+          <div
+            className={`badge ${
+              ingredient.status === 'warning'
+                ? 'badge-error'
+                : ingredient.status === 'caution'
+                ? 'badge-warning'
+                : 'badge-info'
+            } cb-badge capitalize`}
+          >
             {ingredient.status}
           </div>
         ) : (
@@ -40,24 +46,37 @@ export function IngredientItem({ ingredient }: IngredientItemProps) {
               <span className="cb-grouping-header">Matched Ingredient</span>
             </div>
             <div className="pl-7">
-              <span className="font-medium">
-                {ingredient.ingredient.name}
-              </span>
+              <span className="font-medium">{ingredient.ingredient.name}</span>
             </div>
           </div>
 
-          {/* Category */}
-          {ingredient.ingredient.categories && ingredient.ingredient.categories.length > 0 && (
+          {/* Description */}
+          {ingredient.ingredient?.description && (
             <div className="space-y-2">
-              <div className="flex items-center gap-2 text-base-content/70">
-                <FolderIcon className="w-5 h-5" />
-                <span className="cb-grouping-header">Category</span>
+              <div
+                className="flex items-center gap-2
+          text-base-content/70"
+              >
+                <InformationCircleIcon className="w-5 h-5" />
+                <span className="font-semibold">Description</span>
               </div>
-              <div className="pl-7">
-                {normalizeCategory(ingredient.ingredient.categories[0])}
-              </div>
+              <div className="pl-7">{ingredient.ingredient.description}</div>
             </div>
           )}
+
+          {/* Category */}
+          {ingredient.ingredient.categories &&
+            ingredient.ingredient.categories.length > 0 && (
+              <div className="space-y-2">
+                <div className="flex items-center gap-2 text-base-content/70">
+                  <FolderIcon className="w-5 h-5" />
+                  <span className="cb-grouping-header">Category</span>
+                </div>
+                <div className="pl-7">
+                  {normalizeCategory(ingredient.ingredient.categories[0])}
+                </div>
+              </div>
+            )}
         </>
       )}
     </div>
