@@ -61,11 +61,15 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
         status={result.status}
       >
         <ChatHeader>
-          <div className={`badge badge-outline ${
-            result.status === 'warning' ? 'badge-error' :
-            result.status === 'caution' ? 'badge-warning' :
-            'badge-info'
-          } gap-2 py-3`}>
+          <div
+            className={`badge badge-outline ${
+              result.status === 'warning'
+                ? 'badge-error'
+                : result.status === 'caution'
+                ? 'badge-warning'
+                : 'badge-info'
+            } gap-2 py-3`}
+          >
             <StatusIcon className="w-5 h-5" />
             <span className="font-medium capitalize">{result.status}</span>
           </div>
@@ -75,38 +79,56 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
         <ChatBubble status={result.status}>
           <div className="space-y-4">
             <p>{description}</p>
-            {hasIngredients && result.ingredients.some(i => i.status === 'caution' || i.status === 'warning') && (
-              <div className="space-y-2">
-                <p className="font-medium">What I found:</p>
-                <ul className="list-disc list-inside space-y-2">
-                  {result.ingredients
-                    .filter(i => i.status === 'caution' || i.status === 'warning')
-                    .map((ingredient, index) => (
-                      <li key={index} className="text-sm flex items-start gap-2">
-                        <span className="mt-1">•</span>
-                        <div className="flex-1">
-                          <div className="flex items-center gap-2 flex-wrap">
-                            <span className="font-medium">{ingredient.name}</span>
-                            {ingredient.ingredient && ingredient.name !== ingredient.ingredient.name && (
-                              <span className="opacity-80">
-                                (matched as {ingredient.ingredient.name})
+            {hasIngredients &&
+              result.ingredients.some(
+                (i) => i.status === 'caution' || i.status === 'warning',
+              ) && (
+                <div className="space-y-2">
+                  <p className="font-medium">What I found:</p>
+                  <ul className="list-disc list-inside space-y-2">
+                    {result.ingredients
+                      .filter(
+                        (i) => i.status === 'caution' || i.status === 'warning',
+                      )
+                      .map((ingredient, index) => (
+                        <li
+                          key={index}
+                          className="text-sm flex items-start gap-2"
+                        >
+                          <span className="mt-1">•</span>
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 flex-wrap">
+                              <span className="font-medium">
+                                {ingredient.name}
                               </span>
+                              {ingredient.ingredient &&
+                                ingredient.name !==
+                                  ingredient.ingredient.name && (
+                                  <span className="opacity-80">
+                                    (matched as {ingredient.ingredient.name})
+                                  </span>
+                                )}
+                              <span
+                                className={`badge badge-sm ${
+                                  ingredient.status === 'warning'
+                                    ? 'badge-error'
+                                    : 'badge-warning'
+                                }`}
+                              >
+                                {ingredient.status}
+                              </span>
+                            </div>
+                            {ingredient.reasons && ingredient.reasons[0] && (
+                              <p className="opacity-80 mt-0.5">
+                                {ingredient.reasons[0].reason}
+                              </p>
                             )}
-                            <span className={`badge badge-sm ${
-                              ingredient.status === 'warning' ? 'badge-error' : 'badge-warning'
-                            }`}>
-                              {ingredient.status}
-                            </span>
                           </div>
-                          {ingredient.reasons && ingredient.reasons[0] && (
-                            <p className="opacity-80 mt-0.5">{ingredient.reasons[0].reason}</p>
-                          )}
-                        </div>
-                      </li>
-                    ))}
-                </ul>
-              </div>
-            )}
+                        </li>
+                      ))}
+                  </ul>
+                </div>
+              )}
             <button
               onClick={onTryAnother}
               className="btn btn-sm bg-secondary text-secondary-content w-full hover:bg-primary"
@@ -136,8 +158,8 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
           <ChatBubble status="ok">
             <div className="space-y-4">
               <p>
-                Since we found some ingredients that might be problematic,
-                here&apos;s a product that might work better for your hair.
+                I don&apos;t just find questionableproducts, there are
+                plenty of products I love! Here&apos;s one I think you might like:
               </p>
               <ProductRecommendation
                 category={productRecommendation.category}
