@@ -23,7 +23,7 @@ export default async function BlogPage() {
       <h1 className="text-3xl font-bold mb-6">Blog</h1>
       <div className="space-y-6">
         {sortedPosts.map((post) => (
-          <article key={post.slug} className="card bg-base-200 hover:bg-base-300 transition-colors">
+          <article key={post.slug} className="card bg-base-300 hover:bg-base-300 transition-colors">
             <div className="card-body">
               <h2 className="card-title">
                 <Link href={`/blog/${post.slug}`} className="hover:text-primary">

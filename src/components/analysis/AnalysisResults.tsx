@@ -66,7 +66,7 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
             <p>{description}</p>
             <button
               onClick={onTryAnother}
-              className="btn btn-sm bg-secondary text-secondary-content w-full"
+              className="btn btn-sm bg-secondary text-secondary-content w-full hover:bg-primary"
             >
               Try another ingredients list
             </button>

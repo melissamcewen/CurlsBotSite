@@ -124,26 +124,28 @@ export default function Quiz() {
           Take this quiz to determine your hair porosity level. Hair porosity refers to your hair&apos;s ability to absorb and retain moisture. Understanding your hair porosity can help you choose the right products and treatments for your hair.
         </ChatBubble>
       </ChatBubbleRobot>
-      <ChatBubbleUser
-        message={
-          <div>
-            <p className="font-medium mb-2">Question {currentQuestion + 1} of {quizQuestions.length}</p>
-            <p className="text-lg">{question.question}</p>
-            <div className="space-y-2 mt-4">
-              {question.answers.map((answer, index) => (
-                <button
-                  key={index}
-                  className="btn btn-ghost bg-secondary  w-full text-left justify-start normal-case"
-                  onClick={() => handleAnswerClick(answer.points)}
-                >
-                  {answer.content}
-                </button>
-              ))}
+      <div className="max-w-2xl ml-auto">
+        <ChatBubbleUser
+          message={
+            <div>
+              <p className="font-medium mb-2">Question {currentQuestion + 1} of {quizQuestions.length}</p>
+              <p className="text-lg">{question.question}</p>
+              <div className="space-y-2 mt-4">
+                {question.answers.map((answer, index) => (
+                  <button
+                    key={index}
+                    className="btn btn-ghost bg-secondary w-full text-left justify-start normal-case"
+                    onClick={() => handleAnswerClick(answer.points)}
+                  >
+                    {answer.content}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
-        }
-        secondary
-      />
+          }
+          secondary
+        />
+      </div>
     </div>
   );
 }

@@ -19,12 +19,9 @@ export function IngredientItem({ ingredient }: IngredientItemProps) {
     <div className="flex flex-col gap-6 bg-base-200 rounded-box p-6">
       {/* Header */}
       <div className="flex justify-between items-center">
-        <Link
-          href={`/ingredients/${ingredient.ingredient?.id || ''}`}
-          className="font-medium text-base-content hover:text-primary transition-colors"
-        >
+
           {ingredient.name}
-        </Link>
+     
 
         {ingredient.ingredient?.categories && ingredient.ingredient.categories.length > 0 ? (
           <span className="badge badge-primary badge-lg">

@@ -3,6 +3,7 @@ interface ChatBubbleUserProps {
   secondary?: boolean;
   accent?: boolean;
   fullWidth?: boolean;
+  standardWidth?: boolean;
 }
 
 export default function ChatBubbleUser({
@@ -10,9 +11,10 @@ export default function ChatBubbleUser({
   secondary,
   accent,
   fullWidth = false,
+  standardWidth = false,
 }: ChatBubbleUserProps) {
   const borderClass = secondary ? 'border-secondary' : accent ? 'border-accent' : 'border-primary';
-  const widthClass = fullWidth ? 'w-full max-w-none' : '';
+  const widthClass = fullWidth ? 'w-full max-w-none' : standardWidth ? 'w-full max-w-2xl' : '';
 
   return (
     <div className="chat chat-end">
