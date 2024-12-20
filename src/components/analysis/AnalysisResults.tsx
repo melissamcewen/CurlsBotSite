@@ -6,7 +6,7 @@ import { getBundledProducts } from 'haircare-ingredients-analyzer';
 import { ProductCategory } from '@/components/ui/product/ProductRecommendations';
 import { IngredientsList } from './ingredients/IngredientsList';
 import { getStatusConfig } from './utils/statusConfig';
-import { BeakerIcon } from '@heroicons/react/24/outline';
+import { BeakerIcon, ExclamationTriangleIcon, ExclamationCircleIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
 import { ChatBubbleRobot, ChatHeader, ChatBubble, ChatFooter } from './ChatBubbleRobot';
 
 interface Props {
@@ -21,6 +21,13 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
   const shouldShowRecommendation =
     result.status === 'warning' || result.status === 'caution';
   const hasIngredients = result.ingredients && result.ingredients.length > 0;
+
+  const StatusIcon = {
+    warning: ExclamationCircleIcon,
+    caution: ExclamationTriangleIcon,
+    ok: CheckCircleIcon,
+    error: ExclamationCircleIcon,
+  }[result.status];
 
   // Only get product recommendation if needed
   const productRecommendation = shouldShowRecommendation
@@ -54,10 +61,14 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
         status={result.status}
       >
         <ChatHeader>
-          <h2 className="font-bold">
-            Result:{' '}
-            {result.status.charAt(0).toUpperCase() + result.status.slice(1)}
-          </h2>
+          <div className={`badge badge-outline ${
+            result.status === 'warning' ? 'badge-error' :
+            result.status === 'caution' ? 'badge-warning' :
+            'badge-info'
+          } gap-2 py-3`}>
+            <StatusIcon className="w-5 h-5" />
+            <span className="font-medium capitalize">{result.status}</span>
+          </div>
         </ChatHeader>
 
         {/* Ensure ChatBubble is wrapping the message content */}
