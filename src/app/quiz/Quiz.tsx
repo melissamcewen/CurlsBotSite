@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { quizQuestions } from './quizData';
 import { ProductRecommendations } from '@/components/ui/product/ProductRecommendations';
 import { ChatBubbleRobot, ChatBubble } from '@/components/analysis/ChatBubbleRobot';
+import ChatBubbleUser from '@/components/analysis/ChatBubbleUser';
 import Link from 'next/link';
 
 // Easy to toggle development mode testing
@@ -123,25 +124,26 @@ export default function Quiz() {
           Take this quiz to determine your hair porosity level. Hair porosity refers to your hair&apos;s ability to absorb and retain moisture. Understanding your hair porosity can help you choose the right products and treatments for your hair.
         </ChatBubble>
       </ChatBubbleRobot>
-      <div className="chat chat-end">
-        <div className="chat-bubble chat-bubble-primary w-full max-w-none">
-          <div className="mb-4">
+      <ChatBubbleUser
+        message={
+          <div>
             <p className="font-medium mb-2">Question {currentQuestion + 1} of {quizQuestions.length}</p>
             <p className="text-lg">{question.question}</p>
+            <div className="space-y-2 mt-4">
+              {question.answers.map((answer, index) => (
+                <button
+                  key={index}
+                  className="btn btn-ghost bg-base-100 bg-opacity-20 w-full text-left justify-start normal-case"
+                  onClick={() => handleAnswerClick(answer.points)}
+                >
+                  {answer.content}
+                </button>
+              ))}
+            </div>
           </div>
-          <div className="space-y-2">
-            {question.answers.map((answer, index) => (
-              <button
-                key={index}
-                className="btn btn-ghost bg-base-100 bg-opacity-20 w-full text-left justify-start normal-case"
-                onClick={() => handleAnswerClick(answer.points)}
-              >
-                {answer.content}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
+        }
+        secondary
+      />
     </div>
   );
 }

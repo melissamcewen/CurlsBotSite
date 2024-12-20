@@ -255,29 +255,48 @@ The chat component requires a specific structure to maintain proper alignment:
 
 ### Our Custom Implementation
 
-We've wrapped this in a `ChatBubbleRobot` component that handles:
-- Avatar styling with status-based borders
-- Consistent message styling
-- Proper grid alignment
+We have two main chat components for consistent styling across the application:
 
-Key components:
-
-1. **ChatBubbleRobot**: The main wrapper component
+1. **ChatBubbleRobot**: For system/bot messages
 ```typescript
 <ChatBubbleRobot
   status="ok" // or 'caution', 'warning', 'error'
   imageUrl="/normal.svg" // optional custom avatar
 >
-  {/* Chat content */}
+  <ChatBubble status="ok">
+    {/* Message content */}
+  </ChatBubble>
 </ChatBubbleRobot>
 ```
 
-2. **ChatBubble**: The message bubble component
+2. **ChatBubbleUser**: For user messages
 ```typescript
-<ChatBubble status="ok">
-  {/* Message content */}
-</ChatBubble>
+<ChatBubbleUser
+  message="Your message here"
+  secondary={false} // optional: use secondary color theme
+  accent={false} // optional: use accent color theme
+/>
 ```
+
+The `ChatBubbleUser` component provides:
+- Consistent right-aligned styling for user messages
+- Simple interface for basic messages
+- Optional color theme variants
+- Automatic chat-end alignment
+
+### Component Features
+
+**ChatBubbleRobot**:
+- Avatar styling with status-based borders
+- Consistent message styling
+- Proper grid alignment
+- Support for complex content with headers/footers
+
+**ChatBubbleUser**:
+- Simplified interface for user messages
+- Consistent right-aligned styling
+- Color theme variants (primary, secondary, accent)
+- Automatic chat-end positioning
 
 ### Important Layout Notes
 
@@ -288,10 +307,14 @@ Key components:
 
 2. **Proper Usage**:
 ```typescript
-// ✅ Correct
-<ChatBubbleRobot>
+// ✅ Correct - Complex bot message
+<ChatBubbleRobot status="ok">
+  <ChatHeader>Title</ChatHeader>
   <ChatBubble>Content</ChatBubble>
 </ChatBubbleRobot>
+
+// ✅ Correct - Simple user message
+<ChatBubbleUser message="User input" />
 
 // ❌ Incorrect - Extra wrapper breaks layout
 <ChatBubbleRobot>
@@ -302,27 +325,30 @@ Key components:
 ```
 
 3. **Status Colors**:
-   - `ok`: info color theme
-   - `caution`: warning color theme
-   - `warning`: error color theme
-   - Colors affect both avatar border and message styling
+   - Bot messages:
+     - `ok`: info color theme
+     - `caution`: warning color theme
+     - `warning`: error color theme
+   - User messages:
+     - Default: primary color theme
+     - `secondary`: secondary color theme
+     - `accent`: accent color theme
 
-### Example Usage
+### Example Usage in Quiz
 
 ```typescript
+// Bot question
 <ChatBubbleRobot status="ok">
-  <ChatHeader>
-    <h2 className="font-bold">Analysis Result</h2>
-  </ChatHeader>
   <ChatBubble status="ok">
-    <div className="space-y-4">
-      <p>Your ingredient analysis is complete.</p>
-      <button className="btn btn-primary">
-        View Details
-      </button>
-    </div>
+    <p>What type of hair do you have?</p>
   </ChatBubble>
 </ChatBubbleRobot>
+
+// User answer
+<ChatBubbleUser
+  message="My hair is curly and thick"
+  secondary={true}
+/>
 ```
 
-This structure ensures consistent chat-style layouts across the application while maintaining proper alignment between avatars and messages.
+This structure ensures consistent chat-style layouts across the application while maintaining proper alignment between avatars and messages. Using these components helps maintain visual consistency and reduces code duplication.

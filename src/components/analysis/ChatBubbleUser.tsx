@@ -2,25 +2,23 @@ interface ChatBubbleUserProps {
   message: string | React.ReactNode;
   secondary?: boolean;
   accent?: boolean;
+  fullWidth?: boolean;
 }
 
 export default function ChatBubbleUser({
   message,
   secondary,
   accent,
+  fullWidth = false,
 }: ChatBubbleUserProps) {
-  let bubbleClass =
-    'chat-bubble border-primary text-primary-content bg-base-300 text-base-content';
-
-  if (secondary) {
-    bubbleClass = 'chat-bubble border-secondary';
-  } else if (accent) {
-    bubbleClass = 'chat-bubble border-accent';
-  }
+  const borderClass = secondary ? 'border-secondary' : accent ? 'border-accent' : 'border-primary';
+  const widthClass = fullWidth ? 'w-full max-w-none' : '';
 
   return (
     <div className="chat chat-end">
-      <div className={bubbleClass}>{message}</div>
+      <div className={`chat-bubble bg-base-300 text-base-content border-t-2 ${borderClass} ${widthClass}`}>
+        {message}
+      </div>
     </div>
   );
 }
