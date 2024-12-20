@@ -1,5 +1,7 @@
 import { IngredientItem } from './IngredientItem';
-import { AnalysisResult, IngredientResult } from 'haircare-ingredients-analyzer';
+import { IngredientResult } from 'haircare-ingredients-analyzer';
+import { useState } from 'react';
+import { ArrowsUpDownIcon } from '@heroicons/react/24/outline';
 
 interface IngredientsListProps {
   ingredients: IngredientResult[];
@@ -13,10 +15,17 @@ const statusPriority = {
 };
 
 export function IngredientsList({ ingredients }: IngredientsListProps) {
+  const [isAlphabetical, setIsAlphabetical] = useState(false);
+
   if (!ingredients?.length) return null;
 
-  // Sort ingredients by status priority
+  // Sort ingredients based on current sorting mode
   const sortedIngredients = [...ingredients].sort((a, b) => {
+    if (isAlphabetical) {
+      return a.name.localeCompare(b.name);
+    }
+
+    // Priority sorting (default)
     // First sort by whether ingredient was found
     if (!!a.ingredient !== !!b.ingredient) {
       return a.ingredient ? -1 : 1; // found ingredients come first
@@ -36,10 +45,22 @@ export function IngredientsList({ ingredients }: IngredientsListProps) {
   });
 
   return (
-    <div className="space-y-3">
-      {sortedIngredients.map((ingredient, index) => (
-        <IngredientItem key={index} ingredient={ingredient} />
-      ))}
+    <div className="space-y-4">
+      <div className="flex justify-end">
+        <button
+          onClick={() => setIsAlphabetical(!isAlphabetical)}
+          className="btn btn-ghost btn-sm gap-2 normal-case"
+          title={isAlphabetical ? "Sort by priority" : "Sort alphabetically"}
+        >
+          <ArrowsUpDownIcon className="w-4 h-4" />
+          {isAlphabetical ? "Priority Sort" : "A-Z Sort"}
+        </button>
+      </div>
+      <div className="space-y-3">
+        {sortedIngredients.map((ingredient, index) => (
+          <IngredientItem key={index} ingredient={ingredient} />
+        ))}
+      </div>
     </div>
   );
 }
