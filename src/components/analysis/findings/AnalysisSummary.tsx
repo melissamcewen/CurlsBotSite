@@ -20,16 +20,16 @@ export function AnalysisSummary({ ingredients }: Props) {
   const warningIngredients = ingredients.filter(i => i.status === 'warning').length;
 
   return (
-    <div className="bg-base-100">
+    <div className="bg-base-100 ">
       <h2 className="cb-header">
         <DocumentChartBarIcon className="cb-header-icon" />
         Analysis Summary
       </h2>
       <div className="flex flex-col gap-2">
-        <div className="flex items-center justify-between p-4 bg-base-200 rounded-lg">
+        <div className="flex items-center justify-between p-4 bg-success/10 rounded-lg">
           <div className="flex items-center gap-2">
             <DocumentChartBarIcon className="w-6 h-6" />
-            <div>Total</div>
+            <div>Total Ingredients</div>
           </div>
           <div className="text-xl font-bold">{totalIngredients}</div>
         </div>

@@ -27,14 +27,14 @@ const config: Config = {
           'base-200': '#2b1b37', // Darker
           'base-300': '#201429', // Darkest
           'base-content': '#faf7f5', // Light text (inverted from cupcake)
-          info: '#8be9fd',
-          success: '#50fa7b',
-          warning: '#f1fa8c',
-          error: '#ff5555',
+          info: '#00b5fb',
+          success: '#00a96e',
+          warning: '#ffbf00',
+          error: '#ff6368',
           '--rounded-btn': '1.9rem',
           '--tab-border': '2px',
           '--tab-radius': '0.7rem',
-        }
+        },
       },
     ],
     darkTheme: 'curlsbotdark',

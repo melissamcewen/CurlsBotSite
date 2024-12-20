@@ -52,24 +52,29 @@ export function AnalysisFindings({ ingredients }: Props) {
             <div key={setting} className={`card bg-base-100 cb-border`}>
               <div className="card-body p-4">
                 <div className="flex items-center justify-between mb-1">
-                  <h3 className="text-lg font-semibold">
-                    {group.name}
-                  </h3>
-                  <span className={`cb-badge ${
-                    group.status === 'warning' ? 'text-error border-error' : 'text-warning border-warning'
-                  }`}>
+                  <h3 className="text-lg font-semibold">{group.name}</h3>
+                  <span
+                    className={`cb-badge capitalize ${
+                      group.status === 'warning'
+                        ? 'text-error border-error'
+                        : 'text-warning border-warning'
+                    }`}
+                  >
                     {group.status}
                   </span>
                 </div>
-                <p className="text-sm text-base-content/70">
-                  {group.reason}
-                </p>
+                <p className="text-sm text-base-content/70">{group.reason}</p>
 
                 <div className="space-y-4 mt-4">
                   {group.ingredients.map((ingredient, index) => (
-                    <div key={index} className={`border-l-4 pl-4 ${
-                      group.status === 'warning' ? 'border-error' : 'border-warning'
-                    }`}>
+                    <div
+                      key={index}
+                      className={`border-l-4 pl-4 ${
+                        group.status === 'warning'
+                          ? 'border-error'
+                          : 'border-warning'
+                      }`}
+                    >
                       <div className="font-medium">{ingredient.name}</div>
                       {ingredient.ingredient &&
                         ingredient.name !== ingredient.ingredient.name && (
