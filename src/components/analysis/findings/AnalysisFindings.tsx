@@ -63,7 +63,7 @@ export function AnalysisFindings({ ingredients }: Props) {
               <div className="stat-desc">Ingredients</div>
             </div>
 
-            <div className="stat hidden lg:flex min-w-[200px]">
+            <div className="stat hidden xl:flex min-w-[200px]">
               <div className="flex-1">
                 <div className="stat-title">Known</div>
                 <div className="stat-value text-info">{knownIngredients}</div>
@@ -74,7 +74,7 @@ export function AnalysisFindings({ ingredients }: Props) {
               </div>
             </div>
 
-            <div className="stat hidden lg:flex min-w-[200px]">
+            <div className="stat hidden xl:flex min-w-[200px]">
               <div className="flex-1">
                 <div className="stat-title">Unknown</div>
                 <div className="stat-value">{unknownIngredients}</div>
