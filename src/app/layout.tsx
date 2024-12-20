@@ -91,28 +91,25 @@ export default function RootLayout({
                 </a>
               </div>
             </aside>
-            <form className="w-80">
-              <h6 className="footer-title">Stay Updated</h6>
-              <fieldset className="form-control">
-                <label className="label">
-                  <span className="label-text">
-                    Get hair care tips and ingredient alerts
-                  </span>
-                </label>
-                <div className="join">
-                  <input
-                    type="email"
-                    placeholder="email@example.com"
-                    className="input input-bordered join-item flex-1"
-                  />
-                  <button className="btn btn-primary join-item">
-                    Subscribe
-                  </button>
-                </div>
-              </fieldset>
-            </form>
+            <div className="bg-base-100 rounded-box p-6 space-y-4 max-w-sm">
+              <h2 className="text-lg font-bold text-base-content">
+                Join the CurlsBot Community! 💌
+              </h2>
+              <p className="text-sm text-base-content/80">
+                Get hair care tips, product recommendations, and ingredient
+                alerts delivered to your inbox.
+              </p>
+              <form className="flex gap-2">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="input input-bordered flex-1"
+                />
+                <button className="btn btn-primary">Subscribe</button>
+              </form>
+            </div>
             <nav>
-              <h6 className="footer-title">Legal</h6>
+  
               <Link href="/about" className="link link-hover">
                 About
               </Link>
@@ -134,14 +131,14 @@ export default function RootLayout({
               <p className="text-xs text-base-content/60 text-center max-w-3xl mx-auto">
                 Disclaimer: We&apos;re here to have fun and learn about haircare
                 ingredients! 🧪 While our tool can provide some basic insights,
-                it&apos;s not a substitute for professional advice. Always consult
-                with a hair care expert for personalized recommendations,
-                especially if you have specific hair concerns or allergies. This
-                web site is not endorsed by, directly affiliated with,
-                maintained, authorized, or sponsored by The Curly Girl Method by
-                Lorraine Massey™️. Some links on Curlsbot are Affiliate links.
-                Shopping through these links supports the further development of
-                Curlsbot.
+                it&apos;s not a substitute for professional advice. Always
+                consult with a hair care expert for personalized
+                recommendations, especially if you have specific hair concerns
+                or allergies. This web site is not endorsed by, directly
+                affiliated with, maintained, authorized, or sponsored by The
+                Curly Girl Method by Lorraine Massey™️. Some links on Curlsbot
+                are Affiliate links. Shopping through these links supports the
+                further development of Curlsbot.
               </p>
             </div>
           </div>
