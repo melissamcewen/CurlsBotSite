@@ -1,7 +1,6 @@
 'use client';
 
 import { AnalysisResult } from 'haircare-ingredients-analyzer';
-import { ProductRecommendation } from '@/components/ui/product/ProductRecommendation';
 import { getBundledProducts } from 'haircare-ingredients-analyzer';
 import { ProductCategory } from '@/components/ui/product/ProductRecommendations';
 import { IngredientsList } from './ingredients/IngredientsList';
@@ -39,7 +38,6 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
           allProducts[Math.floor(Math.random() * allProducts.length)];
         return randomProduct
           ? {
-              category: randomProduct.product_categories[0] as ProductCategory,
               name: randomProduct.name,
               brand: randomProduct.brand,
               buyUrl: randomProduct.buy_url,
@@ -64,7 +62,22 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
         {/* Ensure ChatBubble is wrapping the message content */}
         <ChatBubble status={result.status}>
           <div className="space-y-4">
-            <p>{description}</p>
+            <div className="space-y-2">
+              <p>{description}</p>
+              {productRecommendation && (
+                <p>
+                  Here&apos;s a product I think you might like:{' '}
+                  <a
+                    href={productRecommendation.buyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:text-primary"
+                  >
+                    {productRecommendation.name} by {productRecommendation.brand}
+                  </a>
+                </p>
+              )}
+            </div>
 
             <button
               onClick={onTryAnother}
@@ -81,7 +94,7 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
             <AnalysisFindings ingredients={result.ingredients} />
           )}
           <div>
-           
+
             <IngredientsList ingredients={result.ingredients} />
           </div>
         </div>
