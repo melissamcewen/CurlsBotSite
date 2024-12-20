@@ -128,9 +128,9 @@ export function AnalysisFindings({ ingredients }: Props) {
               <StarIcon className="cb-header-icon" aria-hidden="true" />
               Highlights
             </h2>
-            <div className="space-y-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
               {Object.entries(groupedFindings).map(([setting, group]) => (
-                <div key={setting} className={`card bg-base-100 cb-border lg:max-w-sm`}>
+                <div key={setting} className={`card bg-base-100 cb-border`}>
                   <div className="card-body p-4">
                     <div className="flex items-center gap-3">
                       <div>
@@ -162,15 +162,11 @@ export function AnalysisFindings({ ingredients }: Props) {
                             {ingredient.ingredient &&
                               ingredient.name !==
                                 ingredient.ingredient.name && (
-                                <div className="text-sm ">
-                                  matches {ingredient.ingredient.name}
+                                <div className="">
+                                  <span className="cb-text-ghost text-sm">Matches:</span>
+                                  <span className="font-light text-sm">{ingredient.ingredient.name}</span>
                                 </div>
                               )}
-                            {ingredient.ingredient?.description && (
-                              <div className="text-sm mt-2 max-w-[250px] text-base-content">
-                                {ingredient.ingredient.description}
-                              </div>
-                            )}
                           </div>
                         </div>
                       ))}

@@ -61,4 +61,8 @@ body {
   .cb-button {
     @apply btn btn-outline;
   }
+
+  .cb-text-ghost {
+    @apply text-base-content/60 font-medium 
+  }
 }
