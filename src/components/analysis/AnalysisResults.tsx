@@ -1,8 +1,6 @@
 'use client';
 
 import { AnalysisResult } from 'haircare-ingredients-analyzer';
-import { getBundledProducts } from 'haircare-ingredients-analyzer';
-import { ProductCategory } from '@/components/ui/product/ProductRecommendations';
 import { IngredientsList } from './ingredients/IngredientsList';
 import { getStatusConfig } from './utils/statusConfig';
 import { BeakerIcon, ExclamationTriangleIcon, ExclamationCircleIcon, CheckCircleIcon } from '@heroicons/react/24/solid';
@@ -10,18 +8,23 @@ import { ChatBubbleRobot, ChatHeader, ChatBubble, ChatFooter } from './ChatBubbl
 import { AnalysisFindings } from './findings/AnalysisFindings';
 import { AnalysisSummary } from './findings/AnalysisSummary';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 interface Props {
   result: AnalysisResult;
   onTryAnother: () => void;
 }
 
-export default function AnalysisResults({ result, onTryAnother }: Props) {
-  if (!result) return null;
+interface ProductRecommendation {
+  name: string;
+  brand: string;
+  buyUrl: string;
+}
 
+export default function AnalysisResults({ result, onTryAnother }: Props) {
+  const [productRecommendation, setProductRecommendation] = useState<ProductRecommendation | null>(null);
   const { description } = getStatusConfig(result.status);
-  const shouldShowRecommendation =
-    result.status === 'warning' || result.status === 'caution';
+  const shouldShowRecommendation = result.status === 'warning' || result.status === 'caution';
   const hasIngredients = result.ingredients && result.ingredients.length > 0;
 
   const StatusIcon = {
@@ -31,22 +34,21 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
     error: ExclamationCircleIcon,
   }[result.status];
 
-  // Only get product recommendation if needed
-  const productRecommendation = shouldShowRecommendation
-    ? (() => {
-        const products = getBundledProducts();
-        const allProducts = Object.values(products.products);
-        const randomProduct =
-          allProducts[Math.floor(Math.random() * allProducts.length)];
-        return randomProduct
-          ? {
-              name: randomProduct.name,
-              brand: randomProduct.brand,
-              buyUrl: randomProduct.buy_url,
-            }
-          : null;
-      })()
-    : null;
+  // Fetch product recommendation from server
+  useEffect(() => {
+    if (shouldShowRecommendation) {
+      fetch('/api/product-recommendation')
+        .then(res => res.json())
+        .then(data => {
+          if (!data.error) {
+            setProductRecommendation(data);
+          }
+        })
+        .catch(console.error);
+    }
+  }, [shouldShowRecommendation]);
+
+  if (!result) return null;
 
   return (
     <div className="space-y-8">

@@ -7,14 +7,20 @@ import AnalysisResults from './AnalysisResults';
 import { ChatBubbleRobot, ChatBubble, ChatFooter } from './ChatBubbleRobot';
 import ChatBubbleUser from './ChatBubbleUser';
 
-export default function IngredientForm() {
-  const [ingredients, setIngredients] = useState('');
-  const [analysisResult, setAnalysisResult] = useState<AnalysisResult | null>(
-    null,
-  );
+interface Props {
+  initialIngredients?: string;
+  initialAnalysis?: AnalysisResult | null;
+}
+
+export default function IngredientForm({
+  initialIngredients = '',
+  initialAnalysis = null
+}: Props) {
+  const [ingredients, setIngredients] = useState(initialIngredients);
+  const [analysisResult, setAnalysisResult] = useState<AnalysisResult | null>(initialAnalysis);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [showForm, setShowForm] = useState(true);
+  const [showForm, setShowForm] = useState(!initialAnalysis);
   const router = useRouter();
   const searchParams = useSearchParams();
   const initialLoadDone = useRef(false);
@@ -44,8 +50,9 @@ export default function IngredientForm() {
     router.replace('/', { scroll: false });
   };
 
+  // Only handle URL ingredients if there's no initial analysis
   useEffect(() => {
-    if (!initialLoadDone.current) {
+    if (!initialLoadDone.current && !initialAnalysis) {
       const urlIngredients = searchParams.get('ingredients');
       if (urlIngredients) {
         setIngredients(urlIngredients);
@@ -53,7 +60,7 @@ export default function IngredientForm() {
       }
       initialLoadDone.current = true;
     }
-  }, [searchParams, handleAnalysis]);
+  }, [searchParams, handleAnalysis, initialAnalysis]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

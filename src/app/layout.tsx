@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     default: 'CurlsBot | Hair Care Ingredient Analysis',
     template: '%s | CurlsBot'
   },
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://curlsbot.com'),
   description: 'Your intelligent assistant for analyzing hair care ingredients and understanding hair porosity. Get personalized hair care advice and ingredient analysis.',
   keywords: ['hair care', 'ingredient analysis', 'curly hair', 'porosity', 'hair products', 'CurlsBot'],
   authors: [{ name: 'CurlsBot' }],
