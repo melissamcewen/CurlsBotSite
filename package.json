@@ -15,7 +15,7 @@
     "@heroicons/react": "^2.2.0",
     "fuse.js": "^7.0.0",
     "gray-matter": "^4.0.3",
-    "haircare-ingredients-analyzer": "file:../CurlsBotAPI",
+    "haircare-ingredients-analyzer": "^1.0.0",
     "next": "15.1.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
