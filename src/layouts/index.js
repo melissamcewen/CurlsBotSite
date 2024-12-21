@@ -60,10 +60,7 @@ export default class TemplateWrapper extends React.Component {
   };
 
   componentDidMount() {
-    ReactGA.initialize('UA-110983103-1', {
-   //debug: true,
-
-});
+    ReactGA.initialize('G-BHJR6M5MLQ');
     logPageView(ReactGA)
   }
 
