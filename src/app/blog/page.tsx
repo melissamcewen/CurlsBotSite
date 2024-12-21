@@ -16,8 +16,20 @@ export default async function BlogPage() {
 
   // Sort posts by date, newest first
   const sortedPosts = posts.sort((a, b) => {
-    return new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime();
+    const dateA = new Date(a.frontmatter.date);
+    const dateB = new Date(b.frontmatter.date);
+    return dateB.getTime() - dateA.getTime();
   });
+
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return new Intl.DateTimeFormat('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      timeZone: 'UTC'
+    }).format(date);
+  };
 
   return (
     <div className="max-w-4xl mx-auto">
@@ -41,11 +53,7 @@ export default async function BlogPage() {
                     <p className="text-base-content/70">{post.frontmatter.description}</p>
                   )}
                   <div className="text-sm text-base-content/50">
-                    {new Date(post.frontmatter.date).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric'
-                    })}
+                    {formatDate(post.frontmatter.date)}
                   </div>
                 </div>
               </article>

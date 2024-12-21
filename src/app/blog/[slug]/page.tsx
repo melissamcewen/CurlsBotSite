@@ -25,6 +25,15 @@ export default async function BlogPostPage({ params }: Props) {
     notFound();
   }
 
+  // Create a UTC date object
+  const date = new Date(post.frontmatter.date);
+  const formattedDate = new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: 'UTC'
+  }).format(date);
+
   return (
     <div className="max-w-4xl mx-auto">
       <div className="card bg-base-100 rounded-xl">
@@ -48,11 +57,7 @@ export default async function BlogPostPage({ params }: Props) {
             )}
 
             <div className="text-base-content/50 -mt-4 mb-8">
-              {new Date(post.frontmatter.date).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-              })}
+              {formattedDate}
             </div>
 
             <div dangerouslySetInnerHTML={{ __html: post.content }} />
