@@ -162,3 +162,57 @@ function ClientComponent({ initialData }) {
   // ... handle interactivity
 }
 ```
+
+## Routing and Route Groups
+
+### Basic Routing
+- Next.js uses file-system based routing
+- Files in `app` directory automatically become routes
+- Examples:
+```
+app/
+  page.tsx         → /
+  about/page.tsx   → /about
+  blog/page.tsx    → /blog
+```
+
+### Route Groups (folders with parentheses)
+- Folders starting with parentheses () are route groups
+- They **don't affect the URL structure**
+- Used for organizing code without changing URLs
+- Example:
+```
+app/
+  (quiz)/
+    page.tsx           → / (home page)
+    porosity/page.tsx  → /porosity
+  (marketing)/
+    about/page.tsx     → /about
+    contact/page.tsx   → /contact
+```
+
+### Why Use Route Groups?
+1. **Shared Layouts**: Group pages that share the same layout
+2. **Shared Loading States**: Use same loading.tsx for related pages
+3. **Code Organization**: Group related features together
+
+### Real Example from Our Code
+```
+app/
+  (quiz)/
+    loading.tsx        # Shared loading state with chat bubbles
+    page.tsx          # Main ingredient analyzer (homepage)
+    porosity/
+      page.tsx        # Porosity quiz page
+  blog/
+    loading.tsx       # Blog-specific loading
+    page.tsx          # Blog listing
+  ingredients/
+    loading.tsx       # Table loading skeleton
+    page.tsx          # Ingredients database
+```
+
+In this structure:
+- `(quiz)` group contains pages with chat interface
+- The URL is still just `/` for the homepage
+- Loading states are scoped to their group
