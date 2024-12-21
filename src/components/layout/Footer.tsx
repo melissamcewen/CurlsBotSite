@@ -64,13 +64,22 @@ export function Footer() {
             Get hair care tips, product recommendations, and ingredient alerts
             delivered to your inbox.
           </p>
-          <form className="flex gap-2">
+          <form
+            action="https://twitter.us14.list-manage.com/subscribe/post"
+            method="POST"
+            className="flex gap-2"
+            target="_blank"
+          >
+            <input type="hidden" name="u" value="dbc1f6ce69d9c1d849eaa642e" />
+            <input type="hidden" name="id" value="cd0a9d8b8e" />
             <input
               type="email"
+              name="MERGE0"
               placeholder="Enter your email"
               className="input input-bordered flex-1"
+              required
             />
-            <button className="btn btn-primary">Subscribe</button>
+            <button type="submit" className="btn btn-primary">Subscribe</button>
           </form>
         </div>
         <nav>
