@@ -101,8 +101,7 @@ export default function Quiz() {
         <ChatBubbleRobot imageUrl="/normal.svg" status="ok">
           <ChatBubble status="ok">
             <div className="space-y-4">
-            
-              <ProductRecommendations porosityType={result.type} />
+              <ProductRecommendations porosityType={result.tag} />
             </div>
           </ChatBubble>
         </ChatBubbleRobot>
