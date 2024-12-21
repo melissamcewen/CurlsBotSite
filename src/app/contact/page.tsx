@@ -14,7 +14,7 @@ export default function ContactPage() {
           <div className="prose prose-lg max-w-none">
             <p>
               Have questions about your hair care journey? Want to report an ingredient analysis issue?
-              We're here to help! Here are the best ways to reach us:
+              We&apos;re here to help! Here are the best ways to reach us:
             </p>
 
             <h2>Email</h2>
@@ -49,7 +49,7 @@ export default function ContactPage() {
 
             <h2>Open Source</h2>
             <p>
-              CurlsBot is open source! If you're a developer and want to contribute:
+              CurlsBot is open source! If you&apos;re a developer and want to contribute:
             </p>
             <ul>
               <li>
@@ -68,7 +68,7 @@ export default function ContactPage() {
               please reach out through any of our social media channels.
             </p>
 
-         
+
           </div>
         </div>
       </div>

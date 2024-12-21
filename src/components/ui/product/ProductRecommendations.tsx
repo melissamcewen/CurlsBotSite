@@ -70,7 +70,7 @@ export function getProductRecommendations(porosityType: string) {
   Object.keys(recommendations).forEach((category) => {
     const products = recommendations[category as ProductCategory];
     if (products.length === 0) {
-      recommendations[category as ProductCategory] = null as any;
+      recommendations[category as ProductCategory] = null as Product[] | null;
     } else {
       products.sort((a, b) => {
         const brandCompare = a.brand.localeCompare(b.brand);

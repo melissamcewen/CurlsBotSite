@@ -47,7 +47,7 @@ describe('AnalysisResults', () => {
 
   it('renders nothing when result is null', () => {
     const { container } = render(
-      <AnalysisResults result={null as any} onTryAnother={mockOnTryAnother} />
+      <AnalysisResults result={null as AnalysisResult} onTryAnother={mockOnTryAnother} />
     );
     expect(container).toBeEmptyDOMElement();
   });

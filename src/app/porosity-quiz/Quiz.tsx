@@ -115,7 +115,7 @@ export default function Quiz() {
     <div className="space-y-6">
       <ChatBubbleRobot imageUrl="/normal.svg" status="ok">
         <ChatBubble status="ok">
-          Beep boop! Confused about hair porosity? 🤖 It's like your hair's
+          Beep boop! Confused about hair porosity? 🤖 It&apos;s like your hair&apos;s
           drinkability! 🥤 High porosity hair is a thirsty sponge, soaking up
           moisture. Low porosity hair is a picky eater, not wanting to drink up.
           Normal porosity hair is just right, not too thirsty, not too picky.
