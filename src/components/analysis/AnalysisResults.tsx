@@ -3,8 +3,7 @@
 import { AnalysisResult } from 'haircare-ingredients-analyzer';
 import { IngredientsList } from './ingredients/IngredientsList';
 import { getStatusConfig } from './utils/statusConfig';
-import { BeakerIcon, ExclamationTriangleIcon, ExclamationCircleIcon, CheckCircleIcon } from '@heroicons/react/24/solid';
-import { ChatBubbleRobot, ChatHeader, ChatBubble, ChatFooter } from './ChatBubbleRobot';
+import { ChatBubbleRobot, ChatBubble, ChatFooter } from './ChatBubbleRobot';
 import { AnalysisFindings } from './findings/AnalysisFindings';
 import { AnalysisSummary } from './findings/AnalysisSummary';
 import Link from 'next/link';
@@ -23,16 +22,7 @@ interface ProductRecommendation {
 
 export default function AnalysisResults({ result, onTryAnother }: Props) {
   const [productRecommendation, setProductRecommendation] = useState<ProductRecommendation | null>(null);
-  const { description } = getStatusConfig(result.status);
-  const shouldShowRecommendation = result.status === 'warning' || result.status === 'caution';
-  const hasIngredients = result.ingredients && result.ingredients.length > 0;
-
-  const StatusIcon = {
-    warning: ExclamationCircleIcon,
-    caution: ExclamationTriangleIcon,
-    ok: CheckCircleIcon,
-    error: ExclamationCircleIcon,
-  }[result.status];
+  const shouldShowRecommendation = result?.status === 'warning' || result?.status === 'caution';
 
   // Fetch product recommendation from server
   useEffect(() => {
@@ -49,6 +39,9 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
   }, [shouldShowRecommendation]);
 
   if (!result) return null;
+
+  const { description } = getStatusConfig(result.status);
+  const hasIngredients = result.ingredients && result.ingredients.length > 0;
 
   return (
     <div className="space-y-8">

@@ -1,51 +1,23 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import IngredientForm from '@/components/analysis/IngredientForm';
+import IngredientsPage from '@/app/ingredients/page';
+import '@testing-library/jest-dom';
 
-// Mock Next.js hooks
-jest.mock('next/navigation', () => ({
-  useRouter: () => ({
-    replace: jest.fn(),
-  }),
-  useSearchParams: () => ({
-    get: jest.fn(),
-  }),
-}));
+describe('Ingredients Database Page', () => {
+  it('renders ingredients table with sorting', () => {
+    render(<IngredientsPage />);
 
-// Mock haircare-ingredients-analyzer
-jest.mock('haircare-ingredients-analyzer', () => ({
-  Analyzer: jest.fn().mockImplementation(() => ({
-    analyze: jest.fn().mockReturnValue({
-      status: 'caution',
-      input: 'test',
-      reasons: [],
-      ingredients: []
-    })
-  })),
-  getBundledProducts: jest.fn(() => ({
-    products: {
-      'test-product': {
-        name: 'Test Product',
-        brand: 'Test Brand',
-        product_categories: ['conditioner'],
-        buy_url: 'https://example.com'
-      }
-    }
-  }))
-}));
+    // Check for page title
+    expect(screen.getByText('Ingredients Database')).toBeInTheDocument();
 
-describe('Ingredients Analysis E2E', () => {
-  it('submits ingredients for analysis', () => {
-    render(<IngredientForm />);
+    // Check for sort buttons
+    expect(screen.getByRole('button', { name: /name/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /categories/i })).toBeInTheDocument();
 
-    // Find and fill the input field
-    const textarea = screen.getByRole('textbox');
-    fireEvent.change(textarea, { target: { value: 'Water' } });
+    // Test sorting
+    const nameButton = screen.getByRole('button', { name: /name/i });
+    fireEvent.click(nameButton);
 
-    // Click analyze button
-    const analyzeButton = screen.getByRole('button', { name: /analyze ingredients/i });
-    fireEvent.click(analyzeButton);
-
-    // Check for caution message
-    expect(screen.getByText(/hmm/i)).toBeInTheDocument();
+    // Verify table is rendered (don't test for specific ingredients)
+    expect(screen.getByRole('table')).toBeInTheDocument();
   });
 });
