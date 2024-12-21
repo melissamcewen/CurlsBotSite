@@ -17,7 +17,7 @@ avoid async/await in tests when using haircare-ingredients-analyzer since it's a
 
 get ingredient data directly from haircare-ingredients-analyzer using getBundledDatabase() - do not create separate data files for ingredients
 
-the docs for the haircare-ingredients-analyzer library are in docs/hair-care-ingredients-analyzer.md
+the docs for the haircare-ingredients-analyzer library are in docs/haircareanalyzer.md
 
 
 the analysis results statuses correspond to the following daisy ui colors:

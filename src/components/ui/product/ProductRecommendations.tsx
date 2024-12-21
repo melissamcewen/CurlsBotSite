@@ -25,7 +25,7 @@ export function getProductRecommendations(porosityType: string) {
 
   console.log('Looking for products with tag:', porosityTag);
 
-  const recommendations: Record<ProductCategory, RecommendedProduct[]> = {
+  const recommendations: Record<ProductCategory, RecommendedProduct[] | null> = {
     shampoos: [],
     conditioners: [],
     cowashes: [],
@@ -58,7 +58,10 @@ export function getProductRecommendations(porosityType: string) {
         category,
         tags: product.tags
       });
-      recommendations[category].push({
+      if (!recommendations[category]) {
+        recommendations[category] = [];
+      }
+      recommendations[category]!.push({
         name: product.name,
         brand: product.brand,
         buyUrl: product.buy_url
@@ -69,8 +72,8 @@ export function getProductRecommendations(porosityType: string) {
   // Sort products within each category by brand and name
   Object.keys(recommendations).forEach((category) => {
     const products = recommendations[category as ProductCategory];
-    if (products.length === 0) {
-      recommendations[category as ProductCategory] = null as Product[] | null;
+    if (!products || products.length === 0) {
+      recommendations[category as ProductCategory] = null;
     } else {
       products.sort((a, b) => {
         const brandCompare = a.brand.localeCompare(b.brand);
