@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'CurlsBot Blog',
     description: 'Articles about hair care, ingredients, and maintaining healthy hair',
-    type: 'blog',
+    type: 'article',
     images: ['/icon.png']
   },
   twitter: {
