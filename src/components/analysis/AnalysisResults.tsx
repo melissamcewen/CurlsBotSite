@@ -7,41 +7,41 @@ import { ChatBubbleRobot, ChatBubble, ChatFooter } from './ChatBubbleRobot';
 import { AnalysisFindings } from './findings/AnalysisFindings';
 import { AnalysisSummary } from './findings/AnalysisSummary';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { getBundledProducts } from 'haircare-ingredients-analyzer';
 
 interface Props {
   result: AnalysisResult;
   onTryAnother: () => void;
 }
 
-interface ProductRecommendation {
-  name: string;
-  brand: string;
-  buyUrl: string;
+// Get a product recommendation based on the current hour
+function getProductRecommendation() {
+  const products = getBundledProducts();
+  const allProducts = Object.values(products.products);
+
+  // Get current hour in UTC for stable rotation
+  const hourOfYear = Math.floor(Date.now() / (1000 * 60 * 60));
+
+  // Use the hour to select a product
+  const index = hourOfYear % allProducts.length;
+  const recommendedProduct = allProducts[index];
+
+  if (!recommendedProduct) return null;
+
+  return {
+    name: recommendedProduct.name,
+    brand: recommendedProduct.brand,
+    buyUrl: recommendedProduct.buy_url
+  };
 }
 
 export default function AnalysisResults({ result, onTryAnother }: Props) {
-  const [productRecommendation, setProductRecommendation] = useState<ProductRecommendation | null>(null);
-  const shouldShowRecommendation = result?.status === 'warning' || result?.status === 'caution';
-
-  // Fetch product recommendation from server
-  useEffect(() => {
-    if (shouldShowRecommendation) {
-      fetch('/api/product-recommendation')
-        .then(res => res.json())
-        .then(data => {
-          if (!data.error) {
-            setProductRecommendation(data);
-          }
-        })
-        .catch(console.error);
-    }
-  }, [shouldShowRecommendation]);
-
   if (!result) return null;
 
   const { description } = getStatusConfig(result.status);
   const hasIngredients = result.ingredients && result.ingredients.length > 0;
+  const shouldShowRecommendation = result?.status === 'warning' || result?.status === 'caution';
+  const productRecommendation = shouldShowRecommendation ? getProductRecommendation() : null;
 
   return (
     <div className="space-y-8">
@@ -79,7 +79,8 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
 
                 <button
                   onClick={onTryAnother}
-                  className="btn bg-secondary text-secondary-content w-full hover:bg-primary"
+                  className="btn bg-secondary text-secondary-content w-full hover:bg-primary will-change-transform"
+                  style={{ transform: 'translate3d(0, 0, 0)', backfaceVisibility: 'hidden' }}
                 >
                   Try another ingredients list
                 </button>
