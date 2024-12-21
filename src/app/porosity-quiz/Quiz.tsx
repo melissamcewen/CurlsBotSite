@@ -101,9 +101,7 @@ export default function Quiz() {
         <ChatBubbleRobot imageUrl="/normal.svg" status="ok">
           <ChatBubble status="ok">
             <div className="space-y-4">
-              <p className="font-bold text-lg mb-1">
-                Recommended Products for Your Hair Type
-              </p>
+            
               <ProductRecommendations porosityType={result.type} />
             </div>
           </ChatBubble>

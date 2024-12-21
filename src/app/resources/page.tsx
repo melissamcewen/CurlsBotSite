@@ -1,5 +1,5 @@
 import { BookOpenIcon, InformationCircleIcon } from '@heroicons/react/24/solid';
-
+import Link from 'next/link';
 export default function Resources() {
   return (
     <div className="max-w-4xl mx-auto">
@@ -12,14 +12,8 @@ export default function Resources() {
 
           <div className="prose prose-lg">
             <p>
-              All these resources may vary in what they consider curly hair, so we encourage you to do your own research and find what&apos;s best for your hair. If you&apos;d like to recommend a resource to add here, please <a href="mailto:mgmcewen@gmail.com" className="link link-primary">email me</a>.
+              All these resources may vary in what they consider curly hair, so we encourage you to do your own research and find what&apos;s best for your hair. If you&apos;d like to recommend a resource to add here, please <Link href="/contact" className="link link-primary">contact me</Link>.
             </p>
-
-            <h2 className="text-2xl font-bold mt-6">Online Tools</h2>
-            <ul className="list-disc pl-6">
-              <li><a href="https://www.textfixer.com/tools/remove-line-breaks.php" className="link link-primary" target="_blank" rel="noopener noreferrer">Text Fixer</a> - Helps format ingredient lists by removing line breaks</li>
-              <li><a href="https://www.online-utility.org/text/sort.jsp" className="link link-primary" target="_blank" rel="noopener noreferrer">Text Sorter</a> - Useful for organizing ingredient lists</li>
-            </ul>
 
             <h2 className="text-2xl font-bold mt-6">English Language Communities</h2>
             <ul className="list-disc pl-6">
