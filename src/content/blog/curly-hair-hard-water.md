@@ -14,7 +14,7 @@ What is Hard Water?
 
 Hard water contains high levels of dissolved minerals, particularly calcium and magnesium. You likely have hard water if you notice:
 - White residue on faucets, shower heads, or kettles
-- Soap scum that's difficult to clean
+- [Soap scum that's difficult to clean](/blog/is-soap-good-for-curls)
 - Spots on dishes after washing
 - Reduced soap lather
 
@@ -42,13 +42,13 @@ Regular clarifying is essential with hard water. Options include:
 - Ion Crystal Clarifying Treatment
 - DIY apple cider vinegar rinses (1 part vinegar to 3 parts water)
 
-Use these treatments monthly or as needed when you notice buildup. Not that most contain acids and strong detergents, so they can be harsh on your hair. Definitely don't use them too often, and it might help to deep condition after using them.
+Use these treatments monthly or as needed when you notice buildup. Not that most contain acids and strong [detergents](/groups/detergents), so they can be harsh on your hair. Definitely don't use them too often, and it might help to deep condition after using them.
 
 ### 2. Hard Water Specific Products
 
 Use products designed for hard water:
-- Chelating shampoos (containing EDTA or other chelating agents)
 - [Malibu Hard Water Wellness Shampoo](https://amzn.to/4golOk0)
+- Chelating shampoos (containing EDTA or other chelating agents)
 - Ion Hard Water Shampoo
 
 ### 3. Prevention Tips
@@ -83,4 +83,4 @@ Consider these solutions based on your budget and needs:
 - Best for homeowners
 - Benefits all water usage in home
 
-Remember: What works best can vary based on your water hardness, [hair porosity], and styling routine. Start with clarifying treatments and hard water specific products before investing in filtration systems.
+Remember: What works best can vary based on your water hardness, [hair porosity](/porosity-quiz), and styling routine. Start with clarifying treatments and hard water specific products before investing in filtration systems.

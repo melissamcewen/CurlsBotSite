@@ -14,7 +14,7 @@ What is Soap?
 
 * Soap is created through saponification - a chemical reaction between oils/fats and an alkali (like sodium hydroxide)
 * It has a high pH (typically 8-10)
-* It's different from modern detergent-based cleansers used in most shampoos
+* It's different from modern [detergent-based cleansers used in most shampoos](/groups/detergents)
 
 Why Soap Can Damage Your Hair
 ----------------------------
@@ -48,7 +48,8 @@ Shampoo bars are gaining popularity as an eco-friendly option. However, there ar
    * Often marketed as "natural" or "handmade"
 
 2. **Syndet Bars** (Can Be Curl-Friendly):
-   * Made with synthetic detergents
+   * Example: [HiBAR - Maintain Solid Shampoo Bar](https://amzn.to/4fx1RpU)
+   * Made with synthetic [detergents](/groups/detergents)
    * pH-balanced (around 5.5)
    * Similar to regular curl-friendly shampoos
    * Look for ingredients like sodium cocoyl isethionate
@@ -74,12 +75,20 @@ Better Alternatives for Curly Hair
 Instead of soap-based products, look for:
 
 1. **pH-Balanced Cleansers**: Products specifically formulated for hair care
-2. **Gentle Detergents**: Such as cocamidopropyl betaine or sodium cocoyl isethionate
+2. **Gentle [Detergents](/groups/detergents)**: Such as cocamidopropyl betaine or sodium cocoyl isethionate
 3. **Curl-Specific Products**: Formulations designed with curly hair needs in mind
 
 Remember: "Natural" doesn't always mean better for your hair. Modern hair care ingredients are often gentler and more effective than traditional soap.
 
-For specific product recommendations, check out our [cleansers guide](/groups/detergents) or use our [ingredient analyzer](/ingredients) to check your products.
+For specific product recommendations, check out our [cleansers guide](/groups/detergents) or use our [ingredient analyzer](/) to check your products.
+
+Syndet Bars (Soap-free Shampoo Bars)
+---------
+
+If you're looking for a shampoo bar that's not soap-based, here are a few that CurlsBot has checked:
+
+- [HiBAR - Maintain Solid Shampoo Bar](https://amzn.to/4fx1RpU)
+- [Aspen Kay Naturals - Solid Shampoo Bar](https://amzn.to/3BHhZai)
 
 Need Help?
 ---------
