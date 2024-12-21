@@ -34,7 +34,7 @@ export function ChatBubbleRobot({
   const borderClass = statusClasses[status] || 'border-primary';
 
   return (
-    <div className="chat chat-start lg:max-w-3xl">
+    <div className="chat chat-start lg:max-w-3xl lg:min-w-s">
       <div className={`chat-image avatar rounded-full border-2 ${borderClass}`}>
         <div className="w-10 h-10 mask mask-circle bg-white">
           <Image
@@ -93,7 +93,7 @@ export function ChatBubble({
 
   return (
     <div
-      className={`chat-bubble bg-base-300 border-t-2 p-6 text-base-content ${bubbleClass} ${className}`}
+      className={`chat-bubble bg-base-300 border-t-2 p-6 text-base-content w-full ${bubbleClass} ${className}`}
       style={{
         contain: 'content',
         contentVisibility: 'auto'
