@@ -1,5 +1,6 @@
 import { getBlogPosts } from '@/utils/markdown';
 import Link from 'next/link';
+import { BookOpenIcon } from '@heroicons/react/24/solid';
 
 interface BlogPost {
   slug: string;
@@ -19,30 +20,38 @@ export default async function BlogPage() {
   });
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold mb-6">Blog</h1>
-      <div className="space-y-6">
-        {sortedPosts.map((post) => (
-          <article key={post.slug} className="card bg-base-300 hover:bg-base-300 transition-colors">
-            <div className="card-body">
-              <h2 className="card-title">
-                <Link href={`/blog/${post.slug}`} className="hover:text-primary">
-                  {post.frontmatter.title}
-                </Link>
-              </h2>
-              {post.frontmatter.description && (
-                <p className="text-base-content/70">{post.frontmatter.description}</p>
-              )}
-              <div className="text-sm text-base-content/50">
-                {new Date(post.frontmatter.date).toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric'
-                })}
-              </div>
-            </div>
-          </article>
-        ))}
+    <div className="max-w-4xl mx-auto">
+      <div className="card bg-base-100 rounded-xl">
+        <div className="card-body">
+          <div className="flex items-center gap-2 mb-6">
+            <BookOpenIcon className="w-8 h-8 text-primary" />
+            <h1 className="text-3xl font-bold">Blog</h1>
+          </div>
+
+          <div className="space-y-4">
+            {sortedPosts.map((post) => (
+              <article key={post.slug} className="card bg-base-200 hover:bg-base-300 transition-colors">
+                <div className="card-body">
+                  <h2 className="card-title">
+                    <Link href={`/blog/${post.slug}`} className="hover:text-primary">
+                      {post.frontmatter.title}
+                    </Link>
+                  </h2>
+                  {post.frontmatter.description && (
+                    <p className="text-base-content/70">{post.frontmatter.description}</p>
+                  )}
+                  <div className="text-sm text-base-content/50">
+                    {new Date(post.frontmatter.date).toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric'
+                    })}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

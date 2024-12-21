@@ -13,9 +13,17 @@ function normalizeCategory(category: string): string {
     .join(' ');
 }
 
+type CategoryColors = {
+  [key: string]: string;
+  sulfates: string;
+  harsh_detergents: string;
+  mild_detergents: string;
+  other_detergents: string;
+};
+
 // Helper function to get category color
 function getCategoryColorClass(category: string): string {
-  const categoryMap: Record<string, string> = {
+  const categoryMap: CategoryColors = {
     sulfates: 'text-error',
     harsh_detergents: 'text-error',
     mild_detergents: 'text-info',
@@ -132,6 +140,7 @@ export default function DetergentsPage() {
                       <button
                         onClick={() => requestSort('name')}
                         className="flex items-center gap-2"
+                        aria-label={`Sort by ingredient name ${sortConfig.key === 'name' ? `(${sortConfig.direction}ending)` : ''}`}
                       >
                         Ingredient {getSortIcon('name')}
                       </button>
@@ -140,6 +149,7 @@ export default function DetergentsPage() {
                       <button
                         onClick={() => requestSort('category')}
                         className="flex items-center gap-2"
+                        aria-label={`Sort by category ${sortConfig.key === 'category' ? `(${sortConfig.direction}ending)` : ''}`}
                       >
                         Category {getSortIcon('category')}
                       </button>
@@ -147,7 +157,7 @@ export default function DetergentsPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {sortedDetergents.map((ingredient) => (
+                  {sortedDetergents.map((ingredient: Ingredient) => (
                     <tr key={ingredient.name}>
                       <td className="font-medium">
                         {ingredient.name}

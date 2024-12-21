@@ -32,6 +32,26 @@ const nextConfig = {
         destination: '/ingredients',
         permanent: true,
       },
+      {
+        source: '/dye',
+        destination: '/blog/curl-friendly-hair-dye',
+        permanent: true,
+      },
+      {
+        source: '/harder-water',
+        destination: '/blog/curly-hair-hard-water',
+        permanent: true,
+      },
+      {
+        source: '/shampoo-bars-are-not-cg',
+        destination: '/blog/is-soap-good-for-curls',
+        permanent: true,
+      },
+      {
+        source: '/shea',
+        destination: '/blog/is-shea-moisture-curl-friendly',
+        permanent: true,
+      },
     ];
   },
 };
