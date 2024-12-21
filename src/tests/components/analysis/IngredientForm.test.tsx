@@ -3,9 +3,10 @@ import IngredientForm from '@/components/analysis/IngredientForm';
 import '@testing-library/jest-dom';
 
 // Mock Next.js hooks
+const mockReplace = jest.fn();
 jest.mock('next/navigation', () => ({
   useRouter: () => ({
-    replace: jest.fn(),
+    replace: mockReplace,
   }),
   useSearchParams: () => ({
     get: jest.fn(),

@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, act } from '@testing-library/react';
 import AnalysisResults from '@/components/analysis/AnalysisResults';
 import { AnalysisResult } from 'haircare-ingredients-analyzer';
 import '@testing-library/jest-dom';
@@ -19,30 +19,34 @@ describe('AnalysisResults', () => {
 
   describe('product recommendations', () => {
     it('shows for warning status', async () => {
-      render(
-        <AnalysisResults
-          result={{
-            status: 'warning',
-            ingredients: [],
-          }}
-          onTryAnother={mockOnTryAnother}
-        />
-      );
+      await act(async () => {
+        render(
+          <AnalysisResults
+            result={{
+              status: 'warning',
+              ingredients: [],
+            }}
+            onTryAnother={mockOnTryAnother}
+          />
+        );
+      });
 
       // Wait for product recommendation to load
       expect(await screen.findByText(/Test Product by Test Brand/)).toBeInTheDocument();
     });
 
     it('shows for caution status', async () => {
-      render(
-        <AnalysisResults
-          result={{
-            status: 'caution',
-            ingredients: [],
-          }}
-          onTryAnother={mockOnTryAnother}
-        />
-      );
+      await act(async () => {
+        render(
+          <AnalysisResults
+            result={{
+              status: 'caution',
+              ingredients: [],
+            }}
+            onTryAnother={mockOnTryAnother}
+          />
+        );
+      });
 
       // Wait for product recommendation to load
       expect(await screen.findByText(/Test Product by Test Brand/)).toBeInTheDocument();
