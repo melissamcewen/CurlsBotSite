@@ -16,8 +16,59 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'CurlsBot',
-  description: 'Your intelligent assistant for analyzing hair care ingredients',
+  title: {
+    default: 'CurlsBot | Hair Care Ingredient Analysis',
+    template: '%s | CurlsBot'
+  },
+  description: 'Your intelligent assistant for analyzing hair care ingredients and understanding hair porosity. Get personalized hair care advice and ingredient analysis.',
+  keywords: ['hair care', 'ingredient analysis', 'curly hair', 'porosity', 'hair products', 'CurlsBot'],
+  authors: [{ name: 'CurlsBot' }],
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    siteName: 'CurlsBot',
+    title: 'CurlsBot - Hair Care Ingredient Analysis',
+    description: 'Your intelligent assistant for analyzing hair care ingredients and understanding hair porosity',
+    images: [
+      {
+        url: '/icon.png',
+        width: 512,
+        height: 512,
+        alt: 'CurlsBot Logo'
+      }
+    ]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'CurlsBot - Hair Care Ingredient Analysis',
+    description: 'Your intelligent assistant for analyzing hair care ingredients',
+    images: ['/icon.png']
+  },
+  manifest: '/manifest.json',
+  icons: {
+    icon: '/icon.png',
+    shortcut: '/favicon.ico',
+    apple: '/apple-icon.png'
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+  },
+  verification: {
+    google: 'google-site-verification-code', // You'll need to replace this with your actual verification code
+  },
+  category: 'technology',
 };
 
 export default function RootLayout({

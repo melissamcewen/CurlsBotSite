@@ -1,6 +1,7 @@
 import { getBlogPosts } from '@/utils/markdown';
 import Link from 'next/link';
 import { BookOpenIcon } from '@heroicons/react/24/solid';
+import { Metadata } from 'next';
 
 interface BlogPost {
   slug: string;
@@ -10,6 +11,23 @@ interface BlogPost {
     date: string;
   };
 }
+
+export const metadata: Metadata = {
+  title: 'Blog | CurlsBot',
+  description: 'Articles about hair care, ingredients, and maintaining healthy hair',
+  openGraph: {
+    title: 'CurlsBot Blog',
+    description: 'Articles about hair care, ingredients, and maintaining healthy hair',
+    type: 'blog',
+    images: ['/icon.png']
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'CurlsBot Blog',
+    description: 'Articles about hair care, ingredients, and maintaining healthy hair',
+    images: ['/icon.png']
+  }
+};
 
 export default async function BlogPage() {
   const posts = await getBlogPosts();

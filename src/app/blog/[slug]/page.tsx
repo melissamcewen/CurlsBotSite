@@ -2,6 +2,7 @@ import { getBlogPost } from '@/utils/markdown';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { BookOpenIcon } from '@heroicons/react/24/solid';
+import { Metadata } from 'next';
 
 interface BlogPost {
   frontmatter: {
@@ -15,6 +16,39 @@ interface BlogPost {
 interface Props {
   params: {
     slug: string;
+  };
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const post = await getBlogPost(params.slug);
+
+  if (!post) {
+    return {
+      title: 'Post Not Found',
+      description: 'The requested blog post could not be found.'
+    };
+  }
+
+  const { frontmatter } = post;
+  const formattedDate = new Date(frontmatter.date).toISOString();
+
+  return {
+    title: frontmatter.title,
+    description: frontmatter.description,
+    openGraph: {
+      title: frontmatter.title,
+      description: frontmatter.description,
+      type: 'article',
+      publishedTime: formattedDate,
+      authors: ['CurlsBot'],
+      images: ['/icon.png']
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: frontmatter.title,
+      description: frontmatter.description,
+      images: ['/icon.png']
+    }
   };
 }
 
