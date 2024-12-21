@@ -52,7 +52,7 @@ export function getProductRecommendations(porosityType: string) {
     }
 
     const category = product.product_categories[0] as ProductCategory;
-    if (product.tags?.includes(porosityTag)) {
+    if (product.tags?.includes(porosityTag) && CATEGORIES.includes(category)) {
       console.log('Found matching product:', {
         name: product.name,
         category,
@@ -68,11 +68,16 @@ export function getProductRecommendations(porosityType: string) {
 
   // Sort products within each category by brand and name
   Object.keys(recommendations).forEach((category) => {
-    recommendations[category as ProductCategory].sort((a, b) => {
-      const brandCompare = a.brand.localeCompare(b.brand);
-      if (brandCompare !== 0) return brandCompare;
-      return a.name.localeCompare(b.name);
-    });
+    const products = recommendations[category as ProductCategory];
+    if (products.length === 0) {
+      recommendations[category as ProductCategory] = null as any;
+    } else {
+      products.sort((a, b) => {
+        const brandCompare = a.brand.localeCompare(b.brand);
+        if (brandCompare !== 0) return brandCompare;
+        return a.name.localeCompare(b.name);
+      });
+    }
   });
 
   console.log('Final recommendations:', recommendations);
@@ -82,7 +87,7 @@ export function getProductRecommendations(porosityType: string) {
 
 export function ProductRecommendations({ porosityType, className = '' }: ProductRecommendationsProps) {
   const recommendations = getProductRecommendations(porosityType);
-  const hasProducts = Object.values(recommendations).some(products => products.length > 0);
+  const hasProducts = Object.values(recommendations).some(products => products !== null && products.length > 0);
 
   return (
     <div className={className} data-testid="product-recommendations">
@@ -93,7 +98,7 @@ export function ProductRecommendations({ porosityType, className = '' }: Product
         <div className="flex flex-wrap -mx-4">
           {CATEGORIES.map((category) => {
             const products = recommendations[category];
-            if (!products.length) return null;
+            if (!products) return null;
 
             return (
               <div key={category} className="flex-1 min-w-[350px] p-4">

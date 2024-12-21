@@ -6,13 +6,18 @@ this app uses a flat rounded design style so no shadows or sharp edges, also no 
 
 use solid heroicons V2 for icons, from the heroicons library @heroicons/react/solid
 
+tests go in the tests/src library
+
+tests should mainly be smoke tests, we're just trying to make sure nothing is broken. Don't focus on specific text in tests.
+
 use types from the haircare-ingredient-analyzer library when working with it
 
 avoid async/await in tests when using haircare-ingredients-analyzer since it's a synchronous local library - this prevents unnecessary complexity and race conditions in tests
 
-tests go in the tests/src library
 
 get ingredient data directly from haircare-ingredients-analyzer using getBundledDatabase() - do not create separate data files for ingredients
+
+the docs for the haircare-ingredients-analyzer library are in docs/hair-care-ingredients-analyzer.md
 
 
 the analysis results statuses correspond to the following daisy ui colors:
