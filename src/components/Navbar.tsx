@@ -17,6 +17,9 @@ export default function Navbar() {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
+            <Link href="/">Analysis</Link>
+          </li>
+          <li>
             <Link href="/ingredients">Ingredients</Link>
           </li>
           <li>
@@ -38,14 +41,13 @@ export default function Navbar() {
               </ul>
             </details>
           </li>
-
+          <li>
+            <Link href="/quiz">Porosity Quiz</Link>
+          </li>
           <li>
             <details>
               <summary>More</summary>
               <ul className="p-2 bg-accent rounded-t-none">
-                <li>
-                  <Link href="/quiz">Porosity Quiz</Link>
-                </li>
                 <li>
                   <Link href="/resources">Resources</Link>
                 </li>
