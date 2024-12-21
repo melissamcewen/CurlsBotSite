@@ -63,6 +63,10 @@ body {
   }
 
   .cb-text-ghost {
-    @apply text-base-content/60 font-medium 
+    @apply text-base-content/60 font-medium
+  }
+
+  .link-primary{
+    color: #41AEB4;
   }
 }
