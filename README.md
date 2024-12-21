@@ -1,6 +1,7 @@
 # CurlsBot Ingredient Analyzer
 
-A modern, type-safe web application built with Next.js that helps users analyze hair care product ingredients.
+> 🧪 A modern Next.js web app that analyzes haircare product ingredients using a custom-built analysis engine. Built with TypeScript, React 19, and TailwindCSS.
+
 
 ## 🚀 Tech Stack
 
