@@ -85,7 +85,9 @@ export function ChatBubble({
   const bubbleClass = statusClasses[status] || 'border-primary';
 
   return (
-    <div className={`chat-bubble bg-base-300 border-t-2 p-6 text-base-content ${bubbleClass} ${className}`}>
+    <div
+      className={`chat-bubble bg-base-300 border-t-2 p-6 text-base-content w-full ${bubbleClass} ${className}`}
+    >
       {children}
     </div>
   );
