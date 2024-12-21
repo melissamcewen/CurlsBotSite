@@ -4,6 +4,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { GoogleAnalytics } from '@/components/GoogleAnalytics';
+import { ThemeScript } from '@/components/ThemeScript';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -79,24 +80,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var theme = localStorage.getItem('theme') || 'cupcake';
-                  document.documentElement.setAttribute('data-theme', theme);
-                } catch (e) {}
-              })();
-            `,
-          }}
-        />
         <meta name="apple-mobile-web-app-title" content="cupcake" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-base-100 text-base-content`}
         suppressHydrationWarning
       >
+        <ThemeScript />
         <GoogleAnalytics />
         <div className="min-h-screen overflow-x-hidden">
           <div className="absolute inset-0 pointer-events-none" />

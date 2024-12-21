@@ -84,11 +84,13 @@ export default async function BlogPostPage({ params }: Props) {
               <h1 className="text-3xl font-bold m-0">{post.frontmatter.title}</h1>
             </div>
 
-            {post.frontmatter.description && (
-              <p className="text-xl text-base-content/70 -mt-4">
-                {post.frontmatter.description}
-              </p>
-            )}
+            <div className="min-h-[3rem] -mt-4">
+              {post.frontmatter.description && (
+                <p className="text-xl text-base-content/70">
+                  {post.frontmatter.description}
+                </p>
+              )}
+            </div>
 
             <div className="text-base-content/50 -mt-4 mb-8">
               {formattedDate}

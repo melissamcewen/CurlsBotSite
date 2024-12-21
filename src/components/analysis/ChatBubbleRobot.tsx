@@ -36,8 +36,8 @@ export function ChatBubbleRobot({
   return (
     <div className="chat chat-start lg:max-w-3xl ">
       <div className={`chat-image avatar rounded-full border-2 ${borderClass}`}>
-        <div className="w-10 mask mask-circle bg-white">
-          <Image src={finalImageUrl} alt={altText} width={40} height={40} />
+        <div className="w-10 h-10 mask mask-circle bg-white">
+          <Image src={finalImageUrl} alt={altText} width={40} height={40} priority />
         </div>
       </div>
       {children}

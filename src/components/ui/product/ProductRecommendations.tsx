@@ -95,37 +95,39 @@ export function ProductRecommendations({ porosityType, className = '' }: Product
   return (
     <div className={className} data-testid="product-recommendations">
       <h2 className="text-2xl font-bold mb-6">Recommended Products</h2>
-      {!hasProducts ? (
-        <p className="text-base-content/70">No product recommendations available at this time.</p>
-      ) : (
-        <div className="flex flex-wrap -mx-4">
-          {CATEGORIES.map((category) => {
-            const products = recommendations[category];
-            if (!products) return null;
+      <div className="min-h-[200px]">
+        {!hasProducts ? (
+          <p className="text-base-content/70">No product recommendations available at this time.</p>
+        ) : (
+          <div className="flex flex-wrap -mx-4">
+            {CATEGORIES.map((category) => {
+              const products = recommendations[category];
+              if (!products) return null;
 
-            return (
-              <div key={category} className="flex-1 min-w-[350px] p-4">
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold capitalize">
-                    {category.replace(/_/g, ' ')}
-                  </h3>
-                  <div className="grid grid-cols-1 gap-4">
-                    {products.map((product, index) => (
-                      <ProductRecommendation
-                        key={`${category}-${index}`}
-                        category={category}
-                        brand={product.brand}
-                        name={product.name}
-                        buyUrl={product.buyUrl}
-                      />
-                    ))}
+              return (
+                <div key={category} className="flex-1 min-w-[350px] p-4">
+                  <div className="space-y-4">
+                    <h3 className="text-xl font-semibold capitalize">
+                      {category.replace(/_/g, ' ')}
+                    </h3>
+                    <div className="grid grid-cols-1 gap-4">
+                      {products.map((product, index) => (
+                        <ProductRecommendation
+                          key={`${category}-${index}`}
+                          category={category}
+                          brand={product.brand}
+                          name={product.name}
+                          buyUrl={product.buyUrl}
+                        />
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
-      )}
+              );
+            })}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

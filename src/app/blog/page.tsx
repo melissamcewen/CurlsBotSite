@@ -61,15 +61,17 @@ export default async function BlogPage() {
           <div className="space-y-4">
             {sortedPosts.map((post) => (
               <article key={post.slug} className="card bg-base-200 hover:bg-base-300 transition-colors">
-                <div className="card-body">
+                <div className="card-body min-h-[150px]">
                   <h2 className="card-title">
                     <Link href={`/blog/${post.slug}`} className="hover:text-primary">
                       {post.frontmatter.title}
                     </Link>
                   </h2>
-                  {post.frontmatter.description && (
-                    <p className="text-base-content/70">{post.frontmatter.description}</p>
-                  )}
+                  <div className="min-h-[48px]">
+                    {post.frontmatter.description && (
+                      <p className="text-base-content/70">{post.frontmatter.description}</p>
+                    )}
+                  </div>
                   <div className="text-sm text-base-content/50">
                     {formatDate(post.frontmatter.date)}
                   </div>
