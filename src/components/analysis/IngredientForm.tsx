@@ -6,7 +6,7 @@ import { Analyzer, AnalysisResult } from 'haircare-ingredients-analyzer';
 import AnalysisResults from './AnalysisResults';
 import { ChatBubbleRobot, ChatBubble, ChatFooter } from './ChatBubbleRobot';
 import ChatBubbleUser from './ChatBubbleUser';
-
+import Link from 'next/link';
 interface Props {
   initialIngredients?: string;
   initialAnalysis?: AnalysisResult | null;
@@ -78,10 +78,15 @@ export default function IngredientForm({
         <>
           <ChatBubbleRobot imageUrl="/normal.svg" status="ok">
             <ChatBubble status="ok">
-              Hi! I&apos;m CurlsBot, your helpful hair care ingredient analyzer.
-              Just paste an ingredients list below and I&apos;ll analyze it for
+              Hi! I&apos;m CurlsBot! I analyze hair care ingredients with curly and wavy hair in mind. Just paste an ingredients list below and I&apos;ll analyze it for
               you.
             </ChatBubble>
+
+            <ChatFooter>
+              <Link href="/about">
+                Learn more
+              </Link>
+            </ChatFooter>
           </ChatBubbleRobot>
 
           <div className="max-w-2xl ml-auto">
