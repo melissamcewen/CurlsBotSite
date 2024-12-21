@@ -42,7 +42,7 @@ export default function Navbar() {
             </details>
           </li>
           <li>
-            <Link href="/quiz">Porosity Quiz</Link>
+            <Link href="/porosity-quiz">Porosity Quiz</Link>
           </li>
           <li>
             <details>
@@ -99,7 +99,7 @@ export default function Navbar() {
               </details>
             </li>
             <li>
-              <Link href="/quiz">Porosity Quiz</Link>
+              <Link href="/porosity-quiz">Porosity Quiz</Link>
             </li>
             <li>
               <Link href="/blog">Blog</Link>

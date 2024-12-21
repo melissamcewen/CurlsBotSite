@@ -52,6 +52,11 @@ const nextConfig = {
         destination: '/blog/is-shea-moisture-curl-friendly',
         permanent: true,
       },
+      {
+        source: '/porosity',
+        destination: '/porosity-quiz',
+        permanent: true,
+      },
     ];
   },
 };

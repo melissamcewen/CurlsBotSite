@@ -18,7 +18,7 @@ Hard water contains high levels of dissolved minerals, particularly calcium and 
 - Spots on dishes after washing
 - Reduced soap lather
 
-Most of the United States has moderate to hard water. You can check your area's water hardness through your local water utility's annual report or use [inexpensive test strips](http://amzn.to/2CufGmr) for a quick assessment.
+Most of the United States has moderate to hard water. You can check your area's water hardness through your local water utility's annual report or use [inexpensive test strips](https://amzn.to/40654Iz) for a quick assessment.
 
 How Hard Water Affects Curly Hair
 -------------------
@@ -38,18 +38,18 @@ Solutions for Hard Water
 ### 1. Clarifying Treatments
 
 Regular clarifying is essential with hard water. Options include:
-- Chelating treatments like [Malibu C Demineralizer](http://amzn.to/2HrewMd)
+- Chelating treatments like [Malibu C Demineralizer](https://amzn.to/4gOtwUq) and their special one for curly hair [Malibu C Curl Partner Wellness Remedy](https://amzn.to/3BIoNVg)
 - Ion Crystal Clarifying Treatment
 - DIY apple cider vinegar rinses (1 part vinegar to 3 parts water)
 
-Use these treatments monthly or as needed when you notice buildup.
+Use these treatments monthly or as needed when you notice buildup. Not that most contain acids and strong detergents, so they can be harsh on your hair. Definitely don't use them too often, and it might help to deep condition after using them.
 
 ### 2. Hard Water Specific Products
 
 Use products designed for hard water:
 - Chelating shampoos (containing EDTA or other chelating agents)
-- [Malibu Hard Water Wellness Shampoo](http://amzn.to/2FaYdCp)
-- Ion Hard Water Shampoo (a more affordable alternative)
+- [Malibu Hard Water Wellness Shampoo](https://amzn.to/4golOk0)
+- Ion Hard Water Shampoo
 
 ### 3. Prevention Tips
 
@@ -59,6 +59,7 @@ Adjust your routine to minimize buildup:
 - Use lighter, water-soluble products
 - Deep condition only mid-shaft to ends
 - Clarify regularly before buildup becomes severe
+- Don't use [soap-based products](/blog/is-soap-good-for-curls) as they react with hard water to create even more buildup
 
 ### 4. Water Filtration Options
 
@@ -82,4 +83,4 @@ Consider these solutions based on your budget and needs:
 - Best for homeowners
 - Benefits all water usage in home
 
-Remember: What works best can vary based on your water hardness, hair porosity, and styling routine. Start with clarifying treatments and hard water specific products before investing in filtration systems.
+Remember: What works best can vary based on your water hardness, [hair porosity], and styling routine. Start with clarifying treatments and hard water specific products before investing in filtration systems.

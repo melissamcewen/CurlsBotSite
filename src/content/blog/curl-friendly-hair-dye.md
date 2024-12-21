@@ -29,10 +29,17 @@ So maybe it is both truly the best and worst dye for curls. It won't damage them
 
 Some people report that using amla, an Indian herb that is mixed in with henna, can help with curl retention. There isn't a ton of research on this, but it is worth a try.
 
+This is the henna mix I use:
 
+- [Amla](https://amzn.to/3PbXEwQ): For dye release, you mix it in with the henna and distilled and wait overnight. Amla is supposed to help with curl retention and to achieve a cooler color.
+- [Rajastani Twilight Henna](https://amzn.to/49WcfGA)
+
+I also use [Ancient Sunrise's rainwash](https://amzn.to/3P8Tnus) to clarify my hair before dyeing.
+
+You can [also get Ancient Sunrise's products in a kit form with all the ingredients pre-measured](https://amzn.to/49WcfGA). I find that kits and making your own mix is the best way to go, in terms of being able to control what color you get.
 
 ### Tips for Using Henna:
-1. **Source Quality Products**: Purchase from reputable brands that sell pure, body-art quality henna like [Ancient Sunrise](http://www.ancientsunrise.com/). Avoid compound henna or products with added ingredients.
+1. **Source Quality Products**: Purchase from reputable brands that sell pure, body-art quality henna like [Ancient Sunrise](https://amzn.to/3VOhz8Q). Avoid compound henna or products with added ingredients.
 
 2. **Proper Preparation**:
    - Always do a strand test

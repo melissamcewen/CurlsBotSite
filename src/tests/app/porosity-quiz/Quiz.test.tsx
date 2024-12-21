@@ -1,5 +1,6 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import Quiz from '@/app/quiz/Quiz';
+import Quiz from '@/app/porosity-quiz/Quiz';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import React from 'react';
 
 describe('Quiz', () => {
@@ -9,7 +10,7 @@ describe('Quiz', () => {
       !button.textContent?.toLowerCase().includes('take quiz again')
     );
     if (buttons.length > 0) {
-      fireEvent.click(buttons[0]);
+      userEvent.click(buttons[0]);
     }
   };
 
@@ -50,7 +51,7 @@ describe('Quiz', () => {
     }
     // Click restart
     const restartButton = screen.getByRole('button', { name: /take quiz again/i });
-    fireEvent.click(restartButton);
+    userEvent.click(restartButton);
     // Verify we're back at the start by checking for answer buttons
     const answerButtons = screen.getAllByRole('button').filter(button =>
       !button.textContent?.toLowerCase().includes('take quiz again')
