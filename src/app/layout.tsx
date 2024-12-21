@@ -4,7 +4,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { GoogleAnalytics } from '@/components/GoogleAnalytics';
-import { ThemeScript } from '@/components/ThemeScript';
+import Script from 'next/script';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -73,6 +73,18 @@ export const metadata: Metadata = {
   category: 'technology',
 };
 
+// Move theme script to a raw string for earlier execution
+const themeScript = `
+  (function() {
+    try {
+      var theme = localStorage.getItem('theme') || 'cupcake';
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (e) {
+      document.documentElement.setAttribute('data-theme', 'cupcake');
+    }
+  })();
+`;
+
 export default function RootLayout({
   children,
 }: {
@@ -81,7 +93,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <ThemeScript />
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <meta name="apple-mobile-web-app-title" content="cupcake" />
       </head>
       <body
