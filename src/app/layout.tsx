@@ -62,14 +62,15 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-  },
   verification: {
     google: 'google-site-verification-code', // You'll need to replace this with your actual verification code
   },
   category: 'technology',
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({
