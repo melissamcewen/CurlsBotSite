@@ -12,7 +12,7 @@ export default function ChatBubbleUser({
   const borderClass = secondary ? 'border-secondary' : accent ? 'border-accent' : 'border-primary';
 
   return (
-    <div className="chat chat-end">
+    <div className="chat chat-end max-w-2xl ml-auto">
       <div
         className={`chat-bubble bg-base-300 text-base-content border-t-2 w-full ${borderClass}`}
       >

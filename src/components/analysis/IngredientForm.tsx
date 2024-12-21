@@ -77,7 +77,7 @@ export default function IngredientForm() {
             </ChatBubble>
           </ChatBubbleRobot>
 
-          <div className="max-w-2xl ml-auto">
+          <div className=" ">
             <ChatBubbleUser
               message={
                 <form onSubmit={handleSubmit} className="w-full">

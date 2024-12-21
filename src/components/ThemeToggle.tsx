@@ -3,14 +3,15 @@
 import { useEffect, useState } from 'react';
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState('cupcake');
+  const [theme, setTheme] = useState<string | null>(null);
 
   useEffect(() => {
-    // Get initial theme from localStorage or default to 'cupcake'
-    const savedTheme = localStorage.getItem('theme') || 'cupcake';
-    setTheme(savedTheme);
-    document.documentElement.setAttribute('data-theme', savedTheme);
-  }, []);
+    // Only update state if it doesn't match current theme
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    if (theme !== currentTheme) {
+      setTheme(currentTheme);
+    }
+  }, [theme]);
 
   const toggleTheme = () => {
     const newTheme = theme === 'cupcake' ? 'synthwave' : 'cupcake';
@@ -18,6 +19,9 @@ export default function ThemeToggle() {
     localStorage.setItem('theme', newTheme);
     document.documentElement.setAttribute('data-theme', newTheme);
   };
+
+  // Don't render until we have the theme
+  if (theme === null) return null;
 
   return (
     <label className="swap swap-rotate">
