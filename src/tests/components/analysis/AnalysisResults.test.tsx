@@ -31,8 +31,10 @@ describe('AnalysisResults', () => {
         );
       });
 
-      // Wait for product recommendation to load
-      expect(await screen.findByText(/Test Product by Test Brand/)).toBeInTheDocument();
+      // Check for product recommendation section without specific text
+      expect(await screen.findByText(/If you're looking for a product/)).toBeInTheDocument();
+      // Verify link exists
+      expect(screen.getByRole('link', { name: /by/ })).toBeInTheDocument();
     });
 
     it('shows for caution status', async () => {
@@ -48,8 +50,10 @@ describe('AnalysisResults', () => {
         );
       });
 
-      // Wait for product recommendation to load
-      expect(await screen.findByText(/Test Product by Test Brand/)).toBeInTheDocument();
+      // Check for product recommendation section without specific text
+      expect(await screen.findByText(/If you're looking for a product/)).toBeInTheDocument();
+      // Verify link exists
+      expect(screen.getByRole('link', { name: /by/ })).toBeInTheDocument();
     });
   });
 

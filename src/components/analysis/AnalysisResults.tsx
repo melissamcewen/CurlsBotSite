@@ -64,7 +64,7 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
                   <p>{description}</p>
                   {productRecommendation && (
                     <p>
-                      Here&apos;s a product I think you might like:{' '}
+                      If you&apos;re looking for a product, I recommend:{' '}
                       <a
                         href={productRecommendation.buyUrl}
                         target="_blank"
@@ -79,8 +79,8 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
 
                 <button
                   onClick={onTryAnother}
-                  className="btn bg-secondary text-secondary-content w-full hover:bg-primary will-change-transform"
-                  style={{ transform: 'translate3d(0, 0, 0)', backfaceVisibility: 'hidden' }}
+                  className="btn bg-secondary text-secondary-content w-full hover:bg-primary animate-none"
+                  style={{ animation: 'none', transition: 'none' }}
                 >
                   Try another ingredients list
                 </button>

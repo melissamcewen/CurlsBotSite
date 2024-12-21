@@ -91,10 +91,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning data-theme="cupcake">
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <meta name="apple-mobile-web-app-title" content="cupcake" />
+        {/* Preload all images */}
+        <link rel="preload" href="/logo.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/normal.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/surprised.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/exclaim.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/normal.png" as="image" type="image/png" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-base-100 text-base-content`}

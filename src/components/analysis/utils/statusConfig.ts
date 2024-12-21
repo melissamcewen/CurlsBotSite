@@ -27,7 +27,7 @@ export const getStatusConfig = (status: string): StatusConfig => {
         alertClass: 'alert-error',
         alertContentClass: 'text-error-content',
         description:
-          'Yikes, I found some ingredients in this list that might not be the best for your hair. You might want to consider a different product or check with a hair expert. Your hair deserves the best!',
+          'Hmm, I found a few tricky ingredients in this list. They might be okay for some people, but it’s always a good idea to double-check! You know your hair best, so listen to it.',
       };
     case 'caution':
       return {
