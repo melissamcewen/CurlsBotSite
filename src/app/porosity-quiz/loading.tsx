@@ -1,6 +1,3 @@
-import { ChatBubbleRobot, ChatBubble } from '@/components/analysis/ChatBubbleRobot';
-import ChatBubbleUser from '@/components/analysis/ChatBubbleUser';
-
 export default function QuizLoading() {
   return (
     <div className="space-y-6 animate-pulse">

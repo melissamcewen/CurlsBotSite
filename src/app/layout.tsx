@@ -81,13 +81,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <ThemeScript />
         <meta name="apple-mobile-web-app-title" content="cupcake" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-base-100 text-base-content`}
         suppressHydrationWarning
       >
-        <ThemeScript />
         <GoogleAnalytics />
         <div className="min-h-screen overflow-x-hidden">
           <div className="absolute inset-0 pointer-events-none" />
