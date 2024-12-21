@@ -9,6 +9,7 @@ import { BeakerIcon, ExclamationTriangleIcon, ExclamationCircleIcon, CheckCircle
 import { ChatBubbleRobot, ChatHeader, ChatBubble, ChatFooter } from './ChatBubbleRobot';
 import { AnalysisFindings } from './findings/AnalysisFindings';
 import { AnalysisSummary } from './findings/AnalysisSummary';
+import Link from 'next/link';
 
 interface Props {
   result: AnalysisResult;
@@ -89,6 +90,9 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
                 </button>
               </div>
             </ChatBubble>
+            <ChatFooter>
+              Got a question or concern? <Link href="/contact" className="link link-primary">Contact Us</Link>
+            </ChatFooter>
           </ChatBubbleRobot>
         </div>
 
