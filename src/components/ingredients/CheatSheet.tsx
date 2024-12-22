@@ -11,34 +11,48 @@ export const SourceItem: React.FC<SourceItemProps> = ({ source, status, link, de
   const getStatusIcon = () => {
     switch (status) {
       case 'warning':
-        return <ExclamationCircleIcon className="w-4 h-4 text-error" />;
+        return <ExclamationCircleIcon className="w-5 h-5 text-error" />;
       case 'caution':
-        return <ExclamationTriangleIcon className="w-4 h-4 text-warning" />;
+        return <ExclamationTriangleIcon className="w-5 h-5 text-warning" />;
       case 'good':
-        return <CheckCircleIcon className="w-4 h-4 text-success" />;
+        return <CheckCircleIcon className="w-5 h-5 text-success" />;
       case 'ok':
-        return <InformationCircleIcon className="w-4 h-4 text-info" />;
+        return <InformationCircleIcon className="w-5 h-5 text-info" />;
       default:
         return null;
     }
   };
 
-  const content = (
+  const getStatusText = () => {
+    switch (status) {
+      case 'warning':
+        return 'Avoid';
+      case 'caution':
+        return 'Caution';
+      case 'good':
+        return 'Good';
+      case 'ok':
+        return 'OK';
+      default:
+        return '';
+    }
+  };
+
+  return (
     <div className="flex items-center gap-2">
       {getStatusIcon()}
-      <span>{source}</span>
-      <span className="text-sm capitalize">
-        {description}
-      </span>
+      <div className="flex items-center">
+        {link ? (
+          <a href={link} className="cb-link-emphasized" target="_blank" rel="noopener noreferrer">
+            {source}
+          </a>
+        ): (
+          <span>{source}</span>
+        )}
+        <span className="mx-1">:</span>
+        <span>{description}</span>
+      </div>
     </div>
-  );
-
-  return link ? (
-    <a href={link} className="hover:underline" target="_blank" rel="noopener noreferrer">
-      {content}
-    </a>
-  ) : (
-    content
   );
 };
 
@@ -47,7 +61,7 @@ interface IngredientChipProps {
 }
 
 export const IngredientChip: React.FC<IngredientChipProps> = ({ name }) => (
-  <div className="badge badge-neutral badge-lg rounded-full font-normal">{name}</div>
+  <div className="cb-badge  font-normal">{name}</div>
 );
 
 export interface IdentificationSectionProps {
@@ -57,11 +71,13 @@ export interface IdentificationSectionProps {
 
 export const IdentificationSection: React.FC<IdentificationSectionProps> = ({ title, ingredients }) => (
   <div className="space-y-2">
-    <div className="text-sm">{title}</div>
+    <div className="cb-card-lite space-y-3 bg-base-100">
+    <div className="">{title}</div>
     <div className="flex flex-wrap gap-2">
       {ingredients.map((ingredient) => (
         <IngredientChip key={ingredient} name={ingredient} />
       ))}
+    </div>
     </div>
   </div>
 );
@@ -80,23 +96,27 @@ export const CheatSheet: React.FC<CheatSheetProps> = ({
   identificationSections,
 }) => {
   return (
-    <div className="card bg-base-100 p-6 space-y-6">
+    <div className="card bg-base-200 p-6 space-y-6">
       <div>
-        <h2 className="text-xl font-semibold mb-2">{title}</h2>
-        <p className="text-sm">{description}</p>
+        <h2 className="cb-header">
+
+          {title}</h2>
+        <p className="">{description}</p>
       </div>
 
-      <div className="space-y-2">
-        <h3 className="font-medium">Sources</h3>
-        <div className="space-y-1">
+      <div className="space-y-2 " >
+        <div className="cb-card-lite space-y-3 bg-base-100">
+        <h3 className="cb-grouping-header">Sources</h3>
+        <div className=" space-y-3">
           {sources.map((source, index) => (
             <SourceItem key={index} {...source} />
           ))}
         </div>
+        </div>
       </div>
 
       <div className="space-y-4">
-        <h3 className="font-medium">How to identify</h3>
+        <h3 className="cb-smaller-header">How to identify</h3>
         {identificationSections.map((section, index) => (
           <IdentificationSection key={index} {...section} />
         ))}

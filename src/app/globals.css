@@ -78,6 +78,15 @@ html {
     color: #41AEB4;
   }
 
+  .cb-card-lite{
+    @apply  rounded-lg p-4;
+  }
+
+  .cb-link-emphasized{
+    color: #41AEB4;
+    font-weight: 600;
+  }
+
   /* Alert link styles */
   .bg-warning\/10 a, .bg-info\/10 a {
     @apply underline decoration-base-content/30 hover:decoration-base-content/70 font-medium;
