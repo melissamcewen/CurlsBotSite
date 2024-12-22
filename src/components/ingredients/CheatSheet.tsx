@@ -87,6 +87,8 @@ export interface CheatSheetProps {
   description: string;
   sources: SourceItemProps[];
   identificationSections: IdentificationSectionProps[];
+  exceptionsSections?: IdentificationSectionProps[];
+  exceptionsDescription?: string;
 }
 
 export const CheatSheet: React.FC<CheatSheetProps> = ({
@@ -94,24 +96,24 @@ export const CheatSheet: React.FC<CheatSheetProps> = ({
   description,
   sources,
   identificationSections,
+  exceptionsSections,
+  exceptionsDescription,
 }) => {
   return (
     <div className="card bg-base-200 p-6 space-y-6">
       <div>
-        <h2 className="cb-header">
-
-          {title}</h2>
+        <h2 className="cb-header">{title}</h2>
         <p className="">{description}</p>
       </div>
 
-      <div className="space-y-2 " >
+      <div className="space-y-2 ">
         <div className="cb-card-lite space-y-3 bg-base-100">
-        <h3 className="cb-grouping-header">Sources</h3>
-        <div className=" space-y-3">
-          {sources.map((source, index) => (
-            <SourceItem key={index} {...source} />
-          ))}
-        </div>
+          <h3 className="cb-grouping-header">Sources</h3>
+          <div className=" space-y-3">
+            {sources.map((source, index) => (
+              <SourceItem key={index} {...source} />
+            ))}
+          </div>
         </div>
       </div>
 
@@ -121,6 +123,15 @@ export const CheatSheet: React.FC<CheatSheetProps> = ({
           <IdentificationSection key={index} {...section} />
         ))}
       </div>
+      {exceptionsSections && (
+        <div className="space-y-4">
+          <h3 className="cb-smaller-header">Exceptions</h3>
+          <p className="">{exceptionsDescription}</p>
+          {exceptionsSections.map((section, index) => (
+            <IdentificationSection key={index} {...section} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

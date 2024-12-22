@@ -1,7 +1,8 @@
 import { Metadata } from 'next';
 import SiliconesCheatSheet from '@/components/ingredients/cards/SiliconesCheatSheet';
-import WaterSolubleSiliconesCheatSheet from '@/components/ingredients/cards/WaterSolubleSiliconesCheatSheet';
-
+import WaxesCheatSheet from '@/components/ingredients/cards/WaxesCheatSheet';
+import PetroCheatSheet from '@/components/ingredients/cards/PetroCheatSheet';
+import SulfatesCheatSheet from '@/components/ingredients/cards/SulfatesCheatSheet';
 export const metadata: Metadata = {
   title: 'Haircare Ingredients Cheat Sheet',
   description: 'Quick guide to identify common haircare ingredient types by name',
@@ -20,7 +21,9 @@ export default function IngredientsCheatSheetPage() {
 
         <div className="grid gap-6">
           <SiliconesCheatSheet />
-          <WaterSolubleSiliconesCheatSheet />
+          <WaxesCheatSheet />
+          <PetroCheatSheet />
+          <SulfatesCheatSheet />
         </div>
       </div>
     </div>
