@@ -1,12 +1,6 @@
 import { Metadata } from 'next';
-import { SiliconesCard } from '@/components/ingredients/cards/SiliconesCard';
-import { WaxesCard } from '@/components/ingredients/cards/WaxesCard';
-import { SulfatesCard } from '@/components/ingredients/cards/SulfatesCard';
-import { OtherDetergentsCard } from '@/components/ingredients/cards/OtherDetergentsCard';
-import { GentleDetergentsCard } from '@/components/ingredients/cards/GentleDetergentsCard';
-import { SoapCard } from '@/components/ingredients/cards/SoapCard';
-import { WitchHazelCard } from '@/components/ingredients/cards/WitchHazelCard';
-import { ParabensCard } from '@/components/ingredients/cards/ParabensCard';
+import SiliconesCheatSheet from '@/components/ingredients/cards/SiliconesCheatSheet';
+
 
 export const metadata: Metadata = {
   title: 'Haircare Ingredients Cheat Sheet',
@@ -25,14 +19,8 @@ export default function IngredientsCheatSheetPage() {
         </div>
 
         <div className="grid gap-6">
-          <SiliconesCard />
-          <WaxesCard />
-          <SulfatesCard />
-          <OtherDetergentsCard />
-          <GentleDetergentsCard />
-          <SoapCard />
-          <WitchHazelCard />
-          <ParabensCard />
+          <SiliconesCheatSheet />
+
         </div>
       </div>
     </div>
