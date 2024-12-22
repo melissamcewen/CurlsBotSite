@@ -39,10 +39,11 @@ export const metadata: Metadata = {
     description: 'Your intelligent assistant for analyzing hair care ingredients and understanding hair porosity',
     images: [
       {
-        url: '/icon.png',
-        width: 512,
-        height: 512,
-        alt: 'CurlsBot Logo'
+        url: '/images/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'CurlsBot - Hair Care Ingredient Analysis',
+        type: 'image/png',
       }
     ]
   },
@@ -50,7 +51,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'CurlsBot - Hair Care Ingredient Analysis',
     description: 'Your intelligent assistant for analyzing hair care ingredients',
-    images: ['/icon.png']
+    images: ['/images/og-default.png']
   },
   manifest: '/manifest.json',
   icons: {
