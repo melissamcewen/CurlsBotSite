@@ -6,15 +6,21 @@ import { Analyzer, AnalysisResult } from 'haircare-ingredients-analyzer';
 import AnalysisResults from './AnalysisResults';
 import { ChatBubbleRobot, ChatBubble, ChatFooter } from './ChatBubbleRobot';
 import ChatBubbleUser from './ChatBubbleUser';
+import Link from 'next/link';
+interface Props {
+  initialIngredients?: string;
+  initialAnalysis?: AnalysisResult | null;
+}
 
-export default function IngredientForm() {
-  const [ingredients, setIngredients] = useState('');
-  const [analysisResult, setAnalysisResult] = useState<AnalysisResult | null>(
-    null,
-  );
+export default function IngredientForm({
+  initialIngredients = '',
+  initialAnalysis = null
+}: Props) {
+  const [ingredients, setIngredients] = useState(initialIngredients);
+  const [analysisResult, setAnalysisResult] = useState<AnalysisResult | null>(initialAnalysis);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [showForm, setShowForm] = useState(true);
+  const [showForm, setShowForm] = useState(!initialAnalysis);
   const router = useRouter();
   const searchParams = useSearchParams();
   const initialLoadDone = useRef(false);
@@ -44,8 +50,9 @@ export default function IngredientForm() {
     router.replace('/', { scroll: false });
   };
 
+  // Only handle URL ingredients if there's no initial analysis
   useEffect(() => {
-    if (!initialLoadDone.current) {
+    if (!initialLoadDone.current && !initialAnalysis) {
       const urlIngredients = searchParams.get('ingredients');
       if (urlIngredients) {
         setIngredients(urlIngredients);
@@ -53,7 +60,7 @@ export default function IngredientForm() {
       }
       initialLoadDone.current = true;
     }
-  }, [searchParams, handleAnalysis]);
+  }, [searchParams, handleAnalysis, initialAnalysis]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -71,10 +78,15 @@ export default function IngredientForm() {
         <>
           <ChatBubbleRobot imageUrl="/normal.svg" status="ok">
             <ChatBubble status="ok">
-              Hi! I&apos;m CurlsBot, your helpful hair care ingredient analyzer.
-              Just paste an ingredients list below and I&apos;ll analyze it for
+              Hi! I&apos;m CurlsBot! I analyze hair care ingredients with curly and wavy hair in mind. Just paste an ingredients list below and I&apos;ll analyze it for
               you.
             </ChatBubble>
+
+            <ChatFooter>
+              <Link href="/about">
+                Learn more
+              </Link>
+            </ChatFooter>
           </ChatBubbleRobot>
 
           <div className="max-w-2xl ml-auto">

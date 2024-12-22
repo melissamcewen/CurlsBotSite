@@ -1,24 +1,16 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import { useRouter, useSearchParams } from 'next/navigation';
 import IngredientForm from '@/components/analysis/IngredientForm';
+import '@testing-library/jest-dom';
 
-// Mock Next.js navigation hooks
+// Mock Next.js hooks
 const mockReplace = jest.fn();
 jest.mock('next/navigation', () => ({
-  useRouter: () => ({ replace: mockReplace }),
-  useSearchParams: () => new URLSearchParams('')
-}));
-
-// Mock haircare-ingredients-analyzer to prevent console noise
-jest.mock('haircare-ingredients-analyzer', () => ({
-  Analyzer: jest.fn().mockImplementation(() => ({
-    analyze: jest.fn((input) => ({
-      input,
-      status: 'ok',
-      reasons: [],
-      ingredients: []
-    }))
-  }))
+  useRouter: () => ({
+    replace: mockReplace,
+  }),
+  useSearchParams: () => ({
+    get: jest.fn(),
+  }),
 }));
 
 describe('IngredientForm', () => {

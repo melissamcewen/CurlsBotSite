@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { getBundledDatabase, Ingredient } from 'haircare-ingredients-analyzer';
+import { Suspense } from 'react';
+import Loading from './loading';
 
 // Helper function to normalize category names
 function normalizeCategory(category: string): string {
@@ -42,7 +44,7 @@ function getCategoryColorClass(category: string): string {
   return categoryMap[category.toLowerCase()] || 'text-base-content';
 }
 
-export default function IngredientsPage() {
+function IngredientsTable() {
   const [sortConfig, setSortConfig] = useState<{
     key: keyof Ingredient;
     direction: 'asc' | 'desc';
@@ -86,62 +88,68 @@ export default function IngredientsPage() {
   };
 
   return (
+    <table className="table table-zebra w-full">
+      <thead>
+        <tr>
+          <th>
+            <button
+              onClick={() => requestSort('name')}
+              className="flex items-center gap-2"
+            >
+              Name {getSortIcon('name')}
+            </button>
+          </th>
+          <th>
+            <button
+              onClick={() => requestSort('categories')}
+              className="flex items-center gap-2"
+            >
+              Categories {getSortIcon('categories')}
+            </button>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {sortedIngredients.map((ingredient) => (
+          <tr key={ingredient.name}>
+            <td className="font-medium">
+              {ingredient.name}
+              {ingredient.synonyms && ingredient.synonyms.length > 0 && (
+                <div className="text-sm text-base-content/70">
+                  Also: {ingredient.synonyms.join(', ')}
+                </div>
+              )}
+            </td>
+            <td>
+              <div className="flex flex-wrap gap-2">
+                {ingredient.categories.map((category) => (
+                  <div
+                    key={category}
+                    className="flex items-center gap-1.5"
+                  >
+                    <span className={`inline-block w-2 h-2 rounded-full ${getCategoryColorClass(category)} ring-1 ring-current`} />
+                    <span className="text-sm">
+                      {normalizeCategory(category)}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
+
+export default function IngredientsPage() {
+  return (
     <div className="max-w-5xl mx-auto">
       <h1 className="text-3xl font-bold mb-6">Ingredients Database</h1>
       <div className="overflow-x-auto">
-        <table className="table table-zebra w-full">
-          <thead>
-            <tr>
-              <th>
-                <button
-                  onClick={() => requestSort('name')}
-                  className="flex items-center gap-2"
-                >
-                  Name {getSortIcon('name')}
-                </button>
-              </th>
-              <th>
-                <button
-                  onClick={() => requestSort('categories')}
-                  className="flex items-center gap-2"
-                >
-                  Categories {getSortIcon('categories')}
-                </button>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {sortedIngredients.map((ingredient) => (
-              <tr key={ingredient.name}>
-                <td className="font-medium">
-
-                    {ingredient.name}
-               
-                  {ingredient.synonyms && ingredient.synonyms.length > 0 && (
-                    <div className="text-sm text-base-content/70">
-                      Also: {ingredient.synonyms.join(', ')}
-                    </div>
-                  )}
-                </td>
-                <td>
-                  <div className="flex flex-wrap gap-2">
-                    {ingredient.categories.map((category) => (
-                      <div
-                        key={category}
-                        className="flex items-center gap-1.5"
-                      >
-                        <span className={`inline-block w-2 h-2 rounded-full ${getCategoryColorClass(category)} ring-1 ring-current`} />
-                        <span className="text-sm">
-                          {normalizeCategory(category)}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <Suspense fallback={<Loading />}>
+          <IngredientsTable />
+        </Suspense>
       </div>
     </div>
   );

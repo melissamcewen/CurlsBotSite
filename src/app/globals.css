@@ -2,11 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  transition: background-color 0s !important;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,6 +19,15 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+  transition: background-color 0s !important;
+}
+
+/* Prevent button and image flash */
+.btn, .chat-image {
+  transition: all 0s !important;
 }
 
 @layer components {
@@ -69,4 +77,19 @@ body {
   .link-primary{
     color: #41AEB4;
   }
+
+  .cb-card-lite{
+    @apply  rounded-lg p-4;
+  }
+
+  .cb-link-emphasized{
+    color: #41AEB4;
+    font-weight: 600;
+  }
+
+  /* Alert link styles */
+  .bg-warning\/10 a, .bg-info\/10 a {
+    @apply underline decoration-base-content/30 hover:decoration-base-content/70 font-medium;
+  }
+
 }

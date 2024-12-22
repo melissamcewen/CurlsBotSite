@@ -34,10 +34,23 @@ export function ChatBubbleRobot({
   const borderClass = statusClasses[status] || 'border-primary';
 
   return (
-    <div className="chat chat-start lg:max-w-3xl ">
-      <div className={`chat-image avatar rounded-full border-2 ${borderClass}`}>
-        <div className="w-10 mask mask-circle bg-white">
-          <Image src={finalImageUrl} alt={altText} width={40} height={40} />
+    <div className="chat chat-start lg:max-w-3xl lg:min-w-s">
+      <div className={`chat-image avatar rounded-full border-2 ${borderClass} animate-none`} style={{ animation: 'none', transition: 'none' }}>
+        <div className="w-10 h-10 mask mask-circle relative overflow-hidden">
+          {/* Permanent background layer */}
+          <div className="absolute inset-0 bg-white" />
+          {/* Image container with blend mode */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <Image
+              src={finalImageUrl}
+              alt={altText}
+              width={40}
+              height={40}
+              priority
+              className="animate-none"
+              style={{ animation: 'none', transition: 'none' }}
+            />
+          </div>
         </div>
       </div>
       {children}
@@ -85,7 +98,13 @@ export function ChatBubble({
   const bubbleClass = statusClasses[status] || 'border-primary';
 
   return (
-    <div className={`chat-bubble bg-base-300 border-t-2 p-6 text-base-content ${bubbleClass} ${className}`}>
+    <div
+      className={`chat-bubble bg-base-300 border-t-2 p-6 text-base-content w-full ${bubbleClass} ${className}`}
+      style={{
+        contain: 'content',
+        contentVisibility: 'auto'
+      }}
+    >
       {children}
     </div>
   );

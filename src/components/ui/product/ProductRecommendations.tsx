@@ -23,7 +23,7 @@ export function getProductRecommendations(porosityType: string) {
     .replace(/\s+hair$/, '')
     .replace(/\s+/g, '_');
 
-  console.log('Looking for products with tag:', porosityTag);
+
 
   const recommendations: Record<ProductCategory, RecommendedProduct[] | null> = {
     shampoos: [],
@@ -43,21 +43,17 @@ export function getProductRecommendations(porosityType: string) {
       product.tags.forEach(tag => allTags.add(tag));
     }
   });
-  console.log('Available tags in database:', Array.from(allTags));
+
 
   Object.entries(products.products).forEach(([_, product]: [string, Product]) => {
     if (!product.product_categories || product.product_categories.length === 0) {
-      console.log('Product missing categories:', product.name);
+
       return;
     }
 
     const category = product.product_categories[0] as ProductCategory;
     if (product.tags?.includes(porosityTag) && CATEGORIES.includes(category)) {
-      console.log('Found matching product:', {
-        name: product.name,
-        category,
-        tags: product.tags
-      });
+
       if (!recommendations[category]) {
         recommendations[category] = [];
       }
@@ -83,7 +79,6 @@ export function getProductRecommendations(porosityType: string) {
     }
   });
 
-  console.log('Final recommendations:', recommendations);
 
   return recommendations;
 }
@@ -95,37 +90,39 @@ export function ProductRecommendations({ porosityType, className = '' }: Product
   return (
     <div className={className} data-testid="product-recommendations">
       <h2 className="text-2xl font-bold mb-6">Recommended Products</h2>
-      {!hasProducts ? (
-        <p className="text-base-content/70">No product recommendations available at this time.</p>
-      ) : (
-        <div className="flex flex-wrap -mx-4">
-          {CATEGORIES.map((category) => {
-            const products = recommendations[category];
-            if (!products) return null;
+      <div className="min-h-[200px]">
+        {!hasProducts ? (
+          <p className="text-base-content/70">No product recommendations available at this time.</p>
+        ) : (
+          <div className="flex flex-wrap -mx-4">
+            {CATEGORIES.map((category) => {
+              const products = recommendations[category];
+              if (!products) return null;
 
-            return (
-              <div key={category} className="flex-1 min-w-[350px] p-4">
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold capitalize">
-                    {category.replace(/_/g, ' ')}
-                  </h3>
-                  <div className="grid grid-cols-1 gap-4">
-                    {products.map((product, index) => (
-                      <ProductRecommendation
-                        key={`${category}-${index}`}
-                        category={category}
-                        brand={product.brand}
-                        name={product.name}
-                        buyUrl={product.buyUrl}
-                      />
-                    ))}
+              return (
+                <div key={category} className="flex-1 min-w-[350px] p-4">
+                  <div className="space-y-4">
+                    <h3 className="text-xl font-semibold capitalize">
+                      {category.replace(/_/g, ' ')}
+                    </h3>
+                    <div className="grid grid-cols-1 gap-4">
+                      {products.map((product, index) => (
+                        <ProductRecommendation
+                          key={`${category}-${index}`}
+                          category={category}
+                          brand={product.brand}
+                          name={product.name}
+                          buyUrl={product.buyUrl}
+                        />
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
-      )}
+              );
+            })}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

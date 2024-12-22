@@ -1,9 +1,10 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { GoogleAnalytics } from '@/components/GoogleAnalytics';
+import Script from 'next/script';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -15,10 +16,75 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
-export const metadata: Metadata = {
-  title: 'CurlsBot',
-  description: 'Your intelligent assistant for analyzing hair care ingredients',
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
 };
+
+export const metadata: Metadata = {
+  title: {
+    default: 'CurlsBot | Hair Care Ingredient Analysis',
+    template: '%s | CurlsBot'
+  },
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://curlsbot.com'),
+  description: 'Your intelligent assistant for analyzing hair care ingredients and understanding hair porosity. Get personalized hair care advice and ingredient analysis.',
+  keywords: ['hair care', 'ingredient analysis', 'curly hair', 'porosity', 'hair products', 'CurlsBot'],
+  authors: [{ name: 'CurlsBot' }],
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    siteName: 'CurlsBot',
+    title: 'CurlsBot - Hair Care Ingredient Analysis',
+    description: 'Your intelligent assistant for analyzing hair care ingredients and understanding hair porosity',
+    images: [
+      {
+        url: '/icon.png',
+        width: 512,
+        height: 512,
+        alt: 'CurlsBot Logo'
+      }
+    ]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'CurlsBot - Hair Care Ingredient Analysis',
+    description: 'Your intelligent assistant for analyzing hair care ingredients',
+    images: ['/icon.png']
+  },
+  manifest: '/manifest.json',
+  icons: {
+    icon: '/icon.png',
+    shortcut: '/favicon.ico',
+    apple: '/apple-icon.png'
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'google-site-verification-code', // You'll need to replace this with your actual verification code
+  },
+  category: 'technology',
+};
+
+// Move theme script to a raw string for earlier execution
+const themeScript = `
+  (function() {
+    try {
+      var theme = localStorage.getItem('theme') || 'cupcake';
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (e) {
+      document.documentElement.setAttribute('data-theme', 'cupcake');
+    }
+  })();
+`;
 
 export default function RootLayout({
   children,
@@ -26,21 +92,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning data-theme="cupcake">
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var theme = localStorage.getItem('theme') || 'cupcake';
-                  document.documentElement.setAttribute('data-theme', theme);
-                } catch (e) {}
-              })();
-            `,
-          }}
-        />
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <meta name="apple-mobile-web-app-title" content="cupcake" />
+        {/* Preload all images */}
+        <link rel="preload" href="/logo.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/normal.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/surprised.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/exclaim.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/normal.png" as="image" type="image/png" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-base-100 text-base-content`}

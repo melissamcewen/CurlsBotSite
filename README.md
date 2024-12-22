@@ -11,12 +11,19 @@
   - Tailwind CSS
   - DaisyUI for UI components
   - Custom flat rounded design system
+- **Performance Optimizations:**
+  - Resource preloading for critical assets
+  - Static site generation
+  - Route groups for code organization
+  - Hardware-accelerated animations
 - **Testing:**
   - Jest
   - React Testing Library
+  - Smoke tests for critical paths
 - **UI Components:**
   - Heroicons V2 (Solid variants)
   - Custom React components
+  - Loading skeletons for better UX
 - **Search & Analysis:**
   - [haircare-ingredients-analyzer](https://github.com/melissamcewen/curlsbotAPI) - A custom library I developed for ingredient analysis
 - **Development Tools:**
@@ -31,6 +38,11 @@
 - Modern, accessible UI with a flat rounded design system
 - Efficient client-side search and filtering
 - Responsive design that works across all devices
+- Advanced performance optimizations:
+  - Resource preloading for critical assets
+  - Optimized image loading
+  - Hardware-accelerated animations
+  - Minimal layout shifts (CLS)
 
 ## 💻 Development
 
@@ -48,7 +60,6 @@ npm run build
 npm test
 ```
 
-
 ## 🎨 Design System
 
 The application implements a custom design system featuring:
@@ -57,6 +68,7 @@ The application implements a custom design system featuring:
 - No shadows or opacity effects
 - Consistent spacing and typography
 - Semantic color coding for analysis results
+- Loading skeletons that match final content
 
 ## 📚 Architecture
 
@@ -66,6 +78,8 @@ The project follows modern React best practices:
 - Synchronous local processing for ingredient analysis
 - Efficient client-side search and filtering
 - Static site generation for optimal performance
+- Route groups for better code organization
+- Smart resource preloading
 
 ## 🔧 Custom Libraries
 
@@ -75,13 +89,17 @@ The project follows modern React best practices:
   - Includes a bundled ingredient database
   - Type-safe API integration
 
-## 📈 Performance
+## 📈 Performance Optimizations
 
 - Static site generation for fast page loads
 - Client-side processing to minimize server load
 - Optimized bundle size through proper code splitting
 - Efficient search algorithms for real-time filtering
-
+- Resource preloading for critical assets
+- Hardware-accelerated animations
+- Minimal layout shifts through proper content sizing
+- Route groups for better code splitting
+- Loading skeletons for improved perceived performance
 
 ## 🧪 Testing
 
@@ -90,3 +108,4 @@ The project employs a pragmatic testing approach focusing on smoke tests to ensu
 - Ensure basic user interactions work
 - Validate core business logic
 - Prevent regressions in critical paths
+- Test synchronous operations efficiently
