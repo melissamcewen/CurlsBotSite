@@ -9,6 +9,7 @@ interface BlogPost {
     title: string;
     description?: string;
     date: string;
+    image?: string;
   };
   content: string;
 }
@@ -41,13 +42,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: 'article',
       publishedTime: formattedDate,
       authors: ['CurlsBot'],
-      images: ['/icon.png']
+      images: frontmatter.image ? [
+        {
+          url: frontmatter.image,
+          width: 1200,
+          height: 630,
+          alt: frontmatter.title
+        }
+      ] : ['/icon.png']
     },
     twitter: {
       card: 'summary_large_image',
       title: frontmatter.title,
       description: frontmatter.description,
-      images: ['/icon.png']
+      images: frontmatter.image ? [frontmatter.image] : ['/icon.png']
     }
   };
 }

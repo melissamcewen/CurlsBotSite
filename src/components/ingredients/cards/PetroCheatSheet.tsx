@@ -4,7 +4,7 @@ const PetroCheatSheet: React.FC = () => {
   return (
     <CheatSheet
       title="Petroleum Derived Ingredients"
-      description="These are other ingredients build up on hair and may require sulfates to remove completely."
+      description="These are petroleum based ingredients that are often avoided for their build up potential as well as their petro-based origin."
       sources={[
         {
           source: 'Curlsbot',
