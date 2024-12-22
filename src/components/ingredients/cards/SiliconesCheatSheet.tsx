@@ -11,7 +11,8 @@ const SiliconesCheatSheet: React.FC = () => {
           source: 'Curlsbot',
           status: 'warning',
           link: '/',
-          description: 'Avoid water insoluble silicones, caution for water soluble silicones',
+          description:
+            'Avoid water insoluble silicones, caution for othersilicones',
         },
         {
           source: 'Curly Girl Handbook',
@@ -36,7 +37,7 @@ const SiliconesCheatSheet: React.FC = () => {
           ingredients: ['PEG/PPG-18/18 Dimethicone'],
         },
       ]}
-      exceptionsDescription="These silicones are water soluble so they should be fine for haircare routines that don't contain strong detergents. But some sources recommend avoiding all silicones"
+      exceptionsDescription="These silicones are water soluble or evaporative so they should be fine for haircare routines that don't contain strong detergents. But some sources recommend avoiding all silicones"
       identificationSections={[
         {
           title: "Names ending with 'cone'",

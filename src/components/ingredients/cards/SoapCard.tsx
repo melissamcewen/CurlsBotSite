@@ -15,7 +15,7 @@ export function SoapCard() {
       </CheatSheetAlert>
 
       <div className="space-y-2">
-      
+
         <div className="">
           <CheatSheetPatternGroup title="Look for these terms to identify soap:">
             <CheatSheetPattern pattern="potassium hydroxide" />

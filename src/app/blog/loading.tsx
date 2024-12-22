@@ -2,7 +2,7 @@ import { BookOpenIcon } from '@heroicons/react/24/solid';
 
 export default function BlogLoading() {
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-4xl mx-auto w-full">
       <div className="card bg-base-100 rounded-xl">
         <div className="card-body animate-pulse">
           <div className="flex items-center gap-2 mb-6">

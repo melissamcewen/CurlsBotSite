@@ -20,7 +20,7 @@ export default function Navbar() {
             <Link href="/">Analysis</Link>
           </li>
           <li>
-            <Link href="/ingredients">Ingredients</Link>
+            <Link href="/ingredients-cheat-sheet">Ingredients </Link>
           </li>
           <li>
             <Link href="/blog">Blog</Link>

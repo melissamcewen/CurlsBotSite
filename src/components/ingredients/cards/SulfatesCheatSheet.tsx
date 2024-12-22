@@ -30,7 +30,7 @@ const SulfatesCheatSheet: React.FC = () => {
       ]}
       identificationSections={[
         {
-          title: "Contains 'sulfate' or 'sulphate' in the name",
+          title: "Contains 'sulfate' or 'sulphate' in the name, usually at the end as a separate word",
           ingredients: [
             'Sodium Lauryl Sulfate',
             'Tea Lauryl Sulfate',
