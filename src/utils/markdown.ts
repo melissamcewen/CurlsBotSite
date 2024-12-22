@@ -3,6 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
+import remarkNextImage from './remarkNextImage';
 
 const contentDirectory = path.join(process.cwd(), 'src/content');
 
@@ -17,9 +18,10 @@ export async function getMarkdownData(filePath: string) {
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
 
-  // Convert markdown to HTML
+  // Convert markdown to HTML with Next.js Image support
   const processedContent = await remark()
-    .use(html)
+    .use(remarkNextImage)
+    .use(html, { sanitize: false }) // Disable sanitization to allow our custom HTML
     .process(content);
   const contentHtml = processedContent.toString();
 

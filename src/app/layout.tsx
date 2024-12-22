@@ -4,6 +4,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { GoogleAnalytics } from '@/components/GoogleAnalytics';
+import { DraftBanner } from '@/components/layout/DraftBanner';
 import Script from 'next/script';
 
 const geistSans = Geist({
@@ -38,10 +39,11 @@ export const metadata: Metadata = {
     description: 'Your intelligent assistant for analyzing hair care ingredients and understanding hair porosity',
     images: [
       {
-        url: '/icon.png',
-        width: 512,
-        height: 512,
-        alt: 'CurlsBot Logo'
+        url: '/images/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'CurlsBot - Hair Care Ingredient Analysis',
+        type: 'image/png',
       }
     ]
   },
@@ -49,7 +51,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'CurlsBot - Hair Care Ingredient Analysis',
     description: 'Your intelligent assistant for analyzing hair care ingredients',
-    images: ['/icon.png']
+    images: ['/images/og-default.png']
   },
   manifest: '/manifest.json',
   icons: {
@@ -58,11 +60,11 @@ export const metadata: Metadata = {
     apple: '/apple-icon.png'
   },
   robots: {
-    index: true,
-    follow: true,
+    index: false,
+    follow: false,
     googleBot: {
-      index: true,
-      follow: true,
+      index: false,
+      follow: false,
       'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,
@@ -110,6 +112,7 @@ export default function RootLayout({
         <GoogleAnalytics />
         <div className="min-h-screen overflow-x-hidden">
           <div className="absolute inset-0 pointer-events-none" />
+          <DraftBanner />
           <Navbar />
 
             <main>
