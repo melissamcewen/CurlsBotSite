@@ -23,7 +23,7 @@ export function getProductRecommendations(porosityType: string) {
     .replace(/\s+hair$/, '')
     .replace(/\s+/g, '_');
 
-  console.log('Looking for products with tag:', porosityTag);
+
 
   const recommendations: Record<ProductCategory, RecommendedProduct[] | null> = {
     shampoos: [],
@@ -43,21 +43,17 @@ export function getProductRecommendations(porosityType: string) {
       product.tags.forEach(tag => allTags.add(tag));
     }
   });
-  console.log('Available tags in database:', Array.from(allTags));
+
 
   Object.entries(products.products).forEach(([_, product]: [string, Product]) => {
     if (!product.product_categories || product.product_categories.length === 0) {
-      console.log('Product missing categories:', product.name);
+
       return;
     }
 
     const category = product.product_categories[0] as ProductCategory;
     if (product.tags?.includes(porosityTag) && CATEGORIES.includes(category)) {
-      console.log('Found matching product:', {
-        name: product.name,
-        category,
-        tags: product.tags
-      });
+
       if (!recommendations[category]) {
         recommendations[category] = [];
       }
@@ -83,7 +79,6 @@ export function getProductRecommendations(porosityType: string) {
     }
   });
 
-  console.log('Final recommendations:', recommendations);
 
   return recommendations;
 }
