@@ -4,6 +4,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { GoogleAnalytics } from '@/components/GoogleAnalytics';
+import { DraftBanner } from '@/components/layout/DraftBanner';
 import Script from 'next/script';
 
 const geistSans = Geist({
@@ -58,11 +59,11 @@ export const metadata: Metadata = {
     apple: '/apple-icon.png'
   },
   robots: {
-    index: true,
-    follow: true,
+    index: false,
+    follow: false,
     googleBot: {
-      index: true,
-      follow: true,
+      index: false,
+      follow: false,
       'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,
@@ -110,6 +111,7 @@ export default function RootLayout({
         <GoogleAnalytics />
         <div className="min-h-screen overflow-x-hidden">
           <div className="absolute inset-0 pointer-events-none" />
+          <DraftBanner />
           <Navbar />
 
             <main>
