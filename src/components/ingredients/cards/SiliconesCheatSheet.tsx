@@ -6,7 +6,6 @@ const SiliconesCheatSheet: React.FC = () => {
     <CheatSheet
       title="Water Insoluble Silicones"
       description="These are generally avoided in the curly hair community due to potential build-up. They may require stronger detergents to remove."
-
       sources={[
         {
           source: 'Curlsbot',
@@ -19,6 +18,12 @@ const SiliconesCheatSheet: React.FC = () => {
           link: 'https://amzn.to/405OSqw',
           status: 'warning',
           description: 'Avoid',
+        },
+        {
+          source: 'Tightly Curly',
+          link: 'https://amzn.to/3ZQq707',
+          status: 'ok',
+          description: 'OK',
         },
       ]}
       identificationSections={[

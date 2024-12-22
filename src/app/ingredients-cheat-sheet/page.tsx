@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import SiliconesCheatSheet from '@/components/ingredients/cards/SiliconesCheatSheet';
-
+import WaterSolubleSiliconesCheatSheet from '@/components/ingredients/cards/WaterSolubleSiliconesCheatSheet';
 
 export const metadata: Metadata = {
   title: 'Haircare Ingredients Cheat Sheet',
@@ -20,7 +20,7 @@ export default function IngredientsCheatSheetPage() {
 
         <div className="grid gap-6">
           <SiliconesCheatSheet />
-
+          <WaterSolubleSiliconesCheatSheet />
         </div>
       </div>
     </div>
