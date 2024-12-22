@@ -1,5 +1,6 @@
 import { SparklesIcon } from '@heroicons/react/24/solid';
 import { CheatSheetCard, CheatSheetAlert, CheatSheetPattern } from '@/components/ingredients/CheatSheetComponents';
+import Link from 'next/link';
 
 export function GentleDetergentsCard() {
   return (
@@ -9,18 +10,17 @@ export function GentleDetergentsCard() {
     >
       <div className="space-y-2">
         <div className="flex items-center gap-2 text-base-content/70">
-          <span className="cb-grouping-header">Generally considered gentler cleansing agents:</span>
+          <span className="cb-grouping-header">These gentle <Link href="/groups/detergents">detergents</Link> are generally considered mild:</span>
         </div>
-        <div className="pl-7">
+        <div className="">
           <ul className="space-y-2">
-            <CheatSheetPattern>*glucoside/*polyglucose (e.g., Decyl Glucoside)</CheatSheetPattern>
-            <CheatSheetPattern>*betaine/*sultaine (e.g., Cocamidopropyl Betaine)</CheatSheetPattern>
-            <CheatSheetPattern>*amphoacetate/*amphodiacetate (e.g., Disodium Cocoamphodiacetate)</CheatSheetPattern>
-            <CheatSheetPattern>*succinate (e.g., Disodium Laureth Succinate)</CheatSheetPattern>
-            <CheatSheetPattern>Common patterns:</CheatSheetPattern>
-            <CheatSheetPattern>- cocoyl/lauroyl (e.g., Sodium Cocoyl Isethionate)</CheatSheetPattern>
-            <CheatSheetPattern>- coco/lauryl (e.g., Sodium Lauroamphoacetate)</CheatSheetPattern>
-            <CheatSheetPattern>- disodium/sodium (e.g., Disodium Laureth Succinate)</CheatSheetPattern>
+            <CheatSheetPattern pattern="*glucoside/*polyglucose" example="Decyl Glucoside" />
+            <CheatSheetPattern pattern="*betaine/*sultaine" example="Cocamidopropyl Betaine" />
+            <CheatSheetPattern pattern="*amphoacetate/*amphodiacetate" example="Disodium Cocoamphodiacetate" />
+            <CheatSheetPattern pattern="*succinate" example="Disodium Laureth Succinate" />
+            <CheatSheetPattern pattern="- cocoyl/lauroyl" example="Sodium Cocoyl Isethionate" />
+            <CheatSheetPattern pattern="- coco/lauryl" example="Sodium Lauroamphoacetate" />
+            <CheatSheetPattern pattern="- disodium/sodium" example="Disodium Laureth Succinate" />
           </ul>
         </div>
       </div>

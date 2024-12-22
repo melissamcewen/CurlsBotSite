@@ -1,5 +1,10 @@
 import { BeakerIcon } from '@heroicons/react/24/solid';
-import { CheatSheetCard, CheatSheetAlert, CheatSheetPattern } from '@/components/ingredients/CheatSheetComponents';
+import {
+  CheatSheetCard,
+  CheatSheetAlert,
+  CheatSheetPattern,
+  CheatSheetPatternGroup,
+} from '@/components/ingredients/CheatSheetComponents';
 
 export function ParabensCard() {
   return (
@@ -10,24 +15,31 @@ export function ParabensCard() {
     >
       <CheatSheetAlert type="warning">
         <p>
-          Lorraine Massey cautions against these in the{' '}
-          <em>Curly Hair Handbook</em>, citing potential safety concerns.{' '}
-          <a href="/blog/parabens" className="link link-warning">Learn more about parabens</a>.
+          These are controversial preservatives. Lorraine Massey cautions
+          against them in the{' '}
+          <a
+            href="https://amzn.to/41LMTsD"
+          >
+            Curly Girl: The Handbook{' '}
+          </a> due to potential safety concerns, but most <a href="https://thebeautybrains.com/2006/05/">cosmetic chemists</a>
+          consider them safe.
         </p>
       </CheatSheetAlert>
 
       <div className="space-y-2">
         <div className="flex items-center gap-2 text-base-content/70">
-          <span className="cb-grouping-header">Common preservatives in hair products:</span>
+          <span className="cb-grouping-header">
+            Common preservatives in hair products:
+          </span>
         </div>
-        <div className="pl-7">
-          <ul className="space-y-2">
-            <CheatSheetPattern>butylparaben</CheatSheetPattern>
-            <CheatSheetPattern>ethylparaben</CheatSheetPattern>
-            <CheatSheetPattern>isobutylparaben</CheatSheetPattern>
-            <CheatSheetPattern>methylparaben</CheatSheetPattern>
-            <CheatSheetPattern>propylparaben</CheatSheetPattern>
-          </ul>
+        <div className="">
+          <CheatSheetPatternGroup title="Common preservatives in hair products:">
+            <CheatSheetPattern pattern="butylparaben" />
+            <CheatSheetPattern pattern="ethylparaben"  />
+            <CheatSheetPattern pattern="isobutylparaben"  />
+            <CheatSheetPattern pattern="methylparaben" />
+            <CheatSheetPattern pattern="propylparaben" />
+          </CheatSheetPatternGroup>
         </div>
       </div>
     </CheatSheetCard>

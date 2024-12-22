@@ -1,29 +1,32 @@
 import { ExclamationTriangleIcon } from '@heroicons/react/24/solid';
-import { CheatSheetCard, CheatSheetAlert, CheatSheetPattern } from '@/components/ingredients/CheatSheetComponents';
+import { CheatSheetCard, CheatSheetAlert, CheatSheetPattern, CheatSheetPatternGroup } from '@/components/ingredients/CheatSheetComponents';
+import Link from 'next/link';
 
 export function SoapCard() {
   return (
     <CheatSheetCard
       title="Soap"
       icon={<ExclamationTriangleIcon className="w-6 h-6 text-error" />}
-      warning
+      status="warning"
     >
       <CheatSheetAlert type="warning">
-        Can be as drying as sulfates. Contact manufacturer if unsure.
+        Can be as drying as sulfates and cause build-up. See our{' '}
+        <Link href="/blog/is-soap-good-for-curls">soap article</Link> for more information.
       </CheatSheetAlert>
 
       <div className="space-y-2">
-        <div className="flex items-center gap-2 text-base-content/70">
-          <span className="cb-grouping-header">Look for these terms to identify soap:</span>
-        </div>
-        <div className="pl-7">
-          <ul className="space-y-2">
-            <CheatSheetPattern>potassium hydroxide</CheatSheetPattern>
-            <CheatSheetPattern>saponifi* (e.g., saponified, saponification)</CheatSheetPattern>
-            <CheatSheetPattern>soap</CheatSheetPattern>
-            <CheatSheetPattern>sodium carboxylate</CheatSheetPattern>
-            <CheatSheetPattern>sodium palm</CheatSheetPattern>
-          </ul>
+      
+        <div className="">
+          <CheatSheetPatternGroup title="Look for these terms to identify soap:">
+            <CheatSheetPattern pattern="potassium hydroxide" />
+            <CheatSheetPattern
+              pattern="saponifi*"
+              example="Saponified Cocos Nucifera Oil"
+            />
+            <CheatSheetPattern pattern="soap" />
+            <CheatSheetPattern pattern="sodium carboxylate" />
+            <CheatSheetPattern pattern="sodium palm" />
+          </CheatSheetPatternGroup>
         </div>
       </div>
     </CheatSheetCard>

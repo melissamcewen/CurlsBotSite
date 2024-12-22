@@ -1,5 +1,5 @@
 import { BeakerIcon } from '@heroicons/react/24/solid';
-import { CheatSheetCard, CheatSheetAlert, CheatSheetPattern } from '@/components/ingredients/CheatSheetComponents';
+import { CheatSheetCard, CheatSheetAlert, CheatSheetPattern, CheatSheetPatternGroup } from '@/components/ingredients/CheatSheetComponents';
 
 export function WitchHazelCard() {
   return (
@@ -21,11 +21,10 @@ export function WitchHazelCard() {
           <span className="cb-grouping-header">Look for these names:</span>
         </div>
         <div className="pl-7">
-          <ul className="space-y-2">
-            <CheatSheetPattern>Hamamelis Virginiana Extract</CheatSheetPattern>
-            <CheatSheetPattern>Hamamelis Virginiana Leaf Extract</CheatSheetPattern>
-            <CheatSheetPattern>Witch Hazel</CheatSheetPattern>
-          </ul>
+          <CheatSheetPatternGroup title="Common names for witch hazel:">
+            <CheatSheetPattern pattern="Hamamelis Virginiana" example="Hamamelis Virginiana Lead Extract" />
+            <CheatSheetPattern pattern="Witch Hazel" />
+          </CheatSheetPatternGroup>
         </div>
       </div>
     </CheatSheetCard>

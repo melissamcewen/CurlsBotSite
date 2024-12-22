@@ -1,46 +1,61 @@
 import { BeakerIcon } from '@heroicons/react/24/solid';
-import { CheatSheetCard, CheatSheetAlert, CheatSheetPattern } from '@/components/ingredients/CheatSheetComponents';
+import { CheatSheetCard, CheatSheetAlert, CheatSheetPattern, CheatSheetPatternGroup, CheatSheetSourceItem } from '@/components/ingredients/CheatSheetComponents';
 
 export function SiliconesCard() {
   return (
     <CheatSheetCard
       title="Silicones"
       icon={<BeakerIcon className="w-6 h-6 text-pink-500" />}
-      warning
+      status="warning"
     >
       <CheatSheetAlert type="warning">
-        These can build up on hair and require sulfates to remove completely.
+        These are generally avoided in the curly hair community due to potential
+        build-up. They may require strong detergents to remove.
       </CheatSheetAlert>
-
+      <CheatSheetSourceItem
+        type="error"
+        source="Curly Girl Handbook"
+        stance="Avoid (even if they're water-soluble)"
+        href="https://amzn.to/41LMTsD"
+      />
       <div className="space-y-2">
-        <div className="flex items-center gap-2 text-base-content/70">
-          <span className="cb-grouping-header">Look for names containing these patterns:</span>
-        </div>
-        <div className="pl-7">
-          <ul className="space-y-2">
-            <CheatSheetPattern>botanisil</CheatSheetPattern>
-            <CheatSheetPattern>*cone (e.g., Dimethicone)</CheatSheetPattern>
-            <CheatSheetPattern>dimethicone/dimethicon</CheatSheetPattern>
-            <CheatSheetPattern>microsil</CheatSheetPattern>
-            <CheatSheetPattern>sil* (e.g., Siloxane)</CheatSheetPattern>
-            <CheatSheetPattern>siloxysilicate</CheatSheetPattern>
-            <CheatSheetPattern>silsesquioxane</CheatSheetPattern>
-            <CheatSheetPattern>silylate</CheatSheetPattern>
-          </ul>
+        <div className="">
+          <CheatSheetPatternGroup title="Look for names containing these patterns:">
+            <CheatSheetPattern
+              pattern="ending with 'cone'"
+              example="Amodimethicone"
+            />
+            <CheatSheetPattern
+              pattern="dimethicone/dimethicon"
+              example="Dimethicone"
+            />
+
+            <CheatSheetPattern
+              pattern="starting with 'sil'"
+              example="Siloxane, Siloxysilicate, Silsesquioxane, Silylate"
+            />
+          </CheatSheetPatternGroup>
+
+          <CheatSheetPatternGroup title="Look for these specific ingredients:">
+            <CheatSheetPattern pattern="botanisil" example="Botanisil" />
+            <CheatSheetPattern pattern="microsil" example="Microsil" />
+          </CheatSheetPatternGroup>
         </div>
       </div>
 
       <div className="space-y-2">
-        <div className="flex items-center gap-2 text-base-content/70">
-          <span className="cb-grouping-header">Water Soluble Silicones (May Be OK)</span>
-        </div>
-        <div className="pl-7">
-          <ul className="space-y-2">
-            <CheatSheetPattern>Starts with PEG- (e.g., PEG-12 Dimethicone)</CheatSheetPattern>
-            <CheatSheetPattern>Starts with PPG- (e.g., PPG-9 Dimethicone)</CheatSheetPattern>
-            <CheatSheetPattern>Starts with PG- (e.g., PG-12 Dimethicone)</CheatSheetPattern>
-          </ul>
-        </div>
+        <CheatSheetPatternGroup title="Common names for water-soluble silicones:">
+          <div className="pb-5">
+            <CheatSheetAlert type="info">
+              These silicones are water-soluble and may suit curly routines
+              without strong detergents, but many in the curly community avoid
+              all silicones.{' '}
+            </CheatSheetAlert>
+          </div>
+          <CheatSheetPattern pattern="PEG-" example="PEG-12 Dimethicone" />
+          <CheatSheetPattern pattern="PPG-" example="PPG-9 Dimethicone" />
+          <CheatSheetPattern pattern="PG-" example="PG-12 Dimethicone" />
+        </CheatSheetPatternGroup>
       </div>
     </CheatSheetCard>
   );

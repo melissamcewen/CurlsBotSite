@@ -1,35 +1,69 @@
 import { FireIcon } from '@heroicons/react/24/solid';
-import { CheatSheetCard, CheatSheetAlert, CheatSheetPattern } from '@/components/ingredients/CheatSheetComponents';
+import { CheatSheetCard, CheatSheetAlert, CheatSheetPattern, CheatSheetSourceList, CheatSheetSourceItem, CheatSheetPatternGroup } from '@/components/ingredients/CheatSheetComponents';
+import Link from 'next/link';
 
 export function SulfatesCard() {
   return (
     <CheatSheetCard
-      title="Sulfates & Harsh Cleansers"
+      title="Sulfates & Other Strong Detergents"
       icon={<FireIcon className="w-6 h-6 text-error" />}
       warning
     >
       <CheatSheetAlert type="warning">
-        These can be drying to hair. The strength varies, but it&apos;s simplest to avoid them.
+        The curly hair community and resources often recommend avoiding
+        sulfates, because of their reputation for being drying. But it can
+        depend on your <Link href="/porosity-quiz">hair type</Link> and the
+        formulation.
       </CheatSheetAlert>
-
+      <CheatSheetSourceList>
+        <CheatSheetSourceItem
+          type="error"
+          source="Curly Girl Handbook"
+          stance="Avoid"
+          href="https://amzn.to/41LMTsD"
+        />
+      </CheatSheetSourceList>
       <div className="space-y-2">
-        <div className="flex items-center gap-2 text-base-content/70">
-          <span className="cb-grouping-header">Look for these patterns in cleansing ingredients:</span>
-        </div>
-        <div className="pl-7">
-          <ul className="space-y-2">
-            <CheatSheetPattern>*sulfate/*sulphate (e.g., Sodium Lauryl Sulfate)</CheatSheetPattern>
-            <CheatSheetPattern>*sulfonate/*sulphonate (e.g., Sodium Xylene Sulfonate)</CheatSheetPattern>
-            <CheatSheetPattern>Common prefixes:</CheatSheetPattern>
-            <CheatSheetPattern>- ammonium (e.g., Ammonium Lauryl Sulfate)</CheatSheetPattern>
-            <CheatSheetPattern>- sodium (e.g., Sodium Laureth Sulfate)</CheatSheetPattern>
-            <CheatSheetPattern>- tea (triethanolamine, e.g., TEA-Dodecylbenzenesulfonate)</CheatSheetPattern>
-            <CheatSheetPattern>Common types:</CheatSheetPattern>
-            <CheatSheetPattern>- lauryl/laureth (e.g., Sodium Lauryl Sulfate)</CheatSheetPattern>
-            <CheatSheetPattern>- coco/cocyl/cocoyl (e.g., Ammonium Cocoyl Sulfate)</CheatSheetPattern>
-            <CheatSheetPattern>- cetearyl (e.g., Sodium Cetearyl Sulfate)</CheatSheetPattern>
-            <CheatSheetPattern>- myreth (e.g., Sodium Myreth Sulfate)</CheatSheetPattern>
-          </ul>
+        
+        <div className="">
+          <CheatSheetPatternGroup title="Look for these patterns in ingredient names:">
+            <CheatSheetPattern
+              pattern="*sulfate/*sulphate"
+              example="Sodium Lauryl Sulfate"
+            />
+            <CheatSheetPattern
+              pattern="*sulfonate/*sulphonate"
+              example="Sodium Xylene Sulfonate"
+            />
+            <CheatSheetPattern
+              pattern="- ammonium"
+              example="Ammonium Lauryl Sulfate"
+            />
+            <CheatSheetPattern
+              pattern="- sodium"
+              example="Sodium Laureth Sulfate"
+            />
+            <CheatSheetPattern
+              pattern="- tea"
+              example="TEA-Dodecylbenzenesulfonate"
+            />
+            <CheatSheetPattern
+              pattern="- lauryl/laureth"
+              example="Sodium Lauryl Sulfate"
+            />
+            <CheatSheetPattern
+              pattern="- coco/cocyl/cocoyl"
+              example="Ammonium Cocoyl Sulfate"
+            />
+            <CheatSheetPattern
+              pattern="- cetearyl"
+              example="Sodium Cetearyl Sulfate"
+            />
+            <CheatSheetPattern
+              pattern="- myreth"
+              example="Sodium Myreth Sulfate"
+            />
+          </CheatSheetPatternGroup>
         </div>
       </div>
     </CheatSheetCard>

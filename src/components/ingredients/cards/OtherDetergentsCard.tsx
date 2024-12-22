@@ -1,33 +1,51 @@
 import { BeakerIcon } from '@heroicons/react/24/solid';
-import { CheatSheetCard, CheatSheetAlert, CheatSheetPattern } from '@/components/ingredients/CheatSheetComponents';
+import { CheatSheetCard, CheatSheetAlert, CheatSheetPattern, CheatSheetPatternGroup } from '@/components/ingredients/CheatSheetComponents';
+import Link from 'next/link';
 
 export function OtherDetergentsCard() {
   return (
     <CheatSheetCard
       title="Other Detergents"
       icon={<BeakerIcon className="w-6 h-6 text-warning" />}
+      status="caution"
     >
       <CheatSheetAlert type="info">
-        These are NOT sulfates, but some find them drying. Research to determine if they work for your hair.
+        These are NOT sulfates or sulfonates, but they also aren&apos;t considered gentle. Whether they work for your hair depends on your <Link href="/porosity-quiz">hair type</Link> and the formulation.
       </CheatSheetAlert>
 
-      <div className="space-y-2">
-        <div className="flex items-center gap-2 text-base-content/70">
-          <span className="cb-grouping-header">Common patterns in other detergents:</span>
-        </div>
-        <div className="pl-7">
-          <ul className="space-y-2">
-            <CheatSheetPattern>*sulfosuccinate (e.g., Disodium Laureth Sulfosuccinate)</CheatSheetPattern>
-            <CheatSheetPattern>*glutamate (e.g., Sodium Cocoyl Glutamate)</CheatSheetPattern>
-            <CheatSheetPattern>olefin sulfonate (e.g., Sodium C14-16 Olefin Sulfonate)</CheatSheetPattern>
-            <CheatSheetPattern>*sarcosinate/*sarcosine (e.g., Sodium Lauroyl Sarcosinate)</CheatSheetPattern>
-            <CheatSheetPattern>*isethionate/*isothionate (e.g., Sodium Lauroyl Methyl Isethionate)</CheatSheetPattern>
-            <CheatSheetPattern>Common patterns:</CheatSheetPattern>
-            <CheatSheetPattern>- sodium c[number] olefin (e.g., Sodium C14-16 Olefin Sulfonate)</CheatSheetPattern>
-            <CheatSheetPattern>- sodium lauroyl/lauryl (e.g., Sodium Lauroyl Sarcosinate)</CheatSheetPattern>
-          </ul>
-        </div>
-      </div>
+      <CheatSheetPatternGroup title="Common patterns in other detergents:">
+        <CheatSheetPattern
+          pattern="*sulfosuccinate"
+          example="Disodium Laureth Sulfosuccinate"
+        />
+        <CheatSheetPattern
+          pattern="*glutamate"
+          example="Sodium Cocoyl Glutamate"
+        />
+        <CheatSheetPattern
+          pattern="olefin sulfonate"
+          example="Sodium C14-16 Olefin Sulfonate"
+        />
+        <CheatSheetPattern
+          pattern="*sarcosinate/*sarcosine"
+          example="Sodium Lauroyl Sarcosinate"
+        />
+        <CheatSheetPattern
+          pattern="*isethionate/*isothionate"
+          example="Sodium Lauroyl Methyl Isethionate"
+        />
+      </CheatSheetPatternGroup>
+
+      <CheatSheetPatternGroup title="Common prefixes:">
+        <CheatSheetPattern
+          pattern="sodium c[number] olefin"
+          example="Sodium C14-16 Olefin Sulfonate"
+        />
+        <CheatSheetPattern
+          pattern="sodium lauroyl/lauryl"
+          example="Sodium Lauroyl Sarcosinate"
+        />
+      </CheatSheetPatternGroup>
     </CheatSheetCard>
   );
 }
