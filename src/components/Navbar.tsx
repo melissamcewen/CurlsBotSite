@@ -20,7 +20,7 @@ export default function Navbar() {
             <Link href="/">Analysis</Link>
           </li>
           <li>
-            <Link href="/ingredients-cheat-sheet">Ingredients </Link>
+            <Link href="/ingredients-cheat-sheet">Ingredients</Link>
           </li>
           <li>
             <Link href="/blog">Blog</Link>
@@ -83,17 +83,26 @@ export default function Navbar() {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-accent rounded-box w-52"
           >
             <li>
+              <Link href="/">Analysis</Link>
+            </li>
+            <li>
+              <Link href="/ingredients-cheat-sheet">Ingredients</Link>
+            </li>
+            <li>
+              <Link href="/blog">Blog</Link>
+            </li>
+            <li>
               <details>
                 <summary>Porosity</summary>
                 <ul className="p-2 bg-accent rounded-t-none">
                   <li>
-                    <Link href="/porosity/high-porosity">High</Link>
+                    <Link href="/porosity/high-porosity">High Porosity</Link>
                   </li>
                   <li>
-                    <Link href="/porosity/low-porosity">Low</Link>
+                    <Link href="/porosity/low-porosity">Low Porosity</Link>
                   </li>
                   <li>
-                    <Link href="/porosity/normal-porosity">Normal</Link>
+                    <Link href="/porosity/normal-porosity">Normal Porosity</Link>
                   </li>
                 </ul>
               </details>
@@ -102,15 +111,9 @@ export default function Navbar() {
               <Link href="/porosity-quiz">Porosity Quiz</Link>
             </li>
             <li>
-              <Link href="/blog">Blog</Link>
-            </li>
-            <li>
               <details>
                 <summary>More</summary>
                 <ul className="p-2 bg-accent rounded-t-none">
-                  <li>
-                    <Link href="/ingredients">Ingredients</Link>
-                  </li>
                   <li>
                     <Link href="/resources">Resources</Link>
                   </li>
