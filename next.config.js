@@ -29,7 +29,7 @@ const nextConfig = {
       },
       {
         source: '/curly-girl-ingredient-list',
-        destination: '/ingredients',
+        destination: '/ingredients-cheat-sheet',
         permanent: true,
       },
       {
