@@ -12,7 +12,7 @@ const SiliconesCheatSheet: React.FC = () => {
           status: 'warning',
           link: '/',
           description:
-            'Avoid water insoluble silicones, caution for othersilicones',
+            'Avoid water insoluble silicones, caution for other silicones',
         },
         {
           source: 'Curly Girl Handbook',

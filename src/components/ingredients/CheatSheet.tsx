@@ -11,13 +11,13 @@ export const SourceItem: React.FC<SourceItemProps> = ({ source, status, link, de
   const getStatusIcon = () => {
     switch (status) {
       case 'warning':
-        return <ExclamationCircleIcon className="w-5 h-5 text-error" />;
+        return <ExclamationCircleIcon className="w-5 h-5 flex-shrink-0 text-error" />;
       case 'caution':
-        return <ExclamationTriangleIcon className="w-5 h-5 text-warning" />;
+        return <ExclamationTriangleIcon className="w-5 h-5 flex-shrink-0 text-warning" />;
       case 'good':
-        return <CheckCircleIcon className="w-5 h-5 text-success" />;
+        return <CheckCircleIcon className="w-5 h-5 flex-shrink-0 text-success" />;
       case 'ok':
-        return <InformationCircleIcon className="w-5 h-5 text-info" />;
+        return <InformationCircleIcon className="w-5 h-5 flex-shrink-0 text-info" />;
       default:
         return null;
     }
@@ -40,8 +40,10 @@ export const SourceItem: React.FC<SourceItemProps> = ({ source, status, link, de
 
   return (
     <div className="flex items-center gap-2">
-      {getStatusIcon()}
-      <div className="flex items-center">
+      <div className="flex-shrink-0">
+        {getStatusIcon()}
+      </div>
+      <div className="flex items-center flex-wrap">
         {link ? (
           <a href={link} className="cb-link-emphasized" target="_blank" rel="noopener noreferrer">
             {source}
