@@ -1,8 +1,23 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import ThemeToggle from '@/components/ThemeToggle';
+import { useRef } from 'react';
 
 export default function Navbar() {
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+
+  const handleBlur = (e: React.FocusEvent) => {
+    // Check if the new focus target is outside the menu
+    if (!mobileMenuRef.current?.contains(e.relatedTarget as Node)) {
+      const checkbox = mobileMenuRef.current?.querySelector('[tabindex="0"]');
+      if (checkbox instanceof HTMLElement) {
+        checkbox.blur();
+      }
+    }
+  };
+
   return (
     <header className="navbar bg-accent/90 text-accent-content backdrop-blur-sm sticky top-0 z-50">
       <div className="navbar-start">
@@ -25,10 +40,10 @@ export default function Navbar() {
           <li>
             <Link href="/blog">Blog</Link>
           </li>
-          <li>
+          <li className="dropdown dropdown-hover">
             <details>
               <summary>Porosity</summary>
-              <ul className="p-2 bg-accent rounded-t-none">
+              <ul className="p-2 bg-accent rounded-t-none dropdown-content">
                 <li>
                   <Link href="/porosity/high-porosity">High Porosity</Link>
                 </li>
@@ -44,10 +59,10 @@ export default function Navbar() {
           <li>
             <Link href="/porosity-quiz">Porosity Quiz</Link>
           </li>
-          <li>
+          <li className="dropdown dropdown-hover">
             <details>
               <summary>More</summary>
-              <ul className="p-2 bg-accent rounded-t-none">
+              <ul className="p-2 bg-accent rounded-t-none dropdown-content">
                 <li>
                   <Link href="/resources">Resources</Link>
                 </li>
@@ -61,7 +76,11 @@ export default function Navbar() {
       </div>
       <div className="navbar-end">
         <ThemeToggle />
-        <div className="dropdown dropdown-end lg:hidden">
+        <div
+          ref={mobileMenuRef}
+          onBlur={handleBlur}
+          className="dropdown dropdown-end lg:hidden"
+        >
           <label tabIndex={0} className="btn btn-ghost">
             <svg
               xmlns="http://www.w3.org/2000/svg"
