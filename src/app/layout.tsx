@@ -4,7 +4,6 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { GoogleAnalytics } from '@/components/GoogleAnalytics';
-import { DraftBanner } from '@/components/layout/DraftBanner';
 import Script from 'next/script';
 
 const geistSans = Geist({
@@ -72,11 +71,11 @@ export const metadata: Metadata = {
     apple: '/apple-icon.png',
   },
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
     googleBot: {
-      index: false,
-      follow: false,
+      index: true,
+      follow: true,
       'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,
@@ -92,7 +91,8 @@ export const metadata: Metadata = {
 const themeScript = `
   (function() {
     try {
-      var theme = localStorage.getItem('theme') || 'cupcake';
+      var defaultTheme = 'cupcake';
+      var theme = localStorage.getItem('theme') || defaultTheme;
       document.documentElement.setAttribute('data-theme', theme);
     } catch (e) {
       document.documentElement.setAttribute('data-theme', 'cupcake');
@@ -106,10 +106,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning data-theme="cupcake">
+    <html lang="en" data-theme="cupcake">
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-        <meta name="apple-mobile-web-app-title" content="cupcake" />
+        <meta name="apple-mobile-web-app-title" content="CurlsBot" />
         {/* Preload all images */}
         <link rel="preload" href="/logo.svg" as="image" type="image/svg+xml" />
         <link rel="preload" href="/normal.svg" as="image" type="image/svg+xml" />
@@ -124,7 +124,6 @@ export default function RootLayout({
         <GoogleAnalytics />
         <div className="min-h-screen overflow-x-hidden">
           <div className="absolute inset-0 pointer-events-none" />
-          <DraftBanner />
           <Navbar />
 
             <main>
