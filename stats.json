@@ -13,8 +13,8 @@
       "component---src-pages-howitworks-js-8e6c2d180438eaeddb4b.js.map"
     ],
     "component---src-pages-index-js": [
-      "component---src-pages-index-js-1ac9d6c36e4008c12c9d.js",
-      "component---src-pages-index-js-1ac9d6c36e4008c12c9d.js.map"
+      "component---src-pages-index-js-43ef9de281eddb12de0c.js",
+      "component---src-pages-index-js-43ef9de281eddb12de0c.js.map"
     ],
     "component---src-pages-cleansers-js": [
       "component---src-pages-cleansers-js-9884dceef1d685dca195.js",
@@ -45,8 +45,8 @@
       "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js.map"
     ],
     "component---src-layouts-index-js": [
-      "component---src-layouts-index-js-0c16a6a1eec22eb18706.js",
-      "component---src-layouts-index-js-0c16a6a1eec22eb18706.js.map"
+      "component---src-layouts-index-js-c4c75c636bd7ab1c5278.js",
+      "component---src-layouts-index-js-c4c75c636bd7ab1c5278.js.map"
     ],
     "path---normal-porosity": [
       "path---normal-porosity-a0e39f21c11f6a62c5ab.js",
@@ -117,9 +117,9 @@
       "component---src-pages-curly-girl-ingredient-list-js-4636f5e4d608c95bf503.js.map"
     ],
     "app": [
-      "app-3b2dc982cf08ee1b0671.js",
+      "app-d92c13b8e03a0918e9e7.js",
       "build-js-styles.css",
-      "app-3b2dc982cf08ee1b0671.js.map",
+      "app-d92c13b8e03a0918e9e7.js.map",
       "build-js-styles.css.map"
     ],
     "component---src-pages-ingredients-js": [
