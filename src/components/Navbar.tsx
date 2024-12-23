@@ -3,10 +3,37 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import ThemeToggle from '@/components/ThemeToggle';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 
 export default function Navbar() {
   const mobileMenuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      const clickedSummary = target.closest('summary');
+      const clickedDetails = target.closest('details');
+
+      if (clickedSummary) {
+        // Close all other details elements except the one being clicked
+        document.querySelectorAll('details').forEach((details) => {
+          if (details !== clickedDetails) {
+            details.open = false;
+          }
+        });
+      } else if (!target.closest('.menu li a')) {
+        // Close all details elements when clicking outside
+        document.querySelectorAll('details').forEach((details) => {
+          details.open = false;
+        });
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
 
   const handleBlur = (e: React.FocusEvent) => {
     // Check if the new focus target is outside the menu
@@ -15,6 +42,14 @@ export default function Navbar() {
       if (checkbox instanceof HTMLElement) {
         checkbox.blur();
       }
+    }
+  };
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // Find the closest details element and close it
+    const details = (e.target as HTMLElement).closest('details');
+    if (details) {
+      details.open = false;
     }
   };
 
@@ -40,18 +75,18 @@ export default function Navbar() {
           <li>
             <Link href="/blog">Blog</Link>
           </li>
-          <li className="dropdown dropdown-hover">
+          <li>
             <details>
               <summary>Porosity</summary>
-              <ul className="p-2 bg-accent rounded-t-none dropdown-content">
+              <ul className="p-2 bg-accent rounded-t-none">
                 <li>
-                  <Link href="/porosity/high-porosity">High Porosity</Link>
+                  <Link href="/porosity/high-porosity" onClick={handleLinkClick}>High Porosity</Link>
                 </li>
                 <li>
-                  <Link href="/porosity/low-porosity">Low Porosity</Link>
+                  <Link href="/porosity/low-porosity" onClick={handleLinkClick}>Low Porosity</Link>
                 </li>
                 <li>
-                  <Link href="/porosity/normal-porosity">Normal Porosity</Link>
+                  <Link href="/porosity/normal-porosity" onClick={handleLinkClick}>Normal Porosity</Link>
                 </li>
               </ul>
             </details>
@@ -59,15 +94,15 @@ export default function Navbar() {
           <li>
             <Link href="/porosity-quiz">Porosity Quiz</Link>
           </li>
-          <li className="dropdown dropdown-hover">
+          <li>
             <details>
               <summary>More</summary>
-              <ul className="p-2 bg-accent rounded-t-none dropdown-content">
+              <ul className="p-2 bg-accent rounded-t-none">
                 <li>
-                  <Link href="/resources">Resources</Link>
+                  <Link href="/resources" onClick={handleLinkClick}>Resources</Link>
                 </li>
                 <li>
-                  <Link href="/about">About</Link>
+                  <Link href="/about" onClick={handleLinkClick}>About</Link>
                 </li>
               </ul>
             </details>
@@ -115,13 +150,13 @@ export default function Navbar() {
                 <summary>Porosity</summary>
                 <ul className="p-2 bg-accent rounded-t-none">
                   <li>
-                    <Link href="/porosity/high-porosity">High Porosity</Link>
+                    <Link href="/porosity/high-porosity" onClick={handleLinkClick}>High Porosity</Link>
                   </li>
                   <li>
-                    <Link href="/porosity/low-porosity">Low Porosity</Link>
+                    <Link href="/porosity/low-porosity" onClick={handleLinkClick}>Low Porosity</Link>
                   </li>
                   <li>
-                    <Link href="/porosity/normal-porosity">Normal Porosity</Link>
+                    <Link href="/porosity/normal-porosity" onClick={handleLinkClick}>Normal Porosity</Link>
                   </li>
                 </ul>
               </details>
@@ -134,10 +169,10 @@ export default function Navbar() {
                 <summary>More</summary>
                 <ul className="p-2 bg-accent rounded-t-none">
                   <li>
-                    <Link href="/resources">Resources</Link>
+                    <Link href="/resources" onClick={handleLinkClick}>Resources</Link>
                   </li>
                   <li>
-                    <Link href="/about">About</Link>
+                    <Link href="/about" onClick={handleLinkClick}>About</Link>
                   </li>
                 </ul>
               </details>

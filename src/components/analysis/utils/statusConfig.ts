@@ -17,7 +17,7 @@ export const getStatusConfig = (status: string): StatusConfig => {
         alertClass: 'alert-info',
         alertContentClass: 'text-info-content',
         description:
-          "This ingredient list seems okay, but I'm only a robot! It's always a good idea to double-check and see if there's anything you're unsure about. Your hair is unique, so do what works best for you.",
+          "CurlsBot approved! This ingredient list seems good, but I'm only a robot! It's always a good idea to double-check and see if there's anything you're unsure about. Your hair is unique, so do what works best for you.",
       };
     case 'warning':
       return {
@@ -27,7 +27,7 @@ export const getStatusConfig = (status: string): StatusConfig => {
         alertClass: 'alert-error',
         alertContentClass: 'text-error-content',
         description:
-          'Hmm, I found a few tricky ingredients in this list. They might be okay for some people, but it’s always a good idea to double-check! You know your hair best, so listen to it.',
+          "We've analyzed your ingredients and found some items that may need attention. Check the detailed analysis below",
       };
     case 'caution':
       return {

@@ -115,13 +115,11 @@ export default function Quiz() {
     <div className="space-y-6">
       <ChatBubbleRobot imageUrl="/normal.svg" status="ok">
         <ChatBubble status="ok">
-          Beep boop! Confused about hair porosity? 🤖 It&apos;s like your hair&apos;s
-          drinkability! 🥤 High porosity hair is a thirsty sponge, soaking up
-          moisture. Low porosity hair is a picky eater, not wanting to drink up.
-          Normal porosity hair is just right, not too thirsty, not too picky.
-          Most water tests aren&apos;t always accurate, so let&apos;s try a
-          different approach! This quiz will help us figure out your hair&apos;s
-          personality and porosity level. Let&apos;s get started!
+          Beep boop! Confused about hair porosity? 🤖 It&apos;s like your
+          hair&apos;s drinkability! 🥤 High porosity hair is thirsty, low
+          porosity hair is picky, and normal porosity is just right. Most water
+          tests aren&apos;t accurate. This quiz will help us figure out your
+          hair&apos;s personality and porosity level. Let&apos;s get started!
         </ChatBubble>
       </ChatBubbleRobot>
       <div className="max-w-2xl ml-auto">
@@ -136,7 +134,7 @@ export default function Quiz() {
                 {question.answers.map((answer, index) => (
                   <button
                     key={index}
-                    className="btn btn-ghost bg-secondary w-full text-left justify-start normal-case"
+                    className="cb-card-lite bg-secondary w-full text-left justify-start normal-case"
                     onClick={() => handleAnswerClick(answer.points)}
                   >
                     {answer.content}

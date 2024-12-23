@@ -48,7 +48,7 @@ Shampoo bars are gaining popularity as an eco-friendly option. However, there ar
    * Often marketed as "natural" or "handmade"
 
 2. **Syndet Bars** (Can Be Curl-Friendly):
-   * Example: [HiBAR - Maintain Solid Shampoo Bar](https://amzn.to/4fx1RpU)
+   * Example: [HiBAR - Maintain Solid Shampoo Bar](https://amzn.to/4fx1RpU) and
    * Made with synthetic [detergents](/groups/detergents)
    * pH-balanced (around 5.5)
    * Similar to regular curl-friendly shampoos
@@ -89,6 +89,7 @@ If you're looking for a shampoo bar that's not soap-based, here are a few that C
 
 - [HiBAR - Maintain Solid Shampoo Bar](https://amzn.to/4fx1RpU)
 - [Aspen Kay Naturals - Solid Shampoo Bar](https://amzn.to/3BHhZai)
+- [Refig Lemongrass Solid Shampoo Bar](https://therefig.com/products/lemongrass-shampoo-bar)
 
 Need Help?
 ---------

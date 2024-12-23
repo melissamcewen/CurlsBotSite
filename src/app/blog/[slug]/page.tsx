@@ -1,6 +1,7 @@
 import { getBlogPost } from '@/utils/markdown';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { BookOpenIcon } from '@heroicons/react/24/solid';
 import { Metadata } from 'next';
 
@@ -15,13 +16,12 @@ interface BlogPost {
 }
 
 interface Props {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = await getBlogPost(params.slug);
+  const resolvedParams = await params;
+  const post = await getBlogPost(resolvedParams.slug);
 
   if (!post) {
     return {
@@ -49,19 +49,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           height: 630,
           alt: frontmatter.title
         }
-      ] : ['/icon.png']
+      ] : ['/images/og-default.png']
     },
     twitter: {
       card: 'summary_large_image',
       title: frontmatter.title,
       description: frontmatter.description,
-      images: frontmatter.image ? [frontmatter.image] : ['/icon.png']
+      images: frontmatter.image ? [frontmatter.image] : ['/images/og-default.png']
     }
   };
 }
 
 export default async function BlogPostPage({ params }: Props) {
-  const post = await getBlogPost(params.slug);
+  const resolvedParams = await params;
+  const post = await getBlogPost(resolvedParams.slug);
 
   if (!post) {
     notFound();
@@ -103,6 +104,19 @@ export default async function BlogPostPage({ params }: Props) {
             <div className="text-base-content/50 -mt-4 mb-8">
               {formattedDate}
             </div>
+
+            {post.frontmatter.image && (
+              <div className="my-8">
+                <Image
+                  src={post.frontmatter.image}
+                  alt={post.frontmatter.title}
+                  width={1200}
+                  height={630}
+                  className="rounded-lg w-full h-auto"
+                  priority
+                />
+              </div>
+            )}
 
             <div dangerouslySetInnerHTML={{ __html: post.content }} />
           </article>

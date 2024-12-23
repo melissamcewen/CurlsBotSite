@@ -21,8 +21,8 @@ export default function ContactPage() {
             <h2>Email</h2>
             <p>
               You can reach me directly at:{' '}
-              <a href="mailto:mgmcewen@gmail.com" className="link link-primary">
-                mgmcewen@gmail.com
+              <a href="mailto:info@curlsbot.com" className="link link-primary">
+                info@curlsbot.com
               </a>
             </p>
 

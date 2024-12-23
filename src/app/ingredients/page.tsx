@@ -1,9 +1,11 @@
 'use client';
 
+import React from 'react';
 import { useState } from 'react';
 import { getBundledDatabase, Ingredient } from 'haircare-ingredients-analyzer';
 import { Suspense } from 'react';
 import Loading from './loading';
+import { ExclamationTriangleIcon, InformationCircleIcon, ExclamationCircleIcon } from '@heroicons/react/24/solid';
 
 // Helper function to normalize category names
 function normalizeCategory(category: string): string {
@@ -13,35 +15,93 @@ function normalizeCategory(category: string): string {
     .join(' ');
 }
 
-// Helper function to get category color
-function getCategoryColorClass(category: string): string {
-  const categoryMap: Record<string, string> = {
-    // Error status (red)
-    drying_alcohols: 'text-error',
-    non_water_soluble_silicones: 'text-error',
-    soaps: 'text-error',
-    sulfates: 'text-error',
+// Helper function to get category icon and color
+function getCategoryIcon(category: string): { icon: React.ReactElement; colorClass: string } {
+  const categoryMap: Record<string, { icon: React.ReactElement; colorClass: string }> =
+    {
+      // Error status (red)
+      drying_alcohols: {
+        icon: <ExclamationCircleIcon className="w-4 h-4" />,
+        colorClass: 'text-error',
+      },
+      non_water_soluble_silicones: {
+        icon: <ExclamationCircleIcon className="w-4 h-4" />,
+        colorClass: 'text-error',
+      },
+      soaps: {
+        icon: <ExclamationCircleIcon className="w-4 h-4" />,
+        colorClass: 'text-error',
+      },
+      sulfates: {
+        icon: <ExclamationCircleIcon className="w-4 h-4" />,
+        colorClass: 'text-error',
+      },
+      non_water_soluble_waxes: {
+        icon: <ExclamationCircleIcon className="w-4 h-4" />,
+        colorClass: 'text-error',
+      },
+      petroleum_oils: {
+        icon: <ExclamationCircleIcon className="w-4 h-4" />,
+        colorClass: 'text-error',
+      },
 
-    // Warning status (yellow)
-    astringents: 'text-warning',
-    heavy_oils: 'text-warning',
-    other_detergents: 'text-warning',
-    parabens: 'text-warning',
-    sulfonates: 'text-warning',
-    water_soluble_silicones: 'text-warning',
+      // Warning status (yellow)
+      astringents: {
+        icon: <ExclamationTriangleIcon className="w-4 h-4" />,
+        colorClass: 'text-warning',
+      },
+      heavy_oils: {
+        icon: <ExclamationTriangleIcon className="w-4 h-4" />,
+        colorClass: 'text-warning',
+      },
+      other_detergents: {
+        icon: <ExclamationTriangleIcon className="w-4 h-4" />,
+        colorClass: 'text-warning',
+      },
+      parabens: {
+        icon: <ExclamationTriangleIcon className="w-4 h-4" />,
+        colorClass: 'text-warning',
+      },
+      sulfonates: {
+        icon: <ExclamationTriangleIcon className="w-4 h-4" />,
+        colorClass: 'text-warning',
+      },
+      water_soluble_silicones: {
+        icon: <ExclamationTriangleIcon className="w-4 h-4" />,
+        colorClass: 'text-warning',
+      },
+      evaporative_silicones: {
+        icon: <ExclamationTriangleIcon className="w-4 h-4" />,
+        colorClass: 'text-warning',
+      },
 
-    // Info status (blue)
-    emollient_alcohols: 'text-info',
-    light_oils: 'text-info',
-    medium_oils: 'text-info',
-    mild_detergents: 'text-info',
-    water_soluble_waxes: 'text-info',
+      // Info status (blue)
+      emollient_alcohols: {
+        icon: <InformationCircleIcon className="w-4 h-4" />,
+        colorClass: 'text-info',
+      },
+      light_oils: {
+        icon: <InformationCircleIcon className="w-4 h-4" />,
+        colorClass: 'text-info',
+      },
+      medium_oils: {
+        icon: <InformationCircleIcon className="w-4 h-4" />,
+        colorClass: 'text-info',
+      },
+      mild_detergents: {
+        icon: <InformationCircleIcon className="w-4 h-4" />,
+        colorClass: 'text-info',
+      },
+      water_soluble_waxes: {
+        icon: <InformationCircleIcon className="w-4 h-4" />,
+        colorClass: 'text-info',
+      },
+    };
 
-    // No color for "other" category
-    other: 'text-base-content'
+  return categoryMap[category.toLowerCase()] || {
+    icon: <InformationCircleIcon className="w-4 h-4" />,
+    colorClass: 'text-base-content/50'
   };
-
-  return categoryMap[category.toLowerCase()] || 'text-base-content';
 }
 
 function IngredientsTable() {
@@ -122,17 +182,19 @@ function IngredientsTable() {
             </td>
             <td>
               <div className="flex flex-wrap gap-2">
-                {ingredient.categories.map((category) => (
-                  <div
-                    key={category}
-                    className="flex items-center gap-1.5"
-                  >
-                    <span className={`inline-block w-2 h-2 rounded-full ${getCategoryColorClass(category)} ring-1 ring-current`} />
-                    <span className="text-sm">
-                      {normalizeCategory(category)}
-                    </span>
-                  </div>
-                ))}
+                {ingredient.categories.map((category) => {
+                  const { icon, colorClass } = getCategoryIcon(category);
+                  return (
+                    <div key={category} className="flex items-center gap-1.5">
+                      <span className={colorClass}>
+                        {icon}
+                      </span>
+                      <span className="text-sm">
+                        {normalizeCategory(category)}
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
             </td>
           </tr>

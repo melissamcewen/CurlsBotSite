@@ -2,6 +2,7 @@
 title: Welcome Back
 description: CurlsBot is back, and I'm ready to make it even better.
 date: 2025-01-01
+image: /images/blog/welcome-back/hero.png
 ---
 
 ## Why I Decided to Update CurlsBot
@@ -34,6 +35,7 @@ Earlier this month, I was laid off yet again. I found myself back where I was in
 
 This time, my motivation is different. I’d love to stop working for bosses altogether and gain full independence. Developing CurlsBot and other applications feels like a step toward that goal. I have other hustles, too (like the [headbands in my Etsy shop](https://www.etsy.com/shop/EldritchSalvage/), which are perfect for curly/wavy hair). It’s a risk, but I’m ready to take it.
 
+![the steps in my curly journey from frizzy hair in 2016 to no hair in 2018 to long hair in 2024](/images/blog/welcome-back/curlyjourney.png)
 ---
 
 ### What’s Next for CurlsBot

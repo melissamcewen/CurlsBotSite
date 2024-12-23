@@ -25,18 +25,29 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: {
     default: 'CurlsBot | Hair Care Ingredient Analysis',
-    template: '%s | CurlsBot'
+    template: '%s | CurlsBot',
   },
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://curlsbot.com'),
-  description: 'Your intelligent assistant for analyzing hair care ingredients and understanding hair porosity. Get personalized hair care advice and ingredient analysis.',
-  keywords: ['hair care', 'ingredient analysis', 'curly hair', 'porosity', 'hair products', 'CurlsBot'],
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_BASE_URL || 'https://curlsbot.com',
+  ),
+  description:
+    'Unlock healthier hair with CurlsBot. Our AI assistant analyzes ingredients & porosity to give you personalized hair care advice, product recommendations, and ingredient breakdowns tailored just for curly and wavy hair.',
+  keywords: [
+    'hair care',
+    'ingredient analysis',
+    'curly hair',
+    'porosity',
+    'hair products',
+    'CurlsBot',
+  ],
   authors: [{ name: 'CurlsBot' }],
   openGraph: {
     type: 'website',
     locale: 'en_US',
     siteName: 'CurlsBot',
     title: 'CurlsBot - Hair Care Ingredient Analysis',
-    description: 'Your intelligent assistant for analyzing hair care ingredients and understanding hair porosity',
+    description:
+      'Your intelligent assistant for analyzing hair care ingredients and understanding hair porosity',
     images: [
       {
         url: '/images/og-default.png',
@@ -44,20 +55,21 @@ export const metadata: Metadata = {
         height: 630,
         alt: 'CurlsBot - Hair Care Ingredient Analysis',
         type: 'image/png',
-      }
-    ]
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'CurlsBot - Hair Care Ingredient Analysis',
-    description: 'Your intelligent assistant for analyzing hair care ingredients',
-    images: ['/images/og-default.png']
+    description:
+      'Your intelligent assistant for analyzing hair care ingredients',
+    images: ['/images/og-default.png'],
   },
   manifest: '/manifest.json',
   icons: {
     icon: '/icon.png',
     shortcut: '/favicon.ico',
-    apple: '/apple-icon.png'
+    apple: '/apple-icon.png',
   },
   robots: {
     index: false,
