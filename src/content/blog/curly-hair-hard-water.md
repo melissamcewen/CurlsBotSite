@@ -2,6 +2,7 @@
 title: Curly Hair and Hard Water
 description: Understanding how hard water affects curly hair and practical solutions for managing mineral buildup, from clarifying treatments to water filtration options.
 date: 2024-12-25
+image: /images/blog/curly-hair-hard-water/hero.png
 ---
 
 Understanding Hard Water and Your Curls

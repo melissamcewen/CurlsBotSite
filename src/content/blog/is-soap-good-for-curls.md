@@ -2,6 +2,7 @@
 title: Is Soap Good for Curls?
 description: Learn why traditional soap and many shampoo bars can damage curly hair, and how to identify safer alternatives for your curls.
 date: 2024-12-21
+image: /images/blog/is-soap-good-for-curls/hero.png
 ---
 
 Understanding Soap and Curly Hair
