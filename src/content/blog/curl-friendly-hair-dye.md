@@ -2,6 +2,7 @@
 title: Curl Friendly Hair Dyes
 description: A comprehensive guide to hair coloring options that work well with curly hair care routines, including natural and chemical alternatives.
 date: 2024-12-20
+image: /images/blog/curl-friendly-hair-dye/hero.png
 ---
 
 Understanding Hair Coloring Options
@@ -58,11 +59,12 @@ Direct Dyes: A Temporary Option
 
 Direct dyes are sometimes called "semi-permanent" dyes. They are a perfect option for those who don't want the commitment of henna or the damage of oxidative permanent dyes. Oxidative permanent dyes changed the sturcture of your hair, while direct dyes just leave a stain of color on the surface.
 
-The main disadvantage is that they are not permanent and will wash out over time. Plus they cannot lighten your hair and may not have as much of an effect on dark hair. Also I cannot find any that are silicone-free.
+The main disadvantage is that they are not permanent and will wash out over time. Plus they cannot lighten your hair and may not have as much of an effect on dark hair.
 
-That said, they aren't meant to be used very often and occasional usage of silicones is unlikely to build up.
+Most have silicones, but I recently found one that's silicone-free called [Glaze](https://amzn.to/3BAuhS2). I haven't tried it yet, but I'm excited to see how it works.
 
-[Overtone color depositing treatment masque](https://amzn.to/3DmoWOw) is one I have used often. It contains amodimethicone, a silicone that is not water soluble.
+
+[![Glaze](/images/blog/curl-friendly-hair-dye/glaze.jpg)](https://amzn.to/3BAuhS2)
 
 A potential alternative is non-henna herbal dyes, but they are usually not very effective and more research is needed. If you're interested in the subject, join the [Natural Hair Dye Subreddit](https://www.reddit.com/r/naturalhairdye/), which I moderate.
 

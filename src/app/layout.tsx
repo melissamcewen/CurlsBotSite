@@ -47,6 +47,7 @@ export const metadata: Metadata = {
     title: 'CurlsBot - Hair Care Ingredient Analysis',
     description:
       'Your intelligent assistant for analyzing hair care ingredients and understanding hair porosity',
+    url: 'https://curlsbot.com',
     images: [
       {
         url: '/images/og-default.png',
@@ -56,6 +57,7 @@ export const metadata: Metadata = {
         type: 'image/png',
       },
     ],
+    logo: '/logo.svg',
   },
   twitter: {
     card: 'summary_large_image',

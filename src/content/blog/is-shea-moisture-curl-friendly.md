@@ -2,6 +2,7 @@
 title: Is Shea Moisture Curl Friendly?
 description: Understanding the community's perspective on Shea Moisture products, from formula changes after the Unilever acquisition to concerns about product weight for different hair types.
 date: 2024-12-30
+image: /images/blog/is-shea-moisture-curl-friendly/hero.png
 ---
 
 The Shea Moisture Journey
