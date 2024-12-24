@@ -24,8 +24,8 @@ const remarkNextImage: Plugin = () => {
             src="${src}"
             alt="${alt}"
             className="rounded-lg"
-            width={800}
-            height={400}
+            width={1600}
+            height={800}
             style={{
               maxWidth: '100%',
               height: 'auto',

@@ -110,10 +110,11 @@ export default async function BlogPostPage({ params }: Props) {
                 <Image
                   src={post.frontmatter.image}
                   alt={post.frontmatter.title}
-                  width={1200}
-                  height={630}
+                  width={2400}
+                  height={1260}
                   className="rounded-lg w-full h-auto"
                   priority
+                  quality={90}
                 />
               </div>
             )}
