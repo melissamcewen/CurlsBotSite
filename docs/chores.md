@@ -16,7 +16,7 @@ verification: {
 
 2. Remove from head section:
 ```html
-<meta name="impact-site-verification" value="1ade1083-f729-416f-9c92-6d0b179d94e3" />
+<meta name="impact-site-verification" content="1ade1083-f729-416f-9c92-6d0b179d94e3" />
 ```
 
 After removing these, deploy the changes to remove the verification tag from the live site.
