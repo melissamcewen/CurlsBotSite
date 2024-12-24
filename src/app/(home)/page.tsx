@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 import Loading from './loading';
 
 interface Props {
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
 // This component handles the server-side analysis
@@ -30,9 +30,10 @@ async function AnalyzerWrapper({ ingredients }: { ingredients: string }) {
   );
 }
 
-export default function Home({ searchParams }: Props) {
-  const initialIngredients = typeof searchParams.ingredients === 'string'
-    ? searchParams.ingredients
+export default async function Home({ searchParams }: Props) {
+  const resolvedParams = await searchParams;
+  const initialIngredients = typeof resolvedParams.ingredients === 'string'
+    ? resolvedParams.ingredients
     : '';
 
   return (

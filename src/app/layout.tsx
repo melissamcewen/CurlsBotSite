@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_BASE_URL || 'https://curlsbot.com',
   ),
   description:
-    'Unlock healthier hair with CurlsBot. Our AI assistant analyzes ingredients & porosity to give you personalized hair care advice, product recommendations, and ingredient breakdowns tailored just for curly and wavy hair.',
+    'Unlock healthier hair with CurlsBot. Get personalized hair care advice, product recommendations, and ingredient breakdowns based on your hair\'s ingredients and porosity, all tailored for curly and wavy hair.',
   keywords: [
     'hair care',
     'ingredient analysis',
