@@ -8,6 +8,7 @@ import OtherDetergentsCheatSheet from '@/components/ingredients/cards/OtherDeter
 import SoapCheatSheet from '@/components/ingredients/cards/SoapCheatSheet';
 import ParabensCheatSheet from '@/components/ingredients/cards/ParabensCheatSheet';
 import WitchHazelCheatSheet from '@/components/ingredients/cards/WitchHazelCheatSheet';
+import AlcoholCheatSheet from '@/components/ingredients/cards/AlcoholCheatSheet';
 export const metadata: Metadata = {
   title: 'Haircare Ingredients Cheat Sheet',
   description: 'Quick guide to identify common haircare ingredient types by name',
@@ -30,6 +31,7 @@ export default function IngredientsCheatSheetPage() {
           <PetroCheatSheet />
           <SulfatesCheatSheet />
           <OtherDetergentsCheatSheet />
+          <AlcoholCheatSheet />
           <SoapCheatSheet />
           <ParabensCheatSheet />
           <WitchHazelCheatSheet />
