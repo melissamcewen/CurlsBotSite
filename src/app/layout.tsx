@@ -57,7 +57,6 @@ export const metadata: Metadata = {
         type: 'image/png',
       },
     ],
-    logo: '/logo.svg',
   },
   twitter: {
     card: 'summary_large_image',
@@ -116,6 +115,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <meta name="apple-mobile-web-app-title" content="CurlsBot" />
         <meta name="impact-site-verification" content="1ade1083-f729-416f-9c92-6d0b179d94e3" />
+        <meta property="og:logo" content="/logo.svg" />
         {/* Preload all images */}
         <link rel="preload" href="/logo.svg" as="image" type="image/svg+xml" />
         <link rel="preload" href="/normal.svg" as="image" type="image/svg+xml" />
