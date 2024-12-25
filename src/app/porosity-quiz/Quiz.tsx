@@ -123,8 +123,7 @@ export default function Quiz() {
         </ChatBubble>
       </ChatBubbleRobot>
       <div className="max-w-2xl ml-auto">
-        <ChatBubbleUser
-          message={
+        <ChatBubbleUser>
             <div>
               <p className="font-medium mb-2">
                 Question {currentQuestion + 1} of {quizQuestions.length}
@@ -142,9 +141,7 @@ export default function Quiz() {
                 ))}
               </div>
             </div>
-          }
-          secondary
-        />
+        </ChatBubbleUser>
       </div>
     </div>
   );

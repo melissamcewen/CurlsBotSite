@@ -14,10 +14,12 @@ interface Props {
 
 export default function IngredientForm({
   initialIngredients = '',
-  initialAnalysis = null
+  initialAnalysis = null,
 }: Props) {
   const [ingredients, setIngredients] = useState(initialIngredients);
-  const [analysisResult, setAnalysisResult] = useState<AnalysisResult | null>(initialAnalysis);
+  const [analysisResult, setAnalysisResult] = useState<AnalysisResult | null>(
+    initialAnalysis,
+  );
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showForm, setShowForm] = useState(!initialAnalysis);
@@ -78,23 +80,21 @@ export default function IngredientForm({
         <>
           <ChatBubbleRobot imageUrl="/normal.svg" status="ok">
             <ChatBubble status="ok">
-              Hi! I&apos;m CurlsBot! I analyze hair care ingredients with curly and wavy hair in mind. Just paste an ingredients list below and I&apos;ll analyze it for
-              you.
+              Hi! I&apos;m CurlsBot! I analyze hair care ingredients with curly
+              and wavy hair in mind. Just paste an ingredients list below and
+              I&apos;ll analyze it for you.
             </ChatBubble>
 
             <ChatFooter>
-              <Link href="/about">
-                Learn more
-              </Link>
+              <Link href="/about">Learn more</Link>
             </ChatFooter>
           </ChatBubbleRobot>
 
           <div className="max-w-2xl ml-auto">
-            <ChatBubbleUser
-              message={
-                <form onSubmit={handleSubmit} className="w-full">
-                  <div className="form-control w-full">
-                    <label htmlFor="ingredients-input" className="label">
+            <ChatBubbleUser>
+              <form onSubmit={handleSubmit} className="w-full">
+                <div className="form-control w-full">
+                  <label htmlFor="ingredients-input" className="label">
                       <span className="label-text font-semibold">
                         Paste your ingredients list
                       </span>
@@ -118,10 +118,8 @@ export default function IngredientForm({
                   >
                     {isAnalyzing ? 'Analyzing...' : 'Analyze Ingredients'}
                   </button>
-                </form>
-              }
-              secondary
-            />
+              </form>
+            </ChatBubbleUser>
           </div>
         </>
       )}
