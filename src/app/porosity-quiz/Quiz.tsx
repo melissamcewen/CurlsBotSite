@@ -8,7 +8,7 @@ import ChatBubbleUser from '@/components/analysis/ChatBubbleUser';
 import Link from 'next/link';
 
 // Easy to toggle development mode testing
-const DEV_MODE = false;
+const DEV_MODE = true;
 
 export default function Quiz() {
   // Initialize state with DEV_MODE values
@@ -35,6 +35,7 @@ export default function Quiz() {
       return {
         type: 'High Porosity',
         tag: 'high_porosity',
+        link: '/porosity/high-porosity',
         description:
           'Your hair easily absorbs moisture but may also lose it quickly. Focus on moisturizing and sealing products. Deep conditioning treatments will be beneficial.'
       };
@@ -42,6 +43,7 @@ export default function Quiz() {
       return {
         type: 'Low Porosity',
         tag: 'low_porosity',
+        link: '/porosity/low-porosity',
         description:
           'Your hair has difficulty absorbing moisture and products. Focus on clarifying treatments and lightweight products. Use heat or steam to help products penetrate.'
       };
@@ -49,6 +51,7 @@ export default function Quiz() {
       return {
         type: "Normal Porosity",
         tag: 'normal_porosity',
+        link: '/porosity/normal-porosity',
         description: "Your hair has a good balance of moisture absorption and retention. Continue with your current routine while monitoring any changes."
       };
     }
@@ -80,7 +83,7 @@ export default function Quiz() {
               <div className="space-y-4">
                 <div>
                   <Link
-                    href={`/products/${result.tag}`}
+                    href={result.link}
                     className="text-inherit  underline font-medium"
                   >
                     Explore my products and tips for {result.type} hair →
