@@ -68,7 +68,7 @@ export default function AdvancedIngredientForm({
           <ChatBubbleRobot imageUrl="/sunglass.svg">
             <ChatBubble status="ok">
               Hi! This is the advanced version of CurlsBot with experimental
-              features. You can upload a photo of your product's ingredients
+              features. You can upload a photo of your product&apos;s ingredients
               list, or paste the text manually below.
             </ChatBubble>
 
