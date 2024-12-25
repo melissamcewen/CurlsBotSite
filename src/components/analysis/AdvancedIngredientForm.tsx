@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Analyzer } from 'haircare-ingredients-analyzer';
+import { Analyzer, AnalysisResult } from 'haircare-ingredients-analyzer';
 import AnalysisResults from './AnalysisResults';
 import { ChatBubbleRobot, ChatBubble, ChatFooter } from './ChatBubbleRobot';
 import ChatBubbleUser from './ChatBubbleUser';
@@ -9,17 +9,24 @@ import Link from 'next/link';
 import { PhotoIcon } from '@heroicons/react/24/solid';
 
 interface Props {
-  onImageUpload: (event: React.ChangeEvent<HTMLInputElement>) => Promise<string>;
+  onImageUpload: (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => Promise<string>;
   isProcessing: boolean;
 }
 
-export default function AdvancedIngredientForm({ onImageUpload, isProcessing }: Props) {
+export default function AdvancedIngredientForm({
+  onImageUpload,
+  isProcessing,
+}: Props) {
   const [ingredients, setIngredients] = useState('');
-  const [analysis, setAnalysis] = useState(null);
+  const [analysis, setAnalysis] = useState<AnalysisResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [showForm, setShowForm] = useState(true);
 
-  const handleImageUploadAndProcess = async (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageUploadAndProcess = async (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
     const text = await onImageUpload(event);
     if (text) {
       setIngredients(text);
@@ -96,8 +103,8 @@ export default function AdvancedIngredientForm({ onImageUpload, isProcessing }: 
               <div className="form-control w-full">
                 <label htmlFor="ingredients-input" className="label">
                   <span className="label-text font-semibold">
-                    Edit anything that doesn&apos;t look like an ingredient&apos;s
-                    list
+                    Edit anything that doesn&apos;t look like an
+                    ingredient&apos;s list
                   </span>
                 </label>
 
