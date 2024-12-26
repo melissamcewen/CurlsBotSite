@@ -7,9 +7,9 @@ interface ProductRecommendationProps {
 
 export function ProductRecommendation({ category, brand, name, buyUrl }: ProductRecommendationProps) {
   return (
-    <div className="card bg-base-100 rounded-lg border cb-border border-secondary lg:max-w-sm">
-      <div className="p-4">
-        <div className="flex justify-between items-start gap-4">
+    <div className="card bg-base-100 rounded-lg border cb-border border-secondary h-[140px]">
+      <div className="p-4 h-full flex flex-col">
+        <div className="flex justify-between items-start gap-4 h-full">
           <div className="space-y-1">
             <p className="text-sm text-primary font-bold uppercase tracking-wide">
               {category.replace(/_/g, ' ')}

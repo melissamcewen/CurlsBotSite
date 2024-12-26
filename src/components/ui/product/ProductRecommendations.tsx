@@ -1,6 +1,7 @@
 import { ProductRecommendation } from './ProductRecommendation';
 import { getBundledProducts } from 'haircare-ingredients-analyzer';
 import type { Product, ProductDatabase } from 'haircare-ingredients-analyzer';
+import { filterProductByCountry } from '@/lib/countryDetection';
 
 export type ProductCategory =
   | 'shampoos'
@@ -40,8 +41,7 @@ export const CATEGORY_DESCRIPTIONS: Record<ProductCategory, string> = {
     'Light conditioners that stay in your hair to provide ongoing moisture. Most important for high-porosity hair. May weigh down low-porosity hair.',
   creams:
     'Rich moisturizers that help define and shape curls, and provide a barrier to protect against moisture loss. Essential for high-porosity hair. May weigh down low-porosity hair.',
-  gels:
-    'Styling products that provide hold and definition. Useful for all porosity types.',
+  gels: 'Styling products that provide hold and definition. Useful for all porosity types.',
   foams:
     'Light styling products that add volume and definition without weight. A great option for low-porosity hair.',
   custards:
@@ -79,16 +79,6 @@ interface RecommendedProduct {
   buyUrl: string;
 }
 
-// Add this function to detect country
-function getUserCountry(): string {
-  // For now, just check if the URL includes .au
-  // This can be enhanced later with proper geolocation
-  return typeof window !== 'undefined' &&
-    window.location.hostname.endsWith('.au')
-    ? 'AU'
-    : 'US';
-}
-
 export function getProductRecommendations(porosityType: string) {
   const porosityTag = porosityType
     .toLowerCase()
@@ -96,7 +86,6 @@ export function getProductRecommendations(porosityType: string) {
     .replace(/\s+/g, '_') as PorosityType;
 
   const validCategories = POROSITY_CATEGORIES[porosityTag] || CATEGORIES;
-  const userCountry = getUserCountry();
 
   const recommendations = CATEGORIES.reduce((acc, category) => {
     acc[category] = [];
@@ -107,32 +96,26 @@ export function getProductRecommendations(porosityType: string) {
 
   Object.entries(products.products).forEach(
     ([_, product]: [string, Product]) => {
+      const productCategory = product
+        .product_categories?.[0] as ProductCategory;
+
       if (
-        !product.product_categories ||
-        product.product_categories.length === 0
+        !productCategory ||
+        !validCategories.includes(productCategory) ||
+        !product.tags?.includes(porosityTag) ||
+        !filterProductByCountry(product)
       ) {
         return;
       }
 
-      // Skip if product has a country specified and it doesn't match user's country
-      if (product.country && product.country !== userCountry) {
-        return;
+      if (!recommendations[productCategory]) {
+        recommendations[productCategory] = [];
       }
-
-      const category = product.product_categories[0] as ProductCategory;
-      if (
-        product.tags?.includes(porosityTag) &&
-        validCategories.includes(category)
-      ) {
-        if (!recommendations[category]) {
-          recommendations[category] = [];
-        }
-        recommendations[category]!.push({
-          name: product.name,
-          brand: product.brand,
-          buyUrl: product.buy_url,
-        });
-      }
+      recommendations[productCategory]!.push({
+        name: product.name,
+        brand: product.brand,
+        buyUrl: product.buy_url,
+      });
     },
   );
 
@@ -171,15 +154,15 @@ export function ProductRecommendations({
             No product recommendations available at this time.
           </p>
         ) : (
-          <div className="flex flex-wrap -mx-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {CATEGORIES.map((category) => {
               const products = recommendations[category];
               if (!products) return null;
 
               return (
-                <div key={category} className="flex-1 min-w-[350px] p-4">
+                <div key={category}>
                   <div className="space-y-4">
-                    <div>
+                    <div className="h-32">
                       <h3 className="text-xl font-semibold capitalize">
                         {category.replace(/_/g, ' ')}
                       </h3>

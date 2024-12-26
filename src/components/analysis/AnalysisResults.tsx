@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { AnalysisResult } from 'haircare-ingredients-analyzer';
 import { IngredientsList } from './ingredients/IngredientsList';
 import { getStatusConfig } from './utils/statusConfig';
@@ -8,6 +9,7 @@ import { AnalysisFindings } from './findings/AnalysisFindings';
 import { AnalysisSummary } from './findings/AnalysisSummary';
 import Link from 'next/link';
 import { getBundledProducts } from 'haircare-ingredients-analyzer';
+import { filterProductByCountry } from '@/lib/countryDetection';
 
 interface Props {
   result: AnalysisResult;
@@ -17,7 +19,12 @@ interface Props {
 // Get a product recommendation based on the current hour
 function getProductRecommendation() {
   const products = getBundledProducts();
-  const allProducts = Object.values(products.products);
+  const allProducts = Object.values(products.products).filter(
+    filterProductByCountry,
+  ); // Filter products by country
+
+  // If no products available for this country, return null
+  if (allProducts.length === 0) return null;
 
   // Get current hour in UTC for stable rotation
   const hourOfYear = Math.floor(Date.now() / (1000 * 60 * 60));
@@ -31,7 +38,7 @@ function getProductRecommendation() {
   return {
     name: recommendedProduct.name,
     brand: recommendedProduct.brand,
-    buyUrl: recommendedProduct.buy_url
+    buyUrl: recommendedProduct.buy_url,
   };
 }
 
@@ -40,8 +47,11 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
 
   const { description } = getStatusConfig(result.status);
   const hasIngredients = result.ingredients && result.ingredients.length > 0;
-  const shouldShowRecommendation = result?.status === 'warning' || result?.status === 'caution';
-  const productRecommendation = shouldShowRecommendation ? getProductRecommendation() : null;
+  const shouldShowRecommendation =
+    result?.status === 'warning' || result?.status === 'caution';
+  const productRecommendation = shouldShowRecommendation
+    ? getProductRecommendation()
+    : null;
 
   return (
     <div className="space-y-8">
@@ -71,7 +81,8 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
                         rel="noopener noreferrer"
                         className="underline hover:text-primary"
                       >
-                        {productRecommendation.name} by {productRecommendation.brand}
+                        {productRecommendation.name} by{' '}
+                        {productRecommendation.brand}
                       </a>
                     </p>
                   )}
@@ -87,7 +98,10 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
               </div>
             </ChatBubble>
             <ChatFooter>
-              Got a question or concern? <Link href="/contact" className="link link-primary">Contact Us</Link>
+              Got a question or concern?{' '}
+              <Link href="/contact" className="link link-primary">
+                Contact Us
+              </Link>
             </ChatFooter>
           </ChatBubbleRobot>
         </div>
