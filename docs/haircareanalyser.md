@@ -1,6 +1,3 @@
-# haircare-ingredients-analyzer docs
-
-## Types
 /**
  * Represents why an ingredient or analysis received a particular status
  */
@@ -11,6 +8,8 @@ export interface StatusReason {
   name: string;
   /** Human readable explanation (e.g. "Contains sulfates") */
   reason: string;
+  /** Type of reason caution, warning, or ok */
+  type: 'caution' | 'warning' | 'ok';
 }
 
 /**
@@ -161,7 +160,11 @@ export interface Product {
   /** Raw ingredients list from the product */
   ingredients_raw?: string;
   /** Description of the product */
-  description?:  string;
+  description?: string;
+  /** ASIN of the product */
+  asin?: string;
+  /** Country */
+  country?: string;
 }
 
 /**
