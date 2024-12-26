@@ -20,7 +20,7 @@ export default function Quiz() {
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(initialScore);
-  const [showResults, setShowResults] = useState(initialShowResults);
+  const [showResults, setShowResults] = useState<boolean>(initialShowResults);
 
   const handleAnswerClick = (points: number) => {
     const newScore = score + points;
