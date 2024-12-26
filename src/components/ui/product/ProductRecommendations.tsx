@@ -27,9 +27,31 @@ export const CATEGORIES: ProductCategory[] = [
   'custards',
 ];
 
+export const CATEGORY_DESCRIPTIONS: Record<ProductCategory, string> = {
+  shampoos:
+    'Cleansers that remove buildup and oil from your hair. Essential for low-porosity hair and should be used on other porosity types at least occasionally.',
+  conditioners:
+    'Products that add moisture and help detangle hair. Almost everyone needs conditioner!',
+  cowashes:
+    'Gentle, non-lathering cleansers that clean without stripping natural oils. Use these for daily wash if you have high-porosity hair.',
+  deep_conditioners:
+    'Intensive treatments that restore moisture and repair damage. Essential at least weekly for high porosity hair and good for all porosity types occasionally.',
+  leave_ins:
+    'Light conditioners that stay in your hair to provide ongoing moisture. Most important for high-porosity hair. May weigh down low-porosity hair.',
+  creams:
+    'Rich moisturizers that help define and shape curls, and provide a barrier to protect against moisture loss. Essential for high-porosity hair. May weigh down low-porosity hair.',
+  gels:
+    'Styling products that provide hold and definition. Useful for all porosity types.',
+  foams:
+    'Light styling products that add volume and definition without weight. A great option for low-porosity hair.',
+  custards:
+    'Thick styling products that provide moisture and definition. Useful for all porosity types.',
+};
+
 const POROSITY_CATEGORIES: Record<PorosityType, ProductCategory[]> = {
   high_porosity: [
     'cowashes',
+    'shampoos',
     'conditioners',
     'deep_conditioners',
     'leave_ins',
@@ -57,6 +79,16 @@ interface RecommendedProduct {
   buyUrl: string;
 }
 
+// Add this function to detect country
+function getUserCountry(): string {
+  // For now, just check if the URL includes .au
+  // This can be enhanced later with proper geolocation
+  return typeof window !== 'undefined' &&
+    window.location.hostname.endsWith('.au')
+    ? 'AU'
+    : 'US';
+}
+
 export function getProductRecommendations(porosityType: string) {
   const porosityTag = porosityType
     .toLowerCase()
@@ -64,6 +96,7 @@ export function getProductRecommendations(porosityType: string) {
     .replace(/\s+/g, '_') as PorosityType;
 
   const validCategories = POROSITY_CATEGORIES[porosityTag] || CATEGORIES;
+  const userCountry = getUserCountry();
 
   const recommendations = CATEGORIES.reduce((acc, category) => {
     acc[category] = [];
@@ -72,19 +105,17 @@ export function getProductRecommendations(porosityType: string) {
 
   const products: ProductDatabase = getBundledProducts();
 
-  const allTags = new Set<string>();
-  Object.values(products.products).forEach((product) => {
-    if (product.tags) {
-      product.tags.forEach((tag) => allTags.add(tag));
-    }
-  });
-
   Object.entries(products.products).forEach(
     ([_, product]: [string, Product]) => {
       if (
         !product.product_categories ||
         product.product_categories.length === 0
       ) {
+        return;
+      }
+
+      // Skip if product has a country specified and it doesn't match user's country
+      if (product.country && product.country !== userCountry) {
         return;
       }
 
@@ -148,9 +179,14 @@ export function ProductRecommendations({
               return (
                 <div key={category} className="flex-1 min-w-[350px] p-4">
                   <div className="space-y-4">
-                    <h3 className="text-xl font-semibold capitalize">
-                      {category.replace(/_/g, ' ')}
-                    </h3>
+                    <div>
+                      <h3 className="text-xl font-semibold capitalize">
+                        {category.replace(/_/g, ' ')}
+                      </h3>
+                      <p className="text-base-content/70 mt-1">
+                        {CATEGORY_DESCRIPTIONS[category]}
+                      </p>
+                    </div>
                     <div className="grid grid-cols-1 gap-4">
                       {products.map((product, index) => (
                         <ProductRecommendation
