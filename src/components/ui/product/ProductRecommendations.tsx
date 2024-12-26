@@ -1,6 +1,8 @@
-import { ProductRecommendation } from './ProductRecommendation';
+import { ProductCard } from './ProductCard';
 import { getBundledProducts } from 'haircare-ingredients-analyzer';
 import type { Product, ProductDatabase } from 'haircare-ingredients-analyzer';
+import Link from 'next/link';
+import { ROUTINE_STEPS, type RoutineStep } from '@/lib/routineBuilder';
 
 export type ProductCategory =
   | 'shampoos'
@@ -40,8 +42,7 @@ export const CATEGORY_DESCRIPTIONS: Record<ProductCategory, string> = {
     'Light conditioners that stay in your hair to provide ongoing moisture. Most important for high-porosity hair. May weigh down low-porosity hair.',
   creams:
     'Rich moisturizers that help define and shape curls, and provide a barrier to protect against moisture loss. Essential for high-porosity hair. May weigh down low-porosity hair.',
-  gels:
-    'Styling products that provide hold and definition. Useful for all porosity types.',
+  gels: 'Styling products that provide hold and definition. Useful for all porosity types.',
   foams:
     'Light styling products that add volume and definition without weight. A great option for low-porosity hair.',
   custards:
@@ -77,6 +78,9 @@ interface RecommendedProduct {
   name: string;
   brand: string;
   buyUrl: string;
+  description?: string;
+  ingredients_raw?: string;
+  status?: 'ok' | 'caution' | 'warning' | 'error';
 }
 
 // Add this function to detect country
@@ -109,7 +113,8 @@ export function getProductRecommendations(porosityType: string) {
     ([_, product]: [string, Product]) => {
       if (
         !product.product_categories ||
-        product.product_categories.length === 0
+        product.product_categories.length === 0 ||
+        !product.tags?.includes('featured')
       ) {
         return;
       }
@@ -127,11 +132,16 @@ export function getProductRecommendations(porosityType: string) {
         if (!recommendations[category]) {
           recommendations[category] = [];
         }
-        recommendations[category]!.push({
-          name: product.name,
-          brand: product.brand,
-          buyUrl: product.buy_url,
-        });
+        if (recommendations[category]!.length < 3) {
+          recommendations[category]!.push({
+            name: product.name,
+            brand: product.brand,
+            buyUrl: product.buy_url,
+            description: product.description,
+            ingredients_raw: product.ingredients_raw,
+            status: product.status,
+          });
+        }
       }
     },
   );
@@ -171,32 +181,69 @@ export function ProductRecommendations({
             No product recommendations available at this time.
           </p>
         ) : (
-          <div className="flex flex-wrap -mx-4">
-            {CATEGORIES.map((category) => {
-              const products = recommendations[category];
-              if (!products) return null;
+          <div className="space-y-8">
+            {Object.entries(ROUTINE_STEPS).map(([stepId, step]) => {
+              // Get all products for categories in this step
+              const stepProducts = step.categories.flatMap((category) => {
+                const products = recommendations[category as ProductCategory];
+                return products
+                  ? products.map((product) => ({
+                      category,
+                      ...product,
+                    }))
+                  : [];
+              });
+
+              if (stepProducts.length === 0) return null;
 
               return (
-                <div key={category} className="flex-1 min-w-[350px] p-4">
-                  <div className="space-y-4">
-                    <div>
-                      <h3 className="text-xl font-semibold capitalize">
-                        {category.replace(/_/g, ' ')}
-                      </h3>
-                      <p className="text-base-content/70 mt-1">
-                        {CATEGORY_DESCRIPTIONS[category]}
-                      </p>
-                    </div>
-                    <div className="grid grid-cols-1 gap-4">
-                      {products.map((product, index) => (
-                        <ProductRecommendation
-                          key={`${category}-${index}`}
-                          category={category}
-                          brand={product.brand}
-                          name={product.name}
-                          buyUrl={product.buyUrl}
-                        />
-                      ))}
+                <div key={stepId} className="card bg-base-200">
+                  <div className="card-body">
+                    <h3 className="text-2xl font-semibold">{step.title}</h3>
+                    <p className="text-base-content/70">{step.description}</p>
+
+                    <div className="space-y-8">
+                      {step.categories.map((category) => {
+                        const products =
+                          recommendations[category as ProductCategory];
+                        if (!products) return null;
+
+                        return (
+                          <div key={category} className="space-y-4">
+                            <div>
+                              <h4 className="text-lg font-medium capitalize">
+                                {category.replace(/_/g, ' ')}
+                              </h4>
+                              <p className="text-base-content/70 mt-1">
+                                {
+                                  CATEGORY_DESCRIPTIONS[
+                                    category as ProductCategory
+                                  ]
+                                }
+                              </p>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                              {products.map((product, index) => (
+                                <ProductCard
+                                  key={`${category}-${index}`}
+                                  product={{
+                                    title: product.brand,
+                                    description: product.name,
+                                    product: {
+                                      ...product,
+                                      id: `${category}-${index}`,
+                                      buy_url: product.buyUrl,
+                                      product_categories: [category],
+                                    },
+                                  }}
+                                  category={category}
+                                />
+                              ))}
+                            </div>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
@@ -204,6 +251,24 @@ export function ProductRecommendations({
             })}
           </div>
         )}
+      </div>
+      <div className="card bg-primary text-primary-content mt-8">
+        <div className="card-body text-center">
+          <h3 className="text-xl font-semibold">Build Your Own Routine</h3>
+          <p>
+            Want to create a personalized hair care routine? Use our routine
+            builder to get step-by-step recommendations!
+          </p>
+          <Link
+            href={`/routine-builder?porosity=${porosityType
+              .toLowerCase()
+              .replace(/\s+hair$/, '')
+              .replace(/\s+/g, '_')}`}
+            className="btn btn-secondary mt-2 w-full max-w-md mx-auto"
+          >
+            Build My Routine
+          </Link>
+        </div>
       </div>
     </div>
   );

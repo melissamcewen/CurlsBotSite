@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { Product } from 'haircare-ingredients-analyzer';
 import {
   CountryCode,
@@ -8,13 +9,62 @@ import {
   getRoutineSteps,
   ProductCategory,
 } from '@/lib/routineBuilder';
+import Link from 'next/link';
+import { ProductCard } from '@/components/ui/product/ProductCard';
 
 export default function RoutineBuilder() {
-  const [porosity, setPorosity] = useState<PorosityType>('normal_porosity');
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [porosity, setPorosity] = useState<PorosityType>(() => {
+    const urlPorosity = searchParams.get('porosity');
+    return (urlPorosity as PorosityType) || 'normal_porosity';
+  });
   const [country, setCountry] = useState<CountryCode>('US');
   const [selectedProducts, setSelectedProducts] = useState<
     Partial<Record<ProductCategory, Product>>
   >({});
+
+  // Update URL when selections change
+  useEffect(() => {
+    const params = new URLSearchParams();
+    params.set('porosity', porosity);
+
+    // Add selected products to URL
+    Object.entries(selectedProducts).forEach(([category, product]) => {
+      params.set(`product_${category}`, product.id);
+    });
+
+    router.replace(`?${params.toString()}`, { scroll: false });
+  }, [porosity, selectedProducts, router]);
+
+  // Load initial product selections from URL
+  useEffect(() => {
+    const steps = getRoutineSteps(porosity, country);
+    const initialSelections: Partial<Record<ProductCategory, Product>> = {};
+
+    // Check each category parameter in URL
+    searchParams.forEach((value, key) => {
+      if (key.startsWith('product_')) {
+        const category = key.replace('product_', '') as ProductCategory;
+
+        // Find the product in our available products
+        steps.forEach((step) => {
+          step.categories.forEach((cat) => {
+            if (cat.category === category) {
+              const product = cat.products.find((p) => p.product.id === value);
+              if (product) {
+                initialSelections[category] = product.product;
+              }
+            }
+          });
+        });
+      }
+    });
+
+    if (Object.keys(initialSelections).length > 0) {
+      setSelectedProducts(initialSelections);
+    }
+  }, [searchParams, porosity, country]);
 
   return (
     <div className="container mx-auto p-4 max-w-5xl">
@@ -55,6 +105,7 @@ export default function RoutineBuilder() {
               >
                 <option value="US">United States</option>
                 <option value="AU">Australia</option>
+                <option value="UK">United Kingdom</option>
               </select>
             </div>
           </div>
@@ -73,6 +124,33 @@ export default function RoutineBuilder() {
             }));
           }}
         />
+
+        {Object.keys(selectedProducts).length > 0 && (
+          <div className="card bg-primary text-primary-content mt-8">
+            <div className="card-body text-center">
+              <h3 className="text-xl font-semibold">Save Your Routine</h3>
+              <p>
+                View your selected products on a single page that you can
+                bookmark or share!
+              </p>
+              <Link
+                href={`/routine/saved?${new URLSearchParams({
+                  porosity,
+                  ...Object.entries(selectedProducts).reduce(
+                    (acc, [category, product]) => ({
+                      ...acc,
+                      [`product_${category}`]: product.id,
+                    }),
+                    {},
+                  ),
+                }).toString()}`}
+                className="btn btn-secondary mt-2 w-full max-w-md mx-auto"
+              >
+                View Saved Routine
+              </Link>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -96,7 +174,7 @@ function RoutineSteps({
   return (
     <div className="space-y-8">
       {steps.map((step) => (
-        <div key={step.id} className="card bg-base-100">
+        <div key={step.id} className="card bg-base-200">
           <div className="card-body">
             <h3 className="text-2xl font-semibold">{step.title}</h3>
             <p className="text-base-content/70">{step.description}</p>
@@ -116,40 +194,18 @@ function RoutineSteps({
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {category.products.map((product) => (
-                      <div
+                      <ProductCard
                         key={product.type}
-                        className="card bg-base-200 cursor-pointer hover:bg-base-300 transition-colors"
-                      >
-                        <div className="card-body p-4">
-                          <div>
-                            <h5 className="font-medium">{product.title}</h5>
-                            <p className="text-sm text-base-content/70">
-                              {product.description}
-                            </p>
-                          </div>
-                          <div className="mt-4">
-                            <button
-                              className={`btn btn-block ${
-                                selectedProducts[category.category]?.id ===
-                                product.product.id
-                                  ? 'btn-primary'
-                                  : 'btn-outline'
-                              }`}
-                              onClick={() =>
-                                onProductSelect(
-                                  category.category,
-                                  product.product,
-                                )
-                              }
-                            >
-                              {selectedProducts[category.category]?.id ===
-                              product.product.id
-                                ? 'Selected'
-                                : 'Select'}
-                            </button>
-                          </div>
-                        </div>
-                      </div>
+                        product={product}
+                        category={category.category}
+                        onSelect={() =>
+                          onProductSelect(category.category, product.product)
+                        }
+                        isSelected={
+                          selectedProducts[category.category]?.id ===
+                          product.product.id
+                        }
+                      />
                     ))}
                   </div>
                 </div>
