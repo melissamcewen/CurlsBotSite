@@ -8,7 +8,7 @@ import ChatBubbleUser from '@/components/analysis/ChatBubbleUser';
 import Link from 'next/link';
 
 // Easy to toggle development mode testing
-const DEV_MODE = true;
+const DEV_MODE = false;
 
 export default function Quiz() {
   // Initialize state with DEV_MODE values
