@@ -2,9 +2,49 @@ import { ProductRecommendation } from './ProductRecommendation';
 import { getBundledProducts } from 'haircare-ingredients-analyzer';
 import type { Product, ProductDatabase } from 'haircare-ingredients-analyzer';
 
-export type ProductCategory = 'shampoos' | 'conditioners' | 'cowashes' | 'deep_conditioners' | 'leave_ins' | 'creams' | 'gels';
+export type ProductCategory =
+  | 'shampoos'
+  | 'conditioners'
+  | 'cowashes'
+  | 'deep_conditioners'
+  | 'leave_ins'
+  | 'creams'
+  | 'gels'
+  | 'foams'
+  | 'custards';
 
-export const CATEGORIES: ProductCategory[] = ['shampoos', 'conditioners', 'cowashes', 'deep_conditioners', 'leave_ins', 'creams', 'gels'];
+export type PorosityType = 'high_porosity' | 'low_porosity' | 'normal_porosity';
+
+export const CATEGORIES: ProductCategory[] = [
+  'shampoos',
+  'conditioners',
+  'cowashes',
+  'deep_conditioners',
+  'leave_ins',
+  'creams',
+  'gels',
+  'foams',
+  'custards',
+];
+
+const POROSITY_CATEGORIES: Record<PorosityType, ProductCategory[]> = {
+  high_porosity: [
+    'cowashes',
+    'conditioners',
+    'deep_conditioners',
+    'leave_ins',
+    'creams',
+    'gels',
+  ],
+  low_porosity: ['shampoos', 'conditioners', 'custards', 'foams', 'gels'],
+  normal_porosity: [
+    'shampoos',
+    'conditioners',
+    'deep_conditioners',
+    'creams',
+    'gels',
+  ],
+};
 
 interface ProductRecommendationsProps {
   porosityType: string;
@@ -21,49 +61,49 @@ export function getProductRecommendations(porosityType: string) {
   const porosityTag = porosityType
     .toLowerCase()
     .replace(/\s+hair$/, '')
-    .replace(/\s+/g, '_');
+    .replace(/\s+/g, '_') as PorosityType;
 
+  const validCategories = POROSITY_CATEGORIES[porosityTag] || CATEGORIES;
 
-
-  const recommendations: Record<ProductCategory, RecommendedProduct[] | null> = {
-    shampoos: [],
-    conditioners: [],
-    cowashes: [],
-    deep_conditioners: [],
-    leave_ins: [],
-    creams: [],
-    gels: []
-  };
+  const recommendations = CATEGORIES.reduce((acc, category) => {
+    acc[category] = [];
+    return acc;
+  }, {} as Record<ProductCategory, RecommendedProduct[] | null>);
 
   const products: ProductDatabase = getBundledProducts();
 
   const allTags = new Set<string>();
-  Object.values(products.products).forEach(product => {
+  Object.values(products.products).forEach((product) => {
     if (product.tags) {
-      product.tags.forEach(tag => allTags.add(tag));
+      product.tags.forEach((tag) => allTags.add(tag));
     }
   });
 
-
-  Object.entries(products.products).forEach(([_, product]: [string, Product]) => {
-    if (!product.product_categories || product.product_categories.length === 0) {
-
-      return;
-    }
-
-    const category = product.product_categories[0] as ProductCategory;
-    if (product.tags?.includes(porosityTag) && CATEGORIES.includes(category)) {
-
-      if (!recommendations[category]) {
-        recommendations[category] = [];
+  Object.entries(products.products).forEach(
+    ([_, product]: [string, Product]) => {
+      if (
+        !product.product_categories ||
+        product.product_categories.length === 0
+      ) {
+        return;
       }
-      recommendations[category]!.push({
-        name: product.name,
-        brand: product.brand,
-        buyUrl: product.buy_url
-      });
-    }
-  });
+
+      const category = product.product_categories[0] as ProductCategory;
+      if (
+        product.tags?.includes(porosityTag) &&
+        validCategories.includes(category)
+      ) {
+        if (!recommendations[category]) {
+          recommendations[category] = [];
+        }
+        recommendations[category]!.push({
+          name: product.name,
+          brand: product.brand,
+          buyUrl: product.buy_url,
+        });
+      }
+    },
+  );
 
   // Sort products within each category by brand and name
   Object.keys(recommendations).forEach((category) => {
@@ -79,20 +119,26 @@ export function getProductRecommendations(porosityType: string) {
     }
   });
 
-
   return recommendations;
 }
 
-export function ProductRecommendations({ porosityType, className = '' }: ProductRecommendationsProps) {
+export function ProductRecommendations({
+  porosityType,
+  className = '',
+}: ProductRecommendationsProps) {
   const recommendations = getProductRecommendations(porosityType);
-  const hasProducts = Object.values(recommendations).some(products => products !== null && products.length > 0);
+  const hasProducts = Object.values(recommendations).some(
+    (products) => products !== null && products.length > 0,
+  );
 
   return (
     <div className={className} data-testid="product-recommendations">
       <h2 className="text-2xl font-bold mb-6">Recommended Products</h2>
       <div className="min-h-[200px]">
         {!hasProducts ? (
-          <p className="text-base-content/70">No product recommendations available at this time.</p>
+          <p className="text-base-content/70">
+            No product recommendations available at this time.
+          </p>
         ) : (
           <div className="flex flex-wrap -mx-4">
             {CATEGORIES.map((category) => {
