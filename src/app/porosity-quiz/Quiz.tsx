@@ -3,12 +3,15 @@
 import { useState } from 'react';
 import { quizQuestions } from './quizData';
 import { ProductRecommendations } from '@/components/ui/product/ProductRecommendations';
-import { ChatBubbleRobot, ChatBubble } from '@/components/analysis/ChatBubbleRobot';
+import {
+  ChatBubbleRobot,
+  ChatBubble,
+} from '@/components/analysis/ChatBubbleRobot';
 import ChatBubbleUser from '@/components/analysis/ChatBubbleUser';
 import Link from 'next/link';
 
 // Easy to toggle development mode testing
-const DEV_MODE = false;
+const DEV_MODE = process.env.NODE_ENV === 'development' && false;
 
 export default function Quiz() {
   // Initialize state with DEV_MODE values
@@ -37,7 +40,7 @@ export default function Quiz() {
         tag: 'high_porosity',
         link: '/porosity/high-porosity',
         description:
-          'Your hair easily absorbs moisture but may also lose it quickly. Focus on moisturizing and sealing products. Deep conditioning treatments will be beneficial.'
+          'Your hair easily absorbs moisture but may also lose it quickly. Focus on moisturizing and sealing products. Deep conditioning treatments will be beneficial.',
       };
     } else if (score < -2) {
       return {
@@ -45,14 +48,15 @@ export default function Quiz() {
         tag: 'low_porosity',
         link: '/porosity/low-porosity',
         description:
-          'Your hair has difficulty absorbing moisture and products. Focus on clarifying treatments and lightweight products. Use heat or steam to help products penetrate.'
+          'Your hair has difficulty absorbing moisture and products. Focus on clarifying treatments and lightweight products. Use heat or steam to help products penetrate.',
       };
     } else {
       return {
-        type: "Normal Porosity",
+        type: 'Normal Porosity',
         tag: 'normal_porosity',
         link: '/porosity/normal-porosity',
-        description: "Your hair has a good balance of moisture absorption and retention. Continue with your current routine while monitoring any changes."
+        description:
+          'Your hair has a good balance of moisture absorption and retention. Continue with your current routine while monitoring any changes.',
       };
     }
   };
