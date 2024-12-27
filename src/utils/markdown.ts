@@ -9,12 +9,15 @@ const contentDirectory = path.join(process.cwd(), 'src/content');
 
 export async function getMarkdownData(filePath: string) {
   const fullPath = path.join(contentDirectory, filePath);
+  console.log('Looking for markdown file at:', fullPath);
 
   // Check if file exists
   if (!fs.existsSync(fullPath)) {
+    console.log('File not found at:', fullPath);
     return null;
   }
 
+  console.log('Found file at:', fullPath);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
 
@@ -27,7 +30,7 @@ export async function getMarkdownData(filePath: string) {
 
   return {
     frontmatter: data,
-    content: contentHtml
+    content: contentHtml,
   };
 }
 
@@ -37,16 +40,16 @@ export async function getBlogPosts() {
 
   const posts = await Promise.all(
     fileNames
-      .filter(fileName => fileName.endsWith('.md'))
-      .map(async fileName => {
+      .filter((fileName) => fileName.endsWith('.md'))
+      .map(async (fileName) => {
         const slug = fileName.replace(/\.md$/, '');
         const post = await getMarkdownData(`blog/${fileName}`);
         return {
           slug,
           frontmatter: post?.frontmatter || {},
-          content: post?.content || ''
+          content: post?.content || '',
         };
-      })
+      }),
   );
 
   return posts;
@@ -65,6 +68,7 @@ export async function getCategoryContent(categoryId: string) {
 }
 
 export async function getIngredientContent(ingredientId: string) {
+  console.log('Getting ingredient content for:', ingredientId);
   return getMarkdownData(`ingredients/${ingredientId}.md`);
 }
 

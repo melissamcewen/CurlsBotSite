@@ -132,7 +132,7 @@ export default function RootLayout({
           <div className="absolute inset-0 pointer-events-none" />
           <Navbar />
 
-            <main>
+            <main className="">
               <div className="p-4 md:p-8">{children}</div>
             </main>
 

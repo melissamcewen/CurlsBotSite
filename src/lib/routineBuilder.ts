@@ -116,16 +116,16 @@ export const FREQUENCY_RECOMMENDATIONS: Record<
     leave_ins: 'Every wash',
     creams: 'Every wash',
     gels: 'As needed for styling',
-    custards: 'As needed for styling',
+    custards: 'Optional',
   },
   low_porosity: {
     clarifying_shampoos: 'Every 1-2 weeks',
     shampoos: 'Every wash',
     conditioners: 'Every wash',
     deep_conditioners: 'Monthly',
-    foams: 'As needed for styling',
+    foams: 'Optional',
     gels: 'As needed for styling',
-    custards: 'As needed for styling',
+    custards: 'Optional',
   },
   normal_porosity: {
     clarifying_shampoos: 'Every month',
@@ -180,7 +180,7 @@ export const ROUTINE_STEPS: Record<RoutineStep, StepConfig> = {
   },
   enhance: {
     title: '3. Enhance Curls/Waves',
-    description: 'Choose products to enhance your natural pattern',
+    description: 'Choose 1-2 products to enhance your natural curl pattern',
     categories: ['foams', 'custards', 'creams'],
     porosityRecommendations: {
       high_porosity:
