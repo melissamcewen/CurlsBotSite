@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getBundledDatabase } from 'haircare-ingredients-analyzer';
 import { getCategoryContent } from '@/utils/markdown';
+import { ReferencesList } from '@/components/references/ReferencesList';
+import { Breadcrumbs } from '@/components/navigation/Breadcrumbs';
 import { Metadata } from 'next';
 import { slugToId, idToSlug } from '@/utils/slugs';
 
@@ -45,13 +47,19 @@ interface Category {
   name: string;
   description?: string;
   group?: string;
+  references?: Array<{
+    url: string;
+    status?: string;
+    title?: string;
+    type?: string;
+  }>;
 }
 
 interface Ingredient {
   id: string;
   name: string;
   categories: string[];
-  synonyms: string[];
+  synonyms?: string[];
   description?: string;
 }
 
@@ -71,21 +79,36 @@ export default async function CategoryPage({ params }: PageProps) {
 
   const category = database.categories[dbCategoryId];
 
+  // Get group info if it exists
+  const groupInfo = category.group ? database.groups[category.group] : null;
+
   // Find all ingredients in this category
   const ingredients = Object.values(database.ingredients).filter(
-    (ing: Ingredient) => ing.categories.includes(dbCategoryId),
+    (ingredient: Ingredient) => ingredient.categories.includes(dbCategoryId),
   );
 
   // Try to get markdown content
   const markdownContent = await getCategoryContent(dbCategoryId);
 
+  // Build breadcrumbs
+  const breadcrumbs = [{ href: '/categories', label: 'Categories' }];
+
+  if (groupInfo) {
+    breadcrumbs.unshift({
+      href: `/groups/${idToSlug(category.group)}`,
+      label: groupInfo.name,
+    });
+    breadcrumbs.unshift({ href: '/groups', label: 'Groups' });
+  }
+
+  breadcrumbs.push({
+    href: `/categories/${params.name}`,
+    label: category.name,
+  });
+
   return (
     <div className="container mx-auto p-4 max-w-4xl">
-      <div className="mb-4">
-        <Link href="/categories" className="btn btn-ghost btn-sm">
-          ← Back to Categories
-        </Link>
-      </div>
+      <Breadcrumbs items={breadcrumbs} />
 
       <div className="space-y-6">
         {/* Category Information */}
@@ -118,9 +141,14 @@ export default async function CategoryPage({ params }: PageProps) {
             {category.group && (
               <div className="badge badge-secondary mt-2">
                 <Link href={`/groups/${idToSlug(category.group)}`}>
-                  Group: {category.group}
+                  Group: {groupInfo?.name}
                 </Link>
               </div>
+            )}
+
+            {/* References */}
+            {category.references && (
+              <ReferencesList references={category.references} />
             )}
           </div>
         </div>

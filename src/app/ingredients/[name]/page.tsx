@@ -8,6 +8,8 @@ import {
 } from '@heroicons/react/24/solid';
 import { getIngredientContent } from '@/utils/markdown';
 import { IngredientDetailsCard } from '@/components/ingredients/IngredientDetailsCard';
+import { ReferencesList } from '@/components/references/ReferencesList';
+import { Breadcrumbs } from '@/components/navigation/Breadcrumbs';
 import { Metadata } from 'next';
 import { slugToId, idToSlug } from '@/utils/slugs';
 
@@ -43,6 +45,54 @@ export async function generateMetadata({
     markdownContent !== null ||
     (ingredient.references && ingredient.references.length > 0);
 
+  // Create JSON-LD structured data
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ChemicalSubstance',
+    name: ingredient.name,
+    description:
+      markdownContent?.frontmatter?.description ||
+      ingredient.description ||
+      `Information about ${ingredient.name} in hair care products`,
+    ...(ingredient.synonyms &&
+      ingredient.synonyms.length > 0 && {
+        alternateName: ingredient.synonyms,
+      }),
+    url: `https://curlsbot.com/ingredients/${params.name}`,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://curlsbot.com/ingredients/${params.name}`,
+    },
+    isPartOf: {
+      '@type': 'WebSite',
+      name: 'CurlsBot',
+      url: 'https://curlsbot.com',
+    },
+    ...(ingredient.categories?.length > 0 && {
+      category: ingredient.categories.map((categoryId) => {
+        const category = database.categories[categoryId];
+        return category.name;
+      }),
+    }),
+    ...(ingredient.references &&
+      ingredient.references.length > 0 && {
+        citation: ingredient.references.map((ref) => ({
+          '@type': 'CreativeWork',
+          name: ref.title || 'Reference',
+          url: ref.url,
+          ...(ref.type && {
+            // Map reference types to schema.org types
+            additionalType:
+              ref.type === 'science'
+                ? 'ScholarlyArticle'
+                : ref.type === 'author'
+                ? 'Article'
+                : 'WebPage',
+          }),
+        })),
+      }),
+  };
+
   return {
     title: markdownContent?.frontmatter?.title || ingredient.name,
     description:
@@ -50,6 +100,9 @@ export async function generateMetadata({
       ingredient.description ||
       `Information about ${ingredient.name} in hair care products`,
     robots: shouldIndex ? undefined : 'noindex',
+    other: {
+      'application/ld+json': JSON.stringify(jsonLd),
+    },
   };
 }
 
@@ -90,66 +143,48 @@ export default async function IngredientPage({ params }: PageProps) {
 
   const ingredient = database.ingredients[dbIngredientId];
 
-  // Try to get markdown content - use the slug version of the ID for the file name
+  // Get category and group info if available
+  const primaryCategory = ingredient.categories[0];
+  const categoryInfo = primaryCategory
+    ? database.categories[primaryCategory]
+    : null;
+  const groupInfo = categoryInfo?.group
+    ? database.groups[categoryInfo.group]
+    : null;
+
+  // Try to get markdown content
   const markdownContent = await getIngredientContent(idToSlug(dbIngredientId));
   console.log('Markdown Content:', markdownContent);
 
-  const getTypeIcon = (type?: string) => {
-    switch (type?.toLowerCase()) {
-      case 'author':
-        return <BookOpenIcon className="w-4 h-4 inline-block mr-2" />;
-      case 'science':
-        return <BeakerIcon className="w-4 h-4 inline-block mr-2" />;
-      case 'hairpro':
-        return <ScissorsIcon className="w-4 h-4 inline-block mr-2" />;
-      default:
-        return null;
-    }
-  };
+  // Build breadcrumbs
+  const breadcrumbs = [{ href: '/ingredients', label: 'Ingredients' }];
 
-  // Status priority order for sorting
-  const getStatusPriority = (status?: string) => {
-    switch (status) {
-      case 'good':
-        return 1;
-      case 'ok':
-        return 2;
-      case 'caution':
-        return 3;
-      case 'warning':
-        return 4;
-      default:
-        return 5;
-    }
-  };
+  if (groupInfo && categoryInfo) {
+    breadcrumbs.unshift({
+      href: `/categories/${idToSlug(primaryCategory)}`,
+      label: categoryInfo.name,
+    });
+    breadcrumbs.unshift({
+      href: `/groups/${idToSlug(categoryInfo.group)}`,
+      label: groupInfo.name,
+    });
+    breadcrumbs.unshift({ href: '/groups', label: 'Groups' });
+  } else if (categoryInfo) {
+    breadcrumbs.unshift({
+      href: `/categories/${idToSlug(primaryCategory)}`,
+      label: categoryInfo.name,
+    });
+    breadcrumbs.unshift({ href: '/categories', label: 'Categories' });
+  }
 
-  // Sort references by status
-  const sortedReferences =
-    ingredient.references?.sort((a, b) => {
-      return getStatusPriority(a.status) - getStatusPriority(b.status);
-    }) || [];
-
-  // Create an IngredientResult object for the IngredientItem component
-  const ingredientResult = {
-    name: ingredient.name,
-    normalized: ingredient.name.toLowerCase(),
-    status: 'ok' as const,
-    reasons: [],
-    ingredient: {
-      id: dbIngredientId,
-      name: ingredient.name,
-      description: ingredient.description,
-      categories: ingredient.categories,
-    },
-  };
+  breadcrumbs.push({
+    href: `/ingredients/${params.name}`,
+    label: ingredient.name,
+  });
 
   return (
-    <div className="container mx-auto p-4 ">
-      <div className="mb-4">
-        <Link href="/ingredients" className="btn btn-ghost btn-sm">
-          ← Back to Ingredients
-        </Link>
-      </div>
+    <div className="container mx-auto p-4">
+      <Breadcrumbs items={breadcrumbs} />
 
       <div className="space-y-6">
         {/* Main content area */}
@@ -169,12 +204,11 @@ export default async function IngredientPage({ params }: PageProps) {
 
           {/* Markdown and References Content */}
           <div className="lg:w-2/3">
-            <div className=" text-base-content">
-              <div className="">
+            <div className="text-base-content">
+              <div>
                 {/* Markdown Content */}
                 {markdownContent && (
                   <div>
-
                     <div
                       className="prose prose-base max-w-none"
                       dangerouslySetInnerHTML={{
@@ -185,70 +219,8 @@ export default async function IngredientPage({ params }: PageProps) {
                 )}
 
                 {/* References */}
-                {sortedReferences.length > 0 && (
-                  <div className="mt-8">
-                    <h2 className="text-xl font-semibold mb-4">References</h2>
-                    <div className="overflow-x-auto">
-                      <table className="table table-zebra w-full">
-                        <thead>
-                          <tr>
-                            <th>Source</th>
-                            <th>Status</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {sortedReferences.map((ref, index) => (
-                            <tr key={index}>
-                              <td>
-                                <div className="flex items-center">
-                                  {getTypeIcon(ref.type)}
-                                  <a
-                                    href={ref.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="link link-primary"
-                                  >
-                                    {ref.title || 'Reference'}
-                                  </a>
-                                </div>
-                              </td>
-                              <td>
-                                <span
-                                  className={`cb-badge ${
-                                    ref.status === 'good'
-                                      ? 'badge-success'
-                                      : ref.status === 'warning'
-                                      ? 'badge-error'
-                                      : ref.status === 'caution'
-                                      ? 'badge-warning'
-                                      : ref.status === 'ok'
-                                      ? 'badge-info'
-                                      : 'badge-ghost'
-                                  }`}
-                                >
-                                  {ref.status || 'unknown'}
-                                </span>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                    <div className="mt-4 flex flex-wrap gap-4 text-sm text-base-content/70">
-                      <div className="flex items-center">
-                        <BookOpenIcon className="w-4 h-4 mr-2" />
-                        <span>Popular Author</span>
-                      </div>
-                      <div className="flex items-center">
-                        <BeakerIcon className="w-4 h-4 mr-2" />
-                        <span>Cosmetic Chemist</span>
-                      </div>
-                      <div className="flex items-center">
-                        <ScissorsIcon className="w-4 h-4 mr-2" />
-                        <span>Hair Professional</span>
-                      </div>
-                    </div>
-                  </div>
+                {ingredient.references && (
+                  <ReferencesList references={ingredient.references} />
                 )}
               </div>
             </div>

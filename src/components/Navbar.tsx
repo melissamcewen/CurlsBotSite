@@ -70,7 +70,29 @@ export default function Navbar() {
             <Link href="/">Analysis</Link>
           </li>
           <li>
-            <Link href="/ingredients-cheat-sheet">Ingredients</Link>
+            <details>
+              <summary>Ingredients</summary>
+              <ul className="p-2 bg-accent rounded-t-none">
+                <li>
+                  <Link
+                    href="/ingredients-cheat-sheet"
+                    onClick={handleLinkClick}
+                  >
+                    Cheat Sheet
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/ingredients" onClick={handleLinkClick}>
+                    All ingredients
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/categories" onClick={handleLinkClick}>
+                    Categories
+                  </Link>
+                </li>
+              </ul>
+            </details>
           </li>
           <li>
             <Link href="/blog">Blog</Link>
@@ -80,29 +102,46 @@ export default function Navbar() {
               <summary>Porosity</summary>
               <ul className="p-2 bg-accent rounded-t-none">
                 <li>
-                  <Link href="/porosity/high-porosity" onClick={handleLinkClick}>High Porosity</Link>
+                  <Link href="/porosity-quiz">Quiz</Link>
                 </li>
                 <li>
-                  <Link href="/porosity/low-porosity" onClick={handleLinkClick}>Low Porosity</Link>
+                  <Link
+                    href="/porosity/high-porosity"
+                    onClick={handleLinkClick}
+                  >
+                    High Porosity
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/porosity/normal-porosity" onClick={handleLinkClick}>Normal Porosity</Link>
+                  <Link href="/porosity/low-porosity" onClick={handleLinkClick}>
+                    Low Porosity
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/porosity/normal-porosity"
+                    onClick={handleLinkClick}
+                  >
+                    Normal Porosity
+                  </Link>
                 </li>
               </ul>
             </details>
           </li>
-          <li>
-            <Link href="/porosity-quiz">Porosity Quiz</Link>
-          </li>
+
           <li>
             <details>
               <summary>More</summary>
               <ul className="p-2 bg-accent rounded-t-none">
                 <li>
-                  <Link href="/resources" onClick={handleLinkClick}>Resources</Link>
+                  <Link href="/resources" onClick={handleLinkClick}>
+                    Resources
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/about" onClick={handleLinkClick}>About</Link>
+                  <Link href="/about" onClick={handleLinkClick}>
+                    About
+                  </Link>
                 </li>
               </ul>
             </details>
@@ -150,13 +189,28 @@ export default function Navbar() {
                 <summary>Porosity</summary>
                 <ul className="p-2 bg-accent rounded-t-none">
                   <li>
-                    <Link href="/porosity/high-porosity" onClick={handleLinkClick}>High Porosity</Link>
+                    <Link
+                      href="/porosity/high-porosity"
+                      onClick={handleLinkClick}
+                    >
+                      High Porosity
+                    </Link>
                   </li>
                   <li>
-                    <Link href="/porosity/low-porosity" onClick={handleLinkClick}>Low Porosity</Link>
+                    <Link
+                      href="/porosity/low-porosity"
+                      onClick={handleLinkClick}
+                    >
+                      Low Porosity
+                    </Link>
                   </li>
                   <li>
-                    <Link href="/porosity/normal-porosity" onClick={handleLinkClick}>Normal Porosity</Link>
+                    <Link
+                      href="/porosity/normal-porosity"
+                      onClick={handleLinkClick}
+                    >
+                      Normal Porosity
+                    </Link>
                   </li>
                 </ul>
               </details>
@@ -169,10 +223,14 @@ export default function Navbar() {
                 <summary>More</summary>
                 <ul className="p-2 bg-accent rounded-t-none">
                   <li>
-                    <Link href="/resources" onClick={handleLinkClick}>Resources</Link>
+                    <Link href="/resources" onClick={handleLinkClick}>
+                      Resources
+                    </Link>
                   </li>
                   <li>
-                    <Link href="/about" onClick={handleLinkClick}>About</Link>
+                    <Link href="/about" onClick={handleLinkClick}>
+                      About
+                    </Link>
                   </li>
                 </ul>
               </details>

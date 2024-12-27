@@ -2,111 +2,28 @@
 
 import React from 'react';
 import { useState } from 'react';
-import { getBundledDatabase, Ingredient } from 'haircare-ingredients-analyzer';
+import { getBundledDatabase } from 'haircare-ingredients-analyzer';
 import { Suspense } from 'react';
 import Loading from './loading';
-import { ExclamationTriangleIcon, InformationCircleIcon, ExclamationCircleIcon } from '@heroicons/react/24/solid';
+import Link from 'next/link';
+import { idToSlug } from '@/utils/slugs';
 
-// Helper function to normalize category names
-function normalizeCategory(category: string): string {
-  return category
-    .split('_')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
-}
-
-// Helper function to get category icon and color
-function getCategoryIcon(category: string): { icon: React.ReactElement; colorClass: string } {
-  const categoryMap: Record<string, { icon: React.ReactElement; colorClass: string }> =
-    {
-      // Error status (red)
-      drying_alcohols: {
-        icon: <ExclamationCircleIcon className="w-4 h-4" />,
-        colorClass: 'text-error',
-      },
-      non_water_soluble_silicones: {
-        icon: <ExclamationCircleIcon className="w-4 h-4" />,
-        colorClass: 'text-error',
-      },
-      soaps: {
-        icon: <ExclamationCircleIcon className="w-4 h-4" />,
-        colorClass: 'text-error',
-      },
-      sulfates: {
-        icon: <ExclamationCircleIcon className="w-4 h-4" />,
-        colorClass: 'text-error',
-      },
-      non_water_soluble_waxes: {
-        icon: <ExclamationCircleIcon className="w-4 h-4" />,
-        colorClass: 'text-error',
-      },
-      petroleum_oils: {
-        icon: <ExclamationCircleIcon className="w-4 h-4" />,
-        colorClass: 'text-error',
-      },
-
-      // Warning status (yellow)
-      astringents: {
-        icon: <ExclamationTriangleIcon className="w-4 h-4" />,
-        colorClass: 'text-warning',
-      },
-      heavy_oils: {
-        icon: <ExclamationTriangleIcon className="w-4 h-4" />,
-        colorClass: 'text-warning',
-      },
-      other_detergents: {
-        icon: <ExclamationTriangleIcon className="w-4 h-4" />,
-        colorClass: 'text-warning',
-      },
-      parabens: {
-        icon: <ExclamationTriangleIcon className="w-4 h-4" />,
-        colorClass: 'text-warning',
-      },
-      sulfonates: {
-        icon: <ExclamationTriangleIcon className="w-4 h-4" />,
-        colorClass: 'text-warning',
-      },
-      water_soluble_silicones: {
-        icon: <ExclamationTriangleIcon className="w-4 h-4" />,
-        colorClass: 'text-warning',
-      },
-      evaporative_silicones: {
-        icon: <ExclamationTriangleIcon className="w-4 h-4" />,
-        colorClass: 'text-warning',
-      },
-
-      // Info status (blue)
-      emollient_alcohols: {
-        icon: <InformationCircleIcon className="w-4 h-4" />,
-        colorClass: 'text-info',
-      },
-      light_oils: {
-        icon: <InformationCircleIcon className="w-4 h-4" />,
-        colorClass: 'text-info',
-      },
-      medium_oils: {
-        icon: <InformationCircleIcon className="w-4 h-4" />,
-        colorClass: 'text-info',
-      },
-      mild_detergents: {
-        icon: <InformationCircleIcon className="w-4 h-4" />,
-        colorClass: 'text-info',
-      },
-      water_soluble_waxes: {
-        icon: <InformationCircleIcon className="w-4 h-4" />,
-        colorClass: 'text-info',
-      },
-    };
-
-  return categoryMap[category.toLowerCase()] || {
-    icon: <InformationCircleIcon className="w-4 h-4" />,
-    colorClass: 'text-base-content/50'
-  };
+function getStatusBadgeClass(status?: string): string {
+  switch (status) {
+    case 'warning':
+      return 'badge-error';
+    case 'caution':
+      return 'badge-warning';
+    case 'ok':
+      return 'badge-info';
+    default:
+      return 'badge-ghost';
+  }
 }
 
 function IngredientsTable() {
   const [sortConfig, setSortConfig] = useState<{
-    key: keyof Ingredient;
+    key: 'name' | 'status';
     direction: 'asc' | 'desc';
   }>({
     key: 'name',
@@ -115,14 +32,15 @@ function IngredientsTable() {
 
   // Get ingredients from the library
   const ingredients = Object.values(getBundledDatabase().ingredients);
+  const database = getBundledDatabase();
 
   const sortedIngredients = [...ingredients].sort((a, b) => {
-    if (sortConfig.key === 'categories') {
-      const aCategories = a.categories.join(',');
-      const bCategories = b.categories.join(',');
+    if (sortConfig.key === 'status') {
+      const aStatus = a.status || '';
+      const bStatus = b.status || '';
       return sortConfig.direction === 'asc'
-        ? aCategories.localeCompare(bCategories)
-        : bCategories.localeCompare(aCategories);
+        ? aStatus.localeCompare(bStatus)
+        : bStatus.localeCompare(aStatus);
     }
 
     const aValue = a[sortConfig.key]?.toString() || '';
@@ -132,7 +50,7 @@ function IngredientsTable() {
       : bValue.localeCompare(aValue);
   });
 
-  const requestSort = (key: keyof Ingredient) => {
+  const requestSort = (key: 'name' | 'status') => {
     let direction: 'asc' | 'desc' = 'asc';
     if (sortConfig.key === key && sortConfig.direction === 'asc') {
       direction = 'desc';
@@ -140,7 +58,7 @@ function IngredientsTable() {
     setSortConfig({ key, direction });
   };
 
-  const getSortIcon = (key: keyof Ingredient) => {
+  const getSortIcon = (key: 'name' | 'status') => {
     if (sortConfig.key === key) {
       return sortConfig.direction === 'asc' ? '↑' : '↓';
     }
@@ -159,43 +77,77 @@ function IngredientsTable() {
               Name {getSortIcon('name')}
             </button>
           </th>
+          <th className="hidden sm:table-cell">Categories</th>
           <th>
             <button
-              onClick={() => requestSort('categories')}
-              className="flex items-center gap-2"
+              onClick={() => requestSort('status')}
+              className="flex items-center gap-2 whitespace-nowrap"
             >
-              Categories {getSortIcon('categories')}
+              Status {getSortIcon('status')}
             </button>
           </th>
         </tr>
       </thead>
       <tbody>
         {sortedIngredients.map((ingredient) => (
-          <tr key={ingredient.name}>
-            <td className="font-medium">
-              {ingredient.name}
-              {ingredient.synonyms && ingredient.synonyms.length > 0 && (
-                <div className="text-sm text-base-content/70">
-                  Also: {ingredient.synonyms.join(', ')}
+          <tr key={ingredient.id}>
+            <td className="whitespace-normal">
+              <div className="space-y-1">
+                <Link
+                  href={`/ingredients/${idToSlug(ingredient.id)}`}
+                  className="font-medium link-primary hover:text-primary"
+                >
+                  {ingredient.name}
+                </Link>
+                {ingredient.synonyms && ingredient.synonyms.length > 0 && (
+                  <div className="text-sm text-base-content/70 break-words">
+                    Also: {ingredient.synonyms.join(', ')}
+                  </div>
+                )}
+                <div className="sm:hidden text-sm flex flex-wrap gap-2">
+                  {ingredient.categories.map((categoryId) => {
+                    const category = database.categories[categoryId];
+                    return (
+                      <Link
+                        key={categoryId}
+                        href={`/categories/${idToSlug(categoryId)}`}
+                        className="link-hover text-secondary"
+                      >
+                        {category.name}
+                      </Link>
+                    );
+                  })}
                 </div>
-              )}
+              </div>
             </td>
-            <td>
+            <td className="hidden sm:table-cell whitespace-normal">
               <div className="flex flex-wrap gap-2">
-                {ingredient.categories.map((category) => {
-                  const { icon, colorClass } = getCategoryIcon(category);
+                {ingredient.categories.map((categoryId) => {
+                  const category = database.categories[categoryId];
                   return (
-                    <div key={category} className="flex items-center gap-1.5">
-                      <span className={colorClass}>
-                        {icon}
-                      </span>
-                      <span className="text-sm">
-                        {normalizeCategory(category)}
-                      </span>
-                    </div>
+                    <Link
+                      key={categoryId}
+                      href={`/categories/${idToSlug(categoryId)}`}
+                      className="link-hover text-primary"
+                    >
+                      {category.name}
+                    </Link>
                   );
                 })}
               </div>
+            </td>
+            <td>
+              {ingredient.status ? (
+                <span
+                  className={`cb-badge ${getStatusBadgeClass(
+                    ingredient.status,
+                  )}`}
+                >
+                  {ingredient.status}
+                </span>
+              ) : (
+                <span className="cb-badge badge-ghost">unknown</span>
+              )}
             </td>
           </tr>
         ))}

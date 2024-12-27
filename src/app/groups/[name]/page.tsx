@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getBundledDatabase } from 'haircare-ingredients-analyzer';
 import { getGroupContent } from '@/utils/markdown';
+import { ReferencesList } from '@/components/references/ReferencesList';
 import { Metadata } from 'next';
 import { slugToId, idToSlug } from '@/utils/slugs';
 
@@ -44,6 +45,13 @@ interface Group {
   id: string;
   name: string;
   description?: string;
+  references?: Array<{
+    url: string;
+    status?: string;
+    title?: string;
+    type?: string;
+    description?: string;
+  }>;
 }
 
 interface Category {
@@ -112,6 +120,11 @@ export default async function GroupPage({ params }: PageProps) {
                   </p>
                 )}
               </>
+            )}
+
+            {/* References */}
+            {group.references && (
+              <ReferencesList references={group.references} />
             )}
           </div>
         </div>

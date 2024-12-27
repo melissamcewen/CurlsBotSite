@@ -3,7 +3,7 @@ import ChatBubbleUser from '@/components/analysis/ChatBubbleUser';
 
 export default function HomeLoading() {
   return (
-    <div className="space-y-6 animate-pulse">
+    <div className="space-y-6 animate-pulse max-w-4xl mx-auto">
       <div className="chat chat-start lg:max-w-3xl lg:min-w-s">
         <div className="chat-image avatar">
           <div className="w-10 h-10 rounded-full bg-base-content/10" />

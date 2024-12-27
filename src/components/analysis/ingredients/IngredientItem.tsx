@@ -4,6 +4,8 @@ import {
   InformationCircleIcon,
   FolderIcon,
 } from '@heroicons/react/24/solid';
+import Link from 'next/link';
+import { idToSlug } from '@/utils/slugs';
 
 interface IngredientItemProps {
   ingredient: IngredientResult;
@@ -18,7 +20,18 @@ export function IngredientItem({ ingredient }: IngredientItemProps) {
     <div className="bg-base-100 rounded-box p-6 space-y-6 cb-border">
       {/* Header with Status */}
       <div className="flex justify-between items-start">
-        <h2 className="cb-smaller-header">{ingredient.name}</h2>
+        <h2 className="cb-smaller-header">
+          {ingredient.ingredient ? (
+            <Link
+              href={`/ingredients/${idToSlug(ingredient.ingredient.id)}`}
+              className="hover:text-primary link-primary"
+            >
+              {ingredient.name}
+            </Link>
+          ) : (
+            ingredient.name
+          )}
+        </h2>
         {ingredient.ingredient ? (
           <div
             className={`badge ${
@@ -46,7 +59,12 @@ export function IngredientItem({ ingredient }: IngredientItemProps) {
               <span className="cb-grouping-header">Matched Ingredient</span>
             </div>
             <div className="pl-7">
-              <span className="font-medium">{ingredient.ingredient.name}</span>
+              <Link
+                href={`/ingredients/${idToSlug(ingredient.ingredient.id)}`}
+                className="font-medium hover:text-primary"
+              >
+                {ingredient.ingredient.name}
+              </Link>
             </div>
           </div>
 
@@ -73,7 +91,14 @@ export function IngredientItem({ ingredient }: IngredientItemProps) {
                   <span className="cb-grouping-header">Category</span>
                 </div>
                 <div className="pl-7">
-                  {normalizeCategory(ingredient.ingredient.categories[0])}
+                  <Link
+                    href={`/categories/${idToSlug(
+                      ingredient.ingredient.categories[0],
+                    )}`}
+                    className="hover:text-primary link-secondary"
+                  >
+                    {normalizeCategory(ingredient.ingredient.categories[0])}
+                  </Link>
                 </div>
               </div>
             )}
