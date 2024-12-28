@@ -9,12 +9,17 @@ interface Category {
   group?: string;
 }
 
+interface CategoryWithId {
+  id: string;
+  category: Category;
+}
+
 export default function CategoriesPage() {
   const database = getBundledDatabase();
 
   // Get all categories and group them
   const categoriesByGroup = Object.entries(database.categories).reduce<{
-    [key: string]: Array<{ id: string; category: any }>;
+    [key: string]: CategoryWithId[];
   }>((acc, [id, category]) => {
     const group = category.group || 'Uncategorized';
     if (!acc[group]) {

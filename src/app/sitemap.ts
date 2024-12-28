@@ -2,6 +2,8 @@ import { getBlogPosts } from '@/utils/markdown';
 import { MetadataRoute } from 'next';
 import { getBundledDatabase } from 'haircare-ingredients-analyzer';
 import { idToSlug } from '@/utils/slugs';
+import { existsSync } from 'fs';
+import { join } from 'path';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const database = getBundledDatabase();
@@ -14,15 +16,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         return true;
       }
       // Check for markdown content
-      const markdownPath = `src/content/ingredients/${idToSlug(
-        ingredient.id,
-      )}.md`;
-      try {
-        require.resolve(markdownPath);
-        return true;
-      } catch {
-        return false;
-      }
+      const markdownPath = join(
+        process.cwd(),
+        'src/content/ingredients',
+        `${idToSlug(ingredient.id)}.md`,
+      );
+      return existsSync(markdownPath);
     })
     .map(([id, _]) => ({
       url: `https://curlsbot.com/ingredients/${idToSlug(id)}`,
@@ -37,13 +36,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         return true;
       }
       // Check for markdown content
-      const markdownPath = `src/content/categories/${idToSlug(category.id)}.md`;
-      try {
-        require.resolve(markdownPath);
-        return true;
-      } catch {
-        return false;
-      }
+      const markdownPath = join(
+        process.cwd(),
+        'src/content/categories',
+        `${idToSlug(category.id)}.md`,
+      );
+      return existsSync(markdownPath);
     })
     .map(([id, _]) => ({
       url: `https://curlsbot.com/categories/${idToSlug(id)}`,
@@ -58,13 +56,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         return true;
       }
       // Check for markdown content
-      const markdownPath = `src/content/groups/${idToSlug(group.id)}.md`;
-      try {
-        require.resolve(markdownPath);
-        return true;
-      } catch {
-        return false;
-      }
+      const markdownPath = join(
+        process.cwd(),
+        'src/content/groups',
+        `${idToSlug(group.id)}.md`,
+      );
+      return existsSync(markdownPath);
     })
     .map(([id, _]) => ({
       url: `https://curlsbot.com/groups/${idToSlug(id)}`,
