@@ -2,6 +2,7 @@ import {
   TagIcon,
   InformationCircleIcon,
   FolderIcon,
+  Squares2X2Icon,
 } from '@heroicons/react/24/solid';
 import Link from 'next/link';
 import { idToSlug } from '@/utils/slugs';
@@ -11,7 +12,8 @@ interface IngredientDetailsCardProps {
   description?: string;
   categories: string[];
   synonyms?: string[];
-  categoryNames: Record<string, { name: string }>;
+  categoryNames: Record<string, { name: string; group?: string }>;
+  groupNames: Record<string, { name: string }>;
 }
 
 export function IngredientDetailsCard({
@@ -20,7 +22,13 @@ export function IngredientDetailsCard({
   categories,
   synonyms,
   categoryNames,
+  groupNames,
 }: IngredientDetailsCardProps) {
+  // Get the group from the first category
+  const firstCategory = categories[0];
+  const group = firstCategory ? categoryNames[firstCategory]?.group : undefined;
+  const groupInfo = group ? groupNames[group] : undefined;
+
   return (
     <div className="bg-base-100 rounded-box p-6 space-y-6 cb-border">
       {/* Name */}
@@ -52,6 +60,24 @@ export function IngredientDetailsCard({
                 {synonym}
               </span>
             ))}
+          </div>
+        </div>
+      )}
+
+      {/* Group */}
+      {groupInfo && (
+        <div className="space-y-2">
+          <div className="flex items-center gap-2 text-base-content/70">
+            <Squares2X2Icon className="w-5 h-5" />
+            <span className="cb-grouping-header">Group</span>
+          </div>
+          <div className="pl-7">
+            <Link
+              href={`/groups/${idToSlug(group)}`}
+              className="badge badge-secondary"
+            >
+              {groupInfo.name}
+            </Link>
           </div>
         </div>
       )}

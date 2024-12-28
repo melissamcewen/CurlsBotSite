@@ -200,6 +200,7 @@ export default async function IngredientPage({ params }: PageProps) {
                 categories={ingredient.categories}
                 synonyms={ingredient.synonyms}
                 categoryNames={database.categories}
+                groupNames={database.groups}
               />
             </div>
           </div>
