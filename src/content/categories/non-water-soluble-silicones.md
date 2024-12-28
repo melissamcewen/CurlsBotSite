@@ -1,9 +1,9 @@
 ---
-title: Non Water-soluble Silicones
+title: Non Water-soluble Silicones and Curly/Wavy Hair Guide
 description: Silicones that are not soluble in water and can be hard to wash out
 ---
 
-# Non Water-soluble Silicones
+# Non Water-soluble Silicones and Curly/Wavy Hair Guide
 
 These silicones are powerful conditioning agents, with the main downside being they can be harder to wash out. If you're not using a strong enough shampoo, or no shampoo at all, that can mean buildup.
 

@@ -13,7 +13,7 @@ export default function ThemeToggle() {
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme === 'cupcake' ? 'synthwave' : 'cupcake';
+    const newTheme = theme === 'cupcake' ? 'curlsbotdark' : 'cupcake';
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
     document.documentElement.setAttribute('data-theme', newTheme);
@@ -24,8 +24,8 @@ export default function ThemeToggle() {
       <input
         type="checkbox"
         className="theme-controller"
-        value="synthwave"
-        checked={theme === 'synthwave'}
+        value="curlsbotdark"
+        checked={theme === 'curlsbotdark'}
         onChange={toggleTheme}
       />
       {/* sun icon */}

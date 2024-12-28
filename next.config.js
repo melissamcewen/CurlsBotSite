@@ -49,7 +49,12 @@ const nextConfig = {
       },
       {
         source: '/shampoo-bars-are-not-cg',
-        destination: '/blog/is-soap-good-for-curls',
+        destination: '/categories/soaps',
+        permanent: true,
+      },
+      {
+        source: '/blog/is-soap-good-for-curls',
+        destination: '/categories/soaps',
         permanent: true,
       },
       {

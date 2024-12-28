@@ -185,7 +185,29 @@ export default function Navbar() {
               <Link href="/">Analysis</Link>
             </li>
             <li>
-              <Link href="/ingredients-cheat-sheet">Ingredients</Link>
+              <details>
+                <summary>Ingredients</summary>
+                <ul className="p-2 bg-accent rounded-t-none">
+                  <li>
+                    <Link
+                      href="/ingredients-cheat-sheet"
+                      onClick={handleLinkClick}
+                    >
+                      Cheat Sheet
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/ingredients" onClick={handleLinkClick}>
+                      All ingredients
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/categories" onClick={handleLinkClick}>
+                      Guides
+                    </Link>
+                  </li>
+                </ul>
+              </details>
             </li>
             <li>
               <Link href="/blog">Blog</Link>
@@ -194,6 +216,11 @@ export default function Navbar() {
               <details>
                 <summary>Porosity</summary>
                 <ul className="p-2 bg-accent rounded-t-none">
+                  <li>
+                    <Link href="/porosity-quiz" onClick={handleLinkClick}>
+                      Quiz
+                    </Link>
+                  </li>
                   <li>
                     <Link
                       href="/porosity/high-porosity"
@@ -220,9 +247,6 @@ export default function Navbar() {
                   </li>
                 </ul>
               </details>
-            </li>
-            <li>
-              <Link href="/porosity-quiz">Porosity Quiz</Link>
             </li>
             <li>
               <details>

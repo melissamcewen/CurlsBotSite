@@ -1,9 +1,9 @@
 ---
-title: Drying alcohols
+title: Drying alcohols and Curly/Wavy hair guide
 description: Short-chain alcohols that can be drying to the hair and skin
 ---
 
-# Drying Alcohols
+# Drying Alcohols and Curly/Wavy Hair Guide
 
 This is the category that CurlsBot puts short-chain alcohols in. Short-chain alcohols are transparent fluids that evaporate quickly.
 
