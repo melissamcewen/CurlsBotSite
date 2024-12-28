@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_BASE_URL || 'https://curlsbot.com',
   ),
   description:
-    'Unlock healthier hair with CurlsBot. Get personalized hair care advice, product recommendations, and ingredient breakdowns based on your hair\'s ingredients and porosity, all tailored for curly and wavy hair.',
+    "Unlock healthier hair with CurlsBot. Get personalized hair care advice, product recommendations, and ingredient breakdowns based on your hair's ingredients and porosity, all tailored for curly and wavy hair.",
   keywords: [
     'hair care',
     'ingredient analysis',
@@ -85,10 +85,19 @@ export const metadata: Metadata = {
   verification: {
     google: 'google-site-verification-code', // You'll need to replace this with your actual verification code
     other: {
-      'impact-site-verification': '1ade1083-f729-416f-9c92-6d0b179d94e3'
-    }
+      'impact-site-verification': '1ade1083-f729-416f-9c92-6d0b179d94e3',
+    },
   },
   category: 'technology',
+  alternates: {
+    canonical: 'https://curlsbot.com',
+    languages: {
+      'en-US': 'https://curlsbot.com',
+      // Add more languages as needed
+      // 'es-ES': 'https://curlsbot.com/es',
+      // 'fr-FR': 'https://curlsbot.com/fr',
+    },
+  },
 };
 
 // Move theme script to a raw string for earlier execution
@@ -114,13 +123,31 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <meta name="apple-mobile-web-app-title" content="CurlsBot" />
-        <meta name="impact-site-verification" content="1ade1083-f729-416f-9c92-6d0b179d94e3" />
+        <meta
+          name="impact-site-verification"
+          content="1ade1083-f729-416f-9c92-6d0b179d94e3"
+        />
         <meta property="og:logo" content="/logo.svg" />
         {/* Preload all images */}
         <link rel="preload" href="/logo.svg" as="image" type="image/svg+xml" />
-        <link rel="preload" href="/normal.svg" as="image" type="image/svg+xml" />
-        <link rel="preload" href="/surprised.svg" as="image" type="image/svg+xml" />
-        <link rel="preload" href="/exclaim.svg" as="image" type="image/svg+xml" />
+        <link
+          rel="preload"
+          href="/normal.svg"
+          as="image"
+          type="image/svg+xml"
+        />
+        <link
+          rel="preload"
+          href="/surprised.svg"
+          as="image"
+          type="image/svg+xml"
+        />
+        <link
+          rel="preload"
+          href="/exclaim.svg"
+          as="image"
+          type="image/svg+xml"
+        />
         <link rel="preload" href="/normal.png" as="image" type="image/png" />
       </head>
       <body
@@ -132,9 +159,9 @@ export default function RootLayout({
           <div className="absolute inset-0 pointer-events-none" />
           <Navbar />
 
-            <main className="">
-              <div className="p-4 md:p-8">{children}</div>
-            </main>
+          <main className="">
+            <div className="p-4 md:p-8">{children}</div>
+          </main>
 
           <Footer />
         </div>

@@ -32,11 +32,13 @@ export async function generateMetadata({
   const markdownContent = await getGroupContent(dbGroupId);
 
   return {
-    title: markdownContent?.frontmatter?.title || group.name,
+    title:
+      markdownContent?.frontmatter?.title ||
+      group.name + ' for curly/wavy hair',
     description:
       markdownContent?.frontmatter?.description ||
       group.description ||
-      `Hair care ingredients in the ${group.name} group`,
+      `A guide to ${group.name} for curly/wavy hair`,
     robots: markdownContent ? undefined : 'noindex',
   };
 }
@@ -126,7 +128,7 @@ export default async function GroupPage({ params }: PageProps) {
       />
       <div className="container mx-auto p-4 max-w-4xl">
         <div className="mb-4">
-          <Link href="/groups" className="btn btn-ghost btn-sm">
+          <Link href="/categories" className="btn btn-ghost btn-sm">
             ← Back to Groups
           </Link>
         </div>

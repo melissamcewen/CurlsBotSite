@@ -32,13 +32,52 @@ export async function generateMetadata({
   const category = database.categories[dbCategoryId];
   const markdownContent = await getCategoryContent(dbCategoryId);
 
+  const title = markdownContent?.frontmatter?.title || category.name;
+  const description =
+    markdownContent?.frontmatter?.description ||
+    category.description ||
+    `Hair care ingredients in the ${category.name} category`;
+
+  const url = `https://curlsbot.com/categories/${params.name}`;
+
   return {
-    title: markdownContent?.frontmatter?.title || category.name,
-    description:
-      markdownContent?.frontmatter?.description ||
-      category.description ||
-      `Hair care ingredients in the ${category.name} category`,
-    robots: markdownContent ? undefined : 'noindex',
+    title: title + ' for curly/wavy hair',
+    description,
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      title,
+      description,
+      url,
+      type: 'article',
+      images: [
+        {
+          url: '/images/og-default.png',
+          width: 1200,
+          height: 630,
+          alt: `${category.name} - Hair Care Ingredients Category`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: ['/images/og-default.png'],
+    },
+    robots: markdownContent
+      ? {
+          index: true,
+          follow: true,
+          'max-snippet': -1,
+          'max-image-preview': 'large',
+          'max-video-preview': -1,
+        }
+      : {
+          index: false,
+          follow: true,
+        },
   };
 }
 
@@ -207,33 +246,48 @@ export default async function CategoryPage({ params }: PageProps) {
                   <thead>
                     <tr>
                       <th>Name</th>
-                      <th>Description</th>
-                      <th>Action</th>
+                      <th>Status</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {ingredients.map((ingredient) => (
-                      <tr key={ingredient.id}>
-                        <td className="font-medium">{ingredient.name}</td>
-                        <td className="max-w-md">
-                          {ingredient.description ? (
-                            <p className="truncate">{ingredient.description}</p>
-                          ) : (
-                            <span className="text-base-content/50">
-                              No description available
-                            </span>
-                          )}
-                        </td>
-                        <td>
-                          <Link
-                            href={`/ingredients/${idToSlug(ingredient.id)}`}
-                            className="btn btn-primary btn-sm"
-                          >
-                            View Details
-                          </Link>
-                        </td>
-                      </tr>
-                    ))}
+                    {ingredients
+                      .sort((a, b) => a.name.localeCompare(b.name))
+                      .map((ingredient) => (
+                        <tr key={ingredient.id}>
+                          <td>
+                            <div className="space-y-1">
+                              <Link
+                                href={`/ingredients/${idToSlug(ingredient.id)}`}
+                                className="link-primary hover:text-primary font-medium"
+                              >
+                                {ingredient.name}
+                              </Link>
+                              {ingredient.description && (
+                                <p className="text-xs text-base-content/70">
+                                  {ingredient.description}
+                                </p>
+                              )}
+                            </div>
+                          </td>
+                          <td>
+                            {ingredient.status ? (
+                              <span
+                                className={`badge ${
+                                  ingredient.status === 'warning'
+                                    ? 'badge-error'
+                                    : ingredient.status === 'caution'
+                                    ? 'badge-warning'
+                                    : 'badge-info'
+                                }`}
+                              >
+                                {ingredient.status}
+                              </span>
+                            ) : (
+                              <span className="badge badge-ghost">unknown</span>
+                            )}
+                          </td>
+                        </tr>
+                      ))}
                   </tbody>
                 </table>
               </div>

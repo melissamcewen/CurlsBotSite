@@ -60,7 +60,13 @@ export default function Navbar() {
           href="/"
           className="btn bg-white text-black normal-case text-xl gap-2 hover:bg-white/90"
         >
-          <Image src="/logo.svg" alt="CurlsBot Logo" width={24} height={24} />
+          <Image
+            src="/logo.svg"
+            alt="CurlsBot Logo"
+            width={24}
+            height={24}
+            priority
+          />
           CurlsBot
         </Link>
       </div>

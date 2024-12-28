@@ -49,7 +49,7 @@ export async function generateMetadata({
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'ChemicalSubstance',
-    name: ingredient.name,
+    name: ingredient.name + ' for curly/wavy hair',
     description:
       markdownContent?.frontmatter?.description ||
       ingredient.description ||
@@ -94,7 +94,9 @@ export async function generateMetadata({
   };
 
   return {
-    title: markdownContent?.frontmatter?.title || ingredient.name,
+    title:
+      markdownContent?.frontmatter?.title ||
+      ingredient.name + ' for curly/wavy hair',
     description:
       markdownContent?.frontmatter?.description ||
       ingredient.description ||
