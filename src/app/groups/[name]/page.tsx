@@ -85,94 +85,135 @@ export default async function GroupPage({ params }: PageProps) {
   // Try to get markdown content
   const markdownContent = await getGroupContent(dbGroupId);
 
+  // Prepare structured data
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: markdownContent?.frontmatter?.title || group.name,
+    description:
+      markdownContent?.frontmatter?.description ||
+      group.description ||
+      `Hair care ingredients in the ${group.name} group`,
+    mainEntity: {
+      '@type': 'ItemList',
+      name: `Categories in ${group.name}`,
+      numberOfItems: categories.length,
+      itemListElement: categories.map((category, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+          '@type': 'Thing',
+          name: category.name,
+          description: category.description,
+          url: `https://curlsbot.com/categories/${idToSlug(category.id)}`,
+        },
+      })),
+    },
+    ...(group.references && {
+      citation: group.references.map(ref => ({
+        '@type': 'CreativeWork',
+        name: ref.title || 'Reference',
+        url: ref.url,
+      })),
+    }),
+  };
+
   return (
-    <div className="container mx-auto p-4 max-w-4xl">
-      <div className="mb-4">
-        <Link href="/groups" className="btn btn-ghost btn-sm">
-          ← Back to Groups
-        </Link>
-      </div>
-
-      <div className="space-y-6">
-        {/* Group Information */}
-        <div className="card bg-base-100  text-base-content">
-          <div className="card-body">
-            <h1 className="card-title text-3xl">
-              {markdownContent?.frontmatter?.title || group.name}
-            </h1>
-            {markdownContent ? (
-              <>
-                {markdownContent.frontmatter.description && (
-                  <p className="text-base-content/70 mt-2">
-                    {markdownContent.frontmatter.description}
-                  </p>
-                )}
-                <div
-                  className="prose prose-base mt-4 max-w-none"
-                  dangerouslySetInnerHTML={{ __html: markdownContent.content }}
-                />
-              </>
-            ) : (
-              <>
-                {group.description && (
-                  <p className="text-base-content/70 mt-2">
-                    {group.description}
-                  </p>
-                )}
-              </>
-            )}
-
-            {/* References */}
-            {group.references && (
-              <ReferencesList references={group.references} />
-            )}
-          </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <div className="container mx-auto p-4 max-w-4xl">
+        <div className="mb-4">
+          <Link href="/groups" className="btn btn-ghost btn-sm">
+            ← Back to Groups
+          </Link>
         </div>
 
-        {/* Categories Table */}
-        <div className="card bg-base-100  text-base-content">
-          <div className="card-body">
-            <h2 className="card-title text-2xl mb-4">
-              Categories in this Group
-            </h2>
-            <div className="overflow-x-auto">
-              <table className="table table-zebra">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {categories.map((category) => (
-                    <tr key={category.id}>
-                      <td className="font-medium">{category.name}</td>
-                      <td className="max-w-md">
-                        {category.description ? (
-                          <p className="truncate">{category.description}</p>
-                        ) : (
-                          <span className="text-base-content/50">
-                            No description available
-                          </span>
-                        )}
-                      </td>
-                      <td>
-                        <Link
-                          href={`/categories/${idToSlug(category.id)}`}
-                          className="btn btn-primary btn-sm"
-                        >
-                          View Details
-                        </Link>
-                      </td>
+        <div className="space-y-6">
+          {/* Group Information */}
+          <div className="card bg-base-100  text-base-content">
+            <div className="card-body">
+              <h1 className="card-title text-3xl">
+                {markdownContent?.frontmatter?.title || group.name}
+              </h1>
+              {markdownContent ? (
+                <>
+                  {markdownContent.frontmatter.description && (
+                    <p className="text-base-content/70 mt-2">
+                      {markdownContent.frontmatter.description}
+                    </p>
+                  )}
+                  <div
+                    className="prose prose-base mt-4 max-w-none"
+                    dangerouslySetInnerHTML={{
+                      __html: markdownContent.content,
+                    }}
+                  />
+                </>
+              ) : (
+                <>
+                  {group.description && (
+                    <p className="text-base-content/70 mt-2">
+                      {group.description}
+                    </p>
+                  )}
+                </>
+              )}
+
+              {/* References */}
+              {group.references && (
+                <ReferencesList references={group.references} />
+              )}
+            </div>
+          </div>
+
+          {/* Categories Table */}
+          <div className="card bg-base-100  text-base-content">
+            <div className="card-body">
+              <h2 className="card-title text-2xl mb-4">
+                Categories in this Group
+              </h2>
+              <div className="overflow-x-auto">
+                <table className="table table-zebra">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Description</th>
+                      <th>Action</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {categories.map((category) => (
+                      <tr key={category.id}>
+                        <td className="font-medium">{category.name}</td>
+                        <td className="max-w-md">
+                          {category.description ? (
+                            <p className="truncate">{category.description}</p>
+                          ) : (
+                            <span className="text-base-content/50">
+                              No description available
+                            </span>
+                          )}
+                        </td>
+                        <td>
+                          <Link
+                            href={`/categories/${idToSlug(category.id)}`}
+                            className="btn btn-primary btn-sm"
+                          >
+                            View Details
+                          </Link>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
