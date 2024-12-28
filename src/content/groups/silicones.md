@@ -1,5 +1,5 @@
 ---
-title: Silicones
+title: Silicones and Curly/Wavy Hair Guide
 description: Silicones are polymers that do an amazing job at coating things like hair. As a coating they can be protective against all kinds of damage like friction or heat. But in some cases that coating is too strong and they can cause buildup.
 ---
 

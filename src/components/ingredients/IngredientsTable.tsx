@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { getBundledDatabase } from 'haircare-ingredients-analyzer';
 import Link from 'next/link';
 import { idToSlug } from '@/utils/slugs';
+import { InformationCircleIcon } from '@heroicons/react/24/solid';
 
 function getStatusBadgeClass(status?: string): string {
   switch (status) {
@@ -143,9 +144,12 @@ export function IngredientsTable() {
                 <div className="space-y-1">
                   <Link
                     href={`/ingredients/${idToSlug(ingredient.id)}`}
-                    className="font-medium link-primary hover:text-primary"
+                    className="font-medium link hover:text-primary"
                   >
                     {ingredient.name}
+                    {(ingredient.references?.length ?? 0) > 0 && (
+                      <InformationCircleIcon className="w-4 h-4 inline-block ml-1 text-info" />
+                    )}
                   </Link>
                   {ingredient.synonyms && ingredient.synonyms.length > 0 && (
                     <div className="text-sm text-base-content/70 break-words">
@@ -158,7 +162,7 @@ export function IngredientsTable() {
                 {group && (
                   <Link
                     href={`/groups/${idToSlug(category!.group)}`}
-                    className="link-hover text-secondary"
+                    className="link"
                   >
                     {group.name}
                   </Link>
@@ -172,7 +176,7 @@ export function IngredientsTable() {
                       <Link
                         key={categoryId}
                         href={`/categories/${idToSlug(categoryId)}`}
-                        className="link-hover text-primary"
+                        className="link"
                       >
                         {category.name}
                       </Link>
@@ -183,7 +187,7 @@ export function IngredientsTable() {
               <td>
                 {ingredient.status ? (
                   <span
-                    className={`cb-badge ${getStatusBadgeClass(
+                    className={`badge ${getStatusBadgeClass(
                       ingredient.status,
                     )}`}
                   >

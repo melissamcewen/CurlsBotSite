@@ -94,7 +94,7 @@ export default function Navbar() {
                 </li>
                 <li>
                   <Link href="/categories" onClick={handleLinkClick}>
-                    Categories
+                    Guides
                   </Link>
                 </li>
               </ul>

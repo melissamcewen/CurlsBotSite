@@ -14,16 +14,17 @@ import { Metadata } from 'next';
 import { slugToId, idToSlug } from '@/utils/slugs';
 
 interface PageProps {
-  params: {
+  params: Promise<{
     name: string;
-  };
+  }>;
 }
 
 // Generate metadata
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const decodedName = decodeURIComponent(params.name);
+  const resolvedParams = await params;
+  const decodedName = decodeURIComponent(resolvedParams.name);
   const ingredientId = slugToId(decodedName.toLowerCase());
   const database = getBundledDatabase();
 
@@ -58,10 +59,10 @@ export async function generateMetadata({
       ingredient.synonyms.length > 0 && {
         alternateName: ingredient.synonyms,
       }),
-    url: `https://curlsbot.com/ingredients/${params.name}`,
+    url: `https://curlsbot.com/ingredients/${resolvedParams.name}`,
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://curlsbot.com/ingredients/${params.name}`,
+      '@id': `https://curlsbot.com/ingredients/${resolvedParams.name}`,
     },
     isPartOf: {
       '@type': 'WebSite',
@@ -123,14 +124,10 @@ interface Ingredient {
 }
 
 export default async function IngredientPage({ params }: PageProps) {
-  const decodedName = decodeURIComponent(params.name);
-  console.log('URL param:', decodedName);
-
+  const resolvedParams = await params;
+  const decodedName = decodeURIComponent(resolvedParams.name);
   const ingredientId = slugToId(decodedName.toLowerCase());
-  console.log('Ingredient ID:', ingredientId);
-
   const database = getBundledDatabase();
-  console.log('Database ingredients:', Object.keys(database.ingredients));
 
   // Find the ingredient ID case-insensitively
   const dbIngredientId = Object.keys(database.ingredients).find(
@@ -140,8 +137,6 @@ export default async function IngredientPage({ params }: PageProps) {
   if (!dbIngredientId) {
     notFound();
   }
-
-  console.log('Database Ingredient ID:', dbIngredientId);
 
   const ingredient = database.ingredients[dbIngredientId];
 
@@ -156,7 +151,6 @@ export default async function IngredientPage({ params }: PageProps) {
 
   // Try to get markdown content
   const markdownContent = await getIngredientContent(idToSlug(dbIngredientId));
-  console.log('Markdown Content:', markdownContent);
 
   // Build breadcrumbs
   const breadcrumbs = [{ href: '/ingredients', label: 'Ingredients' }];
@@ -180,7 +174,7 @@ export default async function IngredientPage({ params }: PageProps) {
   }
 
   breadcrumbs.push({
-    href: `/ingredients/${params.name}`,
+    href: `/ingredients/${resolvedParams.name}`,
     label: ingredient.name,
   });
 

@@ -1,5 +1,5 @@
 ---
-title: Alcohols
+title: Alcohols and Curly/Wavy Hair
 description: Alcohols are a diverse set of chemicals that serve many different purposes in haircare products.
 ---
 

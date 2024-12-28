@@ -1,36 +1,50 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { getBundledDatabase } from 'haircare-ingredients-analyzer';
+import {
+  getBundledDatabase,
+  Category,
+  Ingredient,
+} from 'haircare-ingredients-analyzer';
 import { getCategoryContent } from '@/utils/markdown';
 import { ReferencesList } from '@/components/references/ReferencesList';
 import { Breadcrumbs } from '@/components/navigation/Breadcrumbs';
 import { Metadata } from 'next';
 import { slugToId, idToSlug } from '@/utils/slugs';
+import { InformationCircleIcon } from '@heroicons/react/24/solid';
 
 interface PageProps {
-  params: {
+  params: Promise<{
     name: string;
-  };
+  }>;
 }
 
 // Generate metadata
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const decodedName = decodeURIComponent(params.name);
-  const categoryId = slugToId(decodedName.toLowerCase());
+  const resolvedParams = await params;
+  const decodedName = decodeURIComponent(resolvedParams.name);
+  const categoryId = slugToId(decodedName);
   const database = getBundledDatabase();
 
-  const dbCategoryId = Object.keys(database.categories).find(
-    (id) => id.toLowerCase() === categoryId,
+  // Find the category - exact match first, then case-insensitive
+  let dbCategoryId = Object.keys(database.categories).find(
+    (id) => id === categoryId,
   );
+
+  // If no exact match, try case-insensitive
+  if (!dbCategoryId) {
+    dbCategoryId = Object.keys(database.categories).find(
+      (id) => id.toLowerCase() === categoryId.toLowerCase(),
+    );
+  }
 
   if (!dbCategoryId) {
     notFound();
   }
 
   const category = database.categories[dbCategoryId];
-  const markdownContent = await getCategoryContent(dbCategoryId);
+  const markdownContent = await getCategoryContent(idToSlug(dbCategoryId));
 
   const title = markdownContent?.frontmatter?.title || category.name;
   const description =
@@ -38,7 +52,7 @@ export async function generateMetadata({
     category.description ||
     `Hair care ingredients in the ${category.name} category`;
 
-  const url = `https://curlsbot.com/categories/${params.name}`;
+  const url = `https://curlsbot.com/categories/${resolvedParams.name}`;
 
   return {
     title: title + ' for curly/wavy hair',
@@ -81,42 +95,37 @@ export async function generateMetadata({
   };
 }
 
-interface Category {
-  id: string;
-  name: string;
-  description?: string;
-  group?: string;
-  references?: Array<{
-    url: string;
-    status?: string;
-    title?: string;
-    type?: string;
-  }>;
-}
-
-interface Ingredient {
-  id: string;
-  name: string;
-  categories: string[];
-  synonyms?: string[];
-  description?: string;
-}
-
 export default async function CategoryPage({ params }: PageProps) {
-  const decodedName = decodeURIComponent(params.name);
-  const categoryId = slugToId(decodedName.toLowerCase());
+  const resolvedParams = await params;
+  const decodedName = decodeURIComponent(resolvedParams.name);
+  const categoryId = slugToId(decodedName);
   const database = getBundledDatabase();
 
-  // Find the category
-  const dbCategoryId = Object.keys(database.categories).find(
-    (id) => id.toLowerCase() === categoryId,
+  console.log('URL param:', resolvedParams.name);
+  console.log('Decoded name:', decodedName);
+  console.log('Category ID:', categoryId);
+  console.log('Database categories:', Object.keys(database.categories));
+
+  // Find the category - exact match first, then case-insensitive
+  let dbCategoryId = Object.keys(database.categories).find(
+    (id) => id === categoryId,
   );
+
+  // If no exact match, try case-insensitive
+  if (!dbCategoryId) {
+    dbCategoryId = Object.keys(database.categories).find(
+      (id) => id.toLowerCase() === categoryId.toLowerCase(),
+    );
+  }
+
+  console.log('Found DB Category ID:', dbCategoryId);
 
   if (!dbCategoryId) {
     notFound();
   }
 
   const category = database.categories[dbCategoryId];
+  console.log('Category:', category);
 
   // Get group info if it exists
   const groupInfo = category.group ? database.groups[category.group] : null;
@@ -127,7 +136,8 @@ export default async function CategoryPage({ params }: PageProps) {
   );
 
   // Try to get markdown content
-  const markdownContent = await getCategoryContent(dbCategoryId);
+  const markdownContent = await getCategoryContent(idToSlug(dbCategoryId));
+  console.log('Markdown content:', markdownContent);
 
   // Build breadcrumbs
   const breadcrumbs = [{ href: '/categories', label: 'Categories' }];
@@ -141,7 +151,7 @@ export default async function CategoryPage({ params }: PageProps) {
   }
 
   breadcrumbs.push({
-    href: `/categories/${params.name}`,
+    href: `/categories/${resolvedParams.name}`,
     label: category.name,
   });
 
@@ -258,9 +268,12 @@ export default async function CategoryPage({ params }: PageProps) {
                             <div className="space-y-1">
                               <Link
                                 href={`/ingredients/${idToSlug(ingredient.id)}`}
-                                className="link-primary hover:text-primary font-medium"
+                                className="link font-medium"
                               >
                                 {ingredient.name}
+                                {(ingredient.references?.length ?? 0) > 0 && (
+                                  <InformationCircleIcon className="w-4 h-4 inline-block ml-1 text-info" />
+                                )}
                               </Link>
                               {ingredient.description && (
                                 <p className="text-xs text-base-content/70">

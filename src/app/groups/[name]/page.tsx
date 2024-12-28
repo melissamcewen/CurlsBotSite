@@ -7,16 +7,17 @@ import { Metadata } from 'next';
 import { slugToId, idToSlug } from '@/utils/slugs';
 
 interface PageProps {
-  params: {
+  params: Promise<{
     name: string;
-  };
+  }>;
 }
 
 // Generate metadata
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const decodedName = decodeURIComponent(params.name);
+  const resolvedParams = await params;
+  const decodedName = decodeURIComponent(resolvedParams.name);
   const groupId = slugToId(decodedName.toLowerCase());
   const database = getBundledDatabase();
 
@@ -64,7 +65,8 @@ interface Category {
 }
 
 export default async function GroupPage({ params }: PageProps) {
-  const decodedName = decodeURIComponent(params.name);
+  const resolvedParams = await params;
+  const decodedName = decodeURIComponent(resolvedParams.name);
   const groupId = slugToId(decodedName.toLowerCase());
   const database = getBundledDatabase();
 

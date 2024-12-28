@@ -1,5 +1,5 @@
 ---
-title: Sodium Lauryl Sulfate
+title: Sodium Lauryl Sulfate and Curly/Wavy Hair
 description: Probably one of the most infamous sulfates. Does this strong detergent deserve the bad rap?
 ---
 # Sodium Lauryl Sulfate

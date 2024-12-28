@@ -1,5 +1,5 @@
 ---
-title: Waxes
+title: Waxes and Curly/Wavy Hair Guide
 description: Waxes are primarily used in hair products to provide texture and hold. Unfortunately, they form a thick non-breathable barrier on the hair that can be very difficult to remove.
 ---
 

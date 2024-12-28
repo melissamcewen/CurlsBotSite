@@ -1,5 +1,5 @@
 ---
-title: Surfactants
+title: Surfactants and Curly/Wavy Hair Guide
 description: Detergents and other ingredients that help remove dirt, oil, and buildup from hair
 ---
 # Surfactants

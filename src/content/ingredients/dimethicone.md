@@ -1,10 +1,10 @@
 ---
-title: Dimethicone
+title: Dimethicone and Curly/Wavy Hair
 description: One of the most common silicones. Does it deserve the bad rap?
 ---
 # Dimethicone
 
-Dimethicone is one of the most common silicones in haircare products. It's an extremely effective conditioner, but it has earned the ire of many because of its tendency to build up.
+Dimethicone is one of the most common [silicones](/groups/silicones) in haircare products. It's an extremely effective conditioner, but it has earned the ire of many because of its tendency to build up.
 
 ## What is Dimethicone
 

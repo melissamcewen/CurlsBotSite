@@ -3,7 +3,7 @@ import { Suspense } from 'react';
 import Loading from './loading';
 import { getBundledDatabase } from 'haircare-ingredients-analyzer';
 import { idToSlug } from '@/utils/slugs';
-import { IngredientsTable } from '@/components/ingredients/IngredientsTable';
+import { IngredientsTable } from '../../components/ingredients/IngredientsTable';
 
 export const metadata: Metadata = {
   title: 'Haircare Ingredients Database',

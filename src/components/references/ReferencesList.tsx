@@ -81,7 +81,7 @@ export function ReferencesList({ references }: ReferencesListProps) {
                         href={ref.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="link link-primary"
+                        className="link"
                       >
                         {ref.title || 'Reference'}
                       </a>
@@ -96,7 +96,7 @@ export function ReferencesList({ references }: ReferencesListProps) {
                 <td>
                   {ref.status ? (
                     <span
-                      className={`cb-badge ${
+                      className={`badge ${
                         ref.status === 'good'
                           ? 'badge-success'
                           : ref.status === 'warning'
