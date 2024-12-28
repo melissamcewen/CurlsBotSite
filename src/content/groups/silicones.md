@@ -7,7 +7,7 @@ description: Silicones are polymers that do an amazing job at coating things lik
 
 Silicones are polymers that do an amazing job at coating things like hair. As a coating they can be protective against all kinds of damage like friction or heat. But in some cases that coating is too strong and they cause buildup.
 
-# The purpose of silicones in hair products
+## The purpose of silicones in hair products
 
 Silicones provide a shiny, slippery coating that does an amazing job at protecting against heat damage and other forms of damage. That slipperiness is also why they are good for detangling.
 
@@ -17,7 +17,7 @@ But on high porosity hair, a silicone coating can be beneficial in protecting ag
 
 > dimethicone and its derivatives fill microcracks of a damaged hair cuticle (Fig. 1), promote a healthy and tidy look of hair, make them visually thicker, impart smoothness and shine to them, and facilitate combing.
 
-# How CurlsBot classifies silicones
+## How CurlsBot classifies silicones
 
 CurlsBot classifies silicones based on a consumer rather than scientific understanding.
 

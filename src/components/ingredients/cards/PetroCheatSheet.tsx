@@ -4,6 +4,7 @@ const PetroCheatSheet: React.FC = () => {
   return (
     <CheatSheet
       title="Petroleum Derived Ingredients"
+      titleURL="/categories/petroleum-oils"
       description="These are petroleum based ingredients that are often avoided for their build up potential as well as their petro-based origin."
       sources={[
         {
@@ -39,7 +40,7 @@ const PetroCheatSheet: React.FC = () => {
             'Paraffin Jelly',
             'Mineral Jelly',
           ],
-        }
+        },
       ]}
     />
   );

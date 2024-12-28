@@ -17,7 +17,8 @@ interface CategoryWithId {
 
 export const metadata: Metadata = {
   title: 'Hair Care Categories',
-  description: 'Browse hair care ingredients by category, including sulfates, silicones, proteins, and more.',
+  description:
+    'Browse hair care ingredients by category, including sulfates, silicones, proteins, and more.',
 };
 
 export default function CategoriesPage() {
@@ -47,18 +48,21 @@ export default function CategoriesPage() {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: 'Hair Care Categories',
-    description: 'Browse hair care ingredients by category, including sulfates, silicones, proteins, and more.',
+    description:
+      'Browse hair care ingredients by category, including sulfates, silicones, proteins, and more.',
     numberOfItems: Object.values(database.categories).length,
-    itemListElement: Object.entries(database.categories).map(([id, category], index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      item: {
-        '@type': 'Thing',
-        name: category.name,
-        description: category.description,
-        url: `https://curlsbot.com/categories/${idToSlug(id)}`,
-      },
-    })),
+    itemListElement: Object.entries(database.categories).map(
+      ([id, category], index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+          '@type': 'Thing',
+          name: category.name,
+          description: category.description,
+          url: `https://curlsbot.com/categories/${idToSlug(id)}`,
+        },
+      }),
+    ),
   };
 
   return (

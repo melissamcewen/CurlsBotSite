@@ -4,6 +4,7 @@ const SoapCheatSheet: React.FC = () => {
   return (
     <CheatSheet
       title="Soap"
+      titleURL="/categories/soaps"
       description="Can be as drying as sulfates and cause build-up especially if you have hard water."
       sources={[
         {

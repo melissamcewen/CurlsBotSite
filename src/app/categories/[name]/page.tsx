@@ -143,7 +143,7 @@ export default async function CategoryPage({ params }: PageProps) {
       })),
     },
     ...(category.references && {
-      citation: category.references.map(ref => ({
+      citation: category.references.map((ref) => ({
         '@type': 'CreativeWork',
         name: ref.title || 'Reference',
         url: ref.url,
@@ -164,25 +164,16 @@ export default async function CategoryPage({ params }: PageProps) {
           {/* Category Information */}
           <div className="card bg-base-100  text-base-content">
             <div className="card-body">
-              <h1 className="card-title text-3xl">
-                {markdownContent?.frontmatter?.title || category.name}
-              </h1>
               {markdownContent ? (
-                <>
-                  {markdownContent.frontmatter.description && (
-                    <p className="text-base-content/70 mt-2">
-                      {markdownContent.frontmatter.description}
-                    </p>
-                  )}
-                  <div
-                    className="prose prose-base mt-4 max-w-none"
-                    dangerouslySetInnerHTML={{
-                      __html: markdownContent.content,
-                    }}
-                  />
-                </>
+                <div
+                  className="prose prose-base mt-4 max-w-none"
+                  dangerouslySetInnerHTML={{
+                    __html: markdownContent.content,
+                  }}
+                />
               ) : (
                 <>
+                  <h1 className="card-title text-3xl">{category.name}</h1>
                   {category.description && (
                     <p className="text-base-content/70 mt-2">
                       {category.description}

@@ -13,7 +13,7 @@ If you do choose to use waxes, you'll need to use a strong shampoo and I'd also 
 
 The exception is water-soluble waxes, which should wash away easily.
 
-# Are waxes bad for curls
+## Are waxes bad for curls
 
 Lorraine Massey's [Curly Girl: The Handbook](https://amzn.to/40b2Jfr)  has a section written by Vida Vladirm that mentions the negative effects of wax
 

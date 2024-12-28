@@ -4,6 +4,7 @@ const WaxesCheatSheet: React.FC = () => {
   return (
     <CheatSheet
       title="Waxes"
+      titleURL="/groups/waxes"
       description="These can build up on hair and may require sulfates to remove completely."
       sources={[
         {
