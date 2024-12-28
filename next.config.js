@@ -62,6 +62,11 @@ const nextConfig = {
         destination: '/porosity-quiz',
         permanent: true,
       },
+      {
+        source: '/groups',
+        destination: '/categories',
+        permanent: true,
+      },
     ];
   },
 };

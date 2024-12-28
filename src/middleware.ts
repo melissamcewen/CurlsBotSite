@@ -6,10 +6,7 @@ export function middleware(request: NextRequest) {
   const response = NextResponse.next();
 
   // Add cache control headers for static content
-  response.headers.set(
-    'Cache-Control',
-    'public, max-age=31536000, immutable'
-  );
+  response.headers.set('Cache-Control', 'public, max-age=31536000, immutable');
 
   return response;
 }

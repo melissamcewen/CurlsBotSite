@@ -105,10 +105,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
     },
     {
-      url: 'https://curlsbot.com/groups',
-      lastModified: new Date(),
-    },
-    {
       url: 'https://curlsbot.com/blog',
       lastModified: new Date(),
     },
