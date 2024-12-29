@@ -4,9 +4,41 @@ import Loading from './loading';
 import { IngredientsTable } from '../../components/ingredients/IngredientsTable';
 
 export const metadata: Metadata = {
-  title: 'Haircare Ingredients Database',
+  title: 'Hair Care Ingredients Database | CurlsBot',
   description:
-    'Comprehensive database of haircare ingredients with categories, groups, and safety information for curly and wavy hair',
+    'Comprehensive database of hair care ingredients with categories, groups, and safety information for curly and wavy hair. Find detailed information about ingredients in your hair products.',
+  robots: {
+    index: true,
+    follow: true,
+    'max-snippet': -1,
+    'max-image-preview': 'large',
+    'max-video-preview': -1,
+  },
+  alternates: {
+    canonical: 'https://www.curlsbot.com/ingredients',
+  },
+  openGraph: {
+    title: 'Hair Care Ingredients Database | CurlsBot',
+    description:
+      'Comprehensive database of hair care ingredients with categories, groups, and safety information for curly and wavy hair. Find detailed information about ingredients in your hair products.',
+    url: 'https://www.curlsbot.com/ingredients',
+    type: 'website',
+    images: [
+      {
+        url: '/images/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'CurlsBot Hair Care Ingredients Database',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Hair Care Ingredients Database | CurlsBot',
+    description:
+      'Comprehensive database of hair care ingredients with categories, groups, and safety information for curly and wavy hair. Find detailed information about ingredients in your hair products.',
+    images: ['/images/og-default.png'],
+  },
 };
 
 export default function IngredientsPage() {

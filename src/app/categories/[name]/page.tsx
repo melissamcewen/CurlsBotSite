@@ -58,7 +58,7 @@ export async function generateMetadata({
     title: title + ' for curly/wavy hair',
     description,
     alternates: {
-      canonical: url,
+      canonical: `https://www.curlsbot.com/categories/${resolvedParams.name}`,
     },
     openGraph: {
       title,
@@ -101,10 +101,7 @@ export default async function CategoryPage({ params }: PageProps) {
   const categoryId = slugToId(decodedName);
   const database = getBundledDatabase();
 
-  console.log('URL param:', resolvedParams.name);
-  console.log('Decoded name:', decodedName);
-  console.log('Category ID:', categoryId);
-  console.log('Database categories:', Object.keys(database.categories));
+
 
   // Find the category - exact match first, then case-insensitive
   let dbCategoryId = Object.keys(database.categories).find(
@@ -118,14 +115,14 @@ export default async function CategoryPage({ params }: PageProps) {
     );
   }
 
-  console.log('Found DB Category ID:', dbCategoryId);
+
 
   if (!dbCategoryId) {
     notFound();
   }
 
   const category = database.categories[dbCategoryId];
-  console.log('Category:', category);
+
 
   // Get group info if it exists
   const groupInfo = category.group ? database.groups[category.group] : null;
@@ -137,8 +134,7 @@ export default async function CategoryPage({ params }: PageProps) {
 
   // Try to get markdown content
   const markdownContent = await getCategoryContent(idToSlug(dbCategoryId));
-  console.log('Markdown content:', markdownContent);
-
+  
   // Build breadcrumbs
   const breadcrumbs = [{ href: '/categories', label: 'Categories' }];
 

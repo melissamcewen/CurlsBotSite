@@ -34,11 +34,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const formattedDate = new Date(frontmatter.date).toISOString();
 
   return {
-    title: frontmatter.title,
+    title: `${frontmatter.title} | CurlsBot Blog`,
     description: frontmatter.description,
+    robots: {
+      index: true,
+      follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large',
+      'max-video-preview': -1,
+    },
+    alternates: {
+      canonical: `https://www.curlsbot.com/blog/${resolvedParams.slug}`,
+    },
     openGraph: {
       title: frontmatter.title,
       description: frontmatter.description,
+      url: `https://www.curlsbot.com/blog/${resolvedParams.slug}`,
       type: 'article',
       publishedTime: formattedDate,
       authors: ['CurlsBot'],
@@ -51,7 +62,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
               alt: frontmatter.title,
             },
           ]
-        : ['/images/og-default.png'],
+        : [
+            {
+              url: '/images/og-default.png',
+              width: 1200,
+              height: 630,
+              alt: frontmatter.title,
+            },
+          ],
     },
     twitter: {
       card: 'summary_large_image',

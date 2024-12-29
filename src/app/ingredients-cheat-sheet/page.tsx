@@ -9,9 +9,43 @@ import SoapCheatSheet from '@/components/ingredients/cards/SoapCheatSheet';
 import ParabensCheatSheet from '@/components/ingredients/cards/ParabensCheatSheet';
 import WitchHazelCheatSheet from '@/components/ingredients/cards/WitchHazelCheatSheet';
 import AlcoholCheatSheet from '@/components/ingredients/cards/AlcoholCheatSheet';
+
 export const metadata: Metadata = {
-  title: 'Haircare Ingredients Cheat Sheet',
-  description: 'Quick guide to identify common haircare ingredient types by name',
+  title: 'Hair Care Ingredients Cheat Sheet | Quick Reference Guide',
+  description:
+    'Quick reference guide to identify common hair care ingredients by name patterns. Learn about silicones, sulfates, alcohols, and more in hair products.',
+  robots: {
+    index: true,
+    follow: true,
+    'max-snippet': -1,
+    'max-image-preview': 'large',
+    'max-video-preview': -1,
+  },
+  alternates: {
+    canonical: 'https://www.curlsbot.com/ingredients-cheat-sheet',
+  },
+  openGraph: {
+    title: 'Hair Care Ingredients Cheat Sheet | Quick Reference Guide',
+    description:
+      'Quick reference guide to identify common hair care ingredients by name patterns. Learn about silicones, sulfates, alcohols, and more in hair products.',
+    url: 'https://www.curlsbot.com/ingredients-cheat-sheet',
+    type: 'website',
+    images: [
+      {
+        url: '/images/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Hair Care Ingredients Cheat Sheet',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Hair Care Ingredients Cheat Sheet | Quick Reference Guide',
+    description:
+      'Quick reference guide to identify common hair care ingredients by name patterns. Learn about silicones, sulfates, alcohols, and more in hair products.',
+    images: ['/images/og-default.png'],
+  },
 };
 
 export default function IngredientsCheatSheetPage() {
@@ -19,9 +53,15 @@ export default function IngredientsCheatSheetPage() {
     <div className="max-w-4xl mx-auto">
       <div className="p-4 md:p-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2">Haircare Ingredients Cheat Sheet</h1>
+          <h1 className="text-3xl font-bold mb-2">
+            Haircare Ingredients Cheat Sheet
+          </h1>
           <p className="text-base-content/70 ">
-            Quick guide to identify ingredient types by name patterns. See our <Link href="/ingredients" className="link-primary">Ingredients Database</Link> for more information.
+            Quick guide to identify ingredient types by name patterns. See our{' '}
+            <Link href="/ingredients" className="link-primary">
+              Ingredients Database
+            </Link>{' '}
+            for more information.
           </p>
         </div>
 

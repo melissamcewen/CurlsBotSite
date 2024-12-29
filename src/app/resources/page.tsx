@@ -1,5 +1,45 @@
 import { BookOpenIcon, InformationCircleIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Curly Hair Resources | Communities & Tools',
+  description:
+    'Find curly hair communities, ingredient analysis tools, and international resources to help you on your hair care journey. Join discussions in your language and region.',
+  robots: {
+    index: true,
+    follow: true,
+    'max-snippet': -1,
+    'max-image-preview': 'large',
+    'max-video-preview': -1,
+  },
+  alternates: {
+    canonical: 'https://www.curlsbot.com/resources',
+  },
+  openGraph: {
+    title: 'Curly Hair Resources | Communities & Tools',
+    description:
+      'Find curly hair communities, ingredient analysis tools, and international resources to help you on your hair care journey.',
+    url: 'https://www.curlsbot.com/resources',
+    type: 'website',
+    images: [
+      {
+        url: '/images/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Curly Hair Resources and Communities',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Curly Hair Resources | Communities & Tools',
+    description:
+      'Find curly hair communities, ingredient analysis tools, and international resources to help you on your hair care journey.',
+    images: ['/images/og-default.png'],
+  },
+};
+
 export default function Resources() {
   return (
     <div className="max-w-4xl mx-auto">
@@ -20,15 +60,15 @@ export default function Resources() {
                 focused ingredient checker
               </li>
               <li>
-                <a href="https://curlscan.com/">CurlScan</a> - Curly Girl product database
+                <a href="https://curlscan.com/">CurlScan</a> - Curly Girl
+                product database
               </li>
               <li>
-                <a href="https://incidecoder.com/">InciDecoder</a> - Ingredient info
+                <a href="https://incidecoder.com/">InciDecoder</a> - Ingredient
+                info
               </li>
             </ul>
-            <h2 className="text-2xl font-bold mt-6">
-              Communities
-            </h2>
+            <h2 className="text-2xl font-bold mt-6">Communities</h2>
             <p>
               All these resources may vary in what they consider curly hair, so
               we encourage you to do your own research and find what&apos;s best
@@ -196,8 +236,6 @@ export default function Resources() {
                 </ul>
               </div>
             </div>
-
-
 
             <div className="flex items-start gap-2 text-info text-sm mt-6 p-4 bg-info/10 rounded-xl">
               <InformationCircleIcon className="w-5 h-5 flex-shrink-0 mt-0.5" />

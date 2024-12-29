@@ -3,8 +3,41 @@ import { Metadata } from 'next';
 import { ScaleIcon } from '@heroicons/react/24/solid';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service',
-  description: 'Terms of service and usage conditions for CurlsBot',
+  title: 'Terms of Service | CurlsBot',
+  description:
+    "Read our terms of service to understand how to use CurlsBot's hair care ingredient analysis tools and website features.",
+  robots: {
+    index: true,
+    follow: true,
+    'max-snippet': -1,
+    'max-image-preview': 'large',
+    'max-video-preview': -1,
+  },
+  alternates: {
+    canonical: 'https://www.curlsbot.com/terms',
+  },
+  openGraph: {
+    title: 'Terms of Service | CurlsBot',
+    description:
+      "Read our terms of service to understand how to use CurlsBot's hair care ingredient analysis tools and website features.",
+    url: 'https://www.curlsbot.com/terms',
+    type: 'website',
+    images: [
+      {
+        url: '/images/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'CurlsBot Terms of Service',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Terms of Service | CurlsBot',
+    description:
+      "Read our terms of service to understand how to use CurlsBot's hair care ingredient analysis tools and website features.",
+    images: ['/images/og-default.png'],
+  },
 };
 
 export default function TermsPage() {
@@ -19,38 +52,47 @@ export default function TermsPage() {
 
           <div className="prose prose-lg max-w-none">
             <p>
-              Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+              Last updated:{' '}
+              {new Date().toLocaleDateString('en-US', {
+                month: 'long',
+                day: 'numeric',
+                year: 'numeric',
+              })}
             </p>
 
             <h2>Agreement to Terms</h2>
             <p>
-              By accessing or using CurlsBot, you agree to be bound by these Terms of Service. If you disagree
-              with any part of these terms, you may not access the service.
+              By accessing or using CurlsBot, you agree to be bound by these
+              Terms of Service. If you disagree with any part of these terms,
+              you may not access the service.
             </p>
 
             <h2>Use of Service</h2>
             <p>
-              CurlsBot provides ingredient analysis tools and educational content about hair care. Our services
-              are provided &quot;as is&quot; and &quot;as available&quot; without warranties of any kind.
+              CurlsBot provides ingredient analysis tools and educational
+              content about hair care. Our services are provided &quot;as
+              is&quot; and &quot;as available&quot; without warranties of any
+              kind.
             </p>
 
             <h2>Disclaimer</h2>
             <p>
-              The information provided by CurlsBot is for general informational purposes only. We are not
-              licensed professionals, and our ingredient analysis should not be considered professional advice.
-              Always consult with a qualified professional for specific hair care recommendations.
+              The information provided by CurlsBot is for general informational
+              purposes only. We are not licensed professionals, and our
+              ingredient analysis should not be considered professional advice.
+              Always consult with a qualified professional for specific hair
+              care recommendations.
             </p>
 
             <h2>Intellectual Property</h2>
             <p>
-              The content, features, and functionality of CurlsBot are owned by CurlsBot and are protected
-              by international copyright, trademark, and other intellectual property laws.
+              The content, features, and functionality of CurlsBot are owned by
+              CurlsBot and are protected by international copyright, trademark,
+              and other intellectual property laws.
             </p>
 
             <h2>User Conduct</h2>
-            <p>
-              You agree not to:
-            </p>
+            <p>You agree not to:</p>
             <ul>
               <li>Use the service for any unlawful purpose</li>
               <li>Attempt to gain unauthorized access to our systems</li>
@@ -61,41 +103,48 @@ export default function TermsPage() {
 
             <h2>Third-Party Links</h2>
             <p>
-              Our service may contain links to third-party websites or services that are not owned or
-              controlled by CurlsBot. We have no control over and assume no responsibility for the content,
-              privacy policies, or practices of any third-party websites or services.
+              Our service may contain links to third-party websites or services
+              that are not owned or controlled by CurlsBot. We have no control
+              over and assume no responsibility for the content, privacy
+              policies, or practices of any third-party websites or services.
             </p>
 
             <h2>Affiliate Links</h2>
             <p>
-              We participate in affiliate programs, including Amazon Associates. When you click on affiliate
-              links and make purchases, we may earn a commission. This does not affect the price you pay
-              for products.
+              We participate in affiliate programs, including Amazon Associates.
+              When you click on affiliate links and make purchases, we may earn
+              a commission. This does not affect the price you pay for products.
             </p>
 
             <h2>Limitation of Liability</h2>
             <p>
-              In no event shall CurlsBot be liable for any indirect, incidental, special, consequential,
-              or punitive damages, including without limitation, loss of profits, data, use, goodwill, or
-              other intangible losses.
+              In no event shall CurlsBot be liable for any indirect, incidental,
+              special, consequential, or punitive damages, including without
+              limitation, loss of profits, data, use, goodwill, or other
+              intangible losses.
             </p>
 
             <h2>Changes to Terms</h2>
             <p>
-              We reserve the right to modify or replace these terms at any time. If a revision is material,
-              we will try to provide at least 30 days&apos; notice prior to any new terms taking effect.
+              We reserve the right to modify or replace these terms at any time.
+              If a revision is material, we will try to provide at least 30
+              days&apos; notice prior to any new terms taking effect.
             </p>
 
             <h2>Governing Law</h2>
             <p>
-              These terms shall be governed by and construed in accordance with the laws of the United
-              States, without regard to its conflict of law provisions.
+              These terms shall be governed by and construed in accordance with
+              the laws of the United States, without regard to its conflict of
+              law provisions.
             </p>
 
             <h2>Contact Us</h2>
             <p>
               If you have any questions about these Terms of Service, please{' '}
-              <a href="/contact" className="link link-primary">contact us</a>.
+              <a href="/contact" className="link link-primary">
+                contact us
+              </a>
+              .
             </p>
           </div>
         </div>

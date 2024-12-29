@@ -17,9 +17,41 @@ interface CategoryWithId {
 }
 
 export const metadata: Metadata = {
-  title: 'Hair Care Categories',
+  title: 'Hair Care Categories | CurlsBot',
   description:
-    'Browse hair care ingredients by category, including sulfates, silicones, proteins, and more.',
+    'Browse hair care ingredients by category, including sulfates, silicones, proteins, and more. Find detailed guides for each ingredient category for curly and wavy hair.',
+  robots: {
+    index: true,
+    follow: true,
+    'max-snippet': -1,
+    'max-image-preview': 'large',
+    'max-video-preview': -1,
+  },
+  alternates: {
+    canonical: 'https://www.curlsbot.com/categories',
+  },
+  openGraph: {
+    title: 'Hair Care Categories | CurlsBot',
+    description:
+      'Browse hair care ingredients by category, including sulfates, silicones, proteins, and more. Find detailed guides for each ingredient category for curly and wavy hair.',
+    url: 'https://www.curlsbot.com/categories',
+    type: 'website',
+    images: [
+      {
+        url: '/images/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'CurlsBot Hair Care Categories',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Hair Care Categories | CurlsBot',
+    description:
+      'Browse hair care ingredients by category, including sulfates, silicones, proteins, and more. Find detailed guides for each ingredient category for curly and wavy hair.',
+    images: ['/images/og-default.png'],
+  },
 };
 
 export default function CategoriesPage() {

@@ -16,19 +16,40 @@ interface BlogPost {
 
 export const metadata: Metadata = {
   title: 'Blog | CurlsBot',
-  description: 'Articles about hair care, ingredients, and maintaining healthy hair',
+  description:
+    'Articles about hair care, ingredients, and maintaining healthy hair',
+  robots: {
+    index: true,
+    follow: true,
+    'max-snippet': -1,
+    'max-image-preview': 'large',
+    'max-video-preview': -1,
+  },
+  alternates: {
+    canonical: 'https://www.curlsbot.com/blog',
+  },
   openGraph: {
     title: 'CurlsBot Blog',
-    description: 'Articles about hair care, ingredients, and maintaining healthy hair',
+    description:
+      'Articles about hair care, ingredients, and maintaining healthy hair',
+    url: 'https://www.curlsbot.com/blog',
     type: 'website',
-    images: ['/icon.png']
+    images: [
+      {
+        url: '/images/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'CurlsBot Blog',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'CurlsBot Blog',
-    description: 'Articles about hair care, ingredients, and maintaining healthy hair',
-    images: ['/icon.png']
-  }
+    description:
+      'Articles about hair care, ingredients, and maintaining healthy hair',
+    images: ['/images/og-default.png'],
+  },
 };
 
 // Separate component for blog posts to enable streaming
@@ -48,14 +69,17 @@ async function BlogPosts() {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
-      timeZone: 'UTC'
+      timeZone: 'UTC',
     }).format(date);
   };
 
   return (
     <div className="space-y-4">
       {sortedPosts.map((post) => (
-        <article key={post.slug} className="card bg-base-200 hover:bg-base-300 transition-colors">
+        <article
+          key={post.slug}
+          className="card bg-base-200 hover:bg-base-300 transition-colors"
+        >
           <div className="card-body min-h-[150px]">
             <h2 className="card-title">
               <Link href={`/blog/${post.slug}`} className="hover:text-primary">
@@ -64,7 +88,9 @@ async function BlogPosts() {
             </h2>
             <div className="min-h-[48px]">
               {post.frontmatter.description && (
-                <p className="text-base-content/70">{post.frontmatter.description}</p>
+                <p className="text-base-content/70">
+                  {post.frontmatter.description}
+                </p>
               )}
             </div>
             <div className="text-sm text-base-content/50">

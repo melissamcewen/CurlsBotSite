@@ -56,4 +56,36 @@ const groupName = category?.group
 - Add null checks before using properties that might be undefined
 - Test the build process locally before deploying
 
-Remember that TypeScript types are removed at runtime, so we need both type annotations AND runtime checks to ensure safety.
+### Understanding TypeScript Runtime Behavior
+
+TypeScript types are removed during compilation to JavaScript. This is because:
+
+1. **Browser Compatibility**: Browsers only understand JavaScript, not TypeScript. The TypeScript compiler (tsc) removes all type information when converting to JavaScript.
+
+2. **Performance**: Keeping type information at runtime would increase bundle size and slow down execution.
+
+3. **JavaScript Design**: JavaScript is dynamically typed by design. TypeScript adds static typing during development but preserves JavaScript's runtime behavior.
+
+Example of what happens during compilation:
+
+```typescript
+// TypeScript code
+interface User {
+  name: string;
+  age: number;
+}
+
+function greet(user: User) {
+  console.log(user.name);
+}
+
+// Compiled JavaScript
+function greet(user) {
+  console.log(user.name);
+}
+```
+
+This is why we need both:
+
+- TypeScript types for compile-time checks (development)
+- Runtime checks (like `if (!category?.name)`) for production safety

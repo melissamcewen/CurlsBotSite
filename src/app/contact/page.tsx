@@ -1,5 +1,44 @@
 import { EnvelopeIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Contact CurlsBot | Get Help with Hair Care Analysis',
+  description:
+    'Get in touch with CurlsBot for help with hair care ingredient analysis, join our social media communities, or contribute to our open source project.',
+  robots: {
+    index: true,
+    follow: true,
+    'max-snippet': -1,
+    'max-image-preview': 'large',
+    'max-video-preview': -1,
+  },
+  alternates: {
+    canonical: 'https://www.curlsbot.com/contact',
+  },
+  openGraph: {
+    title: 'Contact CurlsBot | Get Help with Hair Care Analysis',
+    description:
+      'Get in touch with CurlsBot for help with hair care ingredient analysis, join our social media communities, or contribute to our open source project.',
+    url: 'https://www.curlsbot.com/contact',
+    type: 'website',
+    images: [
+      {
+        url: '/images/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Contact CurlsBot - Hair Care Analysis Help',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contact CurlsBot | Get Help with Hair Care Analysis',
+    description:
+      'Get in touch with CurlsBot for help with hair care ingredient analysis, join our social media communities, or contribute to our open source project.',
+    images: ['/images/og-default.png'],
+  },
+};
 
 export default function ContactPage() {
   return (
@@ -65,7 +104,6 @@ export default function ContactPage() {
                 </a>{' '}
                 - Chat with other curly hair enthusiasts
               </li>
-            
             </ul>
 
             <h2>Open Source</h2>

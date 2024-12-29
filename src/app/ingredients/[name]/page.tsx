@@ -70,10 +70,12 @@ export async function generateMetadata({
       url: 'https://curlsbot.com',
     },
     ...(ingredient.categories?.length > 0 && {
-      category: ingredient.categories.map((categoryId) => {
-        const category = database.categories[categoryId];
-        return category.name;
-      }),
+      category: ingredient.categories
+        .map((categoryId) => {
+          const category = database.categories[categoryId];
+          return category?.name;
+        })
+        .filter(Boolean),
     }),
     ...(ingredient.references &&
       ingredient.references.length > 0 && {
@@ -102,7 +104,48 @@ export async function generateMetadata({
       markdownContent?.frontmatter?.description ||
       ingredient.description ||
       `Information about ${ingredient.name} in hair care products`,
-    robots: shouldIndex ? undefined : 'noindex',
+    robots: shouldIndex
+      ? {
+          index: true,
+          follow: true,
+          'max-snippet': -1,
+          'max-image-preview': 'large',
+          'max-video-preview': -1,
+        }
+      : { noindex: true },
+    alternates: {
+      canonical: `https://www.curlsbot.com/ingredients/${resolvedParams.name}`,
+    },
+    openGraph: {
+      title:
+        markdownContent?.frontmatter?.title ||
+        ingredient.name + ' for curly/wavy hair',
+      description:
+        markdownContent?.frontmatter?.description ||
+        ingredient.description ||
+        `Information about ${ingredient.name} in hair care products`,
+      url: `https://www.curlsbot.com/ingredients/${resolvedParams.name}`,
+      type: 'article',
+      images: [
+        {
+          url: '/images/og-default.png',
+          width: 1200,
+          height: 630,
+          alt: `${ingredient.name} - Hair Care Ingredient Information`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title:
+        markdownContent?.frontmatter?.title ||
+        ingredient.name + ' for curly/wavy hair',
+      description:
+        markdownContent?.frontmatter?.description ||
+        ingredient.description ||
+        `Information about ${ingredient.name} in hair care products`,
+      images: ['/images/og-default.png'],
+    },
     other: {
       'application/ld+json': JSON.stringify(jsonLd),
     },
@@ -140,20 +183,13 @@ export default async function IngredientPage({ params }: PageProps) {
 
   const ingredient = database.ingredients[dbIngredientId];
 
-  // Get category and group info if available
-  const primaryCategory = ingredient.categories[0];
-  const categoryInfo = primaryCategory
-    ? database.categories[primaryCategory]
-    : null;
-  const groupInfo = categoryInfo?.group
-    ? database.groups[categoryInfo.group]
-    : null;
-
-  // Try to get markdown content
-  const markdownContent = await getIngredientContent(idToSlug(dbIngredientId));
-
   // Build breadcrumbs
   const breadcrumbs = [{ href: '/ingredients', label: 'Ingredients' }];
+
+  // Get category and group info if available
+  const primaryCategory = ingredient.categories?.[0];
+  const categoryInfo = primaryCategory && database.categories[primaryCategory];
+  const groupInfo = categoryInfo?.group && database.groups[categoryInfo.group];
 
   if (groupInfo && categoryInfo) {
     breadcrumbs.unshift({
@@ -177,6 +213,9 @@ export default async function IngredientPage({ params }: PageProps) {
     href: `/ingredients/${resolvedParams.name}`,
     label: ingredient.name,
   });
+
+  // Try to get markdown content
+  const markdownContent = await getIngredientContent(idToSlug(dbIngredientId));
 
   return (
     <div className="container mx-auto p-4">

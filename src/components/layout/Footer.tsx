@@ -7,11 +7,11 @@ export function Footer() {
         <aside>
           <h2 className="text-xl font-bold">CurlsBot</h2>
           <p className="text-sm opacity-80">
-            Your hair care ingredient analyzer since 2016
+            Your hair care ingredient analyzer since 2017
           </p>
           <div className="mt-4 grid grid-flow-col gap-4">
             <a
-              href="https://www.facebook.com/groups/1804576666517325"
+              href="https://www.facebook.com/curlsbotdotcom/"
               className="hover:text-primary"
             >
               <svg
@@ -69,9 +69,9 @@ export function Footer() {
           </div>
         </aside>
         <div className="bg-base-100 rounded-box p-6 space-y-4 max-w-sm">
-          <h2 className="text-lg font-bold text-base-content">
+          <span className="text-lg font-bold text-base-content">
             Join the CurlsBot Community! 💌
-          </h2>
+          </span>
           <p className="text-sm text-base-content/80">
             Get hair care tips, product recommendations, and ingredient alerts
             delivered to your inbox.

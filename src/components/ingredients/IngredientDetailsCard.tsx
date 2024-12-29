@@ -24,10 +24,13 @@ export function IngredientDetailsCard({
   categoryNames,
   groupNames,
 }: IngredientDetailsCardProps) {
-  // Get the group from the first category
-  const firstCategory = categories[0];
+  // Get the group from the first category that exists in categoryNames
+  const firstCategory = categories.find(cat => categoryNames[cat]);
   const group = firstCategory ? categoryNames[firstCategory]?.group : undefined;
   const groupInfo = group ? groupNames[group] : undefined;
+
+  // Filter out categories that don't exist in categoryNames
+  const validCategories = categories.filter(cat => categoryNames[cat]);
 
   return (
     <div className="bg-base-100 rounded-box p-6 space-y-6 cb-border">
@@ -83,15 +86,16 @@ export function IngredientDetailsCard({
       )}
 
       {/* Categories */}
-      {categories.length > 0 && (
+      {validCategories.length > 0 && (
         <div className="space-y-2">
           <div className="flex items-center gap-2 text-base-content/70">
             <FolderIcon className="w-5 h-5" />
             <span className="cb-grouping-header">Categories</span>
           </div>
           <div className="pl-7 flex flex-wrap gap-2">
-            {categories.map((categoryId) => {
+            {validCategories.map((categoryId) => {
               const category = categoryNames[categoryId];
+              if (!category) return null;
               return (
                 <Link
                   key={categoryId}

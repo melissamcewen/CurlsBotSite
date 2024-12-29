@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     template: '%s | CurlsBot',
   },
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_BASE_URL || 'https://curlsbot.com',
+    process.env.NEXT_PUBLIC_BASE_URL || 'https://www.curlsbot.com',
   ),
   description:
     "Unlock healthier hair with CurlsBot. Get personalized hair care advice, product recommendations, and ingredient breakdowns based on your hair's ingredients and porosity, all tailored for curly and wavy hair.",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     title: 'CurlsBot - Hair Care Ingredient Analysis',
     description:
       'Your intelligent assistant for analyzing hair care ingredients and understanding hair porosity',
-    url: 'https://curlsbot.com',
+    url: 'https://www.curlsbot.com',
     images: [
       {
         url: '/images/og-default.png',
@@ -71,32 +71,15 @@ export const metadata: Metadata = {
     shortcut: '/favicon.ico',
     apple: '/apple-icon.png',
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
   verification: {
-    google: 'google-site-verification-code', // You'll need to replace this with your actual verification code
+    google: 'google-site-verification-code',
     other: {
       'impact-site-verification': '1ade1083-f729-416f-9c92-6d0b179d94e3',
     },
   },
   category: 'technology',
-  alternates: {
-    canonical: 'https://curlsbot.com',
-    languages: {
-      'en-US': 'https://curlsbot.com',
-      // Add more languages as needed
-      // 'es-ES': 'https://curlsbot.com/es',
-      // 'fr-FR': 'https://curlsbot.com/fr',
-    },
+  languages: {
+    'en-US': 'en-US',
   },
 };
 

@@ -35,12 +35,62 @@ export async function generateMetadata({
   return {
     title:
       markdownContent?.frontmatter?.title ||
-      group.name + ' for curly/wavy hair',
+      group.name + ' for curly/wavy hair | CurlsBot',
     description:
       markdownContent?.frontmatter?.description ||
       group.description ||
-      `A guide to ${group.name} for curly/wavy hair`,
-    robots: markdownContent ? undefined : 'noindex',
+      `A guide to ${
+        group.name
+      } for curly/wavy hair. Learn about different types of ${group.name.toLowerCase()} and their effects on curly and wavy hair.`,
+    robots: markdownContent
+      ? {
+          index: true,
+          follow: true,
+          'max-snippet': -1,
+          'max-image-preview': 'large',
+          'max-video-preview': -1,
+        }
+      : { noindex: true },
+    alternates: {
+      canonical: `https://www.curlsbot.com/groups/${resolvedParams.name}`,
+    },
+    openGraph: {
+      title:
+        markdownContent?.frontmatter?.title ||
+        group.name + ' for curly/wavy hair | CurlsBot',
+      description:
+        markdownContent?.frontmatter?.description ||
+        group.description ||
+        `A guide to ${
+          group.name
+        } for curly/wavy hair. Learn about different types of ${group.name.toLowerCase()} and their effects on curly and wavy hair.`,
+      url: `https://www.curlsbot.com/groups/${resolvedParams.name}`,
+      type: 'article',
+      images: [
+        {
+          url: '/images/og-default.png',
+          width: 1200,
+          height: 630,
+          alt: `${group.name} - Hair Care Guide`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title:
+        markdownContent?.frontmatter?.title ||
+        group.name + ' for curly/wavy hair | CurlsBot',
+      description:
+        markdownContent?.frontmatter?.description ||
+        group.description ||
+        `A guide to ${
+          group.name
+        } for curly/wavy hair. Learn about different types of ${group.name.toLowerCase()} and their effects on curly and wavy hair.`,
+      images: ['/images/og-default.png'],
+    },
+    other: {
+      'application/ld+json': JSON.stringify(structuredData),
+    },
   };
 }
 
