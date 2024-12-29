@@ -73,7 +73,7 @@ export function IngredientDetailsCard({
           </div>
           <div className="pl-7">
             <Link
-              href={`/groups/${idToSlug(group)}`}
+              href={group ? `/groups/${idToSlug(group)}` : '#'}
               className="badge badge-secondary"
             >
               {groupInfo.name}

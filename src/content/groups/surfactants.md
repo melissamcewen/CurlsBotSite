@@ -21,8 +21,9 @@ An important thing to remember is that each type of surfactant is rarely used by
 
 CurlsBot divides surfactants into three groups
 
-- Sulfates: These are in their own group because they are the type of detergents that the curly hair community most wants to avoid
-- Mild surfactants: These are widely recognized by the curly hair community as gentle
-- Other surfactants: These don't fit easily into either group, or CurlsBot is still researching them
+- **Sulfates**: These anionic surfactants are in their own group because they are the type of detergents that the curly hair community most wants to avoid
+- **Soap**: Another anionic surfactant, soap is in its own group because of its uniquely bad properties (causing buildup, harshness, and alkaline pH)
+- **Mild surfactants**: These are widely recognized by the curly hair community as gentle
+- **Other surfactants**: These don't fit easily into either group, or CurlsBot is still researching them
 
 
