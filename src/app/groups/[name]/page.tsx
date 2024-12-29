@@ -256,7 +256,7 @@ export default async function GroupPage({ params }: PageProps) {
                     <div className="card-body">
                       <h3 className="card-title text-lg">{category.name}</h3>
                       {category.description && (
-                        <p className="text-base-content/70 text-sm line-clamp-2">
+                        <p className="text-base-content/70 text-sm">
                           {category.description}
                         </p>
                       )}

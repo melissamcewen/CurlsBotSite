@@ -13,7 +13,7 @@ Alcohols are a diverse set of chemicals that serve many different purposes in ha
 Alcohols are a diverse group but the two main scientific categories in haircare products
 
 - Short-chain alcohols: I think of these alcohols as being "short tempered" like their short chains. They don't like to stick around, they like to evaporate. In haircare they can be drying and irritating. An example would be alcohol denat.
-- Long-chain alcohols: These alcohols couldn't be more different than short-chain. They are oily, moisturizingm and considered good for the hair and skin. An example would be cetyl alcohol.
+- Long-chain alcohols: These alcohols couldn't be more different than short-chain. They are oily, moisturizing and considered good for the hair and skin. An example would be cetyl alcohol.
 
 ## Are short-chain alcohols bad for curly hair?
 
