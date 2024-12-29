@@ -1,6 +1,6 @@
 export default function QuizLoading() {
   return (
-    <div className="space-y-6 animate-pulse">
+    <div className="space-y-6 animate-pulse max-w-4xl mx-auto">
       <div className="chat chat-start w-full">
         <div className="chat-image avatar">
           <div className="w-10 h-10 rounded-full bg-base-content/10" />

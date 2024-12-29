@@ -5,6 +5,7 @@ const SiliconesCheatSheet: React.FC = () => {
   return (
     <CheatSheet
       title="Silicones"
+      titleURL="/groups/silicones"
       description="These are generally avoided in the curly hair community due to potential build-up. They may require stronger detergents to remove."
       sources={[
         {

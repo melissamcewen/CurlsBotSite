@@ -1,0 +1,16 @@
+---
+title: Water-soluble Silicones
+description: Silicones that are water-soluble and can be easily removed with just water
+---
+
+# Water-soluble Silicones
+
+This is a category of silicones that has been modified to be water-soluble, which makes them easier to remove and less likely to cause build-up.
+
+# What makes a silicone water-soluble?
+
+Normally silicones are hydrophobic, meaning they repel water. Water-soluble silicones go through a process where they get a chemical attachment that makes them hydrophilic, meaning they now freely mix with water and can be carried away by it.
+
+The most common water-soluble silicones are the PEG silicones like PEG-12 dimethicone. PEG is the name of a chemical attachment in this case, polyethylene glycol. The more PEG is attached, the more the silicone "likes" water. So PEG-12 dimethicone is more water soluble than PEG-8 dimethicone.
+
+Hypothetically, a water soluble silicone should wash off with just water, so be perfectly fine on a curly routine with no strong shampoo. But many in the curly hair community prefer to avoid all silicones just to be safe.

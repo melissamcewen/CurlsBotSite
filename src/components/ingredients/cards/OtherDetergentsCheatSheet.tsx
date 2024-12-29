@@ -4,6 +4,7 @@ const OtherDetergentsCheatSheet: React.FC = () => {
   return (
     <CheatSheet
       title="Other Detergents"
+      titleURL="/groups/surfactants"
       description="These aren't sulfates, but they are confusing! Curlsbot will be revisiting their classification in the future."
       sources={[
         {

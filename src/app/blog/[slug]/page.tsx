@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) {
     return {
       title: 'Post Not Found',
-      description: 'The requested blog post could not be found.'
+      description: 'The requested blog post could not be found.',
     };
   }
 
@@ -42,21 +42,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: 'article',
       publishedTime: formattedDate,
       authors: ['CurlsBot'],
-      images: frontmatter.image ? [
-        {
-          url: frontmatter.image,
-          width: 1200,
-          height: 630,
-          alt: frontmatter.title
-        }
-      ] : ['/images/og-default.png']
+      images: frontmatter.image
+        ? [
+            {
+              url: frontmatter.image,
+              width: 1200,
+              height: 630,
+              alt: frontmatter.title,
+            },
+          ]
+        : ['/images/og-default.png'],
     },
     twitter: {
       card: 'summary_large_image',
       title: frontmatter.title,
       description: frontmatter.description,
-      images: frontmatter.image ? [frontmatter.image] : ['/images/og-default.png']
-    }
+      images: frontmatter.image
+        ? [frontmatter.image]
+        : ['/images/og-default.png'],
+    },
   };
 }
 
@@ -74,7 +78,7 @@ export default async function BlogPostPage({ params }: Props) {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
-    timeZone: 'UTC'
+    timeZone: 'UTC',
   }).format(date);
 
   return (
@@ -90,7 +94,9 @@ export default async function BlogPostPage({ params }: Props) {
           <article className="prose prose-lg max-w-none">
             <div className="flex items-center gap-2 mb-6">
               <BookOpenIcon className="w-8 h-8 text-primary" />
-              <h1 className="text-3xl font-bold m-0">{post.frontmatter.title}</h1>
+              <h1 className="text-3xl font-bold m-0">
+                {post.frontmatter.title}
+              </h1>
             </div>
 
             <div className="min-h-[3rem] -mt-4">

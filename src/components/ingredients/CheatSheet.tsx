@@ -1,4 +1,5 @@
 import { ExclamationTriangleIcon, InformationCircleIcon, ExclamationCircleIcon, CheckCircleIcon } from '@heroicons/react/24/solid';
+import Link from 'next/link';
 
 export interface SourceItemProps {
   source: string;
@@ -91,6 +92,7 @@ export interface CheatSheetProps {
   identificationSections: IdentificationSectionProps[];
   exceptionsSections?: IdentificationSectionProps[];
   exceptionsDescription?: string;
+  titleURL?: string;
 }
 
 export const CheatSheet: React.FC<CheatSheetProps> = ({
@@ -100,11 +102,18 @@ export const CheatSheet: React.FC<CheatSheetProps> = ({
   identificationSections,
   exceptionsSections,
   exceptionsDescription,
+  titleURL
 }) => {
   return (
     <div className="card bg-base-200 p-6 space-y-6">
       <div>
-        <h2 className="cb-header">{title}</h2>
+        <h2 className="cb-header">
+          {titleURL ? (
+            <Link href={titleURL} className="cb-link-emphasized">{title}</Link>
+          ) : (
+            title
+          )}
+        </h2>
         <p className="">{description}</p>
       </div>
 

@@ -90,11 +90,7 @@ const AlcoholCheatSheet: React.FC = () => {
             'Jojoba Alcohol',
             'Tridecyl Alcohol',
           ],
-        },
-        {
-          title: 'Preservative Alcohols',
-          ingredients: ['Phenethyl Alcohol'],
-        },
+        }
       ]}
     />
   );

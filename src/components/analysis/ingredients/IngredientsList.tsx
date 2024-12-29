@@ -60,7 +60,7 @@ export function IngredientsList({ ingredients }: IngredientsListProps) {
           {isAlphabetical ? 'Priority Sort' : 'A-Z Sort'}
         </button>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 min-h-[300px]">
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-4 min-h-[300px]">
         {sortedIngredients.map((ingredient, index) => (
           <IngredientItem key={index} ingredient={ingredient} />
         ))}

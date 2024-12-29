@@ -4,6 +4,7 @@ const ParabensCheatSheet: React.FC = () => {
   return (
     <CheatSheet
       title="Parabens"
+      titleURL="/categories/parabens"
       description="These are common preservatives in hair products. Most cosmetic chemists consider them safe, but many curly hair resources recommend avoiding them because of a study that linked them to cancer."
       sources={[
         {

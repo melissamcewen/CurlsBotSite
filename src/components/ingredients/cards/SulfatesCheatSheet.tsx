@@ -4,6 +4,7 @@ const SulfatesCheatSheet: React.FC = () => {
   return (
     <CheatSheet
       title="Sulfates"
+      titleURL="/categories/sulfates"
       description=" The curly hair community and resources often recommend avoiding
         sulfates, because of their reputation for being drying. But it can
         depend on your hair type and the

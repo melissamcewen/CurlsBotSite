@@ -12,8 +12,6 @@ tests should mainly be smoke tests, we're just trying to make sure nothing is br
 
 use types from the haircare-ingredient-analyzer library when working with it
 
-avoid async/await in tests when using haircare-ingredients-analyzer since it's a synchronous local library - this prevents unnecessary complexity and race conditions in tests
-
 
 get ingredient data directly from haircare-ingredients-analyzer using getBundledDatabase() - do not create separate data files for ingredients
 

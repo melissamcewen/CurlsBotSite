@@ -13,8 +13,13 @@ const nextConfig = {
         permanent: true, // 308 status code
       },
       {
+        source: '/groups/detergents',
+        destination: '/groups/surfactants',
+        permanent: true, // 308 status code
+      },
+      {
         source: '/cleansers',
-        destination: '/groups/detergents',
+        destination: '/groups/surfactants',
         permanent: true, // 308 status code
       },
       {
@@ -44,7 +49,12 @@ const nextConfig = {
       },
       {
         source: '/shampoo-bars-are-not-cg',
-        destination: '/blog/is-soap-good-for-curls',
+        destination: '/categories/soaps',
+        permanent: true,
+      },
+      {
+        source: '/blog/is-soap-good-for-curls',
+        destination: '/categories/soaps',
         permanent: true,
       },
       {
@@ -55,6 +65,11 @@ const nextConfig = {
       {
         source: '/porosity',
         destination: '/porosity-quiz',
+        permanent: true,
+      },
+      {
+        source: '/groups',
+        destination: '/categories',
         permanent: true,
       },
     ];

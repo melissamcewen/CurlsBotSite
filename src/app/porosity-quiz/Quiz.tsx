@@ -71,7 +71,7 @@ export default function Quiz() {
     const result = getResult(score);
 
     return (
-      <div className="space-y-4">
+      <div className="space-y-4 space-y-6 max-w-4xl mx-auto">
         <ChatBubbleRobot imageUrl="/normal.svg" status="ok">
           <ChatBubble status="ok">
             <div className="space-y-4">
@@ -105,7 +105,7 @@ export default function Quiz() {
           </ChatBubble>
         </ChatBubbleRobot>
 
-   
+
             <div className="space-y-4">
               <ProductRecommendations porosityType={result.tag} />
             </div>
@@ -117,7 +117,7 @@ export default function Quiz() {
   const question = quizQuestions[currentQuestion];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 max-w-4xl mx-auto">
       <ChatBubbleRobot imageUrl="/normal.svg" status="ok">
         <ChatBubble status="ok">
           Beep boop! Confused about hair porosity? 🤖 It&apos;s like your

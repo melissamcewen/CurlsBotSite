@@ -4,6 +4,7 @@ const WitchHazelCheatSheet: React.FC = () => {
   return (
     <CheatSheet
       title="Witch Hazel"
+      titleURL="/categories/astringents"
       description="One of the most controversial ingredients the community. Most witch hazel contains alcohol. As an astringent, it can be drying to the scalp for some people."
       sources={[
         {
@@ -16,8 +17,7 @@ const WitchHazelCheatSheet: React.FC = () => {
           source: 'Tightly Curly',
           link: 'https://amzn.to/3ZQq707',
           status: 'caution',
-          description:
-            'Ok in products you rinse out',
+          description: 'Ok in products you rinse out',
         },
       ]}
       identificationSections={[

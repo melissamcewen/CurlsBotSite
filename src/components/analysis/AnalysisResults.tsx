@@ -48,7 +48,7 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
   const { description } = getStatusConfig(result.status);
   const hasIngredients = result.ingredients && result.ingredients.length > 0;
   const shouldShowRecommendation =
-    result?.status === 'warning' || result?.status === 'caution';
+    result?.status === 'warning' || result?.status === 'caution' || result?.status === 'error' || result?.status === 'ok';
   const productRecommendation = shouldShowRecommendation
     ? getProductRecommendation()
     : null;
@@ -81,9 +81,8 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
                         rel="noopener noreferrer"
                         className="underline hover:text-primary"
                       >
-                        {productRecommendation.name} by{' '}
-                        {productRecommendation.brand}
-                      </a>
+                        {productRecommendation.name} by {productRecommendation.brand}
+                      </a> or try our <Link href="/routine-builder" className="link link-primary">Routine Builder</Link>
                     </p>
                   )}
                 </div>

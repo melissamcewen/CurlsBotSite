@@ -1,0 +1,34 @@
+---
+title: Silicones and Curly/Wavy Hair Guide
+description: Silicones are polymers that do an amazing job at coating things like hair. As a coating they can be protective against all kinds of damage like friction or heat. But in some cases that coating is too strong and they can cause buildup.
+---
+
+# Silicones
+
+Silicones are polymers that do an amazing job at coating things like hair. As a coating they can be protective against all kinds of damage like friction or heat. But in some cases that coating is too strong and they cause buildup.
+
+## The purpose of silicones in hair products
+
+Silicones provide a shiny, slippery coating that does an amazing job at protecting against heat damage and other forms of damage. That slipperiness is also why they are good for detangling.
+
+The coating they provide is breathable and flexible, but depending on the silicone, might build up. This is especially annoying on low porosity, fine, and wavy hair where a coating can just weigh it down.
+
+But on high porosity hair, a silicone coating can be beneficial in protecting against damage and actually lower the hair's porosity. The scientific review [Silicones in Cosmetics](https://link.springer.com/article/10.1134/S1560090423600201) notes they can fill in damaged hair cuticles:
+
+> dimethicone and its derivatives fill microcracks of a damaged hair cuticle (Fig. 1), promote a healthy and tidy look of hair, make them visually thicker, impart smoothness and shine to them, and facilitate combing.
+
+## How CurlsBot classifies silicones
+
+CurlsBot classifies silicones based on a consumer rather than scientific understanding.
+
+- Non water-soluble silicones: These are silicones that don't easily wash off
+- Water-soluble silicones: These silicones are much easier to wash off, so easy that you can wash them off with just water
+- Evaporative silicones: These silicones evaporate, so they don't stay in your hair.
+
+The reason for this is you have so many recommendations in the curly hair community.
+
+Lorraine Massey recommended avoiding ALL silicones in her famous book [Curly Girl: The Handbook](https://amzn.to/40b2Jfr).
+
+> Silicone. This synthetic material is the active ingredient in many conditioners and 99 percent of shine products. Often used in manufacturing rubber, plastics, and polishes, it’s actually made to repel water and isn’t biodegradable. So any product with silicone in it will act as a seal around the cuticle, preventing the absorption of moisture. Silicone can also weigh down your curls, preventing their natural shape from emerging.
+
+But many curly hair communities have embraced water-soluble and evaporative silicones, because they lack many of the downsides that Massey and others were worried about.

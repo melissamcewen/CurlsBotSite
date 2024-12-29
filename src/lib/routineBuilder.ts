@@ -5,6 +5,7 @@ export type CountryCode = 'US' | 'AU';
 export type PorosityType = 'high_porosity' | 'low_porosity' | 'normal_porosity';
 
 export type ProductCategory =
+  | 'clarifying_shampoos'
   | 'shampoos'
   | 'cowashes'
   | 'conditioners'
@@ -22,6 +23,8 @@ interface FilterCriteria {
 }
 
 export const CATEGORY_DESCRIPTIONS: Record<ProductCategory, string> = {
+  clarifying_shampoos:
+    'Heavier shampoos meant to remove long-term buildup from oils, products, and hard water. Meant to be used occasionally, as they are much stronger than regular shampoos.',
   shampoos:
     'Cleansers that remove buildup and oil from your hair. Essential for low-porosity hair and should be used on other porosity types at least occasionally.',
   conditioners:
@@ -53,6 +56,7 @@ export const POROSITY_CATEGORIES: Record<PorosityType, ProductCategory[]> = {
     'shampoos',
   ],
   low_porosity: [
+    'clarifying_shampoos',
     'shampoos',
     'conditioners',
     'custards',
@@ -61,6 +65,7 @@ export const POROSITY_CATEGORIES: Record<PorosityType, ProductCategory[]> = {
     'deep_conditioners',
   ],
   normal_porosity: [
+    'clarifying_shampoos',
     'shampoos',
     'conditioners',
     'creams',
@@ -103,6 +108,7 @@ export const FREQUENCY_RECOMMENDATIONS: Record<
   Partial<Record<ProductCategory, string>>
 > = {
   high_porosity: {
+    clarifying_shampoos: 'Every 1-2 months',
     shampoos: 'Weekly',
     cowashes: 'Daily or every other day',
     deep_conditioners: 'Weekly',
@@ -110,17 +116,19 @@ export const FREQUENCY_RECOMMENDATIONS: Record<
     leave_ins: 'Every wash',
     creams: 'Every wash',
     gels: 'As needed for styling',
-    custards: 'As needed for styling',
+    custards: 'Optional',
   },
   low_porosity: {
+    clarifying_shampoos: 'Every 1-2 weeks',
     shampoos: 'Every wash',
     conditioners: 'Every wash',
     deep_conditioners: 'Monthly',
-    foams: 'As needed for styling',
+    foams: 'Optional',
     gels: 'As needed for styling',
-    custards: 'As needed for styling',
+    custards: 'Optional',
   },
   normal_porosity: {
+    clarifying_shampoos: 'Every month',
     shampoos: 'Every 2-3 days',
     conditioners: 'Every wash',
     deep_conditioners: 'Every 2 weeks',
@@ -147,11 +155,14 @@ export const ROUTINE_STEPS: Record<RoutineStep, StepConfig> = {
   cleanse: {
     title: '1. Cleanse',
     description: 'Choose your cleansing products based on your porosity needs',
-    categories: ['shampoos', 'cowashes'],
+    categories: ['clarifying_shampoos', 'shampoos', 'cowashes'],
     porosityRecommendations: {
-      high_porosity: 'Use shampoo weekly, cowash for other wash days',
-      low_porosity: 'Use shampoo every wash day',
-      normal_porosity: 'Use shampoo every wash day, cowash optional',
+      high_porosity:
+        'Use shampoo weekly, cowash for other wash days, clarifying shampoos every 1-2 months',
+      low_porosity:
+        'Use shampoo every wash day, clarifying shampoo every 1-2 weeks',
+      normal_porosity:
+        'Use shampoo every wash day, cowash optional, clarifying shampoo every month',
     },
   },
   condition: {
@@ -169,7 +180,7 @@ export const ROUTINE_STEPS: Record<RoutineStep, StepConfig> = {
   },
   enhance: {
     title: '3. Enhance Curls/Waves',
-    description: 'Choose products to enhance your natural pattern',
+    description: 'Choose 1-2 products to enhance your natural curl pattern',
     categories: ['foams', 'custards', 'creams'],
     porosityRecommendations: {
       high_porosity:

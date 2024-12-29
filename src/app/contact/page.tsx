@@ -65,15 +65,7 @@ export default function ContactPage() {
                 </a>{' '}
                 - Chat with other curly hair enthusiasts
               </li>
-              <li>
-                <a
-                  href="https://twitter.com/curlsbot"
-                  className="link link-primary"
-                >
-                  Twitter
-                </a>{' '}
-                - Get the latest updates
-              </li>
+            
             </ul>
 
             <h2>Open Source</h2>
