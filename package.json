@@ -16,7 +16,7 @@
     "@types/mdast": "^4.0.4",
     "fuse.js": "^7.0.0",
     "gray-matter": "^4.0.3",
-    "haircare-ingredients-analyzer": "^1.1.2",
+    "haircare-ingredients-analyzer": "^1.1.3",
     "next": "^15.1.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

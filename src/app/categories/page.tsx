@@ -1,15 +1,11 @@
 import Link from 'next/link';
-import { getBundledDatabase } from 'haircare-ingredients-analyzer';
+import {
+  getBundledDatabase,
+  type Category,
+} from 'haircare-ingredients-analyzer';
 import { idToSlug } from '@/utils/slugs';
 import { Metadata } from 'next';
 import { ArrowRightIcon } from '@heroicons/react/24/solid';
-
-interface Category {
-  id: string;
-  name: string;
-  description?: string;
-  group?: string;
-}
 
 interface CategoryWithId {
   id: string;

@@ -23,63 +23,42 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: 'CurlsBot | Hair Care Ingredient Analysis',
     template: '%s | CurlsBot',
+    default: 'CurlsBot | Hair Care Ingredient Analysis',
   },
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_BASE_URL || 'https://www.curlsbot.com',
-  ),
   description:
-    "Unlock healthier hair with CurlsBot. Get personalized hair care advice, product recommendations, and ingredient breakdowns based on your hair's ingredients and porosity, all tailored for curly and wavy hair.",
-  keywords: [
-    'hair care',
-    'ingredient analysis',
-    'curly hair',
-    'porosity',
-    'hair products',
-    'CurlsBot',
-  ],
-  authors: [{ name: 'CurlsBot' }],
+    'Analyze your hair care products with CurlsBot. Get instant feedback on ingredients and find out if they match your hair care needs.',
+  robots: {
+    index: true,
+    follow: true,
+    'max-snippet': -1,
+    'max-image-preview': 'large',
+    'max-video-preview': -1,
+  },
+  alternates: {
+    canonical: 'https://www.curlsbot.com',
+  },
   openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    siteName: 'CurlsBot',
-    title: 'CurlsBot - Hair Care Ingredient Analysis',
+    title: 'CurlsBot | Hair Care Ingredient Analysis',
     description:
-      'Your intelligent assistant for analyzing hair care ingredients and understanding hair porosity',
+      'Analyze your hair care products with CurlsBot. Get instant feedback on ingredients and find out if they match your hair care needs.',
     url: 'https://www.curlsbot.com',
+    type: 'website',
     images: [
       {
         url: '/images/og-default.png',
         width: 1200,
         height: 630,
         alt: 'CurlsBot - Hair Care Ingredient Analysis',
-        type: 'image/png',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'CurlsBot - Hair Care Ingredient Analysis',
+    title: 'CurlsBot | Hair Care Ingredient Analysis',
     description:
-      'Your intelligent assistant for analyzing hair care ingredients',
+      'Analyze your hair care products with CurlsBot. Get instant feedback on ingredients and find out if they match your hair care needs.',
     images: ['/images/og-default.png'],
-  },
-  manifest: '/manifest.json',
-  icons: {
-    icon: '/icon.png',
-    shortcut: '/favicon.ico',
-    apple: '/apple-icon.png',
-  },
-  verification: {
-    google: 'google-site-verification-code',
-    other: {
-      'impact-site-verification': '1ade1083-f729-416f-9c92-6d0b179d94e3',
-    },
-  },
-  category: 'technology',
-  languages: {
-    'en-US': 'en-US',
   },
 };
 

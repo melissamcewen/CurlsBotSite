@@ -6,14 +6,15 @@ import {
 } from '@heroicons/react/24/solid';
 import Link from 'next/link';
 import { idToSlug } from '@/utils/slugs';
+import { type Category, type Group } from 'haircare-ingredients-analyzer';
 
 interface IngredientDetailsCardProps {
   name: string;
   description?: string;
   categories: string[];
   synonyms?: string[];
-  categoryNames: Record<string, { name: string; group?: string }>;
-  groupNames: Record<string, { name: string }>;
+  categoryNames: Record<string, Category>;
+  groupNames: Record<string, Group>;
 }
 
 export function IngredientDetailsCard({
@@ -25,12 +26,12 @@ export function IngredientDetailsCard({
   groupNames,
 }: IngredientDetailsCardProps) {
   // Get the group from the first category that exists in categoryNames
-  const firstCategory = categories.find(cat => categoryNames[cat]);
+  const firstCategory = categories.find((cat) => categoryNames[cat]);
   const group = firstCategory ? categoryNames[firstCategory]?.group : undefined;
   const groupInfo = group ? groupNames[group] : undefined;
 
   // Filter out categories that don't exist in categoryNames
-  const validCategories = categories.filter(cat => categoryNames[cat]);
+  const validCategories = categories.filter((cat) => categoryNames[cat]);
 
   return (
     <div className="bg-base-100 rounded-box p-6 space-y-6 cb-border">

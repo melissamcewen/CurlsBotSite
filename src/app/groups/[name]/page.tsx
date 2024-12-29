@@ -1,6 +1,10 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { getBundledDatabase } from 'haircare-ingredients-analyzer';
+import {
+  getBundledDatabase,
+  type Category,
+  type Group,
+} from 'haircare-ingredients-analyzer';
 import { getGroupContent } from '@/utils/markdown';
 import { ReferencesList } from '@/components/references/ReferencesList';
 import { Metadata } from 'next';
@@ -32,6 +36,44 @@ export async function generateMetadata({
   const group = database.groups[dbGroupId];
   const markdownContent = await getGroupContent(dbGroupId);
 
+  // Find all categories in this group
+  const categories = Object.values(database.categories).filter(
+    (cat: Category) => cat.group === dbGroupId,
+  );
+
+  // Prepare structured data
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: markdownContent?.frontmatter?.title || group.name,
+    description:
+      markdownContent?.frontmatter?.description ||
+      group.description ||
+      `Hair care ingredients in the ${group.name} group`,
+    mainEntity: {
+      '@type': 'ItemList',
+      name: `Categories in ${group.name}`,
+      numberOfItems: categories.length,
+      itemListElement: categories.map((category, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+          '@type': 'Thing',
+          name: category.name,
+          description: category.description,
+          url: `https://curlsbot.com/categories/${idToSlug(category.id)}`,
+        },
+      })),
+    },
+    ...(group.references && {
+      citation: group.references.map((ref) => ({
+        '@type': 'CreativeWork',
+        name: ref.title || 'Reference',
+        url: ref.url,
+      })),
+    }),
+  };
+
   return {
     title:
       markdownContent?.frontmatter?.title ||
@@ -42,15 +84,20 @@ export async function generateMetadata({
       `A guide to ${
         group.name
       } for curly/wavy hair. Learn about different types of ${group.name.toLowerCase()} and their effects on curly and wavy hair.`,
-    robots: markdownContent
-      ? {
-          index: true,
-          follow: true,
-          'max-snippet': -1,
-          'max-image-preview': 'large',
-          'max-video-preview': -1,
-        }
-      : { noindex: true },
+    robots: {
+      ...(markdownContent
+        ? {
+            index: true,
+            follow: true,
+            'max-snippet': -1,
+            'max-image-preview': 'large',
+            'max-video-preview': -1,
+          }
+        : {
+            index: false,
+            follow: false,
+          }),
+    },
     alternates: {
       canonical: `https://www.curlsbot.com/groups/${resolvedParams.name}`,
     },
@@ -92,26 +139,6 @@ export async function generateMetadata({
       'application/ld+json': JSON.stringify(structuredData),
     },
   };
-}
-
-interface Group {
-  id: string;
-  name: string;
-  description?: string;
-  references?: Array<{
-    url: string;
-    status?: string;
-    title?: string;
-    type?: string;
-    description?: string;
-  }>;
-}
-
-interface Category {
-  id: string;
-  name: string;
-  description?: string;
-  group?: string;
 }
 
 export default async function GroupPage({ params }: PageProps) {

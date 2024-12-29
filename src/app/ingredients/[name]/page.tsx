@@ -1,6 +1,10 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { getBundledDatabase } from 'haircare-ingredients-analyzer';
+import {
+  getBundledDatabase,
+  type Category,
+  type Ingredient,
+} from 'haircare-ingredients-analyzer';
 import {
   BookOpenIcon,
   BeakerIcon,
@@ -104,15 +108,20 @@ export async function generateMetadata({
       markdownContent?.frontmatter?.description ||
       ingredient.description ||
       `Information about ${ingredient.name} in hair care products`,
-    robots: shouldIndex
-      ? {
-          index: true,
-          follow: true,
-          'max-snippet': -1,
-          'max-image-preview': 'large',
-          'max-video-preview': -1,
-        }
-      : { noindex: true },
+    robots: {
+      ...(shouldIndex
+        ? {
+            index: true,
+            follow: true,
+            'max-snippet': -1,
+            'max-image-preview': 'large',
+            'max-video-preview': -1,
+          }
+        : {
+            index: false,
+            follow: false,
+          }),
+    },
     alternates: {
       canonical: `https://www.curlsbot.com/ingredients/${resolvedParams.name}`,
     },
@@ -152,20 +161,6 @@ export async function generateMetadata({
   };
 }
 
-interface Ingredient {
-  id: string;
-  name: string;
-  categories: string[];
-  synonyms?: string[];
-  description?: string;
-  references?: Array<{
-    url: string;
-    status?: string;
-    title?: string;
-    type?: string;
-  }>;
-}
-
 export default async function IngredientPage({ params }: PageProps) {
   const resolvedParams = await params;
   const decodedName = decodeURIComponent(resolvedParams.name);
@@ -188,22 +183,26 @@ export default async function IngredientPage({ params }: PageProps) {
 
   // Get category and group info if available
   const primaryCategory = ingredient.categories?.[0];
-  const categoryInfo = primaryCategory && database.categories[primaryCategory];
-  const groupInfo = categoryInfo?.group && database.groups[categoryInfo.group];
+  const categoryInfo = primaryCategory
+    ? (database.categories[primaryCategory] as Category)
+    : null;
+  const groupInfo = categoryInfo?.group
+    ? database.groups[categoryInfo.group]
+    : null;
 
   if (groupInfo && categoryInfo) {
     breadcrumbs.unshift({
-      href: `/categories/${idToSlug(primaryCategory)}`,
+      href: `/categories/${idToSlug(primaryCategory!)}`,
       label: categoryInfo.name,
     });
     breadcrumbs.unshift({
-      href: `/groups/${idToSlug(categoryInfo.group)}`,
+      href: `/groups/${idToSlug(categoryInfo.group!)}`,
       label: groupInfo.name,
     });
     breadcrumbs.unshift({ href: '/groups', label: 'Groups' });
   } else if (categoryInfo) {
     breadcrumbs.unshift({
-      href: `/categories/${idToSlug(primaryCategory)}`,
+      href: `/categories/${idToSlug(primaryCategory!)}`,
       label: categoryInfo.name,
     });
     breadcrumbs.unshift({ href: '/categories', label: 'Categories' });
