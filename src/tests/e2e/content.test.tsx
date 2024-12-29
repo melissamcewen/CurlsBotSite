@@ -67,9 +67,7 @@ describe('Content Pages Smoke Tests', () => {
   it('ingredient page renders without crashing', async () => {
     const params = Promise.resolve({ name: 'dimethicone' });
     render(await IngredientPage({ params }));
-    expect(
-      screen.getByText(/dimethicone/i),
-    ).toBeInTheDocument();
+    expect(screen.getByText(/dimethicone/i)).toBeInTheDocument();
   });
 
   it('category page renders without crashing', async () => {

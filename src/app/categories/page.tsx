@@ -132,8 +132,8 @@ export default function CategoriesPage() {
 
             return (
               <div key={groupId} className="space-y-4">
-                <div className="flex items-center justify-between border-l-4 border-primary pl-4">
-                  <div>
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between border-l-4 border-primary pl-4 gap-4">
+                  <div className="w-full">
                     <h2 className="text-2xl font-bold">
                       {groupId === 'Uncategorized'
                         ? 'Uncategorized'
@@ -148,7 +148,7 @@ export default function CategoriesPage() {
                   {groupId !== 'Uncategorized' && (
                     <Link
                       href={`/groups/${idToSlug(groupId)}`}
-                      className="btn btn-primary"
+                      className="btn btn-primary w-full md:w-auto"
                     >
                       Read the{' '}
                       {groupId === 'Uncategorized'
