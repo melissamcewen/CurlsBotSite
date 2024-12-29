@@ -98,6 +98,8 @@ export interface Group {
   exclusions?: string[];
   /** default ingredient for the group */
   defaultIngredient?: string;
+  /** Optional source references for the category */
+  references?: Reference[];
 }
 
 /**
@@ -115,6 +117,10 @@ export interface Reference {
   title?: string;
   /** Optional description of what this reference proves/shows */
   description?: string;
+  /** Type of reference */
+  type?: 'science' | 'hairpro' | 'author' | 'other' | 'industry';
+  /** status of the reference */
+  status?: 'ok' | 'caution' | 'warning' | 'good';
 }
 
 /**
@@ -132,6 +138,10 @@ export interface Ingredient {
   references?: Reference[];
   /** Optional synonyms for the ingredient */
   synonyms?: string[];
+  /** CB status */
+  status: 'ok' | 'caution' | 'warning';
+  /** group */
+  group?: string;
 }
 
 /** represents a collection of ingredients   */
@@ -155,7 +165,9 @@ export interface Product {
   product_categories: string[];
   /** Tags the product belongs to */
   tags?: string[];
-  /** Cost rating of the product */
+  /** Cost of the product in USD */
+  cost?: number;
+  /** Cost rating from 1-5 based on cost */
   cost_rating?: string;
   /** Raw ingredients list from the product */
   ingredients_raw?: string;
@@ -165,6 +177,8 @@ export interface Product {
   asin?: string;
   /** Country */
   country?: string;
+  /** Analysis status for the product */
+  status?: 'ok' | 'caution' | 'warning' | 'error';
 }
 
 /**

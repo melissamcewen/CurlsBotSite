@@ -3,6 +3,10 @@
 import React from 'react';
 import { useState } from 'react';
 import { getBundledDatabase } from 'haircare-ingredients-analyzer';
+import type {
+  Ingredient,
+  IngredientDatabase,
+} from 'haircare-ingredients-analyzer';
 import Link from 'next/link';
 import { idToSlug } from '@/utils/slugs';
 import { InformationCircleIcon } from '@heroicons/react/24/solid';
@@ -30,50 +34,52 @@ export function IngredientsTable() {
   });
 
   // Get ingredients from the library
-  const ingredients = Object.values(getBundledDatabase().ingredients);
-  const database = getBundledDatabase();
+  const database: IngredientDatabase = getBundledDatabase();
+  const ingredients: Ingredient[] = Object.values(database.ingredients);
 
-  const sortedIngredients = [...ingredients].sort((a, b) => {
-    if (sortConfig.key === 'status') {
-      const aStatus = a.status || '';
-      const bStatus = b.status || '';
+  const sortedIngredients = [...ingredients].sort(
+    (a: Ingredient, b: Ingredient) => {
+      if (sortConfig.key === 'status') {
+        const aStatus = a.status || '';
+        const bStatus = b.status || '';
+        return sortConfig.direction === 'asc'
+          ? aStatus.localeCompare(bStatus)
+          : bStatus.localeCompare(aStatus);
+      }
+
+      if (sortConfig.key === 'group') {
+        const aGroup = a.categories?.[0]
+          ? database.categories[a.categories[0]]?.group || ''
+          : '';
+        const bGroup = b.categories?.[0]
+          ? database.categories[b.categories[0]]?.group || ''
+          : '';
+        const aGroupName = aGroup ? database.groups[aGroup]?.name || '' : '';
+        const bGroupName = bGroup ? database.groups[bGroup]?.name || '' : '';
+        return sortConfig.direction === 'asc'
+          ? aGroupName.localeCompare(bGroupName)
+          : bGroupName.localeCompare(aGroupName);
+      }
+
+      if (sortConfig.key === 'category') {
+        const aCategory = a.categories?.[0]
+          ? database.categories[a.categories[0]]?.name || ''
+          : '';
+        const bCategory = b.categories?.[0]
+          ? database.categories[b.categories[0]]?.name || ''
+          : '';
+        return sortConfig.direction === 'asc'
+          ? aCategory.localeCompare(bCategory)
+          : bCategory.localeCompare(aCategory);
+      }
+
+      const aValue = a[sortConfig.key]?.toString() || '';
+      const bValue = b[sortConfig.key]?.toString() || '';
       return sortConfig.direction === 'asc'
-        ? aStatus.localeCompare(bStatus)
-        : bStatus.localeCompare(aStatus);
-    }
-
-    if (sortConfig.key === 'group') {
-      const aGroup = a.categories?.[0]
-        ? database.categories[a.categories[0]]?.group || ''
-        : '';
-      const bGroup = b.categories?.[0]
-        ? database.categories[b.categories[0]]?.group || ''
-        : '';
-      const aGroupName = aGroup ? database.groups[aGroup]?.name || '' : '';
-      const bGroupName = bGroup ? database.groups[bGroup]?.name || '' : '';
-      return sortConfig.direction === 'asc'
-        ? aGroupName.localeCompare(bGroupName)
-        : bGroupName.localeCompare(aGroupName);
-    }
-
-    if (sortConfig.key === 'category') {
-      const aCategory = a.categories?.[0]
-        ? database.categories[a.categories[0]]?.name || ''
-        : '';
-      const bCategory = b.categories?.[0]
-        ? database.categories[b.categories[0]]?.name || ''
-        : '';
-      return sortConfig.direction === 'asc'
-        ? aCategory.localeCompare(bCategory)
-        : bCategory.localeCompare(aCategory);
-    }
-
-    const aValue = a[sortConfig.key]?.toString() || '';
-    const bValue = b[sortConfig.key]?.toString() || '';
-    return sortConfig.direction === 'asc'
-      ? aValue.localeCompare(bValue)
-      : bValue.localeCompare(aValue);
-  });
+        ? aValue.localeCompare(bValue)
+        : bValue.localeCompare(aValue);
+    },
+  );
 
   const requestSort = (key: 'name' | 'status' | 'group' | 'category') => {
     let direction: 'asc' | 'desc' = 'asc';
@@ -129,7 +135,7 @@ export function IngredientsTable() {
         </tr>
       </thead>
       <tbody>
-        {sortedIngredients.map((ingredient) => {
+        {sortedIngredients.map((ingredient: Ingredient) => {
           const firstCategory = ingredient.categories?.[0];
           const category = firstCategory
             ? database.categories[firstCategory]
@@ -172,6 +178,7 @@ export function IngredientsTable() {
                 <div className="flex flex-wrap gap-2">
                   {ingredient.categories?.map((categoryId) => {
                     const category = database.categories[categoryId];
+                    if (!category?.name) return null;
                     return (
                       <Link
                         key={categoryId}
