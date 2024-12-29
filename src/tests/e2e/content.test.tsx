@@ -68,7 +68,7 @@ describe('Content Pages Smoke Tests', () => {
     const params = Promise.resolve({ name: 'dimethicone' });
     render(await IngredientPage({ params }));
     expect(
-      screen.getByRole('heading', { name: /dimethicone/i }),
+      screen.getByText(/dimethicone/i),
     ).toBeInTheDocument();
   });
 

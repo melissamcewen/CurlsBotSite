@@ -23,5 +23,10 @@ A common experience in the curly hair community is trying coconut oil on your ha
 
 But for some, coconut oil can be extremely useful. If you have damaged, high porosity hair, coconut oil can help protect your hair.
 
-If you have low porosity hair that’s prone to getting oily, you probably want to avoid oils like coconut oil.
+If you have [low-porosity](/porosity/low-porosity) hair that’s prone to getting oily, you probably want to avoid oils like coconut oil.
 
+## The benefits of oils for curly/wavy hair
+
+While there are some downsides to oils, science has shown that oils can be very beneficial for curly/wavy hair, especially damaged [high-porosity](/porosity/high-porosity) hair.
+
+The way oils can help high-porosity damaged hair is by protecting it from water damage and filling in the damaged cuticle. This lowers the hair’s porosity and makes it much less brittle, preventing further damage.

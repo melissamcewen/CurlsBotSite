@@ -14,7 +14,7 @@ Silicones have a low surface energy, which allows them to spread over the hair w
 
 Some silicones are water-soluble, but dimethicone is not, so it will not wash off with just water.
 
-## Why do people with curly/wave hair avoid Dimethicone?
+## Why do people with curly/wave hair avoid dimethicone?
 
 Dimethicone's coating properties are also why many people in the curly hair community prefer to avoid it. That coating, while protective, isn't easy to remove, especially if you're not using a strong shampoo. So if you're using very gentle shampoo or cowash, you probably want to avoid water-insoluble silicones like Dimethicone.
 
@@ -25,7 +25,7 @@ Lorraine Massey recommended avoiding silicones like dimethicone in her famous bo
 > Silicone. This synthetic material is the active ingredient in many conditioners and 99 percent of shine products. Often used in manufacturing rubber, plastics, and polishes, it’s actually made to repel water and isn’t biodegradable. So any product with silicone in it will act as a seal around the cuticle, preventing the absorption of moisture. Silicone can also weigh down your curls, preventing their natural shape from emerging.
 
 
-## What Do Hair Experts Say About Dimethicone?
+## What do hair experts say about Dimethicone?
 
 Our table looks at references from various sources to see what they have to say about Dimethicone
 
