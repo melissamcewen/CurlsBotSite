@@ -1,7 +1,8 @@
 import { getBundledProducts } from 'haircare-ingredients-analyzer';
 import type { Product } from 'haircare-ingredients-analyzer';
+import type { CountryCode } from './countryDetection';
 
-export type CountryCode = 'US' | 'AU';
+export type { CountryCode };
 export type PorosityType = 'high_porosity' | 'low_porosity' | 'normal_porosity';
 
 export type ProductCategory =
