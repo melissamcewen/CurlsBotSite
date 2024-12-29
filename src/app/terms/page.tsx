@@ -1,44 +1,13 @@
 import React from 'react';
-import { Metadata } from 'next';
 import { ScaleIcon } from '@heroicons/react/24/solid';
+import { createPageMetadata } from '@/config/metadata';
 
-export const metadata: Metadata = {
-  title: 'Terms of Service | CurlsBot',
+export const metadata = createPageMetadata({
+  title: 'Terms of Service',
   description:
-    "Read our terms of service to understand how to use CurlsBot's hair care ingredient analysis tools and website features.",
-  robots: {
-    index: true,
-    follow: true,
-    'max-snippet': -1,
-    'max-image-preview': 'large',
-    'max-video-preview': -1,
-  },
-  alternates: {
-    canonical: '/terms',
-  },
-  openGraph: {
-    title: 'Terms of Service | CurlsBot',
-    description:
-      "Read our terms of service to understand how to use CurlsBot's hair care ingredient analysis tools and website features.",
-    url: '/terms',
-    type: 'website',
-    images: [
-      {
-        url: '/images/og-default.png',
-        width: 1200,
-        height: 630,
-        alt: 'CurlsBot Terms of Service',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Terms of Service | CurlsBot',
-    description:
-      "Read our terms of service to understand how to use CurlsBot's hair care ingredient analysis tools and website features.",
-    images: ['/images/og-default.png'],
-  },
-};
+    "Read our terms of service to understand how to use CurlsBot's hair care analysis tools and website features.",
+  path: '/terms',
+});
 
 export default function TermsPage() {
   return (

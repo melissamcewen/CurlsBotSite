@@ -1,44 +1,13 @@
 import { InformationCircleIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
-import { Metadata } from 'next';
+import { createPageMetadata } from '@/config/metadata';
 
-export const metadata: Metadata = {
-  title: 'About CurlsBot | Hair Care Ingredient Analysis Tool',
+export const metadata = createPageMetadata({
+  title: 'About CurlsBot',
   description:
-    'Learn how CurlsBot helps you analyze hair care ingredients, understand product compatibility, and make informed decisions about your curly hair care routine.',
-  robots: {
-    index: true,
-    follow: true,
-    'max-snippet': -1,
-    'max-image-preview': 'large',
-    'max-video-preview': -1,
-  },
-  alternates: {
-    canonical: '/about',
-  },
-  openGraph: {
-    title: 'About CurlsBot',
-    description:
-      'Learn about CurlsBot, our mission, and how we help people understand hair care ingredients.',
-    url: '/about',
-    type: 'website',
-    images: [
-      {
-        url: '/images/og-default.png',
-        width: 1200,
-        height: 630,
-        alt: 'About CurlsBot',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'About CurlsBot | Hair Care Ingredient Analysis Tool',
-    description:
-      'Learn how CurlsBot helps you analyze hair care ingredients and make informed decisions about your curly hair care routine.',
-    images: ['/images/og-default.png'],
-  },
-};
+    'Learn about CurlsBot, our mission, and how we help people understand hair care ingredients.',
+  path: '/about',
+});
 
 export default function About() {
   return (

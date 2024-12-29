@@ -1,45 +1,15 @@
+import { getBundledDatabase } from 'haircare-ingredients-analyzer';
+import { IngredientsTable } from '@/components/ingredients/IngredientsTable';
+import { createPageMetadata } from '@/config/metadata';
 import { Suspense } from 'react';
-import { Metadata } from 'next';
 import Loading from './loading';
-import { IngredientsTable } from '../../components/ingredients/IngredientsTable';
 
-export const metadata: Metadata = {
-  title: 'Hair Care Ingredients Database | CurlsBot',
+export const metadata = createPageMetadata({
+  title: 'Hair Care Ingredients',
   description:
-    'Comprehensive database of hair care ingredients with categories, groups, and safety information for curly and wavy hair. Find detailed information about ingredients in your hair products.',
-  robots: {
-    index: true,
-    follow: true,
-    'max-snippet': -1,
-    'max-image-preview': 'large',
-    'max-video-preview': -1,
-  },
-  alternates: {
-    canonical: '/ingredients',
-  },
-  openGraph: {
-    title: 'Hair Care Ingredients | CurlsBot',
-    description:
-      'Browse and search hair care ingredients. Learn about their effects on curly and wavy hair.',
-    url: '/ingredients',
-    type: 'website',
-    images: [
-      {
-        url: '/images/og-default.png',
-        width: 1200,
-        height: 630,
-        alt: 'Hair Care Ingredients',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Hair Care Ingredients Database | CurlsBot',
-    description:
-      'Comprehensive database of hair care ingredients with categories, groups, and safety information for curly and wavy hair. Find detailed information about ingredients in your hair products.',
-    images: ['/images/og-default.png'],
-  },
-};
+    'Browse and search hair care ingredients. Learn about their effects on curly and wavy hair.',
+  path: '/ingredients',
+});
 
 export default function IngredientsPage() {
   return (

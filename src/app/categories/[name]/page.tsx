@@ -2,14 +2,14 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import {
   getBundledDatabase,
-  Category,
-  Ingredient,
+  type Category,
+  type Ingredient,
 } from 'haircare-ingredients-analyzer';
 import { getCategoryContent } from '@/utils/markdown';
 import { ReferencesList } from '@/components/references/ReferencesList';
-import { Breadcrumbs } from '@/components/navigation/Breadcrumbs';
-import { Metadata } from 'next';
 import { slugToId, idToSlug } from '@/utils/slugs';
+import { createDynamicPageMetadata } from '@/config/metadata';
+import { Breadcrumbs } from '@/components/navigation/Breadcrumbs';
 import { InformationCircleIcon } from '@heroicons/react/24/solid';
 
 interface PageProps {
@@ -19,80 +19,33 @@ interface PageProps {
 }
 
 // Generate metadata
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps) {
   const resolvedParams = await params;
   const decodedName = decodeURIComponent(resolvedParams.name);
-  const categoryId = slugToId(decodedName);
+  const categoryId = slugToId(decodedName.toLowerCase());
   const database = getBundledDatabase();
 
-  // Find the category - exact match first, then case-insensitive
-  let dbCategoryId = Object.keys(database.categories).find(
-    (id) => id === categoryId,
+  const dbCategoryId = Object.keys(database.categories).find(
+    (id) => id.toLowerCase() === categoryId,
   );
-
-  // If no exact match, try case-insensitive
-  if (!dbCategoryId) {
-    dbCategoryId = Object.keys(database.categories).find(
-      (id) => id.toLowerCase() === categoryId.toLowerCase(),
-    );
-  }
 
   if (!dbCategoryId) {
     notFound();
   }
 
   const category = database.categories[dbCategoryId];
-  const markdownContent = await getCategoryContent(idToSlug(dbCategoryId));
+  const markdownContent = await getCategoryContent(dbCategoryId);
 
-  const title = markdownContent?.frontmatter?.title || category.name;
-  const description =
-    markdownContent?.frontmatter?.description ||
-    category.description ||
-    `Hair care ingredients in the ${category.name} category`;
-
-  const url = `https://curlsbot.com/categories/${resolvedParams.name}`;
-
-  return {
-    title: title + ' for curly/wavy hair',
-    description,
-    alternates: {
-      canonical: `/categories/${resolvedParams.name}`,
-    },
-    openGraph: {
-      title,
-      description,
-      url: `/categories/${resolvedParams.name}`,
-      type: 'article',
-      images: [
-        {
-          url: '/images/og-default.png',
-          width: 1200,
-          height: 630,
-          alt: `${category.name} - Hair Care Ingredients Category`,
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
-      images: ['/images/og-default.png'],
-    },
-    robots: markdownContent
-      ? {
-          index: true,
-          follow: true,
-          'max-snippet': -1,
-          'max-image-preview': 'large',
-          'max-video-preview': -1,
-        }
-      : {
-          index: false,
-          follow: true,
-        },
-  };
+  return createDynamicPageMetadata({
+    title: markdownContent?.frontmatter?.title || category.name + ' and curly/wavy hair guide',
+    description:
+      markdownContent?.frontmatter?.description ||
+      category.description ||
+      `Learn about ${category.name} in hair care products and their effects on curly and wavy hair.`,
+    path: `/categories/${resolvedParams.name}`,
+    hasContent: !!markdownContent,
+    imageAlt: `${category.name} - Hair Care Guide`,
+  });
 }
 
 export default async function CategoryPage({ params }: PageProps) {

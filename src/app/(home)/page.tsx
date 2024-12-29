@@ -2,46 +2,14 @@ import IngredientForm from '@/components/analysis/IngredientForm';
 import { Analyzer } from 'haircare-ingredients-analyzer';
 import { Suspense } from 'react';
 import Loading from './loading';
-import { Metadata } from 'next';
+import { createPageMetadata } from '@/config/metadata';
 
-export const metadata: Metadata = {
-  title: 'CurlsBot | Hair Care Ingredient Analysis',
+export const metadata = createPageMetadata({
+  title: 'Hair Care Ingredient Analysis',
   description:
-    'Analyze your hair care products with CurlsBot. Get instant feedback on ingredients and find out if they match your hair care needs. Free ingredient checker for curly and wavy hair.',
-  robots: {
-    index: true,
-    follow: true,
-    'max-snippet': -1,
-    'max-image-preview': 'large',
-    'max-video-preview': -1,
-  },
-  alternates: {
-    canonical: '/',
-  },
-  openGraph: {
-    title: 'CurlsBot | Hair Care Ingredient Analysis',
-    description:
-      'Analyze hair care ingredients and learn about their effects on curly and wavy hair. Find ingredient-conscious products and tips for healthy hair.',
-      url: '/',
-      type: 'website',
-      images: [
-        {
-          url: '/images/og-default.png',
-          width: 1200,
-          height: 630,
-          alt: 'CurlsBot - Hair Care Ingredient Analysis',
-        },
-      ],
-    },
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'CurlsBot | Hair Care Ingredient Analysis',
-    description:
-      'Analyze your hair care products with CurlsBot. Get instant feedback on ingredients and find out if they match your hair care needs.',
-    images: ['/images/og-default.png'],
-  },
-};
+    'Analyze hair care ingredients and learn about their effects on curly and wavy hair. Find ingredient-conscious products and tips for healthy hair.',
+  path: '/',
+});
 
 interface Props {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;

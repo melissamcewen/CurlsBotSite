@@ -1,9 +1,9 @@
-import { getBlogPost } from '@/utils/markdown';
 import { notFound } from 'next/navigation';
+import { getBlogPost } from '@/utils/markdown';
+import { createDynamicPageMetadata } from '@/config/metadata';
 import Link from 'next/link';
 import Image from 'next/image';
 import { BookOpenIcon } from '@heroicons/react/24/solid';
-import { Metadata } from 'next';
 
 interface BlogPost {
   frontmatter: {
@@ -15,74 +15,31 @@ interface BlogPost {
   content: string;
 }
 
-interface Props {
-  params: Promise<{ slug: string }>;
+interface PageProps {
+  params: Promise<{
+    slug: string;
+  }>;
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps) {
   const resolvedParams = await params;
   const post = await getBlogPost(resolvedParams.slug);
 
   if (!post) {
-    return {
-      title: 'Post Not Found',
-      description: 'The requested blog post could not be found.',
-    };
+    notFound();
   }
 
-  const { frontmatter } = post;
-  const formattedDate = new Date(frontmatter.date).toISOString();
-
-  return {
-    title: `${frontmatter.title} | CurlsBot Blog`,
-    description: frontmatter.description,
-    robots: {
-      index: true,
-      follow: true,
-      'max-snippet': -1,
-      'max-image-preview': 'large',
-      'max-video-preview': -1,
-    },
-    alternates: {
-      canonical: `/blog/${resolvedParams.slug}`,
-    },
-    openGraph: {
-      title: frontmatter.title,
-      description: frontmatter.description,
-      url: `/blog/${resolvedParams.slug}`,
-      type: 'article',
-      publishedTime: formattedDate,
-      authors: ['CurlsBot'],
-      images: frontmatter.image
-        ? [
-            {
-              url: frontmatter.image,
-              width: 1200,
-              height: 630,
-              alt: frontmatter.title,
-            },
-          ]
-        : [
-            {
-              url: '/images/og-default.png',
-              width: 1200,
-              height: 630,
-              alt: frontmatter.title,
-            },
-          ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: frontmatter.title,
-      description: frontmatter.description,
-      images: frontmatter.image
-        ? [frontmatter.image]
-        : ['/images/og-default.png'],
-    },
-  };
+  return createDynamicPageMetadata({
+    title: post.frontmatter.title,
+    description:
+      post.frontmatter.description ||
+      `Read about ${post.frontmatter.title} on CurlsBot.`,
+    path: `/blog/${resolvedParams.slug}`,
+    hasContent: true,
+  });
 }
 
-export default async function BlogPostPage({ params }: Props) {
+export default async function BlogPostPage({ params }: PageProps) {
   const resolvedParams = await params;
   const post = await getBlogPost(resolvedParams.slug);
 

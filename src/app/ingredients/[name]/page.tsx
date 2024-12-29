@@ -14,8 +14,8 @@ import { getIngredientContent } from '@/utils/markdown';
 import { IngredientDetailsCard } from '@/components/ingredients/IngredientDetailsCard';
 import { ReferencesList } from '@/components/references/ReferencesList';
 import { Breadcrumbs } from '@/components/navigation/Breadcrumbs';
-import { Metadata } from 'next';
 import { slugToId, idToSlug } from '@/utils/slugs';
+import { createDynamicPageMetadata } from '@/config/metadata';
 
 interface PageProps {
   params: Promise<{
@@ -23,129 +23,60 @@ interface PageProps {
   }>;
 }
 
-// Generate metadata
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps) {
   const resolvedParams = await params;
   const decodedName = decodeURIComponent(resolvedParams.name);
-  const ingredientId = slugToId(decodedName.toLowerCase());
+  const ingredientId = slugToId(decodedName);
   const database = getBundledDatabase();
 
-  // Find the ingredient ID case-insensitively
-  const dbIngredientId = Object.keys(database.ingredients).find(
-    (id) => id.toLowerCase() === ingredientId.toLowerCase(),
+  // Find the ingredient - exact match first, then case-insensitive
+  let dbIngredientId = Object.keys(database.ingredients).find(
+    (id) => id === ingredientId,
   );
+
+  // If no exact match, try case-insensitive
+  if (!dbIngredientId) {
+    dbIngredientId = Object.keys(database.ingredients).find(
+      (id) => id.toLowerCase() === ingredientId.toLowerCase(),
+    );
+  }
 
   if (!dbIngredientId) {
     notFound();
   }
 
   const ingredient = database.ingredients[dbIngredientId];
-  // Use the slug version of the ID for the markdown file
   const markdownContent = await getIngredientContent(idToSlug(dbIngredientId));
 
-  // Only index if there's markdown content or references
-  const shouldIndex =
-    markdownContent !== null ||
-    (ingredient.references && ingredient.references.length > 0);
-
-  // Prepare structured data
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'ChemicalSubstance',
-    name: ingredient.name + ' for curly/wavy hair',
+  return createDynamicPageMetadata({
+    title: markdownContent?.frontmatter?.title || ingredient.name + ' and curly/wavy hair guide',
     description:
       markdownContent?.frontmatter?.description ||
       ingredient.description ||
-      `Information about ${ingredient.name} in hair care products`,
-    url: `/ingredients/${resolvedParams.name}`,
-    '@id': `/ingredients/${resolvedParams.name}`,
-    manufacturer: {
-      '@type': 'Organization',
-      name: 'CurlsBot',
-      url: '/',
-    },
-    ...(ingredient.references && {
-      citation: ingredient.references.map((ref) => ({
-        '@type': 'CreativeWork',
-        name: ref.title || 'Reference',
-        url: ref.url,
-      })),
-    }),
-  };
-
-  return {
-    title:
-      markdownContent?.frontmatter?.title ||
-      ingredient.name + ' for curly/wavy hair',
-    description:
-      markdownContent?.frontmatter?.description ||
-      ingredient.description ||
-      `Information about ${ingredient.name} in hair care products`,
-    robots: {
-      ...(shouldIndex
-        ? {
-            index: true,
-            follow: true,
-            'max-snippet': -1,
-            'max-image-preview': 'large',
-            'max-video-preview': -1,
-          }
-        : {
-            index: false,
-            follow: false,
-          }),
-    },
-    alternates: {
-      canonical: `/ingredients/${resolvedParams.name}`,
-    },
-    openGraph: {
-      title:
-        markdownContent?.frontmatter?.title ||
-        ingredient.name + ' for curly/wavy hair',
-      description:
-        markdownContent?.frontmatter?.description ||
-        ingredient.description ||
-        `Information about ${ingredient.name} in hair care products`,
-      url: `/ingredients/${resolvedParams.name}`,
-      type: 'article',
-      images: [
-        {
-          url: '/images/og-default.png',
-          width: 1200,
-          height: 630,
-          alt: `${ingredient.name} - Hair Care Ingredient Information`,
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title:
-        markdownContent?.frontmatter?.title ||
-        ingredient.name + ' for curly/wavy hair',
-      description:
-        markdownContent?.frontmatter?.description ||
-        ingredient.description ||
-        `Information about ${ingredient.name} in hair care products`,
-      images: ['/images/og-default.png'],
-    },
-    other: {
-      'application/ld+json': JSON.stringify(structuredData),
-    },
-  };
+      `Learn about ${ingredient.name} in hair care products and its effects on curly and wavy hair.`,
+    path: `/ingredients/${resolvedParams.name}`,
+    hasContent: !!markdownContent,
+    imageAlt: `${ingredient.name} - Hair Care Ingredient`,
+  });
 }
 
 export default async function IngredientPage({ params }: PageProps) {
   const resolvedParams = await params;
   const decodedName = decodeURIComponent(resolvedParams.name);
-  const ingredientId = slugToId(decodedName.toLowerCase());
+  const ingredientId = slugToId(decodedName);
   const database = getBundledDatabase();
 
-  // Find the ingredient ID case-insensitively
-  const dbIngredientId = Object.keys(database.ingredients).find(
-    (id) => id.toLowerCase() === ingredientId.toLowerCase(),
+  // Find the ingredient - exact match first, then case-insensitive
+  let dbIngredientId = Object.keys(database.ingredients).find(
+    (id) => id === ingredientId,
   );
+
+  // If no exact match, try case-insensitive
+  if (!dbIngredientId) {
+    dbIngredientId = Object.keys(database.ingredients).find(
+      (id) => id.toLowerCase() === ingredientId.toLowerCase(),
+    );
+  }
 
   if (!dbIngredientId) {
     notFound();
@@ -153,34 +84,32 @@ export default async function IngredientPage({ params }: PageProps) {
 
   const ingredient = database.ingredients[dbIngredientId];
 
+  // Try to get markdown content
+  const markdownContent = await getIngredientContent(idToSlug(dbIngredientId));
+
   // Build breadcrumbs
   const breadcrumbs = [{ href: '/ingredients', label: 'Ingredients' }];
 
-  // Get category and group info if available
-  const primaryCategory = ingredient.categories?.[0];
-  const categoryInfo = primaryCategory
-    ? (database.categories[primaryCategory] as Category)
-    : null;
-  const groupInfo = categoryInfo?.group
-    ? database.groups[categoryInfo.group]
-    : null;
-
-  if (groupInfo && categoryInfo) {
-    breadcrumbs.unshift({
-      href: `/categories/${idToSlug(primaryCategory!)}`,
-      label: categoryInfo.name,
-    });
-    breadcrumbs.unshift({
-      href: `/groups/${idToSlug(categoryInfo.group!)}`,
-      label: groupInfo.name,
-    });
-    breadcrumbs.unshift({ href: '/groups', label: 'Groups' });
-  } else if (categoryInfo) {
-    breadcrumbs.unshift({
-      href: `/categories/${idToSlug(primaryCategory!)}`,
-      label: categoryInfo.name,
-    });
-    breadcrumbs.unshift({ href: '/categories', label: 'Categories' });
+  // Add category and group if they exist
+  if (ingredient.categories && ingredient.categories.length > 0) {
+    const categoryId = ingredient.categories[0];
+    const category = database.categories[categoryId];
+    if (category) {
+      if (category.group) {
+        const group = database.groups[category.group];
+        if (group) {
+          breadcrumbs.unshift({ href: '/groups', label: 'Groups' });
+          breadcrumbs.push({
+            href: `/groups/${idToSlug(category.group)}`,
+            label: group.name,
+          });
+        }
+      }
+      breadcrumbs.push({
+        href: `/categories/${idToSlug(categoryId)}`,
+        label: category.name,
+      });
+    }
   }
 
   breadcrumbs.push({
@@ -188,19 +117,20 @@ export default async function IngredientPage({ params }: PageProps) {
     label: ingredient.name,
   });
 
-  // Try to get markdown content
-  const markdownContent = await getIngredientContent(idToSlug(dbIngredientId));
-
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 max-w-4xl">
       <Breadcrumbs items={breadcrumbs} />
 
       <div className="space-y-6">
-        {/* Main content area */}
-        <div className="lg:flex lg:gap-6">
-          {/* Basic Info Card */}
-          <div className="lg:w-1/3 mb-6 lg:mb-0">
-            <div className="sticky top-4">
+        {/* Ingredient Information */}
+        <div className="bg-base-100 text-base-content">
+          <div className="">
+            {markdownContent ? (
+              <div
+                className="prose prose-base mt-4 max-w-none"
+                dangerouslySetInnerHTML={{ __html: markdownContent.content }}
+              />
+            ) : (
               <IngredientDetailsCard
                 name={ingredient.name}
                 description={ingredient.description}
@@ -209,31 +139,12 @@ export default async function IngredientPage({ params }: PageProps) {
                 categoryNames={database.categories}
                 groupNames={database.groups}
               />
-            </div>
-          </div>
+            )}
 
-          {/* Markdown and References Content */}
-          <div className="lg:w-2/3">
-            <div className="text-base-content">
-              <div>
-                {/* Markdown Content */}
-                {markdownContent && (
-                  <div>
-                    <div
-                      className="prose prose-base max-w-none"
-                      dangerouslySetInnerHTML={{
-                        __html: markdownContent.content,
-                      }}
-                    />
-                  </div>
-                )}
-
-                {/* References */}
-                {ingredient.references && (
-                  <ReferencesList references={ingredient.references} />
-                )}
-              </div>
-            </div>
+            {/* References */}
+            {ingredient.references && (
+              <ReferencesList references={ingredient.references} />
+            )}
           </div>
         </div>
       </div>

@@ -104,8 +104,8 @@ export default function CategoriesPage() {
             position: catIndex + 1,
             item: {
               '@type': 'Thing',
-              name: category.name,
-              description: category.description,
+              name: category.category.name,
+              description: category.category.description,
               url: `/categories/${idToSlug(category.id)}`,
             },
           })),

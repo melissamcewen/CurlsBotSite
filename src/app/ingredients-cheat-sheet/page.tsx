@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import { createPageMetadata } from '@/config/metadata';
 import Link from 'next/link';
 import SiliconesCheatSheet from '@/components/ingredients/cards/SiliconesCheatSheet';
 import WaxesCheatSheet from '@/components/ingredients/cards/WaxesCheatSheet';
@@ -10,43 +10,12 @@ import ParabensCheatSheet from '@/components/ingredients/cards/ParabensCheatShee
 import WitchHazelCheatSheet from '@/components/ingredients/cards/WitchHazelCheatSheet';
 import AlcoholCheatSheet from '@/components/ingredients/cards/AlcoholCheatSheet';
 
-export const metadata: Metadata = {
-  title: 'Hair Care Ingredients Cheat Sheet | Quick Reference Guide',
+export const metadata = createPageMetadata({
+  title: 'Hair Care Ingredients Cheat Sheet',
   description:
-    'Quick reference guide to identify common hair care ingredients by name patterns. Learn about silicones, sulfates, alcohols, and more in hair products.',
-  robots: {
-    index: true,
-    follow: true,
-    'max-snippet': -1,
-    'max-image-preview': 'large',
-    'max-video-preview': -1,
-  },
-  alternates: {
-    canonical: '/ingredients-cheat-sheet',
-  },
-  openGraph: {
-    title: 'Hair Care Ingredients Cheat Sheet | CurlsBot',
-    description:
-      'Quick reference guide for common hair care ingredients. Learn what ingredients to look for and avoid in your hair products.',
-    url: '/ingredients-cheat-sheet',
-    type: 'website',
-    images: [
-      {
-        url: '/images/og-default.png',
-        width: 1200,
-        height: 630,
-        alt: 'Hair Care Ingredients Cheat Sheet',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Hair Care Ingredients Cheat Sheet | Quick Reference Guide',
-    description:
-      'Quick reference guide to identify common hair care ingredients by name patterns. Learn about silicones, sulfates, alcohols, and more in hair products.',
-    images: ['/images/og-default.png'],
-  },
-};
+    'Quick reference guide for common hair care ingredients. Learn what ingredients to look for and avoid in your hair products.',
+  path: '/ingredients-cheat-sheet',
+});
 
 export default function IngredientsCheatSheetPage() {
   return (

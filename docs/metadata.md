@@ -149,3 +149,4 @@ The only URLs that should remain absolute are:
 This approach ensures that your metadata is consistent and easier to maintain, as you only need to update the base URL in one place if it changes.
 
 ## Example Metadata Configuration
+```

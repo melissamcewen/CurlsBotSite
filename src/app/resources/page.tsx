@@ -1,44 +1,13 @@
 import { BookOpenIcon, InformationCircleIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
-import { Metadata } from 'next';
+import { createPageMetadata } from '@/config/metadata';
 
-export const metadata: Metadata = {
-  title: 'Curly Hair Resources | Communities & Tools',
+export const metadata = createPageMetadata({
+  title: 'Hair Care Resources',
   description:
-    'Find curly hair communities, ingredient analysis tools, and international resources to help you on your hair care journey. Join discussions in your language and region.',
-  robots: {
-    index: true,
-    follow: true,
-    'max-snippet': -1,
-    'max-image-preview': 'large',
-    'max-video-preview': -1,
-  },
-  alternates: {
-    canonical: '/resources',
-  },
-  openGraph: {
-    title: 'Hair Care Resources | CurlsBot',
-    description:
-      'Find helpful resources for understanding hair care ingredients and maintaining healthy hair.',
-    url: '/resources',
-    type: 'website',
-    images: [
-      {
-        url: '/images/og-default.png',
-        width: 1200,
-        height: 630,
-        alt: 'Hair Care Resources',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Curly Hair Resources | Communities & Tools',
-    description:
-      'Find curly hair communities, ingredient analysis tools, and international resources to help you on your hair care journey.',
-    images: ['/images/og-default.png'],
-  },
-};
+    'Find helpful resources for understanding hair care ingredients and maintaining healthy hair.',
+  path: '/resources',
+});
 
 export default function Resources() {
   return (

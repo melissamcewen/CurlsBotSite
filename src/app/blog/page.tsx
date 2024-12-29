@@ -1,9 +1,9 @@
 import { getBlogPosts } from '@/utils/markdown';
 import Link from 'next/link';
 import { BookOpenIcon } from '@heroicons/react/24/solid';
-import { Metadata } from 'next';
 import { Suspense } from 'react';
 import BlogLoading from './loading';
+import { createPageMetadata } from '@/config/metadata';
 
 interface BlogPost {
   slug: string;
@@ -14,43 +14,12 @@ interface BlogPost {
   };
 }
 
-export const metadata: Metadata = {
-  title: 'Blog | CurlsBot',
+export const metadata = createPageMetadata({
+  title: 'Blog',
   description:
-    'Articles about hair care, ingredients, and maintaining healthy hair',
-  robots: {
-    index: true,
-    follow: true,
-    'max-snippet': -1,
-    'max-image-preview': 'large',
-    'max-video-preview': -1,
-  },
-  alternates: {
-    canonical: '/blog',
-  },
-  openGraph: {
-    title: 'Blog | CurlsBot',
-    description:
-      'Read our latest articles about hair care, ingredients, and tips for curly and wavy hair.',
-    url: '/blog',
-    type: 'website',
-    images: [
-      {
-        url: '/images/og-default.png',
-        width: 1200,
-        height: 630,
-        alt: 'CurlsBot Blog',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'CurlsBot Blog',
-    description:
-      'Articles about hair care, ingredients, and maintaining healthy hair',
-    images: ['/images/og-default.png'],
-  },
-};
+    'Read our latest articles about hair care, ingredients, and tips for curly and wavy hair.',
+  path: '/blog',
+});
 
 // Separate component for blog posts to enable streaming
 async function BlogPosts() {

@@ -1,43 +1,12 @@
-import { Metadata } from 'next';
 import { ShieldCheckIcon } from '@heroicons/react/24/solid';
+import { createPageMetadata } from '@/config/metadata';
 
-export const metadata: Metadata = {
-  title: 'Privacy Policy | CurlsBot',
+export const metadata = createPageMetadata({
+  title: 'Privacy Policy',
   description:
-    'Learn about how CurlsBot protects your privacy and handles your data when using our hair care ingredient analysis tools.',
-  robots: {
-    index: true,
-    follow: true,
-    'max-snippet': -1,
-    'max-image-preview': 'large',
-    'max-video-preview': -1,
-  },
-  alternates: {
-    canonical: '/privacy',
-  },
-  openGraph: {
-    title: 'Privacy Policy | CurlsBot',
-    description:
-      'Learn about how we protect your privacy and handle your data at CurlsBot.',
-    url: '/privacy',
-    type: 'website',
-    images: [
-      {
-        url: '/images/og-default.png',
-        width: 1200,
-        height: 630,
-        alt: 'CurlsBot Privacy Policy',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Privacy Policy | CurlsBot',
-    description:
-      'Learn about how CurlsBot protects your privacy and handles your data when using our hair care ingredient analysis tools.',
-    images: ['/images/og-default.png'],
-  },
-};
+    'Learn about how we protect your privacy and handle your data at CurlsBot.',
+  path: '/privacy',
+});
 
 export default function PrivacyPage() {
   return (
