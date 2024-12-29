@@ -15,20 +15,20 @@ export const metadata: Metadata = {
     'max-video-preview': -1,
   },
   alternates: {
-    canonical: 'https://www.curlsbot.com/ingredients',
+    canonical: '/ingredients',
   },
   openGraph: {
-    title: 'Hair Care Ingredients Database | CurlsBot',
+    title: 'Hair Care Ingredients | CurlsBot',
     description:
-      'Comprehensive database of hair care ingredients with categories, groups, and safety information for curly and wavy hair. Find detailed information about ingredients in your hair products.',
-    url: 'https://www.curlsbot.com/ingredients',
+      'Browse and search hair care ingredients. Learn about their effects on curly and wavy hair.',
+    url: '/ingredients',
     type: 'website',
     images: [
       {
         url: '/images/og-default.png',
         width: 1200,
         height: 630,
-        alt: 'CurlsBot Hair Care Ingredients Database',
+        alt: 'Hair Care Ingredients',
       },
     ],
   },

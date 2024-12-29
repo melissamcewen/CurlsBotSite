@@ -14,20 +14,20 @@ export const metadata: Metadata = {
     'max-video-preview': -1,
   },
   alternates: {
-    canonical: 'https://www.curlsbot.com/contact',
+    canonical: '/contact',
   },
   openGraph: {
-    title: 'Contact CurlsBot | Get Help with Hair Care Analysis',
+    title: 'Contact Us | CurlsBot',
     description:
-      'Get in touch with CurlsBot for help with hair care ingredient analysis, join our social media communities, or contribute to our open source project.',
-    url: 'https://www.curlsbot.com/contact',
+      'Get in touch with the CurlsBot team. We would love to hear from you!',
+    url: '/contact',
     type: 'website',
     images: [
       {
         url: '/images/og-default.png',
         width: 1200,
         height: 630,
-        alt: 'Contact CurlsBot - Hair Care Analysis Help',
+        alt: 'Contact CurlsBot',
       },
     ],
   },

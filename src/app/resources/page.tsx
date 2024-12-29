@@ -14,20 +14,20 @@ export const metadata: Metadata = {
     'max-video-preview': -1,
   },
   alternates: {
-    canonical: 'https://www.curlsbot.com/resources',
+    canonical: '/resources',
   },
   openGraph: {
-    title: 'Curly Hair Resources | Communities & Tools',
+    title: 'Hair Care Resources | CurlsBot',
     description:
-      'Find curly hair communities, ingredient analysis tools, and international resources to help you on your hair care journey.',
-    url: 'https://www.curlsbot.com/resources',
+      'Find helpful resources for understanding hair care ingredients and maintaining healthy hair.',
+    url: '/resources',
     type: 'website',
     images: [
       {
         url: '/images/og-default.png',
         width: 1200,
         height: 630,
-        alt: 'Curly Hair Resources and Communities',
+        alt: 'Hair Care Resources',
       },
     ],
   },

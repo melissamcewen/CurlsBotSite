@@ -16,22 +16,23 @@ export const metadata: Metadata = {
     'max-video-preview': -1,
   },
   alternates: {
-    canonical: 'https://www.curlsbot.com',
+    canonical: '/',
   },
   openGraph: {
     title: 'CurlsBot | Hair Care Ingredient Analysis',
     description:
-      'Analyze your hair care products with CurlsBot. Get instant feedback on ingredients and find out if they match your hair care needs.',
-    url: 'https://www.curlsbot.com',
-    type: 'website',
-    images: [
-      {
-        url: '/images/og-default.png',
-        width: 1200,
-        height: 630,
-        alt: 'CurlsBot - Hair Care Ingredient Analysis',
-      },
-    ],
+      'Analyze hair care ingredients and learn about their effects on curly and wavy hair. Find ingredient-conscious products and tips for healthy hair.',
+      url: '/',
+      type: 'website',
+      images: [
+        {
+          url: '/images/og-default.png',
+          width: 1200,
+          height: 630,
+          alt: 'CurlsBot - Hair Care Ingredient Analysis',
+        },
+      ],
+    },
   },
   twitter: {
     card: 'summary_large_image',

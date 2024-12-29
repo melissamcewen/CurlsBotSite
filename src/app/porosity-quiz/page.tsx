@@ -13,20 +13,20 @@ export const metadata: Metadata = {
     'max-video-preview': -1,
   },
   alternates: {
-    canonical: 'https://www.curlsbot.com/porosity-quiz',
+    canonical: '/porosity-quiz',
   },
   openGraph: {
-    title: 'Hair Porosity Quiz | Find Your Hair Type',
+    title: 'Hair Porosity Quiz | CurlsBot',
     description:
-      'Take our free hair porosity quiz to discover if you have low, normal, or high porosity hair. Get personalized hair care tips and product recommendations.',
-    url: 'https://www.curlsbot.com/porosity-quiz',
+      'Take our hair porosity quiz to find out if you have low, normal, or high porosity hair. Get personalized hair care recommendations based on your results.',
+    url: '/porosity-quiz',
     type: 'website',
     images: [
       {
         url: '/images/og-default.png',
         width: 1200,
         height: 630,
-        alt: 'Hair Porosity Quiz - CurlsBot',
+        alt: 'Hair Porosity Quiz',
       },
     ],
   },

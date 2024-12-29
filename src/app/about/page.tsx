@@ -14,20 +14,20 @@ export const metadata: Metadata = {
     'max-video-preview': -1,
   },
   alternates: {
-    canonical: 'https://www.curlsbot.com/about',
+    canonical: '/about',
   },
   openGraph: {
-    title: 'About CurlsBot | Hair Care Ingredient Analysis Tool',
+    title: 'About CurlsBot',
     description:
-      'Learn how CurlsBot helps you analyze hair care ingredients and make informed decisions about your curly hair care routine.',
-    url: 'https://www.curlsbot.com/about',
+      'Learn about CurlsBot, our mission, and how we help people understand hair care ingredients.',
+    url: '/about',
     type: 'website',
     images: [
       {
         url: '/images/og-default.png',
         width: 1200,
         height: 630,
-        alt: 'About CurlsBot - Hair Care Ingredient Analysis',
+        alt: 'About CurlsBot',
       },
     ],
   },

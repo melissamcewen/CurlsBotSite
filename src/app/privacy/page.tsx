@@ -13,13 +13,13 @@ export const metadata: Metadata = {
     'max-video-preview': -1,
   },
   alternates: {
-    canonical: 'https://www.curlsbot.com/privacy',
+    canonical: '/privacy',
   },
   openGraph: {
     title: 'Privacy Policy | CurlsBot',
     description:
-      'Learn about how CurlsBot protects your privacy and handles your data when using our hair care ingredient analysis tools.',
-    url: 'https://www.curlsbot.com/privacy',
+      'Learn about how we protect your privacy and handle your data at CurlsBot.',
+    url: '/privacy',
     type: 'website',
     images: [
       {

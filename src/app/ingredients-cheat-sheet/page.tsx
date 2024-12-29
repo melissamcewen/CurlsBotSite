@@ -22,13 +22,13 @@ export const metadata: Metadata = {
     'max-video-preview': -1,
   },
   alternates: {
-    canonical: 'https://www.curlsbot.com/ingredients-cheat-sheet',
+    canonical: '/ingredients-cheat-sheet',
   },
   openGraph: {
-    title: 'Hair Care Ingredients Cheat Sheet | Quick Reference Guide',
+    title: 'Hair Care Ingredients Cheat Sheet | CurlsBot',
     description:
-      'Quick reference guide to identify common hair care ingredients by name patterns. Learn about silicones, sulfates, alcohols, and more in hair products.',
-    url: 'https://www.curlsbot.com/ingredients-cheat-sheet',
+      'Quick reference guide for common hair care ingredients. Learn what ingredients to look for and avoid in your hair products.',
+    url: '/ingredients-cheat-sheet',
     type: 'website',
     images: [
       {

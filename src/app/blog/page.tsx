@@ -26,13 +26,13 @@ export const metadata: Metadata = {
     'max-video-preview': -1,
   },
   alternates: {
-    canonical: 'https://www.curlsbot.com/blog',
+    canonical: '/blog',
   },
   openGraph: {
-    title: 'CurlsBot Blog',
+    title: 'Blog | CurlsBot',
     description:
-      'Articles about hair care, ingredients, and maintaining healthy hair',
-    url: 'https://www.curlsbot.com/blog',
+      'Read our latest articles about hair care, ingredients, and tips for curly and wavy hair.',
+    url: '/blog',
     type: 'website',
     images: [
       {

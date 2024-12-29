@@ -86,19 +86,29 @@ export default function CategoriesPage() {
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: 'Hair Care Categories',
+    name: 'Hair Care Ingredient Categories',
     description:
-      'Browse hair care ingredients by category, including sulfates, silicones, proteins, and more.',
-    numberOfItems: Object.values(database.categories).length,
-    itemListElement: Object.entries(database.categories).map(
-      ([id, category], index) => ({
+      'Browse hair care ingredients by category. Learn about different types of ingredients and their effects on curly and wavy hair.',
+    numberOfItems: Object.keys(categoriesByGroup).length,
+    itemListElement: Object.entries(categoriesByGroup).map(
+      ([groupId, categories], index) => ({
         '@type': 'ListItem',
         position: index + 1,
         item: {
-          '@type': 'Thing',
-          name: category.name,
-          description: category.description,
-          url: `https://curlsbot.com/categories/${idToSlug(id)}`,
+          '@type': 'ItemList',
+          name: database.groups[groupId].name,
+          description: database.groups[groupId].description,
+          numberOfItems: categories.length,
+          itemListElement: categories.map((category, catIndex) => ({
+            '@type': 'ListItem',
+            position: catIndex + 1,
+            item: {
+              '@type': 'Thing',
+              name: category.name,
+              description: category.description,
+              url: `/categories/${idToSlug(category.id)}`,
+            },
+          })),
         },
       }),
     ),

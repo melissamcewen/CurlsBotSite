@@ -44,12 +44,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       'max-video-preview': -1,
     },
     alternates: {
-      canonical: `https://www.curlsbot.com/blog/${resolvedParams.slug}`,
+      canonical: `/blog/${resolvedParams.slug}`,
     },
     openGraph: {
       title: frontmatter.title,
       description: frontmatter.description,
-      url: `https://www.curlsbot.com/blog/${resolvedParams.slug}`,
+      url: `/blog/${resolvedParams.slug}`,
       type: 'article',
       publishedTime: formattedDate,
       authors: ['CurlsBot'],

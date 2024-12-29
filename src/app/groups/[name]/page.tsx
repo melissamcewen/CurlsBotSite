@@ -9,6 +9,7 @@ import { getGroupContent } from '@/utils/markdown';
 import { ReferencesList } from '@/components/references/ReferencesList';
 import { Metadata } from 'next';
 import { slugToId, idToSlug } from '@/utils/slugs';
+import { ArrowRightIcon } from '@heroicons/react/24/solid';
 
 interface PageProps {
   params: Promise<{
@@ -61,7 +62,7 @@ export async function generateMetadata({
           '@type': 'Thing',
           name: category.name,
           description: category.description,
-          url: `https://curlsbot.com/categories/${idToSlug(category.id)}`,
+          url: `/categories/${idToSlug(category.id)}`,
         },
       })),
     },
@@ -99,7 +100,7 @@ export async function generateMetadata({
           }),
     },
     alternates: {
-      canonical: `https://www.curlsbot.com/groups/${resolvedParams.name}`,
+      canonical: `/groups/${resolvedParams.name}`,
     },
     openGraph: {
       title:
@@ -111,7 +112,7 @@ export async function generateMetadata({
         `A guide to ${
           group.name
         } for curly/wavy hair. Learn about different types of ${group.name.toLowerCase()} and their effects on curly and wavy hair.`,
-      url: `https://www.curlsbot.com/groups/${resolvedParams.name}`,
+      url: `/groups/${resolvedParams.name}`,
       type: 'article',
       images: [
         {
@@ -186,7 +187,7 @@ export default async function GroupPage({ params }: PageProps) {
           '@type': 'Thing',
           name: category.name,
           description: category.description,
-          url: `https://curlsbot.com/categories/${idToSlug(category.id)}`,
+          url: `/categories/${idToSlug(category.id)}`,
         },
       })),
     },
@@ -214,8 +215,8 @@ export default async function GroupPage({ params }: PageProps) {
 
         <div className="space-y-6">
           {/* Group Information */}
-          <div className="card bg-base-100  text-base-content">
-            <div className="card-body">
+          <div className=" bg-base-100  text-base-content">
+            <div className="">
               {markdownContent ? (
                 <div
                   className="prose prose-base mt-4 max-w-none"
@@ -240,45 +241,34 @@ export default async function GroupPage({ params }: PageProps) {
           </div>
 
           {/* Categories Table */}
-          <div className="card bg-base-100  text-base-content">
-            <div className="card-body">
+          <div className=" bg-base-100 text-base-content">
+            <div className="">
               <h2 className="card-title text-2xl mb-4">
                 Categories in this Group
               </h2>
-              <div className="overflow-x-auto">
-                <table className="table table-zebra">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Description</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {categories.map((category) => (
-                      <tr key={category.id}>
-                        <td className="font-medium">{category.name}</td>
-                        <td className="max-w-md">
-                          {category.description ? (
-                            <p className="truncate">{category.description}</p>
-                          ) : (
-                            <span className="text-base-content/50">
-                              No description available
-                            </span>
-                          )}
-                        </td>
-                        <td>
-                          <Link
-                            href={`/categories/${idToSlug(category.id)}`}
-                            className="btn btn-primary btn-sm"
-                          >
-                            View Details
-                          </Link>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
+                {categories.map((category) => (
+                  <Link
+                    key={category.id}
+                    href={`/categories/${idToSlug(category.id)}`}
+                    className="card bg-base-200 hover:bg-base-300 transition-colors duration-200"
+                  >
+                    <div className="card-body">
+                      <h3 className="card-title text-lg">{category.name}</h3>
+                      {category.description && (
+                        <p className="text-base-content/70 text-sm line-clamp-2">
+                          {category.description}
+                        </p>
+                      )}
+                      <div className="card-actions justify-end mt-2">
+                        <div className="btn btn-primary btn-sm gap-1">
+                          Read More
+                          <ArrowRightIcon className="w-4 h-4" />
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
               </div>
             </div>
           </div>

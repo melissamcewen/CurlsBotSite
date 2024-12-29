@@ -22,12 +22,13 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.curlsbot.com'),
   title: {
     template: '%s | CurlsBot',
-    default: 'CurlsBot | Hair Care Ingredient Analysis',
+    default: 'CurlsBot - Curly Hair Product Analyzer',
   },
   description:
-    'Analyze your hair care products with CurlsBot. Get instant feedback on ingredients and find out if they match your hair care needs.',
+    'Analyze hair care products for curly and wavy hair. Check ingredients for sulfates, silicones, and other ingredients.',
   robots: {
     index: true,
     follow: true,
@@ -39,25 +40,26 @@ export const metadata: Metadata = {
     canonical: 'https://www.curlsbot.com',
   },
   openGraph: {
-    title: 'CurlsBot | Hair Care Ingredient Analysis',
+    title: 'CurlsBot - Curly Hair Product Analyzer',
     description:
-      'Analyze your hair care products with CurlsBot. Get instant feedback on ingredients and find out if they match your hair care needs.',
+      'Analyze hair care products for curly and wavy hair. Check ingredients for sulfates, silicones, and other ingredients.',
     url: 'https://www.curlsbot.com',
+    siteName: 'CurlsBot',
     type: 'website',
     images: [
       {
         url: '/images/og-default.png',
         width: 1200,
         height: 630,
-        alt: 'CurlsBot - Hair Care Ingredient Analysis',
+        alt: 'CurlsBot - Curly Hair Product Analyzer',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'CurlsBot | Hair Care Ingredient Analysis',
+    title: 'CurlsBot - Curly Hair Product Analyzer',
     description:
-      'Analyze your hair care products with CurlsBot. Get instant feedback on ingredients and find out if they match your hair care needs.',
+      'Analyze hair care products for curly and wavy hair. Check ingredients for sulfates, silicones, and other ingredients.',
     images: ['/images/og-default.png'],
   },
 };

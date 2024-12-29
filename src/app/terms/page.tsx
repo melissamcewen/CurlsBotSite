@@ -14,13 +14,13 @@ export const metadata: Metadata = {
     'max-video-preview': -1,
   },
   alternates: {
-    canonical: 'https://www.curlsbot.com/terms',
+    canonical: '/terms',
   },
   openGraph: {
     title: 'Terms of Service | CurlsBot',
     description:
       "Read our terms of service to understand how to use CurlsBot's hair care ingredient analysis tools and website features.",
-    url: 'https://www.curlsbot.com/terms',
+    url: '/terms',
     type: 'website',
     images: [
       {

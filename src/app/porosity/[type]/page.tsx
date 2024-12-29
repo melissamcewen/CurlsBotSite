@@ -95,12 +95,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       'max-video-preview': -1,
     },
     alternates: {
-      canonical: `https://www.curlsbot.com/porosity/${porosityType}`,
+      canonical: `/porosity/${porosityType}`,
     },
     openGraph: {
       title: porosityInfo.title,
       description: porosityInfo.description,
-      url: `https://www.curlsbot.com/porosity/${porosityType}`,
+      url: `/porosity/${porosityType}`,
       type: 'article',
       images: [
         {

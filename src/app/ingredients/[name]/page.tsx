@@ -50,8 +50,8 @@ export async function generateMetadata({
     markdownContent !== null ||
     (ingredient.references && ingredient.references.length > 0);
 
-  // Create JSON-LD structured data
-  const jsonLd = {
+  // Prepare structured data
+  const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'ChemicalSubstance',
     name: ingredient.name + ' for curly/wavy hair',
@@ -59,45 +59,20 @@ export async function generateMetadata({
       markdownContent?.frontmatter?.description ||
       ingredient.description ||
       `Information about ${ingredient.name} in hair care products`,
-    ...(ingredient.synonyms &&
-      ingredient.synonyms.length > 0 && {
-        alternateName: ingredient.synonyms,
-      }),
-    url: `https://curlsbot.com/ingredients/${resolvedParams.name}`,
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `https://curlsbot.com/ingredients/${resolvedParams.name}`,
-    },
-    isPartOf: {
-      '@type': 'WebSite',
+    url: `/ingredients/${resolvedParams.name}`,
+    '@id': `/ingredients/${resolvedParams.name}`,
+    manufacturer: {
+      '@type': 'Organization',
       name: 'CurlsBot',
-      url: 'https://curlsbot.com',
+      url: '/',
     },
-    ...(ingredient.categories?.length > 0 && {
-      category: ingredient.categories
-        .map((categoryId) => {
-          const category = database.categories[categoryId];
-          return category?.name;
-        })
-        .filter(Boolean),
+    ...(ingredient.references && {
+      citation: ingredient.references.map((ref) => ({
+        '@type': 'CreativeWork',
+        name: ref.title || 'Reference',
+        url: ref.url,
+      })),
     }),
-    ...(ingredient.references &&
-      ingredient.references.length > 0 && {
-        citation: ingredient.references.map((ref) => ({
-          '@type': 'CreativeWork',
-          name: ref.title || 'Reference',
-          url: ref.url,
-          ...(ref.type && {
-            // Map reference types to schema.org types
-            additionalType:
-              ref.type === 'science'
-                ? 'ScholarlyArticle'
-                : ref.type === 'author'
-                ? 'Article'
-                : 'WebPage',
-          }),
-        })),
-      }),
   };
 
   return {
@@ -123,7 +98,7 @@ export async function generateMetadata({
           }),
     },
     alternates: {
-      canonical: `https://www.curlsbot.com/ingredients/${resolvedParams.name}`,
+      canonical: `/ingredients/${resolvedParams.name}`,
     },
     openGraph: {
       title:
@@ -133,7 +108,7 @@ export async function generateMetadata({
         markdownContent?.frontmatter?.description ||
         ingredient.description ||
         `Information about ${ingredient.name} in hair care products`,
-      url: `https://www.curlsbot.com/ingredients/${resolvedParams.name}`,
+      url: `/ingredients/${resolvedParams.name}`,
       type: 'article',
       images: [
         {
@@ -156,7 +131,7 @@ export async function generateMetadata({
       images: ['/images/og-default.png'],
     },
     other: {
-      'application/ld+json': JSON.stringify(jsonLd),
+      'application/ld+json': JSON.stringify(structuredData),
     },
   };
 }

@@ -24,7 +24,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       return existsSync(markdownPath);
     })
     .map(([id, _]) => ({
-      url: `https://curlsbot.com/ingredients/${idToSlug(id)}`,
+      url: `/ingredients/${idToSlug(id)}`,
       lastModified: new Date(),
     }));
 
@@ -44,7 +44,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       return existsSync(markdownPath);
     })
     .map(([id, _]) => ({
-      url: `https://curlsbot.com/categories/${idToSlug(id)}`,
+      url: `/categories/${idToSlug(id)}`,
       lastModified: new Date(),
     }));
 
@@ -64,22 +64,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       return existsSync(markdownPath);
     })
     .map(([id, _]) => ({
-      url: `https://curlsbot.com/groups/${idToSlug(id)}`,
+      url: `/groups/${idToSlug(id)}`,
       lastModified: new Date(),
     }));
 
   // Add porosity type pages
   const porosityEntries = [
     {
-      url: 'https://curlsbot.com/porosity/low',
+      url: '/porosity/low',
       lastModified: new Date(),
     },
     {
-      url: 'https://curlsbot.com/porosity/normal',
+      url: '/porosity/normal',
       lastModified: new Date(),
     },
     {
-      url: 'https://curlsbot.com/porosity/high',
+      url: '/porosity/high',
       lastModified: new Date(),
     },
   ];
@@ -87,41 +87,41 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Get blog posts
   const posts = await getBlogPosts();
   const blogEntries = posts.map((post) => ({
-    url: `https://curlsbot.com/blog/${post.slug}`,
+    url: `/blog/${post.slug}`,
     lastModified: new Date(),
   }));
 
   return [
     {
-      url: 'https://curlsbot.com',
+      url: '/',
       lastModified: new Date(),
     },
     {
-      url: 'https://curlsbot.com/ingredients',
+      url: '/ingredients',
       lastModified: new Date(),
     },
     {
-      url: 'https://curlsbot.com/categories',
+      url: '/categories',
       lastModified: new Date(),
     },
     {
-      url: 'https://curlsbot.com/blog',
+      url: '/blog',
       lastModified: new Date(),
     },
     {
-      url: 'https://curlsbot.com/ingredients-cheat-sheet',
+      url: '/ingredients-cheat-sheet',
       lastModified: new Date(),
     },
     {
-      url: 'https://curlsbot.com/routine-builder',
+      url: '/routine-builder',
       lastModified: new Date(),
     },
     {
-      url: 'https://curlsbot.com/porosity-quiz',
+      url: '/porosity-quiz',
       lastModified: new Date(),
     },
     {
-      url: 'https://curlsbot.com/about',
+      url: '/about',
       lastModified: new Date(),
     },
     ...ingredientEntries,

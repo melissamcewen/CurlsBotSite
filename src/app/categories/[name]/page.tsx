@@ -58,12 +58,12 @@ export async function generateMetadata({
     title: title + ' for curly/wavy hair',
     description,
     alternates: {
-      canonical: `https://www.curlsbot.com/categories/${resolvedParams.name}`,
+      canonical: `/categories/${resolvedParams.name}`,
     },
     openGraph: {
       title,
       description,
-      url,
+      url: `/categories/${resolvedParams.name}`,
       type: 'article',
       images: [
         {
@@ -101,8 +101,6 @@ export default async function CategoryPage({ params }: PageProps) {
   const categoryId = slugToId(decodedName);
   const database = getBundledDatabase();
 
-
-
   // Find the category - exact match first, then case-insensitive
   let dbCategoryId = Object.keys(database.categories).find(
     (id) => id === categoryId,
@@ -115,14 +113,11 @@ export default async function CategoryPage({ params }: PageProps) {
     );
   }
 
-
-
   if (!dbCategoryId) {
     notFound();
   }
 
   const category = database.categories[dbCategoryId];
-
 
   // Get group info if it exists
   const groupInfo = category.group ? database.groups[category.group] : null;
@@ -134,7 +129,7 @@ export default async function CategoryPage({ params }: PageProps) {
 
   // Try to get markdown content
   const markdownContent = await getCategoryContent(idToSlug(dbCategoryId));
-  
+
   // Build breadcrumbs
   const breadcrumbs = [{ href: '/categories', label: 'Categories' }];
 
@@ -183,7 +178,7 @@ export default async function CategoryPage({ params }: PageProps) {
           '@type': 'Thing',
           name: ingredient.name,
           description: ingredient.description,
-          url: `https://curlsbot.com/ingredients/${idToSlug(ingredient.id)}`,
+          url: `/ingredients/${idToSlug(ingredient.id)}`,
         },
       })),
     },
@@ -207,8 +202,8 @@ export default async function CategoryPage({ params }: PageProps) {
 
         <div className="space-y-6">
           {/* Category Information */}
-          <div className="card bg-base-100  text-base-content">
-            <div className="card-body">
+          <div className="bg-base-100  text-base-content">
+            <div className="">
               {markdownContent ? (
                 <div
                   className="prose prose-base mt-4 max-w-none"
