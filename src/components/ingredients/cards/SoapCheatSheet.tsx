@@ -10,7 +10,7 @@ const SoapCheatSheet: React.FC = () => {
         {
           source: 'Curlsbot',
           status: 'warning',
-          link: '/blog/is-soap-good-for-curls',
+          link: '/categories/soaps',
           description: 'Avoid',
         },
 

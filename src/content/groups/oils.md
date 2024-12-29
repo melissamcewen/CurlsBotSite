@@ -4,7 +4,7 @@ description: A guide to oils for curly/wavy hair
 ---
 
 # Oils and Curly/Wavy Hair
-Oils are extremely common in products made for curly/wavy hair. Since most of these products are [silicone-free](/categories/silicones), they need other ingredients that provide shine, slip, and protective coatings. Oils often serve that purpose. But there are so many types of oils, and finding the ones right for your hair can be challenging.
+Oils are extremely common in products made for curly/wavy hair. Since most of these products are [silicone-free](/groups/silicones), they need other ingredients that provide shine, slip, and protective coatings. Oils often serve that purpose. But there are so many types of oils, and finding the ones right for your hair can be challenging.
 
 ## Types of oils
 CurlsBot classifies oils by how likely they are to penetrate the hair shaft, with a separate group for mineral oil just because many of our users prefer to avoid it

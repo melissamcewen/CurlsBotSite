@@ -108,17 +108,6 @@ export default function Resources() {
               </li>
               <li>
                 <a
-                  href="https://www.facebook.com/profile.php?id=1646575018747057"
-                  className="link link-primary"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Curly Hair (& Boy) Method
-                </a>{' '}
-                - Facebook community
-              </li>
-              <li>
-                <a
                   href="https://www.facebook.com/profile.php?id=281152828644498"
                   className="link link-primary"
                   target="_blank"

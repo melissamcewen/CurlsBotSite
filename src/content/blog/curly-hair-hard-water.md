@@ -15,7 +15,7 @@ What is Hard Water?
 
 Hard water contains high levels of dissolved minerals, particularly calcium and magnesium. You likely have hard water if you notice:
 - White residue on faucets, shower heads, or kettles
-- [Soap scum that's difficult to clean](/blog/is-soap-good-for-curls)
+- [Soap scum that's difficult to clean](/categories/soaps)
 - Spots on dishes after washing
 - Reduced soap lather
 
@@ -60,7 +60,7 @@ Adjust your routine to minimize buildup:
 - Use lighter, water-soluble products
 - Deep condition only mid-shaft to ends
 - Clarify regularly before buildup becomes severe
-- Don't use [soap-based products](/blog/is-soap-good-for-curls) as they react with hard water to create even more buildup
+- Don't use [soap-based products](/categories/soaps) as they react with hard water to create even more buildup
 
 ### 4. Water Filtration Options
 
