@@ -72,7 +72,7 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
                         className="underline hover:text-primary"
                       >
                         {productRecommendation.name} by {productRecommendation.brand}
-                      </a>
+                      </a> or try our <Link href="/routine-builder" className="link link-primary">Routine Builder</Link>
                     </p>
                   )}
                 </div>
