@@ -93,7 +93,7 @@ export default function RootLayout({
         />
         <meta property="og:logo" content="/logo.svg" />
         <Script
-          src="http://classic.avantlink.com/affiliate_app_confirm.php?mode=js&authResponse=4f1e7ad4ca1d3e6e39a2b2e08288dbb22ac1ab9f"
+          src="https://classic.avantlink.com/affiliate_app_confirm.php?mode=js&authResponse=4f1e7ad4ca1d3e6e39a2b2e08288dbb22ac1ab9f"
           strategy="afterInteractive"
         />
         {/* Preload all images */}
