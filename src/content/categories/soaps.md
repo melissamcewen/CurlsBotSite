@@ -23,3 +23,4 @@ Here are a few that we’ve found:
 - [HiBAR - Maintain Solid Shampoo Bar](https://amzn.to/4fx1RpU)
 - [Aspen Kay Naturals - Solid Shampoo Bar](https://amzn.to/3BHhZai)
 - [Refig Lemongrass Solid Shampoo Bar](https://therefig.com/products/lemongrass-shampoo-bar)
+- [Vida Soothe Solid Shampoo Bar for Curly Hair](https://amzn.to/3BE7CUV)

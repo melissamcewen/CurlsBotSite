@@ -12,6 +12,7 @@ import {
 import { getCountryFromHostname } from '@/lib/countryDetection';
 import Link from 'next/link';
 import { ProductCard } from '@/components/ui/product/ProductCard';
+import { SparklesIcon } from '@heroicons/react/20/solid';
 
 export default function RoutineBuilder() {
   const router = useRouter();
@@ -23,6 +24,9 @@ export default function RoutineBuilder() {
   const [country, setCountry] = useState<CountryCode>(() =>
     getCountryFromHostname(),
   );
+  const [costFilter, setCostFilter] = useState<
+    '$' | '$$' | '$$$' | undefined
+  >();
   const [selectedProducts, setSelectedProducts] = useState<
     Partial<Record<ProductCategory, Product>>
   >({});
@@ -31,6 +35,9 @@ export default function RoutineBuilder() {
   useEffect(() => {
     const params = new URLSearchParams();
     params.set('porosity', porosity);
+    if (costFilter) {
+      params.set('cost', costFilter);
+    }
 
     // Add selected products to URL
     Object.entries(selectedProducts).forEach(([category, product]) => {
@@ -38,12 +45,16 @@ export default function RoutineBuilder() {
     });
 
     router.replace(`?${params.toString()}`, { scroll: false });
-  }, [porosity, selectedProducts, router]);
+  }, [porosity, costFilter, selectedProducts, router]);
 
   // Load initial product selections from URL
   useEffect(() => {
     const steps = getRoutineSteps(porosity, country);
     const initialSelections: Partial<Record<ProductCategory, Product>> = {};
+    const urlCost = searchParams.get('cost') as '$' | '$$' | '$$$' | undefined;
+    if (urlCost) {
+      setCostFilter(urlCost);
+    }
 
     // Check each category parameter in URL
     searchParams.forEach((value, key) => {
@@ -81,7 +92,7 @@ export default function RoutineBuilder() {
       <div className="card bg-base-100">
         <div className="card-body">
           <h2 className="card-title">Hair Properties</h2>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-3 gap-6">
             <div className="form-control w-full">
               <label className="label">
                 <span className="label-text">Porosity</span>
@@ -111,6 +122,26 @@ export default function RoutineBuilder() {
                 <option value="UK">United Kingdom</option>
               </select>
             </div>
+
+            <div className="form-control w-full">
+              <label className="label">
+                <span className="label-text">Price Range</span>
+              </label>
+              <select
+                className="select select-bordered w-full"
+                value={costFilter || ''}
+                onChange={(e) =>
+                  setCostFilter(
+                    e.target.value as '$' | '$$' | '$$$' | undefined,
+                  )
+                }
+              >
+                <option value="">All Prices</option>
+                <option value="$">$</option>
+                <option value="$$">$$</option>
+                <option value="$$$">$$$</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>
@@ -119,6 +150,7 @@ export default function RoutineBuilder() {
         <RoutineSteps
           porosity={porosity}
           country={country}
+          costFilter={costFilter}
           selectedProducts={selectedProducts}
           onProductSelect={(category, product) => {
             setSelectedProducts((prev) => ({
@@ -162,6 +194,7 @@ export default function RoutineBuilder() {
 interface RoutineStepsProps {
   porosity: PorosityType;
   country: CountryCode;
+  costFilter?: '$' | '$$' | '$$$';
   selectedProducts: Partial<Record<ProductCategory, Product>>;
   onProductSelect: (category: ProductCategory, product: Product) => void;
 }
@@ -169,10 +202,21 @@ interface RoutineStepsProps {
 function RoutineSteps({
   porosity,
   country,
+  costFilter,
   selectedProducts,
   onProductSelect,
 }: RoutineStepsProps) {
-  const steps = getRoutineSteps(porosity, country);
+  const [productOffsets, setProductOffsets] = useState<Record<string, number>>(
+    {},
+  );
+  const steps = getRoutineSteps(porosity, country, costFilter, productOffsets);
+
+  const handleSeeMore = (category: string, totalProducts: number) => {
+    setProductOffsets((prev) => ({
+      ...prev,
+      [category]: ((prev[category] || 0) + 3) % totalProducts,
+    }));
+  };
 
   return (
     <div className="space-y-8">
@@ -196,21 +240,51 @@ function RoutineSteps({
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    {category.products.map((product) => (
-                      <ProductCard
-                        key={product.type}
-                        product={product}
-                        category={category.category}
-                        onSelect={() =>
-                          onProductSelect(category.category, product.product)
-                        }
-                        isSelected={
-                          selectedProducts[category.category]?.id ===
-                          product.product.id
-                        }
-                      />
-                    ))}
+                    {category.products.length > 0 ? (
+                      category.products.map((product) => (
+                        <ProductCard
+                          key={product.type}
+                          product={product}
+                          category={category.category}
+                          onSelect={() =>
+                            onProductSelect(category.category, product.product)
+                          }
+                          isSelected={
+                            selectedProducts[category.category]?.id ===
+                            product.product.id
+                          }
+                        />
+                      ))
+                    ) : (
+                      <div className="col-span-3 card bg-base-100 p-6 text-center">
+                        <p className="text-base-content/70">
+                          {costFilter
+                            ? `We don't have items in this price range yet, please `
+                            : `We don't have any featured items in this category yet, please `}
+                          <Link href="/contact" className="link link-primary">
+                            contact us
+                          </Link>{' '}
+                          if you have suggestions
+                        </p>
+                      </div>
+                    )}
                   </div>
+
+                  {category.totalProducts > 3 &&
+                    category.products.length > 0 && (
+                      <button
+                        onClick={() =>
+                          handleSeeMore(
+                            category.category,
+                            category.totalProducts,
+                          )
+                        }
+                        className="btn btn-ghost gap-2 w-full"
+                      >
+                        <SparklesIcon className="w-5 h-5" />
+                        See Different Products
+                      </button>
+                    )}
                 </div>
               ))}
             </div>

@@ -119,10 +119,6 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <GoogleAnalytics />
-        <Script
-          src="https://classic.avantlink.com/affiliate_app_confirm.php?mode=js&authResponse=4f1e7ad4ca1d3e6e39a2b2e08288dbb22ac1ab9f"
-          strategy="afterInteractive"
-        />
         <div className="min-h-screen overflow-x-hidden">
           <div className="absolute inset-0 pointer-events-none" />
           <Navbar />

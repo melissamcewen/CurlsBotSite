@@ -20,8 +20,9 @@ interface Props {
 function getProductRecommendation() {
   const products = getBundledProducts();
   const allProducts = Object.values(products.products).filter(
-    filterProductByCountry,
-  ); // Filter products by country
+    (product) =>
+      filterProductByCountry(product) && product.tags?.includes('featured'),
+  ); // Filter products by country and featured tag
 
   // If no products available for this country, return null
   if (allProducts.length === 0) return null;
@@ -48,7 +49,10 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
   const { description } = getStatusConfig(result.status);
   const hasIngredients = result.ingredients && result.ingredients.length > 0;
   const shouldShowRecommendation =
-    result?.status === 'warning' || result?.status === 'caution' || result?.status === 'error' || result?.status === 'ok';
+    result?.status === 'warning' ||
+    result?.status === 'caution' ||
+    result?.status === 'error' ||
+    result?.status === 'ok';
   const productRecommendation = shouldShowRecommendation
     ? getProductRecommendation()
     : null;
@@ -81,8 +85,16 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
                         rel="noopener noreferrer"
                         className="underline hover:text-primary"
                       >
-                        {productRecommendation.name} by {productRecommendation.brand}
-                      </a> or try our <Link href="/routine-builder" className="link link-primary">Routine Builder</Link>
+                        {productRecommendation.name} by{' '}
+                        {productRecommendation.brand}
+                      </a>{' '}
+                      or try our{' '}
+                      <Link
+                        href="/routine-builder"
+                        className="link link-primary"
+                      >
+                        Routine Builder
+                      </Link>
                     </p>
                   )}
                 </div>

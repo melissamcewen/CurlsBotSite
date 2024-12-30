@@ -72,6 +72,11 @@ const nextConfig = {
         destination: '/categories',
         permanent: true,
       },
+      {
+        source: '/categories/humectants',
+        destination: '/groups/humectants',
+        permanent: true,
+      },
     ];
   },
 };

@@ -17,11 +17,14 @@ export type ProductCategory =
   | 'foams'
   | 'custards'
   | 'gels'
-  | 'oils';
+  | 'oils'
+  | 'accessories';
 
 interface FilterCriteria {
   porosity: PorosityType;
   country: CountryCode;
+  costFilter?: '$' | '$$' | '$$$';
+  requireFeatured?: boolean;
 }
 
 export const CATEGORY_DESCRIPTIONS: Record<ProductCategory, string> = {
@@ -47,6 +50,7 @@ export const CATEGORY_DESCRIPTIONS: Record<ProductCategory, string> = {
   custards:
     'Thick styling products that provide moisture and definition. Useful for all porosity types.',
   oils: 'Optional finishing products that can help seal in moisture. Best for high porosity hair.',
+  accessories: 'Useful items for anyone with curly or wavy hair.',
 };
 
 export const POROSITY_CATEGORIES: Record<PorosityType, ProductCategory[]> = {
@@ -59,6 +63,7 @@ export const POROSITY_CATEGORIES: Record<PorosityType, ProductCategory[]> = {
     'creams',
     'custards',
     'shampoos',
+    'accessories',
   ],
   low_porosity: [
     'clarifying_shampoos',
@@ -68,6 +73,7 @@ export const POROSITY_CATEGORIES: Record<PorosityType, ProductCategory[]> = {
     'foams',
     'gels',
     'deep_conditioners',
+    'accessories',
   ],
   normal_porosity: [
     'clarifying_shampoos',
@@ -76,6 +82,7 @@ export const POROSITY_CATEGORIES: Record<PorosityType, ProductCategory[]> = {
     'creams',
     'gels',
     'deep_conditioners',
+    'accessories',
   ],
 };
 
@@ -90,8 +97,12 @@ export function getProductsByCategory(
       // Must match category
       if (!product.product_categories?.includes(category)) return false;
 
-      // Must match porosity
-      if (!product.tags?.includes(criteria.porosity)) return false;
+      // Must match porosity (except for accessories)
+      if (
+        category !== 'accessories' &&
+        !product.tags?.includes(criteria.porosity)
+      )
+        return false;
 
       // Match country
       if (criteria.country === 'US') {
@@ -100,6 +111,31 @@ export function getProductsByCategory(
       } else {
         // For other countries, match the country code
         if (product.country !== criteria.country) return false;
+      }
+
+      // Check for featured tag if required (except for accessories)
+      if (
+        category !== 'accessories' &&
+        criteria.requireFeatured &&
+        !product.tags?.includes('featured')
+      ) {
+        return false;
+      }
+
+      // Filter by cost if specified (except for accessories)
+      if (category !== 'accessories' && criteria.costFilter) {
+        const costRating = parseInt(product.cost_rating || '0');
+        switch (criteria.costFilter) {
+          case '$':
+            if (costRating !== 1) return false;
+            break;
+          case '$$':
+            if (costRating !== 2) return false;
+            break;
+          case '$$$':
+            if (costRating < 3) return false;
+            break;
+        }
       }
 
       return true;
@@ -123,6 +159,8 @@ export const FREQUENCY_RECOMMENDATIONS: Record<
     creams: 'Every wash',
     gels: 'As needed for styling',
     custards: 'Optional',
+    oils: 'Optional',
+    accessories: 'Useful for all porosity types',
   },
   low_porosity: {
     clarifying_shampoos: 'Every 1-2 weeks',
@@ -132,6 +170,7 @@ export const FREQUENCY_RECOMMENDATIONS: Record<
     foams: 'Optional',
     gels: 'As needed for styling',
     custards: 'Optional',
+    accessories: 'Useful for all porosity types',
   },
   normal_porosity: {
     clarifying_shampoos: 'Every month',
@@ -140,6 +179,8 @@ export const FREQUENCY_RECOMMENDATIONS: Record<
     deep_conditioners: 'Every 2 weeks',
     creams: 'As needed for styling',
     gels: 'As needed for styling',
+    oils: 'Optional',
+    accessories: 'Useful for all porosity types',
   },
 };
 
@@ -148,7 +189,8 @@ export type RoutineStep =
   | 'condition'
   | 'enhance'
   | 'hold'
-  | 'finish';
+  | 'finish'
+  | 'accessories';
 
 interface StepConfig {
   title: string;
@@ -216,48 +258,99 @@ export const ROUTINE_STEPS: Record<RoutineStep, StepConfig> = {
       normal_porosity: 'Optional, use if hair feels dry',
     },
   },
+  accessories: {
+    title: 'Optional: Accessories',
+    description: 'Useful items for anyone with curly or wavy hair',
+    categories: ['accessories'],
+    porosityRecommendations: {
+      high_porosity: 'Useful for all porosity types',
+      low_porosity: 'Useful for all porosity types',
+      normal_porosity: 'Useful for all porosity types',
+    },
+  },
 };
 
-export function getRoutineSteps(porosity: PorosityType, country: CountryCode) {
-  return (
-    Object.entries(ROUTINE_STEPS)
-      .map(([stepId, step]) => {
-        // Get products for each category in this step and filter out empty categories
-        const categoryProducts = step.categories
-          .map((category) => {
-            const products = getProductsByCategory(category, {
+export function getRoutineSteps(
+  porosity: PorosityType,
+  country: CountryCode,
+  costFilter?: '$' | '$$' | '$$$',
+  productOffsets: Record<string, number> = {},
+) {
+  return Object.entries(ROUTINE_STEPS)
+    .map(([stepId, step]) => {
+      // Filter categories based on porosity
+      const validCategories = step.categories.filter((category) =>
+        POROSITY_CATEGORIES[porosity].includes(category),
+      );
+
+      if (validCategories.length === 0) return null;
+
+      // Get products for each category in this step
+      const categoryProducts = validCategories.map((category) => {
+        // Try to get featured products first (if no cost filter)
+        let allProducts = !costFilter
+          ? getProductsByCategory(category, {
               porosity,
               country,
-            });
-            if (products.length === 0) return null;
+              costFilter,
+              requireFeatured: true,
+            })
+          : [];
 
-            return {
-              category,
-              description: CATEGORY_DESCRIPTIONS[category],
-              frequency:
-                FREQUENCY_RECOMMENDATIONS[porosity][category] || 'As needed',
-              products: products.slice(0, 3).map((product) => ({
+        // If no featured products or we have a cost filter, get all products
+        if (allProducts.length === 0) {
+          allProducts = getProductsByCategory(category, {
+            porosity,
+            country,
+            costFilter,
+            requireFeatured: false,
+          });
+        }
+
+        // If we have an offset, get all products without featured requirement
+        if (productOffsets[category]) {
+          allProducts = getProductsByCategory(category, {
+            porosity,
+            country,
+            costFilter,
+            requireFeatured: false,
+          });
+        }
+
+        const offset = productOffsets[category] || 0;
+        // For accessories, show all products. For others, show 3 at a time.
+        const productsToShow =
+          category === 'accessories'
+            ? allProducts.map((product) => ({
                 type: product.id,
                 title: product.name,
                 description: product.brand,
                 product: product,
-              })),
-            };
-          })
-          .filter(
-            (category): category is NonNullable<typeof category> =>
-              category !== null,
-          );
+              }))
+            : allProducts.slice(offset, offset + 3).map((product) => ({
+                type: product.id,
+                title: product.name,
+                description: product.brand,
+                product: product,
+              }));
 
         return {
-          id: stepId,
-          title: step.title,
-          description: step.description,
-          recommendation: step.porosityRecommendations[porosity],
-          categories: categoryProducts,
+          category,
+          description: CATEGORY_DESCRIPTIONS[category],
+          frequency:
+            FREQUENCY_RECOMMENDATIONS[porosity][category] || 'As needed',
+          products: productsToShow,
+          totalProducts: allProducts.length,
         };
-      })
-      // Filter out steps with no categories
-      .filter((step) => step.categories.length > 0)
-  );
+      });
+
+      return {
+        id: stepId,
+        title: step.title,
+        description: step.description,
+        recommendation: step.porosityRecommendations[porosity],
+        categories: categoryProducts,
+      };
+    })
+    .filter((step): step is NonNullable<typeof step> => step !== null);
 }

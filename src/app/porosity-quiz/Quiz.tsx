@@ -71,7 +71,7 @@ export default function Quiz() {
     const result = getResult(score);
 
     return (
-      <div className="space-y-4 space-y-6 max-w-4xl mx-auto">
+      <div className="space-y-6 max-w-4xl mx-auto">
         <ChatBubbleRobot imageUrl="/normal.svg" status="ok">
           <ChatBubble status="ok">
             <div className="space-y-4">
