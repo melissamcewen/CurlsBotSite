@@ -97,7 +97,7 @@ export default function RootLayout({
             __html: `(function() {
               var s = document.createElement('script');
               s.type = 'text/javascript';
-              s.src = 'https://classic.avantlink.com/affiliate_app_confirm.php?mode=js&authResponse=4f1e7ad4ca1d3e6e39a2b2e08288dbb22ac1ab9f';
+              s.src = 'http://classic.avantlink.com/affiliate_app_confirm.php?mode=js&authResponse=4f1e7ad4ca1d3e6e39a2b2e08288dbb22ac1ab9f';
               document.head.appendChild(s);
             })();`,
           }}
