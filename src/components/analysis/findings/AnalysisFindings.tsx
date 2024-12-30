@@ -107,7 +107,7 @@ export function AnalysisFindings({ ingredients }: Props) {
                   <div className="mt-4 pt-4 border-t border-base-200">
                     <Link
                       href={group.guide}
-                      className="btn btn-sm btn-secondary gap-2 w-full"
+                      className="btn btn-sm btn-secondary btn-outline gap-2 w-full"
                     >
                       <BookOpenIcon className="w-4 h-4" />
                       Learn More
