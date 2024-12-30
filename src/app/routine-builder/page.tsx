@@ -72,7 +72,7 @@ export default function RoutineBuilder() {
   return (
     <div className="container mx-auto p-4 max-w-5xl">
       <h1 className="text-4xl font-bold text-center mb-4">
-        Build Your Perfect Hair Routine
+        Build Your Perfect Curly/Wavy Hair Routine
       </h1>
       <p className="text-center text-lg mb-8">
         Customize your hair care routine based on your unique needs

@@ -6,6 +6,7 @@ export type { CountryCode };
 export type PorosityType = 'high_porosity' | 'low_porosity' | 'normal_porosity';
 
 export type ProductCategory =
+  | 'pre_poo'
   | 'clarifying_shampoos'
   | 'shampoos'
   | 'cowashes'
@@ -24,6 +25,8 @@ interface FilterCriteria {
 }
 
 export const CATEGORY_DESCRIPTIONS: Record<ProductCategory, string> = {
+  pre_poo:
+    'These products are meant to be used before washing to help protect your hair from stress and damage.',
   clarifying_shampoos:
     'Heavier shampoos meant to remove long-term buildup from oils, products, and hard water. Meant to be used occasionally, as they are much stronger than regular shampoos.',
   shampoos:
@@ -48,6 +51,7 @@ export const CATEGORY_DESCRIPTIONS: Record<ProductCategory, string> = {
 
 export const POROSITY_CATEGORIES: Record<PorosityType, ProductCategory[]> = {
   high_porosity: [
+    'pre_poo',
     'cowashes',
     'conditioners',
     'deep_conditioners',
@@ -109,6 +113,7 @@ export const FREQUENCY_RECOMMENDATIONS: Record<
   Partial<Record<ProductCategory, string>>
 > = {
   high_porosity: {
+    pre_poo: 'Every wash',
     clarifying_shampoos: 'Every 1-2 months',
     shampoos: 'Weekly',
     cowashes: 'Daily or every other day',
@@ -156,7 +161,7 @@ export const ROUTINE_STEPS: Record<RoutineStep, StepConfig> = {
   cleanse: {
     title: '1. Cleanse',
     description: 'Choose your cleansing products based on your porosity needs',
-    categories: ['clarifying_shampoos', 'shampoos', 'cowashes'],
+    categories: ['pre_poo', 'clarifying_shampoos', 'shampoos', 'cowashes'],
     porosityRecommendations: {
       high_porosity:
         'Use shampoo weekly, cowash for other wash days, clarifying shampoos every 1-2 months',
