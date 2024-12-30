@@ -240,6 +240,8 @@ export interface Setting {
   defaultStatus: 'ok' | 'caution' | 'warning';
   /** Status for ingredients in allowedCategories (when using groups) */
   allowedStatus?: 'ok' | 'caution' | 'warning';
+  /** URL for guide */
+  guide?: string
 }
 
 /**

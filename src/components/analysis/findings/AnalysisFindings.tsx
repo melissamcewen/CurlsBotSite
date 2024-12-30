@@ -1,5 +1,6 @@
 import { IngredientResult } from 'haircare-ingredients-analyzer';
-import { StarIcon } from '@heroicons/react/24/solid';
+import { StarIcon, BookOpenIcon } from '@heroicons/react/24/solid';
+import Link from 'next/link';
 
 interface Props {
   ingredients: IngredientResult[];
@@ -11,8 +12,23 @@ interface GroupedFindings {
     reason: string;
     status: 'warning' | 'caution' | 'ok';
     ingredients: IngredientResult[];
-  }
+    guide?: string;
+  };
 }
+
+// Mapping of setting IDs to their guide URLs
+const SETTING_GUIDES: Record<string, string> = {
+  sulfate_free: '/categories/sulfates',
+  paraben_caution: '/categories/parabens',
+  drying_alcohol: '/groups/alcohols',
+  mild_surfactants_only: '/groups/surfactants',
+  mild_surfactants_caution_others: '/groups/surfactants',
+  no_water_insoluble_silicones: '/groups/silicones',
+  caution_silicones: '/groups/silicones',
+  no_waxes: '/groups/waxes',
+  soap_free: '/categories/soap',
+  no_petroleum: '/categories/petroleum-oils',
+};
 
 export function AnalysisFindings({ ingredients }: Props) {
   const hasFindings = ingredients.some(
@@ -31,7 +47,8 @@ export function AnalysisFindings({ ingredients }: Props) {
           name: reason.name,
           reason: reason.reason,
           status: ingredient.status,
-          ingredients: []
+          ingredients: [],
+          guide: SETTING_GUIDES[reason.setting],
         };
       }
       acc[reason.setting].ingredients.push(ingredient);
@@ -85,6 +102,18 @@ export function AnalysisFindings({ ingredients }: Props) {
                     </div>
                   ))}
                 </div>
+
+                {group.guide && (
+                  <div className="mt-4 pt-4 border-t border-base-200">
+                    <Link
+                      href={group.guide}
+                      className="btn btn-sm btn-secondary gap-2 w-full"
+                    >
+                      <BookOpenIcon className="w-4 h-4" />
+                      Learn More
+                    </Link>
+                  </div>
+                )}
               </div>
             </div>
           ))}
