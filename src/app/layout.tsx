@@ -92,9 +92,9 @@ export default function RootLayout({
           content="1ade1083-f729-416f-9c92-6d0b179d94e3"
         />
         <meta property="og:logo" content="/logo.svg" />
-        <script
-          type="text/javascript"
-          src="http://classic.avantlink.com/affiliate_app_confirm.php?mode=js&authResponse=4f1e7ad4ca1d3e6e39a2b2e08288dbb22ac1ab9f"
+        <Script
+          src="https://classic.avantlink.com/affiliate_app_confirm.php?mode=js&authResponse=4f1e7ad4ca1d3e6e39a2b2e08288dbb22ac1ab9f"
+          strategy="afterInteractive"
         />
         {/* Preload all images */}
         <link rel="preload" href="/logo.svg" as="image" type="image/svg+xml" />
