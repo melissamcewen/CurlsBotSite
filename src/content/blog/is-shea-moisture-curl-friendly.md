@@ -4,6 +4,7 @@ description: Understanding the community's perspective on Shea Moisture products
 date: 2024-12-30
 image: /images/blog/is-shea-moisture-curl-friendly/hero.png
 ---
+*This post was originally published in 2018, but I've updated it for 2024.*
 
 The Shea Moisture Journey
 ------------------------

@@ -4,6 +4,7 @@ description: Understanding how hard water affects curly hair and practical solut
 date: 2024-12-25
 image: /images/blog/curly-hair-hard-water/hero.png
 ---
+*This post was originally published in 2018, but I've updated it for 2024.*
 
 Understanding Hard Water and Your Curls
 -------------------

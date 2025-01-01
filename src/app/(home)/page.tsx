@@ -3,6 +3,7 @@ import { Analyzer } from 'haircare-ingredients-analyzer';
 import { Suspense } from 'react';
 import Loading from './loading';
 import { createPageMetadata } from '@/config/metadata';
+import Sidebar from '@/components/Sidebar';
 
 export const metadata = createPageMetadata({
   title: 'Hair Care Ingredient Analysis',
@@ -46,8 +47,15 @@ export default async function Home({ searchParams }: Props) {
       : '';
 
   return (
-    <Suspense fallback={<Loading />}>
-      <AnalyzerWrapper ingredients={initialIngredients} />
-    </Suspense>
+    <div className="flex flex-col xl:flex-row space-y-3 xl:space-y-0 xl:space-x-3">
+      <div className="xl:max-w-xs">
+        <Sidebar />
+      </div>
+      <div className="w-full">
+        <Suspense fallback={<Loading />}>
+          <AnalyzerWrapper ingredients={initialIngredients} />
+        </Suspense>
+      </div>
+    </div>
   );
 }

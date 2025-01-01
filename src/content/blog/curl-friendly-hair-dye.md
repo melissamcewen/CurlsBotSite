@@ -4,6 +4,8 @@ description: A comprehensive guide to hair coloring options that work well with 
 date: 2024-12-20
 image: /images/blog/curl-friendly-hair-dye/hero.png
 ---
+*This post was originally published in 2018, but I've updated it for 2024.*
+
 
 Understanding Hair Coloring Options
 ----------------------------------
