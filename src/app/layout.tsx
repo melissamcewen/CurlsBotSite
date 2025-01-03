@@ -119,6 +119,10 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <GoogleAnalytics />
+        <Script
+          src="https://s.skimresources.com/js/276362X1762442.skimlinks.js"
+          strategy="afterInteractive"
+        />
         <div className="min-h-screen overflow-x-hidden">
           <div className="absolute inset-0 pointer-events-none" />
           <Navbar />
