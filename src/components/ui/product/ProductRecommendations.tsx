@@ -94,6 +94,10 @@ export function getProductRecommendations(porosityType: string) {
   const validCategories = POROSITY_CATEGORIES[porosityTag] || CATEGORIES;
   const userCountry = getCountryFromHostname();
 
+  console.log('Porosity tag:', porosityTag);
+  console.log('Valid categories:', validCategories);
+  console.log('User country:', userCountry);
+
   const recommendations = CATEGORIES.reduce((acc, category) => {
     acc[category] = [];
     return acc;
@@ -101,11 +105,9 @@ export function getProductRecommendations(porosityType: string) {
 
   const products: ProductDatabase = getBundledProducts();
 
+  // First pass: try to get featured products
   Object.entries(products.products).forEach(
     ([_, product]: [string, Product]) => {
-      const productCategory = product
-        .product_categories?.[0] as ProductCategory;
-
       if (
         !product.product_categories ||
         product.product_categories.length === 0 ||
@@ -123,6 +125,44 @@ export function getProductRecommendations(porosityType: string) {
       if (
         product.tags?.includes(porosityTag) &&
         validCategories.includes(category)
+      ) {
+        if (!recommendations[category]) {
+          recommendations[category] = [];
+        }
+        if (recommendations[category]!.length < 3) {
+          recommendations[category]!.push({
+            name: product.name,
+            brand: product.brand,
+            buyUrl: product.buy_url,
+            description: product.description,
+            ingredients_raw: product.ingredients_raw,
+            status: product.status,
+          });
+        }
+      }
+    },
+  );
+
+  // Second pass: fill in any empty categories with non-featured products
+  Object.entries(products.products).forEach(
+    ([_, product]: [string, Product]) => {
+      if (
+        !product.product_categories ||
+        product.product_categories.length === 0
+      ) {
+        return;
+      }
+
+      // Skip if product has a country specified and it doesn't match user's country
+      if (product.country && product.country !== userCountry) {
+        return;
+      }
+
+      const category = product.product_categories[0] as ProductCategory;
+      if (
+        product.tags?.includes(porosityTag) &&
+        validCategories.includes(category) &&
+        (!recommendations[category] || recommendations[category]!.length === 0)
       ) {
         if (!recommendations[category]) {
           recommendations[category] = [];

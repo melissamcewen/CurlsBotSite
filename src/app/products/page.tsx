@@ -153,7 +153,7 @@ export default function ProductsPage() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-2">Product Database</h1>
         <p className="text-base-content/70 text-lg mb-2">
-          Browse our curated collection of curly and wavy hair products. See our{' '}
+          Browse our curated collection of curly and wavy hair products. I look at each product individually and analyze it before adding it to our database. See our{' '}
           <Link href="/routine-builder" className="link link-primary">
             Routine Builder
           </Link>{' '}
@@ -245,18 +245,6 @@ export default function ProductsPage() {
                 <option value="normal_porosity">Normal Porosity</option>
                 <option value="high_porosity">High Porosity</option>
               </select>
-            </div>
-
-            <div className="form-control">
-              <label className="label cursor-pointer">
-                <span className="label-text">Featured Products Only</span>
-                <input
-                  type="checkbox"
-                  className="toggle toggle-primary"
-                  checked={showFeaturedOnly}
-                  onChange={(e) => setShowFeaturedOnly(e.target.checked)}
-                />
-              </label>
             </div>
           </div>
         </div>
