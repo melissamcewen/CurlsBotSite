@@ -43,7 +43,7 @@ export default function Sidebar() {
                 </a>{' '}
                 of one of our favorite products,{' '}
                 <a
-                  href="https://amzn.to/49LHTpT"
+                  href="https://sovrn.co/1f7kp16"
                   className="link"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -98,7 +98,7 @@ export default function Sidebar() {
 
             <div className="flex gap-2">
               <BookOpenIcon className="w-5 h-5 flex-shrink-0 mt-1" />
-              <p >
+              <p>
                 Read our latest guide{' '}
                 <Link href="/groups/oils" className="link">
                   Curly/Wavy Hair and Oils Guide
