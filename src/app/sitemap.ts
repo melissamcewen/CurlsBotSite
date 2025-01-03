@@ -71,15 +71,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Add porosity type pages
   const porosityEntries = [
     {
-      url: 'https://www.curlsbot.com/porosity/low',
+      url: 'https://www.curlsbot.com/porosity/low-porosity',
       lastModified: new Date(),
     },
     {
-      url: 'https://www.curlsbot.com/porosity/normal',
+      url: 'https://www.curlsbot.com/porosity/normal-porosity',
       lastModified: new Date(),
     },
     {
-      url: 'https://www.curlsbot.com/porosity/high',
+      url: 'https://www.curlsbot.com/porosity/high-porosity',
       lastModified: new Date(),
     },
   ];
@@ -114,6 +114,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: 'https://www.curlsbot.com/routine-builder',
+      lastModified: new Date(),
+    },
+    {
+      url: 'https://www.curlsbot.com/products',
       lastModified: new Date(),
     },
     {
