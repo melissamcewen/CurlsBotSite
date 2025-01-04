@@ -105,11 +105,9 @@ export default function Quiz() {
           </ChatBubble>
         </ChatBubbleRobot>
 
-
-            <div className="space-y-4">
-              <ProductRecommendations porosityType={result.tag} />
-            </div>
-
+        <div className="space-y-4">
+          <ProductRecommendations porosityType={result.tag} />
+        </div>
       </div>
     );
   }
@@ -128,28 +126,47 @@ export default function Quiz() {
         </ChatBubble>
       </ChatBubbleRobot>
       <div className="max-w-2xl ml-auto">
-        <ChatBubbleUser
-          message={
-            <div>
-              <p className="font-medium mb-2">
-                Question {currentQuestion + 1} of {quizQuestions.length}
-              </p>
-              <p className="text-lg">{question.question}</p>
-              <div className="space-y-2 mt-4">
-                {question.answers.map((answer, index) => (
+        <ChatBubbleUser>
+          <div>
+            <div className="space-y-4">
+              {currentQuestion < quizQuestions.length ? (
+                <>
+                  <div className="space-y-2">
+                    <p className="font-semibold">
+                      {quizQuestions[currentQuestion].question}
+                    </p>
+                    <div className="space-y-2">
+                      {quizQuestions[currentQuestion].answers.map(
+                        (answer, index) => (
+                          <button
+                            key={index}
+                            onClick={() => handleAnswerClick(answer.points)}
+                            className="btn btn-primary text-primary-content w-full text-left normal-case"
+                          >
+                            {answer.content}
+                          </button>
+                        ),
+                      )}
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <p className="font-semibold">Your Result:</p>
+                    <p>{getResult(score).type}</p>
+                  </div>
                   <button
-                    key={index}
-                    className="cb-card-lite bg-secondary w-full text-left justify-start normal-case"
-                    onClick={() => handleAnswerClick(answer.points)}
+                    onClick={restartQuiz}
+                    className="btn btn-secondary w-full"
                   >
-                    {answer.content}
+                    Restart Quiz
                   </button>
-                ))}
-              </div>
+                </div>
+              )}
             </div>
-          }
-          secondary
-        />
+          </div>
+        </ChatBubbleUser>
       </div>
     </div>
   );

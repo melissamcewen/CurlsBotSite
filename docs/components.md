@@ -58,6 +58,7 @@ The site follows a consistent pattern for displaying content:
 1. **List Pages**: When displaying lists of items (ingredients, categories, etc.), items with markdown content are prioritized and shown first. This helps highlight items with detailed documentation.
 
 2. **Detail Pages**: Each detail page (e.g., ingredient, category) shows:
+
    - Basic information from the database (name, description, categories, etc.) always
    - Additional markdown content (if available) for in-depth information
    - The markdown content section is only rendered when a markdown file exists
@@ -65,11 +66,13 @@ The site follows a consistent pattern for displaying content:
 3. **Search and Filtering**: Items with markdown content are marked as indexed for search engines, while those without are marked with `noindex`.
 
 This pattern ensures that:
+
 - Essential information from the database is always accessible
 - Detailed documentation is prominently featured when available
 - Users can easily distinguish between basic and detailed entries
 
 The content is loaded using utility functions in `src/utils/markdown.ts`:
+
 - `getMarkdownData(path)`: Loads and parses a markdown file
 - `getCategoryContent(id)`: Loads category-specific content
 - `getIngredientContent(id)`: Loads ingredient-specific content
@@ -83,13 +86,16 @@ If a markdown file doesn't exist for a particular item, the page will fall back 
 The site includes several currently disabled features that can be re-enabled:
 
 ### System Selector
+
 The system selector allows users to choose between different analysis systems (e.g., curly hair, protein sensitive). To re-enable it:
 
 1. Move from `todo/` back to the components directory:
+
    - `SystemSelector.tsx` → `src/components/analysis/SystemSelector.tsx`
    - `CustomSystemForm.tsx` → `src/components/analysis/CustomSystemForm.tsx`
 
 2. In `src/components/analysis/IngredientForm.tsx`:
+
    ```typescript
    // Add imports
    import { getBundledSystems } from 'haircare-ingredients-analyzer';
@@ -100,35 +106,41 @@ The system selector allows users to choose between different analysis systems (e
    const [customSettings, setCustomSettings] = useState<string[]>([]);
 
    // Update handleAnalysis to accept system
-   const handleAnalysis = useCallback((ingredientList: string, system: string, settings?: string[]) => {
-     // ... existing setup ...
+   const handleAnalysis = useCallback(
+     (ingredientList: string, system: string, settings?: string[]) => {
+       // ... existing setup ...
 
-     // Handle system selection
-     if (system !== 'curly_default') {
-       const systems = getBundledSystems();
-       const selectedSystem = systems.find(s => s.id === system);
-       if (!selectedSystem) {
-         throw new Error('Invalid system selected');
+       // Handle system selection
+       if (system !== 'curly_default') {
+         const systems = getBundledSystems();
+         const selectedSystem = systems.find((s) => s.id === system);
+         if (!selectedSystem) {
+           throw new Error('Invalid system selected');
+         }
+         analyzer.setSystem(selectedSystem);
        }
-       analyzer.setSystem(selectedSystem);
-     }
 
-     // ... rest of analysis ...
-   }, []);
+       // ... rest of analysis ...
+     },
+     [],
+   );
 
    // Add to form
    <div className="w-full">
      <SystemSelector value={systemId} onChange={handleSystemChange} />
-   </div>
+   </div>;
    ```
 
 ### Ingredients Search
+
 The ingredients search feature provides a search box above the ingredients table. To re-enable it:
 
 1. Move from `todo/` back to the components directory:
+
    - `IngredientsSearch.tsx` → `src/components/ingredients/IngredientsSearch.tsx`
 
 2. In `src/app/ingredients/page.tsx`:
+
    ```typescript
    // Add imports
    import { Card, CardContent } from '@/components/ui/Card';
@@ -144,11 +156,16 @@ The ingredients search feature provides a search box above the ingredients table
      // Apply search filter
      if (searchTerm) {
        const searchLower = searchTerm.toLowerCase();
-       filtered = filtered.filter(ingredient =>
-         ingredient.name.toLowerCase().includes(searchLower) ||
-         ingredient.description?.toLowerCase().includes(searchLower) ||
-         ingredient.synonyms?.some(syn => syn.toLowerCase().includes(searchLower)) ||
-         ingredient.categories?.some(cat => cat.toLowerCase().includes(searchLower))
+       filtered = filtered.filter(
+         (ingredient) =>
+           ingredient.name.toLowerCase().includes(searchLower) ||
+           ingredient.description?.toLowerCase().includes(searchLower) ||
+           ingredient.synonyms?.some((syn) =>
+             syn.toLowerCase().includes(searchLower),
+           ) ||
+           ingredient.categories?.some((cat) =>
+             cat.toLowerCase().includes(searchLower),
+           ),
        );
      }
 
@@ -174,20 +191,24 @@ The ingredients search feature provides a search box above the ingredients table
          />
        </div>
      </CardContent>
-   </Card>
+   </Card>;
 
    // Add empty state message
-   {sortedIngredients.length === 0 && (
-     <div className="alert alert-info">
-       <span>No ingredients found matching "{searchTerm}"</span>
-     </div>
-   )}
+   {
+     sortedIngredients.length === 0 && (
+       <div className="alert alert-info">
+         <span>No ingredients found matching "{searchTerm}"</span>
+       </div>
+     );
+   }
    ```
 
 ### Custom Settings Feature
+
 The custom settings feature allows users to create their own analysis system. To re-enable it:
 
 1. In `src/components/analysis/SystemSelector.tsx`:
+
    - Re-import the CustomSystemForm component
    - Restore the showCustomForm and defaultSettings states
    - Add back the custom option to the select dropdown
@@ -211,16 +232,17 @@ The conversion between these formats is handled by utility functions in `src/uti
 
 ```typescript
 // Convert URL slug to internal ID
-slugToId('low-porosity') // returns 'low_porosity'
+slugToId('low-porosity'); // returns 'low_porosity'
 
 // Convert internal ID to URL slug
-idToSlug('low_porosity') // returns 'low-porosity'
+idToSlug('low_porosity'); // returns 'low-porosity'
 
 // Format a string as title case
-formatTitle('low_porosity') // returns 'Low Porosity'
+formatTitle('low_porosity'); // returns 'Low Porosity'
 ```
 
 This system is used across all dynamic routes:
+
 - `/products/[tag]`
 - `/categories/[name]`
 - `/ingredients/[name]`
@@ -238,18 +260,10 @@ The chat component requires a specific structure to maintain proper alignment:
 
 ```jsx
 <div className="chat chat-start">
-  <div className="chat-image">
-    {/* Avatar content */}
-  </div>
-  <div className="chat-header">
-    {/* Optional header content */}
-  </div>
-  <div className="chat-bubble">
-    {/* Main message content */}
-  </div>
-  <div className="chat-footer">
-    {/* Optional footer content */}
-  </div>
+  <div className="chat-image">{/* Avatar content */}</div>
+  <div className="chat-header">{/* Optional header content */}</div>
+  <div className="chat-bubble">{/* Main message content */}</div>
+  <div className="chat-footer">{/* Optional footer content */}</div>
 </div>
 ```
 
@@ -258,27 +272,29 @@ The chat component requires a specific structure to maintain proper alignment:
 We have two main chat components for consistent styling across the application:
 
 1. **ChatBubbleRobot**: For system/bot messages
+
 ```typescript
 <ChatBubbleRobot
   status="ok" // or 'caution', 'warning', 'error'
   imageUrl="/normal.svg" // optional custom avatar
 >
-  <ChatBubble status="ok">
-    {/* Message content */}
-  </ChatBubble>
+  <ChatBubble status="ok">{/* Message content */}</ChatBubble>
 </ChatBubbleRobot>
 ```
 
 2. **ChatBubbleUser**: For user messages
+
 ```typescript
 <ChatBubbleUser
-  message="Your message here"
   secondary={false} // optional: use secondary color theme
   accent={false} // optional: use accent color theme
-/>
+>
+  {/* Message content */}
+</ChatBubbleUser>
 ```
 
 The `ChatBubbleUser` component provides:
+
 - Consistent right-aligned styling for user messages
 - Simple interface for basic messages
 - Optional color theme variants
@@ -287,12 +303,14 @@ The `ChatBubbleUser` component provides:
 ### Component Features
 
 **ChatBubbleRobot**:
+
 - Avatar styling with status-based borders
 - Consistent message styling
 - Proper grid alignment
 - Support for complex content with headers/footers
 
 **ChatBubbleUser**:
+
 - Simplified interface for user messages
 - Consistent right-aligned styling
 - Color theme variants (primary, secondary, accent)
@@ -301,11 +319,13 @@ The `ChatBubbleUser` component provides:
 ### Important Layout Notes
 
 1. **Grid Structure**:
+
    - DaisyUI's chat uses CSS Grid for layout
-   - Direct children must use the proper chat-* classes
+   - Direct children must use the proper chat-\* classes
    - Avoid adding extra wrapper divs that could break the grid
 
 2. **Proper Usage**:
+
 ```typescript
 // ✅ Correct - Complex bot message
 <ChatBubbleRobot status="ok">
@@ -314,7 +334,9 @@ The `ChatBubbleUser` component provides:
 </ChatBubbleRobot>
 
 // ✅ Correct - Simple user message
-<ChatBubbleUser message="User input" />
+<ChatBubbleUser>
+  Your message content here
+</ChatBubbleUser>
 
 // ❌ Incorrect - Extra wrapper breaks layout
 <ChatBubbleRobot>

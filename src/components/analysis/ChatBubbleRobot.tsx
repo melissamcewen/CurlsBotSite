@@ -100,10 +100,7 @@ export function ChatBubble({
   return (
     <div
       className={`chat-bubble bg-base-300 border-t-2 p-6 text-base-content w-full ${bubbleClass} ${className}`}
-      style={{
-        contain: 'content',
-        contentVisibility: 'auto'
-      }}
+      
     >
       {children}
     </div>

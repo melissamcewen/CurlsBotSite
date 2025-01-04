@@ -40,8 +40,8 @@ describe('Quiz', () => {
     const buttons = screen.getAllByRole('button');
     const restartButton = buttons[buttons.length - 1]; // Last button should be restart
     userEvent.click(restartButton);
-    // Verify we're back at the start by checking for question number
-    expect(screen.getByText(/1/)).toBeInTheDocument();
+    // Verify we're back at the start by checking for the first question's content
+    expect(screen.getByText(/Which sounds more like your experience with products/i)).toBeInTheDocument();
   });
 
   it('shows product recommendations in results', () => {

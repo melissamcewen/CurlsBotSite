@@ -179,6 +179,10 @@ export interface Product {
   country?: string;
   /** Analysis status for the product */
   status?: 'ok' | 'caution' | 'warning' | 'error';
+  /** Analysis */
+  analysis?: AnalysisResult;
+  /** Frizzbot analysis */
+  frizzbot?: FrizzbotAnalysis;
 }
 
 /**
@@ -266,3 +270,16 @@ export interface NormalizedIngredientList {
   isValid: boolean;
   ingredients: string[];
 }
+
+/**
+ * Represents the analysis result for the Frizzbot system
+ */
+export type FrizzbotAnalysis = {
+  simple_humectants_number: number;
+  film_forming_humectants_number: number;
+  emollients_number: number;
+  simple_humectants: string[];
+  film_forming_humectants: string[];
+  emollients: string[];
+  score: number;
+};
