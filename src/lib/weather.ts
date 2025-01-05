@@ -28,7 +28,7 @@ export function analyzeDewPoint(dewPoint: number): WeatherAnalysis {
       )}°C), which means the air is very dry. In these conditions, humectants in your products might draw moisture out of your hair instead of from the air, potentially causing dryness and frizz.`,
       recommendations: [
         'Be careful with simple humectants, make sure they are balanced with emollients to keep moisture in',
-        'Film forming humectants are your best bet'
+        'Film forming complexhumectants are your best bet'
       ],
     };
   } else if (dewPointF <= 40) {
@@ -42,7 +42,7 @@ export function analyzeDewPoint(dewPoint: number): WeatherAnalysis {
       recommendations: [
         'This will require trial and error to see what your hair likes',
         'Simple humectants might be fine, but it also might be a good idea to use emollients to balance them out',
-        'Film forming humectants are your best bet',
+        'Film forming complexhumectants are your best bet',
       ],
     };
   } else if (dewPointF <= 60) {
@@ -69,7 +69,7 @@ export function analyzeDewPoint(dewPoint: number): WeatherAnalysis {
       recommendations: [
         'Use hard hold products like gels to control your hair',
         'Some people avoid simple humectants in high humidity, others balance them out with emollients or hard hold products',
-        'Film forming humectants can be fine or even beneficial especially if they have a lot of hold',
+        'Film forming complex humectants can be fine or even beneficial especially if they have a lot of hold',
       ],
     };
   }

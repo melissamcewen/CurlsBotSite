@@ -41,7 +41,9 @@ describe('Quiz', () => {
     const restartButton = buttons[buttons.length - 1]; // Last button should be restart
     userEvent.click(restartButton);
     // Verify we're back at the start by checking for the first question's content
-    expect(screen.getByText(/Which sounds more like your experience with products/i)).toBeInTheDocument();
+    expect(
+      screen.getByText(/Which sounds more like your experience with products/i),
+    ).toBeInTheDocument();
   });
 
   it('shows product recommendations in results', () => {

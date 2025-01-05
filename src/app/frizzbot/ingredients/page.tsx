@@ -27,13 +27,15 @@ export default function FrizzbotIngredients() {
       // Call your frizzbot function
       const frizzAnalysis = frizzbot(analysisResult);
 
-      // If no ingredients were matched, set score to -100 (low frizz)
+      console.log(frizzAnalysis.score);
+
+      // If no ingredients were matched, set score to 0 neutral
       if (
         frizzAnalysis.simple_humectants_number === 0 &&
         frizzAnalysis.film_forming_humectants_number === 0 &&
         frizzAnalysis.emollients_number === 0
       ) {
-        frizzAnalysis.score = -100;
+        frizzAnalysis.score = 0;
       }
 
       setFrizzbotAnalysis(frizzAnalysis);
@@ -91,7 +93,7 @@ export default function FrizzbotIngredients() {
         <Link href="/groups/humectants" className="link">
           humectants guide
         </Link>{' '}
-        for more information on film forming vs. simple humectants.
+        for more information on complex film forming vs. simple humectants.
       </p>
 
       <div className="form-control">
@@ -149,52 +151,48 @@ export default function FrizzbotIngredients() {
 
           <div className="card bg-base-200 p-6">
             <h3 className="text-lg font-bold mb-4">Frizz Potential Score</h3>
-            <div className="flex items-center gap-4">
-              <Avatar
-                imageUrl="/frizz.svg"
-                altText="High Frizz"
-                borderClass="border-warning"
-              />
-              <div className="flex-1">
-                <div className="flex gap-1">
-                  <div className="w-1/2 bg-base-300 rounded-l-full h-4">
-                    <div
-                      className="h-4 rounded-l-full bg-warning"
-                      style={{
-                        width: `${
-                          frizzbotAnalysis.score > 0
-                            ? frizzbotAnalysis.score
-                            : 0
-                        }%`,
-                        transition: 'width 0.5s ease-in-out',
-                      }}
-                    ></div>
-                  </div>
-                  <div className="w-1/2 bg-base-300 rounded-r-full h-4">
-                    <div
-                      className="h-4 rounded-r-full bg-success ml-auto"
-                      style={{
-                        width: `${
-                          frizzbotAnalysis.score < 0
-                            ? Math.abs(frizzbotAnalysis.score)
-                            : 0
-                        }%`,
-                        transition: 'width 0.5s ease-in-out',
-                      }}
-                    ></div>
-                  </div>
-                </div>
-                <div className="flex justify-between text-sm mt-2">
-                  <span>High Frizz (100)</span>
-                  <span className="text-center">0</span>
-                  <span>Low Frizz (-100)</span>
-                </div>
-              </div>
-              <Avatar
-                imageUrl="/normal.svg"
-                altText="Low Frizz"
-                borderClass="border-success"
-              />
+            <div className="flex flex-col gap-4">
+              <ul className="steps w-full">
+                <li
+                  className={`step ${
+                    frizzbotAnalysis.score >= 50 ? 'step-warning' : ''
+                  }`}
+                  data-content="?"
+                >
+                  <Avatar
+                    imageUrl="/frizz.svg"
+                    altText="High Frizz"
+                    borderClass="border-warning"
+                  />
+                  <p className="text-xs">
+                    Could cause frizz in dry/wet weather
+                  </p>
+                </li>
+                <li
+                  className={`step ${
+                    frizzbotAnalysis.score <= 0
+                      ? 'step-success'
+                      : 'step-warning'
+                  }`}
+                  data-content="•"
+                >
+                  <p className="text-xs">Neutral</p>
+                </li>
+
+                <li
+                  className={`step  ${
+                    frizzbotAnalysis.score <= -50 ? 'step-success' : ''
+                  }`}
+                  data-content="✓"
+                >
+                  <Avatar
+                    imageUrl="/normal.svg"
+                    altText="Low Frizz"
+                    borderClass="border-success"
+                  />
+                  <p className="text-xs">Protects from frizz</p>
+                </li>
+              </ul>
             </div>
           </div>
 
