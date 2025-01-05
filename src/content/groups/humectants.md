@@ -5,13 +5,29 @@ description: Humectants are ingredients that help your hair absorb and retain mo
 
 # Humectants and Curly/Wavy Hair: A Guide
 
-Humectants are ingredients that help your hair absorb and retain moisture. As curly hair tends to be thirsty for water, these ingredients are important in our products.
+Humectants are ingredients that help your hair absorb and retain moisture. As curly hair tends to be thirsty for water, these ingredients are important in our products. But many people in the curly hair community believe they can have downsides in very dry or very humid water.
+
+## Can humectants cause frizz?
+Humectants have the ability to attract and store water from the air around us. This is usually a great thing, but in dry weather there isn’t much water around, so theoretically they could pull water from the hair. This hasn’t been studied though. What has been found is they can become brittle and feel unpleasant/dry.
+
+In humid weather humectants theoretically could pull in “too much” water which could also cause frizz, but there isn’t much science behind this either.
+
+Our new experimental [FrizzBot weather forecast](/frizzbot) can look at your local weather conditions and advise you on how frizzy today might be and what products might work. But it’s not an exact science.
+
+The FrizzBot weather forecast doesn’t just look at humidity, it looks at the dew point, which tells us roughly how much moisture is in the air. The dew point is the temperature at which the air must be cooled to in order to reach 100% relative humidity, meaning the air is saturated with water vapor. High dew points indicate a lot of moisture in the air, while low dew points mean drier air. Calculating the dew point involves factors like humidity, temperature, and saturation vapor pressure of water (whatever that is)...basically you can’t do it at home. FrizzBot gets US government meteorological data to make its forecasts. We hope to add other countries soon.
 
 ## Types of humectants for curly/wavy hair
 We classify humectants into two types based on their unique properties for curly/wavy hair:
 - **Simple:** These are common humectants that are molecularly small like glycerin. They usually do a great job, except if the air is dry they can become brittle and make things worse (frizz, friction, etc.)
-- **Complex:** These are heavier and more complicated humectants like flax seed extract. They have lots of nooks and crannies to store water in, so they are less affected by dry air.
+- **Complex:** These are heavier and more complicated humectants like flax seed extract. They have lots of nooks and crannies to store water in, so they are less affected by dry air. They are also often called *film-forming** humectants because of the protective water and hair holding film the form on the hair, which can do double duty in preventing and holding back frizz.
+- **Protein**: Did you know proteins *are* humectants? Most are complex type, but they get their own category so we can analyze them seperately. There is a controversial idea of “protein overload” but we haven’t found much solid science on it.
 
-If you’re in a place with very dry air, you might want to avoid the simple humectants and opt for the complex ones instead.
+## Should I avoid simple humectants in extra dry/extra wet weather?
 
-As a note proteins can act as humectants as well, but we haven’t decided whether to place them in this group or their own group.
+I often write about how it’s “all in the formulation” and that’s definitely true with humectants. For example the famous [Ouidad Heat & Humidity gel (affiliate link)](https://click.linksynergy.com/link?id=9QcV0uNyab0&offerid=929395.3842993508&type=2&murl=https%3a%2f%2fwww.ouidad.com%2fproducts%2fadvanced-climate-control-heat-and-humidity-gel%3fvariant%3d42617150865666), which many people swear by in humid weather, has simple humectants like glycerin. BUT it also has plenty of film forming like silk protein and panthenol and emollients like castor oil. The film formers and emollients prevent the glycerin from getting brittle. It’s almost like there are humectants for the humectants!
+
+The new also experimental [FrizzBot ingredients analyzer](/frizzbot/ingredients) looks at the overall balance of emollients, simple humectants, and complex humectants. Products rated this way can be prone to frizzing in extreme weather, neutral, or extra good at protecting against frizz.
+
+Most products formulated for hair actually have a pretty great balance so that they perform really well in lots of conditions, but if you’re using simpler products you might want to avoid them on certain days. An example is sometimes people use silicone-free personal lubricant as a hair gel and surprisingly it can work well! But it’s basically just glycerin, so it might not do so well in frizz prone weather. Another use for it is if you’re dealing with extreme conditions like in the American Midwest’s “polar vortexes” (it’s about 0F/-17C as I’m writing this in Chicago) or monsoon weather in a tropical climate, you might want to grab products that are extra good at protecting from frizz.
+
+
