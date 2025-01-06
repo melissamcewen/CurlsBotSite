@@ -169,21 +169,24 @@ export default function FrizzBot() {
           .
         </p>
 
-        <div className="flex gap-4 mb-4">
+        <div className=" flex-row gap-4 mb-4 md:flex space-y-4 md:space-y-0">
           <button
             onClick={getLocation}
             disabled={loading}
-            className="btn btn-primary"
+            className="btn btn-primary w-full md:w-auto"
           >
             <MapPinIcon className="h-5 w-5 mr-2" />
             {loading ? 'Getting Location...' : 'Get My Location (US only)'}
           </button>
 
-          <form onSubmit={handleLocationSubmit} className="join">
+          <form
+            onSubmit={handleLocationSubmit}
+            className="join w-full md:w-auto"
+          >
             <input
               type="text"
               placeholder="Enter city, state (e.g. Chicago, IL), US only"
-              className="input input-bordered join-item w-80"
+              className="input input-bordered join-item w-full md:w-80"
               value={location}
               onChange={(e) => setLocation(e.target.value)}
               required
@@ -202,7 +205,7 @@ export default function FrizzBot() {
               setShowManualInput(!showManualInput);
               setError(null);
             }}
-            className="btn btn-secondary"
+            className="btn btn-secondary w-full md:w-auto"
           >
             <BeakerIcon className="h-5 w-5 mr-2" />
             {showManualInput ? 'Hide Manual Input' : 'Enter Values Manually'}
@@ -214,7 +217,7 @@ export default function FrizzBot() {
             onSubmit={handleManualSubmit}
             className="card bg-base-200 p-6 mb-4"
           >
-            <div className="grid md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Temperature (°C)</span>
@@ -291,7 +294,7 @@ export default function FrizzBot() {
 
         {weatherData && analysis && (
           <div className="space-y-6">
-            <div className="stats shadow">
+            <div className="stats stats-horizontal shadow">
               <div className="stat">
                 <div className="stat-title">Temperature</div>
                 <div className="stat-value">

@@ -83,9 +83,10 @@ export default function FrizzbotIngredients() {
         based on their ingredients. Please note this is an experimental feature
         and may have some bugs. The way it works is it looks at how many film
         forming humectants and simple humectants are in the product, and how
-        many anti-humectants (ingredients that have hold and moisture retention propertieswhich can balance out the frizzy effects of simple
-        humectants in dry weather) are in the product. It then calculates a
-        score based on the ingredients. Please{' '}
+        many anti-humectants (ingredients that have hold and moisture retention
+        properties which can balance out the frizzy effects of simple humectants
+        in dry weather) are in the product. It then calculates a score based on
+        the ingredients. Please{' '}
         <Link href="/contact" className="link">
           contact us
         </Link>{' '}
@@ -123,7 +124,7 @@ export default function FrizzbotIngredients() {
 
       {frizzbotAnalysis && (
         <div className="mt-6 space-y-6">
-          <div className="stats shadow">
+          <div className="stats stats-vertical md:stats-horizontal shadow">
             <div className="stat">
               <div className="stat-title">Simple Humectants</div>
               <div className="stat-value text-warning">
@@ -149,24 +150,26 @@ export default function FrizzbotIngredients() {
             </div>
           </div>
 
-          <div className="card bg-base-200 p-6">
+          <div className="card bg-base-200 p-4 md:p-6">
             <h3 className="text-lg font-bold mb-4">Frizz Potential Score</h3>
             <div className="flex flex-col gap-4">
-              <ul className="steps w-full">
+              <ul className="steps steps-horizontal w-full">
                 <li
                   className={`step ${
                     frizzbotAnalysis.score >= 50 ? 'step-warning' : ''
                   }`}
                   data-content="?"
                 >
-                  <Avatar
-                    imageUrl="/frizz.svg"
-                    altText="High Frizz"
-                    borderClass="border-warning"
-                  />
-                  <p className="text-xs">
-                    Could cause frizz in dry/wet weather
-                  </p>
+                  <div className="">
+                    <Avatar
+                      imageUrl="/frizz.svg"
+                      altText="High Frizz"
+                      borderClass="border-warning"
+                    />
+                    <p className="text-xs text-center md:text-left">
+                      Could cause frizz
+                    </p>
+                  </div>
                 </li>
                 <li
                   className={`step ${
@@ -178,19 +181,22 @@ export default function FrizzbotIngredients() {
                 >
                   <p className="text-xs">Neutral</p>
                 </li>
-
                 <li
                   className={`step  ${
                     frizzbotAnalysis.score <= -50 ? 'step-success' : ''
                   }`}
                   data-content="✓"
                 >
-                  <Avatar
-                    imageUrl="/normal.svg"
-                    altText="Low Frizz"
-                    borderClass="border-success"
-                  />
-                  <p className="text-xs">Protects from frizz</p>
+                  <div className="">
+                    <Avatar
+                      imageUrl="/normal.svg"
+                      altText="Low Frizz"
+                      borderClass="border-success"
+                    />
+                    <p className="text-xs ">
+                      Protects from frizz
+                    </p>
+                  </div>
                 </li>
               </ul>
             </div>
