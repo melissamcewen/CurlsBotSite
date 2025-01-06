@@ -83,7 +83,7 @@ export default function FrizzbotIngredients() {
         based on their ingredients. Please note this is an experimental feature
         and may have some bugs. The way it works is it looks at how many film
         forming humectants and simple humectants are in the product, and how
-        many emollients (which can balance out the frizzy effects of simple
+        many anti-humectants (ingredients that have hold and moisture retention propertieswhich can balance out the frizzy effects of simple
         humectants in dry weather) are in the product. It then calculates a
         score based on the ingredients. Please{' '}
         <Link href="/contact" className="link">
@@ -141,7 +141,7 @@ export default function FrizzbotIngredients() {
             </div>
 
             <div className="stat">
-              <div className="stat-title">Emollients</div>
+              <div className="stat-title">Anti-Humectants</div>
               <div className="stat-value text-success">
                 {frizzbotAnalysis.emollients_number}
               </div>
@@ -216,7 +216,7 @@ export default function FrizzbotIngredients() {
 
           {frizzbotAnalysis.emollients.length > 0 && (
             <div className="card bg-base-200 p-6">
-              <h3 className="font-bold mb-2">Emollients Found:</h3>
+              <h3 className="font-bold mb-2">Anti-Humectants Found:</h3>
               <p className="text-sm">
                 {frizzbotAnalysis.emollients.join(', ')}
               </p>
