@@ -5,11 +5,7 @@ import {
   type Category,
   type Ingredient,
 } from 'haircare-ingredients-analyzer';
-import {
-  BookOpenIcon,
-  BeakerIcon,
-  ScissorsIcon,
-} from '@heroicons/react/24/solid';
+
 import { getIngredientContent } from '@/utils/markdown';
 import { IngredientDetailsCard } from '@/components/ingredients/IngredientDetailsCard';
 import { ReferencesList } from '@/components/references/ReferencesList';

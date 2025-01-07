@@ -5,7 +5,7 @@ import {
 } from 'haircare-ingredients-analyzer';
 import { idToSlug } from '@/utils/slugs';
 import { Metadata } from 'next';
-import { ArrowRightIcon } from '@heroicons/react/24/solid';
+import { ArrowRight } from 'lucide-react';
 
 interface CategoryWithId {
   id: string;
@@ -154,7 +154,7 @@ export default function CategoriesPage() {
                       {groupId === 'Uncategorized'
                         ? 'Uncategorized'
                         : group?.name || groupId}{' '}
-                      Guide <ArrowRightIcon className="w-5 h-5 ml-4" />
+                      Guide <ArrowRight className="w-5 h-5 ml-4" />
                     </Link>
                   )}
                 </div>
@@ -179,7 +179,7 @@ export default function CategoriesPage() {
                               className="btn btn-primary btn-sm"
                             >
                               Read guide{' '}
-                              <ArrowRightIcon className="w-4 h-4 ml-2" />
+                              <ArrowRight className="w-4 h-4 ml-2" />
                             </Link>
                           </div>
                         </div>

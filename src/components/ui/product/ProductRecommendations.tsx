@@ -4,7 +4,7 @@ import type { Product, ProductDatabase } from 'haircare-ingredients-analyzer';
 import Link from 'next/link';
 import { ROUTINE_STEPS, type RoutineStep } from '@/lib/routineBuilder';
 import { getCountryFromHostname } from '@/lib/countryDetection';
-import { ShoppingBagIcon } from '@heroicons/react/24/outline';
+import { ShoppingBag } from 'lucide-react';
 
 export type ProductCategory =
   | 'shampoos'
@@ -211,7 +211,7 @@ export function ProductRecommendations({
     <div className={className} data-testid="product-recommendations">
       <h2 className="text-2xl font-bold mb-2">Recommended Products</h2>
       <p className="text-base-content/70 text-sm mb-6 flex items-center gap-2">
-        <ShoppingBagIcon className="w-4 h-4 flex-shrink-0" />
+        <ShoppingBag className="w-4 h-4 flex-shrink-0" />
         Product links are affiliate links that help support the site
       </p>
       <div className="min-h-[200px]">

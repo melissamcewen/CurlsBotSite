@@ -9,7 +9,7 @@ import { getGroupContent } from '@/utils/markdown';
 import { ReferencesList } from '@/components/references/ReferencesList';
 import { Metadata } from 'next';
 import { slugToId, idToSlug } from '@/utils/slugs';
-import { ArrowRightIcon } from '@heroicons/react/24/solid';
+import { ArrowRight } from 'lucide-react';
 
 interface PageProps {
   params: Promise<{
@@ -263,7 +263,7 @@ export default async function GroupPage({ params }: PageProps) {
                       <div className="card-actions justify-end mt-2">
                         <div className="btn btn-primary btn-sm gap-1">
                           Read More
-                          <ArrowRightIcon className="w-4 h-4" />
+                          <ArrowRight className="w-4 h-4" />
                         </div>
                       </div>
                     </div>

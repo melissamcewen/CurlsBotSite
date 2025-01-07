@@ -1,4 +1,5 @@
-import { ShieldCheckIcon } from '@heroicons/react/24/solid';
+
+import { Shield } from 'lucide-react';
 import { createPageMetadata } from '@/config/metadata';
 
 export const metadata = createPageMetadata({
@@ -14,7 +15,7 @@ export default function PrivacyPage() {
       <div className="card bg-base-100 rounded-xl">
         <div className="card-body">
           <div className="flex items-center gap-2 mb-6">
-            <ShieldCheckIcon className="w-8 h-8 text-primary" />
+            <Shield className="w-8 h-8 text-primary" />
             <h1 className="text-3xl font-bold">Privacy Policy</h1>
           </div>
 

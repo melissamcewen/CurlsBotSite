@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { createWorker, type Worker } from 'tesseract.js';
 import AdvancedIngredientForm from '@/components/analysis/AdvancedIngredientForm';
-import { CameraIcon } from '@heroicons/react/24/solid';
+import { Camera } from 'lucide-react';
 
 export default function PhotoAnalysis() {
   const [isProcessing, setIsProcessing] = useState(false);
@@ -35,7 +35,7 @@ export default function PhotoAnalysis() {
   return (
     <div className="container mx-auto p-4 max-w-4xl">
       <div className="flex items-center gap-4 mb-8">
-        <CameraIcon className="h-12 w-12 text-primary" />
+        <Camera className="h-12 w-12 text-primary" />
         <h1 className="text-4xl font-bold">Photo Ingredient Analysis</h1>
       </div>
 

@@ -1,5 +1,5 @@
 import { IngredientResult } from 'haircare-ingredients-analyzer';
-import { StarIcon, BookOpenIcon } from '@heroicons/react/24/solid';
+import { Star, BookOpen } from 'lucide-react';
 import Link from 'next/link';
 
 interface Props {
@@ -61,7 +61,7 @@ export function AnalysisFindings({ ingredients }: Props) {
     <div>
       <div>
         <h2 className="cb-header">
-          <StarIcon className="cb-header-icon" aria-hidden="true" />
+          <Star className="cb-header-icon" aria-hidden="true" />
           Highlights
         </h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
@@ -109,7 +109,7 @@ export function AnalysisFindings({ ingredients }: Props) {
                       href={group.guide}
                       className="btn btn-sm btn-secondary btn-outline gap-2 w-full"
                     >
-                      <BookOpenIcon className="w-4 h-4" />
+                      <BookOpen className="w-4 h-4" />
                       Learn More
                     </Link>
                   </div>

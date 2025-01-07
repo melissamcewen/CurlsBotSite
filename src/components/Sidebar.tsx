@@ -1,14 +1,14 @@
 'use client';
 
 import {
-  DocumentTextIcon,
-  BeakerIcon,
-  SparklesIcon,
-  ShoppingBagIcon,
-  EnvelopeIcon,
-  NewspaperIcon,
-  BookOpenIcon,
-} from '@heroicons/react/24/outline';
+  FileText,
+  FlaskConical,
+  Sparkles,
+  ShoppingBag,
+  Mail,
+  Newspaper,
+  BookOpen,
+} from 'lucide-react';
 import Link from 'next/link';
 
 export default function Sidebar() {
@@ -20,19 +20,19 @@ export default function Sidebar() {
       <div className="card card-compact border-primary border-2">
         <div className="card-body ">
           <h2 className="card-title flex">
-            <SparklesIcon className="w-6 h-6" />
+            <Sparkles className="w-6 h-6" />
             Welcome to CurlsBot
           </h2>
           <div className="space-y-2">
             <div className="flex gap-2">
-              <DocumentTextIcon className="w-5 h-5 flex-shrink-0 mt-1" />
+              <FileText className="w-5 h-5 flex-shrink-0 mt-1" />
               <p>
                 CurlsBot is a free tool to help you understand the ingredients
                 in your curly/wavy hair care products.
               </p>
             </div>
             <div className="flex gap-2">
-              <BeakerIcon className="w-5 h-5 flex-shrink-0 mt-1" />
+              <FlaskConical className="w-5 h-5 flex-shrink-0 mt-1" />
               <p>
                 For example{' '}
                 <a
@@ -55,7 +55,7 @@ export default function Sidebar() {
             </div>
 
             <div className="flex gap-2">
-              <ShoppingBagIcon className="w-5 h-5 flex-shrink-0 mt-1" />
+              <ShoppingBag className="w-5 h-5 flex-shrink-0 mt-1" />
               <p className="opacity-75">
                 P.S. that and other product links are affiliate links, so we get
                 a small commission if you buy it, which helps us keep the site
@@ -68,12 +68,12 @@ export default function Sidebar() {
       <div className="card card-compact border-secondary border-2">
         <div className="card-body ">
           <h2 className="card-title flex">
-            <NewspaperIcon className="w-6 h-6" />
+            <Newspaper className="w-6 h-6" />
             News
           </h2>
           <div className="space-y-2">
             <div className="flex gap-2">
-              <EnvelopeIcon className="w-5 h-5 flex-shrink-0 mt-1" />
+              <Mail className="w-5 h-5 flex-shrink-0 mt-1" />
               <p>
                 <a
                   href="http://eepurl.com/i6TEyw"
@@ -87,7 +87,7 @@ export default function Sidebar() {
               </p>
             </div>
             <div className="flex gap-2">
-              <NewspaperIcon className="w-5 h-5 flex-shrink-0 mt-1" />
+              <Newspaper className="w-5 h-5 flex-shrink-0 mt-1" />
               <p>
                 Read our latest blog post :{' '}
                 <Link href="/blog/welcome-back" className="link">
@@ -97,7 +97,7 @@ export default function Sidebar() {
             </div>
 
             <div className="flex gap-2">
-              <BookOpenIcon className="w-5 h-5 flex-shrink-0 mt-1" />
+              <BookOpen className="w-5 h-5 flex-shrink-0 mt-1" />
               <p>
                 Read our latest guide{' '}
                 <Link href="/groups/oils" className="link">

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScaleIcon } from '@heroicons/react/24/solid';
+import { Scale } from 'lucide-react';
 import { createPageMetadata } from '@/config/metadata';
 
 export const metadata = createPageMetadata({
@@ -15,7 +15,7 @@ export default function TermsPage() {
       <div className="card bg-base-100 rounded-xl">
         <div className="card-body">
           <div className="flex items-center gap-2 mb-6">
-            <ScaleIcon className="w-8 h-8 text-primary" />
+            <Scale className="w-8 h-8 text-primary" />
             <h1 className="text-3xl font-bold">Terms of Service</h1>
           </div>
 

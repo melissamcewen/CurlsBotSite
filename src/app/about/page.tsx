@@ -1,4 +1,6 @@
-import { InformationCircleIcon } from '@heroicons/react/24/solid';
+
+
+import { Info } from 'lucide-react';
 import Link from 'next/link';
 import { createPageMetadata } from '@/config/metadata';
 
@@ -15,7 +17,7 @@ export default function About() {
       <div className="card bg-base-100 rounded-xl">
         <div className="card-body">
           <div className="flex items-center gap-2 mb-4">
-            <InformationCircleIcon className="w-8 h-8 text-primary" />
+            <Info className="w-8 h-8 text-primary" />
             <h1 className="text-3xl font-bold">About CurlsBot</h1>
           </div>
 

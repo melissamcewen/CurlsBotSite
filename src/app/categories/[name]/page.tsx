@@ -10,7 +10,7 @@ import { ReferencesList } from '@/components/references/ReferencesList';
 import { slugToId, idToSlug } from '@/utils/slugs';
 import { createDynamicPageMetadata } from '@/config/metadata';
 import { Breadcrumbs } from '@/components/navigation/Breadcrumbs';
-import { InformationCircleIcon } from '@heroicons/react/24/solid';
+import { Info } from 'lucide-react';
 
 interface PageProps {
   params: Promise<{
@@ -216,7 +216,7 @@ export default async function CategoryPage({ params }: PageProps) {
                               >
                                 {ingredient.name}
                                 {(ingredient.references?.length ?? 0) > 0 && (
-                                  <InformationCircleIcon className="w-4 h-4 inline-block ml-1 text-info" />
+                                  <Info className="w-4 h-4 inline-block ml-1 text-info" />
                                 )}
                               </Link>
                               {ingredient.description && (

@@ -1,4 +1,5 @@
-import { BookOpenIcon } from '@heroicons/react/24/solid';
+
+import { BookOpenText } from 'lucide-react';
 
 export default function BlogLoading() {
   return (
@@ -6,7 +7,7 @@ export default function BlogLoading() {
       <div className="card bg-base-100 rounded-xl">
         <div className="card-body animate-pulse">
           <div className="flex items-center gap-2 mb-6">
-            <BookOpenIcon className="w-8 h-8 text-primary" />
+            <BookOpenText className="w-8 h-8 text-primary" />
             <h1 className="text-3xl font-bold">Blog</h1>
           </div>
 

@@ -2,20 +2,20 @@
 
 import Link from 'next/link';
 import {
-  CloudIcon,
-  BeakerIcon,
-  ListBulletIcon,
-  CameraIcon,
-  ArrowTopRightOnSquareIcon,
-  BoltIcon,
-} from '@heroicons/react/24/solid';
-import Image from 'next/image';
+  Cloud,
+  FlaskConical,
+  ListChecks,
+  Camera,
+  ArrowRight,
+  Droplets,
+} from 'lucide-react';
+
 
 export default function Labs() {
   return (
     <div className="container mx-auto p-4 max-w-6xl">
       <div className="flex items-center gap-4 mb-8">
-        <BeakerIcon className="h-12 w-12 text-primary" />
+        <FlaskConical className="h-12 w-12 text-primary" />
         <h1 className="text-4xl font-bold">CurlsBot Labs</h1>
       </div>
 
@@ -32,7 +32,7 @@ export default function Labs() {
         >
           <div className="card-body">
             <div className="flex items-center gap-3 mb-4">
-              <CloudIcon className="h-8 w-8 text-primary" />
+              <Cloud className="h-8 w-8 text-primary" />
               <h2 className="card-title">FrizzBot Forecast</h2>
             </div>
             <p>
@@ -53,7 +53,7 @@ export default function Labs() {
         >
           <div className="card-body">
             <div className="flex items-center gap-3 mb-4">
-              <BoltIcon className="h-8 w-8 text-primary" />
+              <Droplets className="h-8 w-8 text-primary" />
               <h2 className="card-title">FrizzBot Ingredients Analysis</h2>
             </div>
             <p>
@@ -74,7 +74,7 @@ export default function Labs() {
         >
           <div className="card-body">
             <div className="flex items-center gap-3 mb-4">
-              <CameraIcon className="h-8 w-8 text-primary" />
+              <Camera className="h-8 w-8 text-primary" />
               <div className="flex items-center gap-2">
                 <h2 className="card-title">Photo Analysis</h2>
                 <div className="badge badge-accent">New!</div>
@@ -98,7 +98,7 @@ export default function Labs() {
         >
           <div className="card-body">
             <div className="flex items-center gap-3 mb-4">
-              <ListBulletIcon className="h-8 w-8 text-primary" />
+              <ListChecks className="h-8 w-8 text-primary" />
               <h2 className="card-title">Routine Builder</h2>
             </div>
             <p>
@@ -121,10 +121,10 @@ export default function Labs() {
         >
           <div className="card-body">
             <div className="flex items-center gap-3 mb-4">
-              <BeakerIcon className="h-8 w-8 text-primary" />
+              <FlaskConical className="h-8 w-8 text-primary" />
               <div className="flex items-center gap-2">
                 <h2 className="card-title">The Ordinary Builder</h2>
-                <ArrowTopRightOnSquareIcon className="h-4 w-4 text-base-content/70" />
+                <ArrowRight className="h-4 w-4 text-base-content/70" />
               </div>
             </div>
             <p>

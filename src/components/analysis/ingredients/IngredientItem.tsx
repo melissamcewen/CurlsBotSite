@@ -1,10 +1,5 @@
 import { IngredientResult } from 'haircare-ingredients-analyzer';
-import {
-  TagIcon,
-  InformationCircleIcon,
-  FolderIcon,
-  Squares2X2Icon,
-} from '@heroicons/react/24/solid';
+import { Tag, Info, Folder, LayoutGrid } from 'lucide-react';
 import Link from 'next/link';
 import { idToSlug } from '@/utils/slugs';
 import { getBundledDatabase } from 'haircare-ingredients-analyzer';
@@ -66,7 +61,7 @@ export function IngredientItem({ ingredient }: IngredientItemProps) {
           {/* Matched Ingredient */}
           <div className="space-y-2">
             <div className="flex items-center gap-2 text-base-content/70">
-              <TagIcon className="w-5 h-5" />
+              <Tag className="w-5 h-5" />
               <span className="cb-grouping-header">Matched Ingredient</span>
             </div>
             <div className="pl-7">
@@ -86,7 +81,7 @@ export function IngredientItem({ ingredient }: IngredientItemProps) {
                 className="flex items-center gap-2
           text-base-content/70"
               >
-                <InformationCircleIcon className="w-5 h-5" />
+                <Info className="w-5 h-5" />
                 <span className="font-semibold">Description</span>
               </div>
               <div className="pl-7 text-sm">
@@ -100,7 +95,7 @@ export function IngredientItem({ ingredient }: IngredientItemProps) {
             ingredient.ingredient.categories.length > 0 && (
               <div className="space-y-2">
                 <div className="flex items-center gap-2 text-base-content/70">
-                  <FolderIcon className="w-5 h-5" />
+                  <Folder className="w-5 h-5" />
                   <span className="cb-grouping-header">Classification</span>
                 </div>
                 <div className="pl-7 flex gap-2 items-center">

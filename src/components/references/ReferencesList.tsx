@@ -1,8 +1,4 @@
-import {
-  BookOpenIcon,
-  BeakerIcon,
-  ScissorsIcon,
-} from '@heroicons/react/24/solid';
+import { BookOpen, FlaskConical, Scissors } from 'lucide-react';
 
 interface Reference {
   url: string;
@@ -19,15 +15,13 @@ interface ReferencesListProps {
 function getTypeIcon(type?: string) {
   switch (type?.toLowerCase()) {
     case 'author':
-      return (
-        <BookOpenIcon className="w-4 h-4 inline-block mr-2 flex-shrink-0" />
-      );
+      return <BookOpen className="w-4 h-4 inline-block mr-2 flex-shrink-0" />;
     case 'science':
-      return <BeakerIcon className="w-4 h-4 inline-block mr-2 flex-shrink-0" />;
-    case 'hairpro':
       return (
-        <ScissorsIcon className="w-4 h-4 inline-block mr-2 flex-shrink-0" />
+        <FlaskConical className="w-4 h-4 inline-block mr-2 flex-shrink-0" />
       );
+    case 'hairpro':
+      return <Scissors className="w-4 h-4 inline-block mr-2 flex-shrink-0" />;
     default:
       return null;
   }
@@ -119,15 +113,15 @@ export function ReferencesList({ references }: ReferencesListProps) {
       </div>
       <div className="mt-4 flex flex-wrap gap-4 text-sm text-base-content/70">
         <div className="flex items-center">
-          <BookOpenIcon className="w-4 h-4 mr-2 flex-shrink-0" />
+          <BookOpen className="w-4 h-4 mr-2 flex-shrink-0" />
           <span>Popular Author</span>
         </div>
         <div className="flex items-center">
-          <BeakerIcon className="w-4 h-4 mr-2 flex-shrink-0" />
+          <FlaskConical className="w-4 h-4 mr-2 flex-shrink-0" />
           <span>Cosmetic Chemist</span>
         </div>
         <div className="flex items-center">
-          <ScissorsIcon className="w-4 h-4 mr-2 flex-shrink-0" />
+          <Scissors className="w-4 h-4 mr-2 flex-shrink-0" />
           <span>Hair Professional</span>
         </div>
       </div>

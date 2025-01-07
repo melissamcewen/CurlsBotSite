@@ -1,16 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  ChatBubbleRobot,
-  ChatBubble,
-} from '@/components/analysis/ChatBubbleRobot';
 import type { FrizzbotAnalysis } from 'haircare-ingredients-analyzer';
 import { Analyzer, frizzbot } from 'haircare-ingredients-analyzer';
-import Image from 'next/image';
+
 import Avatar from '@/components/avatar';
 import Link from 'next/link';
-import { BeakerIcon } from '@heroicons/react/24/outline';
+import { FlaskConical } from 'lucide-react';
 
 export default function FrizzbotIngredients() {
   const [error, setError] = useState<string | null>(null);
@@ -60,7 +56,7 @@ export default function FrizzbotIngredients() {
       </div>
 
       <div role="alert" className="alert mb-6">
-        <BeakerIcon className="h-6 w-6" />
+        <FlaskConical className="h-6 w-6" />
         <span>
           This is an experimental{' '}
           <Link href="/labs" className="link">
@@ -193,9 +189,7 @@ export default function FrizzbotIngredients() {
                       altText="Low Frizz"
                       borderClass="border-success"
                     />
-                    <p className="text-xs ">
-                      Protects from frizz
-                    </p>
+                    <p className="text-xs ">Protects from frizz</p>
                   </div>
                 </li>
               </ul>

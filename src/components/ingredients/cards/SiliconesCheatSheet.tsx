@@ -1,5 +1,5 @@
 import { CheatSheet } from '../CheatSheet';
-import { StarIcon } from '@heroicons/react/24/solid';
+import { Star } from 'lucide-react';
 
 const SiliconesCheatSheet: React.FC = () => {
   return (

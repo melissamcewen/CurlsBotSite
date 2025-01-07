@@ -1,4 +1,5 @@
-import { BookOpenIcon, InformationCircleIcon } from '@heroicons/react/24/solid';
+
+import { BookOpen, Info } from 'lucide-react';
 import Link from 'next/link';
 import { createPageMetadata } from '@/config/metadata';
 
@@ -15,7 +16,7 @@ export default function Resources() {
       <div className="card bg-base-100 rounded-xl">
         <div className="card-body">
           <div className="flex items-center gap-2 mb-4">
-            <BookOpenIcon className="w-8 h-8 text-primary" />
+            <BookOpen className="w-8 h-8 text-primary" />
             <h1 className="text-3xl font-bold">Resources</h1>
           </div>
 
@@ -196,7 +197,7 @@ export default function Resources() {
             </div>
 
             <div className="flex items-start gap-2 text-info text-sm mt-6 p-4 bg-info/10 rounded-xl">
-              <InformationCircleIcon className="w-5 h-5 flex-shrink-0 mt-0.5" />
+              <Info className="w-5 h-5 flex-shrink-0 mt-0.5" />
               <p className="m-0">
                 External links open in a new tab for your convenience. CurlsBot
                 is not affiliated with these resources and cannot guarantee

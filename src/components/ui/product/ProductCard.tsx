@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import { Product } from 'haircare-ingredients-analyzer';
 import {
-  TagIcon,
-  BeakerIcon,
-  CheckCircleIcon,
-} from '@heroicons/react/20/solid';
+  Tag,
+  FlaskConical,
+  CheckCircle,
+} from 'lucide-react';
 
 interface ProductCardProps {
   product: {
@@ -34,14 +34,14 @@ export function ProductCard({
           {product.product.status === 'ok' && (
             <div className="mt-2">
               <span className="cb-badge badge-info gap-1">
-                <CheckCircleIcon className="w-4 h-4" />
+                <CheckCircle className="w-4 h-4" />
                 CurlsBot Approved
               </span>
             </div>
           )}
 
           <div className="mt-2 flex items-center gap-2 cb-text-ghost">
-            <TagIcon className="w-4 h-4" />
+            <Tag className="w-4 h-4" />
             Brand: {product.description}
           </div>
 
@@ -60,7 +60,7 @@ export function ProductCard({
               )}`}
               className="cb-button w-full gap-2"
             >
-              <BeakerIcon className="w-4 h-4" />
+              <FlaskConical className="w-4 h-4" />
               Analyze Ingredients
             </Link>
           )}

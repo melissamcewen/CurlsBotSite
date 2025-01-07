@@ -3,7 +3,7 @@ import { getBlogPost } from '@/utils/markdown';
 import { createDynamicPageMetadata } from '@/config/metadata';
 import Link from 'next/link';
 import Image from 'next/image';
-import { BookOpenIcon } from '@heroicons/react/24/solid';
+import { BookOpenText } from 'lucide-react';
 
 interface BlogPost {
   frontmatter: {
@@ -68,7 +68,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
           <article className="prose prose-lg max-w-none">
             <div className="flex items-center gap-2 mb-6">
-              <BookOpenIcon className="w-8 h-8 text-primary" />
+              <BookOpenText className="w-8 h-8 text-primary" />
               <h1 className="text-3xl font-bold m-0">
                 {post.frontmatter.title}
               </h1>

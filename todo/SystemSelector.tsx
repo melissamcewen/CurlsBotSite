@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { getBundledSystems } from 'haircare-ingredients-analyzer';
 import Link from 'next/link';
 import { InformationCircleIcon, ListBulletIcon } from '@heroicons/react/24/outline';
+import { Info, ListBullet } from 'lucide-react';
 
 interface System {
   id: string;
@@ -42,7 +43,7 @@ export default function SystemSelector({ value, onChange }: SystemSelectorProps)
             >
               <InformationCircleIcon className="w-4 h-4" />
             </Link>
-        
+
           </span>
         </label>
         <select

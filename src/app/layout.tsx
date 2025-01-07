@@ -129,7 +129,7 @@ export default function RootLayout({
           <Navbar />
 
           <main className="">
-            <div className="p-4 md:p-8">{children}</div>
+            <div className="p-1 md:p-8">{children}</div>
           </main>
 
           <Footer />

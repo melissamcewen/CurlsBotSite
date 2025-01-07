@@ -9,7 +9,7 @@ import type {
 } from 'haircare-ingredients-analyzer';
 import Link from 'next/link';
 import { idToSlug } from '@/utils/slugs';
-import { InformationCircleIcon } from '@heroicons/react/24/solid';
+import { Info } from 'lucide-react';
 
 function getStatusBadgeClass(status?: string): string {
   switch (status) {
@@ -154,7 +154,7 @@ export function IngredientsTable() {
                   >
                     {ingredient.name}
                     {(ingredient.references?.length ?? 0) > 0 && (
-                      <InformationCircleIcon className="w-4 h-4 inline-block ml-1 text-info" />
+                      <Info className="w-4 h-4 inline-block ml-1 text-info" />
                     )}
                   </Link>
                   {ingredient.synonyms && ingredient.synonyms.length > 0 && (

@@ -12,7 +12,8 @@ import {
 import { getCountryFromHostname } from '@/lib/countryDetection';
 import Link from 'next/link';
 import { ProductCard } from '@/components/ui/product/ProductCard';
-import { SparklesIcon, ShoppingBagIcon } from '@heroicons/react/24/solid';
+
+import { Sparkles, ShoppingBag } from 'lucide-react';
 
 export default function RoutineBuilder() {
   const router = useRouter();
@@ -89,7 +90,7 @@ export default function RoutineBuilder() {
         Customize your hair care routine based on your unique needs
       </p>
       <p className="text-base-content/70 text-sm mb-8 flex items-center gap-2 justify-center">
-        <ShoppingBagIcon className="w-4 h-4 flex-shrink-0" />
+        <ShoppingBag className="w-4 h-4 flex-shrink-0" />
         Product links are affiliate links that help support the site
       </p>
 
@@ -285,7 +286,7 @@ function RoutineSteps({
                         }
                         className="btn btn-ghost gap-2 w-full"
                       >
-                        <SparklesIcon className="w-5 h-5" />
+                        <Sparkles className="w-5 h-5" />
                         See Different Products
                       </button>
                     )}

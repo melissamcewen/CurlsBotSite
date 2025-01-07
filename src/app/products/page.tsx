@@ -3,12 +3,12 @@
 import { useState } from 'react';
 import { getBundledProducts } from 'haircare-ingredients-analyzer';
 import {
-  ShoppingBagIcon,
-  FunnelIcon,
-  ChevronUpDownIcon,
-  CheckCircleIcon,
-  BeakerIcon,
-} from '@heroicons/react/24/solid';
+  ShoppingBag,
+  Filter,
+  ArrowUpDown,
+  CheckCircle,
+  FlaskConical,
+} from 'lucide-react';
 import { getCountryFromHostname } from '@/lib/countryDetection';
 import Link from 'next/link';
 import type { PorosityType } from '@/lib/routineBuilder';
@@ -153,7 +153,9 @@ export default function ProductsPage() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-2">Product Database</h1>
         <p className="text-base-content/70 text-lg mb-2">
-          Browse our curated collection of curly and wavy hair products. I look at each product individually and analyze it before adding it to our database. See our{' '}
+          Browse our curated collection of curly and wavy hair products. I look
+          at each product individually and analyze it before adding it to our
+          database. See our{' '}
           <Link href="/routine-builder" className="link link-primary">
             Routine Builder
           </Link>{' '}
@@ -162,7 +164,7 @@ export default function ProductsPage() {
           email me at <a href="mailto:hello@curlsbot.com">hello@curlsbot.com</a>
         </p>
         <p className="text-base-content/70 text-sm flex items-center gap-2">
-          <ShoppingBagIcon className="w-4 h-4 flex-shrink-0" />
+          <ShoppingBag className="w-4 h-4 flex-shrink-0" />
           Product links are affiliate links that help support the site
         </p>
       </div>
@@ -171,7 +173,7 @@ export default function ProductsPage() {
       <div className="card bg-base-100 mb-8">
         <div className="card-body">
           <h2 className="card-title flex gap-2">
-            <FunnelIcon className="w-5 h-5" />
+            <Filter className="w-5 h-5" />
             Filters
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -261,13 +263,13 @@ export default function ProductsPage() {
               >
                 <div className="flex items-center gap-2">
                   Brand
-                  <ChevronUpDownIcon className="w-4 h-4" />
+                  <ArrowUpDown className="w-4 h-4" />
                 </div>
               </th>
               <th onClick={() => handleSort('name')} className="cursor-pointer">
                 <div className="flex items-center gap-2">
                   Product
-                  <ChevronUpDownIcon className="w-4 h-4" />
+                  <ArrowUpDown className="w-4 h-4" />
                 </div>
               </th>
               <th
@@ -276,7 +278,7 @@ export default function ProductsPage() {
               >
                 <div className="flex items-center gap-2">
                   Category
-                  <ChevronUpDownIcon className="w-4 h-4" />
+                  <ArrowUpDown className="w-4 h-4" />
                 </div>
               </th>
               <th
@@ -285,7 +287,7 @@ export default function ProductsPage() {
               >
                 <div className="flex items-center gap-2">
                   Price Rating
-                  <ChevronUpDownIcon className="w-4 h-4" />
+                  <ArrowUpDown className="w-4 h-4" />
                 </div>
               </th>
 
@@ -307,7 +309,7 @@ export default function ProductsPage() {
                   </a>
                   {product.status === 'ok' && (
                     <div className="badge badge-outline badge-info badge-sm gap-1 whitespace-nowrap">
-                      <CheckCircleIcon className="w-4 h-4" />
+                      <CheckCircle className="w-4 h-4" />
                       CurlsBot Approved
                     </div>
                   )}
@@ -330,7 +332,7 @@ export default function ProductsPage() {
                       )}`}
                       className="btn btn-xs btn-secondary gap-2 whitespace-nowrap flex items-center min-w-24 text-secondary-content"
                     >
-                      <BeakerIcon className="w-4 h-4" />
+                      <FlaskConical className="w-4 h-4" />
                       Analyze
                     </Link>
                   )}

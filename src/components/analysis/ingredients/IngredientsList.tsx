@@ -1,7 +1,7 @@
 import { IngredientItem } from './IngredientItem';
 import { IngredientResult } from 'haircare-ingredients-analyzer';
 import { useState } from 'react';
-import { ArrowsUpDownIcon, BeakerIcon } from '@heroicons/react/24/outline';
+import { ArrowUpDown, FlaskConical } from 'lucide-react';
 
 interface IngredientsListProps {
   ingredients: IngredientResult[];
@@ -32,8 +32,10 @@ export function IngredientsList({ ingredients }: IngredientsListProps) {
     }
 
     // Then sort by status priority
-    const priorityA = statusPriority[a.status as keyof typeof statusPriority] ?? 3;
-    const priorityB = statusPriority[b.status as keyof typeof statusPriority] ?? 3;
+    const priorityA =
+      statusPriority[a.status as keyof typeof statusPriority] ?? 3;
+    const priorityB =
+      statusPriority[b.status as keyof typeof statusPriority] ?? 3;
 
     // If priorities are different, sort by priority
     if (priorityA !== priorityB) {
@@ -48,7 +50,7 @@ export function IngredientsList({ ingredients }: IngredientsListProps) {
     <div className="space-y-4 mt-5">
       <div className="flex justify-between items-center">
         <div className="cb-header mb-0">
-          <BeakerIcon className="cb-header-icon" />
+          <FlaskConical className="cb-header-icon" />
           Ingredient Details
         </div>
         <button
@@ -56,7 +58,7 @@ export function IngredientsList({ ingredients }: IngredientsListProps) {
           className="btn cb-border btn-sm gap-2 normal-case"
           title={isAlphabetical ? 'Sort by priority' : 'Sort alphabetically'}
         >
-          <ArrowsUpDownIcon className="w-4 h-4" />
+          <ArrowUpDown className="w-4 h-4" />
           {isAlphabetical ? 'Priority Sort' : 'A-Z Sort'}
         </button>
       </div>

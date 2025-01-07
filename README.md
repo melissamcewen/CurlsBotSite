@@ -21,7 +21,7 @@
   - React Testing Library
   - Smoke tests for critical paths
 - **UI Components:**
-  - Heroicons V2 (Solid variants)
+  - Lucide icons
   - Custom React components
   - Loading skeletons for better UX
 - **Search & Analysis:**

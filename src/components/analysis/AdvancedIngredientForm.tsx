@@ -6,7 +6,7 @@ import AnalysisResults from './AnalysisResults';
 import { ChatBubbleRobot, ChatBubble, ChatFooter } from './ChatBubbleRobot';
 import ChatBubbleUser from './ChatBubbleUser';
 import Link from 'next/link';
-import { PhotoIcon } from '@heroicons/react/24/solid';
+import { Camera } from 'lucide-react';
 
 interface Props {
   onImageUpload: (
@@ -84,7 +84,7 @@ export default function AdvancedIngredientForm({
               ingredients list.
             </span>
             <label className="btn btn-primary gap-2 mb-5">
-              <PhotoIcon className="w-5 h-5" />
+              <Camera className="w-5 h-5" />
               {isProcessing ? 'Processing...' : 'Upload Image'}
               <input
                 type="file"

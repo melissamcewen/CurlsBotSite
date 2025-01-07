@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { MapPinIcon, BeakerIcon } from '@heroicons/react/24/solid';
+import { MapPin, FlaskConical } from 'lucide-react';
 import {
   ChatBubbleRobot,
   ChatBubble,
@@ -121,7 +121,7 @@ export default function FrizzBot() {
       </div>
 
       <div role="alert" className="alert mb-6">
-        <BeakerIcon className="h-6 w-6" />
+        <FlaskConical className="h-6 w-6" />
         <span>
           This is an experimental{' '}
           <Link href="/labs" className="link">
@@ -175,7 +175,7 @@ export default function FrizzBot() {
             disabled={loading}
             className="btn btn-primary w-full md:w-auto"
           >
-            <MapPinIcon className="h-5 w-5 mr-2" />
+            <MapPin className="h-5 w-5 mr-2" />
             {loading ? 'Getting Location...' : 'Get My Location (US only)'}
           </button>
 
@@ -207,7 +207,7 @@ export default function FrizzBot() {
             }}
             className="btn btn-secondary w-full md:w-auto"
           >
-            <BeakerIcon className="h-5 w-5 mr-2" />
+            <FlaskConical className="h-5 w-5 mr-2" />
             {showManualInput ? 'Hide Manual Input' : 'Enter Values Manually'}
           </button>
         </div>

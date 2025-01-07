@@ -1,4 +1,4 @@
-import { ExclamationTriangleIcon, InformationCircleIcon, ExclamationCircleIcon, CheckCircleIcon } from '@heroicons/react/24/solid';
+import { AlertTriangle, Info, AlertCircle, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
 
 export interface SourceItemProps {
@@ -8,17 +8,22 @@ export interface SourceItemProps {
   description?: string;
 }
 
-export const SourceItem: React.FC<SourceItemProps> = ({ source, status, link, description }) => {
+export const SourceItem: React.FC<SourceItemProps> = ({
+  source,
+  status,
+  link,
+  description,
+}) => {
   const getStatusIcon = () => {
     switch (status) {
       case 'warning':
-        return <ExclamationCircleIcon className="w-5 h-5 flex-shrink-0 text-error" />;
+        return <AlertCircle className="w-5 h-5 flex-shrink-0 text-error" />;
       case 'caution':
-        return <ExclamationTriangleIcon className="w-5 h-5 flex-shrink-0 text-warning" />;
+        return <AlertTriangle className="w-5 h-5 flex-shrink-0 text-warning" />;
       case 'good':
-        return <CheckCircleIcon className="w-5 h-5 flex-shrink-0 text-success" />;
+        return <CheckCircle className="w-5 h-5 flex-shrink-0 text-success" />;
       case 'ok':
-        return <InformationCircleIcon className="w-5 h-5 flex-shrink-0 text-info" />;
+        return <Info className="w-5 h-5 flex-shrink-0 text-info" />;
       default:
         return null;
     }
@@ -41,15 +46,18 @@ export const SourceItem: React.FC<SourceItemProps> = ({ source, status, link, de
 
   return (
     <div className="flex items-center gap-2">
-      <div className="flex-shrink-0">
-        {getStatusIcon()}
-      </div>
+      <div className="flex-shrink-0">{getStatusIcon()}</div>
       <div className="flex items-center flex-wrap">
         {link ? (
-          <a href={link} className="cb-link-emphasized" target="_blank" rel="noopener noreferrer">
+          <a
+            href={link}
+            className="cb-link-emphasized"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             {source}
           </a>
-        ): (
+        ) : (
           <span>{source}</span>
         )}
         <span className="mx-1">:</span>
@@ -72,15 +80,18 @@ export interface IdentificationSectionProps {
   ingredients: string[];
 }
 
-export const IdentificationSection: React.FC<IdentificationSectionProps> = ({ title, ingredients }) => (
+export const IdentificationSection: React.FC<IdentificationSectionProps> = ({
+  title,
+  ingredients,
+}) => (
   <div className="space-y-2">
     <div className="cb-card-lite space-y-3 bg-base-100">
-    <div className="">{title}</div>
-    <div className="flex flex-wrap gap-2">
-      {ingredients.map((ingredient) => (
-        <IngredientChip key={ingredient} name={ingredient} />
-      ))}
-    </div>
+      <div className="">{title}</div>
+      <div className="flex flex-wrap gap-2">
+        {ingredients.map((ingredient) => (
+          <IngredientChip key={ingredient} name={ingredient} />
+        ))}
+      </div>
     </div>
   </div>
 );
@@ -102,14 +113,16 @@ export const CheatSheet: React.FC<CheatSheetProps> = ({
   identificationSections,
   exceptionsSections,
   exceptionsDescription,
-  titleURL
+  titleURL,
 }) => {
   return (
     <div className="card bg-base-200 p-6 space-y-6">
       <div>
         <h2 className="cb-header">
           {titleURL ? (
-            <Link href={titleURL} className="cb-link-emphasized">{title}</Link>
+            <Link href={titleURL} className="cb-link-emphasized">
+              {title}
+            </Link>
           ) : (
             title
           )}

@@ -1,5 +1,5 @@
-import { EnvelopeIcon } from '@heroicons/react/24/solid';
-import Link from 'next/link';
+import { Mail } from 'lucide-react';
+
 import { createPageMetadata } from '@/config/metadata';
 
 export const metadata = createPageMetadata({
@@ -15,7 +15,7 @@ export default function ContactPage() {
       <div className="card bg-base-100 rounded-xl">
         <div className="card-body">
           <div className="flex items-center gap-2 mb-6">
-            <EnvelopeIcon className="w-8 h-8 text-primary" />
+            <Mail className="w-8 h-8 text-primary" />
             <h1 className="text-3xl font-bold">Contact Us</h1>
           </div>
 
