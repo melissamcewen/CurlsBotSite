@@ -28,7 +28,7 @@ export default function Labs() {
         {/* FrizzBot Weather Card */}
         <Link
           href="/frizzbot"
-          className="card bg-base-200 hover:bg-base-300 transition-colors"
+          className="card bg-base-100 hover:bg-base-300 transition-colors"
         >
           <div className="card-body">
             <div className="flex items-center gap-3 mb-4">
@@ -49,7 +49,7 @@ export default function Labs() {
         {/* Ingredient Analysis Card */}
         <Link
           href="/frizzbot/ingredients"
-          className="card bg-base-200 hover:bg-base-300 transition-colors"
+          className="card bg-base-100 hover:bg-base-300 transition-colors"
         >
           <div className="card-body">
             <div className="flex items-center gap-3 mb-4">
@@ -70,7 +70,7 @@ export default function Labs() {
         {/* Photo Analysis Card */}
         <Link
           href="/labs/photo"
-          className="card bg-base-200 hover:bg-base-300 transition-colors"
+          className="card bg-base-100 hover:bg-base-300 transition-colors"
         >
           <div className="card-body">
             <div className="flex items-center gap-3 mb-4">
@@ -94,7 +94,7 @@ export default function Labs() {
         {/* Routine Builder Card */}
         <Link
           href="/routine-builder"
-          className="card bg-base-200 hover:bg-base-300 transition-colors"
+          className="card bg-base-100 hover:bg-base-300 transition-colors"
         >
           <div className="card-body">
             <div className="flex items-center gap-3 mb-4">
@@ -117,7 +117,7 @@ export default function Labs() {
           href="https://www.myroutinebuilder.com/ordinary?tod=day"
           target="_blank"
           rel="noopener noreferrer"
-          className="card bg-base-200 hover:bg-base-300 transition-colors"
+          className="card bg-base-100 hover:bg-base-300 transition-colors"
         >
           <div className="card-body">
             <div className="flex items-center gap-3 mb-4">

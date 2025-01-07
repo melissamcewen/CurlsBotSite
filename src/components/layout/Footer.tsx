@@ -3,7 +3,7 @@ import Link from 'next/link';
 export function Footer() {
   return (
     <>
-      <footer className="footer bg-base-200 text-base-content p-10">
+      <footer className="footer bg-base-300 text-base-content p-2 md:p-10">
         <aside>
           <h2 className="text-xl font-bold">CurlsBot</h2>
           <p className="text-sm opacity-80">
@@ -68,7 +68,7 @@ export function Footer() {
             </a>
           </div>
         </aside>
-        <div className="bg-base-100 rounded-box p-6 space-y-4 max-w-sm">
+        <div className="bg-base-100 rounded-box p-6 space-y-4 md:max-w-sm">
           <span className="text-lg font-bold text-base-content">
             Join the CurlsBot Community! 💌
           </span>

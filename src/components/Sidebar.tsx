@@ -13,11 +13,11 @@ import Link from 'next/link';
 
 export default function Sidebar() {
   const ingredients =
-    'water, sodium c14-16 olefin sulfonate, cocamidopropyl betaine, propanediol, glycol distearate, phenoxyethanol, butyrospermum parkii shea butter, alanine, arginine, aspartic acid, glycine, histidine, isoleucine, phenylalanine, proline, serine, sodium pca, pca, sodium lactate, threonine, valine, citric acid, disodium edta, glycine soja soybean oil, glycine soja soybean sterols, glycolipids, guar hydroxypropyltrimonium chloride, hydroxyethylcellulose, hydroxyacetophenone, lauryl lactyl lactate, peg-150 distearate, phospholipids, ricinus communis castor seed oil, fragrance';
+    'flaxseed extract, agave nectar extract, pectin, aloe vera juice, marshmallow root extract, vitamin e, xanthan gum, optiphen plus, sweet orange essential oil';
 
   return (
-    <div className="flex flex-col gap-4 sm:flex-row xl:flex-col">
-      <div className="card card-compact border-primary border-2">
+    <div className="flex flex-col gap-4 sm:flex-row xl:flex-col p-2">
+      <div className="card card-compact border-primary border-2 bg-base-100">
         <div className="card-body ">
           <h2 className="card-title flex">
             <Sparkles className="w-6 h-6" />
@@ -43,12 +43,12 @@ export default function Sidebar() {
                 </a>{' '}
                 of one of our favorite products,{' '}
                 <a
-                  href="https://sovrn.co/1f7kp16"
+                  href="https://ecoslay.com/collections/stylers/products/orange-marmalade"
                   className="link"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener"
                 >
-                  Krisin Ess Curl Shampoo
+                  Ecoslay Orange Marmalade
                 </a>
                 .
               </p>
@@ -65,7 +65,7 @@ export default function Sidebar() {
           </div>
         </div>
       </div>
-      <div className="card card-compact border-secondary border-2">
+      <div className="card card-compact border-secondary border-2 bg-base-100">
         <div className="card-body ">
           <h2 className="card-title flex">
             <Newspaper className="w-6 h-6" />

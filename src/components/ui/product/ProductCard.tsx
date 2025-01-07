@@ -1,10 +1,6 @@
 import Link from 'next/link';
 import { Product } from 'haircare-ingredients-analyzer';
-import {
-  Tag,
-  FlaskConical,
-  CheckCircle,
-} from 'lucide-react';
+import { Tag, FlaskConical, CheckCircle } from 'lucide-react';
 
 interface ProductCardProps {
   product: {

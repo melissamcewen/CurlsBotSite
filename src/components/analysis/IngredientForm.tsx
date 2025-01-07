@@ -96,8 +96,11 @@ export default function IngredientForm({
                 <div className="form-control w-full">
                   <label htmlFor="ingredients-input" className="label">
                     <span className="label-text font-semibold">
-                      Enter ingredients, ideally from a brand&apos;s website or
-                      a retailer such as Ulta Beauty
+                      Enter ingredients, ideally copy and paste from a
+                      brand&apos;s website or a retailer such as Ulta Beauty or{' '}
+                      <Link href="labs/photo" className="link">
+                        click here to upload a picture of the ingredients list.
+                      </Link>
                     </span>
                   </label>
 
@@ -106,7 +109,7 @@ export default function IngredientForm({
                     className="textarea textarea-bordered bg-base-100 text-base-content h-48 w-full"
                     value={ingredients}
                     onChange={(e) => setIngredients(e.target.value)}
-                    placeholder="Enter ingredients, ideally from a brand's website or a retailer such as Ulta Beauty"
+                    placeholder="Enter ingredients, ideally copy and paste from a brand's website or a retailer such as Ulta Beauty"
                     aria-label="ingredients"
                   />
                 </div>

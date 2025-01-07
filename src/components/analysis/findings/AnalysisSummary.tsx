@@ -24,9 +24,9 @@ export function AnalysisSummary({ ingredients }: Props) {
   ).length;
 
   return (
-    <div className="bg-base-100 ">
+    <div className="bg-base-100 cb-card-lite ">
       <h2 className="cb-header">
-        <BarChart3 className="cb-header-icon" />
+        <BarChart3 className="cb-header-icon " />
         Analysis Summary
       </h2>
       <div className="flex flex-col gap-2">

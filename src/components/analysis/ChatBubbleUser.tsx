@@ -18,7 +18,7 @@ export default function ChatBubbleUser({
   return (
     <div className="chat chat-end">
       <div
-        className={`chat-bubble bg-base-300 text-base-content border-t-2 w-full ${borderClass}`}
+        className={`chat-bubble bg-base-100 text-base-content border-t-2 w-full ${borderClass}`}
       >
         {children}
       </div>

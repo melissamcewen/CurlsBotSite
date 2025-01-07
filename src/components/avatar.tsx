@@ -13,7 +13,7 @@ export default function Avatar({
 }: AvatarProps) {
   return (
     <div
-      className={`chat-image avatar rounded-full border-2 ${borderClass} animate-none`}
+      className={`chat-image self-start avatar rounded-full border-2 ${borderClass} animate-none`}
       style={{ animation: 'none', transition: 'none' }}
     >
       <div className="w-10 h-10 mask mask-circle relative overflow-hidden">

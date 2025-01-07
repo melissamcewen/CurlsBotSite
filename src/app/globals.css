@@ -81,6 +81,9 @@ html {
   .cb-card-lite{
     @apply  rounded-lg p-4;
   }
+  .cb-card-liter{
+    @apply  rounded-lg p-2;
+  }
 
   .cb-link-emphasized{
     color: #41AEB4;
@@ -91,5 +94,7 @@ html {
   .bg-warning\/10 a, .bg-info\/10 a {
     @apply underline decoration-base-content/30 hover:decoration-base-content/70 font-medium;
   }
+
+
 
 }

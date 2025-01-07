@@ -128,8 +128,8 @@ export default function RootLayout({
           <div className="absolute inset-0 pointer-events-none" />
           <Navbar />
 
-          <main className="">
-            <div className="p-1 md:p-8">{children}</div>
+          <main className="p-1 md:p-8 bg-base-200">
+            {children}
           </main>
 
           <Footer />

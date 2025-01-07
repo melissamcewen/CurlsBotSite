@@ -72,7 +72,7 @@ interface IngredientChipProps {
 }
 
 export const IngredientChip: React.FC<IngredientChipProps> = ({ name }) => (
-  <div className="cb-badge  font-normal">{name}</div>
+  <div className="badge  font-normal">{name}</div>
 );
 
 export interface IdentificationSectionProps {
@@ -85,7 +85,7 @@ export const IdentificationSection: React.FC<IdentificationSectionProps> = ({
   ingredients,
 }) => (
   <div className="space-y-2">
-    <div className="cb-card-lite space-y-3 bg-base-100">
+    <div className="cb-card-lite space-y-3 cb-border border-secondary bg-secondary/10">
       <div className="">{title}</div>
       <div className="flex flex-wrap gap-2">
         {ingredients.map((ingredient) => (
@@ -116,7 +116,7 @@ export const CheatSheet: React.FC<CheatSheetProps> = ({
   titleURL,
 }) => {
   return (
-    <div className="card bg-base-200 p-6 space-y-6">
+    <div className="card bg-base-100 p-6 space-y-6">
       <div>
         <h2 className="cb-header">
           {titleURL ? (
@@ -131,7 +131,7 @@ export const CheatSheet: React.FC<CheatSheetProps> = ({
       </div>
 
       <div className="space-y-2 ">
-        <div className="cb-card-lite space-y-3 bg-base-100">
+        <div className="cb-card-lite space-y-3 cb-border border-primary bg-primary/10">
           <h3 className="cb-grouping-header">Sources</h3>
           <div className=" space-y-3">
             {sources.map((source, index) => (
