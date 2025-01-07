@@ -70,6 +70,21 @@ Most have silicones, but I recently found one that's silicone-free called [Glaze
 
 A potential alternative is non-henna herbal dyes, but they are usually not very effective and more research is needed. If you're interested in the subject, join the [Natural Hair Dye Subreddit](https://www.reddit.com/r/naturalhairdye/), which I moderate.
 
+Color Wax: A super temporary option
+----------------------------------
+
+Color wax is pretty cool because usually it does double duty as a hair gel. It washes out in one wash. The major disadvantage is right in the name: wax. The product is very heavy and can weight down wavy hair. If you're 3C and above it can look ingredible. As someone who personally has 2C hair, it just made my hair straight and greasy when I applied it as recommended on wet hair. One solution is to just use a little of the color on dry hair for some nice streaks. This has worked well for me.
+
+Also as a waxy product, it may not wash out completely if you only use cowash or a gentle shampoo. Luckily since it has a color you'll be able to see if it's still there, so you can wash it out with a clarifying shampoo.
+
+Some of the best options are:
+
+- [As I Am Curl Color](https://amzn.to/3PnS4I0)
+- [ORS Color Blast](https://amzn.to/406qFiB)
+- [CurlSmith Hair Makeup](https://amzn.to/3ZXkeOM)- This one has slightly lighter ingredients and I'm hoping to try it soon, maybe it will work better for me.
+
+
+
 Chemical Dyes: Making Them Work
 ----------------------------------
 

@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     default: 'CurlsBot - Curly Hair Product Analyzer',
   },
   description:
-    'Analyze hair care products for curly and wavy hair. Check ingredients for sulfates, silicones, and other ingredients.',
+    'CurlsBot helps you analyze hair care ingredients and build a routine for your curly hair.',
   robots: {
     index: true,
     follow: true,
@@ -113,6 +113,7 @@ export default function RootLayout({
           type="image/svg+xml"
         />
         <link rel="preload" href="/normal.png" as="image" type="image/png" />
+        <meta name="google-adsense-account" content="ca-pub-8535588433972499" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-base-100 text-base-content`}
