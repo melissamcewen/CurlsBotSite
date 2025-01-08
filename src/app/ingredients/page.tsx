@@ -13,7 +13,7 @@ export const metadata = createPageMetadata({
 
 export default function IngredientsPage() {
   return (
-    <div className="max-w-5xl mx-auto">
+    <div className="max-w-5xl mx-auto bg-base-100 p-2 md:p-8 ">
       <h1 className="text-3xl font-bold mb-6">Ingredients Database</h1>
       <div className="overflow-x-auto">
         <Suspense fallback={<Loading />}>

@@ -145,12 +145,12 @@ export default async function CategoryPage({ params }: PageProps) {
   };
 
   return (
-    <>
+    <div className="bg-base-100 p-2 md:p-8">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <div className="container mx-auto p-4 max-w-4xl">
+      <div className="container mx-auto max-w-4xl">
         <Breadcrumbs items={breadcrumbs} />
 
         <div className="space-y-6">
@@ -252,6 +252,6 @@ export default async function CategoryPage({ params }: PageProps) {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

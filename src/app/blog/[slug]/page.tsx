@@ -57,7 +57,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   }).format(date);
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-4xl mx-auto bg-base-100">
       <div className="">
         <div className="p-3">
           <div className="flex items-center gap-2 mb-4">
@@ -66,7 +66,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             </Link>
           </div>
 
-          <article className="prose prose-lg max-w-none bg-white cb-card-liter md:cb-card-lite">
+          <article className="prose prose-lg max-w-none">
             <div className="flex items-center gap-2 mb-6">
               <BookOpenText className="w-8 h-8 text-primary" />
               <h1 className="text-3xl font-bold m-0">

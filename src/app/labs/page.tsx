@@ -14,7 +14,7 @@ import {
 export default function Labs() {
   return (
     <div className="container mx-auto p-4 max-w-6xl">
-      <div className="flex items-center gap-4 mb-8">
+      <div className="flex items-center gap-4 mb-8 md:mt-5">
         <FlaskConical className="h-12 w-12 text-primary" />
         <h1 className="text-4xl font-bold">CurlsBot Labs</h1>
       </div>

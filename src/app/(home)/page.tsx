@@ -47,11 +47,11 @@ export default async function Home({ searchParams }: Props) {
       : '';
 
   return (
-    <div className="flex flex-col xl:flex-row space-y-3 xl:space-y-0 xl:space-x-3">
+    <div className="flex flex-col xl:flex-row space-y-3 xl:space-y-0 xl:space-x-3 bg-base-200 p-0 md:p-8">
       <div className="xl:max-w-xs">
         <Sidebar />
       </div>
-      <div className="w-full">
+      <div className="w-full  ">
         <Suspense fallback={<Loading />}>
           <AnalyzerWrapper ingredients={initialIngredients} />
         </Suspense>

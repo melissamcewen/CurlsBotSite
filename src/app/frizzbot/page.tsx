@@ -118,7 +118,7 @@ export default function FrizzBot() {
     <div className="container mx-auto p-4 max-w-4xl bg-base-200">
       <h1 className="text-4xl font-bold text-center mb-4">FrizzBot Forecast</h1>
 
-      <div role="alert " className="alert alert-info text-info-content mb-6">
+      <div role="alert " className="alert bg-primary/20 text-info-content mb-6">
         <FlaskConical className="h-6 w-6" />
         <span>
           This is an experimental{' '}
@@ -330,7 +330,7 @@ export default function FrizzBot() {
             </div>
           </div>
 
-         
+
         </div>
       )}
     </div>

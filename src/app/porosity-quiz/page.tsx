@@ -10,7 +10,7 @@ export const metadata = createPageMetadata({
 
 export default function QuizPage() {
   return (
-    <div className=" p-2">
+    <div className=" p-2 md:p-8">
       <Quiz />
     </div>
   );

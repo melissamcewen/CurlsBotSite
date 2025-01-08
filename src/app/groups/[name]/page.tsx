@@ -201,7 +201,7 @@ export default async function GroupPage({ params }: PageProps) {
   };
 
   return (
-    <>
+    <div className="bg-base-100 p-0 md:p-8">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
@@ -215,7 +215,7 @@ export default async function GroupPage({ params }: PageProps) {
 
         <div className="space-y-6">
           {/* Group Information */}
-          <div className=" bg-base-100  text-base-content cb-card-liter md:cb-card-lite">
+          <div className=" bg-base-100  text-base-content ">
             <div className="">
               {markdownContent ? (
                 <div
@@ -251,9 +251,9 @@ export default async function GroupPage({ params }: PageProps) {
                   <Link
                     key={category.id}
                     href={`/categories/${idToSlug(category.id)}`}
-                    className="card bg-base-100 hover:bg-base-300 transition-colors duration-200"
+                    className="card bg-base-100 hover:bg-base-300 transition-colors duration-200 cb-border border-primary"
                   >
-                    <div className="card-body">
+                    <div className="card-body ">
                       <h3 className="card-title text-lg">{category.name}</h3>
                       {category.description && (
                         <p className="text-base-content/70 text-sm">
@@ -274,6 +274,6 @@ export default async function GroupPage({ params }: PageProps) {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

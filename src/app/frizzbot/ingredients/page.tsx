@@ -55,7 +55,7 @@ export default function FrizzbotIngredients() {
         <h1 className="text-4xl font-bold">FrizzBot Ingredients Analyzer</h1>
       </div>
 
-      <div role="alert" className="alert mb-6">
+      <div role="alert" className="alert mb-6 bg-primary/20">
         <FlaskConical className="h-6 w-6" />
         <span>
           This is an experimental{' '}
