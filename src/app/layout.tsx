@@ -62,6 +62,9 @@ export const metadata: Metadata = {
       'Analyze hair care products for curly and wavy hair. Check ingredients for sulfates, silicones, and other ingredients.',
     images: ['/images/og-default.png'],
   },
+  other: {
+    'p:domain_verify': '17cf67dd2f8d9805f4d901483e683a2a',
+  },
 };
 
 // Move theme script to a raw string for earlier execution
@@ -128,9 +131,7 @@ export default function RootLayout({
           <div className="absolute inset-0 pointer-events-none" />
           <Navbar />
 
-          <main className="bg-base-200">
-            {children}
-          </main>
+          <main className="bg-base-200">{children}</main>
 
           <Footer />
         </div>
