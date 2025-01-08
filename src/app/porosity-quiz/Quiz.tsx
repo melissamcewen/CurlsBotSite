@@ -141,9 +141,11 @@ export default function Quiz() {
                           <button
                             key={index}
                             onClick={() => handleAnswerClick(answer.points)}
-                            className="btn btn-primary text-primary-content w-full text-left normal-case"
+                            className="card card-compact bg-primary/20 text-primary-content w-full text-left normal-case hover:bg-primary"
                           >
-                            {answer.content}
+                            <div className="card-body">
+                              <p>{answer.content}</p>
+                            </div>
                           </button>
                         ),
                       )}

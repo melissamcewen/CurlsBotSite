@@ -155,7 +155,7 @@ export default async function CategoryPage({ params }: PageProps) {
 
         <div className="space-y-6">
           {/* Category Information */}
-          <div className="bg-base-100  text-base-content">
+          <div className="bg-base-100  text-base-content cb-card-liter">
             <div className="">
               {markdownContent ? (
                 <div

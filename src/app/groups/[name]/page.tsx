@@ -206,7 +206,7 @@ export default async function GroupPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <div className="container mx-auto p-4 max-w-4xl">
+      <div className="container mx-auto p-4 max-w-4xl ">
         <div className="mb-4">
           <Link href="/categories" className="btn btn-ghost btn-sm">
             ← Back to Groups
@@ -215,7 +215,7 @@ export default async function GroupPage({ params }: PageProps) {
 
         <div className="space-y-6">
           {/* Group Information */}
-          <div className=" bg-base-100  text-base-content">
+          <div className=" bg-base-100  text-base-content cb-card-liter">
             <div className="">
               {markdownContent ? (
                 <div

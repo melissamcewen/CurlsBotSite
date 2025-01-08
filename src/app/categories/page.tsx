@@ -132,7 +132,7 @@ export default function CategoriesPage() {
 
             return (
               <div key={groupId} className="space-y-4">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between border-l-4 border-primary pl-4 gap-4">
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between border-l-4 border-primary bg-base-100 p-4 gap-4">
                   <div className="w-full">
                     <h2 className="text-2xl font-bold">
                       {groupId === 'Uncategorized'
@@ -167,7 +167,7 @@ export default function CategoriesPage() {
                         .localeCompare(b.category.name.toLowerCase()),
                     )
                     .map(({ id, category }) => (
-                      <div key={id} className="card bg-base-200">
+                      <div key={id} className="card bg-base-100">
                         <div className="card-body">
                           <h3 className="card-title">{category.name}</h3>
                           <p className="text-base-content/70 flex-grow">
