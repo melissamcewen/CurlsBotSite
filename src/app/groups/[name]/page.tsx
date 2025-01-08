@@ -215,7 +215,7 @@ export default async function GroupPage({ params }: PageProps) {
 
         <div className="space-y-6">
           {/* Group Information */}
-          <div className=" bg-base-100  text-base-content cb-card-liter">
+          <div className=" bg-base-100  text-base-content cb-card-liter md:cb-card-lite">
             <div className="">
               {markdownContent ? (
                 <div
@@ -241,7 +241,7 @@ export default async function GroupPage({ params }: PageProps) {
           </div>
 
           {/* Categories Table */}
-          <div className=" bg-base-100 text-base-content">
+          <div className=" text-base-content">
             <div className="">
               <h2 className="card-title text-2xl mb-4">
                 Categories in this Group
@@ -251,7 +251,7 @@ export default async function GroupPage({ params }: PageProps) {
                   <Link
                     key={category.id}
                     href={`/categories/${idToSlug(category.id)}`}
-                    className="card bg-base-200 hover:bg-base-300 transition-colors duration-200"
+                    className="card bg-base-100 hover:bg-base-300 transition-colors duration-200"
                   >
                     <div className="card-body">
                       <h3 className="card-title text-lg">{category.name}</h3>

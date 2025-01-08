@@ -58,15 +58,15 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <div className="card bg-base-100 rounded-xl">
-        <div className="card-body">
+      <div className="">
+        <div className="p-3">
           <div className="flex items-center gap-2 mb-4">
             <Link href="/blog" className="btn btn-ghost btn-sm">
               ← Back to Blog
             </Link>
           </div>
 
-          <article className="prose prose-lg max-w-none">
+          <article className="prose prose-lg max-w-none bg-white cb-card-liter md:cb-card-lite">
             <div className="flex items-center gap-2 mb-6">
               <BookOpenText className="w-8 h-8 text-primary" />
               <h1 className="text-3xl font-bold m-0">

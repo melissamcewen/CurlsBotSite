@@ -47,7 +47,7 @@ async function BlogPosts() {
       {sortedPosts.map((post) => (
         <article
           key={post.slug}
-          className="card bg-base-200 hover:bg-base-300 transition-colors"
+          className="card bg-base-100 hover:bg-base-300 transition-colors"
         >
           <div className="card-body min-h-[150px]">
             <h2 className="card-title">
@@ -75,14 +75,14 @@ async function BlogPosts() {
 export default function BlogPage() {
   return (
     <div className="max-w-4xl mx-auto w-full">
-      <div className="card bg-base-100 rounded-xl">
-        <div className="card-body">
+      <div className="p-3">
+        <div className="">
           <div className="flex items-center gap-2 mb-6">
             <BookOpenText className="w-8 h-8 text-primary" />
             <h1 className="text-3xl font-bold">Blog</h1>
           </div>
 
-          <div className="alert mb-6">
+          <div className="alert mb-6 bg-base-100">
             <Info className="w-5 h-5" />
             <span>
               Note: Blog posts from 2018 have been updated and republished in
