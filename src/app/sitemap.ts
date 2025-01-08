@@ -128,6 +128,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: 'https://www.curlsbot.com/about',
       lastModified: new Date(),
     },
+    {
+      url: 'https://www.curlsbot.com/labs',
+      lastModified: new Date(),
+    },
+    {
+      url: 'https://www.curlsbot.com/frizzbot',
+      lastModified: new Date(),
+    },
+    {
+      url: 'https://www.curlsbot.com/frizzbot/ingredients',
+      lastModified: new Date(),
+    },
+    {
+      url: 'https://www.curlsbot.com/labs/photo',
+      lastModified: new Date(),
+    },
     ...ingredientEntries,
     ...categoryEntries,
     ...groupEntries,

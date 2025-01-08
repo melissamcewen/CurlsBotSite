@@ -149,7 +149,7 @@ export default function ProductsPage() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className="max-w-7xl mx-auto p-2 md:p-8">
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-2">Product Database</h1>
         <p className="text-base-content/70 text-lg mb-2">
@@ -161,7 +161,7 @@ export default function ProductsPage() {
           </Link>{' '}
           if you want to learn how these products work together. I add new
           products weekly. If there is a product you&apos;d like to see, please
-          email me at <a href="mailto:hello@curlsbot.com">hello@curlsbot.com</a>
+          email me at <a href="mailto:info@curlsbot.com">info@curlsbot.com</a>
         </p>
         <p className="text-base-content/70 text-sm flex items-center gap-2">
           <ShoppingBag className="w-4 h-4 flex-shrink-0" />
@@ -170,7 +170,7 @@ export default function ProductsPage() {
       </div>
 
       {/* Filters */}
-      <div className="card bg-base-100 mb-8">
+      <div className="card bg-base-200 mb-8">
         <div className="card-body">
           <h2 className="card-title flex gap-2">
             <Filter className="w-5 h-5" />
@@ -254,7 +254,7 @@ export default function ProductsPage() {
 
       {/* Products Table */}
       <div className="overflow-x-auto">
-        <table className="table table-zebra">
+        <table className="table bg-base-100 table-zebra">
           <thead>
             <tr>
               <th
@@ -308,7 +308,7 @@ export default function ProductsPage() {
                     {product.name}
                   </a>
                   {product.status === 'ok' && (
-                    <div className="badge badge-outline badge-info badge-sm gap-1 whitespace-nowrap">
+                    <div className="badge badge-outline badge-info gap-1 whitespace-nowrap">
                       <CheckCircle className="w-4 h-4" />
                       CurlsBot Approved
                     </div>

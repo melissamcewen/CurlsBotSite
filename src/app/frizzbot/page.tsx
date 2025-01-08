@@ -329,8 +329,6 @@ export default function FrizzBot() {
               </Link>
             </div>
           </div>
-
-
         </div>
       )}
     </div>
