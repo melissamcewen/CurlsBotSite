@@ -122,6 +122,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-base-100 text-base-content`}
         suppressHydrationWarning
       >
+        <div className="alert alert-info">
+          <span>Still seeing the old site? <a href="/api/clear-cache" className="link">Click here to clear your cache</a></span>
+        </div>
         <GoogleAnalytics />
         <Script
           src="https://s.skimresources.com/js/276362X1762442.skimlinks.js"

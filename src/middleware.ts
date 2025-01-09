@@ -2,11 +2,16 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
-  // Clone the response for static content
+  // Clone the response
   const response = NextResponse.next();
 
-  // Add cache control headers for static content
-  response.headers.set('Cache-Control', 'public, max-age=31536000, immutable');
+  // Add cache control headers
+  response.headers.set(
+    'Cache-Control',
+    'no-store, no-cache, must-revalidate, proxy-revalidate',
+  );
+  response.headers.set('Pragma', 'no-cache');
+  response.headers.set('Expires', '0');
 
   return response;
 }
