@@ -37,7 +37,6 @@ const SulfatesCheatSheet: React.FC = () => {
             'Tea Lauryl Sulfate',
             'Sodium Coco Sulfate',
             'Ammonium Lauryl Sulfate',
-            'Sodium Xylene Sulfonate',
             'Sodium Laureth Sulfate',
             'Ammonium Cocoyl Sulfate',
             'Sodium Cetearyl Sulfate',
