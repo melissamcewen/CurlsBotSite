@@ -1,6 +1,5 @@
 'use client';
 
-import { Metadata } from 'next';
 import { useState } from 'react';
 import {
   MapPin,
@@ -13,17 +12,6 @@ import type { WeatherData, WeatherAnalysis } from '@/lib/weather';
 import { analyzeDewPoint } from '@/lib/weather';
 import Link from 'next/link';
 import Avatar from '@/components/avatar';
-
-export const metadata: Metadata = {
-  title: 'FrizzBot Weather Forecast',
-  description:
-    'Get personalized hair care recommendations based on your local weather conditions. Analyze temperature, humidity, and dew point to manage frizz.',
-  openGraph: {
-    title: 'FrizzBot Weather Forecast',
-    description:
-      'Get personalized hair care recommendations based on your local weather conditions.',
-  },
-};
 
 export default function FrizzBot() {
   const [loading, setLoading] = useState(false);
