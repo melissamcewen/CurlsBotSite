@@ -18,8 +18,8 @@ The FrizzBot weather forecast doesn’t just look at humidity, it looks at the d
 
 ## Types of humectants for curly/wavy hair
 We classify humectants into two types based on their unique properties for curly/wavy hair:
-- **Simple:** These are common humectants that are molecularly small like glycerin. They usually do a great job, except if the air is dry they can become brittle and make things worse (frizz, friction, etc.)
-- **Complex:** These are heavier and more complicated humectants like flax seed extract. They have lots of nooks and crannies to store water in, so they are less affected by dry air. They are also often called *film-forming** humectants because of the protective water and hair holding film the form on the hair, which can do double duty in preventing and holding back frizz.
+- **Simple:** These are common humectants  like glycerin. They usually do a great job, except if the air is dry they can become brittle and make things worse (frizz, friction, etc.)
+- **Complex:** These are more complicated humectants like flax seed extract. They have lots of nooks and crannies to store water in, so they are less affected by dry air. They are also often called *film-forming** humectants because of the protective water and hair holding film the form on the hair, which can do double duty in preventing and holding back frizz.
 - **Protein**: Did you know proteins *are* humectants? Most are complex type, but they get their own category so we can analyze them seperately. There is a controversial idea of “protein overload” but we haven’t found much solid science on it.
 
 ## Should I avoid simple humectants in extra dry/extra wet weather?
