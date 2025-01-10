@@ -119,7 +119,7 @@ export default async function IngredientPage({ params }: PageProps) {
 
       <div className="space-y-6">
         {/* Ingredient Information */}
-        <div className="bg-base-100 text-base-content">
+        <div className="text-base-content">
           <div className="">
             {markdownContent ? (
               <div

@@ -57,7 +57,7 @@ export function ReferencesList({ references }: ReferencesListProps) {
     <div className="mt-8">
       <h2 className="text-xl font-semibold mb-4">References</h2>
       <div className="overflow-x-auto">
-        <table className="table table-zebra w-full">
+        <table className="table table-zebra w-full bg-base-100">
           <thead>
             <tr>
               <th>Source</th>

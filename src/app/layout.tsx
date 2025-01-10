@@ -123,7 +123,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <GoogleAnalytics />
-     
+
         <div className="min-h-screen overflow-x-hidden">
           <div className="absolute inset-0 pointer-events-none" />
           <Navbar />
