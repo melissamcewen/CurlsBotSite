@@ -1,36 +1,31 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { remark } from 'remark';
-import html from 'remark-html';
-import remarkNextImage from './remarkNextImage';
 
 const contentDirectory = path.join(process.cwd(), 'src/content');
 
 export async function getMarkdownData(filePath: string) {
-  const fullPath = path.join(contentDirectory, filePath);
+  // Try MDX first, then fall back to MD
+  const mdxPath = path.join(
+    contentDirectory,
+    filePath.replace(/\.md$/, '.mdx'),
+  );
+  const mdPath = path.join(contentDirectory, filePath);
 
-
-  // Check if file exists
-  if (!fs.existsSync(fullPath)) {
-
-    return null;
+  let fullPath = mdxPath;
+  if (!fs.existsSync(mdxPath)) {
+    if (!fs.existsSync(mdPath)) {
+      return null;
+    }
+    fullPath = mdPath;
   }
-
 
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
 
-  // Convert markdown to HTML with Next.js Image support
-  const processedContent = await remark()
-    .use(remarkNextImage)
-    .use(html, { sanitize: false }) // Disable sanitization to allow our custom HTML
-    .process(content);
-  const contentHtml = processedContent.toString();
-
   return {
     frontmatter: data,
-    content: contentHtml,
+    content,
   };
 }
 
@@ -40,9 +35,11 @@ export async function getBlogPosts() {
 
   const posts = await Promise.all(
     fileNames
-      .filter((fileName) => fileName.endsWith('.md'))
+      .filter(
+        (fileName) => fileName.endsWith('.md') || fileName.endsWith('.mdx'),
+      )
       .map(async (fileName) => {
-        const slug = fileName.replace(/\.md$/, '');
+        const slug = fileName.replace(/\.(md|mdx)$/, '');
         const post = await getMarkdownData(`blog/${fileName}`);
         return {
           slug,
@@ -68,7 +65,6 @@ export async function getCategoryContent(categoryId: string) {
 }
 
 export async function getIngredientContent(ingredientId: string) {
-
   return getMarkdownData(`ingredients/${ingredientId}.md`);
 }
 

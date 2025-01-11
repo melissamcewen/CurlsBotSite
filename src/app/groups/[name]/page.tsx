@@ -3,13 +3,14 @@ import Link from 'next/link';
 import {
   getBundledDatabase,
   type Category,
-  type Group,
 } from 'haircare-ingredients-analyzer';
-import { getGroupContent } from '@/utils/markdown';
-import { ReferencesList } from '@/components/references/ReferencesList';
 import { Metadata } from 'next';
 import { slugToId, idToSlug } from '@/utils/slugs';
 import { ArrowRight } from 'lucide-react';
+import {
+  generateGroupMetadata,
+  getGroupStructuredData,
+} from '@/utils/group-metadata';
 
 interface PageProps {
   params: Promise<{
@@ -17,7 +18,6 @@ interface PageProps {
   }>;
 }
 
-// Generate metadata
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
@@ -35,111 +35,7 @@ export async function generateMetadata({
   }
 
   const group = database.groups[dbGroupId];
-  const markdownContent = await getGroupContent(dbGroupId);
-
-  // Find all categories in this group
-  const categories = Object.values(database.categories).filter(
-    (cat: Category) => cat.group === dbGroupId,
-  );
-
-  // Prepare structured data
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'WebPage',
-    name: markdownContent?.frontmatter?.title || group.name,
-    description:
-      markdownContent?.frontmatter?.description ||
-      group.description ||
-      `Hair care ingredients in the ${group.name} group`,
-    mainEntity: {
-      '@type': 'ItemList',
-      name: `Categories in ${group.name}`,
-      numberOfItems: categories.length,
-      itemListElement: categories.map((category, index) => ({
-        '@type': 'ListItem',
-        position: index + 1,
-        item: {
-          '@type': 'Thing',
-          name: category.name,
-          description: category.description,
-          url: `/categories/${idToSlug(category.id)}`,
-        },
-      })),
-    },
-    ...(group.references && {
-      citation: group.references.map((ref) => ({
-        '@type': 'CreativeWork',
-        name: ref.title || 'Reference',
-        url: ref.url,
-      })),
-    }),
-  };
-
-  return {
-    title:
-      markdownContent?.frontmatter?.title ||
-      group.name + ' for curly/wavy hair | CurlsBot',
-    description:
-      markdownContent?.frontmatter?.description ||
-      group.description ||
-      `A guide to ${
-        group.name
-      } for curly/wavy hair. Learn about different types of ${group.name.toLowerCase()} and their effects on curly and wavy hair.`,
-    robots: {
-      ...(markdownContent
-        ? {
-            index: true,
-            follow: true,
-            'max-snippet': -1,
-            'max-image-preview': 'large',
-            'max-video-preview': -1,
-          }
-        : {
-            index: false,
-            follow: false,
-          }),
-    },
-    alternates: {
-      canonical: `/groups/${resolvedParams.name}`,
-    },
-    openGraph: {
-      title:
-        markdownContent?.frontmatter?.title ||
-        group.name + ' for curly/wavy hair | CurlsBot',
-      description:
-        markdownContent?.frontmatter?.description ||
-        group.description ||
-        `A guide to ${
-          group.name
-        } for curly/wavy hair. Learn about different types of ${group.name.toLowerCase()} and their effects on curly and wavy hair.`,
-      url: `/groups/${resolvedParams.name}`,
-      type: 'article',
-      images: [
-        {
-          url: '/images/og-default.png',
-          width: 1200,
-          height: 630,
-          alt: `${group.name} - Hair Care Guide`,
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title:
-        markdownContent?.frontmatter?.title ||
-        group.name + ' for curly/wavy hair | CurlsBot',
-      description:
-        markdownContent?.frontmatter?.description ||
-        group.description ||
-        `A guide to ${
-          group.name
-        } for curly/wavy hair. Learn about different types of ${group.name.toLowerCase()} and their effects on curly and wavy hair.`,
-      images: ['/images/og-default.png'],
-    },
-    other: {
-      'application/ld+json': JSON.stringify(structuredData),
-    },
-  };
+  return generateGroupMetadata(dbGroupId, group.name, group.description);
 }
 
 export default async function GroupPage({ params }: PageProps) {
@@ -164,41 +60,19 @@ export default async function GroupPage({ params }: PageProps) {
     (cat: Category) => cat.group === dbGroupId,
   );
 
-  // Try to get markdown content
-  const markdownContent = await getGroupContent(dbGroupId);
+  // Try to get MDX content
+  let Content;
+  try {
+    Content = (await import(`@/content/groups/${dbGroupId}.mdx`)).default;
+  } catch (e) {
+    notFound();
+  }
 
-  // Prepare structured data
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'WebPage',
-    name: markdownContent?.frontmatter?.title || group.name,
-    description:
-      markdownContent?.frontmatter?.description ||
-      group.description ||
-      `Hair care ingredients in the ${group.name} group`,
-    mainEntity: {
-      '@type': 'ItemList',
-      name: `Categories in ${group.name}`,
-      numberOfItems: categories.length,
-      itemListElement: categories.map((category, index) => ({
-        '@type': 'ListItem',
-        position: index + 1,
-        item: {
-          '@type': 'Thing',
-          name: category.name,
-          description: category.description,
-          url: `/categories/${idToSlug(category.id)}`,
-        },
-      })),
-    },
-    ...(group.references && {
-      citation: group.references.map((ref) => ({
-        '@type': 'CreativeWork',
-        name: ref.title || 'Reference',
-        url: ref.url,
-      })),
-    }),
-  };
+  const structuredData = getGroupStructuredData(
+    dbGroupId,
+    group.name,
+    group.description,
+  );
 
   return (
     <div className="bg-base-100 p-0 md:p-8">
@@ -206,7 +80,7 @@ export default async function GroupPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <div className="container mx-auto p-4 max-w-4xl ">
+      <div className="container mx-auto p-4 max-w-4xl">
         <div className="mb-4">
           <Link href="/categories" className="btn btn-ghost btn-sm">
             ← Back to Groups
@@ -215,33 +89,14 @@ export default async function GroupPage({ params }: PageProps) {
 
         <div className="space-y-6">
           {/* Group Information */}
-          <div className=" bg-base-100  text-base-content ">
-            <div className="">
-              {markdownContent ? (
-                <div
-                  className="prose prose-base mt-4 max-w-none"
-                  dangerouslySetInnerHTML={{ __html: markdownContent.content }}
-                />
-              ) : (
-                <>
-                  <h1 className="card-title text-3xl">{group.name}</h1>
-                  {group.description && (
-                    <p className="text-base-content/70 mt-2">
-                      {group.description}
-                    </p>
-                  )}
-                </>
-              )}
-
-              {/* References */}
-              {group.references && (
-                <ReferencesList references={group.references} />
-              )}
+          <div className="bg-base-100 text-base-content">
+            <div className="prose prose-base mt-4 max-w-none">
+              <Content />
             </div>
           </div>
 
           {/* Categories Table */}
-          <div className=" text-base-content">
+          <div className="text-base-content">
             <div className="">
               <h2 className="card-title text-2xl mb-4">
                 Categories in this Group
@@ -253,7 +108,7 @@ export default async function GroupPage({ params }: PageProps) {
                     href={`/categories/${idToSlug(category.id)}`}
                     className="card bg-base-100 hover:bg-base-300 transition-colors duration-200 cb-border border-primary"
                   >
-                    <div className="card-body ">
+                    <div className="card-body">
                       <h3 className="card-title text-lg">{category.name}</h3>
                       {category.description && (
                         <p className="text-base-content/70 text-sm">
