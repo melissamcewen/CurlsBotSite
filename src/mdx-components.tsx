@@ -1,15 +1,13 @@
-//'use client';
+/// do not use 'use client';
 
 import type { MDXComponents } from 'mdx/types';
-import { MdxImage } from '@/components/mdx/MdxImage';
-import { AutoReferencesList } from '@/components/references/AutoReferencesList';
 import { InlineReference } from '@/components/references/InlineReference';
+import { AutoReferencesList } from '@/components/references/AutoReferencesList';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
-    img: MdxImage,
-    InlineReference: InlineReference,
-    AutoReferencesList: AutoReferencesList,
+    InlineReference,
+    AutoReferencesList,
     ...components,
   };
 }

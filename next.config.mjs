@@ -4,9 +4,6 @@ import remarkFrontmatter from 'remark-frontmatter'
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
-  experimental: {
-    mdxRs: true,
-  },
   async redirects() {
     return [
       {
@@ -89,7 +86,6 @@ const nextConfig = {
 }
 
 const withMDX = createMDX({
-  extension: /\.mdx?$/,
   options: {
     remarkPlugins: [remarkFrontmatter],
     rehypePlugins: [],

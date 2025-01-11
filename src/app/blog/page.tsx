@@ -1,10 +1,9 @@
+import { getBlogPosts } from '@/utils/markdown';
 import Link from 'next/link';
 import { BookOpenText, Info } from 'lucide-react';
 import { Suspense } from 'react';
 import BlogLoading from './loading';
 import { createPageMetadata } from '@/config/metadata';
-import { readdir } from 'fs/promises';
-import path from 'path';
 
 interface BlogPost {
   slug: string;
@@ -24,47 +23,10 @@ export const metadata = createPageMetadata({
 
 // Separate component for blog posts to enable streaming
 async function BlogPosts() {
-  // Get all MDX files from the blog directory
-  const contentDirectory = path.join(process.cwd(), 'src/content/blog');
-  const files = await readdir(contentDirectory);
-  const mdxFiles = files.filter((file) => file.endsWith('.mdx'));
-
-  // Import all blog posts
-  const posts = await Promise.all(
-    mdxFiles.map(async (file) => {
-      try {
-        const slug = file.replace(/\.mdx$/, '');
-        const { frontmatter } = await import(`@/content/blog/${slug}.mdx`);
-
-        // Debug logging
-        console.log('Imported post:', slug, frontmatter);
-
-        if (!frontmatter) {
-          console.error(`Missing frontmatter for ${slug}`);
-          return null;
-        }
-
-        if (!frontmatter.date) {
-          console.error(`Missing date in frontmatter for ${slug}`);
-          return null;
-        }
-
-        return {
-          slug,
-          frontmatter,
-        };
-      } catch (error) {
-        console.error(`Error importing ${file}:`, error);
-        return null;
-      }
-    }),
-  );
-
-  // Filter out any failed imports
-  const validPosts = posts.filter((post): post is BlogPost => post !== null);
+  const posts = await getBlogPosts();
 
   // Sort posts by date, newest first
-  const sortedPosts = validPosts.sort((a, b) => {
+  const sortedPosts = posts.sort((a, b) => {
     const dateA = new Date(a.frontmatter.date);
     const dateB = new Date(b.frontmatter.date);
     return dateB.getTime() - dateA.getTime();

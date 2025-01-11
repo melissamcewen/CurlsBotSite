@@ -2,14 +2,7 @@
 
 ## Overview
 
-This document outlines the plan for migrating the blog from markdown to MDX format, with a focus on maintaining image optimization and content features.
-
-## Completed Steps
-
-- ✓ Install and configure MDX support
-  - Installed `@next/mdx` and `@types/mdx`
-  - Configured Next.js for MDX support
-  - Set up `mdx-components.tsx`
+This document outlines the plan for migrating the blog from markdown to MDX format, including the reference system integration.
 
 ## 1. Current Blog Structure
 
@@ -21,19 +14,10 @@ This document outlines the plan for migrating the blog from markdown to MDX form
 
 ## 2. Migration Steps
 
-### 2.1 Add MDX Components
+### 2.1 Update Dependencies
 
-1. Create Image component for MDX:
-
-   - Create `src/components/mdx/MdxImage.tsx`
-   - Wrap Next.js Image component
-   - Support relative paths from blog content
-   - Handle alt text and dimensions
-   - Add lazy loading
-
-2. Add components to MDX:
-   - Add Image component to `mdx-components.tsx`
-   - Add any other needed components (headings, links, etc.)
+- [x] Install `@next/mdx` and `@types/mdx`
+- [x] Configure Next.js for MDX support
 
 ### 2.2 Update Blog Components
 
@@ -51,20 +35,35 @@ This document outlines the plan for migrating the blog from markdown to MDX form
    - Update to handle both .md and .mdx files
    - Maintain loading states
 
-### 2.3 Content Migration
+### 2.3 Add Reference Support
+
+1. Add reference components to MDX:
+
+   - Make `InlineReference` available
+   - Make `AutoReferencesList` available
+   - Add to `mdx-components.tsx`
+
+2. Update blog post layout:
+   - Add references section at bottom
+   - Style reference citations
+   - Ensure references reset per post
+
+### 2.4 Content Migration
 
 1. For each blog post:
    - Convert `.md` to `.mdx`
-   - Update image syntax to use MDX Image component
-   - Test rendering and images
+   - Update markdown links to use `<InlineReference>`
+   - Add `<AutoReferencesList />` at bottom
+   - Test rendering and references
    - Verify images still work
    - Check frontmatter
 
-### 2.4 Update Utilities
+### 2.5 Update Utilities
 
 1. Modify `src/utils/markdown.ts`:
 
    - Update `getBlogPost` to handle .mdx
+   - Keep backwards compatibility for .md
    - Update types for MDX content
 
 2. Update metadata handling:
@@ -77,13 +76,15 @@ This document outlines the plan for migrating the blog from markdown to MDX form
 ### 3.1 Component Tests
 
 - Test blog post rendering
+- Test reference integration
 - Test image optimization
 - Test loading states
 
 ### 3.2 Content Tests
 
 - Verify each post renders correctly
-- Verify images and metadata
+- Check reference numbering
+- Verify metadata and images
 - Test streaming performance
 
 ## 4. Cleanup
@@ -99,5 +100,5 @@ This document outlines the plan for migrating the blog from markdown to MDX form
 - Preserve existing metadata
 - Maintain image optimization
 - Keep streaming support
+- References should reset per post
 - Support both .md and .mdx during migration
-- Images should maintain quality and performance
