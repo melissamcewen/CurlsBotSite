@@ -9,8 +9,8 @@ interface InlineReferenceProps {
 }
 
 export function InlineReference({ id }: InlineReferenceProps) {
-  const displayNumber = addReference(id);
   const reference = defaultReferences[id];
+  const number = addReference(id);
 
   if (!reference) {
     return null;
@@ -25,7 +25,7 @@ export function InlineReference({ id }: InlineReferenceProps) {
         className="text-info hover:text-info-content inline-flex items-center"
         title={reference.title || 'Reference'}
       >
-        <Info className="w-3 h-3" />[{displayNumber}]
+        <Info className="w-3 h-3" />[{number}]
       </a>
     </sup>
   );

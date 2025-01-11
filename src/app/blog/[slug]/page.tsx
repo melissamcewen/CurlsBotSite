@@ -1,5 +1,4 @@
 import { notFound } from 'next/navigation';
-import { getBlogPost } from '@/utils/markdown';
 import { createDynamicPageMetadata } from '@/config/metadata';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -12,7 +11,6 @@ interface BlogPost {
     date: string;
     image?: string;
   };
-  content: string;
 }
 
 interface PageProps {
@@ -23,17 +21,24 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps) {
   const resolvedParams = await params;
-  const post = await getBlogPost(resolvedParams.slug);
 
-  if (!post) {
+  // Try to get MDX content
+  let Content;
+  try {
+    const { default: PostContent, frontmatter } = await import(
+      `@/content/blog/${resolvedParams.slug}.mdx`
+    );
+    Content = { Component: PostContent, frontmatter };
+  } catch (e) {
+    console.error(`Error loading blog post ${resolvedParams.slug}:`, e);
     notFound();
   }
 
   return createDynamicPageMetadata({
-    title: post.frontmatter.title,
+    title: Content.frontmatter.title,
     description:
-      post.frontmatter.description ||
-      `Read about ${post.frontmatter.title} on CurlsBot.`,
+      Content.frontmatter.description ||
+      `Read about ${Content.frontmatter.title} on CurlsBot.`,
     path: `/blog/${resolvedParams.slug}`,
     hasContent: true,
   });
@@ -41,14 +46,21 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function BlogPostPage({ params }: PageProps) {
   const resolvedParams = await params;
-  const post = await getBlogPost(resolvedParams.slug);
 
-  if (!post) {
+  // Try to get MDX content
+  let Content;
+  try {
+    const { default: PostContent, frontmatter } = await import(
+      `@/content/blog/${resolvedParams.slug}.mdx`
+    );
+    Content = { Component: PostContent, frontmatter };
+  } catch (e) {
+    console.error(`Error loading blog post ${resolvedParams.slug}:`, e);
     notFound();
   }
 
   // Create a UTC date object
-  const date = new Date(post.frontmatter.date);
+  const date = new Date(Content.frontmatter.date);
   const formattedDate = new Intl.DateTimeFormat('en-US', {
     year: 'numeric',
     month: 'long',
@@ -70,14 +82,14 @@ export default async function BlogPostPage({ params }: PageProps) {
             <div className="flex items-center gap-2 mb-6">
               <BookOpenText className="w-8 h-8 text-primary" />
               <h1 className="text-3xl font-bold m-0">
-                {post.frontmatter.title}
+                {Content.frontmatter.title}
               </h1>
             </div>
 
             <div className="min-h-[3rem] -mt-4">
-              {post.frontmatter.description && (
+              {Content.frontmatter.description && (
                 <p className="text-xl text-base-content/70">
-                  {post.frontmatter.description}
+                  {Content.frontmatter.description}
                 </p>
               )}
             </div>
@@ -86,11 +98,11 @@ export default async function BlogPostPage({ params }: PageProps) {
               {formattedDate}
             </div>
 
-            {post.frontmatter.image && (
+            {Content.frontmatter.image && (
               <div className="my-8">
                 <Image
-                  src={post.frontmatter.image}
-                  alt={post.frontmatter.title}
+                  src={Content.frontmatter.image}
+                  alt={Content.frontmatter.title}
                   width={2400}
                   height={1260}
                   className="rounded-lg w-full h-auto"
@@ -100,7 +112,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               </div>
             )}
 
-            <div dangerouslySetInnerHTML={{ __html: post.content }} />
+            <Content.Component />
           </article>
         </div>
       </div>

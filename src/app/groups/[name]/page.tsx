@@ -65,7 +65,8 @@ export default async function GroupPage({ params }: PageProps) {
   try {
     Content = (await import(`@/content/groups/${dbGroupId}.mdx`)).default;
   } catch (e) {
-    notFound();
+    // MDX content not found - that's okay, we'll use basic info
+    Content = null;
   }
 
   const structuredData = getGroupStructuredData(
@@ -90,9 +91,20 @@ export default async function GroupPage({ params }: PageProps) {
         <div className="space-y-6">
           {/* Group Information */}
           <div className="bg-base-100 text-base-content">
-            <div className="prose prose-base mt-4 max-w-none">
-              <Content />
-            </div>
+            {Content ? (
+              <div className="prose prose-base mt-4 max-w-none">
+                <Content />
+              </div>
+            ) : (
+              <>
+                <h1 className="text-3xl font-bold mb-4">{group.name}</h1>
+                {group.description && (
+                  <p className="text-base-content/70 mb-6">
+                    {group.description}
+                  </p>
+                )}
+              </>
+            )}
           </div>
 
           {/* Categories Table */}

@@ -1,117 +1,94 @@
 import { Metadata } from 'next';
 
-interface MetadataParams {
-  title?: string;
+interface MetadataOptions {
+  title: string;
   description: string;
   path: string;
-  type?: 'website' | 'article';
-  noindex?: boolean;
-  image?: string;
+  hasContent?: boolean;
+  imageAlt?: string;
 }
 
 export function createPageMetadata({
   title,
   description,
   path,
-  type = 'website',
-  noindex = false,
-  image = '/images/og-default.png',
-}: MetadataParams): Metadata {
-  const fullTitle = title ? `${title} | CurlsBot` : 'CurlsBot';
-
+  hasContent = false,
+}: MetadataOptions): Metadata {
   return {
-    title: fullTitle,
+    title: `${title} | CurlsBot`,
     description,
-    robots: noindex
-      ? {
-          index: false,
-          follow: true,
-        }
-      : {
-          index: true,
-          follow: true,
-          'max-snippet': -1,
-          'max-image-preview': 'large',
-          'max-video-preview': -1,
-        },
+    robots: {
+      index: true,
+      follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large',
+      'max-video-preview': -1,
+    },
     alternates: {
-      canonical: path,
+      canonical: `https://www.curlsbot.com${path}`,
     },
     openGraph: {
-      title: fullTitle,
+      title: `${title} | CurlsBot`,
       description,
-      url: path,
-      type,
+      url: `https://www.curlsbot.com${path}`,
+      type: hasContent ? 'article' : 'website',
       images: [
         {
-          url: image,
+          url: '/images/og-default.png',
           width: 1200,
           height: 630,
-          alt: title || 'CurlsBot',
+          alt: title,
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: fullTitle,
+      title: `${title} | CurlsBot`,
       description,
-      images: [image],
+      images: ['/images/og-default.png'],
     },
   };
-}
-
-// For dynamic pages that need to generate metadata based on content
-interface DynamicMetadataParams extends MetadataParams {
-  hasContent?: boolean;
-  imageAlt?: string;
 }
 
 export function createDynamicPageMetadata({
   title,
   description,
   path,
-  type = 'article',
-  hasContent = true,
-  image = '/images/og-default.png',
+  hasContent = false,
   imageAlt,
-}: DynamicMetadataParams): Metadata {
+}: MetadataOptions): Metadata {
   return {
-    title: title ? `${title} | CurlsBot` : 'CurlsBot',
+    title: `${title} | CurlsBot`,
     description,
-    robots: hasContent
-      ? {
-          index: true,
-          follow: true,
-          'max-snippet': -1,
-          'max-image-preview': 'large',
-          'max-video-preview': -1,
-        }
-      : {
-          index: false,
-          follow: false,
-        },
+    robots: {
+      index: true,
+      follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large',
+      'max-video-preview': -1,
+    },
     alternates: {
-      canonical: path,
+      canonical: `https://www.curlsbot.com${path}`,
     },
     openGraph: {
-      title: title ? `${title} | CurlsBot` : 'CurlsBot',
+      title: `${title} | CurlsBot`,
       description,
-      url: path,
-      type,
+      url: `https://www.curlsbot.com${path}`,
+      type: hasContent ? 'article' : 'website',
       images: [
         {
-          url: image,
+          url: '/images/og-default.png',
           width: 1200,
           height: 630,
-          alt: imageAlt || title || 'CurlsBot',
+          alt: imageAlt || title,
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: title ? `${title} | CurlsBot` : 'CurlsBot',
+      title: `${title} | CurlsBot`,
       description,
-      images: [image],
+      images: ['/images/og-default.png'],
     },
   };
 }

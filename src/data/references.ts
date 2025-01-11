@@ -294,6 +294,9 @@ export const defaultReferences: References = {
     description:
       "Humectants grab water out of air, but if air doesn't have enough water (dry weather), it can become brittle and create friction, which can mean frizz. Theoretically this could dehydrate hair. Oils can slow water loss. Notes that glycerin can be paired with emollients and film-formers to slow water loss. Caveats that none of this is well studied.",
     type: 'science',
+    author: 'Wendy M.S.',
+    date: '2015',
+    source: 'Science-y Hair Blog',
   },
   '29': {
     id: '29',
@@ -412,7 +415,7 @@ export const defaultReferences: References = {
   '44': {
     id: '44',
     url: 'https://thebeautybrains.com/2007/06/sulfates-in-shampoos-what-are-they/',
-    title: 'The Beauty Brains',
+    title: 'Sulfates in Shampoos: What Are They?',
     type: 'science',
     author: 'The Beauty Brains',
     date: '2007',

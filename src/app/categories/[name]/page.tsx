@@ -2,15 +2,15 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import {
   getBundledDatabase,
-  type Category,
   type Ingredient,
 } from 'haircare-ingredients-analyzer';
-import { getCategoryContent } from '@/utils/markdown';
-import { ReferencesList } from '@/components/references/ReferencesList';
+import { Metadata } from 'next';
 import { slugToId, idToSlug } from '@/utils/slugs';
-import { createDynamicPageMetadata } from '@/config/metadata';
-import { Breadcrumbs } from '@/components/navigation/Breadcrumbs';
 import { Info } from 'lucide-react';
+import {
+  generateCategoryMetadata,
+  getCategoryStructuredData,
+} from '@/utils/category-metadata';
 
 interface PageProps {
   params: Promise<{
@@ -18,8 +18,9 @@ interface PageProps {
   }>;
 }
 
-// Generate metadata
-export async function generateMetadata({ params }: PageProps) {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const resolvedParams = await params;
   const decodedName = decodeURIComponent(resolvedParams.name);
   const categoryId = slugToId(decodedName.toLowerCase());
@@ -34,37 +35,23 @@ export async function generateMetadata({ params }: PageProps) {
   }
 
   const category = database.categories[dbCategoryId];
-  const markdownContent = await getCategoryContent(dbCategoryId);
-
-  return createDynamicPageMetadata({
-    title: markdownContent?.frontmatter?.title || category.name + ' and curly/wavy hair guide',
-    description:
-      markdownContent?.frontmatter?.description ||
-      category.description ||
-      `Learn about ${category.name} in hair care products and their effects on curly and wavy hair.`,
-    path: `/categories/${resolvedParams.name}`,
-    hasContent: !!markdownContent,
-    imageAlt: `${category.name} - Hair Care Guide`,
-  });
+  return generateCategoryMetadata(
+    dbCategoryId,
+    category.name,
+    category.description,
+  );
 }
 
 export default async function CategoryPage({ params }: PageProps) {
   const resolvedParams = await params;
   const decodedName = decodeURIComponent(resolvedParams.name);
-  const categoryId = slugToId(decodedName);
+  const categoryId = slugToId(decodedName.toLowerCase());
   const database = getBundledDatabase();
 
-  // Find the category - exact match first, then case-insensitive
-  let dbCategoryId = Object.keys(database.categories).find(
-    (id) => id === categoryId,
+  // Find the category
+  const dbCategoryId = Object.keys(database.categories).find(
+    (id) => id.toLowerCase() === categoryId,
   );
-
-  // If no exact match, try case-insensitive
-  if (!dbCategoryId) {
-    dbCategoryId = Object.keys(database.categories).find(
-      (id) => id.toLowerCase() === categoryId.toLowerCase(),
-    );
-  }
 
   if (!dbCategoryId) {
     notFound();
@@ -72,131 +59,72 @@ export default async function CategoryPage({ params }: PageProps) {
 
   const category = database.categories[dbCategoryId];
 
-  // Get group info if it exists
-  const groupInfo = category.group ? database.groups[category.group] : null;
-
   // Find all ingredients in this category
   const ingredients = Object.values(database.ingredients).filter(
-    (ingredient: Ingredient) => ingredient.categories.includes(dbCategoryId),
+    (ing: Ingredient) => ing.categories?.includes(dbCategoryId),
   );
 
-  // Try to get markdown content
-  const markdownContent = await getCategoryContent(idToSlug(dbCategoryId));
+  // Debug logging
+  console.log('Category ID:', dbCategoryId);
+  console.log('Number of ingredients:', ingredients.length);
+  console.log('First few ingredients:', ingredients.slice(0, 3));
 
-  // Build breadcrumbs
-  const breadcrumbs = [{ href: '/categories', label: 'Categories' }];
-
-  if (groupInfo) {
-    breadcrumbs.unshift({
-      href: `/groups/${idToSlug(category.group)}`,
-      label: groupInfo.name,
-    });
-    breadcrumbs.unshift({ href: '/groups', label: 'Groups' });
+  // Try to get MDX content
+  let Content;
+  try {
+    Content = (await import(`@/content/categories/${dbCategoryId}.mdx`))
+      .default;
+  } catch (e) {
+    // MDX content not found - that's okay, we'll use basic info
+    Content = null;
   }
 
-  breadcrumbs.push({
-    href: `/categories/${resolvedParams.name}`,
-    label: category.name,
-  });
-
-  // Prepare structured data
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'WebPage',
-    name: markdownContent?.frontmatter?.title || category.name,
-    description:
-      markdownContent?.frontmatter?.description ||
-      category.description ||
-      `Hair care ingredients in the ${category.name} category`,
-    breadcrumb: {
-      '@type': 'BreadcrumbList',
-      itemListElement: breadcrumbs.map((item, index) => ({
-        '@type': 'ListItem',
-        position: index + 1,
-        item: {
-          '@type': 'Thing',
-          name: item.label,
-          '@id': `https://curlsbot.com${item.href}`,
-        },
-      })),
-    },
-    mainEntity: {
-      '@type': 'ItemList',
-      name: `Ingredients in ${category.name}`,
-      numberOfItems: ingredients.length,
-      itemListElement: ingredients.map((ingredient, index) => ({
-        '@type': 'ListItem',
-        position: index + 1,
-        item: {
-          '@type': 'Thing',
-          name: ingredient.name,
-          description: ingredient.description,
-          url: `/ingredients/${idToSlug(ingredient.id)}`,
-        },
-      })),
-    },
-    ...(category.references && {
-      citation: category.references.map((ref) => ({
-        '@type': 'CreativeWork',
-        name: ref.title || 'Reference',
-        url: ref.url,
-      })),
-    }),
-  };
+  const structuredData = getCategoryStructuredData(
+    dbCategoryId,
+    category.name,
+    category.description,
+  );
 
   return (
-    <div className="bg-base-100 p-2 md:p-8">
+    <div className="bg-base-100 p-0 md:p-8">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <div className="container mx-auto max-w-4xl">
-        <Breadcrumbs items={breadcrumbs} />
+      <div className="container mx-auto p-4 max-w-4xl">
+        <div className="mb-4">
+          <Link href="/categories" className="btn btn-ghost btn-sm">
+            ← Back to Categories
+          </Link>
+        </div>
 
         <div className="space-y-6">
           {/* Category Information */}
-          <div className="bg-base-100  text-base-content cb-card-liter md:cb-card-lite">
-            <div className="">
-              {markdownContent ? (
-                <div
-                  className="prose prose-base mt-4 max-w-none"
-                  dangerouslySetInnerHTML={{
-                    __html: markdownContent.content,
-                  }}
-                />
-              ) : (
-                <>
-                  <h1 className="card-title text-3xl">{category.name}</h1>
-                  {category.description && (
-                    <p className="text-base-content/70 mt-2">
-                      {category.description}
-                    </p>
-                  )}
-                </>
-              )}
-              {category.group && (
-                <div className="badge badge-secondary mt-2">
-                  <Link href={`/groups/${idToSlug(category.group)}`}>
-                    Group: {groupInfo?.name}
-                  </Link>
-                </div>
-              )}
-
-              {/* References */}
-              {category.references && (
-                <ReferencesList references={category.references} />
-              )}
-            </div>
+          <div className="bg-base-100 text-base-content">
+            {Content ? (
+              <div className="prose prose-base mt-4 max-w-none">
+                <Content />
+              </div>
+            ) : (
+              <>
+                <h1 className="text-3xl font-bold mb-4">{category.name}</h1>
+                {category.description && (
+                  <p className="text-base-content/70 mb-6">
+                    {category.description}
+                  </p>
+                )}
+              </>
+            )}
           </div>
 
-          {/* Ingredients Table */}
-          <div className="card bg-base-100  text-base-content">
-            <div className="card-body">
-              <h2 className="card-title text-2xl mb-4">
+          {/* Ingredients List */}
+          {ingredients.length > 0 && (
+            <div className="bg-base-100 text-base-content">
+              <h2 className="text-2xl font-bold mb-4">
                 Ingredients in this Category
               </h2>
               <div className="overflow-x-auto">
-                <table className="table table-zebra">
+                <table className="table table-zebra w-full">
                   <thead>
                     <tr>
                       <th>Name</th>
@@ -249,7 +177,7 @@ export default async function CategoryPage({ params }: PageProps) {
                 </table>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>

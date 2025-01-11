@@ -10,7 +10,7 @@ function formatCitation(
   reference: (typeof defaultReferences)[keyof typeof defaultReferences],
 ) {
   const parts = [];
-console.log(reference)
+
   // Author and date
   if (reference.author) {
     parts.push(reference.author);
