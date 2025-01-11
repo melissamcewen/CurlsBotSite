@@ -1,17 +1,17 @@
-import { getBlogPosts } from '@/utils/markdown';
 import Link from 'next/link';
 import { BookOpenText, Info } from 'lucide-react';
 import { Suspense } from 'react';
 import BlogLoading from './loading';
 import { createPageMetadata } from '@/config/metadata';
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
 
-interface BlogPost {
-  slug: string;
-  frontmatter: {
-    title: string;
-    description?: string;
-    date: string;
-  };
+interface BlogFrontmatter {
+  title: string;
+  description?: string;
+  date: string;
+  image?: string;
 }
 
 export const metadata = createPageMetadata({
@@ -23,7 +23,24 @@ export const metadata = createPageMetadata({
 
 // Separate component for blog posts to enable streaming
 async function BlogPosts() {
-  const posts = await getBlogPosts();
+  const postsDirectory = path.join(process.cwd(), 'src/content/blog');
+  const fileNames = fs.readdirSync(postsDirectory);
+
+  const posts = await Promise.all(
+    fileNames
+      .filter((fileName) => fileName.endsWith('.mdx'))
+      .map(async (fileName) => {
+        const slug = fileName.replace(/\.mdx$/, '');
+        const fullPath = path.join(postsDirectory, fileName);
+        const fileContents = fs.readFileSync(fullPath, 'utf8');
+        const { data: frontmatter } = matter(fileContents);
+
+        return {
+          slug,
+          frontmatter,
+        };
+      }),
+  );
 
   // Sort posts by date, newest first
   const sortedPosts = posts.sort((a, b) => {
