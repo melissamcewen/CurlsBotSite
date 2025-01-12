@@ -8,11 +8,12 @@ import { PorosityType, ProductCategory } from '@/lib/routineBuilder';
 
 export default function SavedRoutine() {
   const searchParams = useSearchParams();
-  const porosity = searchParams.get('porosity') as PorosityType;
+  const porosity = (searchParams?.get('porosity') ??
+    'normal_porosity') as PorosityType;
   const products = getBundledProducts();
 
   // Get selected products from URL parameters
-  const selectedProducts = Array.from(searchParams.entries()).reduce(
+  const selectedProducts = Array.from(searchParams?.entries() ?? []).reduce(
     (acc, [key, value]) => {
       if (key.startsWith('product_')) {
         const category = key.replace('product_', '') as ProductCategory;

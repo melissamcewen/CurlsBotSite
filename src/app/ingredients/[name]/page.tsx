@@ -5,6 +5,7 @@ import {
   type Category,
   type Ingredient,
 } from 'haircare-ingredients-analyzer';
+import type { ReferenceUsage } from '@/types/references';
 
 import { getIngredientContent } from '@/utils/markdown';
 import { IngredientDetailsCard } from '@/components/ingredients/IngredientDetailsCard';
@@ -45,7 +46,9 @@ export async function generateMetadata({ params }: PageProps) {
   const markdownContent = await getIngredientContent(idToSlug(dbIngredientId));
 
   return createDynamicPageMetadata({
-    title: markdownContent?.frontmatter?.title || ingredient.name + ' and curly/wavy hair guide',
+    title:
+      markdownContent?.frontmatter?.title ||
+      ingredient.name + ' and curly/wavy hair guide',
     description:
       markdownContent?.frontmatter?.description ||
       ingredient.description ||
@@ -139,7 +142,14 @@ export default async function IngredientPage({ params }: PageProps) {
 
             {/* References */}
             {ingredient.references && (
-              <ReferencesList references={ingredient.references} />
+              <ReferencesList
+                references={(
+                  ingredient.references as unknown as ReferenceUsage[]
+                ).map((ref, index) => ({
+                  id: ref.id,
+                  number: index + 1,
+                }))}
+              />
             )}
           </div>
         </div>

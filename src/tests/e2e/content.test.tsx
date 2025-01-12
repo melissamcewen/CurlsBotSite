@@ -79,6 +79,8 @@ describe('Content Pages Smoke Tests', () => {
   it('group page renders without crashing', async () => {
     const params = Promise.resolve({ name: 'alcohols' });
     render(await GroupPage({ params }));
-    expect(screen.getByText(/alcohols/i)).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { level: 1, name: /alcohols/i }),
+    ).toBeInTheDocument();
   });
 });

@@ -19,7 +19,7 @@ export default function RoutineBuilder() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [porosity, setPorosity] = useState<PorosityType>(() => {
-    const urlPorosity = searchParams.get('porosity');
+    const urlPorosity = searchParams?.get('porosity') ?? null;
     return (urlPorosity as PorosityType) || 'normal_porosity';
   });
   const [country, setCountry] = useState<CountryCode>(() =>
@@ -52,29 +52,37 @@ export default function RoutineBuilder() {
   useEffect(() => {
     const steps = getRoutineSteps(porosity, country);
     const initialSelections: Partial<Record<ProductCategory, Product>> = {};
-    const urlCost = searchParams.get('cost') as '$' | '$$' | '$$$' | undefined;
+    const urlCost = (searchParams?.get('cost') ?? null) as
+      | '$'
+      | '$$'
+      | '$$$'
+      | undefined;
     if (urlCost) {
       setCostFilter(urlCost);
     }
 
     // Check each category parameter in URL
-    searchParams.forEach((value, key) => {
-      if (key.startsWith('product_')) {
-        const category = key.replace('product_', '') as ProductCategory;
+    if (searchParams) {
+      searchParams.forEach((value, key) => {
+        if (key.startsWith('product_')) {
+          const category = key.replace('product_', '') as ProductCategory;
 
-        // Find the product in our available products
-        steps.forEach((step) => {
-          step.categories.forEach((cat) => {
-            if (cat.category === category) {
-              const product = cat.products.find((p) => p.product.id === value);
-              if (product) {
-                initialSelections[category] = product.product;
+          // Find the product in our available products
+          steps.forEach((step) => {
+            step.categories.forEach((cat) => {
+              if (cat.category === category) {
+                const product = cat.products.find(
+                  (p) => p.product.id === value,
+                );
+                if (product) {
+                  initialSelections[category] = product.product;
+                }
               }
-            }
+            });
           });
-        });
-      }
-    });
+        }
+      });
+    }
 
     if (Object.keys(initialSelections).length > 0) {
       setSelectedProducts(initialSelections);

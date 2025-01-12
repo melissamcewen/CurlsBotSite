@@ -55,7 +55,7 @@ export default function IngredientForm({
   // Only handle URL ingredients if there's no initial analysis
   useEffect(() => {
     if (!initialLoadDone.current && !initialAnalysis) {
-      const urlIngredients = searchParams.get('ingredients');
+      const urlIngredients = searchParams?.get('ingredients') ?? null;
       if (urlIngredients) {
         setIngredients(urlIngredients);
         handleAnalysis(urlIngredients);
