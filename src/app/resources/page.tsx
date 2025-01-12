@@ -67,17 +67,6 @@ export default function Resources() {
               </li>
               <li>
                 <a
-                  href="https://www.naturallycurly.com/forums"
-                  className="link link-primary"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  NaturallyCurly Forums
-                </a>{' '}
-                - Active discussion forums
-              </li>
-              <li>
-                <a
                   href="https://www.facebook.com/profile.php?id=281152828644498"
                   className="link link-primary"
                   target="_blank"
