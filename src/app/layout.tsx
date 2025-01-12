@@ -89,6 +89,13 @@ export default function RootLayout({
     <html lang="en" data-theme="cupcake">
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+          strategy="afterInteractive"
+          crossOrigin="anonymous"
+          data-ad-client="ca-pub-8535588433972499"
+        />
         <meta name="apple-mobile-web-app-title" content="CurlsBot" />
         <meta
           name="impact-site-verification"
