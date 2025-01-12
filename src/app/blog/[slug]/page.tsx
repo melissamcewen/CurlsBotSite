@@ -3,12 +3,13 @@ import { createDynamicPageMetadata } from '@/config/metadata';
 import Link from 'next/link';
 import Image from 'next/image';
 import { BookOpenText } from 'lucide-react';
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
-import { compile } from '@mdx-js/mdx';
-import remarkFrontmatter from 'remark-frontmatter';
-import * as runtime from 'react/jsx-runtime';
+
+interface BlogFrontmatter {
+  title: string;
+  description?: string;
+  date?: string;
+  image?: string;
+}
 
 interface PageProps {
   params: Promise<{
@@ -18,18 +19,25 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps) {
   const resolvedParams = await params;
-  const fullPath = path.join(
-    process.cwd(),
-    'src/content/blog',
-    `${resolvedParams.slug}.mdx`,
-  );
+  console.log('Attempting to load blog post:', resolvedParams.slug);
 
-  if (!fs.existsSync(fullPath)) {
+  let mdxModule;
+  try {
+    mdxModule = await import(`@/content/blog/${resolvedParams.slug}.mdx`);
+    console.log('Successfully loaded MDX file');
+  } catch (e) {
+    console.error('Failed to load MDX file:', e);
     notFound();
   }
 
-  const source = fs.readFileSync(fullPath, 'utf8');
-  const { data: frontmatter } = matter(source);
+  // Access frontmatter through the getter
+  const frontmatter = mdxModule.frontmatter as BlogFrontmatter;
+  console.log('Frontmatter:', frontmatter);
+
+  if (!frontmatter || !frontmatter.title) {
+    console.error('Missing frontmatter or title');
+    notFound();
+  }
 
   return createDynamicPageMetadata({
     title: frontmatter.title,
@@ -42,46 +50,39 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function BlogPostPage({ params }: PageProps) {
   const resolvedParams = await params;
-  const fullPath = path.join(
-    process.cwd(),
-    'src/content/blog',
-    `${resolvedParams.slug}.mdx`,
-  );
+  console.log('Rendering blog post:', resolvedParams.slug);
 
-  if (!fs.existsSync(fullPath)) {
+  let mdxModule;
+  try {
+    mdxModule = await import(`@/content/blog/${resolvedParams.slug}.mdx`);
+    console.log('MDX module:', mdxModule);
+  } catch (e) {
+    console.error('Failed to load MDX file:', e);
     notFound();
   }
 
-  const source = fs.readFileSync(fullPath, 'utf8');
-  const { data: frontmatter, content } = matter(source);
+  // Access frontmatter and Content through getters
+  const frontmatter = mdxModule.frontmatter as BlogFrontmatter;
+  const Content = mdxModule.default;
 
-  // Compile MDX to React components
-  const code = String(
-    await compile(content, {
-      remarkPlugins: [remarkFrontmatter],
-      outputFormat: 'function-body',
-      development: false,
-    }),
-  );
+  if (!frontmatter || !frontmatter.title) {
+    console.error('Missing frontmatter or title');
+    notFound();
+  }
 
-  // Create the MDX component
-  const { default: Content } = (await new Function(
-    'runtime',
-    `${code}; return { default: MDXContent }`,
-  )(runtime)) as { default: React.ComponentType };
-
-  // Create a UTC date object
-  const date = new Date(frontmatter.date);
-  const formattedDate = new Intl.DateTimeFormat('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    timeZone: 'UTC',
-  }).format(date);
+  // Format date if it exists
+  const formattedDate = frontmatter.date
+    ? new Intl.DateTimeFormat('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        timeZone: 'UTC',
+      }).format(new Date(frontmatter.date))
+    : null;
 
   return (
-    <div className="max-w-4xl mx-auto bg-base-100">
-      <div className="">
+    <div className="bg-base-100 w-full">
+      <div className="max-w-4xl mx-auto ">
         <div className="p-3">
           <div className="flex items-center gap-2 mb-4">
             <Link href="/blog" className="btn btn-ghost btn-sm">
@@ -103,9 +104,11 @@ export default async function BlogPostPage({ params }: PageProps) {
               )}
             </div>
 
-            <div className="text-base-content/50 -mt-4 mb-8">
-              {formattedDate}
-            </div>
+            {formattedDate && (
+              <div className="text-base-content/50 -mt-4 mb-8">
+                {formattedDate}
+              </div>
+            )}
 
             {frontmatter.image && (
               <div className="my-8">
