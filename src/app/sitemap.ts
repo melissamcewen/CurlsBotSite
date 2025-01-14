@@ -32,7 +32,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const categoryEntries = Object.entries(database.categories)
     .filter(([_, category]) => {
       // Include if it has references
-      if (category.references && category.references.length > 0) {
+      if (category.notes && category.notes.length > 0) {
         return true;
       }
       // Check for markdown content
@@ -52,7 +52,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const groupEntries = Object.entries(database.groups)
     .filter(([_, group]) => {
       // Include if it has references
-      if (group.references && group.references.length > 0) {
+      if (group.notes && group.notes.length > 0) {
         return true;
       }
       // Check for markdown content

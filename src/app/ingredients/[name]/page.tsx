@@ -9,7 +9,7 @@ import type { ReferenceUsage } from '@/types/references';
 
 import { getIngredientContent } from '@/utils/markdown';
 import { IngredientDetailsCard } from '@/components/ingredients/IngredientDetailsCard';
-import { ReferencesList } from '@/components/references/ReferencesList';
+import { Notes } from '@/components/references/Notes';
 import { Breadcrumbs } from '@/components/navigation/Breadcrumbs';
 import { slugToId, idToSlug } from '@/utils/slugs';
 import { createDynamicPageMetadata } from '@/config/metadata';
@@ -97,7 +97,7 @@ export default async function IngredientPage({ params }: PageProps) {
       if (category.group) {
         const group = database.groups[category.group];
         if (group) {
-          breadcrumbs.unshift({ href: '/groups', label: 'Groups' });
+          breadcrumbs.unshift({ href: '/categories', label: 'Groups' });
           breadcrumbs.push({
             href: `/groups/${idToSlug(category.group)}`,
             label: group.name,
@@ -115,7 +115,7 @@ export default async function IngredientPage({ params }: PageProps) {
     href: `/ingredients/${resolvedParams.name}`,
     label: ingredient.name,
   });
-
+  console.log(ingredient);
   return (
     <div className="container mx-auto p-4 max-w-4xl">
       <Breadcrumbs items={breadcrumbs} />
@@ -142,14 +142,7 @@ export default async function IngredientPage({ params }: PageProps) {
 
             {/* References */}
             {ingredient.references && (
-              <ReferencesList
-                references={(
-                  ingredient.references as unknown as ReferenceUsage[]
-                ).map((ref, index) => ({
-                  id: ref.id,
-                  number: index + 1,
-                }))}
-              />
+              <Notes references={ingredient.references} />
             )}
           </div>
         </div>

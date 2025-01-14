@@ -11,7 +11,7 @@ import {
   generateGroupMetadata,
   getGroupStructuredData,
 } from '@/utils/group-metadata';
-
+import { Notes } from '@/components/references/Notes';
 interface PageProps {
   params: Promise<{
     name: string;
@@ -139,6 +139,7 @@ export default async function GroupPage({ params }: PageProps) {
               </div>
             </div>
           </div>
+          <Notes references={group.notes ?? []} />
         </div>
       </div>
     </div>

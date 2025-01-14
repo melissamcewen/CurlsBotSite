@@ -5,8 +5,41 @@ CurlsBot uses JSON-LD structured data to help search engines better understand t
 ## Setup
 
 The structured data is implemented in two main files:
+
 - `src/utils/structured-data.ts` - Contains the schema generators
 - `src/app/(home)/page.tsx` - Implements the schemas on the home page
+
+## Implementation
+
+The implementation uses a custom `JsonLd` type to ensure proper typing with the `@context` property:
+
+```typescript
+type JsonLd<T> = T & {
+  '@context': 'https://schema.org';
+};
+```
+
+Schema generators return this type to ensure valid JSON-LD:
+
+```typescript
+export function generateWebAppSchema(): JsonLd<WebApplication> {
+  return {
+    '@context': 'https://schema.org',
+    // ... schema properties
+  };
+}
+```
+
+Usage in pages:
+
+```typescript
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify(generateWebAppSchema()),
+  }}
+/>
+```
 
 ## Schemas
 
@@ -16,6 +49,7 @@ Describes the CurlsBot ingredient analyzer tool:
 
 ```typescript
 {
+  "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "CurlsBot Hair Care Ingredient Analyzer",
   "description": "Analyze hair care ingredients and learn about their effects on curly and wavy hair",
@@ -40,6 +74,7 @@ Describes CurlsBot as an organization:
 
 ```typescript
 {
+  "@context": "https://schema.org",
   "@type": "Organization",
   "name": "CurlsBot",
   "url": "https://curlsbot.com",
@@ -52,11 +87,12 @@ Describes CurlsBot as an organization:
 ## Testing
 
 You can validate the structured data implementation using:
+
 - [Google's Rich Results Test](https://search.google.com/test/rich-results)
 - [Schema.org Validator](https://validator.schema.org/)
 
 ## Notes
 
-- The `@context` property is automatically added during serialization
+- The `@context` property is included in each schema through the `JsonLd` type
 - Type safety is enforced using `schema-dts` TypeScript types
-- Schemas are implemented using `script` tags with `type="application/ld+json"`
+- Each schema is implemented as a separate `script` tag with `type="application/ld+json"`

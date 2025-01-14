@@ -11,6 +11,7 @@ import {
   generateCategoryMetadata,
   getCategoryStructuredData,
 } from '@/utils/category-metadata';
+import { Notes } from '@/components/references/Notes';
 
 interface PageProps {
   params: Promise<{
@@ -178,6 +179,7 @@ export default async function CategoryPage({ params }: PageProps) {
               </div>
             </div>
           )}
+          <Notes references={category.notes ?? []} />
         </div>
       </div>
     </div>

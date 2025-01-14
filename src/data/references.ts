@@ -578,4 +578,25 @@ export const defaultReferences: References = {
     date: '2012',
     author: 'Wendy M.S.',
   },
+  '63': {
+    id: '63',
+    url: 'https://amzn.to/4hd4Tko',
+    title: 'Humectants in Personal Care Formulation',
+    type: 'science',
+    date: '1999',
+    author: 'Gesslein, B.W.',
+    source: 'Conditioning Agents for Hair and Skin',
+  },
+  '64': {
+    id: '64',
+    url: 'https://amzn.to/4hd4Tko',
+    title: 'Proteins for Conditioning Hair and Skin',
+    type: 'science',
+    date: '1999',
+    author: 'Neudahl, G.',
+    source: 'Conditioning Agents for Hair and Skin',
+  },
+  
+
+
 };

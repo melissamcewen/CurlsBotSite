@@ -1,7 +1,12 @@
 import { Organization, WebApplication } from 'schema-dts';
 
-export function generateWebAppSchema(): WebApplication {
+type JsonLd<T> = T & {
+  '@context': 'https://schema.org';
+};
+
+export function generateWebAppSchema(): JsonLd<WebApplication> {
   return {
+    '@context': 'https://schema.org',
     '@type': 'WebApplication',
     name: 'CurlsBot Hair Care Ingredient Analyzer',
     description:
@@ -18,11 +23,12 @@ export function generateWebAppSchema(): WebApplication {
       'Curly hair product recommendations',
       'Ingredient safety information',
     ],
-  } as WebApplication;
+  };
 }
 
-export function generateOrganizationSchema(): Organization {
+export function generateOrganizationSchema(): JsonLd<Organization> {
   return {
+    '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'CurlsBot',
     url: 'https://curlsbot.com',
@@ -30,5 +36,5 @@ export function generateOrganizationSchema(): Organization {
     sameAs: ['https://twitter.com/curlsbot'],
     description:
       'CurlsBot helps people with curly and wavy hair understand product ingredients and find suitable hair care products.',
-  } as Organization;
+  };
 }
