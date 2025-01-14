@@ -310,7 +310,7 @@ export default function ProductsPage() {
                   {product.status === 'ok' && (
                     <div className="badge badge-outline badge-info gap-1 whitespace-nowrap">
                       <CheckCircle className="w-4 h-4" />
-                      CurlsBot Approved
+                      CGM Approved
                     </div>
                   )}
                   {product.description && (

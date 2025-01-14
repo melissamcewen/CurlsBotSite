@@ -31,7 +31,7 @@ export function ProductCard({
             <div className="mt-2">
               <span className="cb-badge badge-info gap-1">
                 <CheckCircle className="w-4 h-4" />
-                CurlsBot Approved
+                CGM Approved
               </span>
             </div>
           )}

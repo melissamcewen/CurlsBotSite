@@ -124,13 +124,12 @@ export default function RootLayout({
         />
         <link rel="preload" href="/normal.png" as="image" type="image/png" />
         <meta name="google-adsense-account" content="ca-pub-8535588433972499" />
+        <GoogleAnalytics />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-base-100 text-base-content`}
         suppressHydrationWarning
       >
-        <GoogleAnalytics />
-
         <div className="min-h-screen overflow-x-hidden">
           <div className="absolute inset-0 pointer-events-none" />
           <Navbar />
