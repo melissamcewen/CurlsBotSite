@@ -28,7 +28,6 @@ export async function GET(request: Request) {
       const geocodeData = await geocodeResponse.json();
 
       if (!geocodeResponse.ok || !geocodeData?.[0]) {
-        console.error('Geocoding response:', geocodeData);
         return new NextResponse(
           JSON.stringify({
             error:
@@ -41,7 +40,6 @@ export async function GET(request: Request) {
       finalLat = geocodeData[0].lat;
       finalLon = geocodeData[0].lon;
     } catch (error) {
-      console.error('Geocoding error:', error);
       return new NextResponse(
         JSON.stringify({ error: 'Failed to lookup location' }),
         { status: 500 },
@@ -130,7 +128,6 @@ export async function GET(request: Request) {
       },
     );
   } catch (error) {
-    console.error('Weather API error:', error);
     return new NextResponse(
       JSON.stringify({ error: 'Failed to fetch weather data' }),
       { status: 500 },

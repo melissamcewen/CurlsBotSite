@@ -51,9 +51,7 @@ async function AnalyzerWrapper({ ingredients }: { ingredients: string }) {
     try {
       const analyzer = new Analyzer();
       analysis = analyzer.analyze(ingredients);
-    } catch (e) {
-      console.error('Analysis error:', e);
-    }
+    } catch (e) {}
   }
 
   return (

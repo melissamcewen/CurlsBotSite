@@ -4,9 +4,11 @@ import { useState } from 'react';
 import { createWorker, type Worker } from 'tesseract.js';
 import AdvancedIngredientForm from '@/components/analysis/AdvancedIngredientForm';
 import { Camera } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 export default function PhotoAnalysis() {
   const [isProcessing, setIsProcessing] = useState(false);
+  const router = useRouter();
 
   const handleImageUpload = async (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -21,13 +23,18 @@ export default function PhotoAnalysis() {
       const {
         data: { text },
       } = await worker.recognize(file);
-      return text;
+      if (text) {
+        const encodedText = encodeURIComponent(text.trim());
+        return text.trim();
+      }
+      return '';
     } catch (error) {
-      console.error('OCR Error:', error);
       alert('Error processing image. Please try again or enter text manually.');
       return '';
     } finally {
-      if (worker) await worker.terminate();
+      if (worker) {
+        await worker.terminate();
+      }
       setIsProcessing(false);
     }
   };

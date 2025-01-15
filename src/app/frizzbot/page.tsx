@@ -87,7 +87,6 @@ export default function FrizzBot() {
       setAnalysis(analyzeDewPoint(data.dewPoint));
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred');
-      console.error('Weather fetch error:', err);
     } finally {
       setLoading(false);
     }

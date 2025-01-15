@@ -5,7 +5,6 @@ import {
   type Category,
   type Ingredient,
 } from 'haircare-ingredients-analyzer';
-import type { ReferenceUsage } from '@/types/references';
 
 import { getIngredientContent } from '@/utils/markdown';
 import { IngredientDetailsCard } from '@/components/ingredients/IngredientDetailsCard';
@@ -83,8 +82,15 @@ export default async function IngredientPage({ params }: PageProps) {
 
   const ingredient = database.ingredients[dbIngredientId];
 
-  // Try to get markdown content
-  const markdownContent = await getIngredientContent(idToSlug(dbIngredientId));
+  let Content;
+  try {
+    Content = (
+      await import(`@/content/ingredients/${idToSlug(dbIngredientId)}.mdx`)
+    ).default;
+  } catch (e) {
+    // MDX content not found - that's okay, we'll use basic info
+    Content = null;
+  }
 
   // Build breadcrumbs
   const breadcrumbs = [{ href: '/ingredients', label: 'Ingredients' }];
@@ -115,7 +121,6 @@ export default async function IngredientPage({ params }: PageProps) {
     href: `/ingredients/${resolvedParams.name}`,
     label: ingredient.name,
   });
-  console.log(ingredient);
   return (
     <div className="container mx-auto p-4 max-w-4xl">
       <Breadcrumbs items={breadcrumbs} />
@@ -124,20 +129,18 @@ export default async function IngredientPage({ params }: PageProps) {
         {/* Ingredient Information */}
         <div className="text-base-content">
           <div className="">
-            {markdownContent ? (
-              <div
-                className="prose prose-base mt-4 max-w-none"
-                dangerouslySetInnerHTML={{ __html: markdownContent.content }}
-              />
-            ) : (
-              <IngredientDetailsCard
-                name={ingredient.name}
-                description={ingredient.description}
-                categories={ingredient.categories}
-                synonyms={ingredient.synonyms}
-                categoryNames={database.categories}
-                groupNames={database.groups}
-              />
+            <IngredientDetailsCard
+              name={ingredient.name}
+              description={ingredient.description}
+              categories={ingredient.categories}
+              synonyms={ingredient.synonyms}
+              categoryNames={database.categories}
+              groupNames={database.groups}
+            />
+            {Content && (
+              <div className="prose prose-base mt-4 max-w-none">
+                <Content />
+              </div>
             )}
 
             {/* References */}

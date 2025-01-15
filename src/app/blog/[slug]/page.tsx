@@ -19,23 +19,16 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps) {
   const resolvedParams = await params;
-  console.log('Attempting to load blog post:', resolvedParams.slug);
-
   let mdxModule;
   try {
     mdxModule = await import(`@/content/blog/${resolvedParams.slug}.mdx`);
-    console.log('Successfully loaded MDX file');
   } catch (e) {
-    console.error('Failed to load MDX file:', e);
     notFound();
   }
 
   // Access frontmatter through the getter
   const frontmatter = mdxModule.frontmatter as BlogFrontmatter;
-  console.log('Frontmatter:', frontmatter);
-
   if (!frontmatter || !frontmatter.title) {
-    console.error('Missing frontmatter or title');
     notFound();
   }
 
@@ -50,14 +43,10 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function BlogPostPage({ params }: PageProps) {
   const resolvedParams = await params;
-  console.log('Rendering blog post:', resolvedParams.slug);
-
   let mdxModule;
   try {
     mdxModule = await import(`@/content/blog/${resolvedParams.slug}.mdx`);
-    console.log('MDX module:', mdxModule);
   } catch (e) {
-    console.error('Failed to load MDX file:', e);
     notFound();
   }
 
@@ -66,7 +55,6 @@ export default async function BlogPostPage({ params }: PageProps) {
   const Content = mdxModule.default;
 
   if (!frontmatter || !frontmatter.title) {
-    console.error('Missing frontmatter or title');
     notFound();
   }
 

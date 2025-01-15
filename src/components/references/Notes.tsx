@@ -6,10 +6,6 @@ interface ReferencesListProps {
   references: Reference[];
 }
 
-
-
-
-
 function getTypeIcon(type?: string) {
   switch (type?.toLowerCase()) {
     case 'author':
@@ -52,7 +48,6 @@ export function Notes({ references }: ReferencesListProps) {
   if (sortedReferences.length === 0) {
     return null;
   }
-console.log(references);
   return (
     <div className="mt-8">
       <h2 className="text-xl font-semibold mb-4">Notes</h2>
@@ -128,6 +123,3 @@ console.log(references);
     </div>
   );
 }
-
-
-

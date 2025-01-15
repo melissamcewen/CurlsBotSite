@@ -28,7 +28,7 @@ export default function ProductsPage() {
   const [selectedCountry, setSelectedCountry] = useState<CountryCode | 'all'>(
     () => {
       const detectedCountry = getCountryFromHostname();
-      console.log('Detected country:', detectedCountry);
+   
       return detectedCountry === 'US' ||
         detectedCountry === 'UK' ||
         detectedCountry === 'AU'
@@ -46,7 +46,7 @@ export default function ProductsPage() {
   const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
 
   const products = getBundledProducts();
-  console.log('Total products loaded:', Object.keys(products.products).length);
+
 
   // Convert products to array and apply filters
   const filteredProducts = Object.values(products.products).filter(

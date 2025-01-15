@@ -75,14 +75,10 @@ interface User {
   age: number;
 }
 
-function greet(user: User) {
-  console.log(user.name);
-}
+function greet(user: User) {}
 
 // Compiled JavaScript
-function greet(user) {
-  console.log(user.name);
-}
+function greet(user) {}
 ```
 
 This is why we need both:

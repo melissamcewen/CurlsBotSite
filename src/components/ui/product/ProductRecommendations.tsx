@@ -94,10 +94,6 @@ export function getProductRecommendations(porosityType: string) {
   const validCategories = POROSITY_CATEGORIES[porosityTag] || CATEGORIES;
   const userCountry = getCountryFromHostname();
 
-  console.log('Porosity tag:', porosityTag);
-  console.log('Valid categories:', validCategories);
-  console.log('User country:', userCountry);
-
   const recommendations = CATEGORIES.reduce((acc, category) => {
     acc[category] = [];
     return acc;

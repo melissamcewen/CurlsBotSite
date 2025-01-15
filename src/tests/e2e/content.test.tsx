@@ -65,22 +65,26 @@ jest.mock('next/navigation', () => ({
 
 describe('Content Pages Smoke Tests', () => {
   it('ingredient page renders without crashing', async () => {
-    const params = Promise.resolve({ name: 'dimethicone' });
-    render(await IngredientPage({ params }));
-    expect(screen.getByText(/dimethicone/i)).toBeInTheDocument();
+    const params = { name: 'dimethicone' };
+    render(await IngredientPage({ params: Promise.resolve(params) }));
+    expect(
+      screen.getByRole('heading', { name: /Dimethicone/i, level: 2 }),
+    ).toBeInTheDocument();
   });
 
   it('category page renders without crashing', async () => {
-    const params = Promise.resolve({ name: 'drying-alcohols' });
-    render(await CategoryPage({ params }));
-    expect(screen.getByText(/drying alcohols/i)).toBeInTheDocument();
+    const params = { name: 'drying-alcohols' };
+    render(await CategoryPage({ params: Promise.resolve(params) }));
+    expect(
+      screen.getByRole('heading', { name: /drying alcohols/i, level: 1 }),
+    ).toBeInTheDocument();
   });
 
   it('group page renders without crashing', async () => {
-    const params = Promise.resolve({ name: 'alcohols' });
-    render(await GroupPage({ params }));
+    const params = { name: 'alcohols' };
+    render(await GroupPage({ params: Promise.resolve(params) }));
     expect(
-      screen.getByRole('heading', { level: 1, name: /alcohols/i }),
+      screen.getByRole('heading', { name: /alcohols/i, level: 1 }),
     ).toBeInTheDocument();
   });
 });

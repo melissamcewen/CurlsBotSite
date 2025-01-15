@@ -23,8 +23,6 @@ export default function FrizzbotIngredients() {
       // Call your frizzbot function
       const frizzAnalysis = frizzbot(analysisResult);
 
-      console.log(frizzAnalysis.score);
-
       // If no ingredients were matched, set score to 0 neutral
       if (
         frizzAnalysis.simple_humectants_number === 0 &&

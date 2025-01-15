@@ -65,11 +65,6 @@ export default async function CategoryPage({ params }: PageProps) {
     (ing: Ingredient) => ing.categories?.includes(dbCategoryId),
   );
 
-  // Debug logging
-  console.log('Category ID:', dbCategoryId);
-  console.log('Number of ingredients:', ingredients.length);
-  console.log('First few ingredients:', ingredients.slice(0, 3));
-
   // Try to get MDX content
   let Content;
   try {
