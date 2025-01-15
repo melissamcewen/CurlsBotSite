@@ -120,7 +120,7 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
         {/* Analysis Summary */}
         {hasIngredients && (
           <div className="lg:w-[400px]">
-            <AnalysisSummary ingredients={result.ingredients} />
+            <AnalysisSummary result={result} />
           </div>
         )}
       </div>
