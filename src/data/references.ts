@@ -596,7 +596,14 @@ export const defaultReferences: References = {
     author: 'Neudahl, G.',
     source: 'Conditioning Agents for Hair and Skin',
   },
-  
-
-
+  '65': {
+    id: '65',
+    url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4158629/',
+    title: 'The Shampoo pH can Affect the Hair: Myth or Reality?',
+    type: 'science',
+    author:
+      'Gavazzoni Dias, Maria Fernanda Reis, Andréia Munck de Almeida, Patricia Makino Rezende Cecato, Andre Ricardo Adriano, and Janine Pichler',
+    date: '2014',
+    source: 'International Journal of Trichology',
+  },
 };

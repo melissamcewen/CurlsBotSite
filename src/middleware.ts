@@ -18,7 +18,7 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    // Match all static files and pages
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+    // Only match routes that need dynamic cache control
+    '/?ingredients=:ingredients*', // Home page only when analyzing ingredients
   ],
 };

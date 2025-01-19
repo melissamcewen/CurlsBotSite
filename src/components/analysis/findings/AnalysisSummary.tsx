@@ -220,7 +220,7 @@ export function AnalysisSummary({ result }: Props) {
                     )}
                   </div>
                 </div>
-                <div className={`flex items-center gap-2 ${classes.text}`}>
+                <div className={`flex items-end gap-2 ${classes.text}`}>
                   <span className="text-md font-medium">
                     {getStatusDisplay(item)}
                   </span>
