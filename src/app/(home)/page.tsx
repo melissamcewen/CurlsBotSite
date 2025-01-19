@@ -10,6 +10,10 @@ import {
   generateOrganizationSchema,
 } from '@/utils/structured-data';
 
+// Only make the page dynamic when ingredients are present
+export const dynamic = 'auto';
+export const dynamicParams = true;
+
 export async function generateMetadata({
   searchParams,
 }: Props): Promise<Metadata> {
