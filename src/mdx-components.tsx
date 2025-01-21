@@ -4,6 +4,9 @@ import type { MDXComponents } from 'mdx/types';
 import { InlineReference } from '@/components/references/InlineReference';
 import { AutoReferencesList } from '@/components/references/AutoReferencesList';
 import { BlogImage, DualImage } from '@/components/mdx/BlogImage';
+import { BlogProduct } from '@/components/mdx/BlogProduct';
+import { Affiliate } from '@/components/mdx/Affiliate';
+import { TableOfContents } from '@/components/mdx/TableOfContents';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -11,6 +14,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     AutoReferencesList,
     BlogImage,
     DualImage,
+    BlogProduct,
+    Affiliate,
+    TableOfContents,
     ...components,
   };
 }

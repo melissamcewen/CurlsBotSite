@@ -2,15 +2,23 @@ interface ProductRecommendationProps {
   category: string;
   brand: string;
   name: string;
-  buyUrl: string;
+  buyLinks: Array<{
+    url: string;
+    country?: string;
+    retailer?: string;
+    description?: string;
+  }>;
 }
 
 export function ProductRecommendation({
   category,
   brand,
   name,
-  buyUrl,
+  buyLinks,
 }: ProductRecommendationProps) {
+  // Get the first available buy link
+  const buyUrl = buyLinks?.[0]?.url;
+
   return (
     <div className="card bg-base-100 rounded-lg border cb-border border-secondary h-[140px]">
       <div className="p-4 h-full flex flex-col">
@@ -24,14 +32,16 @@ export function ProductRecommendation({
             </p>
             <p className="text-base-content/70 line-clamp-2">{name}</p>
           </div>
-          <a
-            href={buyUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-primary btn-sm shrink-0"
-          >
-            Buy Now
-          </a>
+          {buyUrl && (
+            <a
+              href={buyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary btn-sm shrink-0"
+            >
+              Buy Now
+            </a>
+          )}
         </div>
       </div>
     </div>

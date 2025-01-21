@@ -8,6 +8,7 @@ import {
   ArrowUpDown,
   CheckCircle,
   FlaskConical,
+  ShoppingCart,
 } from 'lucide-react';
 import { getCountryFromHostname } from '@/lib/countryDetection';
 import Link from 'next/link';
@@ -28,7 +29,7 @@ export default function ProductsPage() {
   const [selectedCountry, setSelectedCountry] = useState<CountryCode | 'all'>(
     () => {
       const detectedCountry = getCountryFromHostname();
-   
+
       return detectedCountry === 'US' ||
         detectedCountry === 'UK' ||
         detectedCountry === 'AU'
@@ -47,7 +48,6 @@ export default function ProductsPage() {
 
   const products = getBundledProducts();
 
-
   // Convert products to array and apply filters
   const filteredProducts = Object.values(products.products).filter(
     (product) => {
@@ -59,7 +59,9 @@ export default function ProductsPage() {
       if (product.product_categories.includes('accessories')) return false;
       if (
         selectedCountry !== 'all' &&
-        (product.country || 'US') !== selectedCountry
+        !product.buy_links?.some(
+          (link) => (link.country || 'US') === selectedCountry,
+        )
       )
         return false;
       if (selectedPrice !== 'all') {
@@ -102,8 +104,19 @@ export default function ProductsPage() {
       bValue = b.product_categories?.[0] || '';
     }
     if (sortField === 'country') {
-      aValue = a.country || 'US';
-      bValue = b.country || 'US';
+      // Get all unique countries from buy links, defaulting to US if none specified
+      const aCountries = [
+        ...new Set(a.buy_links?.map((link) => link.country || 'US') || ['US']),
+      ]
+        .sort()
+        .join(',');
+      const bCountries = [
+        ...new Set(b.buy_links?.map((link) => link.country || 'US') || ['US']),
+      ]
+        .sort()
+        .join(',');
+      aValue = aCountries;
+      bValue = bCountries;
     }
     if (sortField === 'cost_rating') {
       aValue = a.cost_rating || '0';
@@ -299,14 +312,7 @@ export default function ProductsPage() {
               <tr key={product.id || product.name}>
                 <td>{product.brand}</td>
                 <td className="flex flex-col gap-2">
-                  <a
-                    href={product.buy_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="link link-primary"
-                  >
-                    {product.name}
-                  </a>
+                  <span className="link link-primary">{product.name}</span>
                   {product.status === 'ok' && (
                     <div className="badge badge-outline badge-info gap-1 whitespace-nowrap">
                       <CheckCircle className="w-4 h-4" />
@@ -324,7 +330,7 @@ export default function ProductsPage() {
                 </td>
                 <td>{getPriceDisplay(product.cost_rating)}</td>
 
-                <td className="">
+                <td className="flex flex-col gap-2">
                   {product.ingredients_raw && (
                     <Link
                       href={`/?ingredients=${encodeURIComponent(
@@ -336,6 +342,32 @@ export default function ProductsPage() {
                       Analyze
                     </Link>
                   )}
+                  <div className="flex flex-col gap-1">
+                    {product.buy_links
+                      ?.filter(
+                        (link) =>
+                          selectedCountry === 'all' ||
+                          (link.country || 'US') === selectedCountry,
+                      )
+                      .map((link, index) => (
+                        <a
+                          key={index}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn btn-xs btn-outline flex items-center gap-2 flex-nowrap min-w-48"
+                        >
+                          <ShoppingCart className="w-4 h-4 flex-shrink-0" />
+                          <span className="flex-nowrap">
+                            Buy on{' '}
+                            {link.retailer ||
+                              (link.country === 'US'
+                                ? 'Amazon'
+                                : `Amazon ${link.country}`)}
+                          </span>
+                        </a>
+                      ))}
+                  </div>
                 </td>
               </tr>
             ))}

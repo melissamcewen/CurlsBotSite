@@ -10,6 +10,7 @@ import { AnalysisSummary } from './findings/AnalysisSummary';
 import Link from 'next/link';
 import { getBundledProducts } from 'haircare-ingredients-analyzer';
 import { filterProductByCountry } from '@/lib/countryDetection';
+import { getCountryFromHostname } from '@/lib/countryDetection';
 
 interface Props {
   result: AnalysisResult;
@@ -19,10 +20,15 @@ interface Props {
 // Get a product recommendation based on the current hour
 function getProductRecommendation() {
   const products = getBundledProducts();
+  const userCountry = getCountryFromHostname();
+
   const allProducts = Object.values(products.products).filter(
     (product) =>
-      filterProductByCountry(product) && product.tags?.includes('featured'),
-  ); // Filter products by country and featured tag
+      // Filter products by country and featured tag
+      product.tags?.includes('featured') &&
+      // Product should have at least one buy link for user's country
+      product.buy_links?.some(link => (link.country || 'US') === userCountry)
+  );
 
   // If no products available for this country, return null
   if (allProducts.length === 0) return null;
@@ -39,7 +45,7 @@ function getProductRecommendation() {
   return {
     name: recommendedProduct.name,
     brand: recommendedProduct.brand,
-    buyUrl: recommendedProduct.buy_url,
+    buyLinks: recommendedProduct.buy_links,
   };
 }
 
@@ -76,27 +82,28 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
               <div className="space-y-4">
                 <div className="space-y-2">
                   <p>{description}</p>
-                  {productRecommendation && (
-                    <p>
-                      If you&apos;re looking for a product, I recommend:{' '}
-                      <a
-                        href={productRecommendation.buyUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline hover:text-primary"
-                      >
-                        {productRecommendation.name} by{' '}
-                        {productRecommendation.brand}
-                      </a>{' '}
-                      or try our{' '}
-                      <Link
-                        href="/routine-builder"
-                        className="link link-primary"
-                      >
-                        Routine Builder
-                      </Link>
-                    </p>
-                  )}
+                  {productRecommendation &&
+                    productRecommendation.buyLinks?.[0]?.url && (
+                      <p>
+                        If you&apos;re looking for a product, I recommend:{' '}
+                        <a
+                          href={productRecommendation.buyLinks[0].url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline hover:text-primary"
+                        >
+                          {productRecommendation.name} by{' '}
+                          {productRecommendation.brand}
+                        </a>{' '}
+                        or try our{' '}
+                        <Link
+                          href="/routine-builder"
+                          className="link link-primary"
+                        >
+                          Routine Builder
+                        </Link>
+                      </p>
+                    )}
                 </div>
 
                 <button

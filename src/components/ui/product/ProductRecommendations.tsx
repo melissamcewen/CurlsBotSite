@@ -1,6 +1,10 @@
 import { ProductCard } from './ProductCard';
 import { getBundledProducts } from 'haircare-ingredients-analyzer';
-import type { Product, ProductDatabase } from 'haircare-ingredients-analyzer';
+import type {
+  Product,
+  ProductDatabase,
+  BuyLink,
+} from 'haircare-ingredients-analyzer';
 import Link from 'next/link';
 import { ROUTINE_STEPS, type RoutineStep } from '@/lib/routineBuilder';
 import { getCountryFromHostname } from '@/lib/countryDetection';
@@ -79,7 +83,7 @@ interface ProductRecommendationsProps {
 interface RecommendedProduct {
   name: string;
   brand: string;
-  buyUrl: string;
+  buyLinks: BuyLink[];
   description?: string;
   ingredients_raw?: string;
   status?: 'ok' | 'caution' | 'warning' | 'error';
@@ -113,7 +117,11 @@ export function getProductRecommendations(porosityType: string) {
       }
 
       // Skip if product has a country specified and it doesn't match user's country
-      if (product.country && product.country !== userCountry) {
+      if (
+        product.buy_links?.some(
+          (link) => link.country && link.country !== userCountry,
+        )
+      ) {
         return;
       }
 
@@ -129,7 +137,7 @@ export function getProductRecommendations(porosityType: string) {
           recommendations[category]!.push({
             name: product.name,
             brand: product.brand,
-            buyUrl: product.buy_url,
+            buyLinks: product.buy_links,
             description: product.description,
             ingredients_raw: product.ingredients_raw,
             status: product.status,
@@ -150,7 +158,11 @@ export function getProductRecommendations(porosityType: string) {
       }
 
       // Skip if product has a country specified and it doesn't match user's country
-      if (product.country && product.country !== userCountry) {
+      if (
+        product.buy_links?.some(
+          (link) => link.country && link.country !== userCountry,
+        )
+      ) {
         return;
       }
 
@@ -167,7 +179,7 @@ export function getProductRecommendations(porosityType: string) {
           recommendations[category]!.push({
             name: product.name,
             brand: product.brand,
-            buyUrl: product.buy_url,
+            buyLinks: product.buy_links,
             description: product.description,
             ingredients_raw: product.ingredients_raw,
             status: product.status,
@@ -268,7 +280,7 @@ export function ProductRecommendations({
                                     product: {
                                       ...product,
                                       id: `${category}-${index}`,
-                                      buy_url: product.buyUrl,
+                                      buy_links: product.buyLinks,
                                       product_categories: [category],
                                     },
                                   }}

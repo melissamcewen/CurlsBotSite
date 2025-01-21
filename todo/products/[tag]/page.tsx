@@ -22,7 +22,7 @@ export default async function ProductTagPage({ params }: Props) {
     content = {
       title: formatTitle(tagId) + ' Products',
       description: `Products tagged with ${tagId.replace(/_/g, ' ')}.`,
-      content: ''
+      content: '',
     };
   }
 
@@ -35,7 +35,7 @@ export default async function ProductTagPage({ params }: Props) {
       category: product.product_categories[0],
       brand: product.brand,
       name: product.name,
-      buyUrl: product.buy_url
+      buyLinks: product.buy_links,
     }));
 
   if (taggedProducts.length === 0) {
@@ -62,7 +62,7 @@ export default async function ProductTagPage({ params }: Props) {
             category={product.category}
             brand={product.brand}
             name={product.name}
-            buyUrl={product.buyUrl}
+            buyLinks={product.buyLinks}
           />
         ))}
       </div>
@@ -76,12 +76,12 @@ export function generateStaticParams() {
   const tags = new Set<string>();
 
   // Collect all unique tags
-  Object.values(products.products).forEach(product => {
-    product.tags.forEach(tag => tags.add(tag));
+  Object.values(products.products).forEach((product) => {
+    product.tags.forEach((tag) => tags.add(tag));
   });
 
   // Convert underscores to hyphens for URLs
-  return Array.from(tags).map(tag => ({
-    tag: idToSlug(tag)
+  return Array.from(tags).map((tag) => ({
+    tag: idToSlug(tag),
   }));
 }

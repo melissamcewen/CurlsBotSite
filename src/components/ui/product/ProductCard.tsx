@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Product } from 'haircare-ingredients-analyzer';
-import { Tag, FlaskConical, CheckCircle } from 'lucide-react';
+import { Tag, FlaskConical, CheckCircle, ShoppingCart } from 'lucide-react';
+import { getCountryFromHostname } from '@/lib/countryDetection';
 
 interface ProductCardProps {
   product: {
@@ -19,6 +20,8 @@ export function ProductCard({
   onSelect,
   isSelected,
 }: ProductCardProps) {
+  const userCountry = getCountryFromHostname();
+
   return (
     <div className="card bg-base-100 shadow-none">
       <div className="card-body p-6">
@@ -48,7 +51,7 @@ export function ProductCard({
           )}
         </div>
 
-        <div className="card-actions  mt-2 flex-col gap-2">
+        <div className="card-actions mt-2 flex-col gap-2">
           {product.product.ingredients_raw && (
             <Link
               href={`/?ingredients=${encodeURIComponent(
@@ -60,7 +63,7 @@ export function ProductCard({
               Analyze Ingredients
             </Link>
           )}
-          <div className="flex gap-2 w-full">
+          <div className="flex flex-col gap-2 w-full">
             {onSelect && (
               <button
                 className={`btn flex-1 ${
@@ -71,14 +74,22 @@ export function ProductCard({
                 {isSelected ? 'Selected' : 'Select'}
               </button>
             )}
-            <a
-              href={product.product.buy_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-secondary flex-1"
-            >
-              Buy Now
-            </a>
+            {product.product.buy_links
+              ?.filter(link => (link.country || 'US') === userCountry)
+              .map((link, index) => (
+              <a
+                key={index}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-secondary flex items-center gap-2 flex-nowrap min-w-48"
+              >
+                <ShoppingCart className="w-4 h-4 flex-shrink-0" />
+                <span className="flex-nowrap">
+                  Buy on {link.retailer || (link.country === 'US' ? 'Amazon' : `Amazon ${link.country}`)}
+                </span>
+              </a>
+            ))}
           </div>
         </div>
       </div>

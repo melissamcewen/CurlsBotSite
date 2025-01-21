@@ -105,12 +105,8 @@ export function getProductsByCategory(
         return false;
 
       // Match country
-      if (criteria.country === 'US') {
-        // For US, show products with no country specified
-        if (product.country) return false;
-      } else {
-        // For other countries, match the country code
-        if (product.country !== criteria.country) return false;
+      if (!product.buy_links?.some(link => (link.country || 'US') === criteria.country)) {
+        return false;
       }
 
       // Check for featured tag if required (except for accessories)

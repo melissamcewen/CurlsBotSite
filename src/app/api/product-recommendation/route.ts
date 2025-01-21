@@ -13,18 +13,24 @@ export async function GET() {
   const recommendedProduct = allProducts[index];
 
   if (!recommendedProduct) {
-    return new NextResponse(JSON.stringify({ error: 'No products available' }), {
-      status: 404,
-    });
+    return new NextResponse(
+      JSON.stringify({ error: 'No products available' }),
+      {
+        status: 404,
+      },
+    );
   }
 
-  return new NextResponse(JSON.stringify({
-    name: recommendedProduct.name,
-    brand: recommendedProduct.brand,
-    buyUrl: recommendedProduct.buy_url,
-  }), {
-    headers: {
-      'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=3600',
+  return new NextResponse(
+    JSON.stringify({
+      name: recommendedProduct.name,
+      brand: recommendedProduct.brand,
+      buyLinks: recommendedProduct.buy_links,
+    }),
+    {
+      headers: {
+        'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=3600',
+      },
     },
-  });
+  );
 }
