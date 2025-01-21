@@ -75,21 +75,25 @@ export function ProductCard({
               </button>
             )}
             {product.product.buy_links
-              ?.filter(link => (link.country || 'US') === userCountry)
+              ?.filter((link) => (link.country || 'US') === userCountry)
               .map((link, index) => (
-              <a
-                key={index}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-secondary flex items-center gap-2 flex-nowrap min-w-48"
-              >
-                <ShoppingCart className="w-4 h-4 flex-shrink-0" />
-                <span className="flex-nowrap">
-                  Buy on {link.retailer || (link.country === 'US' ? 'Amazon' : `Amazon ${link.country}`)}
-                </span>
-              </a>
-            ))}
+                <a
+                  key={index}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-secondary flex items-center gap-2 flex-nowrap min-w-48"
+                >
+                  <ShoppingCart className="w-4 h-4 flex-shrink-0" />
+                  <span className="flex-nowrap">
+                    Buy on{' '}
+                    {link.retailer ||
+                      (link.country === 'US'
+                        ? 'Amazon'
+                        : `Amazon ${link.country}`)}
+                  </span>
+                </a>
+              ))}
           </div>
         </div>
       </div>

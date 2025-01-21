@@ -27,7 +27,7 @@ function getProductRecommendation() {
       // Filter products by country and featured tag
       product.tags?.includes('featured') &&
       // Product should have at least one buy link for user's country
-      product.buy_links?.some(link => (link.country || 'US') === userCountry)
+      product.buy_links?.some((link) => (link.country || 'US') === userCountry),
   );
 
   // If no products available for this country, return null

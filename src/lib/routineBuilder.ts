@@ -105,7 +105,11 @@ export function getProductsByCategory(
         return false;
 
       // Match country
-      if (!product.buy_links?.some(link => (link.country || 'US') === criteria.country)) {
+      if (
+        !product.buy_links?.some(
+          (link) => (link.country || 'US') === criteria.country,
+        )
+      ) {
         return false;
       }
 

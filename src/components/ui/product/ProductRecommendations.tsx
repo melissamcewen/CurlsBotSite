@@ -147,7 +147,7 @@ export function getProductRecommendations(porosityType: string) {
     },
   );
 
-  // Second pass: fill in any empty categories with non-featured products
+  // Second pass: fill in any empty slots with non-featured products
   Object.entries(products.products).forEach(
     ([_, product]: [string, Product]) => {
       if (
@@ -170,12 +170,15 @@ export function getProductRecommendations(porosityType: string) {
       if (
         product.tags?.includes(porosityTag) &&
         validCategories.includes(category) &&
-        (!recommendations[category] || recommendations[category]!.length === 0)
+        (!recommendations[category] || recommendations[category]!.length < 3)
       ) {
         if (!recommendations[category]) {
           recommendations[category] = [];
         }
-        if (recommendations[category]!.length < 3) {
+        // Only add if this product isn't already in the recommendations
+        if (
+          !recommendations[category]!.some((rec) => rec.name === product.name)
+        ) {
           recommendations[category]!.push({
             name: product.name,
             brand: product.brand,
