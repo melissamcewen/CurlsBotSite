@@ -10,16 +10,6 @@ export interface FilterCriteria {
   category?: string | 'all';
 }
 
-// Categories that are exempt from various filters
-export const FILTER_EXEMPTIONS = {
-  // Products that don't need porosity filtering
-  POROSITY_EXEMPT: ['deep_conditioners', 'clarifying_shampoos', 'accessories'],
-  // Products that don't need cost filtering
-  COST_EXEMPT: ['accessories'],
-  // Products that don't need featured filtering
-  FEATURED_EXEMPT: ['accessories'],
-} as const;
-
 /**
  * Shared function to filter products consistently across the app
  */
@@ -47,14 +37,8 @@ export function filterProducts(
       }
     }
 
-    // Filter by cost (except for exempt categories)
-    if (
-      criteria.costFilter &&
-      criteria.costFilter !== 'all' &&
-      !product.product_categories.some((cat) =>
-        FILTER_EXEMPTIONS.COST_EXEMPT.includes(cat),
-      )
-    ) {
+    // Filter by cost
+    if (criteria.costFilter && criteria.costFilter !== 'all') {
       const costRating = parseInt(product.cost_rating || '0');
       switch (criteria.costFilter) {
         case '$':
@@ -69,23 +53,18 @@ export function filterProducts(
       }
     }
 
-    // Filter by featured tag (except for exempt categories)
-    if (
-      criteria.requireFeatured &&
-      !product.product_categories.some((cat) =>
-        FILTER_EXEMPTIONS.FEATURED_EXEMPT.includes(cat),
-      ) &&
-      !product.tags?.includes('featured')
-    )
+    // Filter by featured tag
+    if (criteria.requireFeatured && !product.tags?.includes('featured'))
       return false;
 
     // Filter by porosity
     if (criteria.porosity && criteria.porosity !== 'all') {
-      // Skip porosity filtering for exempt categories
+      // Skip porosity filtering for certain categories
       if (
-        product.product_categories.some((cat) =>
-          FILTER_EXEMPTIONS.POROSITY_EXEMPT.includes(cat),
-        )
+        product.product_categories?.includes('deep_conditioners') ||
+        product.product_categories?.includes('clarifying_shampoos') ||
+        product.product_categories?.includes('pre_poo') ||
+        product.product_categories?.includes('accessories')
       ) {
         return true;
       }

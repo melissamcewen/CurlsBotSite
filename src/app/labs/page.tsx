@@ -137,8 +137,28 @@ export default function Labs() {
             </div>
           </div>
         </a>
-      </div>
 
+        {/* Porosity score Card */}
+        <Link
+          href="/labs/porosity"
+          className="card bg-base-100 hover:bg-base-300 transition-colors"
+        >
+          <div className="card-body">
+            <div className="flex items-center gap-3 mb-4">
+              <Droplets className="h-8 w-8 text-primary" />
+              <h2 className="card-title">Porosity Score</h2>
+            </div>
+            <p>
+              Get a porosity score for your hair based on your product
+              ingredients.
+            </p>
+            <div className="card-actions justify-end mt-4">
+              <div className="badge badge-primary">Porosity</div>
+              <div className="badge badge-secondary">Hair Care</div>
+            </div>
+          </div>
+        </Link>
+      </div>
     </div>
   );
 }

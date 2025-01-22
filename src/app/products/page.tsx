@@ -277,7 +277,7 @@ export default function ProductsPage() {
               <tr key={product.id || product.name}>
                 <td>{product.brand}</td>
                 <td className="flex flex-col gap-2">
-                  <span className="link link-primary">{product.name}</span>
+                  <span className="">{product.name}</span>
                   {product.status === 'ok' && (
                     <div className="badge badge-outline badge-info gap-1 whitespace-nowrap">
                       <CheckCircle className="w-4 h-4" />

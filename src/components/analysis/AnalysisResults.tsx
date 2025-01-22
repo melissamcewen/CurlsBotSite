@@ -97,11 +97,11 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
                         </a>{' '}
                         or try our{' '}
                         <Link
-                          href="/routine-builder"
+                          href="/porosity-quiz"
                           className="link link-primary"
                         >
-                          Routine Builder
-                        </Link>
+                          Porosity Quiz
+                        </Link> for personalized recommendations.
                       </p>
                     )}
                 </div>

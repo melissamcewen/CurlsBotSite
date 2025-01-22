@@ -27,7 +27,7 @@ export default function Sidebar() {
             <div className="flex gap-2">
               <FileText className="w-5 h-5 flex-shrink-0 mt-1" />
               <p>
-                CurlsBot is a free tool to help you understand the ingredients
+                CurlsBot is a tool to help you understand the ingredients
                 in your curly/wavy hair care products.
               </p>
             </div>
@@ -90,18 +90,18 @@ export default function Sidebar() {
               <Newspaper className="w-5 h-5 flex-shrink-0 mt-1" />
               <p>
                 Read our latest blog post :{' '}
-                <Link href="/blog/welcome-back" className="link">
-                  Welcome Back
+                <Link href="/blog/why-curlsbot-is-not-ai" className="link">
+                  Why CurlsBot is not AI
                 </Link>
               </p>
             </div>
 
             <div className="flex gap-2">
-              <BookOpen className="w-5 h-5 flex-shrink-0 mt-1" />
+              <FlaskConical className="w-5 h-5 flex-shrink-0 mt-1" />
               <p>
-                Read our latest guide{' '}
-                <Link href="/groups/oils" className="link">
-                  Curly/Wavy Hair and Oils Guide
+                Check out our latest lab feature{' '}
+                <Link href="/labs/porosity" className="link">
+                  Porosity Score
                 </Link>
               </p>
             </div>

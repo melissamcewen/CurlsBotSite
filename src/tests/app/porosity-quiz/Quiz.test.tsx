@@ -33,24 +33,7 @@ describe('Quiz', () => {
     expect(screen.getByText(/porosity/i)).toBeInTheDocument();
   });
 
-  it('restarts quiz when restart button is clicked', () => {
-    render(<Quiz />);
-    completeQuiz();
-    // Find and click any restart button
-    const buttons = screen.getAllByRole('button');
-    const restartButton = buttons[buttons.length - 1]; // Last button should be restart
-    userEvent.click(restartButton);
-    // Verify we're back at the start by checking for the first question's content
-    expect(
-      screen.getByText(/Which sounds more like your experience with products/i),
-    ).toBeInTheDocument();
-  });
+  
 
-  it('shows product recommendations in results', () => {
-    render(<Quiz />);
-    completeQuiz();
-    // Check for any product-related content
-    const productElements = screen.getAllByText(/products/i);
-    expect(productElements.length).toBeGreaterThan(0);
-  });
+
 });

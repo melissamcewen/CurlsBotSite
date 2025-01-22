@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
-import { ProductRecommendations } from '@/components/ui/product/ProductRecommendations';
 import { Metadata } from 'next';
-import Avatar from '@/components/avatar';
+import { PorosityPageClient } from './PorosityPageClient';
+
 interface PorosityInfo {
   title: string;
   description: string;
@@ -26,7 +26,6 @@ const POROSITY_DATA: Record<string, PorosityInfo> = {
       'Focus on lightweight, easily absorbed products',
       'Regular clarifying treatments to remove buildup',
       'Apply products to damp hair to improve absorption',
-      'Consider using protein-free products as low porosity hair is easily overloaded',
     ],
   },
   'high-porosity': {
@@ -70,14 +69,13 @@ const POROSITY_DATA: Record<string, PorosityInfo> = {
 };
 
 interface Props {
-  params: Promise<{
+  params: {
     type: string;
-  }>;
+  };
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const resolvedParams = await params;
-  const porosityType = resolvedParams.type;
+  const porosityType = params.type;
   const porosityInfo = POROSITY_DATA[porosityType];
 
   if (!porosityInfo) {
@@ -121,8 +119,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function PorosityPage({ params }: Props) {
-  const resolvedParams = await params;
-  const porosityType = resolvedParams.type;
+  const porosityType = params.type;
   const porosityInfo = POROSITY_DATA[porosityType];
 
   if (!porosityInfo) {
@@ -130,39 +127,10 @@ export default async function PorosityPage({ params }: Props) {
   }
 
   return (
-    <div className="container mx-auto py-8 px-4">
-      <h1 className="text-3xl font-bold mb-4">
-        <Avatar imageUrl="/normal.svg" altText="Curlsbot" />
-        <span className="text-primary">CurlsBot</span> thinks you have:{' '}
-        {porosityInfo.title}
-      </h1>
-      <p className="text-lg mb-8">{porosityInfo.description}</p>
-
-      <div className="grid gap-8 md:grid-cols-2 mb-8">
-        <div className="space-y-4">
-          <h2 className="text-2xl font-bold">Characteristics</h2>
-          <ul className="list-disc list-inside space-y-2">
-            {porosityInfo.characteristics.map((char, index) => (
-              <li key={index}>{char}</li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="space-y-4">
-          <h2 className="text-2xl font-bold">Care Tips</h2>
-          <ul className="list-disc list-inside space-y-2">
-            {porosityInfo.tips.map((tip, index) => (
-              <li key={index}>{tip}</li>
-            ))}
-          </ul>
-        </div>
-      </div>
-
-      <ProductRecommendations
-        porosityType={porosityInfo.title}
-        className="mt-8"
-      />
-    </div>
+    <PorosityPageClient
+      porosityType={porosityType}
+      porosityInfo={porosityInfo}
+    />
   );
 }
 

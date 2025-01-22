@@ -1,6 +1,12 @@
 import Link from 'next/link';
 import { Product } from 'haircare-ingredients-analyzer';
-import { Tag, FlaskConical, CheckCircle, ShoppingCart } from 'lucide-react';
+import {
+  Tag,
+  FlaskConical,
+  CheckCircle,
+  ShoppingCart,
+  Droplets,
+} from 'lucide-react';
 import { getCountryFromHostname } from '@/lib/countryDetection';
 
 interface ProductCardProps {
@@ -21,6 +27,32 @@ export function ProductCard({
   isSelected,
 }: ProductCardProps) {
   const userCountry = getCountryFromHostname();
+  const porosityScores = product.product.extensions?.porosity;
+
+  // Categories that should not show porosity scores
+  const POROSITY_SCORE_EXEMPT_CATEGORIES = [
+    'deep_conditioners',
+    'pre_poo',
+    'clarifying_shampoos',
+  ];
+
+  const shouldShowPorosityScores = () => {
+    return (
+      porosityScores && !POROSITY_SCORE_EXEMPT_CATEGORIES.includes(category)
+    );
+  };
+
+  const getScoreStatus = (score: number) => {
+    if (score >= 85) return 'text-success';
+    if (score <= 60) return 'text-error';
+    return 'text-info';
+  };
+
+  const getScoreTooltip = (score: number, type: 'high' | 'low') => {
+    if (score >= 85) return `Great for ${type} porosity hair`;
+    if (score <= 60) return `Not ideal for ${type} porosity hair`;
+    return `Moderate match for ${type} porosity hair`;
+  };
 
   return (
     <div className="card bg-base-100 shadow-none">
@@ -43,6 +75,53 @@ export function ProductCard({
             <Tag className="w-4 h-4" />
             Brand: {product.description}
           </div>
+
+          {shouldShowPorosityScores() && porosityScores && (
+            <div className="mt-2 flex items-center gap-2">
+              <div className="flex flex-col gap-2">
+                <div
+                  className="indicator flex items-center gap-2 tooltip tooltip-right"
+                  data-tip={getScoreTooltip(porosityScores.high, 'high')}
+                >
+                  <Link
+                    href="/labs/porosity"
+                    className="indicator-item badge badge-accent badge-xs"
+                  >
+                    Labs
+                  </Link>
+                  <Droplets className="w-4 h-4" />
+                  <span className="text-sm">High Porosity Score: </span>
+                  <span
+                    className={`font-bold ${getScoreStatus(
+                      porosityScores.high,
+                    )}`}
+                  >
+                    {porosityScores.high}
+                  </span>
+                </div>
+                <div
+                  className="indicator flex items-center gap-2 tooltip tooltip-right"
+                  data-tip={getScoreTooltip(porosityScores.low, 'low')}
+                >
+                  <Link
+                    href="/labs/porosity"
+                    className="indicator-item badge badge-accent badge-xs"
+                  >
+                    Labs
+                  </Link>
+                  <Droplets className="w-4 h-4" />
+                  <span className="text-sm">Low Porosity Score: </span>
+                  <span
+                    className={`font-bold ${getScoreStatus(
+                      porosityScores.low,
+                    )}`}
+                  >
+                    {porosityScores.low}
+                  </span>
+                </div>
+              </div>
+            </div>
+          )}
 
           {product.product.description && (
             <p className="mt-4 text-base-content/90 text-xs">
@@ -82,7 +161,7 @@ export function ProductCard({
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn-secondary flex items-center gap-2 flex-nowrap min-w-48"
+                  className="btn  btn-outline flex items-center gap-2 flex-nowrap min-w-48"
                 >
                   <ShoppingCart className="w-4 h-4 flex-shrink-0" />
                   <span className="flex-nowrap">
