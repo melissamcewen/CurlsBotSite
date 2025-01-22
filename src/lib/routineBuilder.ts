@@ -1,6 +1,7 @@
 import { getBundledProducts } from 'haircare-ingredients-analyzer';
 import type { Product } from 'haircare-ingredients-analyzer';
 import type { CountryCode } from './countryDetection';
+import { filterProducts } from './productFiltering';
 
 export type { CountryCode };
 export type PorosityType = 'high_porosity' | 'low_porosity' | 'normal_porosity';
@@ -92,55 +93,13 @@ export function getProductsByCategory(
 ): Product[] {
   const products = getBundledProducts();
 
-  return Object.values(products.products)
-    .filter((product) => {
-      // Must match category
-      if (!product.product_categories?.includes(category)) return false;
-
-      // Must match porosity (except for accessories)
-      if (
-        category !== 'accessories' &&
-        !product.tags?.includes(criteria.porosity)
-      )
-        return false;
-
-      // Match country
-      if (
-        !product.buy_links?.some(
-          (link) => (link.country || 'US') === criteria.country,
-        )
-      ) {
-        return false;
-      }
-
-      // Check for featured tag if required (except for accessories)
-      if (
-        category !== 'accessories' &&
-        criteria.requireFeatured &&
-        !product.tags?.includes('featured')
-      ) {
-        return false;
-      }
-
-      // Filter by cost if specified (except for accessories)
-      if (category !== 'accessories' && criteria.costFilter) {
-        const costRating = parseInt(product.cost_rating || '0');
-        switch (criteria.costFilter) {
-          case '$':
-            if (costRating !== 1) return false;
-            break;
-          case '$$':
-            if (costRating !== 2) return false;
-            break;
-          case '$$$':
-            if (costRating < 3) return false;
-            break;
-        }
-      }
-
-      return true;
-    })
-    .sort((a, b) => (a.brand + a.name).localeCompare(b.brand + b.name));
+  return filterProducts(Object.values(products.products), {
+    category,
+    country: criteria.country,
+    costFilter: criteria.costFilter,
+    porosity: criteria.porosity,
+    requireFeatured: criteria.requireFeatured,
+  }).sort((a, b) => (a.brand + a.name).localeCompare(b.brand + b.name));
 }
 
 // Add frequency recommendations

@@ -13,6 +13,7 @@ import {
 import { getCountryFromHostname } from '@/lib/countryDetection';
 import Link from 'next/link';
 import type { PorosityType } from '@/lib/routineBuilder';
+import { filterProducts } from '@/lib/productFiltering';
 
 type CountryCode = 'US' | 'UK' | 'AU';
 type PriceRange = '$' | '$$' | '$$$';
@@ -49,49 +50,13 @@ export default function ProductsPage() {
   const products = getBundledProducts();
 
   // Convert products to array and apply filters
-  const filteredProducts = Object.values(products.products).filter(
-    (product) => {
-      if (
-        !product.product_categories ||
-        product.product_categories.length === 0
-      )
-        return false;
-      if (product.product_categories.includes('accessories')) return false;
-      if (
-        selectedCountry !== 'all' &&
-        !product.buy_links?.some(
-          (link) => (link.country || 'US') === selectedCountry,
-        )
-      )
-        return false;
-      if (selectedPrice !== 'all') {
-        const costRating = parseInt(product.cost_rating || '0');
-        switch (selectedPrice) {
-          case '$':
-            if (costRating !== 1) return false;
-            break;
-          case '$$':
-            if (costRating !== 2) return false;
-            break;
-          case '$$$':
-            if (costRating < 3) return false;
-            break;
-        }
-      }
-      if (showFeaturedOnly && !product.tags?.includes('featured')) return false;
-      if (
-        selectedCategory !== 'all' &&
-        !product.product_categories.includes(selectedCategory)
-      )
-        return false;
-      if (
-        selectedPorosity !== 'all' &&
-        !product.tags?.includes(selectedPorosity)
-      )
-        return false;
-      return true;
-    },
-  );
+  const filteredProducts = filterProducts(Object.values(products.products), {
+    country: selectedCountry,
+    costFilter: selectedPrice,
+    category: selectedCategory,
+    porosity: selectedPorosity,
+    requireFeatured: showFeaturedOnly,
+  });
 
   // Sort products
   const sortedProducts = [...filteredProducts].sort((a, b) => {

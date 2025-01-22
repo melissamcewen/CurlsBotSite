@@ -154,6 +154,44 @@ export interface Ingredient {
 export type Ingredients = Record<string, Ingredient>;
 
 /**
+ * Base interface for any extension analysis result
+ */
+export interface ExtensionAnalysis {
+  // This is empty but serves as a base type that all extensions should extend
+}
+
+/**
+ * Represents the analysis result for the Frizzbot system
+ */
+export interface FrizzbotAnalysis extends ExtensionAnalysis {
+  simple_humectants_number: number;
+  film_forming_humectants_number: number;
+  emollients_number: number;
+  simple_humectants: string[];
+  film_forming_humectants: string[];
+  emollients: string[];
+  score: number;
+}
+
+/**
+ * Represents the analysis result for the Porosity system
+ */
+export interface PorosityAnalysis extends ExtensionAnalysis {
+  high: number;
+  low: number;
+}
+
+/**
+ * Represents all available extensions for analysis
+ * Uses an index signature to allow any named extension that extends ExtensionAnalysis
+ */
+export interface Extensions {
+  [key: string]: ExtensionAnalysis | undefined;
+  frizzbot?: FrizzbotAnalysis;
+  porosity?: PorosityAnalysis;
+}
+
+/**
  * Represents a product in the database
  */
 export interface Product {
@@ -185,8 +223,8 @@ export interface Product {
   status?: 'ok' | 'caution' | 'warning' | 'error';
   /** Analysis */
   analysis?: AnalysisResult;
-  /** Frizzbot analysis */
-  frizzbot?: FrizzbotAnalysis;
+  /** Extensions for additional analysis */
+  extensions?: Extensions;
 }
 
 /** Buy link */
@@ -257,7 +295,7 @@ export interface Setting {
   /** Status for ingredients in allowedCategories (when using groups) */
   allowedStatus?: 'ok' | 'caution' | 'warning';
   /** URL for guide */
-  guide?: string
+  guide?: string;
 }
 
 /**
@@ -282,16 +320,3 @@ export interface NormalizedIngredientList {
   isValid: boolean;
   ingredients: string[];
 }
-
-/**
- * Represents the analysis result for the Frizzbot system
- */
-export type FrizzbotAnalysis = {
-  simple_humectants_number: number;
-  film_forming_humectants_number: number;
-  emollients_number: number;
-  simple_humectants: string[];
-  film_forming_humectants: string[];
-  emollients: string[];
-  score: number;
-};

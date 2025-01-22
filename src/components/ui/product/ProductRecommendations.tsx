@@ -105,13 +105,32 @@ export function getProductRecommendations(porosityType: string) {
 
   const products: ProductDatabase = getBundledProducts();
 
+  // Helper function to check if product matches porosity criteria
+  const matchesPorosityScore = (product: Product) => {
+    const porosityScore = product.extensions?.porosity;
+    if (!porosityScore) return false;
+
+    switch (porosityTag) {
+      case 'high_porosity':
+        return porosityScore.high >= 80;
+      case 'low_porosity':
+        return porosityScore.low >= 80;
+      case 'normal_porosity':
+        // For normal porosity, either score being moderate (40-79) is fine
+        return porosityScore.high < 80 && porosityScore.low < 80;
+      default:
+        return false;
+    }
+  };
+
   // First pass: try to get featured products
   Object.entries(products.products).forEach(
     ([_, product]: [string, Product]) => {
       if (
         !product.product_categories ||
         product.product_categories.length === 0 ||
-        !product.tags?.includes('featured')
+        !product.tags?.includes('featured') ||
+        !matchesPorosityScore(product)
       ) {
         return;
       }
@@ -126,10 +145,7 @@ export function getProductRecommendations(porosityType: string) {
       }
 
       const category = product.product_categories[0] as ProductCategory;
-      if (
-        product.tags?.includes(porosityTag) &&
-        validCategories.includes(category)
-      ) {
+      if (validCategories.includes(category)) {
         if (!recommendations[category]) {
           recommendations[category] = [];
         }
@@ -152,7 +168,8 @@ export function getProductRecommendations(porosityType: string) {
     ([_, product]: [string, Product]) => {
       if (
         !product.product_categories ||
-        product.product_categories.length === 0
+        product.product_categories.length === 0 ||
+        !matchesPorosityScore(product)
       ) {
         return;
       }
@@ -168,7 +185,6 @@ export function getProductRecommendations(porosityType: string) {
 
       const category = product.product_categories[0] as ProductCategory;
       if (
-        product.tags?.includes(porosityTag) &&
         validCategories.includes(category) &&
         (!recommendations[category] || recommendations[category]!.length < 3)
       ) {

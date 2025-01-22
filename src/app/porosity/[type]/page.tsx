@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import { ProductRecommendations } from '@/components/ui/product/ProductRecommendations';
 import { Metadata } from 'next';
-
+import Avatar from '@/components/avatar';
 interface PorosityInfo {
   title: string;
   description: string;
@@ -131,7 +131,11 @@ export default async function PorosityPage({ params }: Props) {
 
   return (
     <div className="container mx-auto py-8 px-4">
-      <h1 className="text-3xl font-bold mb-4">{porosityInfo.title}</h1>
+      <h1 className="text-3xl font-bold mb-4">
+        <Avatar imageUrl="/normal.svg" altText="Curlsbot" />
+        <span className="text-primary">CurlsBot</span> thinks you have:{' '}
+        {porosityInfo.title}
+      </h1>
       <p className="text-lg mb-8">{porosityInfo.description}</p>
 
       <div className="grid gap-8 md:grid-cols-2 mb-8">
