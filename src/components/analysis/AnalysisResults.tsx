@@ -11,6 +11,7 @@ import Link from 'next/link';
 import { getBundledProducts } from 'haircare-ingredients-analyzer';
 import { filterProductByCountry } from '@/lib/countryDetection';
 import { getCountryFromHostname } from '@/lib/countryDetection';
+import { CheckCircle, AlertTriangle, XCircle } from 'lucide-react';
 
 interface Props {
   result: AnalysisResult;
@@ -63,6 +64,20 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
     ? getProductRecommendation()
     : null;
 
+  const getStatusIcon = (status: string) => {
+    switch (status) {
+      case 'ok':
+        return <CheckCircle className="w-6 h-6 text-info" />;
+      case 'caution':
+        return <AlertTriangle className="w-6 h-6 text-warning" />;
+      case 'warning':
+      case 'error':
+        return <XCircle className="w-6 h-6 text-error" />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="space-y-8">
       <div className="space-y-8 lg:space-y-0 lg:flex lg:gap-8">
@@ -81,7 +96,13 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
             <ChatBubble status={result.status}>
               <div className="space-y-4">
                 <div className="space-y-2">
-                  <p>{description}</p>
+                  <p>
+                    <span className="inline-block align-text-bottom mr-1">
+                      {getStatusIcon(result.status)}
+                    </span>
+                    {description}
+                  </p>
+
                   {productRecommendation &&
                     productRecommendation.buyLinks?.[0]?.url && (
                       <p>
@@ -101,7 +122,8 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
                           className="link link-primary"
                         >
                           Porosity Quiz
-                        </Link> for personalized recommendations.
+                        </Link>{' '}
+                        for personalized recommendations.
                       </p>
                     )}
                 </div>
