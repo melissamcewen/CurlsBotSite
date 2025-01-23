@@ -10,33 +10,17 @@ interface Props {
 }
 
 export default function HomeDrawer({ children, hasIngredients }: Props) {
-  // Initialize from localStorage if available, otherwise use hasIngredients
-  const [isOpen, setIsOpen] = useState(() => {
-    // Only run this on client side
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('sidebarOpen');
-      if (saved !== null) {
-        return saved === 'true';
-      }
-    }
-    return !hasIngredients;
-  });
+  const [isOpen, setIsOpen] = useState(!hasIngredients);
 
-  // Only update based on hasIngredients if localStorage doesn't have a value
+  // Update based on hasIngredients changes
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('sidebarOpen');
-      if (saved === null && hasIngredients) {
-        setIsOpen(false);
-      }
+    if (hasIngredients) {
+      setIsOpen(false);
     }
   }, [hasIngredients]);
 
-  // Save to localStorage whenever state changes
   const handleToggle = () => {
-    const newState = !isOpen;
-    setIsOpen(newState);
-    localStorage.setItem('sidebarOpen', String(newState));
+    setIsOpen(!isOpen);
   };
 
   return (

@@ -7,7 +7,56 @@ const config: Config = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        'slide-up': {
+          '0%': {
+            transform: 'translateY(0)',
+            opacity: '1',
+          },
+          '100%': {
+            transform: 'translateY(-30px)',
+            opacity: '0',
+          },
+        },
+        'slide-in-bottom': {
+          '0%': {
+            transform: 'translateY(20px)',
+            opacity: '0',
+          },
+          '100%': {
+            transform: 'translateY(0)',
+            opacity: '1',
+          },
+        },
+        'slide-up-exit': {
+          '0%': {
+            transform: 'translateY(0)',
+            opacity: '1',
+          },
+          '100%': {
+            transform: 'translateY(-30px)',
+            opacity: '0',
+          },
+        },
+        'slide-in-enter': {
+          '0%': {
+            transform: 'translateY(20px)',
+            opacity: '0',
+          },
+          '100%': {
+            transform: 'translateY(0)',
+            opacity: '1',
+          },
+        }
+      },
+      animation: {
+        'slide-up': 'slide-up 0.4s ease-out forwards',
+        'slide-in-bottom': 'slide-in-bottom 0.4s ease-out forwards',
+        'slide-up-exit': 'slide-up-exit 0.4s ease-out forwards',
+        'slide-in-enter': 'slide-in-enter 0.4s ease-out forwards'
+      },
+    },
   },
   plugins: [
     /* eslint-disable */

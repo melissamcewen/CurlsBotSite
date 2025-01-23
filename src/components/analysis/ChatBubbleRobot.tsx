@@ -7,6 +7,7 @@ interface ChatBubbleRobotProps {
   imageUrl?: string;
   altText?: string;
   align?: 'start' | 'end';
+  className?: string;
 }
 
 export function ChatBubbleRobot({
@@ -15,6 +16,7 @@ export function ChatBubbleRobot({
   imageUrl,
   altText = 'ChatBot',
   align = 'start',
+  className = '',
 }: ChatBubbleRobotProps) {
   const statusImages: Record<string, string> = {
     ok: '/normal.svg',
@@ -34,8 +36,11 @@ export function ChatBubbleRobot({
   const borderClass = statusClasses[status] || 'border-primary';
 
   return (
-    <div className="chat chat-start lg:max-w-3xl lg:min-w-s">
-      <div className={`chat-image avatar rounded-full border-2 ${borderClass} animate-none`} style={{ animation: 'none', transition: 'none' }}>
+    <div className={`chat chat-start lg:max-w-3xl lg:min-w-s ${className}`}>
+      <div
+        className={`chat-image avatar rounded-full border-2 ${borderClass} animate-none`}
+        style={{ animation: 'none', transition: 'none' }}
+      >
         <div className="w-10 h-10 mask mask-circle relative overflow-hidden">
           {/* Permanent background layer */}
           <div className="absolute inset-0 bg-white" />
@@ -100,7 +105,6 @@ export function ChatBubble({
   return (
     <div
       className={`chat-bubble bg-base-100 border-t-2 p-6 text-base-content w-full ${bubbleClass} ${className}`}
-
     >
       {children}
     </div>

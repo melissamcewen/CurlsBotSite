@@ -23,9 +23,14 @@ export default function IngredientForm({
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showForm, setShowForm] = useState(!initialAnalysis);
+  const [mounted, setMounted] = useState(false);
   const router = useRouter();
   const searchParams = useSearchParams();
   const initialLoadDone = useRef(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleAnalysis = useCallback((ingredientList: string) => {
     if (!ingredientList.trim()) return;
@@ -76,9 +81,19 @@ export default function IngredientForm({
 
   return (
     <div className="space-y-6 max-w-4xl mx-auto p-1">
-      {showForm && (
-        <>
-          <ChatBubbleRobot imageUrl="/normal.svg" status="default">
+      <div className="relative">
+        <div
+          className={`${
+            !showForm && analysisResult ? 'absolute top-0 left-0 right-0' : ''
+          }`}
+        >
+          <ChatBubbleRobot
+            imageUrl="/normal.svg"
+            status="ok"
+            className={
+              !showForm && analysisResult ? 'animate-slide-up-exit' : ''
+            }
+          >
             <ChatBubble status="ok">
               Hi! I&apos;m CurlsBot! I analyze hair care ingredients with curly
               and wavy hair in mind. Just paste an ingredients list below and
@@ -90,7 +105,13 @@ export default function IngredientForm({
             </ChatFooter>
           </ChatBubbleRobot>
 
-          <div className="max-w-2xl ml-auto">
+          <div
+            className={`max-w-2xl ml-auto transition-all duration-500 ease-out ${
+              showForm
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-8 pointer-events-none absolute'
+            }`}
+          >
             <ChatBubbleUser>
               <form onSubmit={handleSubmit} className="w-full">
                 <div className="form-control w-full">
@@ -124,21 +145,26 @@ export default function IngredientForm({
               </form>
             </ChatBubbleUser>
           </div>
-        </>
-      )}
-
-      {error && (
-        <div className="alert alert-error" data-testid="error-message">
-          <span>{error}</span>
         </div>
-      )}
 
-      {analysisResult && (
-        <AnalysisResults
-          result={analysisResult}
-          onTryAnother={handleTryAnother}
-        />
-      )}
+        {!showForm && analysisResult && (
+          <div className="animate-slide-in-enter">
+            <AnalysisResults
+              result={analysisResult}
+              onTryAnother={handleTryAnother}
+            />
+          </div>
+        )}
+
+        {error && (
+          <div
+            className="alert alert-error animate-slide-in-enter"
+            data-testid="error-message"
+          >
+            <span>{error}</span>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
