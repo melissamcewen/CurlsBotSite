@@ -4,7 +4,11 @@ import type { CountryCode } from './countryDetection';
 import { filterProducts } from './productFiltering';
 
 export type { CountryCode };
-export type PorosityType = 'high_porosity' | 'low_porosity' | 'normal_porosity';
+export type PorosityType =
+  | 'high_porosity'
+  | 'low_porosity'
+  | 'normal_porosity'
+  | 'mixed_porosity';
 
 export type ProductCategory =
   | 'pre_poo'
@@ -85,6 +89,20 @@ export const POROSITY_CATEGORIES: Record<PorosityType, ProductCategory[]> = {
     'deep_conditioners',
     'accessories',
   ],
+  mixed_porosity: [
+    'pre_poo',
+    'clarifying_shampoos',
+    'shampoos',
+    'conditioners',
+    'deep_conditioners',
+    'leave_ins',
+    'creams',
+    'custards',
+    'gels',
+    'foams',
+    'accessories',
+    'oils',
+  ],
 };
 
 export function getProductsByCategory(
@@ -124,11 +142,11 @@ export const FREQUENCY_RECOMMENDATIONS: Record<
   low_porosity: {
     clarifying_shampoos: 'Every 1-2 weeks',
     shampoos: 'Every wash',
-    conditioners: 'Every wash',
-    deep_conditioners: 'Monthly',
-    foams: 'Optional',
-    gels: 'As needed for styling',
-    custards: 'Optional',
+    conditioners: 'Every wash, focus on the ends',
+    deep_conditioners: 'Monthly, focus on the ends',
+    foams: 'Choose a foam or custard to help with definition',
+    gels: 'Gels can help with definition and hold',
+    custards: 'Choose a foam or custard to help with definition',
     accessories: 'Useful for all porosity types',
   },
   normal_porosity: {
@@ -136,9 +154,23 @@ export const FREQUENCY_RECOMMENDATIONS: Record<
     shampoos: 'Every 2-3 days',
     conditioners: 'Every wash',
     deep_conditioners: 'Every 2 weeks',
-    creams: 'As needed for styling',
+    creams: 'Recommended to protect hair and style',
     gels: 'As needed for styling',
-    oils: 'Optional',
+    oils: 'Help seal in moisture',
+    accessories: 'Useful for all porosity types',
+  },
+  mixed_porosity: {
+    pre_poo: 'Protect the ends from damage before shampooing/clarifying',
+    clarifying_shampoos: 'Every 2-3 weeks',
+    shampoos: 'Use a stronger shampoo, but protect the ends',
+    conditioners: 'Every wash, focus on the ends',
+    deep_conditioners: 'Every 1-2 weeks on the ends only',
+    leave_ins: 'Every wash on the ends only',
+    creams: 'As needed on the ends to protect and style',
+    gels: 'As needed for styling',
+    custards: 'Choose a foam or custard to help with definition',
+    foams: 'Choose a foam or custard to help with definition',
+    oils: 'Help seal in moisture in the ends',
     accessories: 'Useful for all porosity types',
   },
 };
@@ -161,28 +193,31 @@ interface StepConfig {
 export const ROUTINE_STEPS: Record<RoutineStep, StepConfig> = {
   cleanse: {
     title: '1. Cleanse',
-    description: 'Choose your cleansing products based on your porosity needs',
-    categories: ['pre_poo', 'clarifying_shampoos', 'shampoos', 'cowashes'],
+    description: 'Choose your cleanser based on your needs',
+    categories: ['clarifying_shampoos', 'shampoos', 'cowashes'],
     porosityRecommendations: {
       high_porosity:
-        'Use shampoo weekly, cowash for other wash days, clarifying shampoos every 1-2 months',
+        'Use gentle cleansers like cowash daily, sulfate-free shampoo weekly',
       low_porosity:
-        'Use shampoo every wash day, clarifying shampoo every 1-2 weeks',
-      normal_porosity:
-        'Use shampoo every wash day, cowash optional, clarifying shampoo every month',
+        'Use clarifying or regular shampoo to prevent buildup, avoid cowash',
+      normal_porosity: 'Use sulfate-free shampoo most washes, clarify monthly',
+      mixed_porosity:
+        'Use sulfate-free shampoo on roots, focus gentler cleansers on ends',
     },
   },
   condition: {
     title: '2. Condition',
-    description: 'Build your moisture routine',
+    description: 'Deep condition and/or regular condition',
     categories: ['conditioners', 'deep_conditioners', 'leave_ins'],
     porosityRecommendations: {
       high_porosity:
         'Deep condition weekly, use regular conditioner and leave-in every wash',
       low_porosity:
-        'Use conditioner every wash, deep condition monthly, leave-in optional',
+        'Use regular conditioner every wash, deep condition monthly with heat',
       normal_porosity:
-        'Deep condition weekly, use conditioner every wash, leave-in optional',
+        'Use regular conditioner every wash, deep condition bi-weekly',
+      mixed_porosity:
+        'Deep condition ends weekly, use regular conditioner on roots, focus leave-in on ends',
     },
   },
   enhance: {
@@ -195,6 +230,7 @@ export const ROUTINE_STEPS: Record<RoutineStep, StepConfig> = {
       low_porosity:
         'Use foam every wash, custard optional for extra definition',
       normal_porosity: 'Any of these products can work well for your hair',
+      mixed_porosity: 'Use lighter products on roots, heavier products on ends',
     },
   },
   hold: {
@@ -205,6 +241,8 @@ export const ROUTINE_STEPS: Record<RoutineStep, StepConfig> = {
       high_porosity: 'Use gel every wash for best results',
       low_porosity: 'Use gel every wash for best results',
       normal_porosity: 'Use gel every wash for best results',
+      mixed_porosity:
+        'Use gel every wash, focusing on areas that need most hold',
     },
   },
   finish: {
@@ -215,6 +253,7 @@ export const ROUTINE_STEPS: Record<RoutineStep, StepConfig> = {
       high_porosity: 'Recommended to seal in moisture',
       low_porosity: 'Not recommended, may prevent moisture absorption',
       normal_porosity: 'Optional, use if hair feels dry',
+      mixed_porosity: 'Use on ends only if needed, avoid roots',
     },
   },
   accessories: {
@@ -225,6 +264,7 @@ export const ROUTINE_STEPS: Record<RoutineStep, StepConfig> = {
       high_porosity: 'Useful for all porosity types',
       low_porosity: 'Useful for all porosity types',
       normal_porosity: 'Useful for all porosity types',
+      mixed_porosity: 'Useful for all porosity types',
     },
   },
 };

@@ -134,6 +134,14 @@ export default function Navbar() {
                     Normal Porosity
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    href="/porosity/mixed-porosity"
+                    onClick={handleLinkClick}
+                  >
+                    Mixed Porosity
+                  </Link>
+                </li>
               </ul>
             </details>
           </li>
@@ -249,6 +257,14 @@ export default function Navbar() {
                       onClick={handleLinkClick}
                     >
                       Normal Porosity
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/porosity/mixed-porosity"
+                      onClick={handleLinkClick}
+                    >
+                      Mixed Porosity
                     </Link>
                   </li>
                 </ul>

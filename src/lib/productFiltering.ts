@@ -62,7 +62,6 @@ export function filterProducts(
       // Skip porosity filtering for certain categories
       if (
         product.product_categories?.includes('deep_conditioners') ||
-        product.product_categories?.includes('clarifying_shampoos') ||
         product.product_categories?.includes('pre_poo') ||
         product.product_categories?.includes('accessories')
       ) {
@@ -81,6 +80,30 @@ export function filterProducts(
           break;
         case 'normal_porosity':
           // Accept any product that has porosity scores
+          break;
+        case 'mixed_porosity':
+          // For mixed porosity, apply different criteria based on product category
+          if (
+            product.product_categories?.includes('clarifying_shampoos') ||
+            product.product_categories?.includes('shampoos') ||
+            product.product_categories?.includes('foams') ||
+            product.product_categories?.includes('gels') ||
+            product.product_categories?.includes('custards')
+          ) {
+            // These should be good for low porosity
+            if (porosityScore.low < 70) return false;
+          } else if (
+            product.product_categories?.includes('conditioners') ||
+            product.product_categories?.includes('leave_ins') ||
+            product.product_categories?.includes('creams') ||
+            product.product_categories?.includes('oils')
+          ) {
+            // These should be good for high porosity
+            if (porosityScore.high < 70) return false;
+          } else {
+            //just display all porosity products
+            break;
+          }
           break;
       }
     }

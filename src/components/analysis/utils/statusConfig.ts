@@ -1,3 +1,5 @@
+import { Check } from 'lucide-react';
+
 interface StatusConfig {
   color: string;
   bgClass: string;
@@ -5,7 +7,9 @@ interface StatusConfig {
   alertClass: string;
   alertContentClass: string;
   description: string;
+  icon?: React.ReactNode;
 }
+
 
 export const getStatusConfig = (status: string): StatusConfig => {
   switch (status) {
@@ -16,6 +20,7 @@ export const getStatusConfig = (status: string): StatusConfig => {
         textClass: 'text-info',
         alertClass: 'alert-info',
         alertContentClass: 'text-info-content',
+        icon: <Check className="w-6 h-6" />,
         description:
           "CurlsBot approved! This ingredient list seems good, but I'm only a robot! It's always a good idea to double-check and see if there's anything you're unsure about. Your hair is unique, so do what works best for you.",
       };

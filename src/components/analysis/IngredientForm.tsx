@@ -78,7 +78,7 @@ export default function IngredientForm({
     <div className="space-y-6 max-w-4xl mx-auto p-1">
       {showForm && (
         <>
-          <ChatBubbleRobot imageUrl="/normal.svg" status="ok">
+          <ChatBubbleRobot imageUrl="/normal.svg" status="default">
             <ChatBubble status="ok">
               Hi! I&apos;m CurlsBot! I analyze hair care ingredients with curly
               and wavy hair in mind. Just paste an ingredients list below and

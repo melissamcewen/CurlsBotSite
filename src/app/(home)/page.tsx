@@ -3,12 +3,12 @@ import { Analyzer } from 'haircare-ingredients-analyzer';
 import { Suspense } from 'react';
 import Loading from './loading';
 import { createPageMetadata } from '@/config/metadata';
-import Sidebar from '@/components/Sidebar';
 import { Metadata } from 'next';
 import {
   generateWebAppSchema,
   generateOrganizationSchema,
 } from '@/utils/structured-data';
+import HomeDrawer from '@/components/HomeDrawer';
 
 // Only make the page dynamic when ingredients are present
 export const dynamic = 'auto';
@@ -87,16 +87,11 @@ export default async function Home({ searchParams }: Props) {
           __html: JSON.stringify(generateOrganizationSchema()),
         }}
       />
-      <div className="flex flex-col xl:flex-row space-y-3 xl:space-y-0 xl:space-x-3 bg-base-200 p-0 md:p-8">
-        <div className="xl:max-w-xs">
-          <Sidebar />
-        </div>
-        <div className="w-full  ">
-          <Suspense fallback={<Loading />}>
-            <AnalyzerWrapper ingredients={initialIngredients} />
-          </Suspense>
-        </div>
-      </div>
+      <HomeDrawer hasIngredients={!!initialIngredients}>
+        <Suspense fallback={<Loading />}>
+          <AnalyzerWrapper ingredients={initialIngredients} />
+        </Suspense>
+      </HomeDrawer>
     </>
   );
 }

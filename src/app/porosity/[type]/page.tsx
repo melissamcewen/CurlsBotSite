@@ -66,6 +66,24 @@ const POROSITY_DATA: Record<string, PorosityInfo> = {
       'Deep condition occasionally for maintenance',
     ],
   },
+  'mixed-porosity': {
+    title: 'Mixed Porosity Hair',
+    description:
+      'Mixed porosity hair has different porosity levels throughout the hair shaft, often with more damaged or porous ends and healthier roots. This can be caused by heat or coloring damage, or from having long hair (the ends become more porous due to everyday wear and tear). This type of hair requires a balanced approach to care.',
+    characteristics: [
+      'Greasy roots and dry ends',
+      'Uneven drying time throughout hair',
+      'Can be prone to both buildup and dryness',
+      'May require different products for different sections',
+    ],
+    tips: [
+      'Use lighter products near roots and heavier ones on ends',
+      'Section hair when applying products to target different needs',
+      'Protect the ends with a pre-poo when shampooing or clarifying',
+      'Deep condition focusing on the ends',
+      'Consider protein treatments for the ends',
+    ],
+  },
 };
 
 interface Props {
@@ -140,5 +158,6 @@ export function generateStaticParams() {
     { type: 'low-porosity' },
     { type: 'high-porosity' },
     { type: 'normal-porosity' },
+    { type: 'mixed-porosity' },
   ];
 }

@@ -42,6 +42,8 @@ export function PorosityPageClient({ porosityType, porosityInfo }: Props) {
         return 'high_porosity';
       case 'low-porosity':
         return 'low_porosity';
+      case 'mixed-porosity':
+        return 'mixed_porosity';
       case 'normal-porosity':
         return 'normal_porosity';
       default:
@@ -107,6 +109,7 @@ export function PorosityPageClient({ porosityType, porosityInfo }: Props) {
                 <option value="normal_porosity">Normal Porosity</option>
                 <option value="high_porosity">High Porosity</option>
                 <option value="low_porosity">Low Porosity</option>
+                <option value="mixed_porosity">Mixed Porosity</option>
               </select>
             </div>
 
@@ -217,13 +220,8 @@ function RoutineSteps({ porosity, country, costFilter }: RoutineStepsProps) {
                           {costFilter
                             ? `We don't have items in this price range yet, please `
                             : `We don't have any featured items in this category yet, please `}
-                          <Link
-                            href="/contact"
-
-                          >
-                            Contact Us
-                          </Link>{' '}
-                          if you have suggestions
+                          <Link href="/contact">Contact Us</Link> if you have
+                          suggestions
                         </p>
                       </div>
                     )}
