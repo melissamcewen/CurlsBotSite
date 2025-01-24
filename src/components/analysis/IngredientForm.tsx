@@ -43,6 +43,8 @@ export default function IngredientForm({
       const result = analyzer.analyze(ingredientList.trim());
       setAnalysisResult(result);
       setShowForm(false);
+      // Scroll to top smoothly when showing results
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch {
       setError('Failed to analyze ingredients');
     }
@@ -127,7 +129,7 @@ export default function IngredientForm({
 
                   <textarea
                     id="ingredients-input"
-                    className="textarea textarea-bordered bg-base-100 text-base-content h-48 w-full"
+                    className="textarea textarea-bordered bg-base-100 text-base-content h-48 w-full text-base"
                     value={ingredients}
                     onChange={(e) => setIngredients(e.target.value)}
                     placeholder="Enter ingredients, ideally copy and paste from a brand's website or a retailer such as Ulta Beauty"

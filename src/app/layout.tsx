@@ -133,14 +133,6 @@ export default function RootLayout({
         <div className="min-h-screen overflow-x-hidden">
           <div className="absolute inset-0 pointer-events-none" />
           <Navbar />
-          <div className="alert alert-info alert-none rounded-none">
-            <span>
-              Still seeing the old site?{' '}
-              <a href="/api/clear-cache" className="link">
-                Click here to clear your cache
-              </a>
-            </span>
-          </div>
           <main className="bg-base-200">{children}</main>
 
           <Footer />
