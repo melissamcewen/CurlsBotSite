@@ -2,7 +2,6 @@ export interface Answer {
   content: string;
   low?: number;
   high?: number;
-  low?: number;
   normal?: number;
   mixed?: number;
 }
