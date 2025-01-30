@@ -87,9 +87,7 @@ const POROSITY_DATA: Record<string, PorosityInfo> = {
 };
 
 interface Props {
-  params: {
-    type: string;
-  };
+  params: { type: string };
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -137,19 +135,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function PorosityPage({ params }: Props) {
-  const porosityType = params.type;
-  const porosityInfo = POROSITY_DATA[porosityType];
+  const type = await params.type;
+  const porosityInfo = POROSITY_DATA[type];
 
   if (!porosityInfo) {
     notFound();
   }
 
-  return (
-    <PorosityPageClient
-      porosityType={porosityType}
-      porosityInfo={porosityInfo}
-    />
-  );
+  return <PorosityPageClient porosityType={type} porosityInfo={porosityInfo} />;
 }
 
 // Generate static paths for all porosity types

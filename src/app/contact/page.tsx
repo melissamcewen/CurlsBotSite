@@ -89,6 +89,14 @@ export default function ContactPage() {
                   Visit our GitHub repository
                 </a>
               </li>
+              <li>
+                <a
+                  href="https://bsky.app/profile/curlsbot.bsky.social"
+                  className="link link-primary"
+                >
+                  Follow our development on BlueSky
+                </a>
+              </li>
             </ul>
 
             <h2>Business Inquiries</h2>
