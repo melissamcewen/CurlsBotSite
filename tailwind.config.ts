@@ -48,13 +48,13 @@ const config: Config = {
             transform: 'translateY(0)',
             opacity: '1',
           },
-        }
+        },
       },
       animation: {
         'slide-up': 'slide-up 0.4s ease-out forwards',
         'slide-in-bottom': 'slide-in-bottom 0.4s ease-out forwards',
         'slide-up-exit': 'slide-up-exit 0.4s ease-out forwards',
-        'slide-in-enter': 'slide-in-enter 0.4s ease-out forwards'
+        'slide-in-enter': 'slide-in-enter 0.4s ease-out forwards',
       },
     },
   },

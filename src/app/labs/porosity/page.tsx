@@ -26,6 +26,7 @@ export default function PorosityLabPage() {
       const analyzer = new Analyzer();
       const analysis = analyzer.analyze(ingredients.trim());
       const result = porosity(analysis);
+
       setScores(result);
     } catch (error) {
       console.error('Failed to analyze ingredients:', error);
@@ -86,7 +87,10 @@ export default function PorosityLabPage() {
               ideal for this porosity type
             </li>
           </ul>
-          <p>These scores do not apply to products for occasional use like clarifying treatments and deep conditioners</p>
+          <p>
+            These scores do not apply to products for occasional use like
+            clarifying treatments and deep conditioners
+          </p>
         </div>
       </div>
 
