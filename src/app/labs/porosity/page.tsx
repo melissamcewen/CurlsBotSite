@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { porosity } from 'haircare-ingredients-analyzer';
+import { porosity, Analyzer } from 'haircare-ingredients-analyzer';
 import { getBundledDatabase } from 'haircare-ingredients-analyzer';
 import {
   Droplets,
@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import Avatar from '@/components/avatar';
 import Link from 'next/link';
+
 export default function PorosityLabPage() {
   const [ingredients, setIngredients] = useState('');
   const [scores, setScores] = useState<{ high: number; low: number } | null>(
@@ -21,23 +22,14 @@ export default function PorosityLabPage() {
   const handleAnalyze = () => {
     if (!ingredients.trim()) return;
 
-    const db = getBundledDatabase();
-    const analysis = {
-      ingredients: ingredients.split(',').map((ingredient) => ({
-        raw: ingredient.trim(),
-        ingredient: db.ingredients[ingredient.trim().toLowerCase()],
-        name: ingredient.trim(),
-        normalized: ingredient.trim().toLowerCase(),
-        status: 'ok' as const,
-        reasons: [],
-      })),
-      status: 'ok' as const,
-      reasons: [],
-      input: ingredients,
-    };
-
-    const result = porosity(analysis);
-    setScores(result);
+    try {
+      const analyzer = new Analyzer();
+      const analysis = analyzer.analyze(ingredients.trim());
+      const result = porosity(analysis);
+      setScores(result);
+    } catch (error) {
+      console.error('Failed to analyze ingredients:', error);
+    }
   };
 
   const getStatus = (score: number) => {
