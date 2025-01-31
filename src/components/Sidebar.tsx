@@ -8,6 +8,7 @@ import {
   Mail,
   Newspaper,
   BookOpen,
+  Mailbox,
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -27,8 +28,8 @@ export default function Sidebar() {
             <div className="flex gap-2">
               <FileText className="w-5 h-5 flex-shrink-0 mt-1" />
               <p>
-                CurlsBot is a tool to help you understand the ingredients
-                in your curly/wavy hair care products.
+                CurlsBot is a tool to help you understand the ingredients in
+                your curly/wavy hair care products.
               </p>
             </div>
             <div className="flex gap-2">
@@ -69,11 +70,24 @@ export default function Sidebar() {
         <div className="card-body ">
           <h2 className="card-title flex">
             <Newspaper className="w-6 h-6" />
-            News
+            News Jan 30th 2025
           </h2>
           <div className="space-y-2">
             <div className="flex gap-2">
               <Mail className="w-5 h-5 flex-shrink-0 mt-1" />
+              <p>
+                Newsletter:{' '}
+                <a
+                  href="https://mailchi.mp/9de8c32a160e/a-new-porosity-type-just-dropped"
+                  className="link"
+                >
+                  Mixed porosity has been added to our porosity quiz
+                </a>
+                .{' '}
+              </p>
+            </div>
+            <div className="flex gap-2">
+              <Mailbox className="w-5 h-5 flex-shrink-0 mt-1" />
               <p>
                 <a
                   href="http://eepurl.com/i6TEyw"
@@ -83,15 +97,18 @@ export default function Sidebar() {
                 >
                   Subscribe to our newsletter
                 </a>{' '}
-                to get the latest news and updates
+                to get the latest news and updates.
               </p>
             </div>
             <div className="flex gap-2">
               <Newspaper className="w-5 h-5 flex-shrink-0 mt-1" />
               <p>
                 Read our latest blog post :{' '}
-                <Link href="/blog/why-curlsbot-is-not-ai" className="link">
-                  Why CurlsBot is not AI
+                <Link
+                  href="/blog/essential-oils-vs-oils-for-hair"
+                  className="link"
+                >
+                  Essential oils vs oils for hair
                 </Link>
               </p>
             </div>

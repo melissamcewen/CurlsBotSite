@@ -26,7 +26,7 @@ const SETTING_GUIDES: Record<string, string> = {
   no_water_insoluble_silicones: '/groups/silicones',
   caution_silicones: '/groups/silicones',
   no_waxes: '/groups/waxes',
-  soap_free: '/categories/soap',
+  soap_free: '/categories/soaps',
   no_petroleum: '/categories/petroleum-oils',
 };
 
