@@ -96,6 +96,10 @@ export default function RootLayout({
           crossOrigin="anonymous"
           data-ad-client="ca-pub-8535588433972499"
         />
+        <Script
+          type="text/javascript"
+          src="https://s.skimresources.com/js/276362X1762442.skimlinks.js"
+        ></Script>
         <meta name="apple-mobile-web-app-title" content="CurlsBot" />
         <meta
           name="impact-site-verification"
