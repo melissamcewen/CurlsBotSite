@@ -66,15 +66,13 @@ export function BlogProduct({
 
         <div className="card-actions flex-col gap-2 mt-auto">
           {(buyLink || amazonLink) && (
-            <div className="flex gap-2 w-full">
+            <div className="flex flex-col gap-2 w-full">
               {buyLink && (
                 <a
                   href={buyLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`btn btn-secondary btn-sm flex items-center justify-center gap-2 ${
-                    amazonLink ? 'w-1/2' : 'w-full'
-                  }`}
+                  className="btn btn-secondary btn-sm flex items-center justify-center gap-2 w-full"
                 >
                   <ShoppingCart className="w-5 h-5" />
                   Buy at {buyText}
@@ -85,9 +83,7 @@ export function BlogProduct({
                   href={amazonLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`btn btn-secondary btn-sm flex items-center justify-center gap-2 ${
-                    buyLink ? 'w-1/2' : 'w-full'
-                  }`}
+                  className="btn btn-secondary btn-sm flex items-center justify-center gap-2 w-full"
                 >
                   <ShoppingCart className="w-5 h-5" />
                   Buy on Amazon
