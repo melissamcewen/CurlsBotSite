@@ -17,7 +17,7 @@ export default function Sidebar() {
     'flaxseed extract, agave nectar extract, pectin, aloe vera juice, marshmallow root extract, vitamin e, xanthan gum, optiphen plus, sweet orange essential oil';
 
   return (
-    <div className="flex flex-col gap-4 sm:flex-row xl:flex-col p-2">
+    <div className="flex flex-col gap-4 sm:flex-row md:flex-col p-2">
       <div className="card card-compact border-primary border-2 bg-base-100">
         <div className="card-body ">
           <h2 className="card-title flex">

@@ -11,7 +11,7 @@ interface PorosityInfo {
 
 const POROSITY_DATA: Record<string, PorosityInfo> = {
   'low-porosity': {
-    title: 'Low Porosity Hair',
+    title: 'Low Porosity Hair Guide and Best Products',
     description:
       'Low porosity hair has a tightly bound cuticle layer, making it difficult for moisture to penetrate the hair shaft. This type of hair is often resistant to treatments and can be prone to product buildup.',
     characteristics: [
@@ -26,10 +26,11 @@ const POROSITY_DATA: Record<string, PorosityInfo> = {
       'Focus on lightweight, easily absorbed products',
       'Regular clarifying treatments to remove buildup',
       'Apply products to damp hair to improve absorption',
+      'May better tolerate sulfates than other porosity types and even benefit from them',
     ],
   },
   'high-porosity': {
-    title: 'High Porosity Hair',
+    title: 'High Porosity Hair Guide and Best Products',
     description:
       'High porosity hair has a raised or damaged cuticle layer, allowing moisture to easily enter and exit the hair shaft. This type of hair can become easily moisturized but also loses moisture quickly.',
     characteristics: [
@@ -48,7 +49,7 @@ const POROSITY_DATA: Record<string, PorosityInfo> = {
     ],
   },
   'normal-porosity': {
-    title: 'Normal Porosity Hair',
+    title: 'Normal Porosity Hair Guide and Best Products',
     description:
       'Normal porosity hair has a healthy cuticle layer that allows for balanced moisture absorption and retention. This type of hair is generally easier to maintain and style.',
     characteristics: [
@@ -67,7 +68,7 @@ const POROSITY_DATA: Record<string, PorosityInfo> = {
     ],
   },
   'mixed-porosity': {
-    title: 'Mixed Porosity Hair',
+    title: 'Mixed Porosity Hair Guide and Best Products',
     description:
       'Mixed porosity hair has different porosity levels throughout the hair shaft, often with more damaged or porous ends and healthier roots. This can be caused by heat or coloring damage, or from having long hair (the ends become more porous due to everyday wear and tear). This type of hair requires a balanced approach to care.',
     characteristics: [

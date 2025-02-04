@@ -30,76 +30,81 @@ export function BlogProduct({
   buyText = 'Buy Now',
 }: BlogProductProps) {
   return (
-    <div className="rounded-xl bg-base-100 p-6 space-y-4">
-      <div className="relative w-full aspect-square max-w-md mx-auto">
+    <div className="card md:card-side cb-border not-prose mb-4">
+      <figure className="relative w-full md:w-[350px] h-[350px] mx-auto bg-base-200/20">
         <Image
           src={image}
           alt={name}
           fill
-          className="object-contain rounded-xl"
+          className="md:object-cover object-contain"
         />
-      </div>
-
-      <div className="space-y-2">
-        <h2 className="text-3xl font-bold">{name}</h2>
-        {subtitle && <p className="text-xl text-base-content/80">{subtitle}</p>}
-      </div>
-
-      <div className="flex flex-wrap gap-2">
-        {cgmApproved && (
-          <div className="badge badge-outline badge-info gap-1 whitespace-nowrap">
-            <CheckCircle className="w-4 h-4" />
-            CGM Approved
-          </div>
-        )}
-        {sulfateFree && (
-          <span className="badge badge-lg badge-info">Sulfate Free</span>
-        )}
-        {siliconeFree && (
-          <span className="badge badge-lg badge-info">Silicone Free</span>
-        )}
-      </div>
-
-      {description && <p className="text-base-content/80">{description}</p>}
-
-      {(buyLink || amazonLink) && (
-        <div className="flex gap-2">
-          {buyLink && (
-            <a
-              href={buyLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`btn btn-secondary flex items-center justify-center gap-2 ${
-                amazonLink ? 'w-1/2' : 'w-full'
-              }`}
-            >
-              <ShoppingCart className="w-5 h-5" />
-              {buyText}
-            </a>
-          )}
-          {amazonLink && (
-            <a
-              href={amazonLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`btn btn-secondary flex items-center justify-center gap-2 ${
-                buyLink ? 'w-1/2' : 'w-full'
-              }`}
-            >
-              <ShoppingCart className="w-5 h-5" />
-              Buy on Amazon
-            </a>
+      </figure>
+      <div className="card-body flex flex-col">
+        <div className="space-y-2">
+          <div className="card-title">{name}</div>
+          {subtitle && (
+            <p className="text-xl text-base-content/80">{subtitle}</p>
           )}
         </div>
-      )}
 
-      <Link
-        href={`/?ingredients=${encodeURIComponent(ingredients)}`}
-        className="btn btn-primary w-full flex items-center justify-center gap-2"
-      >
-        <Search className="w-5 h-5" />
-        Analyze with Curlsbot
-      </Link>
+        <div className="flex flex-wrap gap-2">
+          {cgmApproved && (
+            <div className="badge badge-outline badge-info gap-1 whitespace-nowrap">
+              <CheckCircle className="w-4 h-4" />
+              CGM Approved
+            </div>
+          )}
+          {sulfateFree && (
+            <span className="badge badge-info">Sulfate Free</span>
+          )}
+          {siliconeFree && (
+            <span className="badge badge-info">Silicone Free</span>
+          )}
+        </div>
+
+        {description && <p className="text-base-content/80">{description}</p>}
+
+        <div className="card-actions flex-col gap-2 mt-auto">
+          {(buyLink || amazonLink) && (
+            <div className="flex gap-2 w-full">
+              {buyLink && (
+                <a
+                  href={buyLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`btn btn-secondary btn-sm flex items-center justify-center gap-2 ${
+                    amazonLink ? 'w-1/2' : 'w-full'
+                  }`}
+                >
+                  <ShoppingCart className="w-5 h-5" />
+                  Buy at {buyText}
+                </a>
+              )}
+              {amazonLink && (
+                <a
+                  href={amazonLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`btn btn-secondary btn-sm flex items-center justify-center gap-2 ${
+                    buyLink ? 'w-1/2' : 'w-full'
+                  }`}
+                >
+                  <ShoppingCart className="w-5 h-5" />
+                  Buy on Amazon
+                </a>
+              )}
+            </div>
+          )}
+
+          <Link
+            href={`/?ingredients=${encodeURIComponent(ingredients)}`}
+            className="btn btn-primary btn-sm w-full flex items-center justify-center gap-2"
+          >
+            <Search className="w-5 h-5" />
+            Analyze with Curlsbot
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }

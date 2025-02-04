@@ -9,12 +9,53 @@ interface BlogFrontmatter {
   description?: string;
   date?: string;
   image?: string;
+  author?: string;
 }
 
 interface PageProps {
   params: Promise<{
     slug: string;
   }>;
+}
+
+// Add structured data for the article
+function generateStructuredData(frontmatter: BlogFrontmatter, slug: string) {
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: frontmatter.title,
+    description: frontmatter.description,
+    image: frontmatter.image
+      ? `https://curlsbot.com${frontmatter.image}`
+      : undefined,
+    datePublished: frontmatter.date,
+    dateModified: frontmatter.date,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://curlsbot.com/blog/${slug}`,
+    },
+    author: frontmatter.author
+      ? {
+          '@type': 'Person',
+          name: frontmatter.author,
+        }
+      : {
+          '@type': 'Organization',
+          name: 'CurlsBot',
+          url: 'https://curlsbot.com',
+        },
+    publisher: {
+      '@type': 'Organization',
+      name: 'CurlsBot',
+      url: 'https://curlsbot.com',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://curlsbot.com/logo.png',
+      },
+    },
+  };
+
+  return structuredData;
 }
 
 export async function generateMetadata({ params }: PageProps) {
@@ -68,8 +109,19 @@ export default async function BlogPostPage({ params }: PageProps) {
       }).format(new Date(frontmatter.date))
     : null;
 
+  const structuredData = generateStructuredData(
+    frontmatter,
+    resolvedParams.slug,
+  );
+
   return (
     <div className="bg-base-100 w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData),
+        }}
+      />
       <div className="max-w-4xl mx-auto ">
         <div className="p-3">
           <div className="flex items-center gap-2 mb-4">
