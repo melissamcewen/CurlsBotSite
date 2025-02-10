@@ -2,7 +2,9 @@ import { notFound } from 'next/navigation';
 import { createDynamicPageMetadata } from '@/config/metadata';
 import Link from 'next/link';
 import Image from 'next/image';
-import { BookOpenText } from 'lucide-react';
+import { BookOpenText, ArrowRight } from 'lucide-react';
+import { promises as fs } from 'fs';
+import path from 'path';
 
 interface BlogFrontmatter {
   title: string;
@@ -16,6 +18,11 @@ interface PageProps {
   params: Promise<{
     slug: string;
   }>;
+}
+
+interface BlogPost {
+  slug: string;
+  frontmatter: BlogFrontmatter;
 }
 
 // Add structured data for the article
@@ -82,6 +89,35 @@ export async function generateMetadata({ params }: PageProps) {
   });
 }
 
+async function getRelatedPosts(currentSlug: string): Promise<BlogPost[]> {
+  const blogDir = path.join(process.cwd(), 'src/content/blog');
+  const files = await fs.readdir(blogDir);
+  const mdxFiles = files.filter((file) => file.endsWith('.mdx'));
+
+  const posts = await Promise.all(
+    mdxFiles.map(async (file) => {
+      const post = await import(`@/content/blog/${file}`);
+      return {
+        slug: file.replace('.mdx', ''),
+        frontmatter: post.frontmatter,
+      };
+    }),
+  );
+
+  // Filter for posts with images and exclude current post and welcome-back
+  const eligiblePosts = posts
+    .filter(
+      (post) =>
+        post.frontmatter.image &&
+        post.slug !== currentSlug &&
+        post.slug !== 'welcome-back',
+    )
+    .sort(() => Math.random() - 0.5); // Randomize the array
+
+  // Take the first 3 posts after randomization
+  return eligiblePosts.slice(0, 3);
+}
+
 export default async function BlogPostPage({ params }: PageProps) {
   const resolvedParams = await params;
   let mdxModule;
@@ -98,6 +134,9 @@ export default async function BlogPostPage({ params }: PageProps) {
   if (!frontmatter || !frontmatter.title) {
     notFound();
   }
+
+  // Get related posts
+  const relatedPosts = await getRelatedPosts(resolvedParams.slug);
 
   // Format date if it exists
   const formattedDate = frontmatter.date
@@ -122,7 +161,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           __html: JSON.stringify(structuredData),
         }}
       />
-      <div className="max-w-4xl mx-auto ">
+      <div className="max-w-4xl mx-auto">
         <div className="p-3">
           <div className="flex items-center gap-2 mb-4">
             <Link href="/blog" className="btn btn-ghost btn-sm">
@@ -166,6 +205,49 @@ export default async function BlogPostPage({ params }: PageProps) {
 
             <Content />
           </article>
+
+          {relatedPosts.length > 0 && (
+            <div className="mt-16 not-prose">
+              <h2 className="text-3xl font-bold mb-8">Related Articles</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {relatedPosts.map((post) => (
+                  <Link
+                    key={post.slug}
+                    href={`/blog/${post.slug}`}
+                    className="card bg-base-200 hover:bg-base-300 transition-colors"
+                  >
+                    {post.frontmatter.image && (
+                      <figure className="relative h-48">
+                        <Image
+                          src={post.frontmatter.image}
+                          alt={post.frontmatter.title}
+                          fill
+                          className="object-cover rounded-t-xl"
+                        />
+                      </figure>
+                    )}
+                    <div className="card-body flex flex-col justify-between">
+                      <div>
+                        <h3 className="card-title text-lg">
+                          {post.frontmatter.title}
+                        </h3>
+                        {post.frontmatter.description && (
+                          <p className="text-base-content/70 text-sm line-clamp-2 mt-2">
+                            {post.frontmatter.description}
+                          </p>
+                        )}
+                      </div>
+                      <div className="card-actions justify-end mt-4">
+                        <div className="text-primary flex items-center gap-1 text-sm">
+                          Read more <ArrowRight className="w-4 h-4" />
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -1,9 +1,7 @@
-
-
 import { Info } from 'lucide-react';
 import Link from 'next/link';
 import { createPageMetadata } from '@/config/metadata';
-
+import Image from 'next/image';
 export const metadata = createPageMetadata({
   title: 'About CurlsBot',
   description:
@@ -13,124 +11,100 @@ export const metadata = createPageMetadata({
 
 export default function About() {
   return (
-    <div className="max-w-4xl mx-auto">
-      <div className="card bg-base-100 rounded-xl">
-        <div className="card-body">
-          <div className="flex items-center gap-2 mb-4">
-            <Info className="w-8 h-8 text-primary" />
-            <h1 className="text-3xl font-bold">About CurlsBot</h1>
-          </div>
+    <div className="">
+      <div className=" hero bg-base-100 min-h-screen">
+        <div className="hero-content flex-col lg:flex-row-reverse">
+          <Image src="/normal.svg" alt="CurlsBot" width={500} height={500} />
 
-          <div className="prose prose-lg">
-            <p>
-              Welcome to CurlsBot, your trusted companion for understanding hair
-              care ingredients! We simplify your curly hair journey by analyzing
-              product ingredients and helping you make informed decisions about
-              the products you use. Whether you&apos;re just starting out or are
-              a seasoned curly hair enthusiast, CurlsBot helps you decode
-              complex ingredient lists to find products that match your needs.
-            </p>
-
-            <h2 className="text-2xl font-bold mt-6">
-              Frequently Asked Questions
+          <div>
+            <h2 className="text-5xl font-bold">
+              CurlsBot is the #1 Hair Ingredients Checker
             </h2>
-            <div className="space-y-4">
-              <div>
-                <h3 className="text-xl font-semibold">
-                  How does CurlsBot analyze ingredients?
-                </h3>
-                <p>
-                  Our sophisticated system combines pattern recognition with a
-                  comprehensive database of hundreds of common hair care
-                  ingredients to evaluate your product lists. This allows us to
-                  provide you with detailed insights about the ingredients in
-                  your hair care products.
-                </p>
+            <p className="py-6">
+              Powdered by our science-backed database to educate people about
+              how their hair products work and help them find the best products
+              for their hair.
+            </p>
+            <Link href="/faq" className="btn btn-primary">
+              View FAQ
+            </Link>
+          </div>
+        </div>
+      </div>
+      <div className="hero bg-base-200 min-h-screen">
+        <div className="hero-content text-center">
+          <div className="">
+            <h2 className="text-5xl font-bold">
+              Over 30,000 CurlFriends a Month
+            </h2>
+            <div className="mt-8 stats stats-vertical lg:stats-horizontal shadow">
+              <div className="stat">
+                <div className="stat-title">Europe</div>
+                <div className="stat-value">47%</div>
               </div>
-
-              <div>
-                <h3 className="text-xl font-semibold">
-                  Why might I get unexpected results?
-                </h3>
-                <p>
-                  Accuracy matters! The most common cause of unexpected results
-                  is misspelled ingredients. For best results, we recommend
-                  copying ingredient lists directly from manufacturer or
-                  retailer websites rather than typing them manually. Even then,
-                  some official listings may contain errors. If you spot any
-                  inconsistencies, please let us know so we can continue
-                  improving our system.
-                </p>
+              <div className="stat">
+                <div className="stat-title">North America</div>
+                <div className="stat-value">32%</div>
               </div>
-
-              <div>
-                <h3 className="text-xl font-semibold">
-                  What format should my ingredient list be in?
-                </h3>
-                <p>
-                  CurlsBot works with comma-separated ingredient lists (e.g.,
-                  &quot;ingredient 1, ingredient 2, ingredient 3&quot;).
-                  Currently, we can&apos;t process lists that use other
-                  separators (like slashes) or line breaks. Need help formatting
-                  your list? Check out our{' '}
-                  <Link href="/resources" className="link link-primary">
-                    recommended online tools
-                  </Link>
-                  .
-                </p>
+              <div className="stat">
+                <div className="stat-title">Asia</div>
+                <div className="stat-value">11%</div>
               </div>
-
-              <div>
-                <h3 className="text-xl font-semibold">
-                  Can CurlsBot analyze photos of ingredient lists?
-                </h3>
-                <p>
-                  Currently, CurlsBot processes text-only ingredient lists. For
-                  accurate results, we recommend copying the ingredient list
-                  from the manufacturer&apos;s website or authorized retailers.
-                  If you need help with a product image, consider sharing it in
-                  one of the curly hair communities listed on our{' '}
-                  <Link href="/resources" className="link link-primary">
-                    resources page
-                  </Link>
-                  .
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold">
-                  What does a &quot;Caution&quot; notification mean?
-                </h3>
-                <p>
-                  When you see a &quot;Caution&quot; notice, it means
-                  there&apos;s ongoing discussion about that ingredient in the
-                  curly hair community. Since experts often have different
-                  perspectives on certain ingredients, we encourage you to
-                  explore additional resources and make informed decisions.
-                  Visit our{' '}
-                  <Link href="/resources" className="link link-primary">
-                    resources page
-                  </Link>{' '}
-                  to connect with knowledgeable curly hair communities.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold">
-                  Does CurlsBot support multiple languages?
-                </h3>
-                <p>
-                  At present, CurlsBot analyzes English ingredient lists only.
-                  For non-English products, we recommend connecting with
-                  language-specific curly hair communities. Visit our{' '}
-                  <Link href="/resources" className="link link-primary">
-                    resources page
-                  </Link>{' '}
-                  to find international curly hair groups that can help you
-                  evaluate products in your preferred language.
-                </p>
+              <div className="stat">
+                <div className="stat-title">Oceania</div>
+                <div className="stat-value">6%</div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+      <div className="hero bg-base-100 min-h-screen">
+        <div className="hero-content flex-col lg:flex-row">
+          <Image src="/surprised.svg" alt="CurlsBot" width={500} height={500} />
+          <div>
+            <h1 className="text-5xl font-bold">Porosity Quiz</h1>
+            <p className="py-6">
+              Our porosity quiz is the #1 way to find your hair porosity and
+              products that work best for it
+            </p>
+            <a href="/porosity-quiz" className="btn btn-primary">
+              Take the Quiz
+            </a>
+          </div>
+        </div>
+      </div>
+      <div className=" hero bg-base-200 min-h-screen">
+        <div className="hero-content flex-col lg:flex-row-reverse">
+          <Image
+            src="/headshot.jpg"
+            alt="Melissa"
+            width={500}
+            height={666.5}
+            className="max-w-md rounded-lg shadow-2xl"
+          />
+
+          <div>
+            <h2 className="text-5xl font-bold">
+              Made with ❤️ by a Curly Girl
+            </h2>
+            <p className="py-6">
+              I&apos;m Melissa McEwen, I have{' '}
+              <Link href="/porosity-quiz" className="link link-primary">
+                low porosity
+              </Link>{' '}
+              hair that&apos;s pretty curly when short and more wavy when long.
+              I have a background in science (specifically agricultural/food
+              science) and over 15 years experience in software. I&apos;ve been inerested in the science of hair and skin
+              care since I read my mother&apos;s Paula Begoun books in the 90s.
+              I established an LLC for my sites in 2024, MGM Internet and AI
+              Holdings LLC, headquartered in Florida.
+            </p>
+            <a
+              href="https://www.linkedin.com/in/mcewenmelissa/"
+              className="btn btn-primary"
+            >
+              Connect on LinkedIn
+            </a>
           </div>
         </div>
       </div>

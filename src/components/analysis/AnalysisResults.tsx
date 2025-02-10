@@ -13,6 +13,7 @@ import { filterProductByCountry } from '@/lib/countryDetection';
 import { getCountryFromHostname } from '@/lib/countryDetection';
 import { CheckCircle, AlertTriangle, XCircle } from 'lucide-react';
 
+
 interface Props {
   result: AnalysisResult;
   onTryAnother: () => void;
@@ -144,6 +145,7 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
               </Link>
             </ChatFooter>
           </ChatBubbleRobot>
+
         </div>
 
         {/* Analysis Summary */}

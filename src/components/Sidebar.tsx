@@ -11,6 +11,7 @@ import {
   Mailbox,
 } from 'lucide-react';
 import Link from 'next/link';
+import { InFeedAd } from './ads/inFeed';
 
 export default function Sidebar() {
   const ingredients =
@@ -66,65 +67,7 @@ export default function Sidebar() {
           </div>
         </div>
       </div>
-      <div className="card card-compact border-secondary border-2 bg-base-100">
-        <div className="card-body ">
-          <h2 className="card-title flex">
-            <Newspaper className="w-6 h-6" />
-            News Jan 30th 2025
-          </h2>
-          <div className="space-y-2">
-            <div className="flex gap-2">
-              <Mail className="w-5 h-5 flex-shrink-0 mt-1" />
-              <p>
-                Newsletter:{' '}
-                <a
-                  href="https://mailchi.mp/9de8c32a160e/a-new-porosity-type-just-dropped"
-                  className="link"
-                >
-                  Mixed porosity has been added to our porosity quiz
-                </a>
-                .{' '}
-              </p>
-            </div>
-            <div className="flex gap-2">
-              <Mailbox className="w-5 h-5 flex-shrink-0 mt-1" />
-              <p>
-                <a
-                  href="http://eepurl.com/i6TEyw"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link"
-                >
-                  Subscribe to our newsletter
-                </a>{' '}
-                to get the latest news and updates.
-              </p>
-            </div>
-            <div className="flex gap-2">
-              <Newspaper className="w-5 h-5 flex-shrink-0 mt-1" />
-              <p>
-                Read our latest blog post :{' '}
-                <Link
-                  href="/blog/essential-oils-vs-oils-for-hair"
-                  className="link"
-                >
-                  Essential oils vs oils for hair
-                </Link>
-              </p>
-            </div>
-
-            <div className="flex gap-2">
-              <FlaskConical className="w-5 h-5 flex-shrink-0 mt-1" />
-              <p>
-                Check out our latest lab feature{' '}
-                <Link href="/labs/porosity" className="link">
-                  Porosity Score
-                </Link>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <InFeedAd />
     </div>
   );
 }

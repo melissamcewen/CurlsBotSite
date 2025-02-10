@@ -9,7 +9,7 @@ import {
   generateOrganizationSchema,
 } from '@/utils/structured-data';
 import HomeDrawer from '@/components/HomeDrawer';
-
+import Heroes from '@/components/Heroes';
 // Only make the page dynamic when ingredients are present
 export const dynamic = 'auto';
 export const dynamicParams = true;
@@ -87,11 +87,15 @@ export default async function Home({ searchParams }: Props) {
           __html: JSON.stringify(generateOrganizationSchema()),
         }}
       />
-      <HomeDrawer hasIngredients={!!initialIngredients}>
-        <Suspense fallback={<Loading />}>
-          <AnalyzerWrapper ingredients={initialIngredients} />
-        </Suspense>
-      </HomeDrawer>
+      <div>
+        <HomeDrawer hasIngredients={!!initialIngredients}>
+          <Suspense fallback={<Loading />}>
+            <AnalyzerWrapper ingredients={initialIngredients} />
+          </Suspense>
+        </HomeDrawer>
+
+        <Heroes />
+      </div>
     </>
   );
 }

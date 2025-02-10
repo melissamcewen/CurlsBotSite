@@ -160,6 +160,11 @@ export default function Navbar() {
                     About
                   </Link>
                 </li>
+                <li>
+                  <Link href="/faq" onClick={handleLinkClick}>
+                    FAQ
+                  </Link>
+                </li>
               </ul>
             </details>
           </li>
@@ -282,6 +287,11 @@ export default function Navbar() {
                   <li>
                     <Link href="/about" onClick={handleLinkClick}>
                       About
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/faq" onClick={handleLinkClick}>
+                      FAQ
                     </Link>
                   </li>
                 </ul>
