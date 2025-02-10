@@ -44,10 +44,17 @@ export default async function Heroes() {
 
   return (
     <div className="mt-5">
-
       <div className="hero bg-base-100 min-h-screen">
         <div className="hero-content text-center">
           <div className="max-w-5xl">
+            <h2 className="text-5xl font-bold mb-4">
+              Ads help us keep CurlsBot free!
+            </h2>
+            <p className="text-lg">
+              CurlsBot is free to use, but ads help us keep the site running. If
+              you don&apos;t see the ads below, consider turning off your ad
+              blocker to help support us.
+            </p>
             <MultiPlexAd />
           </div>
         </div>
