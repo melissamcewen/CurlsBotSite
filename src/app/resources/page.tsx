@@ -44,9 +44,9 @@ export default function Resources() {
                 <a href="https://www.gracelynmariahair.com/style-your-curly-hair-course">
                   Curl Botanist Course:
                 </a>{' '}
-                Achieving a curly hair style you love to wear shouldn't be hard.
-                Learn to how prep, style and dry your curls in a way that works
-                for your curly hair needs. Get instant, anytime access to
+                Achieving a curly hair style you love to wear shouldn&apos;t be
+                hard. Learn to how prep, style and dry your curls in a way that
+                works for your curly hair needs. Get instant, anytime access to
                 professional wavy and curly hair educational videos and
                 downloads.
               </li>
