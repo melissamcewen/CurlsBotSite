@@ -1,4 +1,4 @@
-import { AnalysisResult } from 'haircare-ingredients-analyzer';
+import { AnalysisResult, porosity } from 'haircare-ingredients-analyzer';
 import {
   AlertTriangle,
   XCircle,
@@ -16,6 +16,7 @@ import {
   FlaskConical,
   Factory,
   Wind,
+  Dam
 } from 'lucide-react';
 import Link from 'next/link';
 import { candlestickBigLit, bottleDispenser, soapBar } from '@lucide/lab';
@@ -36,6 +37,13 @@ const GUIDE_URLS: Record<string, string> = {
   Petroleum: '/categories/petroleum-oils',
   Parabens: '/categories/parabens',
   'Drying Alcohols': '/groups/alcohols',
+};
+
+// Add function to get status color based on score
+const getPorosityStatus = (score: number): StatusType => {
+  if (score >= 80) return 'ok';
+  if (score <= 60) return 'warning';
+  return 'caution';
 };
 
 export function AnalysisSummary({ result }: Props) {
@@ -122,6 +130,9 @@ export function AnalysisSummary({ result }: Props) {
     return 'warning';
   };
 
+  // Calculate porosity scores
+  const porosityScores = porosity(result);
+
   const statusItems = [
     {
       label: 'Overall Status',
@@ -189,6 +200,17 @@ export function AnalysisSummary({ result }: Props) {
     },
   ];
 
+  // Helper function to get porosity recommendation text
+  const getPorosityRecommendation = (highScore: number, lowScore: number) => {
+    if (highScore >= 80 && lowScore < 70) {
+      return 'Best for high porosity hair';
+    }
+    if (lowScore >= 80 && highScore < 70) {
+      return 'Best for low porosity hair';
+    }
+    return 'Great for all porosity types';
+  };
+
   return (
     <div className="bg-base-100 cb-card-lite">
       <h2 className="cb-header">
@@ -212,7 +234,7 @@ export function AnalysisSummary({ result }: Props) {
                       item.label
                     ) : (
                       <Link
-                        href={GUIDE_URLS[item.label] || '/'}
+                        href={GUIDE_URLS[item.label] || '/labs/porosity'}
                         className="underline hover:text-primary"
                       >
                         {item.label}
@@ -233,6 +255,17 @@ export function AnalysisSummary({ result }: Props) {
               </div>
             );
           })}
+      </div>
+      <div className="mt-2 p-4 bg-base-200 rounded-lg bg-primary/20">
+        <div className="flex items-center gap-2 ">
+          <Droplets className="w-6 h-6" />
+          <Link
+            href="/labs/porosity"
+            className="text-md hover:text-primary underline"
+          >
+            {getPorosityRecommendation(porosityScores.high, porosityScores.low)}
+          </Link>
+        </div>
       </div>
     </div>
   );
