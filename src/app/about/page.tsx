@@ -84,9 +84,7 @@ export default function About() {
           />
 
           <div>
-            <h2 className="text-5xl font-bold">
-              Made with ❤️ by a Curly Girl
-            </h2>
+            <h2 className="text-5xl font-bold">Made with ❤️ by a Curly Girl</h2>
             <p className="py-6">
               I&apos;m Melissa McEwen, I have{' '}
               <Link href="/porosity-quiz" className="link link-primary">
@@ -94,10 +92,11 @@ export default function About() {
               </Link>{' '}
               hair that&apos;s pretty curly when short and more wavy when long.
               I have a background in science (specifically agricultural/food
-              science) and over 15 years experience in software. I&apos;ve been inerested in the science of hair and skin
-              care since I read my mother&apos;s Paula Begoun books in the 90s.
-              I established an LLC for my sites in 2024, MGM Internet and AI
-              Holdings LLC, headquartered in Florida.
+              science) and over 15 years experience in software. I&apos;ve been
+              inerested in the science of hair and skin care since I read my
+              mother&apos;s Paula Begoun books in the 90s. I established an LLC
+              for my sites in 2024, MGM Internet and AI Holdings LLC,
+              headquartered in Florida.
             </p>
             <a
               href="https://www.linkedin.com/in/mcewenmelissa/"
@@ -105,6 +104,26 @@ export default function About() {
             >
               Connect on LinkedIn
             </a>
+          </div>
+        </div>
+      </div>
+
+      <div className="hero bg-base-100 min-h-screen">
+        <div className="hero-content flex-col lg:flex-row">
+          <Image src="/lab.svg" alt="CurlsBot" width={500} height={500} />
+          <div>
+            <h1 className="text-5xl font-bold">Our Advisors</h1>
+            <p className="py-6">
+              Thanks to our advisors for their help in making CurlsBot the best
+              it can be
+            </p>
+            <ul className="list-disc list-inside">
+              <li>
+                <a href="https://www.gracelynmariahair.com" className="link">
+                  Gracelyn Maria Hair: Stylist and Educator
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

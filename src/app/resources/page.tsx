@@ -1,4 +1,3 @@
-
 import { BookOpen, Info } from 'lucide-react';
 import Link from 'next/link';
 import { createPageMetadata } from '@/config/metadata';
@@ -36,6 +35,23 @@ export default function Resources() {
               <li>
                 <a href="https://incidecoder.com/">InciDecoder</a> - Ingredient
                 info
+              </li>
+            </ul>
+
+            <h2 className="text-2xl font-bold mt-6">Courses</h2>
+            <ul className="list-disc pl-6">
+              <li>
+                <a href="https://www.gracelynmariahair.com/style-your-curly-hair-course">
+                  Curl Botanist Course:
+                </a>{' '}
+                Achieving a curly hair style you love to wear shouldn't be hard.
+                Learn to how prep, style and dry your curls in a way that works
+                for your curly hair needs. Get instant, anytime access to
+                professional wavy and curly hair educational videos and
+                downloads.
+              </li>
+              <li>
+                <a href="https://www.curlyhairartistry.com/the-map-method-online-course">Cultivate Your Curls</a>
               </li>
             </ul>
             <h2 className="text-2xl font-bold mt-6">Communities</h2>
