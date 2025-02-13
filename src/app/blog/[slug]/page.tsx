@@ -86,6 +86,8 @@ export async function generateMetadata({ params }: PageProps) {
       frontmatter.description || `Read about ${frontmatter.title} on CurlsBot.`,
     path: `/blog/${resolvedParams.slug}`,
     hasContent: true,
+    image: frontmatter.image || '/images/og-default.png',
+    imageAlt: frontmatter.title,
   });
 }
 
