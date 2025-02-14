@@ -89,7 +89,6 @@ export default function RootLayout({
     <html lang="en" data-theme="cupcake">
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-        <Script src="https://sponsorapp.io/platform.js?p=12b127fe80ecdee1"></Script>
         <Script
           type="text/javascript"
           src="https://s.skimresources.com/js/276362X1762442.skimlinks.js"
