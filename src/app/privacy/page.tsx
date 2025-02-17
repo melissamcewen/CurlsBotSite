@@ -1,4 +1,3 @@
-
 import { Shield } from 'lucide-react';
 import { createPageMetadata } from '@/config/metadata';
 
@@ -56,19 +55,25 @@ export default function PrivacyPage() {
               <li>Browser and device information</li>
               <li>Approximate geographic location (country/region level)</li>
             </ul>
-
-            <h3>Contact Information</h3>
             <p>
-              If you contact us through our contact form, we collect the
-              information you provide (such as your email address and message
-              content) to respond to your inquiry.
+              Google Analytics is a web analytics service offered by Google that
+              tracks and reports website traffic. Google may use the collected
+              data to contextualize and personalize the ads of its own
+              advertising network. For more information on the privacy practices
+              of Google, please visit the Google Privacy Policy:{' '}
+              <a
+                href="https://policies.google.com/privacy"
+                className="link link-primary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://policies.google.com/privacy
+              </a>
             </p>
 
             <h2>How We Use Your Information</h2>
             <ul>
-              <li>To provide ingredient analysis results</li>
               <li>To improve our website and services</li>
-              <li>To respond to your inquiries</li>
               <li>To analyze site usage patterns</li>
             </ul>
 
@@ -80,13 +85,22 @@ export default function PrivacyPage() {
               price you pay.
             </p>
 
-            <h2>Cookies</h2>
-            <p>We use cookies for:</p>
-            <ul>
-              <li>Analytics tracking</li>
-              <li>Remembering your theme preference</li>
-              <li>Essential website functionality</li>
-            </ul>
+            <h2>Advertising</h2>
+            <p>
+              This Site is affiliated with CMI Marketing, Inc., d/b/a Raptive
+              (&quot;Raptive&quot;) for the purposes of placing advertising on
+              the Site, and Raptive will collect and use certain data for
+              advertising purposes. To learn more about Raptive&apos;s data
+              usage, click here:{' '}
+              <a
+                href="https://www.raptive.com/publisher-advertising-privacy-policy"
+                className="link link-primary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.raptive.com/publisher-advertising-privacy-policy
+              </a>
+            </p>
 
             <h2>Your Rights</h2>
             <p>You have the right to:</p>
