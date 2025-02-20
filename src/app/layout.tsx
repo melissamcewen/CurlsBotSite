@@ -93,6 +93,28 @@ export default function RootLayout({
           type="text/javascript"
           src="https://s.skimresources.com/js/276362X1762442.skimlinks.js"
         ></Script>
+        <Script
+          id="adthrive-ads"
+          strategy="beforeInteractive"
+          data-no-optimize="1"
+          data-cfasync="false"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w, d) {
+                w.adthrive = w.adthrive || {};
+                w.adthrive.cmd = w.adthrive.cmd || [];
+                w.adthrive.plugin = 'adthrive-ads-manual';
+                w.adthrive.host = 'ads.adthrive.com';
+                var s = d.createElement('script');
+                s.async = true;
+                s.referrerpolicy='no-referrer-when-downgrade';
+                s.src = 'https://' + w.adthrive.host + '/sites/67aceaec554bb80802312182/ads.min.js?referrer=' + w.encodeURIComponent(w.location.href) + '&cb=' + (Math.floor(Math.random() * 100) + 1);
+                var n = d.getElementsByTagName('script')[0];
+                n.parentNode.insertBefore(s, n);
+              })(window, document);
+            `,
+          }}
+        />
         <meta name="apple-mobile-web-app-title" content="CurlsBot" />
         <meta
           name="impact-site-verification"
@@ -120,6 +142,34 @@ export default function RootLayout({
           type="image/svg+xml"
         />
         <link rel="preload" href="/normal.png" as="image" type="image/png" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              function isUserInEurope() {
+                if (typeof Intl === 'undefined' || typeof Intl.DateTimeFormat === 'undefined' || typeof window.__tcfapi !== 'undefined') {
+                  return true;
+                }
+                return Intl.DateTimeFormat().resolvedOptions().timeZone.includes('Europe');
+              }
+              if (isUserInEurope()) {
+                window.dataLayer = window.dataLayer || [];
+                function gtag() {
+                  dataLayer.push(arguments);
+                }
+                gtag('consent', 'default', {
+                  'ad_storage': 'denied',
+                  'analytics_storage': 'denied',
+                  'ad_user_data': 'denied',
+                  'ad_personalization': 'denied',
+                  'wait_for_update': 15000
+                });
+                dataLayer.push({
+                  'event': 'default_consent'
+                });
+              }
+            `,
+          }}
+        />
         <GoogleAnalytics />
       </head>
       <body

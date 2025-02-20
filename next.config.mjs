@@ -8,6 +8,11 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/ads.txt',
+        destination: 'https://ads.adthrive.com/sites/67aceaec554bb80802312182/ads.txt',
+        permanent: true, // 301 status code
+      },
+      {
         source: '/howitworks',
         destination: '/about',
         permanent: true, // 308 status code
