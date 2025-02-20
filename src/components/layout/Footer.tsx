@@ -138,49 +138,16 @@ export function Footer() {
       <Script
         type="text/javascript"
         src="https://btloader.com/tag?o=5698917485248512&upapi=true&domain=curlsbot.com"
-        strategy="beforeInteractive"
+        async
       />
       <Script
         id="adblock-recovery"
-        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{
           __html: `
             !function(){"use strict";var e;e=document,function(){var t,n;function r(){var t=e.createElement("script");t.src="https://cafemedia-com.videoplayerhub.com/galleryplayer.js",e.head.appendChild(t)}function a(){var t=e.cookie.match("(^|[^;]+)\s*__adblocker\s*=\s*([^;]+)");return t&&t.pop()}function c(){clearInterval(n)}return{init:function(){var e;"true"===(t=a())?r():(e=0,n=setInterval((function(){100!==e&&"false" !== t || c(), "true" === t && (r(), c()), t = a(), e++}), 50))}}}().init()}();
           `,
         }}
       />
-      <link rel="preload" href="/normal.png" as="image" type="image/png" />
-      <Script
-        id="consent-script"
-        strategy="beforeInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            function isUserInEurope() {
-              if (typeof Intl === 'undefined' || typeof Intl.DateTimeFormat === 'undefined' || typeof window.__tcfapi !== 'undefined') {
-                return true;
-              }
-              return Intl.DateTimeFormat().resolvedOptions().timeZone.includes('Europe');
-            }
-            if (isUserInEurope()) {
-              window.dataLayer = window.dataLayer || [];
-              function gtag() {
-                dataLayer.push(arguments);
-              }
-              gtag('consent', 'default', {
-                'ad_storage': 'denied',
-                'analytics_storage': 'denied',
-                'ad_user_data': 'denied',
-                'ad_personalization': 'denied',
-                'wait_for_update': 15000
-              });
-              dataLayer.push({
-                'event': 'default_consent'
-              });
-            }
-          `
-        }}
-      />
-      <GoogleAnalytics />
     </>
   );
 }
