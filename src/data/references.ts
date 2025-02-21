@@ -606,4 +606,40 @@ export const defaultReferences: References = {
     date: '2014',
     source: 'International Journal of Trichology',
   },
+
+  '66': {
+    id: '66',
+    url: 'https://www.swiftcraftymonkey.blog/shampoo-why-we-use-what-we-use-in-a-shampoo/',
+    title: 'Shampoo: Why we use what we use in a shampoo',
+    type: 'science',
+    author: 'Susan Barclay Nichols',
+    date: '2015',
+    source: 'Swift Craftymonkey',
+  },
+  '67': {
+    id: '67',
+    url: 'https://www.routledge.com/Handbook-of-Cosmetic-Science-and-Technology/Dreher-Jungman-Sakamoto-Maibach/p/book/9780367469979',
+    title: 'Principles and Mechanisms of Skin Irritation',
+    type: 'science',
+    author: 'An E. Goossens',
+    date: '2022',
+    source: 'Handbook of Cosmetic Science and Technology',
+  },
+  '68': {
+    id: '68',
+    url: 'https://cdn.mdedge.com/files/s3fs-public/Document/January-2018/CT101001022.PDF',
+    title:
+      'No Sulfates, No Parabens, and the “No-Poo” Method: A New Patient Perspective on Common Shampoo Ingredients',
+    type: 'science',
+    author: 'Cline, Abigail, et al.',
+    date: '2018',
+    source: 'Cutis',
+  },
+  '69': {
+    id: '69',
+    url: 'https://incidecoder.com/ingredients/ammonium-lauryl-sulfate',
+    title: 'Ammonium Lauryl Sulfate',
+    type: 'science',
+    source: 'INCIDecoder',
+  },
 };

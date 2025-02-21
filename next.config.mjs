@@ -87,6 +87,11 @@ const nextConfig = {
         destination: '/groups/humectants',
         permanent: true,
       },
+      {
+        source: '/categories/petroleum-oils',
+        destination: '/groups/oils',
+        permanent: true,
+      },
     ];
   },
 }
