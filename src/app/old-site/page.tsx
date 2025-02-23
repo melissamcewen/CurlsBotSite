@@ -16,7 +16,7 @@ export default function OldSitePage() {
 
         <div className="prose max-w-none">
           <p className="text-lg mb-6">
-            We've recently updated CurlsBot with exciting new features! However, some users might still be seeing the old version due to cached data in their browsers.
+            We&apos;ve recently updated CurlsBot with exciting new features! However, some users might still be seeing the old version due to cached data in their browsers.
           </p>
 
           <div className="alert alert-info rounded-3xl mb-6">
@@ -36,10 +36,10 @@ export default function OldSitePage() {
           </Link>
 
           <h2 className="text-2xl font-bold mt-8 mb-4">Still Having Issues?</h2>
-          <p>If you're still experiencing problems after clicking the button above, try these steps:</p>
+          <p>If you&apos;re still experiencing problems after clicking the button above, try these steps:</p>
           <ul>
             <li>Refresh your browser page</li>
-            <li>Clear your browser's cache manually</li>
+            <li>Clear your browser&apos;s cache manually</li>
             <li>Try opening the site in a private/incognito window</li>
             <li>Try a different web browser</li>
           </ul>
