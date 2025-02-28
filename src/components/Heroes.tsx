@@ -3,15 +3,14 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { promises as fs } from 'fs';
 import path from 'path';
-import { MultiPlexAd } from './ads/multiPlex';
 
 interface BlogPost {
   slug: string;
   frontmatter: {
     title: string;
     description?: string;
-    image?: string;
     date?: string;
+    image?: string;
   };
 }
 
@@ -44,7 +43,6 @@ export default async function Heroes() {
 
   return (
     <div className="mt-5">
-
       <div className="hero bg-base-300 min-h-screen">
         <div className="hero-content text-center">
           <div className="max-w-5xl">
@@ -268,7 +266,6 @@ export default async function Heroes() {
           </div>
         </div>
       </div>
-   
     </div>
   );
 }

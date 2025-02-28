@@ -4,7 +4,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { GoogleAnalytics } from '@/components/GoogleAnalytics';
-import Script from 'next/script';
+import { AdScripts } from '@/components/ads/AdScripts';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -70,9 +70,25 @@ export const metadata: Metadata = {
 // Move theme script to a raw string for earlier execution
 const themeScript = `
   (function() {
+    function isLocalStorageAvailable() {
+      try {
+        const test = '__storage_test__';
+        localStorage.setItem(test, test);
+        localStorage.removeItem(test);
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+
     try {
       var defaultTheme = 'cupcake';
-      var theme = localStorage.getItem('theme') || defaultTheme;
+      var theme = defaultTheme;
+
+      if (isLocalStorageAvailable()) {
+        theme = localStorage.getItem('theme') || defaultTheme;
+      }
+
       document.documentElement.setAttribute('data-theme', theme);
     } catch (e) {
       document.documentElement.setAttribute('data-theme', 'cupcake');
@@ -89,32 +105,6 @@ export default function RootLayout({
     <html lang="en" data-theme="cupcake">
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-        <Script
-          type="text/javascript"
-          src="https://s.skimresources.com/js/276362X1762442.skimlinks.js"
-        ></Script>
-        <Script
-          id="adthrive-ads"
-          strategy="beforeInteractive"
-          data-no-optimize="1"
-          data-cfasync="false"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(w, d) {
-                w.adthrive = w.adthrive || {};
-                w.adthrive.cmd = w.adthrive.cmd || [];
-                w.adthrive.plugin = 'adthrive-ads-manual';
-                w.adthrive.host = 'ads.adthrive.com';
-                var s = d.createElement('script');
-                s.async = true;
-                s.referrerpolicy='no-referrer-when-downgrade';
-                s.src = 'https://' + w.adthrive.host + '/sites/67aceaec554bb80802312182/ads.min.js?referrer=' + w.encodeURIComponent(w.location.href) + '&cb=' + (Math.floor(Math.random() * 100) + 1);
-                var n = d.getElementsByTagName('script')[0];
-                n.parentNode.insertBefore(s, n);
-              })(window, document);
-            `,
-          }}
-        />
         <meta name="apple-mobile-web-app-title" content="CurlsBot" />
         <meta
           name="impact-site-verification"
@@ -171,6 +161,7 @@ export default function RootLayout({
           }}
         />
         <GoogleAnalytics />
+        <AdScripts />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-base-100 text-base-content`}
@@ -180,7 +171,6 @@ export default function RootLayout({
           <div className="absolute inset-0 pointer-events-none" />
           <Navbar />
           <main className="bg-base-200">{children}</main>
-
           <Footer />
         </div>
       </body>
