@@ -145,6 +145,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
     },
     {
+      url: 'https://www.curlsbot.com/old-site',
+      lastModified: new Date(),
+    },
+    {
       url: 'https://www.curlsbot.com/labs/photo',
       lastModified: new Date(),
     },

@@ -7,7 +7,7 @@ import { BlogImage, DualImage } from '@/components/mdx/BlogImage';
 import { BlogProduct } from '@/components/mdx/BlogProduct';
 import { Affiliate } from '@/components/mdx/Affiliate';
 import { TableOfContents } from '@/components/mdx/TableOfContents';
-
+import { SiteFixBanner } from '@/components/mdx/SiteFixBanner';
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     InlineReference,
@@ -17,6 +17,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     BlogProduct,
     Affiliate,
     TableOfContents,
+    SiteFixBanner,
     ...components,
   };
 }
