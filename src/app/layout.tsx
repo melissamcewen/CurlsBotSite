@@ -131,7 +131,6 @@ export default function RootLayout({
           as="image"
           type="image/svg+xml"
         />
-        <link rel="preload" href="/normal.png" as="image" type="image/png" />
         <script
           dangerouslySetInnerHTML={{
             __html: `

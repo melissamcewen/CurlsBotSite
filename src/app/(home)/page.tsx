@@ -9,7 +9,12 @@ import {
   generateOrganizationSchema,
 } from '@/utils/structured-data';
 import HomeDrawer from '@/components/HomeDrawer';
-import Heroes from '@/components/Heroes';
+import { lazy } from 'react';
+import HeroesLoading from '@/components/Heroes/loading';
+
+// Use lazy instead of dynamic for client components
+const Heroes = lazy(() => import('@/components/Heroes'));
+
 // Only make the page dynamic when ingredients are present
 export const dynamic = 'auto';
 export const dynamicParams = true;
@@ -94,7 +99,9 @@ export default async function Home({ searchParams }: Props) {
           </Suspense>
         </HomeDrawer>
 
-        <Heroes />
+        <Suspense fallback={<HeroesLoading />}>
+          <Heroes />
+        </Suspense>
       </div>
     </>
   );

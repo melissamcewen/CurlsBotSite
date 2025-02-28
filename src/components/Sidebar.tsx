@@ -11,7 +11,6 @@ import {
   Mailbox,
 } from 'lucide-react';
 import Link from 'next/link';
-import { InFeedAd } from './ads/inFeed';
 
 export default function Sidebar() {
   const ingredients =

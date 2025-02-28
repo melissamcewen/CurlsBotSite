@@ -5,6 +5,24 @@ import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+
+  // Production optimizations
+  productionBrowserSourceMaps: false,
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production'
+  },
+  experimental: {
+    optimizeCss: true,
+    optimizePackageImports: ['lucide-react']
+  },
+
+  // Image optimization settings
+  images: {
+    formats: ['image/webp', 'image/avif'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+  },
+
   async redirects() {
     return [
       {
