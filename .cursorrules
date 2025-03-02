@@ -1,4 +1,3 @@
-
 haircare-ingredients-analyzer is a library I made, there might be issues with it
 
 this app uses a flat rounded design style so no shadows or sharp edges, also no opacity, just use solid colors from the daisy ui palette
@@ -11,13 +10,12 @@ tests should mainly be smoke tests, we're just trying to make sure nothing is br
 
 use types from the haircare-ingredient-analyzer library when working with it
 
-
 get ingredient data directly from haircare-ingredients-analyzer using getBundledDatabase() - do not create separate data files for ingredients
 
 the docs for the haircare-ingredients-analyzer library are in docs/haircareanalyzer.md
-
 
 the analysis results statuses correspond to the following daisy ui colors:
 - caution, warning
 - warning, error
 - ok, info
+
