@@ -88,10 +88,11 @@ const POROSITY_DATA: Record<string, PorosityInfo> = {
 };
 
 interface Props {
-  params: { type: string };
+  params: Promise<{ type: string }>;
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const params = await props.params;
   const porosityType = params.type;
   const porosityInfo = POROSITY_DATA[porosityType];
 
@@ -135,7 +136,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function PorosityPage({ params }: Props) {
+export default async function PorosityPage(props: Props) {
+  const params = await props.params;
   const type = await params.type;
   const porosityInfo = POROSITY_DATA[type];
 
