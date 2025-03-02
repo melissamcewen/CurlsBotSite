@@ -385,6 +385,37 @@ export function AnalysisSummary({ result }: Props) {
             </div>
           </div>
         </div>
+        {porosityScores.low < 20 && (
+          <div className={`p-4 rounded-lg ${getStatusClasses('warning').bg}`}>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Droplets className="w-6 h-6" />
+                <div className="indicator flex items-center gap-2">
+                  <Link
+                    href="/labs/porosity"
+                    className="indicator-item badge badge-accent badge-xs"
+                  >
+                    Labs
+                  </Link>
+                  <Link
+                    href="/labs/porosity"
+                    className="hover:text-primary underline"
+                  >
+                    Heavy Product
+                  </Link>
+                </div>
+              </div>
+              <div
+                className={`flex items-end gap-2 ${
+                  getStatusClasses('warning').text
+                }`}
+              >
+                <span className="text-md font-medium">Warning</span>
+                <XCircle className="w-5 h-5" />
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

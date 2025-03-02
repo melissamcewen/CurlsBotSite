@@ -17,7 +17,7 @@ export const getStatusConfig = (status: string): StatusConfig => {
         alertClass: 'alert-info',
         alertContentClass: 'text-info-content',
         description:
-          "CurlsBot approved! This ingredient list seems good, but I'm only a robot! It's always a good idea to double-check and see if there's anything you're unsure about. Your hair is unique, so do what works best for you.",
+          "This ingredient list seems to meet CGM standards. It's always a good idea to double-check and see if there's anything you're unsure about.",
       };
     case 'warning':
       return {

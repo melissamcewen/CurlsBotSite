@@ -43,7 +43,7 @@ const POROSITY_DATA: Record<string, PorosityInfo> = {
     tips: [
       'Use leave-in conditioners and oils to seal in moisture',
       'Deep condition regularly',
-      'Look for products with moisturizing ingredients',
+      'Look for products with positively charged conditioning agents that bond to damaged hair like behentrimonium chloride',
       'Use anti-humectants in humid weather',
       'Consider using protein treatments to strengthen hair',
     ],

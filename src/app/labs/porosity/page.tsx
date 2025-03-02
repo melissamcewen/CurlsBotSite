@@ -109,47 +109,36 @@ export default function PorosityLabPage() {
               </p>
               <ul className="space-y-2">
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-success" />
+                  <CheckCircle className="w-4 h-4 text-success shrink-0" />
                   <Link href="/groups/oils" className="link">
-                    Oils and Butters
+                    Positively charged conditioning agents that bond to damaged hair
                   </Link>
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-success" />
+                  <CheckCircle className="w-4 h-4 text-success shrink-0" />
+                  <Link href="/groups/oils" className="link">
+                    Penetrating oils
+                  </Link>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-success shrink-0" />
                   <Link href="/groups/humectants" className="link">
                     Humectants (including proteins)
                   </Link>
                 </li>
+
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-success" />
-                  <Link href="/groups/waxes" className="link">
-                    Waxes
-                  </Link>
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-success" />
+                  <CheckCircle className="w-4 h-4 text-success shrink-0" />
                   <Link href="/groups/surfactants" className="link">
                     Mild Surfactants
                   </Link>
                 </li>
 
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-success" />
+                  <CheckCircle className="w-4 h-4 text-success shrink-0" />
                   <Link href="/groups/alcohols" className="link">
                     {' '}
                     Other Emollients and conditioners like Emollient alcohols
-                  </Link>
-                </li>
-                <li className="flex items-center gap-2">
-                  <XCircle className="w-4 h-4 text-error" />
-                  <Link href="/groups/alcohols" className="link">
-                    Drying alcohols
-                  </Link>
-                </li>
-                <li className="flex items-center gap-2">
-                  <XCircle className="w-4 h-4 text-error" />
-                  <Link href="/groups/surfactants" className="link">
-                    Strong surfactants
                   </Link>
                 </li>
               </ul>
@@ -165,41 +154,23 @@ export default function PorosityLabPage() {
             </div>
             <div className="flex flex-col">
               <p className="text-sm mb-2">
-                Products that score well for low porosity hair are lower in oils
-                and butters, and if cleansers they may contain stronger
-                cleansers:
+                Products that score well for low porosity hair are water-based and low in the following ingredients:
               </p>
               <ul className="space-y-2">
+
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-success" />
-                  <Link href="/groups/surfactants" className="link">
-                    Strong surfactants (sulfates and other anionic surfactants)
-                  </Link>
-                </li>
-                <li className="flex items-center gap-2">
-                  <XCircle className="w-4 h-4 text-error" />
+                  <XCircle className="w-4 h-4 text-error shrink-0" />
                   <Link href="/groups/oils" className="link">
-                    Oils (heavier oils lower the score more)
+                    Oils (heavier oils and butters lower the score more)
                   </Link>
                 </li>
                 <li className="flex items-center gap-2">
-                  <XCircle className="w-4 h-4 text-error" />
+                  <XCircle className="w-4 h-4 text-error shrink-0" />
                   <Link href="/groups/waxes" className="link">
                     Waxes
                   </Link>
                 </li>
-                <li className="flex items-center gap-2">
-                  <XCircle className="w-4 h-4 text-error" />
-                  <Link href="/groups/silicones" className="link">
-                    Non-water soluble silicones
-                  </Link>
-                </li>
-                <li className="flex items-center gap-2">
-                  <XCircle className="w-4 h-4 text-error" />
-                  <Link href="/categories" className="link">
-                    Other heavy conditioning ingredients like polyquats
-                  </Link>
-                </li>
+
               </ul>
             </div>
           </div>
