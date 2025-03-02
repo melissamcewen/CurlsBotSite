@@ -1,4 +1,8 @@
-import { AnalysisResult, porosity } from 'haircare-ingredients-analyzer';
+import {
+  AnalysisResult as BaseAnalysisResult,
+  porosity,
+  frizzbot,
+} from 'haircare-ingredients-analyzer';
 import {
   AlertTriangle,
   XCircle,
@@ -16,13 +20,14 @@ import {
   FlaskConical,
   Factory,
   Wind,
-  Dam
+  Dam,
+  Cloud,
 } from 'lucide-react';
 import Link from 'next/link';
 import { candlestickBigLit, bottleDispenser, soapBar } from '@lucide/lab';
 
 interface Props {
-  result: AnalysisResult;
+  result: BaseAnalysisResult;
 }
 
 type StatusType = 'ok' | 'caution' | 'warning';
@@ -46,8 +51,17 @@ const getPorosityStatus = (score: number): StatusType => {
   return 'caution';
 };
 
+// Add function to get frizz status
+const getFrizzStatus = (score: number): StatusType => {
+  if (score <= -50) return 'ok';
+  if (score >= 50) return 'warning';
+  return 'caution';
+};
+
 export function AnalysisSummary({ result }: Props) {
   const { status, reasons } = result;
+  const porosityScores = porosity(result);
+  const frizzAnalysis = frizzbot(result);
 
   // Helper function to check if a specific setting exists in reasons
   const hasReason = (setting: string) =>
@@ -129,9 +143,6 @@ export function AnalysisSummary({ result }: Props) {
     }
     return 'warning';
   };
-
-  // Calculate porosity scores
-  const porosityScores = porosity(result);
 
   const statusItems = [
     {
@@ -256,15 +267,123 @@ export function AnalysisSummary({ result }: Props) {
             );
           })}
       </div>
-      <div className="mt-2 p-4 bg-base-200 rounded-lg bg-primary/20">
-        <div className="flex items-center gap-2 ">
-          <Droplets className="w-6 h-6" />
-          <Link
-            href="/labs/porosity"
-            className="text-md hover:text-primary underline"
-          >
-            {getPorosityRecommendation(porosityScores.high, porosityScores.low)}
-          </Link>
+      <div className="mt-2 flex flex-col gap-2">
+        <div
+          className={`p-4 rounded-lg ${
+            getStatusClasses(getFrizzStatus(frizzAnalysis.score)).bg
+          }`}
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Cloud className="w-6 h-6" />
+              <div className="indicator flex items-center gap-2">
+                <Link
+                  href="/frizzbot/ingredients"
+                  className="indicator-item badge badge-accent badge-xs"
+                >
+                  Labs
+                </Link>
+                <Link
+                  href="/frizzbot/ingredients"
+                  className="hover:text-primary underline"
+                >
+                  Humidity Resistant
+                </Link>
+              </div>
+            </div>
+            <div
+              className={`flex items-end gap-2 ${
+                getStatusClasses(getFrizzStatus(frizzAnalysis.score)).text
+              }`}
+            >
+              <span className="text-md font-medium">
+                {frizzAnalysis.score <= -50 ? 'Yes' : 'No'}
+              </span>
+              {frizzAnalysis.score <= -50 ? (
+                <CheckCircle className="w-5 h-5" />
+              ) : (
+                <XCircle className="w-5 h-5" />
+              )}
+            </div>
+          </div>
+        </div>
+        <div
+          className={`p-4 rounded-lg ${
+            getStatusClasses(getPorosityStatus(porosityScores.high)).bg
+          }`}
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Dam className="w-6 h-6" />
+              <div className="indicator flex items-center gap-2">
+                <Link
+                  href="/labs/porosity"
+                  className="indicator-item badge badge-accent badge-xs"
+                >
+                  Labs
+                </Link>
+                <Link
+                  href="/labs/porosity"
+                  className="hover:text-primary underline"
+                >
+                  Good for High Porosity
+                </Link>
+              </div>
+            </div>
+            <div
+              className={`flex items-end gap-2 ${
+                getStatusClasses(getPorosityStatus(porosityScores.high)).text
+              }`}
+            >
+              <span className="text-md font-medium">
+                {porosityScores.high >= 80 ? 'Yes' : 'No'}
+              </span>
+              {porosityScores.high >= 80 ? (
+                <CheckCircle className="w-5 h-5" />
+              ) : (
+                <XCircle className="w-5 h-5" />
+              )}
+            </div>
+          </div>
+        </div>
+        <div
+          className={`p-4 rounded-lg ${
+            getStatusClasses(getPorosityStatus(porosityScores.low)).bg
+          }`}
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Droplet className="w-6 h-6" />
+              <div className="indicator flex items-center gap-2">
+                <Link
+                  href="/labs/porosity"
+                  className="indicator-item badge badge-accent badge-xs"
+                >
+                  Labs
+                </Link>
+                <Link
+                  href="/labs/porosity"
+                  className="hover:text-primary underline"
+                >
+                  Good for Low Porosity
+                </Link>
+              </div>
+            </div>
+            <div
+              className={`flex items-end gap-2 ${
+                getStatusClasses(getPorosityStatus(porosityScores.low)).text
+              }`}
+            >
+              <span className="text-md font-medium">
+                {porosityScores.low >= 80 ? 'Yes' : 'No'}
+              </span>
+              {porosityScores.low >= 80 ? (
+                <CheckCircle className="w-5 h-5" />
+              ) : (
+                <XCircle className="w-5 h-5" />
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </div>
