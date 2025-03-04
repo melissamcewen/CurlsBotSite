@@ -17,7 +17,7 @@ export const getStatusConfig = (status: string): StatusConfig => {
         alertClass: 'alert-info',
         alertContentClass: 'text-info-content',
         description:
-          "This ingredient list seems to meet CGM standards. It's always a good idea to double-check and see if there's anything you're unsure about.",
+          "This ingredient list doesn't seem to have any ingredients that people following CGM tend to avoid. But a product's qualities depend on the formula, not just the ingredients. It's always a good idea to double-check and do research on how the product performs.",
       };
     case 'warning':
       return {
@@ -27,7 +27,7 @@ export const getStatusConfig = (status: string): StatusConfig => {
         alertClass: 'alert-error',
         alertContentClass: 'text-error-content',
         description:
-          "We've analyzed your ingredients and found some items that may need attention. Check the detailed analysis below",
+          "We've analyzed your ingredients and found some ingredients that people following CGM tend to avoid. But it's worth noting that a product's qualities depend on the formula, not just the ingredients. Check the detailed analysis below.",
       };
     case 'caution':
       return {
@@ -37,7 +37,7 @@ export const getStatusConfig = (status: string): StatusConfig => {
         alertClass: 'alert-warning',
         alertContentClass: 'text-warning-content',
         description:
-          'Hmm, I found a few tricky ingredients in this list. They might be okay for most people, but it’s always a good idea to double-check! You know your hair best, so listen to it.',
+          'Hmm, I found a few tricky ingredients on the list that some people like to avoid. They might be okay for most people and a product\'s qualities depend on the formula, not just the ingredients. Check the detailed analysis below.',
       };
     case 'error':
       return {
