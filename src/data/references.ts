@@ -642,4 +642,216 @@ export const defaultReferences: References = {
     type: 'science',
     source: 'INCIDecoder',
   },
+  /* Koch, Sandra L., Arslan Zaidi, Tomás González, Mark D. Shriver, and Nina G. Jablonski. “The Trotter Collection: A Review of Mildred Trotter ’s Hair Research and an Update for Studies of Human Variation.” American Journal of Biological Anthropology 184, no. 3 (July 2024): e24930. https://doi.org/10.1002/ajpa.24930.*/
+  '70': {
+    id: '70',
+    url: 'https://doi.org/10.1002/ajpa.24930',
+    title:
+      'The Trotter Collection: A Review of Mildred Trotter ’s Hair Research and an Update for Studies of Human Variation',
+    type: 'science',
+    author:
+      'Koch, Sandra L., Arslan Zaidi, Tomás González, Mark D. Shriver, and Nina G. Jablonski.',
+    date: '2024',
+    source: 'American Journal of Biological Anthropology',
+  },
+  /*
+  Robbins, Clarence R. Chemical and Physical Behavior of Human Hair. Berlin, Heidelberg: Springer, 2012. https://doi.org/10.1007/978-3-642-25611-0.
+  */
+  '71': {
+    id: '71',
+    url: 'https://doi.org/10.1007/978-3-642-25611-0',
+    title: 'Chemical and Physical Behavior of Human Hair',
+    type: 'science',
+    author: 'Robbins, Clarence R.',
+    date: '2012',
+    source: 'Springer',
+  },
+  /*Cloete, Elsabe, Nonhlanhla P. Khumalo, and Malebogo N. Ngoepe. “The What, Why and How of Curly Hair: A Review.” Proceedings of the Royal Society A: Mathematical, Physical and Engineering Sciences 475, no. 2231 (November 20, 2019): 20190516. https://doi.org/10.1098/rspa.2019.0516.*/
+  '72': {
+    id: '72',
+    url: 'https://doi.org/10.1098/rspa.2019.0516',
+    title: 'The What, Why and How of Curly Hair: A Review',
+    type: 'science',
+    author: 'Cloete, Elsabe, Nonhlanhla P. Khumalo, and Malebogo N. Ngoepe.',
+    date: '2019',
+    source:
+      'Proceedings of the Royal Society A: Mathematical, Physical and Engineering Sciences',
+  },
+  /* Lasisi, Tina. “THE GENETIC ARCHITECTURE AND EVOLUTIONARY FUNCTION OF HUMAN SCALP HAIR MORPHOLOGY,” n.d.
+  “The Genetic Architecture and Evolutionary Function of Human Scalp Hair Morphology - Blacklight.” Accessed March 6, 2025. https://etda.libraries.psu.edu/catalog/18747tpl5158.
+  */
+  '73': {
+    id: '73',
+    url: 'https://etda.libraries.psu.edu/catalog/18747tpl5158',
+    title:
+      'The Genetic Architecture and Evolutionary Function of Human Scalp Hair Morphology',
+    type: 'science',
+    author: 'Lasisi, Tina.',
+    date: '2021',
+    source:
+      ' The Pennsylvania State University ProQuest Dissertations & Theses,',
+  },
+  /*Irizarry, Yasmiyn. The Irizarry Hair Texture Scale, 2025. https://doi.org/10.31235/osf.io/u4zkh_v2.
+   */
+  '74': {
+    id: '74',
+    url: 'https://doi.org/10.31235/osf.io/u4zkh_v2',
+    title: 'The Irizarry Hair Texture Scale',
+    type: 'science',
+  },
+  /* “The Hair Chart - 99% Invisible.” Accessed March 6, 2025. https://99percentinvisible.org/episode/the-hair-chart/.
+   */
+  '75': {
+    id: '75',
+    url: 'https://99percentinvisible.org/episode/the-hair-chart/',
+    title: 'The Hair Chart',
+    type: 'other',
+    author: 'Leila Day and Hana Baba',
+    date: '2025',
+    source: '99% Invisible',
+  },
+  /* Mettrie, Roland, Didier Saint-Léger, Geneviève Loussouarn, Annelise Garcel, Crystal Porter, and Andre Langaney. “Shape Variability and Classification of Human Hair: A Worldwide Approach.” Human Biology 79 (July 1, 2007): 265–81. https://doi.org/10.1353/hub.2007.0045.*/
+  '76': {
+    id: '76',
+    url: 'https://doi.org/10.1353/hub.2007.0045',
+    title:
+      'Shape Variability and Classification of Human Hair: A Worldwide Approach',
+    type: 'science',
+    author:
+      'Mettrie, Roland, Didier Saint-Léger, Geneviève Loussouarn, Annelise Garcel, Crystal Porter, and Andre Langaney.',
+    date: '2007',
+    source: 'Human Biology',
+  },
+  /*
+  Loussouarn, Geneviève, Anne-Lise Garcel, Isabelle Lozano, Catherine Collaudin, Crystal Porter, Ségolène Panhard, Didier Saint-Léger, and Roland De La Mettrie. “Worldwide Diversity of Hair Curliness: A New Method of Assessment.” International Journal of Dermatology 46, no. s1 (2007): 2–6. https://doi.org/10.1111/j.1365-4632.2007.03453.x.
+ */
+  '77': {
+    id: '77',
+    url: 'https://doi.org/10.1111/j.1365-4632.2007.03453.x',
+    title: 'Worldwide Diversity of Hair Curliness: A New Method of Assessment',
+    type: 'science',
+    author:
+      'Loussouarn, Geneviève, Anne-Lise Garcel, Isabelle Lozano, Catherine Collaudin, Crystal Porter, Ségolène Panhard, Didier Saint-Léger, and Roland De La Mettrie.',
+    date: '2007',
+    source: 'International Journal of Dermatology',
+  },
+  /* Gaines, Michelle K., Imani Y. Page, Nolan A. Miller, Benjamin R. Greenvall, Joshua J. Medina, Duncan J. Irschick, Adeline Southard, Alexander E. Ribbe, Gregory M. Grason, and Alfred J. Crosby. “Reimagining Hair Science: A New Approach to Classify Curly Hair Phenotypes via New Quantitative Geometric and Structural Mechanical Parameters.” Accounts of Chemical Research, May 22, 2023. https://doi.org/10.1021/acs.accounts.2c00740.
+   */
+  '78': {
+    id: '78',
+    url: 'https://doi.org/10.1021/acs.accounts.2c00740',
+    title:
+      'Reimagining Hair Science: A New Approach to Classify Curly Hair Phenotypes via New Quantitative Geometric and Structural Mechanical Parameters',
+    type: 'science',
+    author:
+      'Gaines, Michelle K., Imani Y. Page, Nolan A. Miller, Benjamin R. Greenvall, Joshua J. Medina, Duncan J. Irschick, Adeline Southard, Alexander E. Ribbe, Gregory M. Grason, and Alfred J. Crosby.',
+    date: '2023',
+    source: 'Accounts of Chemical Research',
+  },
+  /*
+  Lasisi, Tina, Arslan A. Zaidi, Timothy H. Webster, Nicholas B. Stephens, Kendall Routch, Nina G. Jablonski, and Mark D. Shriver. “High-Throughput Phenotyping Methods for Quantifying Hair Fiber Morphology.” Scientific Reports 11, no. 1 (June 1, 2021): 11535. https://doi.org/10.1038/s41598-021-90409-x.
+
+  */
+  '79': {
+    id: '79',
+    url: 'https://doi.org/10.1038/s41598-021-90409-x',
+    title:
+      'High-Throughput Phenotyping Methods for Quantifying Hair Fiber Morphology',
+    type: 'science',
+    author:
+      'Lasisi, Tina, Arslan A. Zaidi, Timothy H. Webster, Nicholas B. Stephens, Kendall Routch, Nina G. Jablonski, and Mark D. Shriver.',
+    date: '2021',
+    source: 'Scientific Reports',
+  },
+  /*
+  Oladele, Deborah B., Ewa Markiewicz, and Olusola C. Idowu. “The Genomic Variation in Textured Hair: Implications in Developing a Holistic Hair Care Routine.” Cosmetics 11, no. 6 (December 2024): 183. https://doi.org/10.3390/cosmetics11060183.
+  */
+  '80': {
+    id: '80',
+    url: 'https://doi.org/10.3390/cosmetics11060183',
+    title:
+      'The Genomic Variation in Textured Hair: Implications in Developing a Holistic Hair Care Routine',
+    type: 'science',
+    author: 'Oladele, Deborah B., Ewa Markiewicz, and Olusola C. Idowu.',
+    date: '2024',
+    source: 'Cosmetics',
+  },
+  /*
+  Berkowitz, Rachel. “The Mechanics of Curly Hair.” Physics 16 (April 20, 2023): 65. https://physics.aps.org/articles/v16/65
+
+  */
+  '81': {
+    id: '81',
+    url: 'https://physics.aps.org/articles/v16/65',
+    title: 'The Mechanics of Curly Hair',
+    type: 'science',
+    author: 'Berkowitz, Rachel.',
+    date: '2023',
+    source: 'Physics',
+  },
+  /*
+  American Chemical Society. “New Ways to Measure Curls and Kinks Could Make It Easier to Care for Natural Hair.” Accessed March 6, 2025. https://www.acs.org/pressroom/newsreleases/2023/march/new-ways-to-measure-curls-and-kinks-could-make-it-easier-to-care-for-natural-hair.html.
+
+  */
+  '82': {
+    id: '82',
+    url: 'https://www.acs.org/pressroom/newsreleases/2023/march/new-ways-to-measure-curls-and-kinks-could-make-it-easier-to-care-for-natural-hair.html',
+    title:
+      'New Ways to Measure Curls and Kinks Could Make It Easier to Care for Natural Hair',
+    type: 'science',
+    author: 'American Chemical Society.',
+    date: '2023',
+    source: 'American Chemical Society',
+  },
+  /* Gavazzoni Dias, Maria Fernanda Reis. “Hair Cosmetics: An Overview.” International Journal of Trichology 7, no. 1 (2015): 2–15. https://doi.org/10.4103/0974-7753.153450. */
+  '83': {
+    id: '83',
+    url: 'https://doi.org/10.4103/0974-7753.153450',
+    title: 'Hair Cosmetics: An Overview',
+    type: 'science',
+    author: 'Gavazzoni Dias, Maria Fernanda Reis.',
+    date: '2015',
+    source: 'International Journal of Trichology',
+  },
+  /* Chemical & Engineering News. “Reclassifying Curls, Coils, and Kinks.” Accessed March 6, 2025. https://cen.acs.org/acs-news/acs-meeting-news/Reclassifying-curls-coils-kinks/101/web/2023/03. Gina Vitale
+   */
+  '84': {
+    id: '84',
+    url: 'https://cen.acs.org/acs-news/acs-meeting-news/Reclassifying-curls-coils-kinks/101/web/2023/03',
+    title: 'Reclassifying Curls, Coils, and Kinks',
+    type: 'science',
+    author: 'Gina Vitale',
+    date: '2023',
+    source: 'Chemical & Engineering News',
+  },
+  /*
+  Mayo, Tiffany, Jewell Dinkins, and Boni Elewski. “Hair Oils May Worsen Seborrheic Dermatitis in Black Patients.” Skin Appendage Disorders 9, no. 2 (March 7, 2023): 151–52. https://doi.org/10.1159/000527778.
+
+   */
+  '85': {
+    id: '85',
+    url: 'https://doi.org/10.1159/000527778',
+    title: 'Hair Oils May Worsen Seborrheic Dermatitis in Black Patients',
+    type: 'science',
+    author: 'Mayo, Tiffany, Jewell Dinkins, and Boni Elewski.',
+    date: '2023',
+    source: 'Skin Appendage Disorders',
+  },
+  /*
+  Dobler, Dorota, Thomas Schmidts, Sören Wildenhain, Ilona Seewald, Michael Merzhäuser, and Frank Runkel. “Impact of Selected Cosmetic Ingredients on Common Microorganisms of Healthy Human Skin.” Cosmetics 6, no. 3 (September 2019): 45. https://doi.org/10.3390/cosmetics6030045.
+
+  */
+  '86': {
+    id: '86',
+    url: 'https://doi.org/10.3390/cosmetics6030045',
+    title:
+      'Impact of Selected Cosmetic Ingredients on Common Microorganisms of Healthy Human Skin',
+    type: 'science',
+    author:
+      'Dobler, Dorota, Thomas Schmidts, Sören Wildenhain, Ilona Seewald, Michael Merzhäuser, and Frank Runkel.',
+    date: '2019',
+    source: 'Cosmetics',
+  },
+  
 };
+
