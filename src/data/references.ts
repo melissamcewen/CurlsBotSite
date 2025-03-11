@@ -852,6 +852,16 @@ export const defaultReferences: References = {
     date: '2019',
     source: 'Cosmetics',
   },
-  
+
+  /*
+  Berg, Claire van den, Nonhlanhla P. Khumalo, and Malebogo N. Ngoepe. “Quantifying Whole Human Hair Scalp Fibres of Varying Curl: A Micro-Computed Tomographic Study.” Journal of Microscopy 297, no. 2 (2025): 227–51. https://doi.org/10.1111/jmi.13365.
+
+  */
+  '87': {
+    id: '87',
+    url: 'https://doi.org/10.1111/jmi.13365',
+    title: 'Quantifying Whole Human Hair Scalp Fibres of Varying Curl: A Micro-Computed Tomographic Study',
+    type: 'science',
+  },
 };
 
