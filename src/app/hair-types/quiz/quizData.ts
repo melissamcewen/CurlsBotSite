@@ -18,14 +18,17 @@ export type QuizSection =
   | '1vs234'
   | '1vs2'
   | '2vs3'
-  | '1avs1bc'
-  | '1bvs1c'
+  | '1cvs1ab'
+  | '1avs1b'
   | '23vs34'
+  | '2vs3'
   | '2avs2c'
-  | '2avs2b'
-  | '3avs3c'
+  | '3a3cvs3c4'
+  | '3a3bvs3c'
+  | '3avs3b'
   | '3cvs4'
-  | '4avs4c';
+  | '4avs4c'
+  | '4avs4b';
 
 export const quizQuestions: Question[] = [
   // Initial branching: Straight vs. Wavy/Curly/Coily
@@ -65,15 +68,15 @@ export const quizQuestions: Question[] = [
       'Have you ever tried any techniques to form waves like scrunching? Did waves form?',
     answers: [
       {
-        content: 'Yes',
+        content: 'Yes, waves formed',
         nextSection: '2avs2c',
       },
       {
-        content: 'No',
+        content: 'I tried these techniques but no waves formed',
         nextSection: '1avs1bc',
       },
       {
-        content: 'N/A',
+        content: "I haven't tried these techniques",
       },
     ],
   },
@@ -93,57 +96,57 @@ export const quizQuestions: Question[] = [
     ],
   },
 
-  // Section: Type 1A vs 1B/1C determination
+  // Section: Type 1C vs 1A/1B determination
+  // Type 1C is the very straight hair type that doesn't easily get frizzy and can't hold styles well
   {
-    section: '1avs1bc',
+    section: '1cvs1ab',
     question: 'Do heatless curls work well in your hair?',
     answers: [
       {
         content: 'Yes',
-        nextSection: '1bvs1c',
+        nextSection: '1cvs1ab',
       },
       {
         content: 'No',
+        result: '1c',
       },
       {
-        content: 'N/A',
+        content: "I've never tried heatless curls",
       },
     ],
   },
   {
-    section: '1avs1bc',
+    section: '1cvs1ab',
     question:
       'Do you get more volume in your hair from using a stronger/clarifying shampoo?',
     answers: [
       {
         content: 'Yes',
-        nextSection: '1bvs1c',
+        nextSection: '1avs1b',
       },
       {
         content: 'No',
       },
       {
-        content: 'N/A',
+        content: "I've never used a clarifying shampoo",
       },
     ],
   },
   {
-    section: '1avs1bc',
+    section: '1cvs1ab',
     question: 'Do you often struggle with frizzy hair?',
     answers: [
       {
         content: 'No',
-        result: '1a',
+        result: '1c',
       },
       {
         content: 'Yes',
-        nextSection: '1bvs1c',
-      },
-      {
-        content: 'N/A',
+        nextSection: '1avs1b',
       },
     ],
   },
+  /* Don't need this question for now
   {
     section: '1avs1bc',
     question: 'Is your hair easy to detangle?',
@@ -158,42 +161,43 @@ export const quizQuestions: Question[] = [
       },
     ],
   },
-
-  // Section: Type 1B vs 1C final determination
+*/
+  // Section: Type 1A vs 1B final determination
+  // Type 1B is hair that can get proofy and frizzy but never forms waves
   {
-    section: '1bvs1c',
+    section: '1avs1b',
     question:
       'Do you get "triangle hair" (where hair is flat on top and wide at the bottom)?',
     answers: [
       {
         content: 'Yes',
-        result: '1c',
+        result: '1b',
       },
       {
         content: 'No',
-        result: '1b',
+        result: '1a',
+      },
+      {
+        content: "I'm not sure",
       },
     ],
   },
-
-  // Section: Type 2/3 vs Type 3/4 determination
   {
-    section: '23vs34',
-    question:
-      'When you run your fingers through your dry hair, does it glide through smoothly without getting caught in your hair?',
+    section: '1avs1b',
+    question: 'Is frizz a major problem for you?',
     answers: [
       {
         content: 'Yes',
-        nextSection: '2vs3',
+        result: '1b',
       },
       {
         content: 'No',
-      },
-      {
-        content: 'N/A',
+        result: '1a',
       },
     ],
   },
+  ,
+  // Section: Type 2/3 vs Type 3/4 determination
   {
     section: '23vs34',
     question: 'Do heavy products make your hair limp?',
@@ -207,10 +211,11 @@ export const quizQuestions: Question[] = [
         nextSection: '3acvs3c4',
       },
       {
-        content: 'N/A',
+        content: "I'm not sure",
       },
     ],
   },
+  ,
   {
     section: '23vs34',
     question: 'Do you have trouble getting volume at your roots?',
@@ -242,12 +247,31 @@ export const quizQuestions: Question[] = [
       },
     ],
   },
-
+  /* Don't need this question for now
+  {
+    section: '23vs34',
+    question:
+      'When you run your fingers through your dry hair, does it glide through smoothly without getting caught in your hair?',
+    answers: [
+      {
+        content: 'Yes',
+        nextSection: '2vs3',
+      },
+      {
+        content: 'No',
+      },
+      {
+        content: "I'm not sure",
+      },
+    ],
+  }
+*/
   // Section: Type 2 vs Type 3 determination
+  // Type 2 is hair that doesn't form curls
   {
     section: '2vs3',
     question:
-      'Have you ever noticed your hair forming curls when you used no heat and let it dry naturally?',
+      'If you scrunch your hair with gel or mousse/foam and let it air dry, does it form ringlets or just enhanced waves?',
     answers: [
       {
         content: 'Yes',
@@ -255,6 +279,10 @@ export const quizQuestions: Question[] = [
       },
       {
         content: 'No',
+        nextSection: '2avs2c',
+      },
+      {
+        content: "I'm not sure/I've never tried this",
       },
     ],
   },
@@ -274,7 +302,7 @@ export const quizQuestions: Question[] = [
   {
     section: '2vs3',
     question:
-      'If you scrunch your hair with gel or mousse/foam and let it air dry, does it form ringlets or just enhanced waves?',
+      'Have you ever noticed your hair forming curls when you used no heat and let it dry naturally?',
     answers: [
       {
         content: 'Yes',
@@ -284,14 +312,27 @@ export const quizQuestions: Question[] = [
         content: 'No',
         nextSection: '2avs2c',
       },
-      {
-        content: 'N/A',
-        nextSection: '2avs2c',
-      },
     ],
   },
 
   // Section: Type 2A vs 2C determination
+  //2a is a very weak wave pattern
+  //2c is a very strong wave pattern
+  {
+    section: '2avs2c',
+    question: 'Is your hair wavy when wet?',
+    answers: [
+      {
+        content: 'Yes',
+        result: '2c',
+      },
+      {
+        content: 'No',
+        nextSection: '2avs2b',
+      },
+    ],
+  },
+  /* Don't need this question for now
   {
     section: '2avs2c',
     question: 'Do you struggle to get volume at your roots?',
@@ -305,23 +346,11 @@ export const quizQuestions: Question[] = [
       },
     ],
   },
-  {
-    section: '2avs2c',
-    question: 'Does your hair tend to fall flat quickly, even with product?',
-    answers: [
-      {
-        content: 'Yes',
-        nextSection: '2avs2b',
-      },
-      {
-        content: 'No',
-        result: '2c',
-      },
-      {
-        content: 'N/A',
-      },
-    ],
-  },
+*/
+
+  // Section: Type 2A vs 2B final determination
+  //2a is a very weak wave pattern
+  //2b is a medium wave pattern
   {
     section: '2avs2c',
     question:
@@ -329,16 +358,13 @@ export const quizQuestions: Question[] = [
     answers: [
       {
         content: 'Yes',
-        nextSection: '2avs2b',
+        result: '2a',
       },
       {
         content: 'No',
-        result: '2c',
       },
     ],
   },
-
-  // Section: Type 2A vs 2B final determination
   {
     section: '2avs2b',
     question: 'Does brushing your hair when dry make it straight at the roots?',
@@ -351,14 +377,14 @@ export const quizQuestions: Question[] = [
         content: 'No',
       },
       {
-        content: 'N/A',
+        content: "I'm not sure",
       },
     ],
   },
   {
     section: '2avs2b',
     question:
-      'Does your hair ever get completely straight closer to the roots when you use no heat/product and let it dry naturally?',
+      'Does your hair ever get completely straight closer to the roots 1-2 days after washing it?',
     answers: [
       {
         content: 'Yes',
@@ -368,9 +394,14 @@ export const quizQuestions: Question[] = [
         content: 'No',
         result: '2b',
       },
+      {
+        content: "I'm not sure",
+        result: '2b',
+      },
     ],
   },
   //Section 3a/3c vs 3c/4
+  //the 3c/4 group has a lot of shrinkage
   {
     section: '3a3cvs3c4',
     question: 'Do you have trouble growing your hair long/gaining length?',
@@ -384,7 +415,7 @@ export const quizQuestions: Question[] = [
         nextSection: '3a3bvs3c',
       },
       {
-        content: 'N/A',
+        content: "I'm not sure",
       },
     ],
   },
@@ -402,7 +433,7 @@ export const quizQuestions: Question[] = [
         nextSection: '3a3bvs3c',
       },
       {
-        content: 'N/A',
+        content: "I'm not sure",
       },
     ],
   },
@@ -425,7 +456,7 @@ export const quizQuestions: Question[] = [
     ],
   },
   {
-    section: '3a/3cvs3c/4',
+    section: '3a3cvs3c4',
     question: 'Do your curls ever become limp and stretched out overnight?',
     answers: [
       {
@@ -440,6 +471,7 @@ export const quizQuestions: Question[] = [
   },
 
   // Section: Type 3A/3b vs 3C determination
+  // 3C is a very strong curl pattern
   {
     section: '3a3bvs3c',
     question:
@@ -459,7 +491,7 @@ export const quizQuestions: Question[] = [
     ],
   },
   {
-    section: '3avs3c',
+    section: '3a3bvs3c',
     question:
       'Do you have a lot of variation in your curl pattern between different parts of your hair?',
     answers: [
@@ -474,11 +506,11 @@ export const quizQuestions: Question[] = [
     ],
   },
   {
-    section: '3avs3c',
-    question: 'Do you have trouble getting volume at your roots?',
+    section: '3a3bvs3c',
+    question: 'Do you have a lot of trouble getting volume at your roots?',
     answers: [
       {
-        content: 'No',
+        content: 'No my roots have plenty of volume',
         result: '3c',
       },
       {
@@ -489,39 +521,75 @@ export const quizQuestions: Question[] = [
   },
 
   // Section: Type 3A vs 3B final determination
+  //3a is very weak and can become wavy
   {
     section: '3avs3b',
-    question: "Do you get a lot of volume at your roots if it's cut shorter?",
+    question: 'Does gel sometimes make your hair stringy?',
     answers: [
       {
         content: 'Yes',
-        result: '3b',
+        nextSection: '3a',
       },
       {
         content: 'No',
-        result: '3a',
+        result: '3b',
       },
       {
-        content: 'N/A',
+        content: "I'm not sure/I haven't used gel",
       },
     ],
   },
   {
     section: '3avs3b',
-    question: 'Is your hair much longer wet than dry?',
+    question: 'Do you have many types of waves and curls in your hair?',
     answers: [
       {
         content: 'Yes',
-        result: '3b',
+        result: '3a',
       },
       {
         content: 'No',
-        result: '3a',
+        result: '3b',
+      },
+      {
+        content: "I'm not sure",
       },
     ],
   },
-
+  {
+    section: '3avs3b',
+    question:
+      'Do you ever get areas of your hair that are much straighter than others? This is sometimes called "Irish curls"',
+    answers: [
+      {
+        content: 'Yes',
+        nextSection: '3a',
+      },
+      {
+        content: 'No',
+        result: '3b',
+      },
+      {
+        content: "I'm not sure",
+      },
+    ],
+  },
+  {
+    section: '3avs3b',
+    question: 'Do you tend to lose your curl pattern overnight?',
+    answers: [
+      {
+        content: 'Yes',
+        result: '3a',
+      },
+      {
+        content: 'No',
+        result: '3b',
+      },
+    ],
+  },
   // Section: Type 3C vs Type 4 determination
+  // 4 defined by high shrinkage
   {
     section: '3cvs4',
     question:
@@ -537,74 +605,11 @@ export const quizQuestions: Question[] = [
       },
     ],
   },
-  {
-    section: '3cvs4',
-    question: 'Do you ever have static flyaways?',
-    answers: [
-      {
-        content: 'Yes',
-        result: '3c',
-      },
-      {
-        content: 'No',
-        points: { '4': 1 },
-      },
-      {
-        content: 'N/A',
-      },
-    ],
-
-  },
-  
-  {
-    section: '3cvs4',
-    question: 'Do you experience a lot of breakage?',
-    answers: [
-      {
-        content: 'Yes',
-        points: { '4': 1 },
-      },
-      {
-        content: 'No',
-        points: { '3c': 1 },
-      },
-    ],
-  },
-  {
-    section: '3cvs4',
-    question:
-      'Does your hair absorb moisture quickly but also dry out just as fast?',
-    answers: [
-      {
-        content: 'Yes',
-        points: { '4': 1 },
-      },
-      {
-        content: 'No',
-        points: { '3c': 1 },
-      },
-    ],
-  },
-  {
-    section: '3cvs4',
-    question:
-      'Do you find that gel alone can help define your curls without needing a butter or heavy cream?',
-    answers: [
-      {
-        content: 'Yes',
-        points: { '3c': 1 },
-      },
-      {
-        content: 'No',
-        points: { '4': 1 },
-      },
-      {
-        content: 'N/A',
-      },
-    ],
-  },
 
   // Section: Type 4A vs 4C final determination
+  // 4a is coils
+  // 4c is kinks
+  // kinks can do a lot of styles like twists but has a less defined curl pattern
   {
     section: '4avs4c',
     question:
@@ -612,14 +617,15 @@ export const quizQuestions: Question[] = [
     answers: [
       {
         content: 'Yes',
-        points: { '4a': 1 },
+        result: '4avs4b',
       },
       {
         content: 'No',
-        points: { '4c': 1 },
+        result: '4c',
       },
     ],
   },
+  /* Don't need this question for now
   {
     section: '4avs4c',
     question:
@@ -701,6 +707,24 @@ export const quizQuestions: Question[] = [
       },
       {
         content: 'N/A',
+      },
+    ],
+  },
+  */
+  // 4a vs. 4b
+  // 4a is more bouncy and 4b has zig zags
+  {
+    section: '4avs4b',
+    question:
+      'Do you have any pieces of your hair that have a zig zag/kink pattern rather than coils/spirals?',
+    answers: [
+      {
+        content: 'Yes',
+        result: '4b',
+      },
+      {
+        content: 'No',
+        result: '4a',
       },
     ],
   },

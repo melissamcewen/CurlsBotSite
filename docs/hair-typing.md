@@ -82,6 +82,8 @@ Cream (types 3/4)
 
 Gel (types 3)
 
+Liquid gels (type 3a
+
 Custard (types 4)
 
 Hairspray (1/2/3b)
