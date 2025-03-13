@@ -73,7 +73,7 @@ export const quizQuestions: Question[] = [
       },
       {
         content: 'I tried these techniques but no waves formed',
-        nextSection: '1avs1bc',
+        nextSection: '1cvs1ab',
       },
       {
         content: "I haven't tried these techniques",
@@ -91,7 +91,7 @@ export const quizQuestions: Question[] = [
       },
       {
         content: 'No',
-        nextSection: '1avs1bc',
+        nextSection: '1cvs1ab',
       },
     ],
   },
@@ -138,11 +138,38 @@ export const quizQuestions: Question[] = [
     answers: [
       {
         content: 'No',
-        result: '1c',
       },
       {
         content: 'Yes',
         nextSection: '1avs1b',
+      },
+    ],
+  },
+  {
+    section: '1cvs1ab',
+    question: 'Is your hair very thick?',
+    answers: [
+      {
+        content: 'No',
+        nextSection: '1avs1b',
+      },
+      {
+        content: 'Yes',
+      },
+    ],
+  },
+  {
+    section: '1cvs1ab',
+    question:
+      "Do you think your hair grows faster than other people's hair on average",
+    answers: [
+      {
+        content: 'No',
+        nextSection: '1avs1b',
+      },
+      {
+        content: 'Yes',
+        result: '1c',
       },
     ],
   },
@@ -196,7 +223,6 @@ export const quizQuestions: Question[] = [
       },
     ],
   },
-  ,
   // Section: Type 2/3 vs Type 3/4 determination
   {
     section: '23vs34',
@@ -208,14 +234,13 @@ export const quizQuestions: Question[] = [
       },
       {
         content: 'No',
-        nextSection: '3acvs3c4',
+        nextSection: '3a3cvs3c4',
       },
       {
         content: "I'm not sure",
       },
     ],
   },
-  ,
   {
     section: '23vs34',
     question: 'Do you have trouble getting volume at your roots?',
@@ -226,7 +251,7 @@ export const quizQuestions: Question[] = [
       },
       {
         content: 'No',
-        nextSection: '3acvs3c4',
+        nextSection: '3a3cvs3c4',
       },
       {
         content: 'N/A',
@@ -239,7 +264,7 @@ export const quizQuestions: Question[] = [
     answers: [
       {
         content: 'Yes',
-        nextSection: '3acvs3c4',
+        nextSection: '3a3cvs3c4',
       },
       {
         content: 'No',
@@ -275,7 +300,7 @@ export const quizQuestions: Question[] = [
     answers: [
       {
         content: 'Yes',
-        nextSection: '3avs3c',
+        nextSection: '3a3cvs3c4',
       },
       {
         content: 'No',
@@ -292,7 +317,7 @@ export const quizQuestions: Question[] = [
     answers: [
       {
         content: 'Yes',
-        nextSection: '3avs3c',
+        nextSection: '3a3cvs3c4',
       },
       {
         content: 'No',
@@ -306,7 +331,7 @@ export const quizQuestions: Question[] = [
     answers: [
       {
         content: 'Yes',
-        nextSection: '3avs3c',
+        nextSection: '3a3cvs3c4',
       },
       {
         content: 'No',
@@ -528,7 +553,7 @@ export const quizQuestions: Question[] = [
     answers: [
       {
         content: 'Yes',
-        nextSection: '3a',
+        result: '3a',
       },
       {
         content: 'No',
@@ -563,7 +588,7 @@ export const quizQuestions: Question[] = [
     answers: [
       {
         content: 'Yes',
-        nextSection: '3a',
+        result: '3a',
       },
       {
         content: 'No',
@@ -617,7 +642,7 @@ export const quizQuestions: Question[] = [
     answers: [
       {
         content: 'Yes',
-        result: '4avs4b',
+        nextSection: '4avs4b',
       },
       {
         content: 'No',
@@ -742,5 +767,6 @@ export const resultMapping: { [key: string]: string } = {
   '3b': '/hair-types/type-3b',
   '3c': '/hair-types/type-3c',
   '4a': '/hair-types/type-4a',
+  '4b': '/hair-types/type-4b',
   '4c': '/hair-types/type-4c',
 };

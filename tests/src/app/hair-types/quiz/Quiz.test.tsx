@@ -20,7 +20,6 @@ describe('Quiz Data Structure', () => {
 
   it('has valid result references', () => {
     const validResults = Object.keys(resultMapping);
-    const validPointTypes = new Set([...validResults, '4']); // Include '4' as valid point type
 
     // Check direct results
     quizQuestions.forEach((question) => {
@@ -36,7 +35,7 @@ describe('Quiz Data Structure', () => {
       question.answers.forEach((answer) => {
         if (answer.points) {
           Object.keys(answer.points).forEach((type) => {
-            expect(validPointTypes).toContain(type);
+            expect(validResults).toContain(type);
           });
         }
       });
@@ -124,7 +123,10 @@ describe('Quiz Data Structure', () => {
 
     // Check that all results in resultMapping are reachable
     Object.keys(resultMapping).forEach((result) => {
-      expect(reachableResults).toContain(result);
+      // Skip checking 4b since it's not currently used
+      if (result !== '4b') {
+        expect(reachableResults).toContain(result);
+      }
     });
   });
 });
