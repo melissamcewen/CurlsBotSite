@@ -1,3 +1,16 @@
+- [x] 1a
+- [x] 1b
+- [x] 1c
+- [x] 2a
+- [x] 2b
+- [x] 2c
+- [x] 3a
+- [x] 3b
+- [x] 3c
+- [x] 4a
+- [x] 4b
+- [x] 4c
+
 # 1a
 - Does your hair dry straight without needing products, heat, or tools? Yes
 - Is your hair perfectly straight with no bends when wet? Yes
