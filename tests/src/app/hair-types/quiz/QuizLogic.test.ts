@@ -89,8 +89,8 @@ describe('Quiz Logic - Type 1A Pathway', () => {
       },
       {
         section: '1cvs1ab',
-        question: 'Do heatless curls work well in your hair?',
-        answer: "I've never tried heatless curls",
+        question: 'Is it easy to curl your hair with a curling iron?',
+        answer: "I've never tried a curling iron",
       },
       {
         section: '1cvs1ab',
@@ -106,23 +106,11 @@ describe('Quiz Logic - Type 1A Pathway', () => {
       {
         section: '1cvs1ab',
         question: 'Is your hair very thick?',
-        answer: 'Yes',
-      },
-      {
-        section: '1cvs1ab',
-        question:
-          "Do you think your hair grows faster than other people's hair on average",
         answer: 'No',
       },
       {
         section: '1avs1b',
-        question:
-          'Do you get "triangle hair" (where hair is flat on top and wide at the bottom)?',
-        answer: "I'm not sure",
-      },
-      {
-        section: '1avs1b',
-        question: 'Is frizz a major problem for you?',
+        question: 'Does your hair ever curl up at the ends?',
         answer: 'No',
       },
     ];
@@ -275,8 +263,8 @@ describe('Quiz Logic - Type 1A Pathway', () => {
       },
       {
         section: '1cvs1ab',
-        question: 'Do heatless curls work well in your hair?',
-        answer: "I've never tried heatless curls",
+        question: 'Is it easy to curl your hair with a curling iron?',
+        answer: "I've never tried a curling iron",
       },
       {
         section: '1cvs1ab',
@@ -286,8 +274,7 @@ describe('Quiz Logic - Type 1A Pathway', () => {
       },
       {
         section: '1avs1b',
-        question:
-          'Do you get "triangle hair" (where hair is flat on top and wide at the bottom)?',
+        question: 'Does your hair ever curl up at the ends?',
         answer: 'Yes',
       },
     ];
@@ -440,7 +427,7 @@ describe('Quiz Logic - Type 1A Pathway', () => {
       },
       {
         section: '1cvs1ab',
-        question: 'Do heatless curls work well in your hair?',
+        question: 'Is it easy to curl your hair with a curling iron?',
         answer: 'No',
       },
     ];
@@ -589,7 +576,28 @@ describe('Quiz Logic - Type 1C Pathway', () => {
       },
       {
         section: '1cvs1ab',
-        question: 'Do heatless curls work well in your hair?',
+        question: 'Is it easy to curl your hair with a curling iron?',
+        answer: "I've never tried a curling iron",
+      },
+      {
+        section: '1cvs1ab',
+        question:
+          'Do you get more volume in your hair from using a stronger/clarifying shampoo?',
+        answer: "I've never used a clarifying shampoo",
+      },
+      {
+        section: '1cvs1ab',
+        question: 'Do you often struggle with frizzy hair?',
+        answer: 'No',
+      },
+      {
+        section: '1cvs1ab',
+        question: 'Is your hair very thick?',
+        answer: 'Yes',
+      },
+      {
+        section: '1cvs1ab',
+        question: 'Do you have trouble with static flyaways?',
         answer: 'No',
       },
     ];
@@ -626,7 +634,7 @@ describe('Quiz Logic - Type 1C Pathway', () => {
       },
       {
         section: '1cvs1ab',
-        question: 'Do you have trouble with static flyaways?',
+        question: 'Is it easy to curl your hair with a curling iron?',
         answer: 'No',
       },
     ];

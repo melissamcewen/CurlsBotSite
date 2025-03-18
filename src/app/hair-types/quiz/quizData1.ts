@@ -67,10 +67,10 @@ export const type1Questions: Question[] = [
   },
 
   // Section: Type 1C vs 1A/1B determination
-  
+
   {
     section: '1cvs1ab',
-    question: 'Do heatless curls work well in your hair?',
+    question: 'Is it easy to curl your hair with a curling iron?',
     answers: [
       {
         content: 'Yes',
@@ -81,7 +81,7 @@ export const type1Questions: Question[] = [
         result: '1c',
       },
       {
-        content: "I've never tried heatless curls",
+        content: "I've never tried a curling iron",
       },
     ],
   },
@@ -142,6 +142,21 @@ export const type1Questions: Question[] = [
       },
     ],
   },
+  /*
+  {
+    section: '1cvs1ab',
+    question: 'Can you easily curl your hair with a curling iron?',
+    answers: [
+      {
+        content: 'Yes',
+        nextSection: '1avs1b',
+      },
+      {
+        content: 'No',
+        result: '1c',
+      },
+    ],
+  },
   {
     section: '1cvs1ab',
     question:
@@ -157,8 +172,40 @@ export const type1Questions: Question[] = [
       },
     ],
   },
-
+*/
   // Section: Type 1A vs 1B final determination
+  {
+    section: '1avs1b',
+    question: 'Does your hair ever curl up at the ends?',
+    answers: [
+      {
+        content: 'Yes',
+        result: '1b',
+      },
+      {
+        content: 'No',
+        result: '1a',
+      },
+    ],
+  }
+  /*
+  {
+    section: '1avs1b',
+    question: 'Do heatless curls work well in your hair?',
+    answers: [
+      {
+        content: 'Yes',
+        result: '1b',
+      },
+      {
+        content: 'No',
+        result: '1a',
+      },
+      {
+        content: "I've never tried heatless curls",
+      },
+    ],
+  },
   {
     section: '1avs1b',
     question:
@@ -191,4 +238,5 @@ export const type1Questions: Question[] = [
       },
     ],
   },
+  */
 ];
