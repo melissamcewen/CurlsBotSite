@@ -212,6 +212,7 @@ function RoutineSteps({ porosity, country, costFilter }: RoutineStepsProps) {
                           key={product.type}
                           product={product}
                           category={category.category}
+                          selectedCountry={country}
                         />
                       ))
                     ) : (

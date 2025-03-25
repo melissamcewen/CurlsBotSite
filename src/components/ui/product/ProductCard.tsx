@@ -18,6 +18,7 @@ interface ProductCardProps {
   category: string;
   onSelect?: () => void;
   isSelected?: boolean;
+  selectedCountry?: string;
 }
 
 export function ProductCard({
@@ -25,8 +26,9 @@ export function ProductCard({
   category,
   onSelect,
   isSelected,
+  selectedCountry,
 }: ProductCardProps) {
-  const userCountry = getCountryFromHostname();
+  const userCountry = selectedCountry || getCountryFromHostname();
   const porosityScores = product.product.extensions?.porosity;
 
   // Categories that should not show porosity scores
@@ -154,7 +156,25 @@ export function ProductCard({
               </button>
             )}
             {product.product.buy_links
-              ?.filter((link) => (link.country || 'US') === userCountry)
+              ? (() => {
+                  console.log('All buy links:', product.product.buy_links);
+                  return null;
+                })()
+              : null}
+            {(() => {
+              console.log('User country:', userCountry);
+              return null;
+            })()}
+            {product.product.buy_links
+              ?.filter((link) => {
+                console.log(
+                  'Link country:',
+                  link.country,
+                  'matches user country?',
+                  (link.country || 'US') === userCountry,
+                );
+                return (link.country || 'US') === userCountry;
+              })
               .map((link, index) => (
                 <a
                   key={index}
