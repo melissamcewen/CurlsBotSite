@@ -117,19 +117,6 @@ export const type1Questions: Question[] = [
   },
   {
     section: '1cvs1ab',
-    question: 'Is your hair very thick?',
-    answers: [
-      {
-        content: 'No',
-        nextSection: '1avs1b',
-      },
-      {
-        content: 'Yes',
-      },
-    ],
-  },
-  {
-    section: '1cvs1ab',
     question: 'Do you have trouble with static flyaways?',
     answers: [
       {
@@ -138,7 +125,41 @@ export const type1Questions: Question[] = [
       },
       {
         content: 'No',
+      },
+    ],
+  },
+  {
+    section: '1cvs1ab',
+    question: 'Is it hard to get your hair to a lighter color?',
+    answers: [
+      {
+        content: 'No',
+        nextSection: '1avs1b',
+      },
+      {
+        content: 'Yes',
+      },
+      {
+        content: 'My hair is naturally light',
+        nextSection: '1avs1b',
+      },
+
+      {
+        content: "I've never dyed my hair lighter/never dyed my hair",
+      },
+    ],
+  },
+  {
+    section: '1cvs1ab',
+    question: 'Does your hair break easily?',
+    answers: [
+      {
+        content: 'No',
         result: '1c',
+      },
+      {
+        content: 'Yes',
+        nextSection: '1avs1b',
       },
     ],
   },
@@ -176,7 +197,7 @@ export const type1Questions: Question[] = [
   // Section: Type 1A vs 1B final determination
   {
     section: '1avs1b',
-    question: 'Does your hair ever curl up at the ends?',
+    question: 'Is it easy to use heatless curls on your hair?',
     answers: [
       {
         content: 'Yes',
@@ -186,8 +207,76 @@ export const type1Questions: Question[] = [
         content: 'No',
         result: '1a',
       },
+      {
+        content: "I've never used heatless curls",
+      },
     ],
-  }
+  },
+  {
+    section: '1avs1b',
+    question: 'Do you need to wash your hair every day or it looks greasy?',
+    answers: [
+      {
+        content: 'Yes',
+        result: '1a',
+      },
+      {
+        content: 'No',
+      },
+    ],
+  },
+  {
+    section: '1avs1b',
+    question:
+      'Do you have trouble with your hair slipping out of clips and other accessories?',
+    answers: [
+      {
+        content: 'Yes',
+        result: '1a',
+      },
+      {
+        content: 'No',
+        result: '1b',
+      },
+      {
+        content: "I've never used clips or accessories/I'm not sure",
+      },
+    ],
+  },
+  {
+    section: '1avs1b',
+    question:
+      'Do you struggle with volume in your hair?',
+    answers: [
+      {
+        content: 'Yes',
+      },
+      {
+        content: 'No',
+        result: '1b',
+      },
+      {
+        content: "I'm not sure",
+      },
+    ],
+  },
+  {
+    section: '1avs1b',
+    question: 'Does your hair break easily?',
+    answers: [
+      {
+        content: 'Yes',
+        result: '1a',
+      },
+      {
+        content: 'No',
+        result: '1b',
+      },
+      {
+        content: "I'm not sure",
+      },
+    ],
+  },
   /*
   {
     section: '1avs1b',

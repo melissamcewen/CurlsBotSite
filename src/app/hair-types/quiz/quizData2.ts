@@ -50,6 +50,7 @@ export const type2Questions: Question[] = [
   },
 
   // Section: Type 2A vs 2C determination
+  // fine vs. coarse
   {
     section: '2avs2c',
     question: 'Is your hair wavy when wet?',
@@ -65,7 +66,6 @@ export const type2Questions: Question[] = [
     ],
   },
 
-  // Section: Type 2A vs 2B final determination
   {
     section: '2avs2c',
     question:
@@ -80,6 +80,8 @@ export const type2Questions: Question[] = [
       },
     ],
   },
+
+  // Section: Type 2A vs 2B final determination
   {
     section: '2avs2b',
     question: 'Does brushing your hair when dry make it straight at the roots?',
