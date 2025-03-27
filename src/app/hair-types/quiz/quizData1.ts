@@ -28,7 +28,7 @@ export const type1Questions: Question[] = [
       },
       {
         content: 'No',
-        nextSection: '2avs2c',
+        nextSection: '2avs2bc',
       },
     ],
   },
@@ -78,7 +78,7 @@ export const type1Questions: Question[] = [
       },
       {
         content: 'No',
-        result: '1cvs1a',
+        nextSection: '1avs1c',
       },
       {
         content: "I've never tried heatless curls",
@@ -186,11 +186,11 @@ export const type1Questions: Question[] = [
     question: 'Is your hair easy to chemically lighten?',
     answers: [
       {
-        content: 'Yes, it’s easy to lighten my hair',
+        content: "Yes, it's easy to lighten my hair",
         result: '1a',
       },
       {
-        content: 'No, difficult to lighten my hair',
+        content: 'No, it is difficult to lighten my hair',
         result: '1c',
       },
       {

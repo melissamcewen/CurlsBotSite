@@ -8,7 +8,7 @@ export const type3Questions: Question[] = [
     answers: [
       {
         content: 'Yes',
-        nextSection: '2vs3',
+        nextSection: '2avs3',
       },
       {
         content: 'No',
@@ -25,7 +25,7 @@ export const type3Questions: Question[] = [
     answers: [
       {
         content: 'Yes',
-        nextSection: '2vs3',
+        nextSection: '2avs3',
       },
       {
         content: 'No',
@@ -46,7 +46,7 @@ export const type3Questions: Question[] = [
       },
       {
         content: 'No',
-        nextSection: '2vs3',
+        nextSection: '2avs3',
       },
     ],
   },
@@ -103,5 +103,18 @@ export const type3Questions: Question[] = [
   },
 
   // Section: Type 3A vs 3B final determination
-  
+  {
+    section: '3avs3b',
+    question: "Is your hair curlier when it's longer vs. when it's shorter?",
+    answers: [
+      {
+        content: "Yes, it's curlier when it's longer",
+        result: '3a',
+      },
+      {
+        content: "No, it's curlier when it's shorter or the same",
+        result: '3b',
+      },
+    ],
+  },
 ];

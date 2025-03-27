@@ -17,11 +17,9 @@ export interface Question {
 export type QuizSection =
   | '1vs234'
   | '1vs2'
-  | '2vs3'
   | '1cvs1ab'
   | '1avs1b'
   | '23vs34'
-  | '2vs3'
   | '2avs2c'
   | '3a3cvs3c4'
   | '3a3bvs3c'
