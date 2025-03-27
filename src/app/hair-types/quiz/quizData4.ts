@@ -4,12 +4,28 @@ export const type4Questions: Question[] = [
   // Section: Type 3C vs Type 4 determination
   {
     section: '3cvs4',
-    question:
-      'Does your hair shrink more than 50% of its length when it dries?',
+    question: 'Does your hair grow upwards?',
     answers: [
       {
         content: 'Yes',
-        nextSection: '4avs4c',
+        nextSection: '4avs4bvs4c',
+      },
+      {
+        content: 'No',
+        result: '3c',
+      },
+      {
+        content: "I'm not sure",
+      },
+    ],
+  },
+  {
+    section: '3cvs4',
+    question: 'Does your hair shrink more than 50% of its length when it dries?',
+    answers: [
+      {
+        content: 'Yes',
+        nextSection: '4avs4bvs4c',
       },
       {
         content: 'No',
@@ -20,33 +36,19 @@ export const type4Questions: Question[] = [
 
   // Section: Type 4A vs 4C determination
   {
-    section: '4avs4c',
-    question:
-      'Do you see a consistent spiral curl pattern without needing to define it with product or styling?',
+    section: '4avs4bvs4c',
+    question: 'Does your hair have easily defined kinks and/or coils?',
     answers: [
-      {
-        content: 'Yes',
-        nextSection: '4avs4b',
-      },
       {
         content: 'No',
         result: '4c',
       },
-    ],
-  },
-
-  // Section: Type 4A vs 4B determination
-  {
-    section: '4avs4b',
-    question:
-      'Do you have any pieces of your hair that have a zig zag/kink pattern rather than coils/spirals?',
-    answers: [
       {
-        content: 'Yes',
+        content: 'Yes, it has defined kinks',
         result: '4b',
       },
       {
-        content: 'No',
+        content: 'Yes, it has defined coils',
         result: '4a',
       },
     ],

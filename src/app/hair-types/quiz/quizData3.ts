@@ -86,101 +86,22 @@ export const type3Questions: Question[] = [
       },
     ],
   },
+
   {
     section: '3a3bvs3c',
-    question:
-      'Do you have a lot of variation in your curl pattern between different parts of your hair?',
+    question: 'Does your hair seem like it grows out horizontally?',
     answers: [
       {
-        content: 'Yes',
-        nextSection: '3avs3b',
+        content: 'Yes, it seems to grow out horizontally',
+        result: '3c',
       },
       {
         content: 'No',
-        result: '3c',
-      },
-    ],
-  },
-  {
-    section: '3a3bvs3c',
-    question: 'Do you have a lot of trouble getting volume at your roots?',
-    answers: [
-      {
-        content: 'No my roots have plenty of volume',
-        result: '3c',
-      },
-      {
-        content: 'Yes',
         nextSection: '3avs3b',
       },
     ],
   },
 
   // Section: Type 3A vs 3B final determination
-  {
-    section: '3avs3b',
-    question: 'Does gel sometimes make your hair stringy?',
-    answers: [
-      {
-        content: 'Yes',
-        result: '3a',
-      },
-      {
-        content: 'No',
-        result: '3b',
-      },
-      {
-        content: "I'm not sure/I haven't used gel",
-      },
-    ],
-  },
-  {
-    section: '3avs3b',
-    question: 'Do you have many types of waves and curls in your hair?',
-    answers: [
-      {
-        content: 'Yes',
-        result: '3a',
-      },
-      {
-        content: 'No',
-        result: '3b',
-      },
-      {
-        content: "I'm not sure",
-      },
-    ],
-  },
-  {
-    section: '3avs3b',
-    question:
-      'Do you ever get areas of your hair that are much straighter than others? This is sometimes called "Irish curls"',
-    answers: [
-      {
-        content: 'Yes',
-        result: '3a',
-      },
-      {
-        content: 'No',
-        result: '3b',
-      },
-      {
-        content: "I'm not sure",
-      },
-    ],
-  },
-  {
-    section: '3avs3b',
-    question: 'Do you tend to lose your curl pattern overnight?',
-    answers: [
-      {
-        content: 'Yes',
-        result: '3a',
-      },
-      {
-        content: 'No',
-        result: '3b',
-      },
-    ],
-  },
+  
 ];

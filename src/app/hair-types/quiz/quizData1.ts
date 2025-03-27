@@ -43,7 +43,7 @@ export const type1Questions: Question[] = [
       },
       {
         content: 'I tried these techniques but no waves formed',
-        nextSection: '1cvs1ab',
+        nextSection: '1bvs1ac',
       },
       {
         content: "I haven't tried these techniques",
@@ -61,111 +61,84 @@ export const type1Questions: Question[] = [
       },
       {
         content: 'No',
-        nextSection: '1cvs1ab',
+        nextSection: '1bvs1ac',
       },
     ],
   },
 
-  // Section: Type 1C vs 1A/1B determination
+  // Section: Type 1B vs 1A/1C determination
 
   {
-    section: '1cvs1ab',
-    question: 'Is it easy to curl your hair with a curling iron?',
+    section: '1bvs1ac',
+    question: 'Do heatless curls work well in your hair?',
     answers: [
       {
         content: 'Yes',
-        nextSection: '1cvs1ab',
+        result: '1b',
       },
       {
         content: 'No',
-        result: '1c',
+        result: '1cvs1a',
       },
       {
-        content: "I've never tried a curling iron",
+        content: "I've never tried heatless curls",
       },
     ],
   },
   {
-    section: '1cvs1ab',
+    section: '1bvs1ac',
     question:
-      'Do you get more volume in your hair from using a stronger/clarifying shampoo?',
+      'Do you have trouble with your hair slipping out of clips and other accessories?',
     answers: [
       {
         content: 'Yes',
-        nextSection: '1avs1b',
+        nextSection: '1avs1c',
       },
       {
         content: 'No',
+        result: '1b',
       },
       {
-        content: "I've never used a clarifying shampoo",
+        content: "I've never used clips or accessories/I'm not sure",
       },
     ],
   },
   {
-    section: '1cvs1ab',
+    section: '1bvs1ac',
+    question: 'Do you struggle with volume in your hair?',
+    answers: [
+      {
+        content: 'Yes',
+        nextSection: '1avs1c',
+      },
+      {
+        content: 'No',
+        result: '1b',
+      },
+      {
+        content: "I'm not sure",
+      },
+    ],
+  },
+
+  {
+    section: '1bvs1ac',
     question: 'Do you often struggle with frizzy hair?',
     answers: [
       {
         content: 'No',
+        nextSection: '1avs1c',
       },
       {
         content: 'Yes',
-        nextSection: '1avs1b',
+        result: '1b',
       },
     ],
   },
-  {
-    section: '1cvs1ab',
-    question: 'Do you have trouble with static flyaways?',
-    answers: [
-      {
-        content: 'Yes',
-        nextSection: '1avs1b',
-      },
-      {
-        content: 'No',
-      },
-    ],
-  },
-  {
-    section: '1cvs1ab',
-    question: 'Is it hard to get your hair to a lighter color?',
-    answers: [
-      {
-        content: 'No',
-        nextSection: '1avs1b',
-      },
-      {
-        content: 'Yes',
-      },
-      {
-        content: 'My hair is naturally light',
-        nextSection: '1avs1b',
-      },
 
-      {
-        content: "I've never dyed my hair lighter/never dyed my hair",
-      },
-    ],
-  },
-  {
-    section: '1cvs1ab',
-    question: 'Does your hair break easily?',
-    answers: [
-      {
-        content: 'No',
-        result: '1c',
-      },
-      {
-        content: 'Yes',
-        nextSection: '1avs1b',
-      },
-    ],
-  },
   /*
   {
-    section: '1cvs1ab',
+    section: '1bvs1ac',
     question: 'Can you easily curl your hair with a curling iron?',
     answers: [
       {
@@ -179,7 +152,7 @@ export const type1Questions: Question[] = [
     ],
   },
   {
-    section: '1cvs1ab',
+    section: '1bvs1ac',
     question:
       "Do you think your hair grows faster than other people's hair on average",
     answers: [
@@ -194,27 +167,10 @@ export const type1Questions: Question[] = [
     ],
   },
 */
-  // Section: Type 1A vs 1B final determination
+  // Section: Type 1A vs 1C final determination
   {
-    section: '1avs1b',
-    question: 'Is it easy to use heatless curls on your hair?',
-    answers: [
-      {
-        content: 'Yes',
-        result: '1b',
-      },
-      {
-        content: 'No',
-        result: '1a',
-      },
-      {
-        content: "I've never used heatless curls",
-      },
-    ],
-  },
-  {
-    section: '1avs1b',
-    question: 'Do you need to wash your hair every day or it looks greasy?',
+    section: '1avs1c',
+    question: 'Do you often have static flyaways?',
     answers: [
       {
         content: 'Yes',
@@ -226,9 +182,30 @@ export const type1Questions: Question[] = [
     ],
   },
   {
-    section: '1avs1b',
+    section: '1avs1c',
+    question: 'Is your hair easy to chemically lighten?',
+    answers: [
+      {
+        content: 'Yes, it’s easy to lighten my hair',
+        result: '1a',
+      },
+      {
+        content: 'No, difficult to lighten my hair',
+        result: '1c',
+      },
+      {
+        content: "I've never tried to lighten my hair",
+      },
+      {
+        content: 'My hair is already light',
+        result: '1a',
+      },
+    ],
+  },
+  {
+    section: '1avs1c',
     question:
-      'Do you have trouble with your hair slipping out of clips and other accessories?',
+      'Do you have to be careful with bobby pins and similar hair accessories because they sometimes cause breakage?',
     answers: [
       {
         content: 'Yes',
@@ -236,47 +213,10 @@ export const type1Questions: Question[] = [
       },
       {
         content: 'No',
-        result: '1b',
-      },
-      {
-        content: "I've never used clips or accessories/I'm not sure",
       },
     ],
   },
-  {
-    section: '1avs1b',
-    question:
-      'Do you struggle with volume in your hair?',
-    answers: [
-      {
-        content: 'Yes',
-      },
-      {
-        content: 'No',
-        result: '1b',
-      },
-      {
-        content: "I'm not sure",
-      },
-    ],
-  },
-  {
-    section: '1avs1b',
-    question: 'Does your hair break easily?',
-    answers: [
-      {
-        content: 'Yes',
-        result: '1a',
-      },
-      {
-        content: 'No',
-        result: '1b',
-      },
-      {
-        content: "I'm not sure",
-      },
-    ],
-  },
+
   /*
   {
     section: '1avs1b',
