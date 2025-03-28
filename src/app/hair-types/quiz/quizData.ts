@@ -2,9 +2,11 @@ import { type1Questions } from './quizData1';
 import { type2Questions } from './quizData2';
 import { type3Questions } from './quizData3';
 import { type4Questions } from './quizData4';
-import { Question } from './types';
+import { Question, QuizResult } from './types';
+import { hairTypeParameters } from './parameters';
 
 export * from './types';
+export * from './parameters';
 
 export const quizQuestions: Question[] = [
   ...type1Questions,
@@ -12,6 +14,17 @@ export const quizQuestions: Question[] = [
   ...type3Questions,
   ...type4Questions,
 ];
+
+export function getQuizResult(hairType: string): QuizResult {
+  const parameters = hairTypeParameters[hairType];
+  if (!parameters) {
+    throw new Error(`Invalid hair type: ${hairType}`);
+  }
+  return {
+    type: hairType,
+    parameters,
+  };
+}
 
 // This maps the final scores to the result pages
 export const resultMapping: { [key: string]: string } = {

@@ -1,19 +1,32 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import {
   ChatBubbleRobot,
   ChatBubble,
 } from '@/components/analysis/ChatBubbleRobot';
 import ChatBubbleUser from '@/components/analysis/ChatBubbleUser';
-import { quizQuestions, Answer, resultMapping } from './quizData';
+import {
+  quizQuestions,
+  getQuizResult,
+  parameterDescriptions,
+  parameterDisplayNames,
+  capitalizeValue,
+  type QuizResult,
+} from './quizData';
 
 export default function Quiz() {
-  const router = useRouter();
   const [currentSection, setCurrentSection] = useState('1vs234');
   const [scores, setScores] = useState<{ [key: string]: number }>({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [result, setResult] = useState<QuizResult | null>(null);
+
+  const resetQuiz = () => {
+    setCurrentSection('1vs234');
+    setScores({});
+    setCurrentQuestionIndex(0);
+    setResult(null);
+  };
 
   // Get all questions for the current section
   const currentSectionQuestions = quizQuestions.filter(
@@ -21,10 +34,10 @@ export default function Quiz() {
   );
   const currentQuestion = currentSectionQuestions[currentQuestionIndex];
 
-  const handleAnswerClick = (answer: Answer) => {
-    // If the answer has a direct result, go to that result page immediately
+  const handleAnswerClick = (answer: { content: string; nextSection?: string; result?: string; points?: { [key: string]: number } }) => {
+    // If the answer has a direct result, show that result
     if (answer.result) {
-      router.push(resultMapping[answer.result]);
+      setResult(getQuizResult(answer.result));
       return;
     }
 
@@ -42,11 +55,8 @@ export default function Quiz() {
           b[1] > a[1] ? b : a,
         );
 
-        const resultPage = resultMapping[highestScore[0]];
-        if (resultPage) {
-          router.push(resultPage);
-          return;
-        }
+        setResult(getQuizResult(highestScore[0]));
+        return;
       }
     }
 
@@ -63,8 +73,36 @@ export default function Quiz() {
     }
   };
 
-  if (!currentQuestion) {
+  if (!currentQuestion && !result) {
     return <div>Error: Question not found</div>;
+  }
+
+  if (result) {
+    return (
+      <div className="space-y-6 max-w-4xl mx-auto">
+        <ChatBubbleRobot imageUrl="/normal.svg" status="ok">
+          <ChatBubble status="ok">
+            <h2 className="text-xl font-bold mb-4">Your Hair Type: {result.type.toUpperCase()}</h2>
+            <div className="space-y-4">
+              {Object.entries(result.parameters).map(([parameter, value]) => (
+                <div key={parameter} className="space-y-2">
+                  <h3 className="font-semibold">{parameterDisplayNames[parameter as keyof typeof parameterDisplayNames]}: {capitalizeValue(value)}</h3>
+                  <p>{parameterDescriptions[parameter as keyof typeof parameterDescriptions][value]}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8">
+              <button
+                onClick={resetQuiz}
+                className="btn btn-primary"
+              >
+                Retake Quiz
+              </button>
+            </div>
+          </ChatBubble>
+        </ChatBubbleRobot>
+      </div>
+    );
   }
 
   return (
