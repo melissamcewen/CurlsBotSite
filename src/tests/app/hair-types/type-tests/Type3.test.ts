@@ -83,8 +83,7 @@ describe('Type 3 Hair Quiz Logic', () => {
       },
       {
         section: '3a3bvs3c',
-        question:
-          'Do your curls tend to loosen or stretch out easily with just the weight of your hair or products?',
+        question: 'Is your hair possible to straighten with just heat (straightening iron, blow dryer, etc.)?',
         answer: 'Yes',
       },
       {
@@ -119,8 +118,7 @@ describe('Type 3 Hair Quiz Logic', () => {
       },
       {
         section: '3a3bvs3c',
-        question:
-          'Do your curls tend to loosen or stretch out easily with just the weight of your hair or products?',
+        question: 'Is your hair possible to straighten with just heat (straightening iron, blow dryer, etc.)?',
         answer: 'Yes',
       },
       {
@@ -155,8 +153,7 @@ describe('Type 3 Hair Quiz Logic', () => {
       },
       {
         section: '3a3bvs3c',
-        question:
-          'Do your curls tend to loosen or stretch out easily with just the weight of your hair or products?',
+        question: 'Is your hair possible to straighten with just heat (straightening iron, blow dryer, etc.)?',
         answer: 'No',
       },
     ];

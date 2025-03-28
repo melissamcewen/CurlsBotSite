@@ -74,7 +74,7 @@ describe('Type 4 Hair Quiz Logic', () => {
       {
         section: '23vs34',
         question: 'Is your hair much longer if you stretch it out?',
-        answer: 'Yes',
+        answer: 'Yes, much longer',
       },
       {
         section: '3a3cvs3c4',
@@ -110,7 +110,7 @@ describe('Type 4 Hair Quiz Logic', () => {
       {
         section: '23vs34',
         question: 'Is your hair much longer if you stretch it out?',
-        answer: 'Yes',
+        answer: 'Yes, much longer',
       },
       {
         section: '3a3cvs3c4',
@@ -146,7 +146,7 @@ describe('Type 4 Hair Quiz Logic', () => {
       {
         section: '23vs34',
         question: 'Is your hair much longer if you stretch it out?',
-        answer: 'Yes',
+        answer: 'Yes, much longer',
       },
       {
         section: '3a3cvs3c4',
