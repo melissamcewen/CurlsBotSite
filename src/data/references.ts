@@ -860,8 +860,88 @@ export const defaultReferences: References = {
   '87': {
     id: '87',
     url: 'https://doi.org/10.1111/jmi.13365',
-    title: 'Quantifying Whole Human Hair Scalp Fibres of Varying Curl: A Micro-Computed Tomographic Study',
+    title:
+      'Quantifying Whole Human Hair Scalp Fibres of Varying Curl: A Micro-Computed Tomographic Study',
     type: 'science',
   },
+  /*
+  Loussouarn, Geneviève, Isabelle Lozano, Ségolène Panhard, Catherine Collaudin, Charles El Rawadi, and Gilles Genain. “Diversity in Human Hair Growth, Diameter, Colour and Shape. An in Vivo Study on Young Adults from 24 Different Ethnic Groups Observed in the Five Continents.” European Journal of Dermatology 26, no. 2 (March 1, 2016): 144–54. https://doi.org/10.1684/ejd.2015.2726.
+*/
+  '88': {
+    id: '88',
+    url: 'https://doi.org/10.1684/ejd.2015.2726',
+    title: 'Diversity in Human Hair Growth, Diameter, Colour and Shape',
+    type: 'science',
+    author:
+      'Loussouarn, Geneviève, Isabelle Lozano, Ségolène Panhard, Catherine Collaudin, Charles El Rawadi, and Gilles Genain.',
+    date: '2016',
+    source: 'European Journal of Dermatology',
+  },
+  /*
+  Nagase, Shinobu. “Hair Structures Affecting Hair Appearance.” Cosmetics 6, no. 3 (September 2019): 43. https://doi.org/10.3390/cosmetics6030043.
+
+  */
+  '89': {
+    id: '89',
+    url: 'https://doi.org/10.3390/cosmetics6030043',
+    title: 'Hair Structures Affecting Hair Appearance',
+    type: 'science',
+    author: 'Nagase, Shinobu.',
+    date: '2019',
+    source: 'Cosmetics',
+  },
+  /*
+  McMullen, Roger L., Donna Laura, Guojin Zhang, and Bert Kroon. “Investigation of the Interactions of Cationic Guar with Human Hair by Electrokinetic Analysis.” International Journal of Cosmetic Science 43, no. 4 (2021): 375–90. https://doi.org/10.1111/ics.12704.
+*/
+  '90': {
+    id: '90',
+    url: 'https://doi.org/10.1111/ics.12704',
+    title:
+      'Investigation of the Interactions of Cationic Guar with Human Hair by Electrokinetic Analysis',
+    type: 'science',
+    author: 'McMullen, Roger L., Donna Laura, Guojin Zhang, and Bert Kroon.',
+    date: '2021',
+    source: 'International Journal of Cosmetic Science',
+  },
+  /*
+  Medland, Sarah E., Dale R. Nyholt, Jodie N. Painter, Brian P. McEvoy, Allan F. McRae, Gu Zhu, Scott D. Gordon, et al. “Common Variants in the Trichohyalin Gene Are Associated with Straight Hair in Europeans.” The American Journal of Human Genetics 85, no. 5 (November 13, 2009): 750–55. https://doi.org/10.1016/j.ajhg.2009.10.009.
+
+*/
+  '91': {
+    id: '91',
+    url: 'https://doi.org/10.1016/j.ajhg.2009.10.009',
+    title:
+      'Common Variants in the Trichohyalin Gene Are Associated with Straight Hair in Europeans',
+    type: 'science',
+    author: 'Medland, Sarah E., Dale R. Nyholt, Jodie N. Painter, Brian P. McEvoy, Allan F. McRae, Gu Zhu, Scott D. Gordon, et al.',
+    date: '2009',
+  },
+
+  /*
+  Walker, Andre. Andre Talks Hair. First Edition. New York, NY: Simon & Schuster, 1997.
+*/
+  '92': {
+    id: '92',
+    url: 'https://doi.org/10.1016/j.ajhg.2009.10.009',
+    title: 'Andre Talks Hair',
+    type: 'author',
+    author: 'Walker, Andre.',
+    date: '1997',
+    source: 'Simon & Schuster',
+  },
+
+  /*
+Bouabbache S, Galliano A, Littaye P, Leportier M, Pouradier F, Gillot E, Panhard S, Loussouarn G. What is a Caucasian 'fine' hair? Comparing instrumental measurements, self-perceptions and assessments from hair experts. Int J Cosmet Sci. 2016 Dec;38(6):581-588. doi: 10.1111/ics.12323. Epub 2016 Apr 26. PMID: 27021923.
+
+*/
+  '93': {
+    id: '93',
+    url: 'https://doi.org/10.1111/ics.12323',
+    title: 'What is a Caucasian "fine" hair?',
+    type: 'science',
+    author: 'Bouabbache S, Galliano A, Littaye P, Leportier M, Pouradier F, Gillot E, Panhard S, Loussouarn G.',
+    date: '2016',
+    source: 'International Journal of Cosmetic Science',
+  }, 
 };
 

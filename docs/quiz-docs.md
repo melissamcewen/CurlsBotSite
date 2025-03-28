@@ -1,0 +1,126 @@
+# Hair Quiz V4
+
+## Descriptions
+
+### Parameters
+- Versatility
+	- Low: Your hair is a defined type and making it into another type would take chemical treatment
+	- Medium: Your hair is easily styled into other types with heat
+	- High: Your hair might have many different types naturally but holding on just one type is hard, curls/waves tend to loosen up during the day and straightened hair can get puffy
+- Shrinkage
+	- None: Your hair is the same length wet or dry
+	- Low: Your hair is slightly longer wet vs. dry
+	- Medium: Your hair is about 30-49% longer wet vs. dry
+	- High: Your hair is between 50-75% longer wet vs. dry
+	- Very High: Your shrinkage is very high to the point where even water can't fully stretch it out
+- Strand Thickness
+	- N/A: this type isn't associated with a strand thickness
+	- Small: fine hair
+	- Medium: medium diameter hair
+	- Large: coarse hair
+	- Varies: each individual stand has thicker and thinner parts
+- Curvature
+	- None: straight hair
+	- Varies: Can be straight, wavy, and curly, sometimes all three at once!
+	- Large
+	- Medium
+	- Small
+	- Extra small
+- Shapes
+	- None
+	- Curved: any variation of a curve
+	- Angled: defined by zig-zag ankles
+	- Varies: likely a mixture of angles and curves
+- Volume
+	- Low: very little volume
+	- Medium: some volume, especially towards the ends
+	- High: a lot of volume, especially horizontally
+	- Very high: volume both vertical and horizontal
+
+### Types
+- 1a
+	- versatility: low
+	- shrinkage: none
+	- strand thickness: small
+	- curvature: none
+	- volume: low
+	- shapes: none
+- 1b
+	- versatility: medium
+	- shrinkage: none
+	- strand thickness: medium
+	- curvature: none
+	- volume: medium
+	- shapes: none
+- 1c
+	- versatility: low
+	- shrinkage: none
+	- strand thickness: large
+	- curvature: none
+	- volume: low
+	- shapes: none
+- 2a
+	- versatility: high
+	- shrinkage: low
+	- strand thickness: small
+	- curvature: varies
+	- volume: low
+	- shapes: curves
+- 2b
+	- versatility: high
+	- shrinkage: low
+	- strand thickness: medium
+	- curvature: varies
+	- volume: medium
+	- shapes: curves
+- 2c
+	- versatility: high
+	- shrinkage: low
+	- strand thickness: coarse
+	- curvature: varies
+	- volume: medium
+	- shapes: curves
+- 3a
+	- versatility: medium
+	- shrinkage: medium
+	- strand thickness: any
+	- curvature: large
+	- volume: medium
+	- shapes: curves
+- 3b
+	- versatility: medium
+	- shrinkage: medium
+	- strand thickness: any
+	- curvature: medium
+	- volume: medium
+	- shapes: curves
+- 3c
+	- versatility: low
+	- shrinkage: high
+	- strand thickness: varies
+	- curvature: small
+	- volume: high
+	- shapes: curves
+
+- 4a
+	- versatility: low
+	- shrinkage: high
+	- strand thickness: varies
+	- curvature: extra small
+	- volume: high
+	- shapes: curves
+- 4b
+	- versatility: low
+	- shrinkage: high
+	- strand thickness: varies
+	- curvature: extra small
+	- volume: very high
+	- shapes: angles
+- 4c
+	- versatility: low
+	- shrinkage: high
+	- strand thickness: varies
+	- curvature:  extra small
+	- shapes: varies
+	- volume: very high
+
