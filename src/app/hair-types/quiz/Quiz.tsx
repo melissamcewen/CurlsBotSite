@@ -17,15 +17,7 @@ import {
 
 declare global {
   interface Window {
-    gtag: (
-      type: string,
-      action: string,
-      params: {
-        event_category: string;
-        event_label: string;
-        value?: string;
-      },
-    ) => void;
+    gtag: (...args: any[]) => void;
   }
 }
 
@@ -123,7 +115,12 @@ export default function Quiz() {
       <div className="space-y-6 max-w-4xl mx-auto">
         <ChatBubbleRobot imageUrl="/normal.svg" status="ok">
           <ChatBubble status="ok">
-            This is an experiment to see whether it&apos;s possible to &quot;type&quot; hair based on how hair acts rather than how it looks. This is an experiment, so please help us by clicking the feedback buttons at the end. Answer based on your hair&apos;s natural state - that means how it looks when you don&apos;t use any styling products or heat tools. Ready? Let&apos;s begin!
+            This is an experiment to see whether it&apos;s possible to
+            &quot;type&quot; hair based on how hair acts rather than how it
+            looks. This is an experiment, so please help us by clicking the
+            feedback buttons at the end. Answer based on your hair&apos;s
+            natural state - that means how it looks when you don&apos;t use any
+            styling products or heat tools. Ready? Let&apos;s begin!
           </ChatBubble>
         </ChatBubbleRobot>
         <div className="max-w-2xl ml-auto">
@@ -160,7 +157,9 @@ export default function Quiz() {
                     {
                       parameterDescriptions[
                         parameter as keyof typeof parameterDescriptions
-                      ][value]
+                      ][
+                        value as keyof (typeof parameterDescriptions)[keyof typeof parameterDescriptions]
+                      ]
                     }
                   </p>
                 </div>
