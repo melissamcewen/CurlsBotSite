@@ -28,11 +28,11 @@ export const type2Questions: Question[] = [
       {
         content:
           'Yes, my hair pattern often loosens from curly to wavy/straight',
-        nextSection: '2avs2c',
+        nextSection: '2avs2bc',
       },
       {
         content: 'Yes, my hair pattern often loosens from wavy to straight',
-        nextSection: '2avs2c',
+        nextSection: '2avs2bc',
       },
       {
         content: 'No',

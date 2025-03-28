@@ -15,26 +15,59 @@ import {
   type QuizResult,
 } from './quizData';
 
+declare global {
+  interface Window {
+    gtag: (
+      type: string,
+      action: string,
+      params: {
+        event_category: string;
+        event_label: string;
+        value?: string;
+      },
+    ) => void;
+  }
+}
+
 export default function Quiz() {
-  const [currentSection, setCurrentSection] = useState('1vs234');
+  const [currentSection, setCurrentSection] = useState<string | null>(null);
   const [scores, setScores] = useState<{ [key: string]: number }>({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [result, setResult] = useState<QuizResult | null>(null);
+  const [feedbackGiven, setFeedbackGiven] = useState(false);
 
   const resetQuiz = () => {
-    setCurrentSection('1vs234');
+    setCurrentSection(null);
     setScores({});
     setCurrentQuestionIndex(0);
     setResult(null);
   };
 
+  const startQuiz = () => {
+    setCurrentSection('1vs234');
+  };
+
   // Get all questions for the current section
-  const currentSectionQuestions = quizQuestions.filter(
-    (q) => q.section === currentSection,
-  );
+  const currentSectionQuestions = currentSection
+    ? quizQuestions.filter((q) => q.section === currentSection)
+    : [];
   const currentQuestion = currentSectionQuestions[currentQuestionIndex];
 
-  const handleAnswerClick = (answer: { content: string; nextSection?: string; result?: string; points?: { [key: string]: number } }) => {
+  // Add debug logging
+  if (currentSection && !currentQuestion) {
+    console.log('Debug info for missing question:');
+    console.log('Current section:', currentSection);
+    console.log('Current question index:', currentQuestionIndex);
+    console.log('Questions in section:', currentSectionQuestions);
+    console.log('All questions:', quizQuestions);
+  }
+
+  const handleAnswerClick = (answer: {
+    content: string;
+    nextSection?: string;
+    result?: string;
+    points?: { [key: string]: number };
+  }) => {
     // If the answer has a direct result, show that result
     if (answer.result) {
       setResult(getQuizResult(answer.result));
@@ -73,8 +106,39 @@ export default function Quiz() {
     }
   };
 
-  if (!currentQuestion && !result) {
-    return <div>Error: Question not found</div>;
+  const handleFeedback = (isAccurate: boolean) => {
+    if (result) {
+      // Send to Google Analytics
+      window.gtag?.('event', 'quiz_feedback', {
+        event_category: 'Hair Type Quiz',
+        event_label: isAccurate ? 'Accurate' : 'Inaccurate',
+        value: result.type,
+      });
+      setFeedbackGiven(true);
+    }
+  };
+
+  if (!currentSection && !result) {
+    return (
+      <div className="space-y-6 max-w-4xl mx-auto">
+        <ChatBubbleRobot imageUrl="/normal.svg" status="ok">
+          <ChatBubble status="ok">
+            Beep boop! 🤖 Let&apos;s figure out your hair type! I&apos;ll ask
+            you some questions about your hair&apos;s natural texture and
+            behavior. Answer based on your hair&apos;s natural state - that
+            means how it looks when you don&apos;t use any styling products or
+            heat tools. Ready? Let&apos;s begin!
+          </ChatBubble>
+        </ChatBubbleRobot>
+        <div className="max-w-2xl ml-auto">
+          <ChatBubbleUser>
+            <button onClick={startQuiz} className="btn btn-primary w-full">
+              Start Quiz
+            </button>
+          </ChatBubbleUser>
+        </div>
+      </div>
+    );
   }
 
   if (result) {
@@ -82,61 +146,91 @@ export default function Quiz() {
       <div className="space-y-6 max-w-4xl mx-auto">
         <ChatBubbleRobot imageUrl="/normal.svg" status="ok">
           <ChatBubble status="ok">
-            <h2 className="text-xl font-bold mb-4">Your Hair Type: {result.type.toUpperCase()}</h2>
+            <h2 className="text-xl font-bold mb-4">
+              Your Hair Type: {result.type.toUpperCase()}
+            </h2>
             <div className="space-y-4">
               {Object.entries(result.parameters).map(([parameter, value]) => (
                 <div key={parameter} className="space-y-2">
-                  <h3 className="font-semibold">{parameterDisplayNames[parameter as keyof typeof parameterDisplayNames]}: {capitalizeValue(value)}</h3>
-                  <p>{parameterDescriptions[parameter as keyof typeof parameterDescriptions][value]}</p>
+                  <h3 className="font-semibold">
+                    {
+                      parameterDisplayNames[
+                        parameter as keyof typeof parameterDisplayNames
+                      ]
+                    }
+                    : {capitalizeValue(value)}
+                  </h3>
+                  <p>
+                    {
+                      parameterDescriptions[
+                        parameter as keyof typeof parameterDescriptions
+                      ][value]
+                    }
+                  </p>
                 </div>
               ))}
             </div>
             <div className="mt-8">
-              <button
-                onClick={resetQuiz}
-                className="btn btn-primary"
-              >
+              <button onClick={resetQuiz} className="btn btn-primary">
                 Retake Quiz
               </button>
             </div>
           </ChatBubble>
         </ChatBubbleRobot>
+        <div className="max-w-2xl ml-auto">
+          <ChatBubbleUser>
+            {!feedbackGiven ? (
+              <div className="space-y-4">
+                <p className="font-semibold">Was this accurate?</p>
+                <div className="flex gap-4">
+                  <button
+                    onClick={() => handleFeedback(true)}
+                    className="btn btn-primary flex-1"
+                  >
+                    Yes
+                  </button>
+                  <button
+                    onClick={() => handleFeedback(false)}
+                    className="btn btn-primary flex-1"
+                  >
+                    No
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <p>Thanks! We&apos;ll use this to improve our hair type quiz.</p>
+            )}
+          </ChatBubbleUser>
+        </div>
       </div>
     );
+  }
+
+  if (!currentQuestion) {
+    return <div>Error: Question not found</div>;
   }
 
   return (
     <div className="space-y-6 max-w-4xl mx-auto">
       <ChatBubbleRobot imageUrl="/normal.svg" status="ok">
         <ChatBubble status="ok">
-          Beep boop! 🤖 Let&apos;s figure out your hair type! I&apos;ll ask you
-          some questions about your hair&apos;s natural texture and behavior.
-          Answer based on your hair&apos;s natural state - that means how it
-          looks when you don&apos;t use any styling products or heat tools.
-          Ready? Let&apos;s begin!
+          <p className="font-semibold">{currentQuestion.question}</p>
         </ChatBubble>
       </ChatBubbleRobot>
       <div className="max-w-2xl ml-auto">
         <ChatBubbleUser>
-          <div>
-            <div className="space-y-4">
-              <div className="space-y-2">
-                <p className="font-semibold">{currentQuestion.question}</p>
-                <div className="space-y-2">
-                  {currentQuestion.answers.map((answer, index) => (
-                    <button
-                      key={index}
-                      onClick={() => handleAnswerClick(answer)}
-                      className="card card-compact bg-primary/20 text-primary-content w-full text-left normal-case hover:bg-primary"
-                    >
-                      <div className="card-body">
-                        <p>{answer.content}</p>
-                      </div>
-                    </button>
-                  ))}
+          <div className="space-y-2">
+            {currentQuestion.answers.map((answer, index) => (
+              <button
+                key={index}
+                onClick={() => handleAnswerClick(answer)}
+                className="card card-compact bg-primary/20 text-primary-content w-full text-left normal-case hover:bg-primary"
+              >
+                <div className="card-body">
+                  <p>{answer.content}</p>
                 </div>
-              </div>
-            </div>
+              </button>
+            ))}
           </div>
         </ChatBubbleUser>
       </div>

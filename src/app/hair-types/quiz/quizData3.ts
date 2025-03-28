@@ -19,30 +19,18 @@ export const type3Questions: Question[] = [
       },
     ],
   },
-  {
-    section: '23vs34',
-    question: 'Do you have trouble getting volume at your roots?',
-    answers: [
-      {
-        content: 'Yes',
-        nextSection: '2avs3',
-      },
-      {
-        content: 'No',
-        nextSection: '3a3cvs3c4',
-      },
-      {
-        content: 'N/A',
-      },
-    ],
-  },
+
   {
     section: '23vs34',
     question: 'Is your hair much longer if you stretch it out?',
     answers: [
       {
-        content: 'Yes',
+        content: 'Yes, much longer',
         nextSection: '3a3cvs3c4',
+      },
+      {
+        content: 'A little longer',
+        nextSection: '2avs3',
       },
       {
         content: 'No',
@@ -71,7 +59,7 @@ export const type3Questions: Question[] = [
   {
     section: '3a3bvs3c',
     question:
-      'Do your curls tend to loosen or stretch out easily with just the weight of your hair or products?',
+      'Is your hair possible to straighten with just heat (straightening iron, blow dryer, etc.)?',
     answers: [
       {
         content: 'Yes',
@@ -86,13 +74,12 @@ export const type3Questions: Question[] = [
       },
     ],
   },
-
   {
     section: '3a3bvs3c',
-    question: 'Does your hair seem like it grows out horizontally?',
+    question: "Is your hair over 50% longer when it's wet vs. when it's dry?",
     answers: [
       {
-        content: 'Yes, it seems to grow out horizontally',
+        content: 'Yes',
         result: '3c',
       },
       {

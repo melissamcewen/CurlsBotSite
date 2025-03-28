@@ -1,6 +1,6 @@
 export type VersatilityLevel = 'low' | 'medium' | 'high';
 export type ShrinkageLevel = 'none' | 'low' | 'medium' | 'high' | 'very high';
-export type StrandThickness = 'n/a' | 'small' | 'medium' | 'large' | 'varies';
+export type StrandThickness = 'any' | 'small' | 'medium' | 'large' | 'varies';
 export type CurvatureType =
   | 'none'
   | 'varies'
@@ -35,7 +35,7 @@ export const parameterDescriptions = {
       'Your shrinkage is very high to the point where even water cannot fully stretch it out',
   },
   strandThickness: {
-    'n/a': 'This type is not associated with a strand thickness',
+    any: 'This type is not associated with a strand thickness',
     small: 'Fine hair',
     medium: 'Medium diameter hair',
     large: 'Coarse hair',
@@ -124,7 +124,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
   '3a': {
     versatility: 'medium',
     shrinkage: 'medium',
-    strandThickness: 'varies',
+    strandThickness: 'any',
     curvature: 'large',
     volume: 'medium',
     shapes: 'curved',
@@ -132,7 +132,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
   '3b': {
     versatility: 'medium',
     shrinkage: 'medium',
-    strandThickness: 'varies',
+    strandThickness: 'any',
     curvature: 'medium',
     volume: 'medium',
     shapes: 'curved',
@@ -140,7 +140,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
   '3c': {
     versatility: 'low',
     shrinkage: 'high',
-    strandThickness: 'varies',
+    strandThickness: 'any',
     curvature: 'small',
     volume: 'high',
     shapes: 'curved',
@@ -148,7 +148,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
   '4a': {
     versatility: 'low',
     shrinkage: 'high',
-    strandThickness: 'varies',
+    strandThickness: 'any',
     curvature: 'extra small',
     volume: 'high',
     shapes: 'curved',
@@ -156,7 +156,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
   '4b': {
     versatility: 'low',
     shrinkage: 'high',
-    strandThickness: 'varies',
+    strandThickness: 'any',
     curvature: 'extra small',
     volume: 'very high',
     shapes: 'angled',

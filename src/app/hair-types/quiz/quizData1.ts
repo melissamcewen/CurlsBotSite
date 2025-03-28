@@ -39,7 +39,7 @@ export const type1Questions: Question[] = [
     answers: [
       {
         content: 'Yes, waves formed',
-        nextSection: '2avs2c',
+        nextSection: '2avs2bc',
       },
       {
         content: 'I tried these techniques but no waves formed',
@@ -57,7 +57,7 @@ export const type1Questions: Question[] = [
     answers: [
       {
         content: 'Yes',
-        nextSection: '2avs2c',
+        nextSection: '2avs2bc',
       },
       {
         content: 'No',

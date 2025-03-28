@@ -1,8 +1,9 @@
+import { describe, expect, test, it } from '@jest/globals';
 import {
   quizQuestions,
   resultMapping,
   type Answer,
-} from '../../../../../src/app/hair-types/quiz/quizData';
+} from '../../../app/hair-types/quiz/quizData';
 
 describe('Quiz Data Structure', () => {
   it('has valid section references', () => {
