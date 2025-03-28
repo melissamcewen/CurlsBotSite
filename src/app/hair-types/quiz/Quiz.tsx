@@ -123,11 +123,7 @@ export default function Quiz() {
       <div className="space-y-6 max-w-4xl mx-auto">
         <ChatBubbleRobot imageUrl="/normal.svg" status="ok">
           <ChatBubble status="ok">
-            Beep boop! 🤖 Let&apos;s figure out your hair type! I&apos;ll ask
-            you some questions about your hair&apos;s natural texture and
-            behavior. Answer based on your hair&apos;s natural state - that
-            means how it looks when you don&apos;t use any styling products or
-            heat tools. Ready? Let&apos;s begin!
+            This is an experiment to see whether it&apos;s possible to &quot;type&quot; hair based on how hair acts rather than how it looks. This is an experiment, so please help us by clicking the feedback buttons at the end. Answer based on your hair&apos;s natural state - that means how it looks when you don&apos;t use any styling products or heat tools. Ready? Let&apos;s begin!
           </ChatBubble>
         </ChatBubbleRobot>
         <div className="max-w-2xl ml-auto">
@@ -231,6 +227,14 @@ export default function Quiz() {
                 </div>
               </button>
             ))}
+          </div>
+          <div className="mt-4">
+            <button
+              onClick={resetQuiz}
+              className="btn btn-secondary btn-sm bg-secondary/20 border-secondary/20 hover:bg-secondary/40 hover:border-secondary/40"
+            >
+              Restart Quiz
+            </button>
           </div>
         </ChatBubbleUser>
       </div>
