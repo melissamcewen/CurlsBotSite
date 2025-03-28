@@ -23,7 +23,7 @@
     "gray-matter": "^4.0.3",
     "haircare-ingredients-analyzer": "^1.3.23",
     "lucide-react": "^0.469.0",
-    "next": "^15.2.0",
+    "next": "^15.2.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "remark": "^15.0.1",
