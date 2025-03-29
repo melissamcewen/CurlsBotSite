@@ -31,23 +31,24 @@ export function BlogProduct({
 }: BlogProductProps) {
   return (
     <div className="card md:card-side cb-border not-prose mb-4">
-      <figure className="relative w-full md:w-[350px] h-[350px] mx-auto bg-base-200/20">
+      <figure className="relative w-full md:w-[40%] h-[350px] mx-auto bg-base-200/20">
         <Image
           src={image}
           alt={name}
           fill
-          className="md:object-cover object-contain"
+          sizes="(max-width: 768px) 100vw, 40vw"
+          className="object-contain md:object-cover rounded-t-lg md:rounded-l-lg md:rounded-t-none"
         />
       </figure>
-      <div className="card-body flex flex-col">
+      <div className="card-body flex flex-col md:w-[60%] p-4">
         <div className="space-y-2">
-          <div className="card-title">{name}</div>
+          <div className="card-title text-xl">{name}</div>
           {subtitle && (
-            <p className="text-xl text-base-content/80">{subtitle}</p>
+            <p className="text-lg text-base-content/80">{subtitle}</p>
           )}
         </div>
 
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 mb-4">
           {cgmApproved && (
             <div className="badge badge-outline badge-info gap-1 whitespace-nowrap">
               <CheckCircle className="w-4 h-4" />
@@ -64,7 +65,7 @@ export function BlogProduct({
 
         {description && <p className="text-base-content/80">{description}</p>}
 
-        <div className="card-actions flex-col gap-2 mt-auto">
+        <div className="card-actions flex-col gap-2 mt-auto w-full max-w-md mx-auto">
           {(buyLink || amazonLink) && (
             <div className="flex flex-col gap-2 w-full">
               {buyLink && (
@@ -92,13 +93,15 @@ export function BlogProduct({
             </div>
           )}
 
-          <Link
-            href={`/?ingredients=${encodeURIComponent(ingredients)}`}
-            className="btn btn-primary btn-sm w-full flex items-center justify-center gap-2"
-          >
-            <Search className="w-5 h-5" />
-            Analyze with Curlsbot
-          </Link>
+          {ingredients && ingredients.length > 0 && (
+            <Link
+              href={`/?ingredients=${encodeURIComponent(ingredients)}`}
+              className="btn btn-primary btn-sm w-full flex items-center justify-center gap-2"
+            >
+              <Search className="w-5 h-5" />
+              Analyze with Curlsbot
+            </Link>
+          )}
         </div>
       </div>
     </div>
