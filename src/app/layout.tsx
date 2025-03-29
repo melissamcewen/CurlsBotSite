@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import { Footer } from '@/components/layout/Footer';
-import { GoogleAnalytics } from '@/components/GoogleAnalytics';
+import { GoogleTagManagerHead, GoogleTagManagerBody } from '@/components/GoogleTagManager';
 import { AdScripts } from '@/components/ads/AdScripts';
 
 const geistSans = Geist({
@@ -159,13 +159,14 @@ export default function RootLayout({
             `,
           }}
         />
-        <GoogleAnalytics />
+        <GoogleTagManagerHead />
         <AdScripts />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-base-100 text-base-content`}
         suppressHydrationWarning
       >
+        <GoogleTagManagerBody />
         <div className="min-h-screen overflow-x-hidden">
           <div className="absolute inset-0 pointer-events-none" />
           <Navbar />
