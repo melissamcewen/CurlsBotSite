@@ -8,7 +8,7 @@ export const type3Questions: Question[] = [
     answers: [
       {
         content: 'Yes',
-        nextSection: '2vs3',
+        nextSection: '2avs2bc',
       },
       {
         content: 'No',
@@ -24,28 +24,30 @@ export const type3Questions: Question[] = [
     answers: [
       {
         content: 'Yes',
-        nextSection: '2vs3',
+        nextSection: '2avs2bc',
       },
       {
         content: 'No',
-        nextSection: '3a3cvs3c4',
       },
     ],
   },
   {
     section: '23vs34',
-    question: "Do your curls loosen up into waves if you don't use products?",
+    question:
+      'Does your hair pattern loosen from wavy to straight or from curly to wavy overnight or during the day?',
     answers: [
       {
-        content: 'Yes',
-        nextSection: '2vs3',
+        content:
+          'Yes, my hair pattern often loosens from curly to wavy/straight',
+        nextSection: '2avs2bc',
+      },
+      {
+        content: 'Yes, my hair pattern often loosens from wavy to straight',
+        nextSection: '2avs2bc',
       },
       {
         content: 'No',
-        nextSection: '3a3cvs3c4',
-      },
-      {
-        content: "Not sure/I haven't tried products",
+        nextSection: '3avs3b',
       },
     ],
   },
@@ -59,11 +61,11 @@ export const type3Questions: Question[] = [
       },
       {
         content: 'A little longer',
-        nextSection: '2vs3',
+        nextSection: '2avs2bc',
       },
       {
         content: 'No',
-        nextSection: '2vs3',
+        nextSection: '3a3cvs3c4',
       },
     ],
   },

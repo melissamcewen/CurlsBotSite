@@ -1,46 +1,6 @@
 import { Question } from './types';
 
 export const type2Questions: Question[] = [
-  // Section: Type 2 vs Type 3 determination
-  {
-    section: '2vs3',
-    question: 'Do you have areas of your hair that sometimes look straight?',
-    answers: [
-      {
-        content: 'Yes',
-        nextSection: '2avs2bc',
-      },
-      {
-        content: 'No',
-        nextSection: '3avs3b',
-      },
-      {
-        content: "I'm not sure",
-      },
-    ],
-  },
-
-  {
-    section: '2vs3',
-    question:
-      'Does your hair pattern loosen from wavy to straight or from curly to wavy overnight or during the day?',
-    answers: [
-      {
-        content:
-          'Yes, my hair pattern often loosens from curly to wavy/straight',
-        nextSection: '2avs2bc',
-      },
-      {
-        content: 'Yes, my hair pattern often loosens from wavy to straight',
-        nextSection: '2avs2bc',
-      },
-      {
-        content: 'No',
-        nextSection: '3avs3b',
-      },
-    ],
-  },
-
   // Section: Type 2A vs 2C determination
   // fine vs. coarse
   {

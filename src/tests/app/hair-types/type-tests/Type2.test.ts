@@ -78,12 +78,6 @@ describe('Type 2 Hair Quiz Logic', () => {
         answer: 'Yes',
       },
       {
-        section: '2vs3',
-        question:
-          'Do you have areas of your hair that sometimes look straight?',
-        answer: 'Yes',
-      },
-      {
         section: '2avs2bc',
         question: 'Does your hair need to be washed often or it gets greasy?',
         answer: 'Yes',
@@ -106,12 +100,6 @@ describe('Type 2 Hair Quiz Logic', () => {
       {
         section: '23vs34',
         question: 'Do heavy products make your hair limp?',
-        answer: 'Yes',
-      },
-      {
-        section: '2vs3',
-        question:
-          'Do you have areas of your hair that sometimes look straight?',
         answer: 'Yes',
       },
       {
@@ -143,12 +131,6 @@ describe('Type 2 Hair Quiz Logic', () => {
       {
         section: '23vs34',
         question: 'Do heavy products make your hair limp?',
-        answer: 'Yes',
-      },
-      {
-        section: '2vs3',
-        question:
-          'Do you have areas of your hair that sometimes look straight?',
         answer: 'Yes',
       },
       {

@@ -78,9 +78,8 @@ describe('Type 3 Hair Quiz Logic', () => {
       },
       {
         section: '23vs34',
-        question:
-          'Do you have areas of your hair that sometimes look straight?',
-        answer: 'No',
+        question: 'Is your hair much longer if you stretch it out?',
+        answer: 'Yes, much longer',
       },
       {
         section: '3a3cvs3c4',
@@ -121,9 +120,8 @@ describe('Type 3 Hair Quiz Logic', () => {
       },
       {
         section: '23vs34',
-        question:
-          'Do you have areas of your hair that sometimes look straight?',
-        answer: 'No',
+        question: 'Is your hair much longer if you stretch it out?',
+        answer: 'Yes, much longer',
       },
       {
         section: '3a3cvs3c4',
