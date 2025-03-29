@@ -77,18 +77,26 @@ describe('Type 3 Hair Quiz Logic', () => {
         answer: 'No',
       },
       {
+        section: '23vs34',
+        question:
+          'Do you have areas of your hair that sometimes look straight?',
+        answer: 'No',
+      },
+      {
         section: '3a3cvs3c4',
         question: 'Do you have trouble growing your hair long/gaining length?',
         answer: 'No',
       },
       {
         section: '3a3bvs3c',
-        question: 'Is your hair possible to straighten with just heat (straightening iron, blow dryer, etc.)?',
+        question:
+          'Is your hair possible to straighten with just heat (straightening iron, blow dryer, etc.)?',
         answer: 'Yes',
       },
       {
         section: '3avs3b',
-        question: "Is your hair curlier when it's longer vs. when it's shorter?",
+        question:
+          "Is your hair curlier when it's longer vs. when it's shorter?",
         answer: "Yes, it's curlier when it's longer",
       },
     ];
@@ -112,18 +120,26 @@ describe('Type 3 Hair Quiz Logic', () => {
         answer: 'No',
       },
       {
+        section: '23vs34',
+        question:
+          'Do you have areas of your hair that sometimes look straight?',
+        answer: 'No',
+      },
+      {
         section: '3a3cvs3c4',
         question: 'Do you have trouble growing your hair long/gaining length?',
         answer: 'No',
       },
       {
         section: '3a3bvs3c',
-        question: 'Is your hair possible to straighten with just heat (straightening iron, blow dryer, etc.)?',
+        question:
+          'Is your hair possible to straighten with just heat (straightening iron, blow dryer, etc.)?',
         answer: 'Yes',
       },
       {
         section: '3avs3b',
-        question: "Is your hair curlier when it's longer vs. when it's shorter?",
+        question:
+          "Is your hair curlier when it's longer vs. when it's shorter?",
         answer: "No, it's curlier when it's shorter or the same",
       },
     ];
@@ -147,13 +163,19 @@ describe('Type 3 Hair Quiz Logic', () => {
         answer: 'No',
       },
       {
+        section: '23vs34',
+        question: 'Is your hair much longer if you stretch it out?',
+        answer: 'Yes, much longer',
+      },
+      {
         section: '3a3cvs3c4',
         question: 'Do you have trouble growing your hair long/gaining length?',
         answer: 'No',
       },
       {
         section: '3a3bvs3c',
-        question: 'Is your hair possible to straighten with just heat (straightening iron, blow dryer, etc.)?',
+        question:
+          'Is your hair possible to straighten with just heat (straightening iron, blow dryer, etc.)?',
         answer: 'No',
       },
     ];

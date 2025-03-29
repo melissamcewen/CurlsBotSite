@@ -3,7 +3,7 @@ import { Question } from './types';
 export const type2Questions: Question[] = [
   // Section: Type 2 vs Type 3 determination
   {
-    section: '2avs3',
+    section: '2vs3',
     question: 'Do you have areas of your hair that sometimes look straight?',
     answers: [
       {
@@ -21,7 +21,7 @@ export const type2Questions: Question[] = [
   },
 
   {
-    section: '2avs3',
+    section: '2vs3',
     question:
       'Does your hair pattern loosen from wavy to straight or from curly to wavy overnight or during the day?',
     answers: [

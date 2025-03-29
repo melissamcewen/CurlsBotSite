@@ -22,7 +22,7 @@ export type QuizSection =
   | '1bvs1ac'
   | '1avs1c'
   | '23vs34'
-  | '2avs3'
+  | '2vs3'
   | '2avs2bc'
   | '2cvs2b'
   | '3a3cvs3c4'

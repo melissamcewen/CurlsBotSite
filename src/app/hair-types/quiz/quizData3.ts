@@ -8,18 +8,47 @@ export const type3Questions: Question[] = [
     answers: [
       {
         content: 'Yes',
-        nextSection: '2avs3',
+        nextSection: '2vs3',
       },
       {
         content: 'No',
-        nextSection: '3a3cvs3c4',
       },
       {
         content: "I'm not sure",
       },
     ],
   },
-
+  {
+    section: '23vs34',
+    question: 'Do you have areas of your hair that sometimes look straight?',
+    answers: [
+      {
+        content: 'Yes',
+        nextSection: '2vs3',
+      },
+      {
+        content: 'No',
+        nextSection: '3a3cvs3c4',
+      },
+    ],
+  },
+  {
+    section: '23vs34',
+    question: "Do your curls loosen up into waves if you don't use products?",
+    answers: [
+      {
+        content: 'Yes',
+        nextSection: '2vs3',
+      },
+      {
+        content: 'No',
+        nextSection: '3a3cvs3c4',
+      },
+      {
+        content: "Not sure/I haven't tried products",
+      },
+    ],
+  },
   {
     section: '23vs34',
     question: 'Is your hair much longer if you stretch it out?',
@@ -30,11 +59,11 @@ export const type3Questions: Question[] = [
       },
       {
         content: 'A little longer',
-        nextSection: '2avs3',
+        nextSection: '2vs3',
       },
       {
         content: 'No',
-        nextSection: '2avs3',
+        nextSection: '2vs3',
       },
     ],
   },

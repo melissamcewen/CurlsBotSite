@@ -57,6 +57,7 @@ const simulateQuizPath = (
     if (matchingAnswer!.nextSection) {
       currentSection = matchingAnswer!.nextSection;
     }
+    // If no nextSection and no result, stay in current section
   }
 
   return result;
@@ -77,7 +78,7 @@ describe('Type 2 Hair Quiz Logic', () => {
         answer: 'Yes',
       },
       {
-        section: '2avs3',
+        section: '2vs3',
         question:
           'Do you have areas of your hair that sometimes look straight?',
         answer: 'Yes',
@@ -108,7 +109,7 @@ describe('Type 2 Hair Quiz Logic', () => {
         answer: 'Yes',
       },
       {
-        section: '2avs3',
+        section: '2vs3',
         question:
           'Do you have areas of your hair that sometimes look straight?',
         answer: 'Yes',
@@ -145,7 +146,7 @@ describe('Type 2 Hair Quiz Logic', () => {
         answer: 'Yes',
       },
       {
-        section: '2avs3',
+        section: '2vs3',
         question:
           'Do you have areas of your hair that sometimes look straight?',
         answer: 'Yes',
