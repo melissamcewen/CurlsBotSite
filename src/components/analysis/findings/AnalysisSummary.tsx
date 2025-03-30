@@ -375,9 +375,9 @@ export function AnalysisSummary({ result }: Props) {
               }`}
             >
               <span className="text-md font-medium">
-                {porosityScores.low >= 80 ? 'Yes' : 'No'}
+                {porosityScores.low >= 70 ? 'Yes' : 'No'}
               </span>
-              {porosityScores.low >= 80 ? (
+              {porosityScores.low >= 70 ? (
                 <CheckCircle className="w-5 h-5" />
               ) : (
                 <XCircle className="w-5 h-5" />
