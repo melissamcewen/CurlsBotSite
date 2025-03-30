@@ -73,10 +73,10 @@ export function filterProducts(
 
       switch (criteria.porosity) {
         case 'high_porosity':
-          if (porosityScore.high < 80) return false;
+          if (porosityScore.high < 70) return false;
           break;
         case 'low_porosity':
-          if (porosityScore.low < 80) return false;
+          if (porosityScore.low < 70) return false;
           break;
         case 'normal_porosity':
           // Accept any product that has porosity scores
