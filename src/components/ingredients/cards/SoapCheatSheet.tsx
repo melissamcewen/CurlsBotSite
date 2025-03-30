@@ -25,26 +25,26 @@ const SoapCheatSheet: React.FC = () => {
         {
           title: 'contains "saponified" which is the process of making soap',
           ingredients: ['Saponified Cocos Nucifera Oil'],
+          status: 'warning',
         },
         {
           title: 'soap',
           ingredients: ['Soap'],
+          status: 'warning',
         },
         {
           title:
             "Sodium carboxylate (this isn't soap but often a clue alongside other ingredients that a product is a soap)",
           ingredients: ['Sodium Carboxylate'],
+          status: 'warning',
         },
         {
           title:
             'Contains "Sodium palm" (these ingredients aren\'t soap but often a clue alongside other ingredients that a product is a soap)',
           ingredients: ['Sodium Palm Kernelate'],
+          status: 'warning',
         },
-        {
-          title:
-            "potassium hydroxide (this isn't soap but often a clue alongside other ingredients that a product is a soap)",
-          ingredients: ['Potassium Hydroxide'],
-        },
+
       ]}
     />
   );

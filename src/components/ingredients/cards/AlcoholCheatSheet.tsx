@@ -36,10 +36,12 @@ const AlcoholCheatSheet: React.FC = () => {
             'Alcohol Denat',
             'SD Alcohol',
           ],
+          status: 'caution',
         },
         {
           title: 'Isopropyl alcohol synonyms',
           ingredients: ['Isopropanol', '2-propanol'],
+          status: 'caution',
         },
       ]}
       exceptionsDescription="These alcohols are known as fatty or emollient alcohols and are good for the hair as they have a moisturizing effect."
@@ -47,6 +49,7 @@ const AlcoholCheatSheet: React.FC = () => {
         {
           title: 'Isocetyl Alcohol',
           ingredients: ['Isocetyl Alcohol', 'Isohexadecanol'],
+          status: 'good',
         },
         {
           title: 'Cetyl Alcohol',
@@ -57,14 +60,17 @@ const AlcoholCheatSheet: React.FC = () => {
             'Palmitoryl Alcohol',
             'C16 Alcohol',
           ],
+          status: 'good',
         },
         {
           title: 'Lauryl Alcohol',
           ingredients: ['Lauryl Alcohol', 'Dodecyl alcohol'],
+          status: 'good',
         },
         {
           title: 'Oleyl Alcohol',
           ingredients: ['Oleyl Alcohol', 'Oleic Alcohol'],
+          status: 'good',
         },
         {
           title: 'Stearyl Alcohol',
@@ -73,6 +79,7 @@ const AlcoholCheatSheet: React.FC = () => {
             'Stearoyl Alcohol',
             'Steareth Alcohol',
           ],
+          status: 'good',
         },
         {
           title: 'Others',
@@ -90,6 +97,7 @@ const AlcoholCheatSheet: React.FC = () => {
             'Jojoba Alcohol',
             'Tridecyl Alcohol',
           ],
+          status: 'good',
         }
       ]}
     />

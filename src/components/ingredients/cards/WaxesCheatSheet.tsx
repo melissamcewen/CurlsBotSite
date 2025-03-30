@@ -31,14 +31,27 @@ const WaxesCheatSheet: React.FC = () => {
           title:
             "Ingredient names with a 'cera' (INCL name for beeswax) prefix",
           ingredients: ['Cera Alba'],
+          status: 'warning',
         },
         {
           title: "Ingredient names with a 'cire' (French for wax) prefix",
           ingredients: ["Cire d'abeille"],
+          status: 'warning',
         },
         {
           title: "Ingredient names containing 'wax'",
           ingredients: ['Beeswax', 'Candelilla Wax'],
+          status: 'warning',
+        },
+        {
+          title: 'Petroleum Jelly and its synonyms, behaves like a wax',
+          ingredients: [
+            'Petroleum Jelly',
+            'Petrolatum',
+            'Paraffin Jelly',
+            'Mineral Jelly',
+          ],
+          status: 'warning',
         },
       ]}
       exceptionsSections={[
@@ -47,7 +60,7 @@ const WaxesCheatSheet: React.FC = () => {
           ingredients: ['PEG-8 Beeswax'],
         },
         {
-          title: 'Emulsifying waxes, which aren\'t really waxes',
+          title: "Emulsifying waxes, which aren't really waxes",
           ingredients: ['Emulsifying Wax'],
         },
       ]}

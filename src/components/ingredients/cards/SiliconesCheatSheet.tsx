@@ -6,14 +6,14 @@ const SiliconesCheatSheet: React.FC = () => {
     <CheatSheet
       title="Silicones"
       titleURL="/groups/silicones"
-      description="These are generally avoided in the curly hair community due to potential build-up. They may require stronger detergents to remove."
+      description="These are generally avoided in the curly hair community due to potential build-up. They may require stronger detergents to remove, but if you're using a regular shampoo, they should be fine."
       sources={[
         {
           source: 'Curlsbot',
           status: 'warning',
           link: '/',
           description:
-            'Avoid water insoluble silicones, caution for other silicones',
+            'Warns about water insoluble silicones, caution for other silicones',
         },
         {
           source: 'Curly Girl Handbook',
@@ -32,10 +32,12 @@ const SiliconesCheatSheet: React.FC = () => {
         {
           title: "Silicones with a 'peg' prefix",
           ingredients: ['PEG-12 Dimethicone'],
+          status: 'good',
         },
         {
           title: "Silicones with a 'ppg' (or sometimes 'pg')prefix",
           ingredients: ['PEG/PPG-18/18 Dimethicone'],
+          status: 'good',
         },
       ]}
       exceptionsDescription="These silicones are water soluble or evaporative so they should be fine for haircare routines that don't contain strong detergents. But some sources recommend avoiding all silicones"

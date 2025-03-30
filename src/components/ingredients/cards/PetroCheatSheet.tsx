@@ -32,15 +32,7 @@ const PetroCheatSheet: React.FC = () => {
           title: 'Petroleum/Mineral Oil and its synonyms',
           ingredients: ['Petroleum', 'Mineral Oil', 'Paraffinum Liquidum'],
         },
-        {
-          title: 'Petroleum Jelly and its synonyms',
-          ingredients: [
-            'Petroleum Jelly',
-            'Petrolatum',
-            'Paraffin Jelly',
-            'Mineral Jelly',
-          ],
-        },
+ 
       ]}
     />
   );

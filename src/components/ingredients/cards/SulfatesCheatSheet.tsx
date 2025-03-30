@@ -42,6 +42,7 @@ const SulfatesCheatSheet: React.FC = () => {
             'Sodium Cetearyl Sulfate',
             'Sodium Myreth Sulfate',
           ],
+          status: 'warning',
         },
       ]}
       exceptionsSections={[
@@ -49,6 +50,7 @@ const SulfatesCheatSheet: React.FC = () => {
           title:
             'Behentrimonium methosulfate, which is not a sulfate, it\'s a conditioning ingredient',
           ingredients: ['Behentrimonium Methosulfate'],
+          status: 'good',
         }
       ]}
     />

@@ -78,23 +78,64 @@ export const IngredientChip: React.FC<IngredientChipProps> = ({ name }) => (
 export interface IdentificationSectionProps {
   title: string;
   ingredients: string[];
+  status?: 'caution' | 'ok' | 'warning' | 'good';
 }
 
 export const IdentificationSection: React.FC<IdentificationSectionProps> = ({
   title,
   ingredients,
-}) => (
-  <div className="space-y-2">
-    <div className="cb-card-lite space-y-3 cb-border border-secondary bg-secondary/10">
-      <div className="">{title}</div>
-      <div className="flex flex-wrap gap-2">
-        {ingredients.map((ingredient) => (
-          <IngredientChip key={ingredient} name={ingredient} />
-        ))}
+  status,
+}) => {
+  const getStatusIcon = () => {
+    if (!status) return null;
+    switch (status) {
+      case 'warning':
+        return <AlertCircle className="w-5 h-5 flex-shrink-0 text-error" />;
+      case 'caution':
+        return <AlertTriangle className="w-5 h-5 flex-shrink-0 text-warning" />;
+      case 'good':
+        return <CheckCircle className="w-5 h-5 flex-shrink-0 text-success" />;
+      case 'ok':
+        return <Info className="w-5 h-5 flex-shrink-0 text-info" />;
+      default:
+        return null;
+    }
+  };
+
+  const getBorderColorClass = () => {
+    if (!status) return 'border-primary bg-primary/10';
+    switch (status) {
+      case 'warning':
+        return 'border-error bg-error/10';
+      case 'caution':
+        return 'border-warning bg-warning/10';
+      case 'good':
+        return 'border-success bg-success/10';
+      case 'ok':
+        return 'border-info bg-info/10';
+      default:
+        return 'border-secondary bg-secondary/10';
+    }
+  };
+
+  return (
+    <div className="space-y-2">
+      <div
+        className={`cb-card-lite space-y-3 cb-border ${getBorderColorClass()}`}
+      >
+        <div className="flex items-center gap-2">
+          {getStatusIcon()}
+          <div>{title}</div>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {ingredients.map((ingredient) => (
+            <IngredientChip key={ingredient} name={ingredient} />
+          ))}
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 export interface CheatSheetProps {
   title: string;

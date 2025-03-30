@@ -46,10 +46,12 @@ const OtherDetergentsCheatSheet: React.FC = () => {
         {
           title: 'hydroxysultaine',
           ingredients: ['Cocamidopropyl hydroxysultaine'],
+          status: 'good'
         },
         {
           title: 'amphoacetate',
           ingredients: ['Sodium cocoamphoacetate', 'Sodium Lauroamphoacetate'],
+          status: 'good'
         },
         {
           title: 'betaine',
@@ -59,6 +61,7 @@ const OtherDetergentsCheatSheet: React.FC = () => {
             'Coco betaine',
             'Coconut betaine',
           ],
+          status: 'good'
         },
         {
           title: 'glucoside (not amphoteric, but still considered mild)',
@@ -70,6 +73,7 @@ const OtherDetergentsCheatSheet: React.FC = () => {
             'Caprylyl/Capryl Glucoside',
             'Lauryl Glucoside',
           ],
+          status: 'good'
         },
       ]}
       exceptionsDescription="Most of these detergents are amphoteric, and are considered mild by most sources. They may still be avoided if you're following 'no-poo' or cowashing routine."

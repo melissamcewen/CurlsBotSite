@@ -2,14 +2,11 @@ import { createPageMetadata } from '@/config/metadata';
 import Link from 'next/link';
 import SiliconesCheatSheet from '@/components/ingredients/cards/SiliconesCheatSheet';
 import WaxesCheatSheet from '@/components/ingredients/cards/WaxesCheatSheet';
-import PetroCheatSheet from '@/components/ingredients/cards/PetroCheatSheet';
 import SulfatesCheatSheet from '@/components/ingredients/cards/SulfatesCheatSheet';
 import OtherDetergentsCheatSheet from '@/components/ingredients/cards/OtherDetergentsCheatSheet';
 import SoapCheatSheet from '@/components/ingredients/cards/SoapCheatSheet';
-import ParabensCheatSheet from '@/components/ingredients/cards/ParabensCheatSheet';
-import WitchHazelCheatSheet from '@/components/ingredients/cards/WitchHazelCheatSheet';
 import AlcoholCheatSheet from '@/components/ingredients/cards/AlcoholCheatSheet';
-
+import CationicConditionerCheatSheet from '@/components/ingredients/cards/CationicConditionerCheatSheet';
 export const metadata = createPageMetadata({
   title: 'Hair Care Ingredients Cheat Sheet',
   description:
@@ -37,13 +34,11 @@ export default function IngredientsCheatSheetPage() {
         <div className="grid gap-6">
           <SiliconesCheatSheet />
           <WaxesCheatSheet />
-          <PetroCheatSheet />
           <SulfatesCheatSheet />
           <OtherDetergentsCheatSheet />
           <AlcoholCheatSheet />
           <SoapCheatSheet />
-          <ParabensCheatSheet />
-          <WitchHazelCheatSheet />
+          <CationicConditionerCheatSheet />
         </div>
       </div>
     </div>
