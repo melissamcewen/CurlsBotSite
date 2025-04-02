@@ -101,6 +101,9 @@ export function Footer() {
           <Link href="/about" className="link link-hover">
             About
           </Link>
+          <Link href="/brands" className="link link-hover">
+            For Brands
+          </Link>
           <Link href="/contact" className="link link-hover">
             Contact
           </Link>
