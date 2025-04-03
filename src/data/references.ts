@@ -913,7 +913,8 @@ export const defaultReferences: References = {
     title:
       'Common Variants in the Trichohyalin Gene Are Associated with Straight Hair in Europeans',
     type: 'science',
-    author: 'Medland, Sarah E., Dale R. Nyholt, Jodie N. Painter, Brian P. McEvoy, Allan F. McRae, Gu Zhu, Scott D. Gordon, et al.',
+    author:
+      'Medland, Sarah E., Dale R. Nyholt, Jodie N. Painter, Brian P. McEvoy, Allan F. McRae, Gu Zhu, Scott D. Gordon, et al.',
     date: '2009',
   },
 
@@ -939,9 +940,126 @@ Bouabbache S, Galliano A, Littaye P, Leportier M, Pouradier F, Gillot E, Panhard
     url: 'https://doi.org/10.1111/ics.12323',
     title: 'What is a Caucasian "fine" hair?',
     type: 'science',
-    author: 'Bouabbache S, Galliano A, Littaye P, Leportier M, Pouradier F, Gillot E, Panhard S, Loussouarn G.',
+    author:
+      'Bouabbache S, Galliano A, Littaye P, Leportier M, Pouradier F, Gillot E, Panhard S, Loussouarn G.',
     date: '2016',
     source: 'International Journal of Cosmetic Science',
-  }, 
+  },
+
+  /*
+  1. Zhang, D., Baghdadli, N. & Greaves, A. J. Reinforcing chemically treated human hair with citric acid. Int J Cosmet Sci (2025) doi:10.1111/ics.13039.
+*/
+  '94': {
+    id: '94',
+    url: 'https://doi.org/10.1111/ics.13039',
+    title: 'Reinforcing chemically treated human hair with citric acid',
+    type: 'science',
+    author: 'Zhang, D., Baghdadli, N. & Greaves, A. J.',
+    date: '2025',
+    source: 'International Journal of Cosmetic Science',
+  },
+
+  /* 1. Marsh, J. M. et al. Multimodal Evidence of Mesostructured Calcium Fatty Acid Deposits in Human Hair and Their Role on Hair Properties. ACS Appl. Bio Mater. 1, 1174–1183 (2018).
+   */
+  '95': {
+    id: '95',
+    url: 'https://doi.org/10.1021/acsabm.8b00014',
+    title:
+      'Multimodal Evidence of Mesostructured Calcium Fatty Acid Deposits in Human Hair and Their Role on Hair Properties',
+    type: 'science',
+    author: 'Marsh, J. M. et al.',
+    date: '2018',
+    source: 'ACS Applied Bio Materials',
+  },
+
+  /*
+  1. Zviak, C. The Science of Hair Care. (M. Dekker, New York, 1986).
+*/
+  '96': {
+    id: '96',
+    url: 'https://doi.org/10.1021/acsabm.8b00014',
+    title: 'The Science of Hair Care',
+    type: 'science',
+    author: 'Zviak, C.',
+    date: '1986',
+    source: 'M. Dekker',
+  },
+  /* 1. Danby, S. G. et al. The Effect of Water Hardness on Surfactant Deposition after Washing and Subsequent Skin Irritation in Atopic Dermatitis Patients and Healthy Control Subjects. J Invest Dermatol 138, 68–77 (2018).
+   */
+  '97': {
+    id: '97',
+    url: 'https://doi.org/10.1021/acsabm.8b00014',
+    title:
+      'The Effect of Water Hardness on Surfactant Deposition after Washing and Subsequent Skin Irritation in Atopic Dermatitis Patients and Healthy Control Subjects',
+    type: 'science',
+    author: 'Danby, S. G. et al.',
+    date: '2018',
+    source: 'J Invest Dermatol',
+  },
+
+  /* https://science-yhairblog.blogspot.com/2016/03/hard-water-and-your-hair.html */
+  '98': {
+    id: '98',
+    url: 'https://science-yhairblog.blogspot.com/2016/03/hard-water-and-your-hair.html',
+    title: 'Hard Water and Your Hair',
+    type: 'science',
+    author: 'Wendy M.S.',
+    date: '2016',
+    source: 'Science-Y Hair Blog',
+  },
+
+  /* Cosmetics and Toiletries. “Your Hair on Acid: The Influence of Carboxylic Acids.” Sep 28th, 2018 https://www.cosmeticsandtoiletries.com/article/your-hair-on-acid-the-influence-of-carboxylic-acids. Trefor Evans, Ph.D., TRI-Princeton, Princeton, New Jersey
+
+  */
+  '99': {
+    id: '99',
+    url: 'https://www.cosmeticsandtoiletries.com/article/your-hair-on-acid-the-influence-of-carboxylic-acids',
+    title: 'Your Hair on Acid: The Influence of Carboxylic Acids',
+    type: 'science',
+    author: 'Trefor Evans, Ph.D., TRI-Princeton, Princeton, New Jersey',
+    date: '2018',
+    source: 'Cosmetics and Toiletries',
+  },
+  /* 1. Srinivasan, G., Srinivas, C. R., Mathew, A. C. & Duraiswami, D. Effects of Hard Water on Hair. International Journal of Trichology 5, 137 (2013).
+   */
+  '100': {
+    id: '100',
+    url: 'https://doi.org/10.1021/acsabm.8b00014',
+    title: 'Effects of Hard Water on Hair',
+    type: 'science',
+    author: 'Srinivasan, G., Srinivas, C. R., Mathew, A. C. & Duraiswami, D.',
+    date: '2013',
+    source: 'International Journal of Trichology',
+  },
+
+  /*
+  1. Luqman, M. W. et al. To Evaluate and Compare Changes in Baseline Strength of Hairs after Treating them with Deionized Water and Hard Water and its Role in Hair Breakage. International Journal of Trichology 10, 113 (2018).
+
+  */
+  '101': {
+    id: '101',
+    url: 'https://doi.org/10.1021/acsabm.8b00014',
+    title:
+      'To Evaluate and Compare Changes in Baseline Strength of Hairs after Treating them with Deionized Water and Hard Water and its Role in Hair Breakage',
+    type: 'science',
+    author: 'Luqman, M. W. et al.',
+    date: '2018',
+    source: 'International Journal of Trichology',
+  },
+  /*
+  1. Srinivasan, G. & Chakravarthy Rangachari, S. Scanning electron microscopy of hair treated in hard water. Int J Dermatol 55, e344-346 (2016).
+
+  */
+  '102': {
+    id: '102',
+    url: 'https://doi.org/10.1021/acsabm.8b00014',
+    title: 'Scanning electron microscopy of hair treated in hard water',
+    type: 'science',
+    author: 'Srinivasan, G. & Chakravarthy Rangachari, S.',
+    date: '2016',
+    source: 'International Journal of Dermatology',
+  },
+
+
 };
 
