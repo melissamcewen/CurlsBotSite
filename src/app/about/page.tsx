@@ -35,7 +35,7 @@ export default function About() {
         <div className="hero-content text-center">
           <div className="">
             <h2 className="text-5xl font-bold">
-              Over 30,000 CurlFriends a Month
+              Over 37,000 CurlFriends a Month
             </h2>
             <div className="mt-8 stats stats-vertical lg:stats-horizontal shadow">
               <div className="stat">

@@ -142,6 +142,19 @@ export default function Quiz() {
             <h2 className="text-xl font-bold mb-4">
               Your Hair Type: {result.type.toUpperCase()}
             </h2>
+            <p className="mb-4">
+              This is based on Andre Walker&apos;s original hair typing system
+              and not the &quot;Common&quot; system used on most websites
+              these days. You can read a comparison{' '}
+              <a
+                href="https://www.reddit.com/r/hairtype/comments/1jpq7x2/i_read_the_og_book_about_curl_typing_and_it_was/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link"
+              >
+                here
+              </a>
+            </p>
             <div className="space-y-4">
               {Object.entries(result.parameters).map(([parameter, value]) => (
                 <div key={parameter} className="space-y-2">
