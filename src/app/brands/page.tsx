@@ -224,7 +224,7 @@ export default function About() {
             <ul className="list-disc list-inside">
               <li>SEO (search engine optimization)</li>
               <li>
-                Software development including custom quizzes and ingredient
+                Software development including access to our API, custom APIs, custom quizzes and ingredient
                 checkers
               </li>
               <li>Reddit and other social media marketing</li>
