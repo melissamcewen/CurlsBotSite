@@ -292,12 +292,8 @@ export function AnalysisSummary({ result }: Props) {
             </div>
           </div>
         )}
-        {porosityScores.high >= 70 && (
-          <div
-            className={`p-4 rounded-lg ${
-              getStatusClasses(getPorosityStatus(porosityScores.high)).bg
-            }`}
-          >
+        {porosityScores.high >= 80 && (
+          <div className={`p-4 rounded-lg ${getStatusClasses('ok').bg}`}>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Dam className="w-6 h-6" />
@@ -318,7 +314,7 @@ export function AnalysisSummary({ result }: Props) {
               </div>
               <div
                 className={`flex items-end gap-2 ${
-                  getStatusClasses(getPorosityStatus(porosityScores.high)).text
+                  getStatusClasses('ok').text
                 }`}
               >
                 <span className="text-md font-medium">Yes</span>
