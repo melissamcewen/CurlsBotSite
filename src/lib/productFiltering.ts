@@ -1,110 +1,77 @@
-import type { Product } from 'haircare-ingredients-analyzer';
-import type { PorosityType } from './routineBuilder';
+import { Product } from 'haircare-ingredients-analyzer';
 import type { CountryCode } from './countryDetection';
 
-export interface FilterCriteria {
-  porosity?: PorosityType | 'all';
-  country?: CountryCode | 'all';
-  costFilter?: '$' | '$$' | '$$$' | 'all';
-  requireFeatured?: boolean;
-  category?: string | 'all';
+interface FilterOptions {
+  country: string;
+  category: string;
+  requireFeatured: boolean;
+  searchQuery?: string;
+  analysisFilters: {
+    cgmApproved: boolean;
+    frizzResistant: boolean;
+    lightweight: boolean;
+    highPorosity: boolean;
+    lowPorosity: boolean;
+  };
 }
 
-/**
- * Shared function to filter products consistently across the app
- */
 export function filterProducts(
   products: Product[],
-  criteria: FilterCriteria,
+  options: FilterOptions,
 ): Product[] {
   return products.filter((product) => {
-    if (!product.product_categories || product.product_categories.length === 0)
-      return false;
-
-    // Filter by category
-    if (criteria.category && criteria.category !== 'all') {
-      if (!product.product_categories.includes(criteria.category)) return false;
+    // Search filter
+    if (options.searchQuery) {
+      const searchLower = options.searchQuery.toLowerCase();
+      const nameMatch = product.name.toLowerCase().includes(searchLower);
+      const brandMatch = product.brand.toLowerCase().includes(searchLower);
+      if (!nameMatch && !brandMatch) return false;
     }
 
-    // Filter by country
-    if (criteria.country && criteria.country !== 'all') {
-      if (
-        !product.buy_links?.some(
-          (link) => (link.country || 'US') === criteria.country,
-        )
-      ) {
+    // Country filter
+    if (options.country !== 'all') {
+      const hasCountry = product.buy_links?.some(
+        (link) => (link.country || 'US') === options.country,
+      );
+      if (!hasCountry) return false;
+    }
+
+    // Category filter
+    if (options.category !== 'all') {
+      if (!product.product_categories?.includes(options.category)) return false;
+    }
+
+    // Analysis-based filters - using AND logic
+    if (options.analysisFilters.cgmApproved && product.status !== 'ok') {
+      return false;
+    }
+
+    // Porosity filters from analysis
+    const porosityScores = product.extensions?.porosity;
+    if (porosityScores) {
+      if (options.analysisFilters.highPorosity && porosityScores.high < 80) {
         return false;
       }
-    }
-
-    // Filter by cost
-    if (criteria.costFilter && criteria.costFilter !== 'all') {
-      const costRating = parseInt(product.cost_rating || '0');
-      switch (criteria.costFilter) {
-        case '$':
-          if (costRating !== 1) return false;
-          break;
-        case '$$':
-          if (costRating !== 2) return false;
-          break;
-        case '$$$':
-          if (costRating < 3) return false;
-          break;
+      if (options.analysisFilters.lowPorosity && porosityScores.low < 70) {
+        return false;
       }
-    }
-
-    // Filter by featured tag
-    if (criteria.requireFeatured && !product.tags?.includes('featured'))
+      if (options.analysisFilters.lightweight && porosityScores.low < 20) {
+        return false;
+      }
+    } else if (
+      options.analysisFilters.highPorosity ||
+      options.analysisFilters.lowPorosity ||
+      options.analysisFilters.lightweight
+    ) {
+      // If any porosity filter is active but product has no porosity scores, exclude it
       return false;
+    }
 
-    // Filter by porosity
-    if (criteria.porosity && criteria.porosity !== 'all') {
-      // Skip porosity filtering for certain categories
-      if (
-        product.product_categories?.includes('deep_conditioners') ||
-        product.product_categories?.includes('pre_poo') ||
-        product.product_categories?.includes('accessories')
-      ) {
-        return true;
-      }
-
-      const porosityScore = product.extensions?.porosity;
-      if (!porosityScore) return false;
-
-      switch (criteria.porosity) {
-        case 'high_porosity':
-          if (porosityScore.high < 70) return false;
-          break;
-        case 'low_porosity':
-          if (porosityScore.low < 70) return false;
-          break;
-        case 'normal_porosity':
-          // Accept any product that has porosity scores
-          break;
-        case 'mixed_porosity':
-          // For mixed porosity, apply different criteria based on product category
-          if (
-            product.product_categories?.includes('clarifying_shampoos') ||
-            product.product_categories?.includes('shampoos') ||
-            product.product_categories?.includes('foams') ||
-            product.product_categories?.includes('gels') ||
-            product.product_categories?.includes('custards')
-          ) {
-            // These should be good for low porosity
-            if (porosityScore.low < 70) return false;
-          } else if (
-            product.product_categories?.includes('conditioners') ||
-            product.product_categories?.includes('leave_ins') ||
-            product.product_categories?.includes('creams') ||
-            product.product_categories?.includes('oils')
-          ) {
-            // These should be good for high porosity
-            if (porosityScore.high < 70) return false;
-          } else {
-            //just display all porosity products
-            break;
-          }
-          break;
+    // Frizz resistance filter
+    const frizzScore = product.extensions?.frizzbot?.score;
+    if (options.analysisFilters.frizzResistant) {
+      if (!frizzScore || frizzScore > -50) {
+        return false;
       }
     }
 

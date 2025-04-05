@@ -61,38 +61,43 @@ export const CATEGORY_DESCRIPTIONS: Record<ProductCategory, string> = {
 export const POROSITY_CATEGORIES: Record<PorosityType, ProductCategory[]> = {
   high_porosity: [
     'pre_poo',
+    'clarifying_shampoos',
     'cowashes',
     'conditioners',
     'deep_conditioners',
     'leave_ins',
     'creams',
     'custards',
-    'shampoos',
+    'gels',
+    'oils',
     'accessories',
   ],
   low_porosity: [
     'clarifying_shampoos',
     'shampoos',
     'conditioners',
-    'custards',
+    'deep_conditioners',
+    'leave_ins',
     'foams',
     'gels',
-    'deep_conditioners',
     'accessories',
   ],
   normal_porosity: [
     'clarifying_shampoos',
     'shampoos',
+    'cowashes',
     'conditioners',
+    'deep_conditioners',
+    'leave_ins',
     'creams',
     'gels',
-    'deep_conditioners',
     'accessories',
   ],
   mixed_porosity: [
     'pre_poo',
     'clarifying_shampoos',
     'shampoos',
+    'cowashes',
     'conditioners',
     'deep_conditioners',
     'leave_ins',
@@ -100,24 +105,48 @@ export const POROSITY_CATEGORIES: Record<PorosityType, ProductCategory[]> = {
     'custards',
     'gels',
     'foams',
-    'accessories',
     'oils',
+    'accessories',
   ],
 };
 
-export function getProductsByCategory(
-  category: string,
-  criteria: FilterCriteria,
-): Product[] {
+interface GetProductsByCategoryOptions {
+  country: CountryCode;
+  costFilter?: '$' | '$$' | '$$$';
+  offset?: number;
+  analysisFilters?: {
+    cgmApproved: boolean;
+    frizzResistant: boolean;
+    lightweight: boolean;
+    highPorosity: boolean;
+    lowPorosity: boolean;
+  };
+}
+
+function getProductsByCategory(
+  category: ProductCategory,
+  options: GetProductsByCategoryOptions,
+) {
+  const { country, costFilter, offset = 0, analysisFilters } = options;
   const products = getBundledProducts();
 
-  return filterProducts(Object.values(products.products), {
+  // Filter products by category and country
+  const filteredProducts = filterProducts(Object.values(products.products), {
+    country,
     category,
-    country: criteria.country,
-    costFilter: criteria.costFilter,
-    porosity: criteria.porosity,
-    requireFeatured: criteria.requireFeatured,
-  }).sort((a, b) => (a.brand + a.name).localeCompare(b.brand + b.name));
+    requireFeatured: false,
+    analysisFilters: analysisFilters || {
+      cgmApproved: false,
+      frizzResistant: false,
+      lightweight: false,
+      highPorosity: false,
+      lowPorosity: false,
+    },
+  });
+
+  return filteredProducts.sort((a, b) =>
+    (a.brand + a.name).localeCompare(b.brand + b.name),
+  );
 }
 
 // Add frequency recommendations
@@ -194,15 +223,16 @@ export const ROUTINE_STEPS: Record<RoutineStep, StepConfig> = {
   cleanse: {
     title: '1. Cleanse',
     description: 'Choose your cleanser based on your needs',
-    categories: ['clarifying_shampoos', 'shampoos', 'cowashes'],
+    categories: ['pre_poo', 'clarifying_shampoos', 'shampoos', 'cowashes'],
     porosityRecommendations: {
       high_porosity:
-        'Use gentle cleansers like cowash daily, sulfate-free shampoo weekly',
+        'Use pre-poo to protect hair, then alternate between cowash and sulfate-free shampoo. Clarify monthly.',
       low_porosity:
-        'Use clarifying or regular shampoo to prevent buildup, avoid cowash',
-      normal_porosity: 'Use sulfate-free shampoo most washes, clarify monthly',
+        'Use clarifying or regular shampoo to prevent buildup, avoid cowash. Clarify every 1-2 weeks.',
+      normal_porosity:
+        'Use sulfate-free shampoo most washes, clarify monthly. Can use cowash occasionally.',
       mixed_porosity:
-        'Use sulfate-free shampoo on roots, focus gentler cleansers on ends',
+        'Use pre-poo on ends, then sulfate-free shampoo on roots and gentler cleansers on ends. Clarify every 2-3 weeks.',
     },
   },
   condition: {
@@ -211,13 +241,13 @@ export const ROUTINE_STEPS: Record<RoutineStep, StepConfig> = {
     categories: ['conditioners', 'deep_conditioners', 'leave_ins'],
     porosityRecommendations: {
       high_porosity:
-        'Deep condition weekly, use regular conditioner and leave-in every wash',
+        'Deep condition weekly, use regular conditioner and leave-in every wash. Focus on protein-moisture balance.',
       low_porosity:
-        'Use regular conditioner every wash, deep condition monthly with heat',
+        'Use regular conditioner every wash focusing on ends, deep condition monthly with heat. Light leave-in optional.',
       normal_porosity:
-        'Use regular conditioner every wash, deep condition bi-weekly',
+        'Use regular conditioner every wash, deep condition bi-weekly. Light leave-in recommended.',
       mixed_porosity:
-        'Deep condition ends weekly, use regular conditioner on roots, focus leave-in on ends',
+        'Deep condition ends weekly, use regular conditioner on roots, focus leave-in on ends only.',
     },
   },
   enhance: {
@@ -226,11 +256,13 @@ export const ROUTINE_STEPS: Record<RoutineStep, StepConfig> = {
     categories: ['foams', 'custards', 'creams'],
     porosityRecommendations: {
       high_porosity:
-        'Use cream every wash, custard optional for extra definition',
+        'Use cream and/or custard for moisture and definition. Layer products for best results.',
       low_porosity:
-        'Use foam every wash, custard optional for extra definition',
-      normal_porosity: 'Any of these products can work well for your hair',
-      mixed_porosity: 'Use lighter products on roots, heavier products on ends',
+        'Use foam for lightweight definition. Avoid heavy creams and custards.',
+      normal_porosity:
+        'Use cream or foam depending on hair weight. Can layer for more definition.',
+      mixed_porosity:
+        'Use lighter products (foam) on roots, heavier products (cream/custard) on ends.',
     },
   },
   hold: {
@@ -238,11 +270,14 @@ export const ROUTINE_STEPS: Record<RoutineStep, StepConfig> = {
     description: 'Lock in your style',
     categories: ['gels'],
     porosityRecommendations: {
-      high_porosity: 'Use gel every wash for best results',
-      low_porosity: 'Use gel every wash for best results',
-      normal_porosity: 'Use gel every wash for best results',
+      high_porosity:
+        'Use strong hold gel, may need to layer with other products for best moisture retention.',
+      low_porosity:
+        'Use lightweight or medium hold gel. Apply to very wet hair.',
+      normal_porosity:
+        'Use medium to strong hold gel based on desired hold level.',
       mixed_porosity:
-        'Use gel every wash, focusing on areas that need most hold',
+        'Use medium hold gel all over, may need stronger hold on ends.',
     },
   },
   finish: {
@@ -250,10 +285,13 @@ export const ROUTINE_STEPS: Record<RoutineStep, StepConfig> = {
     description: 'Optional finishing products',
     categories: ['oils'],
     porosityRecommendations: {
-      high_porosity: 'Recommended to seal in moisture',
-      low_porosity: 'Not recommended, may prevent moisture absorption',
-      normal_porosity: 'Optional, use if hair feels dry',
-      mixed_porosity: 'Use on ends only if needed, avoid roots',
+      high_porosity:
+        'Use oil to seal in moisture and prevent frizz. Can be used daily.',
+      low_porosity:
+        'Avoid oils or use very sparingly on ends only. May cause buildup.',
+      normal_porosity:
+        'Use light oils sparingly if needed for shine or frizz control.',
+      mixed_porosity: 'Use oils on ends only to seal moisture. Avoid roots.',
     },
   },
   accessories: {
@@ -261,10 +299,14 @@ export const ROUTINE_STEPS: Record<RoutineStep, StepConfig> = {
     description: 'Useful items for anyone with curly or wavy hair',
     categories: ['accessories'],
     porosityRecommendations: {
-      high_porosity: 'Useful for all porosity types',
-      low_porosity: 'Useful for all porosity types',
-      normal_porosity: 'Useful for all porosity types',
-      mixed_porosity: 'Useful for all porosity types',
+      high_porosity:
+        'Microfiber towels, satin pillowcase, and deep conditioning heat cap recommended.',
+      low_porosity:
+        'Heat cap essential for deep conditioning. Microfiber towels and satin pillowcase recommended.',
+      normal_porosity:
+        'Microfiber towels, satin pillowcase, and optional heat cap for deep conditioning.',
+      mixed_porosity:
+        'Full set of accessories recommended to address different needs of your hair.',
     },
   },
 };
@@ -274,6 +316,13 @@ export function getRoutineSteps(
   country: CountryCode,
   costFilter?: '$' | '$$' | '$$$',
   productOffsets: Record<string, number> = {},
+  analysisFilters = {
+    cgmApproved: false,
+    frizzResistant: false,
+    lightweight: false,
+    highPorosity: false,
+    lowPorosity: false,
+  },
 ) {
   return Object.entries(ROUTINE_STEPS)
     .map(([stepId, step]) => {
@@ -289,7 +338,6 @@ export function getRoutineSteps(
         // Try to get featured products first (if no cost filter)
         let allProducts = !costFilter
           ? getProductsByCategory(category, {
-              porosity,
               country,
               costFilter,
               requireFeatured: true,
@@ -299,7 +347,6 @@ export function getRoutineSteps(
         // If no featured products or we have a cost filter, get all products
         if (allProducts.length === 0) {
           allProducts = getProductsByCategory(category, {
-            porosity,
             country,
             costFilter,
             requireFeatured: false,
@@ -309,7 +356,6 @@ export function getRoutineSteps(
         // If we have an offset, get all products without featured requirement
         if (productOffsets[category]) {
           allProducts = getProductsByCategory(category, {
-            porosity,
             country,
             costFilter,
             requireFeatured: false,
@@ -332,6 +378,13 @@ export function getRoutineSteps(
                 description: product.brand,
                 product: product,
               }));
+
+        const products = getProductsByCategory(category, {
+          country,
+          costFilter,
+          offset: productOffsets[category] || 0,
+          analysisFilters,
+        });
 
         return {
           category,

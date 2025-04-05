@@ -1,12 +1,6 @@
 import Link from 'next/link';
 import { Product } from 'haircare-ingredients-analyzer';
-import {
-  Tag,
-  FlaskConical,
-  CheckCircle,
-  ShoppingCart,
-  Droplets,
-} from 'lucide-react';
+import { Tag, FlaskConical, CheckCircle, ShoppingCart } from 'lucide-react';
 import { getCountryFromHostname } from '@/lib/countryDetection';
 
 interface ProductCardProps {
@@ -44,18 +38,6 @@ export function ProductCard({
     );
   };
 
-  const getScoreStatus = (score: number) => {
-    if (score >= 85) return 'text-success';
-    if (score <= 60) return 'text-error';
-    return 'text-info';
-  };
-
-  const getScoreTooltip = (score: number, type: 'high' | 'low') => {
-    if (score >= 85) return `Great for ${type} porosity hair`;
-    if (score <= 60) return `Not ideal for ${type} porosity hair`;
-    return `Moderate match for ${type} porosity hair`;
-  };
-
   return (
     <div className="card bg-base-100 shadow-none">
       <div className="card-body p-6">
@@ -64,66 +46,39 @@ export function ProductCard({
             <h5 className="cb-header mb-0">{product.title}</h5>
           </div>
 
-          {product.product.status === 'ok' && (
-            <div className="mt-2">
-              <span className="cb-badge badge-info gap-1">
-                <CheckCircle className="w-4 h-4" />
-                CGM Approved
-              </span>
-            </div>
-          )}
+          <div className="flex flex-wrap gap-1">
+            {product.product.status === 'ok' && (
+              <div className="badge badge-primary gap-1">
+                <CheckCircle className="w-3 h-3" />
+                CGM
+              </div>
+            )}
+            {product.product.extensions?.frizzbot &&
+              product.product.extensions.frizzbot.score <= -50 && (
+                <div className="badge badge-secondary">Humidity Resistant</div>
+              )}
+            {product.product.extensions?.porosity &&
+              product.product.extensions.porosity.high >= 20 && (
+                <div className="badge badge-accent">Lightweight</div>
+              )}
+            {product.product.extensions?.porosity &&
+              product.product.extensions.porosity.high >= 80 && (
+                <div className="badge badge-primary bg-primary/80">
+                  High Porosity
+                </div>
+              )}
+            {product.product.extensions?.porosity &&
+              product.product.extensions.porosity.low >= 70 && (
+                <div className="badge badge-secondary bg-secondary/80">
+                  Low Porosity
+                </div>
+              )}
+          </div>
 
           <div className="mt-2 flex items-center gap-2 cb-text-ghost">
             <Tag className="w-4 h-4" />
             Brand: {product.description}
           </div>
-
-          {shouldShowPorosityScores() && porosityScores && (
-            <div className="mt-2 flex items-center gap-2">
-              <div className="flex flex-col gap-2">
-                <div
-                  className="indicator flex items-center gap-2 tooltip tooltip-right"
-                  data-tip={getScoreTooltip(porosityScores.high, 'high')}
-                >
-                  <Link
-                    href="/labs/porosity"
-                    className="indicator-item badge badge-accent badge-xs"
-                  >
-                    Labs
-                  </Link>
-                  <Droplets className="w-4 h-4" />
-                  <span className="text-sm">High Porosity Score: </span>
-                  <span
-                    className={`font-bold ${getScoreStatus(
-                      porosityScores.high,
-                    )}`}
-                  >
-                    {porosityScores.high}
-                  </span>
-                </div>
-                <div
-                  className="indicator flex items-center gap-2 tooltip tooltip-right"
-                  data-tip={getScoreTooltip(porosityScores.low, 'low')}
-                >
-                  <Link
-                    href="/labs/porosity"
-                    className="indicator-item badge badge-accent badge-xs"
-                  >
-                    Labs
-                  </Link>
-                  <Droplets className="w-4 h-4" />
-                  <span className="text-sm">Low Porosity Score: </span>
-                  <span
-                    className={`font-bold ${getScoreStatus(
-                      porosityScores.low,
-                    )}`}
-                  >
-                    {porosityScores.low}
-                  </span>
-                </div>
-              </div>
-            </div>
-          )}
 
           {product.product.description && (
             <p className="mt-4 text-base-content/90 text-xs">
@@ -156,32 +111,14 @@ export function ProductCard({
               </button>
             )}
             {product.product.buy_links
-              ? (() => {
-                  console.log('All buy links:', product.product.buy_links);
-                  return null;
-                })()
-              : null}
-            {(() => {
-              console.log('User country:', userCountry);
-              return null;
-            })()}
-            {product.product.buy_links
-              ?.filter((link) => {
-                console.log(
-                  'Link country:',
-                  link.country,
-                  'matches user country?',
-                  (link.country || 'US') === userCountry,
-                );
-                return (link.country || 'US') === userCountry;
-              })
+              ?.filter((link) => (link.country || 'US') === userCountry)
               .map((link, index) => (
                 <a
                   key={index}
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn  btn-outline flex items-center gap-2 flex-nowrap min-w-48"
+                  className="btn btn-outline flex items-center gap-2 flex-nowrap min-w-48"
                 >
                   <ShoppingCart className="w-4 h-4 flex-shrink-0" />
                   <span className="flex-nowrap">

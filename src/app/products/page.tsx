@@ -9,6 +9,12 @@ import {
   CheckCircle,
   FlaskConical,
   ShoppingCart,
+  XCircle,
+  Cloud,
+  Droplets,
+  Dam,
+  Droplet,
+  Search,
 } from 'lucide-react';
 import { getCountryFromHostname } from '@/lib/countryDetection';
 import Link from 'next/link';
@@ -30,7 +36,6 @@ export default function ProductsPage() {
   const [selectedCountry, setSelectedCountry] = useState<CountryCode | 'all'>(
     () => {
       const detectedCountry = getCountryFromHostname();
-
       return detectedCountry === 'US' ||
         detectedCountry === 'UK' ||
         detectedCountry === 'AU'
@@ -38,24 +43,34 @@ export default function ProductsPage() {
         : 'all';
     },
   );
-  const [selectedPrice, setSelectedPrice] = useState<PriceRange | 'all'>('all');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [selectedPorosity, setSelectedPorosity] = useState<
-    PorosityType | 'all'
-  >('all');
   const [showFeaturedOnly, setShowFeaturedOnly] = useState(false);
   const [sortField, setSortField] = useState<SortField>('brand');
   const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
+  const [searchQuery, setSearchQuery] = useState('');
+
+  // Analysis filter states
+  const [cgmApproved, setCgmApproved] = useState(false);
+  const [frizzResistant, setFrizzResistant] = useState(false);
+  const [lightweight, setLightweight] = useState(false);
+  const [highPorosity, setHighPorosity] = useState(false);
+  const [lowPorosity, setLowPorosity] = useState(false);
 
   const products = getBundledProducts();
 
   // Convert products to array and apply filters
   const filteredProducts = filterProducts(Object.values(products.products), {
     country: selectedCountry,
-    costFilter: selectedPrice,
     category: selectedCategory,
-    porosity: selectedPorosity,
     requireFeatured: showFeaturedOnly,
+    searchQuery,
+    analysisFilters: {
+      cgmApproved,
+      frizzResistant,
+      lightweight,
+      highPorosity,
+      lowPorosity,
+    },
   });
 
   // Sort products
@@ -97,7 +112,7 @@ export default function ProductsPage() {
     ...new Set(
       Object.values(products.products)
         .flatMap((p) => p.product_categories || [])
-        .filter((c) => c !== 'accessories'),
+        .filter((c) => c !== 'featured'),
     ),
   ].sort();
 
@@ -154,77 +169,194 @@ export default function ProductsPage() {
             <Filter className="w-5 h-5" />
             Filters
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="flex flex-col gap-4">
+            {/* Search Box */}
+            <div className="form-control w-full">
+              <label className="label">
+                <span className="label-text">Search Products</span>
+              </label>
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Search by product name or brand..."
+                  className="input input-bordered w-full pr-10"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+                <Search className="absolute right-3 top-3 w-5 h-5 text-base-content/50" />
+              </div>
+            </div>
+
+            {/* Country Filters */}
             <div className="form-control w-full">
               <label className="label">
                 <span className="label-text">Country</span>
               </label>
-              <select
-                className="select select-bordered w-full"
-                value={selectedCountry}
-                onChange={(e) =>
-                  setSelectedCountry(e.target.value as CountryCode | 'all')
-                }
-              >
-                <option value="all">All Countries</option>
-                <option value="US">United States</option>
-                <option value="UK">United Kingdom</option>
-                <option value="AU">Australia</option>
-              </select>
+              <div className="flex flex-wrap gap-2">
+                <button
+                  onClick={() => setSelectedCountry('all')}
+                  className={`btn btn-sm gap-2 ${
+                    selectedCountry === 'all' ? 'btn-primary' : 'btn-outline'
+                  }`}
+                >
+                  All Countries
+                </button>
+                <button
+                  onClick={() => setSelectedCountry('US')}
+                  className={`btn btn-sm gap-2 ${
+                    selectedCountry === 'US' ? 'btn-primary' : 'btn-outline'
+                  }`}
+                >
+                  United States
+                  {selectedCountry === 'US' && (
+                    <span className="badge badge-sm">
+                      <XCircle className="w-3 h-3" />
+                    </span>
+                  )}
+                </button>
+                <button
+                  onClick={() => setSelectedCountry('UK')}
+                  className={`btn btn-sm gap-2 ${
+                    selectedCountry === 'UK' ? 'btn-primary' : 'btn-outline'
+                  }`}
+                >
+                  United Kingdom
+                  {selectedCountry === 'UK' && (
+                    <span className="badge badge-sm">
+                      <XCircle className="w-3 h-3" />
+                    </span>
+                  )}
+                </button>
+                <button
+                  onClick={() => setSelectedCountry('AU')}
+                  className={`btn btn-sm gap-2 ${
+                    selectedCountry === 'AU' ? 'btn-primary' : 'btn-outline'
+                  }`}
+                >
+                  Australia
+                  {selectedCountry === 'AU' && (
+                    <span className="badge badge-sm">
+                      <XCircle className="w-3 h-3" />
+                    </span>
+                  )}
+                </button>
+              </div>
             </div>
 
-            <div className="form-control w-full">
-              <label className="label">
-                <span className="label-text">Price Range</span>
-              </label>
-              <select
-                className="select select-bordered w-full"
-                value={selectedPrice}
-                onChange={(e) =>
-                  setSelectedPrice(e.target.value as PriceRange | 'all')
-                }
-              >
-                <option value="all">All Prices</option>
-                <option value="$">$</option>
-                <option value="$$">$$</option>
-                <option value="$$$">$$$</option>
-              </select>
-            </div>
-
+            {/* Category Filters */}
             <div className="form-control w-full">
               <label className="label">
                 <span className="label-text">Category</span>
               </label>
-              <select
-                className="select select-bordered w-full"
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-              >
-                <option value="all">All Categories</option>
+              <div className="flex flex-wrap gap-2">
+                <button
+                  onClick={() => setSelectedCategory('all')}
+                  className={`btn btn-sm gap-2 ${
+                    selectedCategory === 'all' ? 'btn-secondary' : 'btn-outline'
+                  }`}
+                >
+                  All Categories
+                </button>
                 {categories.map((category) => (
-                  <option key={category} value={category}>
+                  <button
+                    key={category}
+                    onClick={() => setSelectedCategory(category)}
+                    className={`btn btn-sm gap-2 ${
+                      selectedCategory === category
+                        ? 'btn-secondary'
+                        : 'btn-outline'
+                    }`}
+                  >
                     {category.replace(/_/g, ' ')}
-                  </option>
+                    {selectedCategory === category && (
+                      <span className="badge badge-sm">
+                        <XCircle className="w-3 h-3" />
+                      </span>
+                    )}
+                  </button>
                 ))}
-              </select>
+              </div>
             </div>
 
+            {/* Analysis Filters */}
             <div className="form-control w-full">
               <label className="label">
-                <span className="label-text">Porosity</span>
+                <span className="label-text">Product Features</span>
               </label>
-              <select
-                className="select select-bordered w-full"
-                value={selectedPorosity}
-                onChange={(e) =>
-                  setSelectedPorosity(e.target.value as PorosityType | 'all')
-                }
-              >
-                <option value="all">All Types</option>
-                <option value="low_porosity">Low Porosity</option>
-                <option value="normal_porosity">Normal Porosity</option>
-                <option value="high_porosity">High Porosity</option>
-              </select>
+              <div className="flex flex-wrap gap-2">
+                <button
+                  onClick={() => setCgmApproved(!cgmApproved)}
+                  className={`btn btn-sm gap-2 ${
+                    cgmApproved ? 'btn-primary' : 'btn-outline'
+                  }`}
+                >
+                  <CheckCircle className="w-4 h-4" />
+                  CGM Approved
+                  {cgmApproved && (
+                    <span className="badge badge-sm">
+                      <XCircle className="w-3 h-3" />
+                    </span>
+                  )}
+                </button>
+                <button
+                  onClick={() => setFrizzResistant(!frizzResistant)}
+                  className={`btn btn-sm gap-2 ${
+                    frizzResistant ? 'btn-secondary' : 'btn-outline'
+                  }`}
+                >
+                  <Cloud className="w-4 h-4" />
+                  Humidity Resistant
+                  {frizzResistant && (
+                    <span className="badge badge-sm">
+                      <XCircle className="w-3 h-3" />
+                    </span>
+                  )}
+                </button>
+                <button
+                  onClick={() => setLightweight(!lightweight)}
+                  className={`btn btn-sm gap-2 ${
+                    lightweight ? 'btn-accent' : 'btn-outline'
+                  }`}
+                >
+                  <Droplets className="w-4 h-4" />
+                  Lightweight
+                  {lightweight && (
+                    <span className="badge badge-sm">
+                      <XCircle className="w-3 h-3" />
+                    </span>
+                  )}
+                </button>
+                <button
+                  onClick={() => setHighPorosity(!highPorosity)}
+                  className={`btn btn-sm gap-2 ${
+                    highPorosity ? 'btn-primary bg-primary/80' : 'btn-outline'
+                  }`}
+                >
+                  <Dam className="w-4 h-4" />
+                  High Porosity
+                  {highPorosity && (
+                    <span className="badge badge-sm">
+                      <XCircle className="w-3 h-3" />
+                    </span>
+                  )}
+                </button>
+                <button
+                  onClick={() => setLowPorosity(!lowPorosity)}
+                  className={`btn btn-sm gap-2 ${
+                    lowPorosity
+                      ? 'btn-secondary bg-secondary/80'
+                      : 'btn-outline'
+                  }`}
+                >
+                  <Droplet className="w-4 h-4" />
+                  Low Porosity
+                  {lowPorosity && (
+                    <span className="badge badge-sm">
+                      <XCircle className="w-3 h-3" />
+                    </span>
+                  )}
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -259,16 +391,7 @@ export default function ProductsPage() {
                   <ArrowUpDown className="w-4 h-4" />
                 </div>
               </th>
-              <th
-                onClick={() => handleSort('cost_rating')}
-                className="cursor-pointer"
-              >
-                <div className="flex items-center gap-2">
-                  Price Rating
-                  <ArrowUpDown className="w-4 h-4" />
-                </div>
-              </th>
-
+              <th>Features</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -276,25 +399,51 @@ export default function ProductsPage() {
             {sortedProducts.map((product) => (
               <tr key={product.id || product.name}>
                 <td>{product.brand}</td>
-                <td className="flex flex-col gap-2">
-                  <span className="">{product.name}</span>
-                  {product.status === 'ok' && (
-                    <div className="badge badge-outline badge-info gap-1 whitespace-nowrap">
-                      <CheckCircle className="w-4 h-4" />
-                      CGM Approved
-                    </div>
-                  )}
-                  {product.description && (
-                    <p className="text-xs text-base-content/70">
-                      {product.description}
-                    </p>
-                  )}
+                <td>
+                  <div>
+                    <span>{product.name}</span>
+                    {product.description && (
+                      <p className="text-xs text-base-content/70 mt-1">
+                        {product.description}
+                      </p>
+                    )}
+                  </div>
                 </td>
                 <td className="capitalize">
                   {product.product_categories?.[0]?.replace(/_/g, ' ')}
                 </td>
-                <td>{getPriceDisplay(product.cost_rating)}</td>
-
+                <td>
+                  <div className="flex flex-wrap gap-1">
+                    {product.status === 'ok' && (
+                      <div className="badge badge-primary gap-1">
+                        <CheckCircle className="w-3 h-3" />
+                        CGM
+                      </div>
+                    )}
+                    {product.extensions?.frizzbot &&
+                      product.extensions.frizzbot.score <= -50 && (
+                        <div className="badge badge-secondary">
+                          Humidity Resistant
+                        </div>
+                      )}
+                    {product.extensions?.porosity &&
+                      product.extensions.porosity.high >= 20 && (
+                        <div className="badge badge-accent">Lightweight</div>
+                      )}
+                    {product.extensions?.porosity &&
+                      product.extensions.porosity.high >= 80 && (
+                        <div className="badge badge-primary bg-primary/80">
+                          High Porosity
+                        </div>
+                      )}
+                    {product.extensions?.porosity &&
+                      product.extensions.porosity.low >= 70 && (
+                        <div className="badge badge-secondary bg-secondary/80">
+                          Low Porosity
+                        </div>
+                      )}
+                  </div>
+                </td>
                 <td className="flex flex-col gap-2">
                   {product.ingredients_raw && (
                     <Link

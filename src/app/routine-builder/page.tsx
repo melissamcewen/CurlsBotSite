@@ -13,7 +13,7 @@ import { getCountryFromHostname } from '@/lib/countryDetection';
 import Link from 'next/link';
 import { ProductCard } from '@/components/ui/product/ProductCard';
 
-import { Sparkles, ShoppingBag } from 'lucide-react';
+import { Sparkles, ShoppingBag, CheckCircle } from 'lucide-react';
 
 export default function RoutineBuilder() {
   const router = useRouter();
@@ -31,6 +31,9 @@ export default function RoutineBuilder() {
   const [selectedProducts, setSelectedProducts] = useState<
     Partial<Record<ProductCategory, Product>>
   >({});
+  const [productOffsets, setProductOffsets] = useState<Record<string, number>>(
+    {},
+  );
 
   // Update URL when selections change
   useEffect(() => {
@@ -50,7 +53,19 @@ export default function RoutineBuilder() {
 
   // Load initial product selections from URL
   useEffect(() => {
-    const steps = getRoutineSteps(porosity, country);
+    const steps = getRoutineSteps(
+      porosity,
+      country,
+      costFilter,
+      productOffsets,
+      {
+        cgmApproved: false,
+        frizzResistant: false,
+        lightweight: false,
+        highPorosity: false,
+        lowPorosity: false,
+      },
+    );
     const initialSelections: Partial<Record<ProductCategory, Product>> = {};
     const urlCost = (searchParams?.get('cost') ?? null) as
       | '$'
@@ -87,7 +102,14 @@ export default function RoutineBuilder() {
     if (Object.keys(initialSelections).length > 0) {
       setSelectedProducts(initialSelections);
     }
-  }, [searchParams, porosity, country]);
+  }, [searchParams, porosity, country, costFilter, productOffsets]);
+
+  const handleSeeMore = (category: string, totalProducts: number) => {
+    setProductOffsets((prev) => ({
+      ...prev,
+      [category]: ((prev[category] || 0) + 3) % totalProducts,
+    }));
+  };
 
   return (
     <div className="container mx-auto p-4 max-w-5xl">
@@ -118,6 +140,7 @@ export default function RoutineBuilder() {
                 <option value="normal_porosity">Normal Porosity</option>
                 <option value="high_porosity">High Porosity</option>
                 <option value="low_porosity">Low Porosity</option>
+                <option value="mixed_porosity">Mixed Porosity</option>
               </select>
             </div>
 
@@ -171,6 +194,8 @@ export default function RoutineBuilder() {
               [category]: product,
             }));
           }}
+          productOffsets={productOffsets}
+          onSeeMore={handleSeeMore}
         />
 
         {Object.keys(selectedProducts).length > 0 && (
@@ -210,6 +235,8 @@ interface RoutineStepsProps {
   costFilter?: '$' | '$$' | '$$$';
   selectedProducts: Partial<Record<ProductCategory, Product>>;
   onProductSelect: (category: ProductCategory, product: Product) => void;
+  productOffsets: Record<string, number>;
+  onSeeMore: (category: string, totalProducts: number) => void;
 }
 
 function RoutineSteps({
@@ -218,18 +245,16 @@ function RoutineSteps({
   costFilter,
   selectedProducts,
   onProductSelect,
+  productOffsets,
+  onSeeMore,
 }: RoutineStepsProps) {
-  const [productOffsets, setProductOffsets] = useState<Record<string, number>>(
-    {},
-  );
-  const steps = getRoutineSteps(porosity, country, costFilter, productOffsets);
-
-  const handleSeeMore = (category: string, totalProducts: number) => {
-    setProductOffsets((prev) => ({
-      ...prev,
-      [category]: ((prev[category] || 0) + 3) % totalProducts,
-    }));
-  };
+  const steps = getRoutineSteps(porosity, country, costFilter, productOffsets, {
+    cgmApproved: false,
+    frizzResistant: false,
+    lightweight: false,
+    highPorosity: false,
+    lowPorosity: false,
+  });
 
   return (
     <div className="space-y-8">
@@ -266,7 +291,39 @@ function RoutineSteps({
                             selectedProducts[category.category]?.id ===
                             product.product.id
                           }
-                        />
+                        >
+                          {product.product.status === 'ok' && (
+                            <div className="badge badge-primary gap-1">
+                              <CheckCircle className="w-3 h-3" />
+                              CGM
+                            </div>
+                          )}
+                          {product.product.extensions?.frizzbot &&
+                            product.product.extensions.frizzbot.score <=
+                              -50 && (
+                              <div className="badge badge-secondary">
+                                Humidity Resistant
+                              </div>
+                            )}
+                          {product.product.extensions?.porosity &&
+                            product.product.extensions.porosity.high >= 20 && (
+                              <div className="badge badge-accent">
+                                Lightweight
+                              </div>
+                            )}
+                          {product.product.extensions?.porosity &&
+                            product.product.extensions.porosity.high >= 80 && (
+                              <div className="badge badge-primary bg-primary/80">
+                                High Porosity
+                              </div>
+                            )}
+                          {product.product.extensions?.porosity &&
+                            product.product.extensions.porosity.low >= 70 && (
+                              <div className="badge badge-secondary bg-secondary/80">
+                                Low Porosity
+                              </div>
+                            )}
+                        </ProductCard>
                       ))
                     ) : (
                       <div className="col-span-3 card bg-base-100 p-6 text-center">
@@ -287,10 +344,7 @@ function RoutineSteps({
                     category.products.length > 0 && (
                       <button
                         onClick={() =>
-                          handleSeeMore(
-                            category.category,
-                            category.totalProducts,
-                          )
+                          onSeeMore(category.category, category.totalProducts)
                         }
                         className="btn btn-ghost gap-2 w-full"
                       >
