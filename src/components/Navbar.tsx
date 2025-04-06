@@ -56,7 +56,7 @@ export default function Navbar() {
   return (
     <header className="w-full sticky top-0 z-50">
       <nav className="w-full bg-accent text-accent-content backdrop-blur-sm">
-        <div className="container mx-auto px-4">
+        <div className="">
           <div className="navbar">
             <div className="navbar-start">
               <Link
