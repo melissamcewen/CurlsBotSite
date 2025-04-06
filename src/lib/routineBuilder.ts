@@ -114,6 +114,7 @@ interface GetProductsByCategoryOptions {
   country: CountryCode;
   costFilter?: '$' | '$$' | '$$$';
   offset?: number;
+  requireFeatured?: boolean;
   analysisFilters?: {
     cgmApproved: boolean;
     frizzResistant: boolean;

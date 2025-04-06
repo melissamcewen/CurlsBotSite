@@ -13,6 +13,7 @@ interface ProductCardProps {
   onSelect?: () => void;
   isSelected?: boolean;
   selectedCountry?: string;
+  children?: React.ReactNode;
 }
 
 export function ProductCard({
