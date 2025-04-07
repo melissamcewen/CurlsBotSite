@@ -140,7 +140,12 @@ export default function About() {
                         recommendations database inclusion
                       </li>
                       <li className="flex items-center">
-                        <Info className="w-4 h-4 mr-2 flex-shrink-0" />Custom product descriptions
+                        <Info className="w-4 h-4 mr-2 flex-shrink-0" />
+                        Custom product descriptions
+                      </li>
+                      <li className="flex items-center">
+                        <Info className="w-4 h-4 mr-2 flex-shrink-0" />
+                        Monthly analytics report
                       </li>
                       <li className="flex items-center">
                         <Info className="w-4 h-4 mr-2 flex-shrink-0" /> Monthly
