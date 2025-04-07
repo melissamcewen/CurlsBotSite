@@ -117,7 +117,7 @@ export default function About() {
                     <Link
                       href="mailto:info@curlsbot.com"
                       className="btn btn-primary mt-4"
-                  >
+                    >
                       Contact Us
                     </Link>
                   </div>
@@ -140,6 +140,9 @@ export default function About() {
                         recommendations database inclusion
                       </li>
                       <li className="flex items-center">
+                        <Info className="w-4 h-4 mr-2 flex-shrink-0" />Custom product descriptions
+                      </li>
+                      <li className="flex items-center">
                         <Info className="w-4 h-4 mr-2 flex-shrink-0" /> Monthly
                         brand newsletter with trends and insights
                       </li>
@@ -154,7 +157,7 @@ export default function About() {
                     <Link
                       href="mailto:info@curlsbot.com"
                       className="btn btn-primary mt-4"
-                  >
+                    >
                       Get Started
                     </Link>
                   </div>
@@ -224,8 +227,8 @@ export default function About() {
             <ul className="list-disc list-inside">
               <li>SEO (search engine optimization)</li>
               <li>
-                Software development including access to our API, custom APIs, custom quizzes and ingredient
-                checkers
+                Software development including access to our API, custom APIs,
+                custom quizzes and ingredient checkers
               </li>
               <li>Reddit and other social media marketing</li>
               <li>Website performance optimization</li>
