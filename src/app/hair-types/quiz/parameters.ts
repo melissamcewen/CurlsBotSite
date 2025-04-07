@@ -17,6 +17,7 @@ export type CommonType =
   | '3a To 3c'
   | '4a To 4c'
   | '3a';
+export type TanglingLevel = 'low' | 'medium' | 'high' | 'very high';
 export interface HairParameters {
   versatility: VersatilityLevel;
   shrinkage: ShrinkageLevel;
@@ -25,6 +26,7 @@ export interface HairParameters {
   shapes: ShapeType;
   volume: VolumeLevel;
   commonType: CommonType;
+  tangling: TanglingLevel;
 }
 
 export const parameterDescriptions = {
@@ -86,6 +88,12 @@ export const parameterDescriptions = {
       'Anywhere from 4a to 4c depending how tight the coils and kinks are, with 4c being the tightest',
     '3a': 'This is one of the hair types where the Common type is the same as the Walker type',
   },
+  tangling: {
+    low: 'Your hair is isn\'t prone to tangles and is relatively easy to detangle',
+    medium: 'Your hair tangles moderately especially in finer sections',
+    high: 'Your hair tangles easily',
+    'very high': 'Your hair tangles easily and can form single-strand knots that cause breakage',
+  },
 } as const;
 
 export const parameterDisplayNames = {
@@ -96,6 +104,7 @@ export const parameterDisplayNames = {
   curvature: 'Curvature',
   shapes: 'Shapes',
   volume: 'Volume',
+  tangling: 'Tangling',
 } as const;
 
 export const hairTypeParameters: Record<string, HairParameters> = {
@@ -107,6 +116,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     curvature: 'none',
     volume: 'low',
     shapes: 'none',
+    tangling: 'medium',
   },
   '1b': {
     commonType: '1b To 1c',
@@ -116,6 +126,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     curvature: 'none',
     volume: 'medium',
     shapes: 'none',
+    tangling: 'low',
   },
   '1c': {
     commonType: '1a',
@@ -125,6 +136,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     curvature: 'none',
     volume: 'low',
     shapes: 'none',
+    tangling: 'low',
   },
   '2a': {
     commonType: '2a To 2c',
@@ -134,6 +146,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     curvature: 'varies',
     volume: 'low',
     shapes: 'curved',
+    tangling: 'medium',
   },
   '2b': {
     commonType: '2a To 2c',
@@ -143,6 +156,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     curvature: 'varies',
     volume: 'medium',
     shapes: 'curved',
+    tangling: 'medium',
   },
   '2c': {
     commonType: '2a To 2c',
@@ -152,6 +166,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     curvature: 'varies',
     volume: 'medium',
     shapes: 'curved',
+    tangling: 'medium',
   },
   '3a': {
     commonType: '3a',
@@ -161,6 +176,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     curvature: 'large',
     volume: 'medium',
     shapes: 'curved',
+    tangling: 'high',
   },
   '3b': {
     commonType: '3a To 3c',
@@ -170,6 +186,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     curvature: 'medium',
     volume: 'medium',
     shapes: 'curved',
+    tangling: 'high',
   },
   '3c': {
     commonType: '3a To 3c',
@@ -179,6 +196,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     curvature: 'small',
     volume: 'high',
     shapes: 'curved',
+    tangling: 'very high',
   },
   '4a': {
     commonType: '4a To 4c',
@@ -188,6 +206,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     curvature: 'extra small',
     volume: 'high',
     shapes: 'curved',
+    tangling: 'very high',
   },
   '4b': {
     commonType: '4a To 4c',
@@ -197,6 +216,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     curvature: 'extra small',
     volume: 'very high',
     shapes: 'angled',
+    tangling: 'very high',
   },
   '4c': {
     commonType: '4a To 4c',
@@ -206,6 +226,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     curvature: 'extra small',
     shapes: 'varies',
     volume: 'very high',
+    tangling: 'very high',
   },
 };
 
