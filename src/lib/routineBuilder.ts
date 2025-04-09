@@ -232,14 +232,24 @@ export function getRoutineSteps(
           // Skip porosity filtering for exempt categories
           const skipPorosityFilters =
             POROSITY_EXEMPT_CATEGORIES.includes(category);
-          const categoryAnalysisFilters = skipPorosityFilters
-            ? {
-                ...analysisFilters,
-                highPorosity: false,
-                lowPorosity: false,
-                lightweight: false,
-              }
-            : analysisFilters;
+
+          let categoryAnalysisFilters = { ...analysisFilters };
+
+          if (skipPorosityFilters) {
+            categoryAnalysisFilters = {
+              ...categoryAnalysisFilters,
+              highPorosity: false,
+              lowPorosity: false,
+              lightweight: false,
+            };
+          } else if (porosity === 'mixed_porosity') {
+            // For mixed porosity, we want products that work for both high and low porosity
+            categoryAnalysisFilters = {
+              ...categoryAnalysisFilters,
+              highPorosity: true,
+              lowPorosity: true,
+            };
+          }
 
           const products = getProductsByCategory(category, {
             country,
