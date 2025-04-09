@@ -213,9 +213,12 @@ function RoutineSteps({ porosity, country }: RoutineStepsProps) {
                     ) : (
                       <div className="col-span-3 card bg-base-100 p-6 text-center">
                         <p className="text-base-content/70">
-                          We don't have any items in this category yet, please{' '}
-                          <Link href="/contact">Contact Us</Link> if you have
-                          suggestions
+                          We don&apos;t have any items in this category yet,
+                          please{' '}
+                          <Link href="/contact" className="link link-primary">
+                            contact us
+                          </Link>{' '}
+                          if you have suggestions
                         </p>
                       </div>
                     )}

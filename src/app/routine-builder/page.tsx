@@ -264,7 +264,8 @@ function RoutineSteps({
                     ) : (
                       <div className="col-span-3 card bg-base-100 p-6 text-center">
                         <p className="text-base-content/70">
-                          We don't have any items in this category yet, please{' '}
+                          We don&apos;t have any items in this category yet,
+                          please{' '}
                           <Link href="/contact" className="link link-primary">
                             contact us
                           </Link>{' '}

@@ -52,7 +52,7 @@ export default function SavedRoutine() {
                     description: product.name,
                     product: product,
                   }}
-                  category={category}
+                  category={category as ProductCategory}
                 />
               </div>
             </div>
