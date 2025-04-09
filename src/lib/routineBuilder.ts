@@ -78,8 +78,9 @@ export const POROSITY_CATEGORIES: Record<PorosityType, ProductCategory[]> = {
     'conditioners',
     'deep_conditioners',
     'leave_ins',
-    'foams',
+    'custards',
     'gels',
+    'foams',
     'accessories',
   ],
   normal_porosity: [
@@ -174,9 +175,9 @@ export const FREQUENCY_RECOMMENDATIONS: Record<
     shampoos: 'Every wash',
     conditioners: 'Every wash, focus on the ends',
     deep_conditioners: 'Monthly, focus on the ends',
-    foams: 'Choose a foam or custard to help with definition',
+    custards: 'A small amount of custard can help form curls',
     gels: 'Gels can help with definition and hold',
-    custards: 'Choose a foam or custard to help with definition',
+    foams: 'Foams form a lightweight barrier to humidity',
     accessories: 'Useful for all porosity types',
   },
   normal_porosity: {
@@ -197,9 +198,9 @@ export const FREQUENCY_RECOMMENDATIONS: Record<
     deep_conditioners: 'Every 1-2 weeks on the ends only',
     leave_ins: 'Every wash on the ends only',
     creams: 'As needed on the ends to protect and style',
+    custards: 'Optional: A small amount of custard can help form curls',
     gels: 'As needed for styling',
-    custards: 'Choose a foam or custard to help with definition',
-    foams: 'Choose a foam or custard to help with definition',
+    foams: 'Optional to enhance hold and lock out humidity',
     oils: 'Help seal in moisture in the ends',
     accessories: 'Useful for all porosity types',
   },
@@ -244,37 +245,37 @@ export const ROUTINE_STEPS: Record<RoutineStep, StepConfig> = {
       high_porosity:
         'Deep condition weekly, use regular conditioner and leave-in every wash. Focus on protein-moisture balance.',
       low_porosity:
-        'Use regular conditioner every wash focusing on ends, deep condition monthly with heat. Light leave-in optional.',
+        'Use regular conditioner every wash focusing on ends, deep condition monthly with heat.',
       normal_porosity:
         'Use regular conditioner every wash, deep condition bi-weekly. Light leave-in recommended.',
       mixed_porosity:
-        'Deep condition ends weekly, use regular conditioner on roots, focus leave-in on ends only.',
+        'Deep condition ends weekly, use regular conditioner on the rest of the hair, focus leave-in on ends only.',
     },
   },
   enhance: {
     title: '3. Enhance Curls/Waves',
     description: 'Choose 1-2 products to enhance your natural curl pattern',
-    categories: ['foams', 'custards', 'creams'],
+    categories: ['custards', 'creams'],
     porosityRecommendations: {
       high_porosity:
         'Use cream and/or custard for moisture and definition. Layer products for best results.',
       low_porosity:
-        'Use foam for lightweight definition. Avoid heavy creams and custards.',
+        'Use small amounts of custards for lightweight definition.',
       normal_porosity:
-        'Use cream or foam depending on hair weight. Can layer for more definition.',
+        'Use cream or custard. Can layer for more definition.',
       mixed_porosity:
-        'Use lighter products (foam) on roots, heavier products (cream/custard) on ends.',
+        'Use lighter products (custards) on roots, heavier products (cream) on ends.',
     },
   },
   hold: {
     title: '4. Hold',
     description: 'Lock in your style',
-    categories: ['gels'],
+    categories: ['gels', 'foams'],
     porosityRecommendations: {
       high_porosity:
         'Use strong hold gel, may need to layer with other products for best moisture retention.',
       low_porosity:
-        'Use lightweight or medium hold gel. Apply to very wet hair.',
+        'Use lightweight or medium hold gel or foam. Apply to very wet or towel-dried hair.',
       normal_porosity:
         'Use medium to strong hold gel based on desired hold level.',
       mixed_porosity:
@@ -287,12 +288,12 @@ export const ROUTINE_STEPS: Record<RoutineStep, StepConfig> = {
     categories: ['oils'],
     porosityRecommendations: {
       high_porosity:
-        'Use oil to seal in moisture and prevent frizz. Can be used daily.',
+        'Use oil/serums to seal in moisture and prevent frizz. Can be used daily.',
       low_porosity:
-        'Avoid oils or use very sparingly on ends only. May cause buildup.',
+        'Avoid oils/serums or use very sparingly on ends only. May cause buildup.',
       normal_porosity:
-        'Use light oils sparingly if needed for shine or frizz control.',
-      mixed_porosity: 'Use oils on ends only to seal moisture. Avoid roots.',
+        'Use light oils/serums sparingly if needed for shine or frizz control.',
+      mixed_porosity: 'Use oils/serums on ends only to seal moisture. Avoid roots.',
     },
   },
   accessories: {
