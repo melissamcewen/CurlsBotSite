@@ -2,6 +2,19 @@ import Link from 'next/link';
 import { Product } from 'haircare-ingredients-analyzer';
 import { Tag, FlaskConical, CheckCircle, ShoppingCart } from 'lucide-react';
 import { getCountryFromHostname } from '@/lib/countryDetection';
+import {
+  POROSITY_EXEMPT_CATEGORIES,
+  POROSITY_THRESHOLDS,
+} from '@/lib/porosity';
+import type { ProductCategory } from '@/lib/routineBuilder';
+
+// Categories that can have humidity resistance
+const STYLING_CATEGORIES: ProductCategory[] = [
+  'gels',
+  'foams',
+  'creams',
+  'custards',
+];
 
 interface ProductCardProps {
   product: {
@@ -9,7 +22,7 @@ interface ProductCardProps {
     description: string;
     product: Product;
   };
-  category: string;
+  category: ProductCategory;
   onSelect?: () => void;
   isSelected?: boolean;
   selectedCountry?: string;
@@ -26,18 +39,8 @@ export function ProductCard({
   const userCountry = selectedCountry || getCountryFromHostname();
   const porosityScores = product.product.extensions?.porosity;
 
-  // Categories that should not show porosity scores
-  const POROSITY_SCORE_EXEMPT_CATEGORIES = [
-    'deep_conditioners',
-    'pre_poo',
-    'clarifying_shampoos',
-  ];
-
-  const shouldShowPorosityScores = () => {
-    return (
-      porosityScores && !POROSITY_SCORE_EXEMPT_CATEGORIES.includes(category)
-    );
-  };
+  const shouldShowPorosityScores =
+    !POROSITY_EXEMPT_CATEGORIES.includes(category);
 
   return (
     <div className="card bg-base-100 shadow-none">
@@ -54,22 +57,29 @@ export function ProductCard({
                 CGM
               </div>
             )}
-            {product.product.extensions?.frizzbot &&
+            {STYLING_CATEGORIES.includes(category) &&
+              product.product.extensions?.frizzbot &&
               product.product.extensions.frizzbot.score <= -50 && (
                 <div className="badge badge-secondary">Humidity Resistant</div>
               )}
-            {product.product.extensions?.porosity &&
-              product.product.extensions.porosity.high >= 20 && (
+            {shouldShowPorosityScores &&
+              product.product.extensions?.porosity &&
+              product.product.extensions.porosity.low >=
+                POROSITY_THRESHOLDS.LOW_POROSITY && (
                 <div className="badge badge-accent">Lightweight</div>
               )}
-            {product.product.extensions?.porosity &&
-              product.product.extensions.porosity.high >= 80 && (
+            {shouldShowPorosityScores &&
+              product.product.extensions?.porosity &&
+              product.product.extensions.porosity.high >=
+                POROSITY_THRESHOLDS.HIGH_POROSITY && (
                 <div className="badge badge-primary bg-primary/80">
                   High Porosity
                 </div>
               )}
-            {product.product.extensions?.porosity &&
-              product.product.extensions.porosity.low >= 70 && (
+            {shouldShowPorosityScores &&
+              product.product.extensions?.porosity &&
+              product.product.extensions.porosity.low >=
+                POROSITY_THRESHOLDS.LOW_POROSITY && (
                 <div className="badge badge-secondary bg-secondary/80">
                   Low Porosity
                 </div>

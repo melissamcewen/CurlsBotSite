@@ -31,9 +31,6 @@ export function PorosityPageClient({ porosityType, porosityInfo }: Props) {
   const [country, setCountry] = useState<CountryCode>(() =>
     getCountryFromHostname(),
   );
-  const [costFilter, setCostFilter] = useState<
-    '$' | '$$' | '$$$' | undefined
-  >();
 
   // Convert URL type to PorosityType
   const getPorosityType = (type: string): PorosityType => {
@@ -95,7 +92,7 @@ export function PorosityPageClient({ porosityType, porosityInfo }: Props) {
         <div className="card-body">
           <h2 className="card-title">Build Your Routine</h2>
           <div className="flex flex-col md:flex-row gap-4">
-            <div className="form-control w-full md:w-1/3">
+            <div className="form-control w-full md:w-1/2">
               <label className="label">
                 <span className="label-text">Porosity</span>
               </label>
@@ -113,7 +110,7 @@ export function PorosityPageClient({ porosityType, porosityInfo }: Props) {
               </select>
             </div>
 
-            <div className="form-control w-full md:w-1/3">
+            <div className="form-control w-full md:w-1/2">
               <label className="label">
                 <span className="label-text">Country</span>
               </label>
@@ -125,26 +122,6 @@ export function PorosityPageClient({ porosityType, porosityInfo }: Props) {
                 <option value="US">United States</option>
                 <option value="AU">Australia</option>
                 <option value="UK">United Kingdom</option>
-              </select>
-            </div>
-
-            <div className="form-control w-full md:w-1/3">
-              <label className="label">
-                <span className="label-text">Price Range</span>
-              </label>
-              <select
-                className="select select-bordered w-full"
-                value={costFilter || ''}
-                onChange={(e) =>
-                  setCostFilter(
-                    e.target.value as '$' | '$$' | '$$$' | undefined,
-                  )
-                }
-              >
-                <option value="">All Prices</option>
-                <option value="$">$</option>
-                <option value="$$">$$</option>
-                <option value="$$$">$$$</option>
               </select>
             </div>
           </div>
@@ -159,7 +136,6 @@ export function PorosityPageClient({ porosityType, porosityInfo }: Props) {
       <RoutineSteps
         porosity={getPorosityType(porosityType)}
         country={country}
-        costFilter={costFilter}
       />
     </div>
   );
@@ -168,14 +144,29 @@ export function PorosityPageClient({ porosityType, porosityInfo }: Props) {
 interface RoutineStepsProps {
   porosity: PorosityType;
   country: CountryCode;
-  costFilter?: '$' | '$$' | '$$$';
 }
 
-function RoutineSteps({ porosity, country, costFilter }: RoutineStepsProps) {
+function RoutineSteps({ porosity, country }: RoutineStepsProps) {
   const [productOffsets, setProductOffsets] = useState<Record<string, number>>(
     {},
   );
-  const steps = getRoutineSteps(porosity, country, costFilter, productOffsets);
+
+  // Set analysis filters based on porosity type
+  const analysisFilters = {
+    cgmApproved: false,
+    frizzResistant: false,
+    lightweight: false,
+    highPorosity: porosity === 'high_porosity' || porosity === 'mixed_porosity',
+    lowPorosity: porosity === 'low_porosity' || porosity === 'mixed_porosity',
+  };
+
+  const steps = getRoutineSteps(
+    porosity,
+    country,
+    undefined,
+    productOffsets,
+    analysisFilters,
+  );
 
   const handleSeeMore = (category: string, totalProducts: number) => {
     setProductOffsets((prev) => ({
@@ -209,8 +200,12 @@ function RoutineSteps({ porosity, country, costFilter }: RoutineStepsProps) {
                     {category.products.length > 0 ? (
                       category.products.map((product) => (
                         <ProductCard
-                          key={product.type}
-                          product={product}
+                          key={`${product.brand}-${product.name}`}
+                          product={{
+                            title: product.name,
+                            description: product.brand,
+                            product: product,
+                          }}
                           category={category.category}
                           selectedCountry={country}
                         />
@@ -218,9 +213,7 @@ function RoutineSteps({ porosity, country, costFilter }: RoutineStepsProps) {
                     ) : (
                       <div className="col-span-3 card bg-base-100 p-6 text-center">
                         <p className="text-base-content/70">
-                          {costFilter
-                            ? `We don't have items in this price range yet, please `
-                            : `We don't have any featured items in this category yet, please `}
+                          We don't have any items in this category yet, please{' '}
                           <Link href="/contact">Contact Us</Link> if you have
                           suggestions
                         </p>

@@ -1,5 +1,6 @@
 import { Product } from 'haircare-ingredients-analyzer';
 import type { CountryCode } from './countryDetection';
+import { POROSITY_THRESHOLDS } from './porosity';
 
 interface FilterOptions {
   country: string;
@@ -49,13 +50,25 @@ export function filterProducts(
     // Porosity filters from analysis
     const porosityScores = product.extensions?.porosity;
     if (porosityScores) {
-      if (options.analysisFilters.highPorosity && porosityScores.high < 80) {
+      // High porosity products have high score >= 80
+      if (
+        options.analysisFilters.highPorosity &&
+        porosityScores.high < POROSITY_THRESHOLDS.HIGH_POROSITY
+      ) {
         return false;
       }
-      if (options.analysisFilters.lowPorosity && porosityScores.low < 70) {
+      // Low porosity products have low score >= 70
+      if (
+        options.analysisFilters.lowPorosity &&
+        porosityScores.low < POROSITY_THRESHOLDS.LOW_POROSITY
+      ) {
         return false;
       }
-      if (options.analysisFilters.lightweight && porosityScores.low < 20) {
+      // Lightweight products are the same as low porosity
+      if (
+        options.analysisFilters.lightweight &&
+        porosityScores.low < POROSITY_THRESHOLDS.LOW_POROSITY
+      ) {
         return false;
       }
     } else if (
