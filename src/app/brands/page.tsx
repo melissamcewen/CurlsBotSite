@@ -107,10 +107,6 @@ export default function About() {
                         <Info className="w-4 h-4 mr-2 flex-shrink-0" /> Database
                         inclusion
                       </li>
-                      <li className="flex items-center">
-                        <Info className="w-4 h-4 mr-2 flex-shrink-0" />
-                        Monthly brand newsletter with trends and insights
-                      </li>
                     </ul>
                   </div>
                   <div className="card-actions mt-auto justify-end">
@@ -131,13 +127,9 @@ export default function About() {
                   <div className="text-3xl font-bold my-4">$99/month</div>
                   <div className="space-y-2">
                     <ul className="text-left space-y-2">
+
                       <li className="flex items-center">
-                        <Info className="w-4 h-4 mr-2 flex-shrink-0" /> Full
-                        ingredient audit
-                      </li>
-                      <li className="flex items-center">
-                        <Info className="w-4 h-4 mr-2 flex-shrink-0" /> Product
-                        recommendations database inclusion
+                        <Info className="w-4 h-4 mr-2 flex-shrink-0" /> Everything in Affiliate Partners
                       </li>
                       <li className="flex items-center">
                         <Info className="w-4 h-4 mr-2 flex-shrink-0" />
