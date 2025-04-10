@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import ThemeToggle from '@/components/ThemeToggle';
 import { useRef, useEffect } from 'react';
+import CountrySwitcher from '@/components/CountrySwitcher';
 
 export default function Navbar() {
   const mobileMenuRef = useRef<HTMLDivElement>(null);
@@ -177,6 +178,7 @@ export default function Navbar() {
               </ul>
             </div>
             <div className="navbar-end">
+              <CountrySwitcher />
               <ThemeToggle />
               <div
                 ref={mobileMenuRef}

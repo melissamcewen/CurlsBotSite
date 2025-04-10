@@ -3,8 +3,12 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import { Footer } from '@/components/layout/Footer';
-import { GoogleTagManagerHead, GoogleTagManagerBody } from '@/components/GoogleTagManager';
+import {
+  GoogleTagManagerHead,
+  GoogleTagManagerBody,
+} from '@/components/GoogleTagManager';
 import { AdScripts } from '@/components/ads/AdScripts';
+import { LocalizationProvider } from '@/contexts/LocalizationContext';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -166,13 +170,15 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-base-100 text-base-content`}
         suppressHydrationWarning
       >
-        <GoogleTagManagerBody />
-        <div className="min-h-screen overflow-x-hidden">
-          <div className="absolute inset-0 pointer-events-none" />
-          <Navbar />
-          <main className="bg-base-200">{children}</main>
-          <Footer />
-        </div>
+        <LocalizationProvider>
+          <GoogleTagManagerBody />
+          <div className="min-h-screen overflow-x-hidden">
+            <div className="absolute inset-0 pointer-events-none" />
+            <Navbar />
+            <main className="bg-base-200">{children}</main>
+            <Footer />
+          </div>
+        </LocalizationProvider>
       </body>
     </html>
   );

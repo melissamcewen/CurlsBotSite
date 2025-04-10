@@ -8,7 +8,7 @@ import {
   getRoutineSteps,
   ProductCategory,
 } from '@/lib/routineBuilder';
-import { getCountryFromHostname } from '@/lib/countryDetection';
+import { useLocalization } from '@/contexts/LocalizationContext';
 import { ProductCard } from '@/components/ui/product/ProductCard';
 import { Sparkles, ShoppingBag, ArrowLeft } from 'lucide-react';
 import Avatar from '@/components/avatar';
@@ -28,9 +28,7 @@ interface Props {
 
 export function PorosityPageClient({ porosityType, porosityInfo }: Props) {
   const router = useRouter();
-  const [country, setCountry] = useState<CountryCode>(() =>
-    getCountryFromHostname(),
-  );
+  const { country, setCountry } = useLocalization();
 
   // Convert URL type to PorosityType
   const getPorosityType = (type: string): PorosityType => {

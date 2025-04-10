@@ -12,19 +12,18 @@ import {
 import { getCountryFromHostname } from '@/lib/countryDetection';
 import Link from 'next/link';
 import { ProductCard } from '@/components/ui/product/ProductCard';
+import { useLocalization } from '@/contexts/LocalizationContext';
 
 import { Sparkles, ShoppingBag, CheckCircle } from 'lucide-react';
 
 export default function RoutineBuilder() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const { country, setCountry } = useLocalization();
   const [porosity, setPorosity] = useState<PorosityType>(() => {
     const urlPorosity = searchParams?.get('porosity') ?? null;
     return (urlPorosity as PorosityType) || 'normal_porosity';
   });
-  const [country, setCountry] = useState<CountryCode>(() =>
-    getCountryFromHostname(),
-  );
   const [selectedProducts, setSelectedProducts] = useState<
     Partial<Record<ProductCategory, Product>>
   >({});

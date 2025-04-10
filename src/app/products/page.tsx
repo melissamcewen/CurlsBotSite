@@ -16,7 +16,7 @@ import {
   Droplet,
   Search,
 } from 'lucide-react';
-import { getCountryFromHostname } from '@/lib/countryDetection';
+import { useLocalization } from '@/contexts/LocalizationContext';
 import Link from 'next/link';
 import type { PorosityType } from '@/lib/routineBuilder';
 import { filterProducts } from '@/lib/productFiltering';
@@ -33,15 +33,9 @@ type SortField =
 type SortDirection = 'asc' | 'desc';
 
 export default function ProductsPage() {
+  const { country, setCountry } = useLocalization();
   const [selectedCountry, setSelectedCountry] = useState<CountryCode | 'all'>(
-    () => {
-      const detectedCountry = getCountryFromHostname();
-      return detectedCountry === 'US' ||
-        detectedCountry === 'UK' ||
-        detectedCountry === 'AU'
-        ? detectedCountry
-        : 'all';
-    },
+    'all'
   );
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [showFeaturedOnly, setShowFeaturedOnly] = useState(false);
@@ -202,7 +196,10 @@ export default function ProductsPage() {
                   All Countries
                 </button>
                 <button
-                  onClick={() => setSelectedCountry('US')}
+                  onClick={() => {
+                    setSelectedCountry('US');
+                    setCountry('US');
+                  }}
                   className={`btn btn-sm gap-2 ${
                     selectedCountry === 'US' ? 'btn-primary' : 'btn-outline'
                   }`}
@@ -215,7 +212,10 @@ export default function ProductsPage() {
                   )}
                 </button>
                 <button
-                  onClick={() => setSelectedCountry('UK')}
+                  onClick={() => {
+                    setSelectedCountry('UK');
+                    setCountry('UK');
+                  }}
                   className={`btn btn-sm gap-2 ${
                     selectedCountry === 'UK' ? 'btn-primary' : 'btn-outline'
                   }`}
@@ -228,7 +228,10 @@ export default function ProductsPage() {
                   )}
                 </button>
                 <button
-                  onClick={() => setSelectedCountry('AU')}
+                  onClick={() => {
+                    setSelectedCountry('AU');
+                    setCountry('AU');
+                  }}
                   className={`btn btn-sm gap-2 ${
                     selectedCountry === 'AU' ? 'btn-primary' : 'btn-outline'
                   }`}
