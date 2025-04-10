@@ -1,6 +1,12 @@
 'use client';
 
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from 'react';
 import { getCountryFromHostname, CountryCode } from '@/lib/countryDetection';
 
 interface LocalizationContextType {
@@ -18,7 +24,9 @@ const LocalizationContext = createContext<LocalizationContextType>({
 export const useLocalization = () => {
   const context = useContext(LocalizationContext);
   if (!context) {
-    throw new Error('useLocalization must be used within a LocalizationProvider');
+    throw new Error(
+      'useLocalization must be used within a LocalizationProvider',
+    );
   }
   return context;
 };
@@ -27,6 +35,7 @@ const countryNames: Record<CountryCode, string> = {
   US: 'United States',
   UK: 'United Kingdom',
   AU: 'Australia',
+  EU: 'European Union',
 };
 
 export function LocalizationProvider({ children }: { children: ReactNode }) {

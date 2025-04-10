@@ -39,6 +39,14 @@ export default function CountrySwitcher() {
         </li>
         <li>
           <button
+            className={country === 'EU' ? 'active' : ''}
+            onClick={() => handleCountrySelect('EU')}
+          >
+            European Union
+          </button>
+        </li>
+        <li>
+          <button
             className={country === 'AU' ? 'active' : ''}
             onClick={() => handleCountrySelect('AU')}
           >

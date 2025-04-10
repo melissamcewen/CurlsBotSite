@@ -21,7 +21,7 @@ import Link from 'next/link';
 import type { PorosityType } from '@/lib/routineBuilder';
 import { filterProducts } from '@/lib/productFiltering';
 
-type CountryCode = 'US' | 'UK' | 'AU';
+type CountryCode = 'US' | 'UK' | 'AU' | 'EU';
 type PriceRange = '$' | '$$' | '$$$';
 type SortField =
   | 'brand'
@@ -238,6 +238,22 @@ export default function ProductsPage() {
                 >
                   Australia
                   {selectedCountry === 'AU' && (
+                    <span className="badge badge-sm">
+                      <XCircle className="w-3 h-3" />
+                    </span>
+                  )}
+                </button>
+                <button
+                  onClick={() => {
+                    setSelectedCountry('EU');
+                    setCountry('EU');
+                  }}
+                  className={`btn btn-sm gap-2 ${
+                    selectedCountry === 'EU' ? 'btn-primary' : 'btn-outline'
+                  }`}
+                >
+                  European Union
+                  {selectedCountry === 'EU' && (
                     <span className="badge badge-sm">
                       <XCircle className="w-3 h-3" />
                     </span>

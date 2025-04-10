@@ -9,6 +9,7 @@ interface LocalizedProductIds {
   US: string;
   UK: string;
   AU: string;
+  EU?: string;
 }
 
 interface Props {
@@ -42,7 +43,15 @@ const LocalizedProductLink = ({
   showStatus = false,
 }: Props) => {
   const { country } = useLocalization();
-  const productId = productIds[country];
+
+  // Determine which product ID to use
+  let productId: string;
+  if (country === 'EU') {
+    productId = productIds.EU || productIds.US;
+  } else {
+    productId = productIds[country];
+  }
+
   const product = products[productId];
 
   if (!product) {
@@ -54,9 +63,10 @@ const LocalizedProductLink = ({
     );
   }
 
-  // Get the buy link for the current country
+  // Get the buy link for the current country, fall back to US for EU
   const buyLink = product.buy_links?.find(
-    (link) => (link.country || 'US') === country,
+    (link: { country?: string }) =>
+      (link.country || 'US') === (country === 'EU' ? 'US' : country),
   );
 
   if (!buyLink?.url) {
@@ -76,13 +86,13 @@ const LocalizedProductLink = ({
       <>
         <a
           href={`/?ingredients=${encodeURIComponent(product.ingredients_raw)}`}
-          className={className}
+          className="link link-primary"
         >
           click here to analyze
         </a>{' '}
         <a
           href={buyLink.url}
-          className={className}
+          className="link link-secondary"
           target="_blank"
           rel="noopener noreferrer"
         >
