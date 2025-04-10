@@ -11,10 +11,12 @@ import {
   Mailbox,
 } from 'lucide-react';
 import Link from 'next/link';
+import LocalizedProductLink from '@/components/ui/LocalizedProductLink';
+import { getBundledProducts } from 'haircare-ingredients-analyzer';
+import { useMemo } from 'react';
 
 export default function Sidebar() {
-  const ingredients =
-    'flaxseed extract, agave nectar extract, pectin, aloe vera juice, marshmallow root extract, vitamin e, xanthan gum, optiphen plus, sweet orange essential oil';
+  const products = useMemo(() => getBundledProducts().products, []);
 
   return (
     <div className="flex flex-col gap-4 sm:flex-row md:flex-col p-2">
@@ -35,22 +37,16 @@ export default function Sidebar() {
             <div className="flex gap-2">
               <FlaskConical className="w-5 h-5 flex-shrink-0 mt-1" />
               <p>
-                For example{' '}
-                <a
-                  href={`/?ingredients=${encodeURIComponent(ingredients)}`}
-                  className="link"
-                >
-                  click here to see an analysis
-                </a>{' '}
-                of one of our favorite products,{' '}
-                <a
-                  href="https://ecoslay.com/collections/stylers/products/orange-marmalade"
-                  className="link"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  Ecoslay Orange Marmalade
-                </a>
+                For example,{' '}
+                <LocalizedProductLink
+                  productIds={{
+                    US: 'orange_marmalade_flaxseed_and_aloe_curl_definer',
+                    UK: 'hydro_style_flexi-jelly',
+                    AU: 'hush_nourishing_oil',
+                  }}
+                  products={products}
+                  showAnalysisLink
+                />
                 .
               </p>
             </div>

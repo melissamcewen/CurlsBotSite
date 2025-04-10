@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import { AnalysisResult } from 'haircare-ingredients-analyzer';
 import { IngredientsList } from './ingredients/IngredientsList';
 import { getStatusConfig } from './utils/statusConfig';
@@ -12,7 +12,7 @@ import { getBundledProducts } from 'haircare-ingredients-analyzer';
 import { filterProductByCountry } from '@/lib/countryDetection';
 import { getCountryFromHostname } from '@/lib/countryDetection';
 import { CheckCircle, AlertTriangle, XCircle } from 'lucide-react';
-
+import LocalizedProductLink from '@/components/ui/LocalizedProductLink';
 
 interface Props {
   result: AnalysisResult;
@@ -21,37 +21,27 @@ interface Props {
 
 // Get a product recommendation based on the current hour
 function getProductRecommendation() {
-  const products = getBundledProducts();
-  const userCountry = getCountryFromHostname();
-
-  const allProducts = Object.values(products.products).filter(
-    (product) =>
-      // Filter products by country and featured tag
-      product.tags?.includes('featured') &&
-      // Product should have at least one buy link for user's country
-      product.buy_links?.some((link) => (link.country || 'US') === userCountry),
-  );
-
-  // If no products available for this country, return null
-  if (allProducts.length === 0) return null;
-
   // Get current hour in UTC for stable rotation
   const hourOfYear = Math.floor(Date.now() / (1000 * 60 * 60));
 
-  // Use the hour to select a product
-  const index = hourOfYear % allProducts.length;
-  const recommendedProduct = allProducts[index];
+  // List of product ID sets for each country
+  const productSets = [
+    {
+      US: 'vitalcurl+_clear_&_gentle_shampoo',
+      UK: 'essential_moisture_cleanser',
+      AU: 'hush_nourishing_oil',
+    }
+    // Add more sets as needed
+  ];
 
-  if (!recommendedProduct) return null;
-
-  return {
-    name: recommendedProduct.name,
-    brand: recommendedProduct.brand,
-    buyLinks: recommendedProduct.buy_links,
-  };
+  // Use the hour to select a product set
+  const index = hourOfYear % productSets.length;
+  return productSets[index];
 }
 
 export default function AnalysisResults({ result, onTryAnother }: Props) {
+  const products = useMemo(() => getBundledProducts().products, []);
+
   if (!result) return null;
 
   const { description } = getStatusConfig(result.status);
@@ -61,7 +51,7 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
     result?.status === 'caution' ||
     result?.status === 'error' ||
     result?.status === 'ok';
-  const productRecommendation = shouldShowRecommendation
+  const productIds = shouldShowRecommendation
     ? getProductRecommendation()
     : null;
 
@@ -104,29 +94,20 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
                     {description}
                   </p>
 
-                  {productRecommendation &&
-                    productRecommendation.buyLinks?.[0]?.url && (
-                      <p>
-                        If you&apos;re looking for a product, I recommend:{' '}
-                        <a
-                          href={productRecommendation.buyLinks[0].url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="underline hover:text-primary"
-                        >
-                          {productRecommendation.name} by{' '}
-                          {productRecommendation.brand}
-                        </a>{' '}
-                        or try our{' '}
-                        <Link
-                          href="/porosity-quiz"
-                          className="link link-primary"
-                        >
-                          Porosity Quiz
-                        </Link>{' '}
-                        for personalized recommendations.
-                      </p>
-                    )}
+                  {productIds && (
+                    <p>
+                      If you&apos;re looking for a product, I recommend:{' '}
+                      <LocalizedProductLink
+                        productIds={productIds}
+                        products={products}
+                      />{' '}
+                      or try our{' '}
+                      <Link href="/porosity-quiz" className="link link-primary">
+                        Porosity Quiz
+                      </Link>{' '}
+                      for personalized recommendations.
+                    </p>
+                  )}
                 </div>
 
                 <button
@@ -145,7 +126,6 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
               </Link>
             </ChatFooter>
           </ChatBubbleRobot>
-
         </div>
 
         {/* Analysis Summary */}

@@ -35,7 +35,7 @@ type SortDirection = 'asc' | 'desc';
 export default function ProductsPage() {
   const { country, setCountry } = useLocalization();
   const [selectedCountry, setSelectedCountry] = useState<CountryCode | 'all'>(
-    'all'
+    'all',
   );
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [showFeaturedOnly, setShowFeaturedOnly] = useState(false);
