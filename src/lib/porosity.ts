@@ -34,7 +34,6 @@ export const POROSITY_CATEGORIES: Record<PorosityType, ProductCategory[]> = {
     'creams',
     'custards',
     'gels',
-    'foams',
     'oils',
     'sprays',
     'accessories',
