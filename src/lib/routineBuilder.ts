@@ -11,7 +11,7 @@ import {
 export type { CountryCode, PorosityType };
 
 export type ProductCategory =
-  | 'pre_poo'
+  | 'pre-poo'
   | 'clarifying_shampoos'
   | 'shampoos'
   | 'cowashes'
@@ -34,7 +34,7 @@ interface FilterCriteria {
 }
 
 export const CATEGORY_DESCRIPTIONS: Record<ProductCategory, string> = {
-  pre_poo:
+  'pre-poo':
     'These products are meant to be used before washing to help protect your hair from stress and damage.',
   clarifying_shampoos:
     'Heavier shampoos meant to remove long-term buildup from oils, products, and hard water. Meant to be used occasionally, as they are much stronger than regular shampoos.',
@@ -120,7 +120,7 @@ export const ROUTINE_STEPS: Record<RoutineStep, StepConfig> = {
   cleanse: {
     title: '1. Cleanse',
     description: 'Choose your cleanser based on your needs',
-    categories: ['pre_poo', 'clarifying_shampoos', 'shampoos', 'cowashes'],
+    categories: ['pre-poo', 'clarifying_shampoos', 'shampoos', 'cowashes'],
     porosityRecommendations: {
       high_porosity:
         'Use pre-poo to protect hair, then alternate between cowash and gentle shampoo. Clarify monthly.',

@@ -15,7 +15,7 @@ export const POROSITY_THRESHOLDS = {
 // Categories that should not use porosity filtering or display porosity badges
 export const POROSITY_EXEMPT_CATEGORIES: ProductCategory[] = [
   'deep_conditioners',
-  'pre_poo',
+  'pre-poo',
   'clarifying_shampoos',
   'accessories',
   'oils',
@@ -24,7 +24,7 @@ export const POROSITY_EXEMPT_CATEGORIES: ProductCategory[] = [
 // Categories appropriate for each porosity type
 export const POROSITY_CATEGORIES: Record<PorosityType, ProductCategory[]> = {
   high_porosity: [
-    'pre_poo',
+    'pre-poo',
     'clarifying_shampoos',
     'cowashes',
     'shampoos',
@@ -64,7 +64,7 @@ export const POROSITY_CATEGORIES: Record<PorosityType, ProductCategory[]> = {
     'accessories',
   ],
   mixed_porosity: [
-    'pre_poo',
+    'pre-poo',
     'clarifying_shampoos',
     'shampoos',
     'cowashes',
