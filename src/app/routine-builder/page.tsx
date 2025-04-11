@@ -12,18 +12,25 @@ import {
 import { getCountryFromHostname } from '@/lib/countryDetection';
 import Link from 'next/link';
 import { ProductCard } from '@/components/ui/product/ProductCard';
-import { useLocalization } from '@/contexts/LocalizationContext';
 
-import { Sparkles, ShoppingBag, CheckCircle } from 'lucide-react';
+import {
+  Sparkles,
+  ShoppingBag,
+  CheckCircle,
+  Info,
+  HelpCircle,
+} from 'lucide-react';
 
 export default function RoutineBuilder() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const { country, setCountry } = useLocalization();
   const [porosity, setPorosity] = useState<PorosityType>(() => {
     const urlPorosity = searchParams?.get('porosity') ?? null;
     return (urlPorosity as PorosityType) || 'normal_porosity';
   });
+  const [country, setCountry] = useState<CountryCode>(() =>
+    getCountryFromHostname(),
+  );
   const [selectedProducts, setSelectedProducts] = useState<
     Partial<Record<ProductCategory, Product>>
   >({});
@@ -224,15 +231,23 @@ function RoutineSteps({
         <div key={step.id} className="card bg-base-200">
           <div className="card-body">
             <h3 className="text-2xl font-semibold">{step.title}</h3>
-            <p className="text-base-content/70">{step.description}</p>
-
+            <div className="alert bg-base-100 mb-4 flex items-start">
+              <HelpCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
+              <p>{step.description}</p>
+            </div>
+            <div className="alert alert-info bg-info/30 flex items-start">
+              <Info className="w-5 h-5 mt-0.5 flex-shrink-0" />
+              <p>
+                For {porosity.replace('_', ' ').replace('porosity', '').trim()}{' '}
+                porosity hair, we recommend: {step.recommendation}
+              </p>
+            </div>
             <div className="space-y-8">
               {step.categories.map((category) => (
                 <div key={category.category} className="space-y-4">
                   <div>
                     <h4 className="text-lg font-medium capitalize">
-                      {category.category.replace(/_/g, ' ')} -{' '}
-                      {category.frequency}
+                      {category.category.replace(/_/g, ' ')}
                     </h4>
                     <p className="text-base-content/70 mt-1">
                       {category.description}

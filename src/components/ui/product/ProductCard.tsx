@@ -92,7 +92,7 @@ export function ProductCard({
           </div>
 
           {product.product.description && (
-            <p className="mt-4 text-base-content/90 text-xs">
+            <p className="mt-4 text-base-content/90 ">
               {product.product.description}
             </p>
           )}

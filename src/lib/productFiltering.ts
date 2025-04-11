@@ -1,6 +1,7 @@
 import { Product } from 'haircare-ingredients-analyzer';
 import type { CountryCode } from './countryDetection';
-import { POROSITY_THRESHOLDS } from './porosity';
+import { POROSITY_THRESHOLDS, POROSITY_EXEMPT_CATEGORIES } from './porosity';
+import type { ProductCategory } from './routineBuilder';
 
 interface FilterOptions {
   country: string;
@@ -45,6 +46,14 @@ export function filterProducts(
     // Analysis-based filters - using AND logic
     if (options.analysisFilters.cgmApproved && product.status !== 'ok') {
       return false;
+    }
+
+    // Skip porosity filters for exempt categories
+    if (
+      options.category !== 'all' &&
+      POROSITY_EXEMPT_CATEGORIES.includes(options.category as ProductCategory)
+    ) {
+      return true;
     }
 
     // Porosity filters from analysis

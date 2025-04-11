@@ -23,6 +23,7 @@ export type ProductCategory =
   | 'custards'
   | 'gels'
   | 'oils'
+  | 'sprays'
   | 'accessories';
 
 interface FilterCriteria {
@@ -55,6 +56,8 @@ export const CATEGORY_DESCRIPTIONS: Record<ProductCategory, string> = {
   custards:
     'Thick styling products that provide moisture and definition. Useful for all porosity types.',
   oils: 'Optional finishing products that can help seal in moisture. Best for high porosity hair.',
+  sprays:
+    'Optional finishing products that can help seal in moisture and lock in styles.',
   accessories: 'Useful items for anyone with curly or wavy hair.',
 };
 
@@ -120,13 +123,13 @@ export const ROUTINE_STEPS: Record<RoutineStep, StepConfig> = {
     categories: ['pre_poo', 'clarifying_shampoos', 'shampoos', 'cowashes'],
     porosityRecommendations: {
       high_porosity:
-        'Use pre-poo to protect hair, then alternate between cowash and sulfate-free shampoo. Clarify monthly.',
+        'Use pre-poo to protect hair, then alternate between cowash and gentle shampoo. Clarify monthly.',
       low_porosity:
         'Use clarifying or regular shampoo to prevent buildup, avoid cowash. Clarify every 1-2 weeks.',
       normal_porosity:
-        'Use sulfate-free shampoo most washes, clarify monthly. Can use cowash occasionally.',
+        'Use shampoo, clarify monthly. Can use cowash occasionally.',
       mixed_porosity:
-        'Use pre-poo on ends, then sulfate-free shampoo on roots and gentler cleansers on ends. Clarify every 2-3 weeks.',
+        'Use pre-poo on ends, then  shampoo on roots and gentler shampoos/cowashes on ends. Clarify every 2-3 weeks.',
     },
   },
   condition: {
@@ -134,43 +137,48 @@ export const ROUTINE_STEPS: Record<RoutineStep, StepConfig> = {
     description: 'Choose your conditioner based on your needs',
     categories: ['conditioners', 'deep_conditioners'],
     porosityRecommendations: {
-      high_porosity: 'Use deep conditioner weekly',
-      low_porosity: 'Use conditioner daily',
-      normal_porosity: 'Use conditioner daily',
-      mixed_porosity: 'Use conditioner daily',
+      high_porosity:
+        'Use conditioner every wash and deep conditioner every 1-2 months',
+      low_porosity:
+        'Use conditioner every wash and deep conditioner every 1-2 months',
+      normal_porosity:
+        'Use conditioner every wash and deep conditioner every 1-2 months',
+      mixed_porosity:
+        'Use conditioner every wash and deep conditioner every 1-2 months',
     },
   },
   enhance: {
-    title: '3. Enhance',
-    description: 'Choose your leave-in or cream',
+    title: '3. Protect',
+    description: 'Choose a product that helps protect your hair',
     categories: ['leave_ins', 'creams'],
     porosityRecommendations: {
-      high_porosity: 'Use leave-in or cream daily',
-      low_porosity: 'Use leave-in or cream daily',
-      normal_porosity: 'Use leave-in or cream daily',
-      mixed_porosity: 'Use leave-in or cream daily',
+      high_porosity: 'Use a leave in and cream',
+      low_porosity: 'You can skip this step unless you use heat, in which case use a heat protectant',
+      normal_porosity: 'Use a leave in or cream as needed',
+      mixed_porosity: 'Use a leave in or cream on the ends',
     },
   },
   hold: {
-    title: '4. Hold',
-    description: 'Choose your styling product',
-    categories: ['gels', 'foams', 'custards'],
+    title: '4. Enhance',
+    description: 'Choose a product that helps enhance your curls',
+    categories: ['gels', 'custards'],
     porosityRecommendations: {
-      high_porosity: 'Use gel or custard',
-      low_porosity: 'Use foam or custard',
-      normal_porosity: 'Use gel or custard',
-      mixed_porosity: 'Use gel or custard',
+      high_porosity: 'Choose either a gel or custard',
+      low_porosity: 'Choose either a gel or custard',
+      normal_porosity: 'Choose either a gel or custard',
+      mixed_porosity: 'Choose either a gel or custard',
     },
   },
   finish: {
-    title: '5. Finish',
-    description: 'Choose your finishing product',
-    categories: ['oils'],
+    title: '5. Seal',
+    description:
+      'Choose a product that helps seal in moisture, some gels from the previous step do this so if you already used a gel meant to seal, skip this step',
+    categories: ['oils', 'foams', 'sprays'],
     porosityRecommendations: {
-      high_porosity: 'Use oil',
-      low_porosity: 'Use oil',
-      normal_porosity: 'Use oil',
-      mixed_porosity: 'Use oil',
+      high_porosity: 'Use an oil or a spray',
+      low_porosity: 'Use a foam or spray',
+      normal_porosity: 'Use a foam, oil, or spray',
+      mixed_porosity: 'Use an oil, serum, or moisturizing spray on the ends and a foam or spray on the rest of your hair',
     },
   },
   accessories: {
@@ -178,29 +186,29 @@ export const ROUTINE_STEPS: Record<RoutineStep, StepConfig> = {
     description: 'Choose your accessories',
     categories: ['accessories'],
     porosityRecommendations: {
-      high_porosity: 'Use accessories',
-      low_porosity: 'Use accessories',
-      normal_porosity: 'Use accessories',
-      mixed_porosity: 'Use accessories',
+      high_porosity: 'Optional accessories',
+      low_porosity: 'Optional accessories',
+      normal_porosity: 'Optional accessories',
+      mixed_porosity: 'Optional accessories',
     },
   },
 };
 
-const FREQUENCY_RECOMMENDATIONS: Record<ProductCategory, string> = {
-  pre_poo: 'Before washing',
-  clarifying_shampoos: 'Every 2-4 weeks',
-  shampoos: 'Every wash',
-  cowashes: 'Every wash',
-  conditioners: 'Every wash',
-  deep_conditioners: 'Weekly',
-  leave_ins: 'Every wash',
-  creams: 'Every wash',
-  foams: 'Every wash',
-  custards: 'Every wash',
-  gels: 'Every wash',
-  oils: 'As needed',
-  accessories: 'As needed',
-};
+export interface CategoryWithProducts {
+  category: ProductCategory;
+  description: string;
+  frequency?: string;
+  products: Product[];
+  totalProducts: number;
+}
+
+export interface RoutineStepConfig {
+  id: string;
+  title: string;
+  description: string;
+  recommendation: string;
+  categories: CategoryWithProducts[];
+}
 
 export function getRoutineSteps(
   porosity: PorosityType,
@@ -214,48 +222,20 @@ export function getRoutineSteps(
     highPorosity: false,
     lowPorosity: false,
   },
-) {
+): RoutineStepConfig[] {
   return Object.entries(ROUTINE_STEPS)
     .map(([stepId, step]) => {
       const routineStep = stepId as RoutineStep;
-      // Filter categories based on porosity
-      const validCategories = step.categories.filter(
-        (category: ProductCategory) =>
-          POROSITY_CATEGORIES[porosity].includes(category),
-      );
-
-      if (validCategories.length === 0) return null;
-
-      // Get products for each category in this step
-      const categoryProducts = validCategories.map(
-        (category: ProductCategory) => {
-          // Skip porosity filtering for exempt categories
-          const skipPorosityFilters =
-            POROSITY_EXEMPT_CATEGORIES.includes(category);
-
-          let categoryAnalysisFilters = { ...analysisFilters };
-
-          if (skipPorosityFilters) {
-            categoryAnalysisFilters = {
-              ...categoryAnalysisFilters,
-              highPorosity: false,
-              lowPorosity: false,
-              lightweight: false,
-            };
-          } else if (porosity === 'mixed_porosity') {
-            // For mixed porosity, we want products that work for both high and low porosity
-            categoryAnalysisFilters = {
-              ...categoryAnalysisFilters,
-              highPorosity: true,
-              lowPorosity: true,
-            };
-          }
-
+      // Filter categories based on porosity type
+      const allowedCategories = POROSITY_CATEGORIES[porosity];
+      const categoryProducts = step.categories
+        .filter((category) => allowedCategories.includes(category))
+        .map((category) => {
           const products = getProductsByCategory(category, {
             country,
             costFilter,
             offset: productOffsets[category] || 0,
-            analysisFilters: categoryAnalysisFilters,
+            analysisFilters,
           });
 
           // For accessories, show all products. For others, show 3 at a time.
@@ -270,12 +250,10 @@ export function getRoutineSteps(
           return {
             category,
             description: CATEGORY_DESCRIPTIONS[category],
-            frequency: FREQUENCY_RECOMMENDATIONS[category],
             products: productsToShow,
             totalProducts: products.length,
           };
-        },
-      );
+        });
 
       return {
         id: routineStep,
@@ -285,5 +263,5 @@ export function getRoutineSteps(
         categories: categoryProducts,
       };
     })
-    .filter((step): step is NonNullable<typeof step> => step !== null);
+    .filter((step) => step.categories.some((cat) => cat.products.length > 0));
 }

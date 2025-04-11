@@ -1,4 +1,7 @@
-import { getCountryFromHostname, filterProductByCountry } from '@/lib/countryDetection';
+import {
+  getCountryFromHostname,
+  filterProductByCountry,
+} from '@/lib/countryDetection';
 import type { Product } from 'haircare-ingredients-analyzer';
 
 describe('getCountryFromHostname', () => {
@@ -89,13 +92,18 @@ describe('filterProductByCountry', () => {
     expect(filterProductByCountry(nonAuProduct, 'AU')).toBe(false);
   });
 
-  it('filters EU products correctly', () => {
+  it('filters EU products correctly with UK fallback', () => {
     const euProduct = createMockProduct([{ country: 'EU' }]);
+    const ukProduct = createMockProduct([{ country: 'UK' }]);
     const usProduct = createMockProduct([{ country: 'US' }]);
-    const bothProduct = createMockProduct([{ country: 'EU' }, { country: 'US' }]);
+    const bothProduct = createMockProduct([
+      { country: 'EU' },
+      { country: 'UK' },
+    ]);
 
     expect(filterProductByCountry(euProduct, 'EU')).toBe(true);
-    expect(filterProductByCountry(usProduct, 'EU')).toBe(true); // EU can use US links
+    expect(filterProductByCountry(ukProduct, 'EU')).toBe(true); // EU can use UK links
+    expect(filterProductByCountry(usProduct, 'EU')).toBe(false); // EU can no longer use US links
     expect(filterProductByCountry(bothProduct, 'EU')).toBe(true);
   });
 

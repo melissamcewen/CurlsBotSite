@@ -78,7 +78,7 @@ export function filterProductByCountry(
     case 'EU':
       return (
         product.buy_links.some((link: BuyLink) => link.country === 'EU') ||
-        product.buy_links.some((link: BuyLink) => link.country === 'US')
+        product.buy_links.some((link: BuyLink) => link.country === 'UK')
       );
     case 'US':
     default:

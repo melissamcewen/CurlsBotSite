@@ -10,7 +10,13 @@ import {
 } from '@/lib/routineBuilder';
 import { useLocalization } from '@/contexts/LocalizationContext';
 import { ProductCard } from '@/components/ui/product/ProductCard';
-import { Sparkles, ShoppingBag, ArrowLeft } from 'lucide-react';
+import {
+  Sparkles,
+  ShoppingBag,
+  ArrowLeft,
+  Info,
+  HelpCircle,
+} from 'lucide-react';
 import Avatar from '@/components/avatar';
 import Link from 'next/link';
 
@@ -179,15 +185,24 @@ function RoutineSteps({ porosity, country }: RoutineStepsProps) {
         <div key={step.id} className="card bg-base-200">
           <div className="card-body">
             <h3 className="text-2xl font-semibold">{step.title}</h3>
-            <p className="text-base-content/70">{step.description}</p>
+            <div className="">
+
+              <p>{step.description}</p>
+            </div>
+            <div className="alert alert-info bg-info/30 flex items-start">
+              <Info className="w-5 h-5 mt-0.5 flex-shrink-0" />
+              <p className="font-bold">
+                For {porosity.replace('_', ' ').replace('porosity', '').trim()}{' '}
+                porosity hair, we recommend: {step.recommendation}
+              </p>
+            </div>
 
             <div className="space-y-8">
               {step.categories.map((category) => (
                 <div key={category.category} className="space-y-4">
                   <div>
                     <h4 className="text-lg font-medium capitalize">
-                      {category.category.replace(/_/g, ' ')} -{' '}
-                      {category.frequency}
+                      {category.category.replace(/_/g, ' ')}
                     </h4>
                     <p className="text-base-content/70 mt-1">
                       {category.description}
