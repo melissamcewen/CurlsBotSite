@@ -358,8 +358,8 @@ export function AnalysisSummary({ result }: Props) {
             </div>
           </div>
         )}
-    
-        {porosityScores.low >= 20 && (
+
+        {porosityScores.low >= 60 && (
           <div className={`p-4 rounded-lg ${getStatusClasses('ok').bg}`}>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">

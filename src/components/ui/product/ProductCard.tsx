@@ -14,6 +14,7 @@ const STYLING_CATEGORIES: ProductCategory[] = [
   'foams',
   'creams',
   'custards',
+  'sprays',
 ];
 
 interface ProductCardProps {
