@@ -6,14 +6,9 @@ import {
   ChatBubble,
 } from '@/components/analysis/ChatBubbleRobot';
 import ChatBubbleUser from '@/components/analysis/ChatBubbleUser';
-import {
-  quizQuestions,
-  getQuizResult,
-  parameterDescriptions,
-  parameterDisplayNames,
-  capitalizeValue,
-  type QuizResult,
-} from './quizData';
+import { useRouter } from 'next/navigation';
+import { quizQuestions, getQuizResult, type QuizResult } from './quizData';
+import QuizResultComponent from './QuizResult';
 
 declare global {
   interface Window {
@@ -22,6 +17,7 @@ declare global {
 }
 
 export default function Quiz() {
+  const router = useRouter();
   const [currentSection, setCurrentSection] = useState<string | null>(null);
   const [scores, setScores] = useState<{ [key: string]: number }>({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -62,7 +58,10 @@ export default function Quiz() {
   }) => {
     // If the answer has a direct result, show that result
     if (answer.result) {
-      setResult(getQuizResult(answer.result));
+      const quizResult = getQuizResult(answer.result);
+      setResult(quizResult);
+      // Navigate to result page
+      router.push(`/hair-types/quiz/${answer.result}`);
       return;
     }
 
@@ -80,7 +79,10 @@ export default function Quiz() {
           b[1] > a[1] ? b : a,
         );
 
-        setResult(getQuizResult(highestScore[0]));
+        const quizResult = getQuizResult(highestScore[0]);
+        setResult(quizResult);
+        // Navigate to result page
+        router.push(`/hair-types/quiz/${highestScore[0]}`);
         return;
       }
     }
@@ -135,83 +137,7 @@ export default function Quiz() {
   }
 
   if (result) {
-    return (
-      <div className="space-y-6 max-w-4xl mx-auto">
-        <ChatBubbleRobot imageUrl="/normal.svg" status="ok">
-          <ChatBubble status="ok">
-            <h2 className="text-xl font-bold mb-4">
-              Your Hair Type: {result.type.toUpperCase()}
-            </h2>
-            <p className="mb-4">
-              This is based on Andre Walker&apos;s original hair typing system
-              and not the &quot;Common&quot; system used on most websites
-              these days. You can read a comparison{' '}
-              <a
-                href="https://www.reddit.com/r/hairtype/comments/1jpq7x2/i_read_the_og_book_about_curl_typing_and_it_was/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link"
-              >
-                here
-              </a>
-            </p>
-            <div className="space-y-4">
-              {Object.entries(result.parameters).map(([parameter, value]) => (
-                <div key={parameter} className="space-y-2">
-                  <h3 className="font-semibold">
-                    {
-                      parameterDisplayNames[
-                        parameter as keyof typeof parameterDisplayNames
-                      ]
-                    }
-                    : {capitalizeValue(value)}
-                  </h3>
-                  <p>
-                    {
-                      parameterDescriptions[
-                        parameter as keyof typeof parameterDescriptions
-                      ][
-                        value as keyof (typeof parameterDescriptions)[keyof typeof parameterDescriptions]
-                      ]
-                    }
-                  </p>
-                </div>
-              ))}
-            </div>
-            <div className="mt-8">
-              <button onClick={resetQuiz} className="btn btn-primary">
-                Retake Quiz
-              </button>
-            </div>
-          </ChatBubble>
-        </ChatBubbleRobot>
-        <div className="max-w-2xl ml-auto">
-          <ChatBubbleUser>
-            {!feedbackGiven ? (
-              <div className="space-y-4">
-                <p className="font-semibold">Was this accurate?</p>
-                <div className="flex gap-4">
-                  <button
-                    onClick={() => handleFeedback(true)}
-                    className="btn btn-primary flex-1"
-                  >
-                    Yes
-                  </button>
-                  <button
-                    onClick={() => handleFeedback(false)}
-                    className="btn btn-primary flex-1"
-                  >
-                    No
-                  </button>
-                </div>
-              </div>
-            ) : (
-              <p>Thanks! We&apos;ll use this to improve our hair type quiz.</p>
-            )}
-          </ChatBubbleUser>
-        </div>
-      </div>
-    );
+    return <QuizResultComponent result={result} showFeedback />;
   }
 
   if (!currentQuestion) {
