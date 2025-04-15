@@ -1,3 +1,5 @@
+'use client';
+
 import { useLocalization } from '@/contexts/LocalizationContext';
 import { Globe } from 'lucide-react';
 import { CountryCode } from '@/lib/countryDetection';

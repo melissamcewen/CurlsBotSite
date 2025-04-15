@@ -18,7 +18,26 @@ export type CommonType =
   | '4a To 4c'
   | '3a';
 export type TanglingLevel = 'low' | 'medium' | 'high' | 'very high';
-export type CurlsBotType = 'Straight fine' | 'Straight' | 'Straight coarse' | 'Wavy fine' | 'Wavy' | 'Loose curls' | 'Curly' | 'Very curly';
+export type CurlsBotType =
+  | 'Straight fine'
+  | 'Straight'
+  | 'Straight coarse'
+  | 'Wavy fine'
+  | 'Wavy'
+  | 'Loose curls'
+  | 'Curly'
+  | 'Very curly';
+export type WalkerType =
+  | '1a'
+  | '1b'
+  | '1c'
+  | '2a'
+  | '2b'
+  | '2c'
+  | '3a'
+  | '3b'
+  | '4a'
+  | '4b';
 export interface HairParameters {
   curlsBotType: CurlsBotType;
   versatility: VersatilityLevel;
@@ -29,23 +48,28 @@ export interface HairParameters {
   volume: VolumeLevel;
   commonType: CommonType;
   tangling: TanglingLevel;
+  WalkerType: WalkerType;
 }
 
 export const parameterDescriptions = {
   curlsBotType: {
     Straight: 'Straight hair',
-    'Straight coarse': 'Straight hair that behaves slightly differently due to the thickness of the strands',
-    'Wavy fine': 'Wavy hair, which is a type of highly variable curl pattern, combined with fine strands',
+    'Straight coarse':
+      'Straight hair that behaves slightly differently due to the thickness of the strands',
+    'Wavy fine':
+      'Wavy hair, which is a type of highly variable curl pattern, combined with fine strands',
     Wavy: 'Wavy hair, which is a type of highly variable curl pattern',
-    'Loose curls': 'Loose curls, which is a type of highly variable curl pattern',
+    'Loose curls':
+      'Loose curls, which is a type of highly variable curl pattern',
     Curly: 'Curly hair',
-    'Very curly': 'Very curly hair, may be a mixture of tight curls, coils, and kinks',
+    'Very curly':
+      'Very curly hair, may be a mixture of tight curls, coils, and kinks',
   },
   versatility: {
     low: "Your hair is a defined type and making it into another type would take chemical treatment. You don't have to worry about heavy products changing your hair type but they can still cause build up.",
     medium:
       'Your hair is easily styled into other types with heat, though make sure you use a heat protectant.',
-    high: 'Your hair might have many different types naturally but holding on to just one type is hard, curls/waves tend to loosen up during the day and straightened hair can get puffy. Avoid heavy products (with lots of oils and butters) that will weigh your hair down.',
+    high: 'Your hair might have many different types naturally but holding on to just one type is hard. Curls/waves tend to loosen up during the day and straightened hair can get puffy. Avoid heavy products (with lots of oils and butters) that will weigh your hair down.',
   },
   shrinkage: {
     none: 'Your hair is the same length wet or dry.',
@@ -89,7 +113,7 @@ export const parameterDescriptions = {
     'very high': 'Volume both vertical and horizontal',
   },
   commonType: {
-    '1a': 'In the common system pin this is usually 1a, the straightest hair',
+    '1a': 'In the common system this is usually 1a, the straightest hair',
     '1b To 1c': 'Anywhere from 1b to 1c depending on if there is a slight wave',
     '2a To 2c':
       'Anywhere from 2a to 2c depending how tight the waves are, with 2a being the loosest',
@@ -105,6 +129,18 @@ export const parameterDescriptions = {
     high: 'Your hair tangles easily',
     'very high':
       'Your hair tangles easily and can form single-strand knots that cause breakage',
+  },
+  WalkerType: {
+    '1a': 'Straight fine hair',
+    '1b': 'Straight medium-diameter hair',
+    '1c': 'Straight coarse hair',
+    '2a': 'Wavy fine hair',
+    '2b': 'Wavy medium-diameter hair',
+    '2c': 'Wavy coarse hair',
+    '3a': 'Loose curls',
+    '3b': 'Corkscrew curls',
+    '4a': 'Kinky hair',
+    '4b': 'Tight Coils to Z-Angled Coils',
   },
 } as const;
 
@@ -123,6 +159,7 @@ export const parameterDisplayNames = {
 export const hairTypeParameters: Record<string, HairParameters> = {
   '1a': {
     curlsBotType: 'Straight',
+    WalkerType: '1a',
     commonType: '1b To 1c',
     versatility: 'low',
     shrinkage: 'none',
@@ -134,6 +171,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
   },
   '1b': {
     curlsBotType: 'Straight',
+    WalkerType: '1b',
     commonType: '1b To 1c',
     versatility: 'medium',
     shrinkage: 'none',
@@ -145,6 +183,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
   },
   '1c': {
     curlsBotType: 'Straight coarse',
+    WalkerType: '1c',
     commonType: '1a',
     versatility: 'low',
     shrinkage: 'none',
@@ -156,6 +195,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
   },
   '2a': {
     curlsBotType: 'Wavy fine',
+    WalkerType: '2a',
     commonType: '2a To 2c',
     versatility: 'high',
     shrinkage: 'low',
@@ -167,6 +207,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
   },
   '2b': {
     curlsBotType: 'Wavy',
+    WalkerType: '2b',
     commonType: '2a To 2c',
     versatility: 'high',
     shrinkage: 'low',
@@ -178,6 +219,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
   },
   '2c': {
     curlsBotType: 'Wavy',
+    WalkerType: '2c',
     commonType: '2a To 2c',
     versatility: 'high',
     shrinkage: 'low',
@@ -189,6 +231,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
   },
   '3a': {
     curlsBotType: 'Loose curls',
+    WalkerType: '3a',
     commonType: '3a',
     versatility: 'medium',
     shrinkage: 'medium',
@@ -200,6 +243,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
   },
   '3b': {
     curlsBotType: 'Curly',
+    WalkerType: '3b',
     commonType: '3a To 3c',
     versatility: 'medium',
     shrinkage: 'medium',
@@ -211,6 +255,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
   },
   '3c': {
     curlsBotType: 'Very curly',
+    WalkerType: '3b',
     commonType: '3a To 3c',
     versatility: 'low',
     shrinkage: 'high',
@@ -222,6 +267,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
   },
   '4a': {
     curlsBotType: 'Very curly',
+    WalkerType: '4a',
     commonType: '4a To 4c',
     versatility: 'low',
     shrinkage: 'high',
@@ -234,6 +280,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
   '4b': {
     curlsBotType: 'Very curly',
     commonType: '4a To 4c',
+    WalkerType: '4b',
     versatility: 'low',
     shrinkage: 'high',
     strandThickness: 'any',
@@ -245,6 +292,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
   '4c': {
     curlsBotType: 'Very curly',
     commonType: '4a To 4c',
+    WalkerType: '4b',
     versatility: 'low',
     shrinkage: 'high',
     strandThickness: 'varies',

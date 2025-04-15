@@ -55,7 +55,7 @@ export default function QuizResultComponent({
                 The CurlsBot Guide to Type {result.type.toUpperCase()}
               </h1>
             </div>
-            <div className="flex gap-8">
+            <div className="space-y-8 lg:space-y-0 lg:flex lg:gap-8">
               <div className="lg:w-[400px]">
                 {/* Summary Section */}
                 <div className="bg-base-100 cb-card-lite">
@@ -121,9 +121,32 @@ export default function QuizResultComponent({
               </div>
               <div className="lg:flex-1">
                 <div className="space-y-8 md:flex-1">
+                  <h2 className="cb-header">
+                    {result.type.toUpperCase()} Hair Defined
+                  </h2>
                   {/* Andre Walker Type Section */}
                   <section>
                     <div className="md:flex md:gap-8 md:items-start">
+                      <div className="md:flex-1">
+                        <h3 className="text-xl font-bold mb-4">
+                          {result.parameters.WalkerType.toUpperCase()} in the
+                          Andre Walker system
+                        </h3>
+                        <p className="mb-4">
+                          Our quiz is loosely based on the original Andre Walker
+                          system created in the 1990s. It has a lot of flaws but
+                          it is still the most popular hair typing system. It is
+                          based on characteristics of hair. The Walker system
+                          defines {result.parameters.WalkerType.toUpperCase()}{' '}
+                          as{' '}
+                          {
+                            parameterDescriptions.WalkerType[
+                              result.parameters.WalkerType
+                            ]
+                          }
+                          .
+                        </p>
+                      </div>
                       <div className="md:w-1/2 lg:w-2/5">
                         <Image
                           src="/images/hair-types/andre-chart.jpg"
@@ -133,31 +156,28 @@ export default function QuizResultComponent({
                           className="rounded-lg mb-4 w-full"
                         />
                       </div>
-                      <div className="md:flex-1">
-                        <h2 className="text-xl font-bold mb-4">
-                          Andre Walker Hair Type: {result.type.toUpperCase()}
-                        </h2>
-                        <p className="mb-4">
-                          This is based on Andre Walker&apos;s original hair
-                          typing system and not the &quot;Common&quot; system
-                          used on most websites these days. You can read a
-                          comparison{' '}
-                          <a
-                            href="https://www.reddit.com/r/hairtype/comments/1jpq7x2/i_read_the_og_book_about_curl_typing_and_it_was/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="link"
-                          >
-                            here
-                          </a>
-                        </p>
-                      </div>
                     </div>
                   </section>
 
                   {/* Common Type Section */}
                   <section>
                     <div className="md:flex md:gap-8 md:items-start">
+                      <div className="md:flex-1">
+                        <h3 className="text-xl font-bold mb-4">
+                          {result.parameters.commonType} in the Common system
+                        </h3>
+                        <p className="mb-4">
+                          The common hair typing system is one you might see on
+                          social media. It involves comparing your hair&apos;s
+                          appearance to a chart. We don&apos;t use this system
+                          because people usually have multiple curl patterns.
+                          For example you may have patterns ranging from{' '}
+                          {result.parameters.commonType &&
+                            parameterDescriptions.commonType[
+                              result.parameters.commonType
+                            ]}
+                        </p>
+                      </div>
                       <div className="md:w-1/2 lg:w-2/5">
                         <Image
                           src="/images/hair-types/common-chart.png"
@@ -167,30 +187,23 @@ export default function QuizResultComponent({
                           className="rounded-lg mb-4 w-full"
                         />
                       </div>
-                      <div className="md:flex-1">
-                        <h2 className="text-xl font-bold mb-4">
-                          Common Type: {result.parameters.commonType}
-                        </h2>
-                        <p className="mb-4">
-                          This is the more commonly used hair typing system you
-                          might see on social media and product packaging.
-                        </p>
-                      </div>
                     </div>
                   </section>
-
                 </div>
               </div>
             </div>
             <div>
               {/* Parameter Descriptions */}
-              <section>
+              <section className="mt-8">
                 <h2 className="text-xl font-bold mb-4">
-                  Understanding Your Hair
+                  The Characteristics of {result.type.toUpperCase()} Hair
                 </h2>
                 <div className="space-y-4">
                   {Object.entries(result.parameters)
-                    .filter(([key]) => key !== 'commonType') // Skip commonType as it's shown above
+                    .filter(
+                      ([key]) =>
+                        key !== 'commonType' && key !== 'WalkerType' // Skip commonType and walker type as it's shown above
+                    )
                     .map(([parameter, value]) => (
                       <div key={parameter} className="space-y-2">
                         <h3 className="font-semibold">
