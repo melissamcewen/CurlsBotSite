@@ -92,7 +92,30 @@ export default function QuizResultComponent({
                         </div>
                       ))}
                   </div>
-
+                  {/* Sister Types Section */}
+                  {result.parameters.sisterTypes &&
+                    result.parameters.sisterTypes.length > 0 && (
+                      <section className="mt-6 pt-6 border-t border-base-300">
+                        <h3 className="text-xl font-bold mb-4">
+                          Similar Hair Types
+                        </h3>
+                        <p className="mb-4">
+                          Hair typing isn&apos;t an exact science. Your hair
+                          might share characteristics with these types:
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {result.parameters.sisterTypes.map((type) => (
+                            <Link
+                              key={type}
+                              href={`/hair-types/quiz/${type.toLowerCase()}`}
+                              className="btn btn-primary btn-sm"
+                            >
+                              Type {type.toUpperCase()}
+                            </Link>
+                          ))}
+                        </div>
+                      </section>
+                    )}
                   {/* Feedback Section */}
                   {showFeedback && (
                     <div className="mt-6 pt-6 border-t border-base-300">
@@ -197,31 +220,6 @@ export default function QuizResultComponent({
                       </div>
                     </div>
                   </section>
-
-                  {/* Sister Types Section */}
-                  {result.parameters.sisterTypes &&
-                    result.parameters.sisterTypes.length > 0 && (
-                      <section>
-                        <h3 className="text-xl font-bold mb-4">
-                          Similar Hair Types
-                        </h3>
-                        <p className="mb-4">
-                          Hair typing isn&apos;t an exact science. Your hair
-                          might share characteristics with these types:
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                          {result.parameters.sisterTypes.map((type) => (
-                            <Link
-                              key={type}
-                              href={`/hair-types/quiz/${type.toLowerCase()}`}
-                              className="btn btn-primary btn-sm"
-                            >
-                              Type {type.toUpperCase()}
-                            </Link>
-                          ))}
-                        </div>
-                      </section>
-                    )}
                 </div>
               </div>
             </div>
