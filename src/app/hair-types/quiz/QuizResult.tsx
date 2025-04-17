@@ -8,6 +8,8 @@ import {
   parameterDisplayNames,
   capitalizeValue,
   type QuizResult,
+  type WalkerType,
+  type CommonType,
 } from './quizData';
 import { useState } from 'react';
 
@@ -68,7 +70,9 @@ export default function QuizResultComponent({
                       .filter(
                         ([key]) =>
                           key !== 'commonType' &&
-                          key !== 'WalkerType' // Skip commonType and walker type as it's shown above
+                          key !== 'WalkerType' &&
+                          key !== 'sisterTypes' &&
+                          key in parameterDescriptions,
                       )
                       .map(([parameter, value]) => (
                         <div
@@ -145,7 +149,7 @@ export default function QuizResultComponent({
                           as{' '}
                           {
                             parameterDescriptions.WalkerType[
-                              result.parameters.WalkerType
+                              result.parameters.WalkerType as WalkerType
                             ]
                           }
                           .
@@ -178,7 +182,7 @@ export default function QuizResultComponent({
                           For example you may have patterns ranging from{' '}
                           {result.parameters.commonType &&
                             parameterDescriptions.commonType[
-                              result.parameters.commonType
+                              result.parameters.commonType as CommonType
                             ]}
                         </p>
                       </div>
@@ -193,6 +197,31 @@ export default function QuizResultComponent({
                       </div>
                     </div>
                   </section>
+
+                  {/* Sister Types Section */}
+                  {result.parameters.sisterTypes &&
+                    result.parameters.sisterTypes.length > 0 && (
+                      <section>
+                        <h3 className="text-xl font-bold mb-4">
+                          Similar Hair Types
+                        </h3>
+                        <p className="mb-4">
+                          Hair typing isn&apos;t an exact science. Your hair
+                          might share characteristics with these types:
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {result.parameters.sisterTypes.map((type) => (
+                            <Link
+                              key={type}
+                              href={`/hair-types/quiz/${type.toLowerCase()}`}
+                              className="btn btn-primary btn-sm"
+                            >
+                              Type {type.toUpperCase()}
+                            </Link>
+                          ))}
+                        </div>
+                      </section>
+                    )}
                 </div>
               </div>
             </div>
@@ -206,7 +235,10 @@ export default function QuizResultComponent({
                   {Object.entries(result.parameters)
                     .filter(
                       ([key]) =>
-                        key !== 'commonType' && key !== 'WalkerType' // Skip commonType and walker type as it's shown above
+                        key !== 'commonType' &&
+                        key !== 'WalkerType' &&
+                        key !== 'sisterTypes' &&
+                        key in parameterDescriptions,
                     )
                     .map(([parameter, value]) => (
                       <div key={parameter} className="space-y-2">

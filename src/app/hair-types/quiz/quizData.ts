@@ -41,3 +41,20 @@ export const resultMapping: { [key: string]: string } = {
   '4b': '/hair-types/type-4b',
   '4c': '/hair-types/type-4c',
 };
+
+export interface QuizResult {
+  type: string;
+  parameters: {
+    curlsBotType: CurlsBotType;
+    versatility: VersatilityLevel;
+    shrinkage: ShrinkageLevel;
+    strandThickness: StrandThickness;
+    curvature: CurvatureType;
+    shapes: ShapeType;
+    volume: VolumeLevel;
+    commonType: CommonType;
+    tangling: TanglingLevel;
+    WalkerType: WalkerType;
+    sisterTypes: SisterTypes[];
+  };
+}

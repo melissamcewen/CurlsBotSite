@@ -12,10 +12,10 @@ export type ShapeType = 'none' | 'curved' | 'angled' | 'varies';
 export type VolumeLevel = 'low' | 'medium' | 'high' | 'very high';
 export type CommonType =
   | '1a'
-  | '1b To 1c'
-  | '2a To 2c'
-  | '3a To 3c'
-  | '4a To 4c'
+  | '1b to 1c'
+  | '2a to 3a'
+  | '3a to 3c'
+  | '4a to 4c'
   | '3a';
 export type TanglingLevel = 'low' | 'medium' | 'high' | 'very high';
 export type CurlsBotType =
@@ -38,6 +38,19 @@ export type WalkerType =
   | '3b'
   | '4a'
   | '4b';
+export type SisterTypes =
+  | '1a'
+  | '1b'
+  | '1c'
+  | '2a'
+  | '2b'
+  | '2c'
+  | '3a'
+  | '3b'
+  | '3c'
+  | '4a'
+  | '4b'
+  | '4c';
 export interface HairParameters {
   curlsBotType: CurlsBotType;
   versatility: VersatilityLevel;
@@ -49,6 +62,7 @@ export interface HairParameters {
   commonType: CommonType;
   tangling: TanglingLevel;
   WalkerType: WalkerType;
+  sisterTypes: SisterTypes[];
 }
 
 export const parameterDescriptions = {
@@ -114,12 +128,12 @@ export const parameterDescriptions = {
   },
   commonType: {
     '1a': 'In the common system this is usually 1a, the straightest hair',
-    '1b To 1c': 'Anywhere from 1b to 1c depending on if there is a slight wave',
-    '2a To 2c':
-      'Anywhere from 2a to 2c depending how tight the waves are, with 2a being the loosest',
-    '3a To 3c':
+    '1b to 1c': 'Anywhere from 1b to 1c depending on if there is a slight wave',
+    '2a to 3a':
+      'Anywhere from 2a to 3a depending how tight the waves are, with 2a being the loosest',
+    '3a to 3c':
       'Anywhere from 3a to 3c depending how tight the curls are, with 3c being the tightest',
-    '4a To 4c':
+    '4a to 4c':
       'Anywhere from 4a to 4c depending how tight the coils and kinks are, with 4c being the tightest',
     '3a': 'This is one of the hair types where the Common type is the same as the Walker type',
   },
@@ -160,7 +174,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
   '1a': {
     curlsBotType: 'Straight',
     WalkerType: '1a',
-    commonType: '1b To 1c',
+    commonType: '1b to 1c',
     versatility: 'low',
     shrinkage: 'none',
     strandThickness: 'small',
@@ -168,11 +182,12 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     volume: 'low',
     shapes: 'none',
     tangling: 'medium',
+    sisterTypes: ['1b', '2a'],
   },
   '1b': {
     curlsBotType: 'Straight',
     WalkerType: '1b',
-    commonType: '1b To 1c',
+    commonType: '1b to 1c',
     versatility: 'medium',
     shrinkage: 'none',
     strandThickness: 'medium',
@@ -180,6 +195,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     volume: 'medium',
     shapes: 'none',
     tangling: 'low',
+    sisterTypes: ['2b'],
   },
   '1c': {
     curlsBotType: 'Straight coarse',
@@ -192,11 +208,12 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     volume: 'low',
     shapes: 'none',
     tangling: 'low',
+    sisterTypes: [],
   },
   '2a': {
     curlsBotType: 'Wavy fine',
     WalkerType: '2a',
-    commonType: '2a To 2c',
+    commonType: '2a to 3a',
     versatility: 'high',
     shrinkage: 'low',
     strandThickness: 'small',
@@ -204,11 +221,12 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     volume: 'low',
     shapes: 'curved',
     tangling: 'medium',
+    sisterTypes: ['1b', '2b', '3a'],
   },
   '2b': {
     curlsBotType: 'Wavy',
     WalkerType: '2b',
-    commonType: '2a To 2c',
+    commonType: '2a to 3a',
     versatility: 'high',
     shrinkage: 'low',
     strandThickness: 'medium',
@@ -216,11 +234,12 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     volume: 'medium',
     shapes: 'curved',
     tangling: 'medium',
+    sisterTypes: ['1b', '2a', '2c', '3a'],
   },
   '2c': {
     curlsBotType: 'Wavy',
     WalkerType: '2c',
-    commonType: '2a To 2c',
+    commonType: '2a to 3a',
     versatility: 'high',
     shrinkage: 'low',
     strandThickness: 'large',
@@ -228,6 +247,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     volume: 'medium',
     shapes: 'curved',
     tangling: 'medium',
+    sisterTypes: ['1b', '2b', '3a'],
   },
   '3a': {
     curlsBotType: 'Loose curls',
@@ -240,11 +260,12 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     volume: 'medium',
     shapes: 'curved',
     tangling: 'high',
+    sisterTypes: ['2a', '2b', '2c', '3b'],
   },
   '3b': {
     curlsBotType: 'Curly',
     WalkerType: '3b',
-    commonType: '3a To 3c',
+    commonType: '3a to 3c',
     versatility: 'medium',
     shrinkage: 'medium',
     strandThickness: 'any',
@@ -252,11 +273,12 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     volume: 'medium',
     shapes: 'curved',
     tangling: 'high',
+    sisterTypes: ['3a', '3c'],
   },
   '3c': {
     curlsBotType: 'Very curly',
     WalkerType: '3b',
-    commonType: '3a To 3c',
+    commonType: '3a to 3c',
     versatility: 'low',
     shrinkage: 'high',
     strandThickness: 'any',
@@ -264,11 +286,12 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     volume: 'high',
     shapes: 'curved',
     tangling: 'very high',
+    sisterTypes: ['3b', '4a'],
   },
   '4a': {
     curlsBotType: 'Very curly',
     WalkerType: '4a',
-    commonType: '4a To 4c',
+    commonType: '4a to 4c',
     versatility: 'low',
     shrinkage: 'high',
     strandThickness: 'any',
@@ -276,10 +299,11 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     volume: 'high',
     shapes: 'curved',
     tangling: 'very high',
+    sisterTypes: ['3c', '4b'],
   },
   '4b': {
     curlsBotType: 'Very curly',
-    commonType: '4a To 4c',
+    commonType: '4a to 4c',
     WalkerType: '4b',
     versatility: 'low',
     shrinkage: 'high',
@@ -288,10 +312,11 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     volume: 'very high',
     shapes: 'angled',
     tangling: 'very high',
+    sisterTypes: ['3c', '4a', '4c'],
   },
   '4c': {
     curlsBotType: 'Very curly',
-    commonType: '4a To 4c',
+    commonType: '4a to 4c',
     WalkerType: '4b',
     versatility: 'low',
     shrinkage: 'high',
@@ -300,10 +325,15 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     shapes: 'varies',
     volume: 'very high',
     tangling: 'very high',
+    sisterTypes: ['4a', '4b'],
   },
 };
 
-export const capitalizeValue = (value: string) => {
+export const capitalizeValue = (value: unknown): string => {
+  if (typeof value !== 'string') {
+    return String(value);
+  }
+
   if (value.includes(' ')) {
     // Handle multi-word values like "very high" or "extra small"
     return value
