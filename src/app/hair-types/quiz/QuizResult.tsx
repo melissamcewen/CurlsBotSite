@@ -65,7 +65,11 @@ export default function QuizResultComponent({
                   </h2>
                   <div className="flex flex-col gap-2">
                     {Object.entries(result.parameters)
-                      .filter(([key]) => key !== 'commonType') // Skip commonType as it's shown above
+                      .filter(
+                        ([key]) =>
+                          key !== 'commonType' &&
+                          key !== 'WalkerType' // Skip commonType and walker type as it's shown above
+                      )
                       .map(([parameter, value]) => (
                         <div
                           key={parameter}
