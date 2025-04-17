@@ -10,6 +10,7 @@ import {
   type QuizResult,
   type WalkerType,
   type CommonType,
+  CurlsBotType,
 } from './quizData';
 import { useState } from 'react';
 
@@ -57,108 +58,33 @@ export default function QuizResultComponent({
                 The CurlsBot Guide to Type {result.type.toUpperCase()}
               </h1>
             </div>
-            <div className="space-y-8 lg:space-y-0 lg:flex lg:gap-8">
-              <div className="lg:w-[400px]">
+            <div className="">
+              <div className="grid grid-cols-1 md:grid-cols-2  gap-4">
                 {/* Summary Section */}
-                <div className="bg-base-100 cb-card-lite">
-                  <h2 className="cb-header">
+                <div className="bg-base-100 cb-card-lite md:col-span-2">
+                  <h2 className="font-bold text-xl">
                     CurlsBot thinks you may have{' '}
-                    {result.parameters.curlsBotType} hair
+                    <span className="font-bold text-primary">
+                      {result.parameters.curlsBotType}
+                    </span>
                   </h2>
-                  <div className="flex flex-col gap-2">
-                    {Object.entries(result.parameters)
-                      .filter(
-                        ([key]) =>
-                          key !== 'commonType' &&
-                          key !== 'WalkerType' &&
-                          key !== 'sisterTypes' &&
-                          key in parameterDescriptions,
-                      )
-                      .map(([parameter, value]) => (
-                        <div
-                          key={parameter}
-                          className="flex items-center justify-between gap-4 text-sm"
-                        >
-                          <div className="font-semibold">
-                            {
-                              parameterDisplayNames[
-                                parameter as keyof typeof parameterDisplayNames
-                              ]
-                            }
-                          </div>
-                          <div className="text-right">
-                            {capitalizeValue(value)}
-                          </div>
-                        </div>
-                      ))}
-                  </div>
-                  {/* Sister Types Section */}
-                  {result.parameters.sisterTypes &&
-                    result.parameters.sisterTypes.length > 0 && (
-                      <section className="mt-6 pt-6 border-t border-base-300">
-                        <h3 className="text-xl font-bold mb-4">
-                          Similar Hair Types
-                        </h3>
-                        <p className="mb-4">
-                          Hair typing isn&apos;t an exact science. Your hair
-                          might share characteristics with these types:
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                          {result.parameters.sisterTypes.map((type) => (
-                            <Link
-                              key={type}
-                              href={`/hair-types/quiz/${type.toLowerCase()}`}
-                              className="btn btn-primary btn-sm"
-                            >
-                              Type {type.toUpperCase()}
-                            </Link>
-                          ))}
-                        </div>
-                      </section>
-                    )}
-                  {/* Feedback Section */}
-                  {showFeedback && (
-                    <div className="mt-6 pt-6 border-t border-base-300">
-                      <h3 className="font-bold mb-4">Help Us Improve</h3>
-                      {!feedbackGiven ? (
-                        <div className="space-y-4">
-                          <p>Does this match your hair type?</p>
-                          <div className="flex gap-4">
-                            <button
-                              onClick={() => handleFeedback(true)}
-                              className="btn btn-primary flex-1 gap-2"
-                            >
-                              <CheckCircle className="w-5 h-5" />
-                              Yes
-                            </button>
-                            <button
-                              onClick={() => handleFeedback(false)}
-                              className="btn btn-primary flex-1 gap-2"
-                            >
-                              <XCircle className="w-5 h-5" />
-                              No
-                            </button>
-                          </div>
-                        </div>
-                      ) : (
-                        <div className="flex items-center gap-2">
-                          <CheckCircle className="w-5 h-5 text-success" />
-                          <p>Thanks for your feedback!</p>
-                        </div>
-                      )}
-                    </div>
-                  )}
+                  <p className="mb-4">
+                    {
+                      parameterDescriptions.curlsBotType[
+                        result.parameters
+                          .curlsBotType as keyof typeof parameterDescriptions.curlsBotType
+                      ]
+                    }
+                  </p>
                 </div>
-              </div>
-              <div className="lg:flex-1">
-                <div className="space-y-8 md:flex-1">
-                  <h2 className="cb-header">
-                    {result.type.toUpperCase()} Hair Defined
-                  </h2>
+
+                {/* cards for other type systems */}
+                <div className="bg-base-100 cb-card-lite">
+                  {/* Andre Walker Type Section */}
                   {/* Andre Walker Type Section */}
                   <section>
-                    <div className="md:flex md:gap-8 md:items-start">
-                      <div className="md:flex-1">
+                    <div className="">
+                      <div className="">
                         <h3 className="text-xl font-bold mb-4">
                           {result.parameters.WalkerType.toUpperCase()} in the
                           Andre Walker system
@@ -178,7 +104,7 @@ export default function QuizResultComponent({
                           .
                         </p>
                       </div>
-                      <div className="md:w-1/2 lg:w-2/5">
+                      <div className="">
                         <Image
                           src="/images/hair-types/andre-chart.jpg"
                           alt="Andre Walker Hair Type Chart"
@@ -189,27 +115,29 @@ export default function QuizResultComponent({
                       </div>
                     </div>
                   </section>
-
+                </div>
+                {/* cards for other type systems */}
+                <div className="bg-base-100 cb-card-lite">
                   {/* Common Type Section */}
                   <section>
-                    <div className="md:flex md:gap-8 md:items-start">
-                      <div className="md:flex-1">
+                    <div className="">
+                      <div className="">
                         <h3 className="text-xl font-bold mb-4">
                           {result.parameters.commonType} in the Common system
                         </h3>
                         <p className="mb-4">
                           The common hair typing system is one you might see on
                           social media. It involves comparing your hair&apos;s
-                          appearance to a chart. We don&apos;t use this system
-                          because people usually have multiple curl patterns.
-                          For example you may have patterns ranging from{' '}
+                          appearance to a chart. We&apos;d don&apos;t use this
+                          system because people usually have multiple curl
+                          patterns.{' '}
                           {result.parameters.commonType &&
                             parameterDescriptions.commonType[
                               result.parameters.commonType as CommonType
                             ]}
                         </p>
                       </div>
-                      <div className="md:w-1/2 lg:w-2/5">
+                      <div className="">
                         <Image
                           src="/images/hair-types/common-chart.png"
                           alt="Common Hair Type Chart"
@@ -221,46 +149,101 @@ export default function QuizResultComponent({
                     </div>
                   </section>
                 </div>
-              </div>
-            </div>
-            <div>
-              {/* Parameter Descriptions */}
-              <section className="mt-8">
-                <h2 className="text-xl font-bold mb-4">
-                  The Characteristics of {result.type.toUpperCase()} Hair
-                </h2>
-                <div className="space-y-4">
-                  {Object.entries(result.parameters)
-                    .filter(
-                      ([key]) =>
-                        key !== 'commonType' &&
-                        key !== 'WalkerType' &&
-                        key !== 'sisterTypes' &&
-                        key in parameterDescriptions,
-                    )
-                    .map(([parameter, value]) => (
-                      <div key={parameter} className="space-y-2">
+                {/* Parameter Cards */}
+                {Object.entries(result.parameters)
+                  .filter(
+                    ([key]) =>
+                      key !== 'commonType' &&
+                      key !== 'WalkerType' &&
+                      key !== 'sisterTypes' &&
+                      key !== 'curlsBotType' &&
+                      key in parameterDescriptions,
+                  )
+                  .map(([parameter, value]) => (
+                    <div key={parameter} className="bg-base-100 cb-card-lite">
+                      <div className="flex items-center justify-between">
                         <h3 className="font-semibold">
                           {
                             parameterDisplayNames[
                               parameter as keyof typeof parameterDisplayNames
                             ]
                           }
-                          : {capitalizeValue(value)}
                         </h3>
-                        <p>
-                          {
-                            parameterDescriptions[
-                              parameter as keyof typeof parameterDescriptions
-                            ][
-                              value as keyof (typeof parameterDescriptions)[keyof typeof parameterDescriptions]
-                            ]
-                          }
-                        </p>
+                        <div className="badge badge-primary">
+                          {capitalizeValue(value)}
+                        </div>
                       </div>
-                    ))}
-                </div>
-              </section>
+                      <p className="mt-2 text-sm">
+                        {
+                          parameterDescriptions[
+                            parameter as keyof typeof parameterDescriptions
+                          ][
+                            value as keyof (typeof parameterDescriptions)[keyof typeof parameterDescriptions]
+                          ]
+                        }
+                      </p>
+                    </div>
+                  ))}
+
+                {/* Sister Types Card */}
+                {result.parameters.sisterTypes &&
+                  result.parameters.sisterTypes.length > 0 && (
+                    <div className="bg-base-100 cb-card-lite md:col-span-2">
+                      <h3 className="font-bold mb-4">Similar Hair Types</h3>
+                      <p className="mb-4 text-sm">
+                        Hair typing isn&apos;t an exact science. Your hair might
+                        share characteristics with these types:
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {result.parameters.sisterTypes.map((type) => (
+                          <Link
+                            key={type}
+                            href={`/hair-types/quiz/${type.toLowerCase()}`}
+                            className="btn btn-primary btn-sm"
+                          >
+                            Type {type.toUpperCase()}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                {/* Feedback Card */}
+                {showFeedback && (
+                  <div className="bg-base-100 cb-card-lite md:col-span-2">
+                    <h3 className="font-bold mb-4">Help Us Improve</h3>
+                    {!feedbackGiven ? (
+                      <div className="space-y-4">
+                        <p>Does this match your hair type?</p>
+                        <div className="flex gap-4">
+                          <button
+                            onClick={() => handleFeedback(true)}
+                            className="btn btn-primary flex-1 gap-2"
+                          >
+                            <CheckCircle className="w-5 h-5" />
+                            Yes
+                          </button>
+                          <button
+                            onClick={() => handleFeedback(false)}
+                            className="btn btn-primary flex-1 gap-2"
+                          >
+                            <XCircle className="w-5 h-5" />
+                            No
+                          </button>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="flex items-center gap-2">
+                        <CheckCircle className="w-5 h-5 text-success" />
+                        <p>Thanks for your feedback!</p>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
+            <div>
+
             </div>
           </article>
         </div>
