@@ -116,8 +116,8 @@ export const parameterDescriptions = {
   },
   shapes: {
     none: 'Your hair is straight and doesn\'t have much or any wave',
-    curved: 'Your hair has curly waves and/or curls',
-    angled: 'Your hair may have an angledzig-zag pattern',
+    curved: 'Your hair has waves and/or curls',
+    angled: 'Your hair may have an angled zig-zag pattern',
     varies:
       'Your hair is likely a mixture of angles and curves, can naturally form interlocking styles like locs/twists',
   },
