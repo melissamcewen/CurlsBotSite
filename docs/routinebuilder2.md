@@ -16,7 +16,6 @@ Use DaisyUI colors
 
 Old files
 DO NOT TOUCH if you need to make changes copy the file and rename it
-- Product listing component src/components/ui/product/ProductCard.tsx
 - Filtering src/lib/productFiltering.ts
 - Routine Builder src/lib/routineBuilder.ts
   Also DO NOT TOUCH old test files, all old files will remain in use in other parts of the site

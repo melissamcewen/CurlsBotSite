@@ -13,6 +13,7 @@ import {
   CurlsBotType,
 } from './quizData';
 import { useState } from 'react';
+import HairRoutine from '@/components/routine/HairRoutine';
 
 declare global {
   interface Window {
@@ -240,10 +241,14 @@ export default function QuizResultComponent({
                     )}
                   </div>
                 )}
+                {/* Routine Card */}
+                <div className="md:col-span-2">
+                  <HairRoutine
+                    hairType={`${result.parameters.curlsBotType.toLowerCase()}`}
+                    initialPorosity="normal_porosity"
+                  />
+                </div>
               </div>
-            </div>
-            <div>
-
             </div>
           </article>
         </div>
