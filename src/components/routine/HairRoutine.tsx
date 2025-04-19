@@ -10,7 +10,6 @@ import {
 import { getBundledProducts } from 'haircare-ingredients-analyzer';
 import type { Product } from 'haircare-ingredients-analyzer';
 import { useLocalization } from '@/contexts/LocalizationContext';
-import { filterProducts } from '@/lib/productFiltering';
 import type { CountryCode } from '@/lib/countryDetection';
 
 // Define internal types rather than importing from routineBuilder
@@ -36,6 +35,21 @@ export type ProductCategory =
   | 'sprays'
   | 'accessories';
 
+// Score thresholds for porosity (copied from porosity.ts)
+const POROSITY_THRESHOLDS = {
+  HIGH_POROSITY: 70, // Score needed to be considered good for high porosity
+  LOW_POROSITY: 70, // Score needed to be considered good for low porosity
+};
+
+// Categories that should not use porosity filtering (copied from porosity.ts)
+const POROSITY_EXEMPT_CATEGORIES: ProductCategory[] = [
+  'deep_conditioners',
+  'pre-poo',
+  'clarifying_shampoos',
+  'accessories',
+  'oils',
+];
+
 interface HairRoutineProps {
   hairType?: string;
   initialPorosity?: PorosityType;
@@ -56,6 +70,94 @@ const CURL_WAVE_KEYWORDS = ['curl', 'curls', 'curly', 'wave', 'waves', 'wavy'];
 // Do not restrict categories by porosity - this creates unnecessary limitations
 // Products that might traditionally be "too heavy" can work for low porosity hair when applied in the right amount
 // Products that might traditionally be "too light" can work for high porosity hair as a base layer
+
+// Filter products function implemented directly in the component
+function filterProductsInComponent(
+  products: Product[],
+  options: {
+    country: string;
+    category: string;
+    requireFeatured: boolean;
+    analysisFilters: {
+      cgmApproved: boolean;
+      frizzResistant: boolean;
+      lightweight: boolean;
+      highPorosity: boolean;
+      lowPorosity: boolean;
+    };
+  },
+): Product[] {
+  return products.filter((product) => {
+    // Country filter
+    if (options.country !== 'all') {
+      const hasCountry = product.buy_links?.some(
+        (link) => (link.country || 'US') === options.country,
+      );
+      if (!hasCountry) return false;
+    }
+
+    // Category filter
+    if (options.category !== 'all') {
+      if (!product.product_categories?.includes(options.category)) return false;
+    }
+
+    // Analysis-based filters - using AND logic
+    if (options.analysisFilters.cgmApproved && product.status !== 'ok') {
+      return false;
+    }
+
+    // Skip porosity filters for exempt categories
+    if (
+      options.category !== 'all' &&
+      POROSITY_EXEMPT_CATEGORIES.includes(options.category as ProductCategory)
+    ) {
+      return true;
+    }
+
+    // Porosity filters from analysis
+    const porosityScores = product.extensions?.porosity;
+    if (porosityScores) {
+      // High porosity products have high score >= threshold
+      if (
+        options.analysisFilters.highPorosity &&
+        porosityScores.high < POROSITY_THRESHOLDS.HIGH_POROSITY
+      ) {
+        return false;
+      }
+      // Low porosity products have low score >= threshold
+      if (
+        options.analysisFilters.lowPorosity &&
+        porosityScores.low < POROSITY_THRESHOLDS.LOW_POROSITY
+      ) {
+        return false;
+      }
+      // Lightweight products are a little bit different from low porosity set right now to low porosity - 20
+      if (
+        options.analysisFilters.lightweight &&
+        porosityScores.low < (POROSITY_THRESHOLDS.LOW_POROSITY - 20)
+      ) {
+        return false;
+      }
+    } else if (
+      options.analysisFilters.highPorosity ||
+      options.analysisFilters.lowPorosity ||
+      options.analysisFilters.lightweight
+    ) {
+      // If any porosity filter is active but product has no porosity scores, exclude it
+      return false;
+    }
+
+    // Frizz resistance filter
+    const frizzScore = product.extensions?.frizzbot?.score;
+    if (options.analysisFilters.frizzResistant) {
+      if (!frizzScore || frizzScore > -50) {
+        return false;
+      }
+    }
+
+    return true;
+  });
+}
 
 export default function HairRoutine({
   hairType,
@@ -87,16 +189,6 @@ export default function HairRoutine({
   const [routineProducts, setRoutineProducts] =
     useState<Record<string, Product | null>>(initialProducts);
 
-  // Map our UI categories to product categories from the API
-  const categoryMapping: Record<string, ProductCategory | ProductCategory[]> = {
-    shampoo: 'shampoos',
-    conditioner: 'conditioners',
-    ...(isStraightHair ? {} : { leaveIn: 'leave_ins' }),
-    styler: isStraightHair
-      ? 'oils' // For straight hair types, only use oils as stylers
-      : ['creams', 'foams', 'custards', 'gels', 'oils', 'sprays'],
-  };
-
   useEffect(() => {
     // Function to get a single random product for a category with a description
     const getRandomProductForCategory = (
@@ -116,7 +208,7 @@ export default function HairRoutine({
         while (filteredProducts.length === 0 && attempts < category.length) {
           const selectedCategory = category[categoryIndex];
 
-          filteredProducts = filterProducts(
+          filteredProducts = filterProductsInComponent(
             Object.values(bundledProducts.products),
             {
               country,
@@ -144,7 +236,7 @@ export default function HairRoutine({
         }
       } else {
         // Single category case
-        filteredProducts = filterProducts(
+        filteredProducts = filterProductsInComponent(
           Object.values(bundledProducts.products),
           {
             country,

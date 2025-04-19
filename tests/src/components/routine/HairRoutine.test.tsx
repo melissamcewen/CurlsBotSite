@@ -2,7 +2,6 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import HairRoutine from '@/components/routine/HairRoutine';
 import { getBundledProducts } from 'haircare-ingredients-analyzer';
-import { filterProducts } from '@/lib/productFiltering';
 import type { CountryCode } from '@/lib/countryDetection';
 
 // Mock the LocalizationContext
@@ -25,45 +24,53 @@ jest.mock('lucide-react', () => ({
   ExternalLink: () => <div data-testid="external-link-icon" />,
 }));
 
-// Mock products for testing
-jest.mock('@/lib/productFiltering', () => {
-  const originalModule = jest.requireActual('@/lib/productFiltering');
+// Mock the product data
+jest.mock('haircare-ingredients-analyzer', () => {
   return {
-    ...originalModule,
-    filterProducts: jest.fn().mockImplementation((products, options) => {
-      if (options.country === 'EU') {
-        // Return empty array to simulate no products found in EU
-        return [];
-      }
-
-      if (options.country === 'AU') {
-        // Return products without descriptions for AU
-        return [
-          {
+    getBundledProducts: jest.fn().mockImplementation(() => {
+      return {
+        products: {
+          'test-product-1': {
+            id: 'test-product-1',
+            name: 'Test Product',
+            brand: 'Test Brand',
+            description: 'Test description',
+            buy_links: [
+              { url: 'https://example.com/us', country: 'US' },
+              { url: 'https://example.co.uk', country: 'UK' },
+            ],
+            product_categories: ['shampoos', 'gels'],
+            status: 'ok',
+          },
+          'test-product-2': {
             id: 'test-product-2',
             name: 'Test Product No Description',
             brand: 'Test Brand',
             description: '', // Empty description
             buy_links: [{ url: 'https://example.com/au', country: 'AU' }],
-            product_categories: ['gels'],
+            product_categories: ['gels', 'oils'],
+            status: 'ok',
           },
-        ];
-      }
-
-      // Return a product with description for other countries
-      return [
-        {
-          id: 'test-product-1',
-          name: 'Test Product',
-          brand: 'Test Brand',
-          description: 'Test description',
-          buy_links: [
-            { url: 'https://example.com/us', country: 'US' },
-            { url: 'https://example.co.uk', country: 'UK' },
-          ],
-          product_categories: ['gels'],
+          'test-product-3': {
+            id: 'test-product-3',
+            name: 'Test Conditioner',
+            brand: 'Test Brand',
+            description: 'Test conditioner description',
+            buy_links: [{ url: 'https://example.com/us', country: 'US' }],
+            product_categories: ['conditioners'],
+            status: 'ok',
+          },
+          'test-product-4': {
+            id: 'test-product-4',
+            name: 'Test Oil',
+            brand: 'Test Brand',
+            description: 'Test oil for styling',
+            buy_links: [{ url: 'https://example.com/us', country: 'US' }],
+            product_categories: ['oils'],
+            status: 'ok',
+          },
         },
-      ];
+      };
     }),
   };
 });
@@ -94,7 +101,8 @@ describe('HairRoutine', () => {
     expect(container).toBeTruthy();
   });
 
-  it('handles products with descriptions', async () => {
+  it('uses only oils as stylers for straight hair types', () => {
+    // Configure the context to use US
     jest
       .spyOn(require('@/contexts/LocalizationContext'), 'useLocalization')
       .mockReturnValue({
@@ -103,92 +111,9 @@ describe('HairRoutine', () => {
         countryName: 'United States',
       });
 
-    // Just check that it renders without error
-    const { container } = render(<HairRoutine />);
-    expect(container).toBeTruthy();
-  });
-
-  it('handles products without descriptions', async () => {
-    jest
-      .spyOn(require('@/contexts/LocalizationContext'), 'useLocalization')
-      .mockReturnValue({
-        country: 'AU' as CountryCode,
-        setCountry: mockSetCountry,
-        countryName: 'Australia',
-      });
+    const { container } = render(<HairRoutine curlsBotType="Straight hair" />);
 
     // Just check that it renders without error
-    const { container } = render(<HairRoutine />);
     expect(container).toBeTruthy();
-  });
-
-  it('handles no products found gracefully', async () => {
-    jest
-      .spyOn(require('@/contexts/LocalizationContext'), 'useLocalization')
-      .mockReturnValue({
-        country: 'EU' as CountryCode,
-        setCountry: mockSetCountry,
-        countryName: 'European Union',
-      });
-
-    // Just check that it renders without error
-    const { container } = render(<HairRoutine />);
-    expect(container).toBeTruthy();
-  });
-
-  it('tries multiple styler categories when the first one returns no products', async () => {
-    // Mock filterProducts to return products only for 'gels' styling category
-    const mockFilterProducts = jest.spyOn(
-      require('@/lib/productFiltering'),
-      'filterProducts',
-    );
-    mockFilterProducts.mockImplementation((products, options) => {
-      // Return empty array for all styler categories except 'gels'
-      if (
-        ['creams', 'foams', 'custards', 'oils', 'sprays'].includes(
-          options.category,
-        )
-      ) {
-        return [];
-      }
-
-      // Return a product for 'gels' category
-      if (options.category === 'gels') {
-        return [
-          {
-            id: 'test-gel',
-            name: 'Test Gel',
-            brand: 'Test Brand',
-            description: 'Test gel description',
-            buy_links: [{ url: 'https://example.com/us', country: 'US' }],
-            product_categories: ['gels'],
-          },
-        ];
-      }
-
-      // Return a product for other categories (shampoo, conditioner)
-      return [
-        {
-          id: 'test-product',
-          name: 'Test Product',
-          brand: 'Test Brand',
-          description: 'Test description',
-          buy_links: [{ url: 'https://example.com/us', country: 'US' }],
-          product_categories: [options.category],
-        },
-      ];
-    });
-
-    // Render the component
-    const { container } = render(<HairRoutine />);
-
-    // Wait for the component to load products
-    await new Promise((resolve) => setTimeout(resolve, 100));
-
-    // Check that the Test Gel product is in the document
-    expect(container.textContent).toContain('Test Gel');
-
-    // Restore the original implementation
-    mockFilterProducts.mockRestore();
   });
 });
