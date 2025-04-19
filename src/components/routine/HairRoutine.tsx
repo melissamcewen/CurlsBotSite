@@ -14,7 +14,7 @@ import {
   type ProductCategory,
   type CountryCode,
 } from '@/lib/routineBuilder';
-import { getCountryFromHostname } from '@/lib/countryDetection';
+import { useLocalization } from '@/contexts/LocalizationContext';
 import { filterProducts } from '@/lib/productFiltering';
 
 interface HairRoutineProps {
@@ -26,12 +26,10 @@ export default function HairRoutine({
   hairType,
   initialPorosity = 'normal_porosity',
 }: HairRoutineProps) {
+  const { country, countryName } = useLocalization();
   const [isCGM, setIsCGM] = useState(true);
   const [isMinimal, setIsMinimal] = useState(false);
   const [porosity, setPorosity] = useState<PorosityType>(initialPorosity);
-  const [country, setCountry] = useState<CountryCode>(() =>
-    getCountryFromHostname(),
-  );
   const [isLoading, setIsLoading] = useState(true);
   const [routineProducts, setRoutineProducts] = useState<
     Record<string, Product | null>
@@ -102,20 +100,26 @@ export default function HairRoutine({
         );
       }
 
-      // Filter for products that have a non-empty description
+      if (filteredProducts.length === 0) {
+        return null;
+      }
+
+      // First try to find products with descriptions
       const productsWithDescription = filteredProducts.filter(
         (product) => product.description && product.description.trim() !== '',
       );
 
-      if (productsWithDescription.length === 0) {
-        return null;
+      // If we have products with descriptions, use one of those
+      if (productsWithDescription.length > 0) {
+        const randomIndex = Math.floor(
+          Math.random() * productsWithDescription.length,
+        );
+        return productsWithDescription[randomIndex];
       }
 
-      // Get a random product from the filtered list
-      const randomIndex = Math.floor(
-        Math.random() * productsWithDescription.length,
-      );
-      return productsWithDescription[randomIndex];
+      // Otherwise, use any product
+      const randomIndex = Math.floor(Math.random() * filteredProducts.length);
+      return filteredProducts[randomIndex];
     };
 
     const loadProducts = async () => {
@@ -144,6 +148,9 @@ export default function HairRoutine({
     });
   };
 
+  // Add country selector
+  const { setCountry } = useLocalization();
+
   // Icons for each product type
   const productIcons = {
     shampoo: <Droplets className="w-4 h-4 text-primary" />,
@@ -164,7 +171,7 @@ export default function HairRoutine({
         {hairType
           ? `based on your ${hairType} hair`
           : 'based on your hair type'}
-        .
+        . Showing products available in {countryName}.
       </p>
 
       <div className="bg-base-200 rounded-lg p-4 mb-5">
@@ -205,8 +212,21 @@ export default function HairRoutine({
             </select>
           </div>
 
+          <div className="col-span-1">
+            <select
+              className="select select-bordered w-full text-sm h-11 bg-base-100"
+              value={country}
+              onChange={(e) => setCountry(e.target.value as CountryCode)}
+            >
+              <option value="US">United States</option>
+              <option value="UK">United Kingdom</option>
+              <option value="AU">Australia</option>
+              <option value="EU">European Union</option>
+            </select>
+          </div>
+
           <button
-            className="btn btn-primary col-span-1 h-11 flex gap-2"
+            className="btn btn-primary col-span-2 h-11 flex gap-2"
             onClick={handleShuffle}
           >
             <Shuffle className="w-4 h-4" />
@@ -225,6 +245,22 @@ export default function HairRoutine({
             <div className="loading loading-spinner loading-md text-primary"></div>
             <p className="mt-2 text-sm">Loading recommendations...</p>
           </div>
+        ) : Object.values(routineProducts).every(
+            (product) => product === null,
+          ) ? (
+          <div className="col-span-2 text-center py-8">
+            <p className="text-sm">
+              No products found matching your criteria in {countryName}. Try
+              changing your filters or country.
+            </p>
+            <button
+              className="btn btn-primary btn-sm mt-4"
+              onClick={handleShuffle}
+            >
+              <Shuffle className="w-4 h-4" />
+              Try Again
+            </button>
+          </div>
         ) : (
           Object.entries(routineProducts).map(([key, product]) => {
             if (!product) return null;
@@ -238,7 +274,11 @@ export default function HairRoutine({
                   <h5 className="font-bold text-sm">
                     {product.buy_links && product.buy_links.length > 0 ? (
                       <a
-                        href={product.buy_links[0].url}
+                        href={
+                          product.buy_links.find(
+                            (link) => (link.country || 'US') === country,
+                          )?.url || product.buy_links[0].url
+                        }
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-primary hover:underline inline-flex items-center gap-1"
@@ -251,10 +291,10 @@ export default function HairRoutine({
                         {product.brand} {product.name}
                       </span>
                     )}
-
+                    {/* I do not want the badges please do not add back */}
                   </h5>
                   <p className="text-sm my-1 text-base-content/80">
-                    {product.description}
+                    {product.description || ''}
                   </p>
                 </div>
               </div>
