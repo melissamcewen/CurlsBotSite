@@ -92,7 +92,9 @@ export default function HairRoutine({
     shampoo: 'shampoos',
     conditioner: 'conditioners',
     ...(isStraightHair ? {} : { leaveIn: 'leave_ins' }),
-    styler: ['creams', 'foams', 'custards', 'gels', 'oils', 'sprays'],
+    styler: isStraightHair
+      ? 'oils' // For straight hair types, only use oils as stylers
+      : ['creams', 'foams', 'custards', 'gels', 'oils', 'sprays'],
   };
 
   useEffect(() => {
@@ -197,8 +199,21 @@ export default function HairRoutine({
       setIsLoading(true);
       const newProducts: Record<string, Product | null> = {};
 
+      // Create category mapping inside the effect to avoid dependency issues
+      const effectCategoryMapping: Record<
+        string,
+        ProductCategory | ProductCategory[]
+      > = {
+        shampoo: 'shampoos',
+        conditioner: 'conditioners',
+        ...(isStraightHair ? {} : { leaveIn: 'leave_ins' }),
+        styler: isStraightHair
+          ? 'oils' // For straight hair types, only use oils as stylers
+          : ['creams', 'foams', 'custards', 'gels', 'oils', 'sprays'],
+      };
+
       // Fetch a product for each category
-      Object.entries(categoryMapping).forEach(([key, category]) => {
+      Object.entries(effectCategoryMapping).forEach(([key, category]) => {
         newProducts[key] = getRandomProductForCategory(category);
       });
 

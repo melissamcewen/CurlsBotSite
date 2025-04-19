@@ -153,7 +153,8 @@ export const ROUTINE_STEPS: Record<RoutineStep, StepConfig> = {
     categories: ['leave_ins', 'creams'],
     porosityRecommendations: {
       high_porosity: 'Use a leave in and cream',
-      low_porosity: 'You can skip this step unless you use heat, in which case use a heat protectant',
+      low_porosity:
+        'You can skip this step unless you use heat, in which case use a heat protectant',
       normal_porosity: 'Use a leave in or cream as needed',
       mixed_porosity: 'Use a leave in or cream on the ends',
     },
@@ -178,7 +179,8 @@ export const ROUTINE_STEPS: Record<RoutineStep, StepConfig> = {
       high_porosity: 'Use an oil or a spray',
       low_porosity: 'Use a foam or spray',
       normal_porosity: 'Use a foam, oil, or spray',
-      mixed_porosity: 'Use an oil, serum, or moisturizing spray on the ends and a foam or spray on the rest of your hair',
+      mixed_porosity:
+        'Use an oil, serum, or moisturizing spray on the ends and a foam or spray on the rest of your hair',
     },
   },
   accessories: {
