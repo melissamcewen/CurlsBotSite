@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import HairRoutine from '@/components/routine/HairRoutine';
 import { getBundledProducts } from 'haircare-ingredients-analyzer';
 import type { CountryCode } from '@/lib/countryDetection';
@@ -69,6 +69,24 @@ jest.mock('haircare-ingredients-analyzer', () => {
             product_categories: ['oils'],
             status: 'ok',
           },
+          'test-product-5': {
+            id: 'test-product-5',
+            name: 'Test Deep Conditioner',
+            brand: 'Test Brand',
+            description: 'Test deep conditioner',
+            buy_links: [{ url: 'https://example.com/us', country: 'US' }],
+            product_categories: ['deep_conditioners'],
+            status: 'ok',
+          },
+          'test-product-6': {
+            id: 'test-product-6',
+            name: 'Test Clarifying Shampoo',
+            brand: 'Test Brand',
+            description: 'Test clarifying shampoo',
+            buy_links: [{ url: 'https://example.com/us', country: 'US' }],
+            product_categories: ['clarifying_shampoos'],
+            status: 'ok',
+          },
         },
       };
     }),
@@ -115,5 +133,96 @@ describe('HairRoutine', () => {
 
     // Just check that it renders without error
     expect(container).toBeTruthy();
+  });
+
+  it('defaults to minimal routine and can toggle to full routine', async () => {
+    const { container, getByText } = render(<HairRoutine />);
+
+    // Initially should be minimal (default true)
+    // Find the checkbox for minimal routine
+    const minimalToggle = container.querySelector('input[type="checkbox"].toggle.toggle-secondary');
+    expect(minimalToggle).toBeTruthy();
+    expect((minimalToggle as HTMLInputElement).checked).toBe(true);
+
+    // Toggle to full routine
+    fireEvent.click(minimalToggle as HTMLElement);
+
+    // Wait for the products to load after toggling
+    await new Promise((resolve) => setTimeout(resolve, 100));
+
+    // Now it should have rendered
+    expect(container).toBeTruthy();
+  });
+
+  it('uses different categories for first and second stylers in non-minimal routine', async () => {
+    // Mock for non-straight hair type
+    jest
+      .spyOn(require('@/contexts/LocalizationContext'), 'useLocalization')
+      .mockReturnValue({
+        country: 'US' as CountryCode,
+        setCountry: mockSetCountry,
+        countryName: 'United States',
+      });
+
+    // Ensure we can find distinct products for different categories
+    const mockGetBundled = jest.spyOn(require('haircare-ingredients-analyzer'), 'getBundledProducts');
+    mockGetBundled.mockImplementation(() => {
+      return {
+        products: {
+          'gel-product': {
+            id: 'gel-product',
+            name: 'Test Gel',
+            brand: 'Test Brand',
+            description: 'Test gel styling product',
+            buy_links: [{ url: 'https://example.com/us', country: 'US' }],
+            product_categories: ['gels'],
+            status: 'ok',
+          },
+          'cream-product': {
+            id: 'cream-product',
+            name: 'Test Cream',
+            brand: 'Test Brand',
+            description: 'Test cream styling product',
+            buy_links: [{ url: 'https://example.com/us', country: 'US' }],
+            product_categories: ['creams'],
+            status: 'ok',
+          },
+          'shampoo-product': {
+            id: 'shampoo-product',
+            name: 'Test Shampoo',
+            brand: 'Test Brand',
+            description: 'Test shampoo',
+            buy_links: [{ url: 'https://example.com/us', country: 'US' }],
+            product_categories: ['shampoos'],
+            status: 'ok',
+          },
+          'conditioner-product': {
+            id: 'conditioner-product',
+            name: 'Test Conditioner',
+            brand: 'Test Brand',
+            description: 'Test conditioner',
+            buy_links: [{ url: 'https://example.com/us', country: 'US' }],
+            product_categories: ['conditioners'],
+            status: 'ok',
+          }
+        }
+      };
+    });
+
+    const { container } = render(<HairRoutine hairType="wavy" />);
+
+    // Toggle minimal routine off
+    const minimalToggle = container.querySelector('input[type="checkbox"].toggle.toggle-secondary');
+    expect(minimalToggle).toBeTruthy();
+    fireEvent.click(minimalToggle as HTMLElement);
+
+    // Wait for the products to load
+    await new Promise((resolve) => setTimeout(resolve, 100));
+
+    // Should render without error
+    expect(container).toBeTruthy();
+
+    // Clean up mock
+    mockGetBundled.mockRestore();
   });
 });

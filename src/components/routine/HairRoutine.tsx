@@ -134,7 +134,7 @@ function filterProductsInComponent(
       // Lightweight products are a little bit different from low porosity set right now to low porosity - 20
       if (
         options.analysisFilters.lightweight &&
-        porosityScores.low < (POROSITY_THRESHOLDS.LOW_POROSITY - 20)
+        porosityScores.low < POROSITY_THRESHOLDS.LOW_POROSITY - 20
       ) {
         return false;
       }
@@ -166,7 +166,7 @@ export default function HairRoutine({
 }: HairRoutineProps) {
   const { country, countryName } = useLocalization();
   const [isCGM, setIsCGM] = useState(true);
-  const [isMinimal, setIsMinimal] = useState(false);
+  const [isMinimal, setIsMinimal] = useState(true);
   const [porosity, setPorosity] = useState<PorosityType>(initialPorosity);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -217,7 +217,7 @@ export default function HairRoutine({
               analysisFilters: {
                 cgmApproved: isCGM,
                 frizzResistant: false,
-                lightweight: isMinimal,
+                lightweight: false,
                 // Pass porosity information to filter, but allow fallbacks
                 // if products aren't found with strict filtering
                 highPorosity:
@@ -245,7 +245,7 @@ export default function HairRoutine({
             analysisFilters: {
               cgmApproved: isCGM,
               frizzResistant: false,
-              lightweight: isMinimal,
+              lightweight: false,
               highPorosity:
                 porosity === 'high_porosity' || porosity === 'mixed_porosity',
               lowPorosity:
@@ -291,7 +291,7 @@ export default function HairRoutine({
       setIsLoading(true);
       const newProducts: Record<string, Product | null> = {};
 
-      // Create category mapping inside the effect to avoid dependency issues
+      // Create base category mapping
       const effectCategoryMapping: Record<
         string,
         ProductCategory | ProductCategory[]
@@ -302,14 +302,78 @@ export default function HairRoutine({
         styler: isStraightHair
           ? 'oils' // For straight hair types, only use oils as stylers
           : ['creams', 'foams', 'custards', 'gels', 'oils', 'sprays'],
+        ...(isMinimal
+          ? {}
+          : {
+              // Add additional categories for non-minimal routine
+              deepConditioner: 'deep_conditioners',
+              clarifyingShampoo: 'clarifying_shampoos',
+            }),
       };
 
-      // Fetch a product for each category
-      Object.entries(effectCategoryMapping).forEach(([key, category]) => {
+      // Fetch a product for each initial category (excluding styler2, which will be handled separately)
+      for (const [key, category] of Object.entries(effectCategoryMapping)) {
         newProducts[key] = getRandomProductForCategory(category);
-      });
+      }
 
-      setRoutineProducts(newProducts);
+      // Add second styler for non-minimal routine and non-straight hair
+      // Make sure it's a different category than the first styler
+      if (!isMinimal && !isStraightHair) {
+        const firstStylerProduct = newProducts.styler;
+        if (firstStylerProduct) {
+          // Get the category of the first styler
+          const firstStylerCategory =
+            firstStylerProduct.product_categories.find((cat) =>
+              [
+                'creams',
+                'foams',
+                'custards',
+                'gels',
+                'oils',
+                'sprays',
+              ].includes(cat),
+            ) as ProductCategory | undefined;
+
+          // Create a list of categories excluding the one used for the first styler
+          const remainingCategories: ProductCategory[] = [
+            'creams',
+            'foams',
+            'custards',
+            'gels',
+            'oils',
+            'sprays',
+          ].filter((cat) => cat !== firstStylerCategory) as ProductCategory[];
+
+          // Get a product from a different category
+          if (remainingCategories.length > 0) {
+            newProducts.styler2 =
+              getRandomProductForCategory(remainingCategories);
+          }
+        }
+      }
+
+      // Convert to ordered products to control the display order
+      const orderedProducts: Record<string, Product | null> = {};
+
+      // Define the order: shampoo, clarifying, conditioner, deep conditioner, leave-in, styler, styler2
+      const orderedKeys = [
+        'shampoo',
+        'clarifyingShampoo',
+        'conditioner',
+        'deepConditioner',
+        'leaveIn',
+        'styler',
+        'styler2',
+      ];
+
+      // Add products in the defined order if they exist
+      for (const key of orderedKeys) {
+        if (key in newProducts) {
+          orderedProducts[key] = newProducts[key];
+        }
+      }
+
+      setRoutineProducts(orderedProducts);
       setIsLoading(false);
     };
 
@@ -332,9 +396,23 @@ export default function HairRoutine({
   // Icons for each product type
   const productIcons = {
     shampoo: <Droplets className="w-4 h-4 text-primary" />,
+    clarifyingShampoo: <Droplets className="w-4 h-4 text-error" />,
     conditioner: <Sparkles className="w-4 h-4 text-secondary" />,
+    deepConditioner: <Sparkles className="w-4 h-4 text-accent" />,
     leaveIn: <Layers className="w-4 h-4 text-accent" />,
     styler: <ShoppingBag className="w-4 h-4 text-info" />,
+    styler2: <ShoppingBag className="w-4 h-4 text-success" />,
+  };
+
+  // Product display names
+  const productDisplayNames: Record<string, string> = {
+    shampoo: 'Shampoo',
+    clarifyingShampoo: 'Clarifying Shampoo',
+    conditioner: 'Conditioner',
+    deepConditioner: 'Deep Conditioner',
+    leaveIn: 'Leave-in Conditioner',
+    styler: 'Styling Product',
+    styler2: 'Additional Styler',
   };
 
   return (
@@ -347,16 +425,10 @@ export default function HairRoutine({
       <p className="text-sm mb-4">
         We&apos;ve put together a routine for you{' '}
         {hairType
-          ? `based on your ${hairType} hair`
+          ? `based on your ${hairType}`
           : 'based on your hair type'}
         . Showing products available in {countryName}.
-        {isStraightHair && (
-          <span className="block mt-2 text-xs italic">
-            Note: Leave-in conditioners are typically not recommended for
-            straight hair types. We&apos;ve also excluded products specifically
-            marketed for curly or wavy hair.
-          </span>
-        )}
+      
       </p>
 
       <div className="bg-base-200 rounded-lg p-4 mb-5">
@@ -457,6 +529,9 @@ export default function HairRoutine({
                 </div>
                 <div className="flex-1">
                   <h5 className="font-bold text-sm">
+                    <div className="flex justify-between items-start">
+                      <div>{productDisplayNames[key] || key}</div>
+                    </div>
                     {product.buy_links && product.buy_links.length > 0 ? (
                       <a
                         href={
