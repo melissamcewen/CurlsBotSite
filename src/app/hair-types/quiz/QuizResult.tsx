@@ -246,6 +246,7 @@ export default function QuizResultComponent({
                   <HairRoutine
                     hairType={`${result.parameters.curlsBotType.toLowerCase()}`}
                     initialPorosity="normal_porosity"
+                    curlsBotType={result.parameters.curlsBotType}
                   />
                 </div>
               </div>

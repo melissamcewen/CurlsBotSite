@@ -9,42 +9,89 @@ import {
 } from 'lucide-react';
 import { getBundledProducts } from 'haircare-ingredients-analyzer';
 import type { Product } from 'haircare-ingredients-analyzer';
-import {
-  type PorosityType,
-  type ProductCategory,
-  type CountryCode,
-} from '@/lib/routineBuilder';
 import { useLocalization } from '@/contexts/LocalizationContext';
 import { filterProducts } from '@/lib/productFiltering';
+import type { CountryCode } from '@/lib/countryDetection';
+
+// Define internal types rather than importing from routineBuilder
+export type PorosityType =
+  | 'high_porosity'
+  | 'low_porosity'
+  | 'normal_porosity'
+  | 'mixed_porosity';
+
+export type ProductCategory =
+  | 'pre-poo'
+  | 'clarifying_shampoos'
+  | 'shampoos'
+  | 'cowashes'
+  | 'conditioners'
+  | 'deep_conditioners'
+  | 'leave_ins'
+  | 'creams'
+  | 'foams'
+  | 'custards'
+  | 'gels'
+  | 'oils'
+  | 'sprays'
+  | 'accessories';
 
 interface HairRoutineProps {
   hairType?: string;
   initialPorosity?: PorosityType;
+  curlsBotType?: string;
 }
+
+// Straight hair types that shouldn't use leave-in conditioners
+const STRAIGHT_HAIR_TYPES = [
+  'Straight fine hair',
+  'Straight hair',
+  'Straight thick hair',
+];
+
+// Keywords to exclude for straight hair types
+const CURL_WAVE_KEYWORDS = ['curl', 'curls', 'curly', 'wave', 'waves', 'wavy'];
+
+// IMPORTANT: ALL product categories can be appropriate for ANY porosity type when used correctly
+// Do not restrict categories by porosity - this creates unnecessary limitations
+// Products that might traditionally be "too heavy" can work for low porosity hair when applied in the right amount
+// Products that might traditionally be "too light" can work for high porosity hair as a base layer
 
 export default function HairRoutine({
   hairType,
   initialPorosity = 'normal_porosity',
+  curlsBotType,
 }: HairRoutineProps) {
   const { country, countryName } = useLocalization();
   const [isCGM, setIsCGM] = useState(true);
   const [isMinimal, setIsMinimal] = useState(false);
   const [porosity, setPorosity] = useState<PorosityType>(initialPorosity);
   const [isLoading, setIsLoading] = useState(true);
-  const [routineProducts, setRoutineProducts] = useState<
-    Record<string, Product | null>
-  >({
+
+  // Determine if we should include leave-in based on hair type
+  const isStraightHair =
+    curlsBotType && STRAIGHT_HAIR_TYPES.includes(curlsBotType);
+
+  // Initialize product categories based on hair type
+  const initialProducts: Record<string, Product | null> = {
     shampoo: null,
     conditioner: null,
-    leaveIn: null,
     styler: null,
-  });
+  };
+
+  // Only add leave-in for non-straight hair types
+  if (!isStraightHair) {
+    initialProducts.leaveIn = null;
+  }
+
+  const [routineProducts, setRoutineProducts] =
+    useState<Record<string, Product | null>>(initialProducts);
 
   // Map our UI categories to product categories from the API
   const categoryMapping: Record<string, ProductCategory | ProductCategory[]> = {
     shampoo: 'shampoos',
     conditioner: 'conditioners',
-    leaveIn: 'leave_ins',
+    ...(isStraightHair ? {} : { leaveIn: 'leave_ins' }),
     styler: ['creams', 'foams', 'custards', 'gels', 'oils', 'sprays'],
   };
 
@@ -58,27 +105,41 @@ export default function HairRoutine({
 
       // Handle case where we want to select from multiple categories
       if (Array.isArray(category)) {
-        // Randomly select one of the categories
+        // Try a random category first
         const randomCategoryIndex = Math.floor(Math.random() * category.length);
-        const selectedCategory = category[randomCategoryIndex];
+        let categoryIndex = randomCategoryIndex;
+        let attempts = 0;
 
-        filteredProducts = filterProducts(
-          Object.values(bundledProducts.products),
-          {
-            country,
-            category: selectedCategory,
-            requireFeatured: false,
-            analysisFilters: {
-              cgmApproved: isCGM,
-              frizzResistant: false,
-              lightweight: isMinimal,
-              highPorosity:
-                porosity === 'high_porosity' || porosity === 'mixed_porosity',
-              lowPorosity:
-                porosity === 'low_porosity' || porosity === 'mixed_porosity',
+        // Try each category in the array until we find products or run out of categories
+        while (filteredProducts.length === 0 && attempts < category.length) {
+          const selectedCategory = category[categoryIndex];
+
+          filteredProducts = filterProducts(
+            Object.values(bundledProducts.products),
+            {
+              country,
+              category: selectedCategory,
+              requireFeatured: false,
+              analysisFilters: {
+                cgmApproved: isCGM,
+                frizzResistant: false,
+                lightweight: isMinimal,
+                // Pass porosity information to filter, but allow fallbacks
+                // if products aren't found with strict filtering
+                highPorosity:
+                  porosity === 'high_porosity' || porosity === 'mixed_porosity',
+                lowPorosity:
+                  porosity === 'low_porosity' || porosity === 'mixed_porosity',
+              },
             },
-          },
-        );
+          );
+
+          // If no products found with this category, try the next one
+          if (filteredProducts.length === 0) {
+            categoryIndex = (categoryIndex + 1) % category.length;
+            attempts++;
+          }
+        }
       } else {
         // Single category case
         filteredProducts = filterProducts(
@@ -98,6 +159,16 @@ export default function HairRoutine({
             },
           },
         );
+      }
+
+      // Additional filtering for straight hair types to exclude curl/wave products
+      if (isStraightHair) {
+        filteredProducts = filteredProducts.filter((product) => {
+          const nameAndBrand = `${product.name} ${product.brand}`.toLowerCase();
+          return !CURL_WAVE_KEYWORDS.some((keyword) =>
+            nameAndBrand.includes(keyword.toLowerCase()),
+          );
+        });
       }
 
       if (filteredProducts.length === 0) {
@@ -136,7 +207,7 @@ export default function HairRoutine({
     };
 
     loadProducts();
-  }, [isCGM, isMinimal, porosity, country]);
+  }, [isCGM, isMinimal, porosity, country, isStraightHair]);
 
   const handleShuffle = () => {
     // Trigger re-render by changing a dependency of the useEffect
@@ -172,6 +243,13 @@ export default function HairRoutine({
           ? `based on your ${hairType} hair`
           : 'based on your hair type'}
         . Showing products available in {countryName}.
+        {isStraightHair && (
+          <span className="block mt-2 text-xs italic">
+            Note: Leave-in conditioners are typically not recommended for
+            straight hair types. We&apos;ve also excluded products specifically
+            marketed for curly or wavy hair.
+          </span>
+        )}
       </p>
 
       <div className="bg-base-200 rounded-lg p-4 mb-5">
