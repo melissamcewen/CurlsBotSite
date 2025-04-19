@@ -9,6 +9,7 @@ import { AnalysisFindings } from './findings/AnalysisFindings';
 import { AnalysisSummary } from './findings/AnalysisSummary';
 import Link from 'next/link';
 import { CheckCircle, AlertTriangle, XCircle } from 'lucide-react';
+import { useLocalization } from '@/contexts/LocalizationContext';
 
 interface Props {
   result: AnalysisResult;
@@ -16,10 +17,13 @@ interface Props {
 }
 
 export default function AnalysisResults({ result, onTryAnother }: Props) {
+  const { country } = useLocalization();
+
   if (!result) return null;
 
   const { description } = getStatusConfig(result.status);
   const hasIngredients = result.ingredients && result.ingredients.length > 0;
+  const isUS = country === 'US';
 
   const getStatusIcon = (status: string) => {
     switch (status) {
@@ -62,20 +66,31 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
 
                   <p>
                     If you&apos;re looking for a product, try the{' '}
-                    <a
-                      href="https://click.linksynergy.com/fs-bin/click?id=9QcV0uNyab0&offerid=929395.807&type=3&subid=0"
-                      className="link link-primary"
-                    >
-                      Ouidad Advanced Climate Control collection (30% off with
-                      code: CELEBRATE8)
-                    </a>
-                    <img
-                      width="1"
-                      alt=""
-                      height="1"
-                      src="https://ad.linksynergy.com/fs-bin/show?id=9QcV0uNyab0&bids=929395.807&type=3&subid=0"
-                      className="hidden"
-                    />{' '}
+                    {isUS ? (
+                      <>
+                        <a
+                          href="https://click.linksynergy.com/fs-bin/click?id=9QcV0uNyab0&offerid=929395.807&type=3&subid=0"
+                          className="link link-primary"
+                        >
+                          Ouidad Advanced Climate Control collection (30% off
+                          with code: CELEBRATE8)
+                        </a>
+                        <img
+                          width="1"
+                          alt=""
+                          height="1"
+                          src="https://ad.linksynergy.com/fs-bin/show?id=9QcV0uNyab0&bids=929395.807&type=3&subid=0"
+                          className="hidden"
+                        />
+                      </>
+                    ) : (
+                      <a
+                        href="https://collabs.shop/ea393f"
+                        className="link link-primary"
+                      >
+                        Tootilab Curly Hair Starter Bundle
+                      </a>
+                    )}{' '}
                     or try our{' '}
                     <Link href="/porosity-quiz" className="link link-primary">
                       Porosity Quiz
