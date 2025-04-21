@@ -69,17 +69,16 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
                     {isUS ? (
                       <>
                         <a
-                          href="https://click.linksynergy.com/fs-bin/click?id=9QcV0uNyab0&offerid=929395.807&type=3&subid=0"
+                          href="https://click.linksynergy.com/fs-bin/click?id=9QcV0uNyab0&offerid=1377993.71&type=3&subid=0"
                           className="link link-primary"
                         >
-                          Ouidad Advanced Climate Control collection (30% off
-                          with code: CELEBRATE8)
+                          Bouclème, right now they have a Spring Sale (20% off almost everything)
                         </a>
                         <img
                           width="1"
                           alt=""
                           height="1"
-                          src="https://ad.linksynergy.com/fs-bin/show?id=9QcV0uNyab0&bids=929395.807&type=3&subid=0"
+                          src="https://ad.linksynergy.com/fs-bin/show?id=9QcV0uNyab0&bids=1377993.71&type=3&subid=0"
                           className="hidden"
                         />
                       </>
