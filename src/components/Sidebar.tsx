@@ -43,6 +43,7 @@ export default function Sidebar() {
                     US: 'orange_marmalade_flaxseed_and_aloe_curl_definer',
                     UK: 'hydro_style_flexi-jelly',
                     AU: 'hush_nourishing_oil',
+                    EU: 'all_weather_styling_gel',
                   }}
                   products={products}
                   showAnalysisLink
