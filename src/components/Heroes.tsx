@@ -48,14 +48,14 @@ export default async function Heroes() {
           <div className="max-w-5xl">
             <h2 className="text-5xl font-bold mb-8">What&apos;s New?</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <Link
-                href="/porosity/mixed-porosity"
+              <a
+                href="https://glnk.io/x26q/curlsbot"
                 className="card bg-base-100 hover:bg-base-200 transition-colors"
               >
                 <figure className="relative h-48 bg-primary">
                   <Image
-                    src="/emoji/1F481.svg"
-                    alt="Info emoji"
+                    src="/images/blog/brush-through-shampoo/bouncecurl.jpeg"
+                    alt="Bounce Curl Brush"
                     fill
                     className="object-cover rounded-t-xl"
                   />
@@ -64,19 +64,20 @@ export default async function Heroes() {
                 <div className="card-body flex flex-col justify-between">
                   <div>
                     <h3 className="card-title text-lg ">
-                      A New Porosity Type Just Dropped!
+                      10% Off BounceCurl with code: CURLSBOT10
                     </h3>
                     <p className="text-base-content/70 text-sm line-clamp-2 mt-2 text-left">
-                      Learn about Mixed Porosity!
+                      Grab their famous Bounce Curl Brush and other great
+                      products at 10% off.
                     </p>
                   </div>
                   <div className="card-actions justify-end mt-4">
                     <div className="text-primary flex items-center gap-1 text-sm">
-                      Read more <ArrowRight className="w-4 h-4" />
+                      Bouncecurl.com <ArrowRight className="w-4 h-4" />
                     </div>
                   </div>
                 </div>
-              </Link>
+              </a>
               <Link
                 href="/blog/best-ordinary-products-for-wavy-and-curly-hair"
                 className="card bg-base-100 hover:bg-base-200 transition-colors"
@@ -107,14 +108,14 @@ export default async function Heroes() {
                   </div>
                 </div>
               </Link>
-              <Link
-                href="/labs/porosity"
+              <a
+                href="https://click.linksynergy.com/fs-bin/click?id=9QcV0uNyab0&offerid=1377993.71&type=3&subid=0"
                 className="card bg-base-100 hover:bg-base-200 transition-colors"
               >
                 <figure className="relative h-48 bg-primary">
                   <Image
-                    src="/lab.svg"
-                    alt="Info emoji"
+                    src="/images/boucleme.jpg"
+                    alt="Bouclème"
                     fill
                     className="object-cover rounded-t-xl"
                   />
@@ -122,11 +123,10 @@ export default async function Heroes() {
 
                 <div className="card-body flex flex-col justify-between">
                   <div>
-                    <h3 className="card-title text-lg ">
-                      Labs: Porosity Score
-                    </h3>
+                    <h3 className="card-title text-lg ">20% Off Bouclème</h3>
                     <p className="text-base-content/70 text-sm line-clamp-2 mt-2 text-left">
-                      Learn about our new porosity score for products!
+                      Get 20% off most Bouclème products during their Spring
+                      Sale!
                     </p>
                   </div>
                   <div className="card-actions justify-end mt-4">
@@ -135,7 +135,7 @@ export default async function Heroes() {
                     </div>
                   </div>
                 </div>
-              </Link>
+              </a>
             </div>
           </div>
         </div>
