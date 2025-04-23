@@ -97,7 +97,7 @@ export function BlogProduct({
                   href="https://curlsmonthly.com/?ref=curlsbot"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn-info btn-sm flex items-center justify-center gap-2 w-full"
+                  className="btn btn-accent btn-sm flex items-center justify-center gap-2 w-full"
                 >
                   <Sparkles className="w-5 h-5" />
                   Try a sample
