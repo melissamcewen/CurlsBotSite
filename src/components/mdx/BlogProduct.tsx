@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Search, ShoppingCart, CheckCircle } from 'lucide-react';
+import { Search, ShoppingCart, CheckCircle, Sparkles } from 'lucide-react';
 
 interface BlogProductProps {
   name: string;
@@ -14,6 +14,7 @@ interface BlogProductProps {
   buyLink?: string;
   amazonLink?: string;
   buyText?: string;
+  sample?: boolean;
 }
 
 export function BlogProduct({
@@ -28,6 +29,7 @@ export function BlogProduct({
   buyLink,
   amazonLink,
   buyText = 'Buy Now',
+  sample,
 }: BlogProductProps) {
   return (
     <div className="card md:card-side cb-border not-prose mb-4">
@@ -66,7 +68,7 @@ export function BlogProduct({
         {description && <p className="text-base-content/80">{description}</p>}
 
         <div className="card-actions flex-col gap-2 mt-auto w-full max-w-md mx-auto">
-          {(buyLink || amazonLink) && (
+          {(buyLink || amazonLink || sample) && (
             <div className="flex flex-col gap-2 w-full">
               {buyLink && (
                 <a
@@ -88,6 +90,17 @@ export function BlogProduct({
                 >
                   <ShoppingCart className="w-5 h-5" />
                   Buy on Amazon
+                </a>
+              )}
+              {sample && (
+                <a
+                  href="https://curlsmonthly.com/?ref=curlsbot"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-info btn-sm flex items-center justify-center gap-2 w-full"
+                >
+                  <Sparkles className="w-5 h-5" />
+                  Try a sample
                 </a>
               )}
             </div>
