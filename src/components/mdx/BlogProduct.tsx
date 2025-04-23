@@ -76,7 +76,7 @@ export function BlogProduct({
                   className="btn btn-secondary btn-sm flex items-center justify-center gap-2 w-full"
                 >
                   <ShoppingCart className="w-5 h-5" />
-                  Buy at {buyText}
+                  {buyText}
                 </a>
               )}
               {amazonLink && (
