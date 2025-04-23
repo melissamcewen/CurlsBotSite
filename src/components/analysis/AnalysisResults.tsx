@@ -65,29 +65,24 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
                   </p>
 
                   <p>
-                    If you&apos;re looking for a product, try the{' '}
+                    Looking for your next favorite product?{' '}
                     {isUS ? (
                       <>
                         <a
-                          href="https://click.linksynergy.com/fs-bin/click?id=9QcV0uNyab0&offerid=1377993.71&type=3&subid=0"
+                          href="https://curlsmonthly.com/?ref=curlsbot"
                           className="link link-primary"
                         >
-                          Bouclème, right now they have a Spring Sale (20% off almost everything)
+                          Get $5 off your first month of Curls Monthly—a
+                          subscription box packed with top-rated samples for
+                          curly and wavy hair.
                         </a>
-                        <img
-                          width="1"
-                          alt=""
-                          height="1"
-                          src="https://ad.linksynergy.com/fs-bin/show?id=9QcV0uNyab0&bids=1377993.71&type=3&subid=0"
-                          className="hidden"
-                        />
                       </>
                     ) : (
                       <a
                         href="https://collabs.shop/ea393f"
                         className="link link-primary"
                       >
-                        Tootilab Curly Hair Starter Bundle
+                       Try the Tootilab Curly Hair Starter Bundle
                       </a>
                     )}{' '}
                     or try our{' '}
