@@ -1060,6 +1060,155 @@ Bouabbache S, Galliano A, Littaye P, Leportier M, Pouradier F, Gillot E, Panhard
     source: 'International Journal of Dermatology',
   },
 
+  /*
+  1. Wikramanayake, T. C., Borda, L. J., Miteva, M. & Paus, R. Seborrheic dermatitis—Looking beyond Malassezia. Experimental Dermatology 28, 991–1001 (2019).
+  */
+  '103': {
+    id: '103',
+    url: 'https://doi.org/10.1021/acsabm.8b00014',
+    title: 'Seborrheic dermatitis—Looking beyond Malassezia',
+    type: 'science',
+    author: 'Wikramanayake, T. C., Borda, L. J., Miteva, M. & Paus, R.',
+    date: '2019',
+    source: 'Experimental Dermatology',
+  },
 
+  /*
+  1. DeAngelis, Y. M. et al. Three Etiologic Facets of Dandruff and Seborrheic Dermatitis: Malassezia Fungi, Sebaceous Lipids, and Individual Sensitivity. Journal of Investigative Dermatology Symposium Proceedings 10, 295–297 (2005).
+*/
+  '104': {
+    id: '104',
+    url: 'https://doi.org/10.1021/acsabm.8b00014',
+    title:
+      'Three Etiologic Facets of Dandruff and Seborrheic Dermatitis: Malassezia Fungi, Sebaceous Lipids, and Individual Sensitivity',
+    type: 'science',
+    author: 'DeAngelis, Y. M. et al.',
+    date: '2005',
+    source: 'Journal of Investigative Dermatology Symposium Proceedings',
+  },
+  /*
+  1. Suchonwanit, P., Triyangkulsri, K., Ploydaeng, M. & Leerunyakul, K. Assessing Biophysical and Physiological Profiles of Scalp Seborrheic Dermatitis in the Thai Population. BioMed Research International 2019, 5128376 (2019).
+*/
+  '105': {
+    id: '105',
+    url: 'https://doi.org/10.1021/acsabm.8b00014',
+    title:
+      'Assessing Biophysical and Physiological Profiles of Scalp Seborrheic Dermatitis in the Thai Population',
+    type: 'science',
+    author:
+      'Suchonwanit, P., Triyangkulsri, K., Ploydaeng, M. & Leerunyakul, K.',
+    date: '2019',
+    source: 'BioMed Research International',
+  },
+  /*
+  1. Fajuyigbe, D. et al. Weekly hair washing: The recommended solution for women with afro-textured hair to alleviate dandruff and scalp discomfort. The Journal of Dermatology 51, 518–525 (2024).
+
+  */
+  '106': {
+    id: '106',
+    url: 'https://doi.org/10.1021/acsabm.8b00014',
+    title:
+      'Weekly hair washing: The recommended solution for women with afro-textured hair to alleviate dandruff and scalp discomfort',
+    type: 'science',
+    author: 'Fajuyigbe, D. et al.',
+    date: '2024',
+    source: 'The Journal of Dermatology',
+  },
+  /* 1. Syed, A. N. Curly Hair: Structure, Properties, and Care. (Dr. Ali N. Syed, 2022).
+   */
+  '107': {
+    id: '107',
+    url: 'https://www.google.com/books/edition/Curly_Hair/Nd5CzwEACAAJ?hl=en',
+    title: 'Curly Hair: Structure, Properties, and Care',
+    type: 'science',
+    author: 'Syed, A. N.',
+    date: '2022',
+    source: 'Dr. Ali N. Syed',
+  },
+  /*
+  1. 1. Mayo, T., Dinkins, J. & Elewski, B. Hair Oils May Worsen Seborrheic Dermatitis in Black Patients. Skin Appendage Disorders 9, 151–152 (2023).
+
+  */
+  '108': {
+    id: '108',
+    url: 'https://doi.org/10.1021/acsabm.8b00014',
+    title: 'Hair Oils May Worsen Seborrheic Dermatitis in Black Patients',
+    type: 'science',
+    author: 'Mayo, T., Dinkins, J. & Elewski, B.',
+  },
+
+  /* 1. Taylor, S. C. et al. Hair and scalp disorders in adult and pediatric patients with skin of color. Cutis 100, 31–35 (2017).
+
+  */
+  '109': {
+    id: '109',
+    url: 'https://doi.org/10.1021/acsabm.8b00014',
+    title: 'Hair and scalp disorders in adult and pediatric patients with skin of color',
+    type: 'science',
+    author: 'Taylor, S. C. et al.',
+    date: '2017',
+    source: 'Cutis',
+  },
+  /* 1. Siegfried, E. & Glenn, E. Use of Olive Oil for the Treatment of Seborrheic Dermatitis in Children. Archives of Pediatrics & Adolescent Medicine 166, 967 (2012).
+
+  */
+  '110': {
+    id: '110',
+    url: 'https://doi.org/10.1021/acsabm.8b00014',
+    title: 'Use of Olive Oil for the Treatment of Seborrheic Dermatitis in Children',
+    type: 'science',
+    author: 'Siegfried, E. & Glenn, E.',
+    date: '2012',
+    source: 'Archives of Pediatrics & Adolescent Medicine',
+  },
+
+  /* 1. Saxena, R. et al. Longitudinal study of the scalp microbiome suggests coconut oil to enrich healthy scalp commensals. Sci Rep 11, 7220 (2021).
+
+  */
+  '111': {
+    id: '111',
+    url: 'https://doi.org/10.1021/acsabm.8b00014',
+    title: 'Longitudinal study of the scalp microbiome suggests coconut oil to enrich healthy scalp commensals',
+    type: 'science',
+    author: 'Saxena, R. et al.',
+    date: '2021',
+    source: 'Sci Rep',
+  },
+  /* 1. Papavassilis, C., Mach, K. K. & Mayser, P. A. Medium-chain triglycerides inhibit growth of Malassezia: implications for prevention of systemic infection. Crit Care Med 27, 1781–1786 (1999).
+
+  */
+  '112': {
+    id: '112',
+    url: 'https://doi.org/10.1021/acsabm.8b00014',
+    title: 'Medium-chain triglycerides inhibit growth of Malassezia: implications for prevention of systemic infection',
+    type: 'science',
+    author: 'Papavassilis, C., Mach, K. K. & Mayser, P. A.',
+    date: '1999',
+    source: 'Crit Care Med',
+  },
+  /* 1. Robinson, C., Shah, R., Ogbonna, C. & McMichael, A. J. Treatment of Seborrheic Dermatitis in Black Patients. Cutis 115, 15–17 (2025).
+
+  */
+  '113': {
+    id: '113',
+    url: 'https://doi.org/10.1021/acsabm.8b00014',
+    title: 'Treatment of Seborrheic Dermatitis in Black Patients',
+    type: 'science',
+    author: 'Robinson, C., Shah, R., Ogbonna, C. & McMichael, A. J.',
+    date: '2025',
+    source: 'Cutis',
+  },
+  /* 1. Polaskey, M. T. et al. When Patient Diversity Informs Formulation: Reimagining Treatment for Seborrheic Dermatitis. Dermatol Ther (Heidelb) 14, 1071–1077 (2024).
+
+  */
+  '114': {
+    id: '114',
+    url: 'https://doi.org/10.1021/acsabm.8b00014',
+    title: 'When Patient Diversity Informs Formulation: Reimagining Treatment for Seborrheic Dermatitis',
+    type: 'science',
+    author: 'Polaskey, M. T. et al.',
+    date: '2024',
+    source: 'Dermatol Ther (Heidelb)',
+  },
 };
 
