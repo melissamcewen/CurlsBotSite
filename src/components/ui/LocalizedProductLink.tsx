@@ -65,8 +65,10 @@ const LocalizedProductLink = ({
 
   // Get the buy link for the current country, fall back to US for EU
   const buyLink = product.buy_links?.find(
-    (link: { country?: string }) =>
-      (link.country || 'US') === (country === 'EU' ? 'US' : country),
+    (link) =>
+      link.countries?.includes(country === 'EU' ? 'US' : country) ||
+      ((country === 'US' || country === 'EU') &&
+        (!link.countries || link.countries.length === 0)),
   );
 
   if (!buyLink?.url) {

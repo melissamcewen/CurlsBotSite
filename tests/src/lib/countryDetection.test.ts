@@ -56,11 +56,14 @@ describe('getCountryFromHostname', () => {
 });
 
 describe('filterProductByCountry', () => {
-  const createMockProduct = (buyLinks: { country?: string }[]): Product => ({
-    id: 'test',
+  const createMockProduct = (
+    buyLinks: { countries?: string[] }[],
+  ): Product => ({
+    id: 'test-id',
     name: 'Test Product',
     brand: 'Test Brand',
-    buy_links: buyLinks,
+    buy_links: buyLinks as any,
+    product_categories: [],
   });
 
   it('returns false when product has no buy links', () => {
@@ -69,36 +72,51 @@ describe('filterProductByCountry', () => {
   });
 
   it('filters US products correctly', () => {
-    const usProduct = createMockProduct([{ country: 'US' }]);
-    const nonUsProduct = createMockProduct([{ country: 'UK' }]);
+    const usProduct = createMockProduct([{ countries: ['US'] }]);
+    const nonUsProduct = createMockProduct([{ countries: ['UK'] }]);
+    const bothProduct = createMockProduct([
+      { countries: ['US'] },
+      { countries: ['UK'] },
+    ]);
 
     expect(filterProductByCountry(usProduct, 'US')).toBe(true);
     expect(filterProductByCountry(nonUsProduct, 'US')).toBe(false);
+    expect(filterProductByCountry(bothProduct, 'US')).toBe(true);
   });
 
   it('filters UK products correctly', () => {
-    const ukProduct = createMockProduct([{ country: 'UK' }]);
-    const nonUkProduct = createMockProduct([{ country: 'US' }]);
+    const ukProduct = createMockProduct([{ countries: ['UK'] }]);
+    const nonUkProduct = createMockProduct([{ countries: ['US'] }]);
+    const bothProduct = createMockProduct([
+      { countries: ['US'] },
+      { countries: ['UK'] },
+    ]);
 
     expect(filterProductByCountry(ukProduct, 'UK')).toBe(true);
     expect(filterProductByCountry(nonUkProduct, 'UK')).toBe(false);
+    expect(filterProductByCountry(bothProduct, 'UK')).toBe(true);
   });
 
   it('filters AU products correctly', () => {
-    const auProduct = createMockProduct([{ country: 'AU' }]);
-    const nonAuProduct = createMockProduct([{ country: 'US' }]);
+    const auProduct = createMockProduct([{ countries: ['AU'] }]);
+    const nonAuProduct = createMockProduct([{ countries: ['US'] }]);
+    const bothProduct = createMockProduct([
+      { countries: ['US'] },
+      { countries: ['AU'] },
+    ]);
 
     expect(filterProductByCountry(auProduct, 'AU')).toBe(true);
     expect(filterProductByCountry(nonAuProduct, 'AU')).toBe(false);
+    expect(filterProductByCountry(bothProduct, 'AU')).toBe(true);
   });
 
   it('filters EU products correctly with UK fallback', () => {
-    const euProduct = createMockProduct([{ country: 'EU' }]);
-    const ukProduct = createMockProduct([{ country: 'UK' }]);
-    const usProduct = createMockProduct([{ country: 'US' }]);
+    const euProduct = createMockProduct([{ countries: ['EU'] }]);
+    const ukProduct = createMockProduct([{ countries: ['UK'] }]);
+    const usProduct = createMockProduct([{ countries: ['US'] }]);
     const bothProduct = createMockProduct([
-      { country: 'EU' },
-      { country: 'UK' },
+      { countries: ['EU'] },
+      { countries: ['UK'] },
     ]);
 
     expect(filterProductByCountry(euProduct, 'EU')).toBe(true);
@@ -109,13 +127,30 @@ describe('filterProductByCountry', () => {
 
   it('handles products with multiple buy links', () => {
     const multiCountryProduct = createMockProduct([
-      { country: 'US' },
-      { country: 'UK' },
-      { country: 'AU' },
+      { countries: ['US', 'UK', 'AU'] },
     ]);
 
     expect(filterProductByCountry(multiCountryProduct, 'US')).toBe(true);
     expect(filterProductByCountry(multiCountryProduct, 'UK')).toBe(true);
     expect(filterProductByCountry(multiCountryProduct, 'AU')).toBe(true);
+  });
+
+  it('treats products with missing countries array as US products', () => {
+    const missingCountriesProduct = createMockProduct([{ url: 'test.com' }]);
+    const emptyCountriesProduct = createMockProduct([
+      { countries: [], url: 'test.com' },
+    ]);
+
+    // Should be available in US
+    expect(filterProductByCountry(missingCountriesProduct, 'US')).toBe(true);
+    expect(filterProductByCountry(emptyCountriesProduct, 'US')).toBe(true);
+
+    // Should not be available in other countries
+    expect(filterProductByCountry(missingCountriesProduct, 'UK')).toBe(false);
+    expect(filterProductByCountry(emptyCountriesProduct, 'UK')).toBe(false);
+    expect(filterProductByCountry(missingCountriesProduct, 'AU')).toBe(false);
+    expect(filterProductByCountry(emptyCountriesProduct, 'AU')).toBe(false);
+    expect(filterProductByCountry(missingCountriesProduct, 'EU')).toBe(false);
+    expect(filterProductByCountry(emptyCountriesProduct, 'EU')).toBe(false);
   });
 });

@@ -9,7 +9,7 @@ export type PorosityType =
 // Score thresholds for porosity
 export const POROSITY_THRESHOLDS = {
   HIGH_POROSITY: 70, // Score needed to be considered good for high porosity
-  LOW_POROSITY: 70, // Score needed to be considered good for low porosity
+  LOW_POROSITY: 80, // Score needed to be considered good for low porosity
 } as const;
 
 // Categories that should not use porosity filtering or display porosity badges

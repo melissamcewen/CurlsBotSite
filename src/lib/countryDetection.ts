@@ -72,16 +72,30 @@ export function filterProductByCountry(
 
   switch (country) {
     case 'UK':
-      return product.buy_links.some((link: BuyLink) => link.country === 'UK');
+      return product.buy_links.some((link: BuyLink) =>
+        link.countries?.includes('UK'),
+      );
     case 'AU':
-      return product.buy_links.some((link: BuyLink) => link.country === 'AU');
+      return product.buy_links.some((link: BuyLink) =>
+        link.countries?.includes('AU'),
+      );
     case 'EU':
       return (
-        product.buy_links.some((link: BuyLink) => link.country === 'EU') ||
-        product.buy_links.some((link: BuyLink) => link.country === 'UK')
+        product.buy_links.some((link: BuyLink) =>
+          link.countries?.includes('EU'),
+        ) ||
+        product.buy_links.some((link: BuyLink) =>
+          link.countries?.includes('UK'),
+        )
       );
     case 'US':
     default:
-      return product.buy_links.some((link: BuyLink) => link.country === 'US');
+      // If no countries specified, default to US
+      return product.buy_links.some(
+        (link: BuyLink) =>
+          link.countries?.includes('US') ||
+          !link.countries ||
+          link.countries.length === 0,
+      );
   }
 }

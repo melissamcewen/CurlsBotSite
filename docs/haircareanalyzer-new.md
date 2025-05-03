@@ -182,6 +182,20 @@ export interface PorosityAnalysis extends ExtensionAnalysis {
 }
 
 /**
+ * Represents the analysis result for the Sebderm system
+ */
+export interface SebdermAnalysis extends ExtensionAnalysis {
+  /** Whether the product contains ingredients that may trigger seborrheic dermatitis */
+  hasTriggers: boolean;
+  /** List of problematic ingredients found with their reasons */
+  triggers: Array<{
+    id: string;
+    name: string;
+    reason: string;
+  }>;
+}
+
+/**
  * Represents all available extensions for analysis
  * Uses an index signature to allow any named extension that extends ExtensionAnalysis
  */
@@ -189,6 +203,7 @@ export interface Extensions {
   [key: string]: ExtensionAnalysis | undefined;
   frizzbot?: FrizzbotAnalysis;
   porosity?: PorosityAnalysis;
+  sebderm?: SebdermAnalysis;
 }
 
 /**
@@ -230,7 +245,7 @@ export interface Product {
 /** Buy link */
 export interface BuyLink {
   url: string;
-  country?: string;
+  countries?: string[];
   retailer?: string;
   description?: string;
 }

@@ -480,8 +480,11 @@ export default function ProductsPage() {
                       ?.filter(
                         (link) =>
                           selectedCountry === 'all' ||
-                          (link.country || 'US') === selectedCountry,
+                          link.countries?.includes(selectedCountry) ||
+                          (selectedCountry === 'US' &&
+                            (!link.countries || link.countries.length === 0)),
                       )
+                      .slice(0, 2)
                       .map((link, index) => (
                         <a
                           key={index}
@@ -494,9 +497,9 @@ export default function ProductsPage() {
                           <span className="flex-nowrap">
                             Buy on{' '}
                             {link.retailer ||
-                              (link.country === 'US'
+                              (selectedCountry === 'US'
                                 ? 'Amazon'
-                                : `Amazon ${link.country}`)}
+                                : `Amazon ${selectedCountry}`)}
                           </span>
                         </a>
                       ))}

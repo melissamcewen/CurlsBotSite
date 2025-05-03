@@ -123,7 +123,13 @@ export function ProductCard({
               </button>
             )}
             {product.product.buy_links
-              ?.filter((link) => (link.country || 'US') === userCountry)
+              ?.filter(
+                (link) =>
+                  link.countries?.includes(userCountry) ||
+                  (userCountry === 'US' &&
+                    (!link.countries || link.countries.length === 0)),
+              )
+              .slice(0, 2)
               .map((link, index) => (
                 <a
                   key={index}
@@ -136,9 +142,9 @@ export function ProductCard({
                   <span className="flex-nowrap">
                     Buy on{' '}
                     {link.retailer ||
-                      (link.country === 'US'
+                      (userCountry === 'US'
                         ? 'Amazon'
-                        : `Amazon ${link.country}`)}
+                        : `Amazon ${userCountry}`)}
                   </span>
                 </a>
               ))}

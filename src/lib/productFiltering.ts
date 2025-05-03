@@ -33,7 +33,10 @@ export function filterProducts(
     // Country filter
     if (options.country !== 'all') {
       const hasCountry = product.buy_links?.some(
-        (link) => (link.country || 'US') === options.country,
+        (link) =>
+          link.countries?.includes(options.country) ||
+          (options.country === 'US' &&
+            (!link.countries || link.countries.length === 0)),
       );
       if (!hasCountry) return false;
     }
@@ -66,7 +69,7 @@ export function filterProducts(
       ) {
         return false;
       }
-      // Low porosity products have low score >= 70
+      // Low porosity products have low score >= 80
       if (
         options.analysisFilters.lowPorosity &&
         porosityScores.low < POROSITY_THRESHOLDS.LOW_POROSITY
@@ -76,7 +79,7 @@ export function filterProducts(
       // Lightweight products are the same as low porosity
       if (
         options.analysisFilters.lightweight &&
-        porosityScores.low < (POROSITY_THRESHOLDS.LOW_POROSITY - 20)
+        porosityScores.low < POROSITY_THRESHOLDS.LOW_POROSITY - 20
       ) {
         return false;
       }
