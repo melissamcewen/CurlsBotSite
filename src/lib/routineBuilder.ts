@@ -96,9 +96,19 @@ function getProductsByCategory(
     },
   });
 
-  return filteredProducts.sort((a, b) =>
-    (a.brand + a.name).localeCompare(b.brand + b.name),
-  );
+  // Sort products by prioritizing those with the "samples" tag first, then alphabetically
+  return filteredProducts.sort((a, b) => {
+    // First prioritize products with the "samples" tag
+    const aSample = a.tags?.includes('samples') || false;
+    const bSample = b.tags?.includes('samples') || false;
+
+    // If one has samples tag and the other doesn't, prioritize the one with samples
+    if (aSample && !bSample) return -1;
+    if (!aSample && bSample) return 1;
+
+    // If both or neither have samples, sort alphabetically
+    return (a.brand + a.name).localeCompare(b.brand + b.name);
+  });
 }
 
 export type RoutineStep =
@@ -240,10 +250,10 @@ export function getRoutineSteps(
             analysisFilters,
           });
 
-          // For accessories, show all products. For others, show 3 at a time.
+          // For accessories, show up to 6 products. For others, show 3 at a time.
           const productsToShow =
             category === 'accessories'
-              ? products
+              ? products.slice(0, 6)
               : products.slice(
                   productOffsets[category] || 0,
                   (productOffsets[category] || 0) + 3,

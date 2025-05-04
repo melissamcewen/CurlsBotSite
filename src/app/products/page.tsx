@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { getBundledProducts } from 'haircare-ingredients-analyzer';
 import {
   ShoppingBag,
@@ -37,6 +37,14 @@ export default function ProductsPage() {
   const [selectedCountry, setSelectedCountry] = useState<CountryCode | 'all'>(
     'all',
   );
+
+  // Ensure that the LocalizationContext country is updated whenever selectedCountry changes
+  useEffect(() => {
+    if (selectedCountry !== 'all') {
+      setCountry(selectedCountry);
+    }
+  }, [selectedCountry, setCountry]);
+
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [showFeaturedOnly, setShowFeaturedOnly] = useState(false);
   const [sortField, setSortField] = useState<SortField>('brand');
@@ -69,6 +77,15 @@ export default function ProductsPage() {
 
   // Sort products
   const sortedProducts = [...filteredProducts].sort((a, b) => {
+    // First prioritize products with the "samples" tag
+    const aSample = a.tags?.includes('samples') || false;
+    const bSample = b.tags?.includes('samples') || false;
+
+    // If one has samples tag and the other doesn't, prioritize the one with samples
+    if (aSample && !bSample) return -1;
+    if (!aSample && bSample) return 1;
+
+    // Otherwise sort normally
     let aValue = a[sortField as keyof typeof a] || '';
     let bValue = b[sortField as keyof typeof b] || '';
 
@@ -80,12 +97,16 @@ export default function ProductsPage() {
     if (sortField === 'country') {
       // Get all unique countries from buy links, defaulting to US if none specified
       const aCountries = [
-        ...new Set(a.buy_links?.map((link) => link.country || 'US') || ['US']),
+        ...new Set(
+          a.buy_links?.flatMap((link) => link.countries || ['US']) || ['US'],
+        ),
       ]
         .sort()
         .join(',');
       const bCountries = [
-        ...new Set(b.buy_links?.map((link) => link.country || 'US') || ['US']),
+        ...new Set(
+          b.buy_links?.flatMap((link) => link.countries || ['US']) || ['US'],
+        ),
       ]
         .sort()
         .join(',');
@@ -194,12 +215,14 @@ export default function ProductsPage() {
                   }`}
                 >
                   All Countries
+                  {selectedCountry === 'all' && (
+                    <span className="badge badge-sm">
+                      <XCircle className="w-3 h-3" />
+                    </span>
+                  )}
                 </button>
                 <button
-                  onClick={() => {
-                    setSelectedCountry('US');
-                    setCountry('US');
-                  }}
+                  onClick={() => setSelectedCountry('US')}
                   className={`btn btn-sm gap-2 ${
                     selectedCountry === 'US' ? 'btn-primary' : 'btn-outline'
                   }`}
@@ -212,10 +235,7 @@ export default function ProductsPage() {
                   )}
                 </button>
                 <button
-                  onClick={() => {
-                    setSelectedCountry('UK');
-                    setCountry('UK');
-                  }}
+                  onClick={() => setSelectedCountry('UK')}
                   className={`btn btn-sm gap-2 ${
                     selectedCountry === 'UK' ? 'btn-primary' : 'btn-outline'
                   }`}
@@ -228,10 +248,7 @@ export default function ProductsPage() {
                   )}
                 </button>
                 <button
-                  onClick={() => {
-                    setSelectedCountry('AU');
-                    setCountry('AU');
-                  }}
+                  onClick={() => setSelectedCountry('AU')}
                   className={`btn btn-sm gap-2 ${
                     selectedCountry === 'AU' ? 'btn-primary' : 'btn-outline'
                   }`}
@@ -244,10 +261,7 @@ export default function ProductsPage() {
                   )}
                 </button>
                 <button
-                  onClick={() => {
-                    setSelectedCountry('EU');
-                    setCountry('EU');
-                  }}
+                  onClick={() => setSelectedCountry('EU')}
                   className={`btn btn-sm gap-2 ${
                     selectedCountry === 'EU' ? 'btn-primary' : 'btn-outline'
                   }`}
@@ -484,7 +498,7 @@ export default function ProductsPage() {
                           (selectedCountry === 'US' &&
                             (!link.countries || link.countries.length === 0)),
                       )
-                      .slice(0, 2)
+                      .slice(0, 2) // Limit to 2 buy links
                       .map((link, index) => (
                         <a
                           key={index}
@@ -497,13 +511,25 @@ export default function ProductsPage() {
                           <span className="flex-nowrap">
                             Buy on{' '}
                             {link.retailer ||
-                              (selectedCountry === 'US'
+                              (selectedCountry === 'US' ||
+                              selectedCountry === 'all'
                                 ? 'Amazon'
                                 : `Amazon ${selectedCountry}`)}
                           </span>
                         </a>
                       ))}
                   </div>
+
+                  {/* "Try a sample" button for products with the "samples" tag */}
+                  {product.tags?.includes('samples') && (
+                    <a
+                      href="https://curlsmonthly.com/?ref=curlsbot"
+                      target="_blank"
+                      className="btn btn-xs btn-outline gap-2 whitespace-nowrap flex items-center mt-1"
+                    >
+                      Try a sample
+                    </a>
+                  )}
                 </td>
               </tr>
             ))}

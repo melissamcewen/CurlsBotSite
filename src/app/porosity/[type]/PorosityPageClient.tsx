@@ -60,11 +60,11 @@ export function PorosityPageClient({ porosityType, porosityInfo }: Props) {
 
   return (
     <div className="container mx-auto py-8 px-4">
-      <h1 className="text-3xl font-bold mb-4">
+      <div className="text-lg flex items-center gap-2 mb-4">
         <Avatar imageUrl="/normal.svg" altText="Curlsbot" />
         <span className="text-primary">CurlsBot</span> thinks you have:{' '}
-        {porosityInfo.title}
-      </h1>
+      </div>
+      <h1 className="text-3xl font-bold mb-4">{porosityInfo.title}</h1>
       <p className="text-lg mb-8">{porosityInfo.description}</p>
 
       <Link href="/porosity" className="btn btn-primary gap-2  mb-4">

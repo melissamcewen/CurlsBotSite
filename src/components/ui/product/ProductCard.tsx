@@ -1,6 +1,12 @@
 import Link from 'next/link';
 import { Product } from 'haircare-ingredients-analyzer';
-import { Tag, FlaskConical, CheckCircle, ShoppingCart } from 'lucide-react';
+import {
+  Tag,
+  FlaskConical,
+  CheckCircle,
+  ShoppingCart,
+  Sparkles,
+} from 'lucide-react';
 import { getCountryFromHostname } from '@/lib/countryDetection';
 import {
   POROSITY_EXEMPT_CATEGORIES,
@@ -129,13 +135,12 @@ export function ProductCard({
                   (userCountry === 'US' &&
                     (!link.countries || link.countries.length === 0)),
               )
-              .slice(0, 2)
               .map((link, index) => (
                 <a
                   key={index}
                   href={link.url}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener"
                   className="btn btn-outline flex items-center gap-2 flex-nowrap min-w-48"
                 >
                   <ShoppingCart className="w-4 h-4 flex-shrink-0" />
@@ -149,6 +154,19 @@ export function ProductCard({
                 </a>
               ))}
           </div>
+
+          {/* "Try a sample" button for products with the "samples" tag */}
+          {product.product.tags?.includes('samples') && (
+            <a
+              href="https://curlsmonthly.com/?ref=curlsbot"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-secondary border-secondary w-full flex items-center gap-2"
+            >
+              <Sparkles className="w-4 h-4 flex-shrink-0" />{' '}
+              <span className="flex-nowrap">Try a sample</span>
+            </a>
+          )}
         </div>
       </div>
     </div>

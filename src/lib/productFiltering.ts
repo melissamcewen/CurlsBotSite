@@ -2,6 +2,7 @@ import { Product } from 'haircare-ingredients-analyzer';
 import type { CountryCode } from './countryDetection';
 import { POROSITY_THRESHOLDS, POROSITY_EXEMPT_CATEGORIES } from './porosity';
 import type { ProductCategory } from './routineBuilder';
+import { filterProductByCountry } from './countryDetection';
 
 interface FilterOptions {
   country: string;
@@ -32,13 +33,9 @@ export function filterProducts(
 
     // Country filter
     if (options.country !== 'all') {
-      const hasCountry = product.buy_links?.some(
-        (link) =>
-          link.countries?.includes(options.country) ||
-          (options.country === 'US' &&
-            (!link.countries || link.countries.length === 0)),
-      );
-      if (!hasCountry) return false;
+      if (!filterProductByCountry(product, options.country)) {
+        return false;
+      }
     }
 
     // Category filter

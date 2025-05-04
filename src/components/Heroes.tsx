@@ -109,13 +109,13 @@ export default async function Heroes() {
                 </div>
               </Link>
               <a
-                href="https://click.linksynergy.com/fs-bin/click?id=9QcV0uNyab0&offerid=1377993.71&type=3&subid=0"
+                href="https://curlsmonthly.com/?ref=curlsbot"
                 className="card bg-base-100 hover:bg-base-200 transition-colors"
               >
                 <figure className="relative h-48 bg-primary">
                   <Image
-                    src="/images/boucleme.jpg"
-                    alt="Bouclème"
+                    src="/images/curlsmonthly2.jpg"
+                    alt="Curls Monthly"
                     fill
                     className="object-cover rounded-t-xl"
                   />
@@ -123,10 +123,10 @@ export default async function Heroes() {
 
                 <div className="card-body flex flex-col justify-between">
                   <div>
-                    <h3 className="card-title text-lg ">20% Off Bouclème</h3>
+                    <h3 className="card-title text-lg ">Try Samples</h3>
                     <p className="text-base-content/70 text-sm line-clamp-2 mt-2 text-left">
-                      Get 20% off most Bouclème products during their Spring
-                      Sale!
+                      Tired of trying to find the right products? Try samples
+                      sizes of the best curly/wavy products with Curls Monthly!
                     </p>
                   </div>
                   <div className="card-actions justify-end mt-4">

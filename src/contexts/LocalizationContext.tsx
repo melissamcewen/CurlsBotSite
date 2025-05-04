@@ -39,20 +39,31 @@ const countryNames: Record<CountryCode, string> = {
 };
 
 export function LocalizationProvider({ children }: { children: ReactNode }) {
-  const [country, setCountry] = useState<CountryCode>(() => {
-    // Try to get from localStorage first
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('country') as CountryCode;
-      if (saved && Object.keys(countryNames).includes(saved)) {
-        return saved;
-      }
-    }
-    return getCountryFromHostname();
-  });
+  // Initialize with a default value for server-side rendering
+  // This prevents hydration errors by using same initial value on both server and client
+  const [isClient, setIsClient] = useState(false);
+  const [country, setCountry] = useState<CountryCode>('US');
 
+  // Only run this effect on the client after initial render
   useEffect(() => {
-    localStorage.setItem('country', country);
-  }, [country]);
+    setIsClient(true);
+    // Now we're safely on the client side, we can check localStorage
+    const savedCountry = localStorage.getItem('country') as CountryCode;
+    if (savedCountry && Object.keys(countryNames).includes(savedCountry)) {
+      setCountry(savedCountry);
+    } else {
+      // If no saved country, detect it
+      const detectedCountry = getCountryFromHostname(window.location.hostname);
+      setCountry(detectedCountry);
+    }
+  }, []);
+
+  // Save to localStorage when country changes
+  useEffect(() => {
+    if (isClient) {
+      localStorage.setItem('country', country);
+    }
+  }, [country, isClient]);
 
   const value = {
     country,

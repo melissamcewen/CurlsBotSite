@@ -91,7 +91,10 @@ function filterProductsInComponent(
     // Country filter
     if (options.country !== 'all') {
       const hasCountry = product.buy_links?.some(
-        (link) => (link.country || 'US') === options.country,
+        (link) =>
+          link.countries?.includes(options.country) ||
+          (options.country === 'US' &&
+            (!link.countries || link.countries.length === 0)),
       );
       if (!hasCountry) return false;
     }
@@ -269,7 +272,20 @@ export default function HairRoutine({
         return null;
       }
 
-      // First try to find products with descriptions
+      // First try to find products with the samples tag
+      const productsWithSamples = filteredProducts.filter((product) =>
+        product.tags?.includes('samples'),
+      );
+
+      // If we have products with samples, use one of those
+      if (productsWithSamples.length > 0) {
+        const randomIndex = Math.floor(
+          Math.random() * productsWithSamples.length,
+        );
+        return productsWithSamples[randomIndex];
+      }
+
+      // If no products with samples, try to find products with descriptions
       const productsWithDescription = filteredProducts.filter(
         (product) => product.description && product.description.trim() !== '',
       );
@@ -416,23 +432,12 @@ export default function HairRoutine({
   };
 
   return (
-    <div className="bg-base-100 rounded-xl p-5">
-      <div className="flex items-center gap-2 mb-2">
-        <Sparkles className="w-5 h-5 text-primary" />
-        <h3 className="text-xl font-bold">Routine</h3>
-      </div>
-
-      <p className="text-sm mb-4">
-        We&apos;ve put together a routine for you{' '}
-        {hairType
-          ? `based on your ${hairType}`
-          : 'based on your hair type'}
-        . Showing products available in {countryName}.
-      
-      </p>
-
-      <div className="bg-base-200 rounded-lg p-4 mb-5">
-        <h4 className="font-bold mb-3 text-sm">Routine Settings</h4>
+    <div className="mt-2">
+      <div className="bg-base-100 rounded-lg p-4 mb-5">
+        <div className="flex items-center gap-2 mb-2">
+          <Sparkles className="w-5 h-5 text-primary" />
+          <h3 className="text-xl font-bold">Routine Generator</h3>
+        </div>
 
         {/* Settings in a more compact grid layout */}
         <div className="grid grid-cols-2 gap-3">
@@ -486,7 +491,7 @@ export default function HairRoutine({
             className="btn btn-primary col-span-2 h-11 flex gap-2"
             onClick={handleShuffle}
           >
-            <Shuffle className="w-4 h-4" />
+            <Shuffle className="w-4 h-4 flex-shrink-0" />
             Shuffle
           </button>
         </div>
@@ -523,7 +528,7 @@ export default function HairRoutine({
             if (!product) return null;
 
             return (
-              <div key={key} className="bg-base-200 rounded-lg p-4 flex gap-3">
+              <div key={key} className="bg-base-100 rounded-lg p-4 flex gap-3">
                 <div className="flex-shrink-0 bg-base-100 rounded-full w-10 h-10 flex items-center justify-center">
                   {productIcons[key as keyof typeof productIcons]}
                 </div>
@@ -536,7 +541,11 @@ export default function HairRoutine({
                       <a
                         href={
                           product.buy_links.find(
-                            (link) => (link.country || 'US') === country,
+                            (link) =>
+                              link.countries?.includes(country) ||
+                              (country === 'US' &&
+                                (!link.countries ||
+                                  link.countries.length === 0)),
                           )?.url || product.buy_links[0].url
                         }
                         target="_blank"
@@ -562,6 +571,15 @@ export default function HairRoutine({
           })
         )}
       </div>
+      <a
+        href="https://curlsmonthly.com/?ref=curlsbot"
+        className="btn btn-secondary w-full col-span-4 h-11 flex gap-2 mt-4"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Sparkles className="w-4 h-4 flex-shrink-0" />
+        Try sample sizes of these products at Curls Monthly
+      </a>
     </div>
   );
 }

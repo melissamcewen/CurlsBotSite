@@ -13,8 +13,8 @@ describe('ProductCard', () => {
     const productWithFrizzbot = {
       ...baseProduct,
       extensions: {
-        frizzbot: { score: -60 }
-      }
+        frizzbot: { score: -60 },
+      },
     };
 
     // Should show badge for gel
@@ -23,10 +23,10 @@ describe('ProductCard', () => {
         product={{
           title: 'Test',
           description: 'Test',
-          product: productWithFrizzbot
+          product: productWithFrizzbot,
         }}
         category="gels"
-      />
+      />,
     );
     expect(screen.queryByText('Humidity Resistant')).toBeInTheDocument();
 
@@ -36,10 +36,10 @@ describe('ProductCard', () => {
         product={{
           title: 'Test',
           description: 'Test',
-          product: productWithFrizzbot
+          product: productWithFrizzbot,
         }}
         category="shampoos"
-      />
+      />,
     );
     expect(screen.queryByText('Humidity Resistant')).not.toBeInTheDocument();
   });
@@ -48,8 +48,8 @@ describe('ProductCard', () => {
     const productWithPorosity = {
       ...baseProduct,
       extensions: {
-        porosity: { high: 85, low: 40 }
-      }
+        porosity: { high: 85, low: 40 },
+      },
     };
 
     // Should show badges for gel
@@ -58,10 +58,10 @@ describe('ProductCard', () => {
         product={{
           title: 'Test',
           description: 'Test',
-          product: productWithPorosity
+          product: productWithPorosity,
         }}
         category="gels"
-      />
+      />,
     );
     expect(screen.queryByText('High Porosity')).toBeInTheDocument();
 
@@ -71,10 +71,10 @@ describe('ProductCard', () => {
         product={{
           title: 'Test',
           description: 'Test',
-          product: productWithPorosity
+          product: productWithPorosity,
         }}
         category="clarifying_shampoos"
-      />
+      />,
     );
     expect(screen.queryByText('High Porosity')).not.toBeInTheDocument();
   });
