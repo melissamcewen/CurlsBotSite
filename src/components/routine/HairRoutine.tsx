@@ -33,6 +33,7 @@ export type ProductCategory =
   | 'gels'
   | 'oils'
   | 'sprays'
+  | 'treatments'
   | 'accessories';
 
 // Score thresholds for porosity (copied from porosity.ts)
@@ -62,6 +63,9 @@ const STRAIGHT_HAIR_TYPES = [
   'Straight hair',
   'Straight thick hair',
 ];
+
+// Wavy hair types that should use wavy-tagged products
+const WAVY_HAIR_TYPES = ['Wavy fine hair', 'Wavy hair', 'Loose curls'];
 
 // Keywords to exclude for straight hair types
 const CURL_WAVE_KEYWORDS = ['curl', 'curls', 'curly', 'wave', 'waves', 'wavy'];
@@ -268,6 +272,34 @@ export default function HairRoutine({
         });
       }
 
+      // Additional filtering based on curlsBotType and product tags
+      if (curlsBotType) {
+        let requiredTag: string | null = null;
+
+        if (
+          STRAIGHT_HAIR_TYPES.includes(curlsBotType) ||
+          WAVY_HAIR_TYPES.includes(curlsBotType)
+        ) {
+          requiredTag = 'wavy';
+        } else if (curlsBotType === 'Curly hair') {
+          requiredTag = 'curly';
+        } else if (curlsBotType === 'Very curly hair') {
+          requiredTag = 'coily';
+        }
+
+        if (requiredTag) {
+          const tagFilteredProducts = filteredProducts.filter((product) =>
+            product.tags?.includes(requiredTag as string),
+          );
+
+          // Only apply tag filtering if we have products with the required tag
+          // Otherwise, fall back to all filtered products to avoid empty results
+          if (tagFilteredProducts.length > 0) {
+            filteredProducts = tagFilteredProducts;
+          }
+        }
+      }
+
       if (filteredProducts.length === 0) {
         return null;
       }
@@ -316,14 +348,17 @@ export default function HairRoutine({
         conditioner: 'conditioners',
         ...(isStraightHair ? {} : { leaveIn: 'leave_ins' }),
         styler: isStraightHair
-          ? 'oils' // For straight hair types, only use oils as stylers
+          ? ['oils', 'sprays'] // For straight hair types, use oils and sprays as stylers
           : ['creams', 'foams', 'custards', 'gels', 'oils', 'sprays'],
         ...(isMinimal
           ? {}
           : {
               // Add additional categories for non-minimal routine
-              deepConditioner: 'deep_conditioners',
+              deepConditioner: isStraightHair
+                ? 'treatments'
+                : 'deep_conditioners',
               clarifyingShampoo: 'clarifying_shampoos',
+              prePoo: 'pre-poo',
             }),
       };
 
@@ -371,10 +406,11 @@ export default function HairRoutine({
       // Convert to ordered products to control the display order
       const orderedProducts: Record<string, Product | null> = {};
 
-      // Define the order: shampoo, clarifying, conditioner, deep conditioner, leave-in, styler, styler2
+      // Define the order: pre-poo, clarifying, shampoo, conditioner, deep conditioner, leave-in, styler, styler2
       const orderedKeys = [
-        'shampoo',
+        'prePoo',
         'clarifyingShampoo',
+        'shampoo',
         'conditioner',
         'deepConditioner',
         'leaveIn',
@@ -394,7 +430,7 @@ export default function HairRoutine({
     };
 
     loadProducts();
-  }, [isCGM, isMinimal, porosity, country, isStraightHair]);
+  }, [isCGM, isMinimal, porosity, country, isStraightHair, curlsBotType]);
 
   const handleShuffle = () => {
     // Trigger re-render by changing a dependency of the useEffect
@@ -411,6 +447,7 @@ export default function HairRoutine({
 
   // Icons for each product type
   const productIcons = {
+    prePoo: <Droplets className="w-4 h-4 text-info" />,
     shampoo: <Droplets className="w-4 h-4 text-primary" />,
     clarifyingShampoo: <Droplets className="w-4 h-4 text-error" />,
     conditioner: <Sparkles className="w-4 h-4 text-secondary" />,
@@ -422,10 +459,11 @@ export default function HairRoutine({
 
   // Product display names
   const productDisplayNames: Record<string, string> = {
+    prePoo: 'Pre-Poo Treatment',
     shampoo: 'Shampoo',
     clarifyingShampoo: 'Clarifying Shampoo',
     conditioner: 'Conditioner',
-    deepConditioner: 'Deep Conditioner',
+    deepConditioner: isStraightHair ? 'Treatment' : 'Deep Conditioner',
     leaveIn: 'Leave-in Conditioner',
     styler: 'Styling Product',
     styler2: 'Additional Styler',

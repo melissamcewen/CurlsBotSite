@@ -119,7 +119,7 @@ describe('HairRoutine', () => {
     expect(container).toBeTruthy();
   });
 
-  it('uses only oils as stylers for straight hair types', () => {
+  it('uses oils and sprays as stylers for straight hair types', () => {
     // Configure the context to use US
     jest
       .spyOn(require('@/contexts/LocalizationContext'), 'useLocalization')
@@ -140,7 +140,9 @@ describe('HairRoutine', () => {
 
     // Initially should be minimal (default true)
     // Find the checkbox for minimal routine
-    const minimalToggle = container.querySelector('input[type="checkbox"].toggle.toggle-secondary');
+    const minimalToggle = container.querySelector(
+      'input[type="checkbox"].toggle.toggle-secondary',
+    );
     expect(minimalToggle).toBeTruthy();
     expect((minimalToggle as HTMLInputElement).checked).toBe(true);
 
@@ -165,7 +167,10 @@ describe('HairRoutine', () => {
       });
 
     // Ensure we can find distinct products for different categories
-    const mockGetBundled = jest.spyOn(require('haircare-ingredients-analyzer'), 'getBundledProducts');
+    const mockGetBundled = jest.spyOn(
+      require('haircare-ingredients-analyzer'),
+      'getBundledProducts',
+    );
     mockGetBundled.mockImplementation(() => {
       return {
         products: {
@@ -204,15 +209,17 @@ describe('HairRoutine', () => {
             buy_links: [{ url: 'https://example.com/us', country: 'US' }],
             product_categories: ['conditioners'],
             status: 'ok',
-          }
-        }
+          },
+        },
       };
     });
 
     const { container } = render(<HairRoutine hairType="wavy" />);
 
     // Toggle minimal routine off
-    const minimalToggle = container.querySelector('input[type="checkbox"].toggle.toggle-secondary');
+    const minimalToggle = container.querySelector(
+      'input[type="checkbox"].toggle.toggle-secondary',
+    );
     expect(minimalToggle).toBeTruthy();
     fireEvent.click(minimalToggle as HTMLElement);
 
