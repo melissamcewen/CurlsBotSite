@@ -73,10 +73,10 @@ export function filterProducts(
       ) {
         return false;
       }
-      // Lightweight products are the same as low porosity
+      // Lightweight products can have a slightly worse low porosity score
       if (
         options.analysisFilters.lightweight &&
-        porosityScores.low < POROSITY_THRESHOLDS.LOW_POROSITY - 20
+        porosityScores.low < POROSITY_THRESHOLDS.LIGHTWEIGHT
       ) {
         return false;
       }

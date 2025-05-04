@@ -20,6 +20,7 @@ import { useLocalization } from '@/contexts/LocalizationContext';
 import Link from 'next/link';
 import type { PorosityType } from '@/lib/routineBuilder';
 import { filterProducts } from '@/lib/productFiltering';
+import { POROSITY_THRESHOLDS } from '@/lib/porosity';
 
 type CountryCode = 'US' | 'UK' | 'AU' | 'EU';
 type PriceRange = '$' | '$$' | '$$$';
@@ -460,19 +461,14 @@ export default function ProductsPage() {
                         </div>
                       )}
                     {product.extensions?.porosity &&
-                      product.extensions.porosity.high >= 20 && (
+                      product.extensions.porosity.low >=
+                        POROSITY_THRESHOLDS.LIGHTWEIGHT && (
                         <div className="badge badge-accent">Lightweight</div>
                       )}
                     {product.extensions?.porosity &&
                       product.extensions.porosity.high >= 80 && (
                         <div className="badge badge-primary bg-primary/80">
                           High Porosity
-                        </div>
-                      )}
-                    {product.extensions?.porosity &&
-                      product.extensions.porosity.low >= 70 && (
-                        <div className="badge badge-secondary bg-secondary/80">
-                          Low Porosity
                         </div>
                       )}
                   </div>

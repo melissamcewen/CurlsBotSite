@@ -11,6 +11,7 @@ import { getBundledProducts } from 'haircare-ingredients-analyzer';
 import type { Product } from 'haircare-ingredients-analyzer';
 import { useLocalization } from '@/contexts/LocalizationContext';
 import type { CountryCode } from '@/lib/countryDetection';
+import { POROSITY_THRESHOLDS } from '@/lib/porosity';
 
 // Define internal types rather than importing from routineBuilder
 export type PorosityType =
@@ -35,12 +36,6 @@ export type ProductCategory =
   | 'sprays'
   | 'treatments'
   | 'accessories';
-
-// Score thresholds for porosity (copied from porosity.ts)
-const POROSITY_THRESHOLDS = {
-  HIGH_POROSITY: 70, // Score needed to be considered good for high porosity
-  LOW_POROSITY: 70, // Score needed to be considered good for low porosity
-};
 
 // Categories that should not use porosity filtering (copied from porosity.ts)
 const POROSITY_EXEMPT_CATEGORIES: ProductCategory[] = [
@@ -141,7 +136,7 @@ function filterProductsInComponent(
       // Lightweight products are a little bit different from low porosity set right now to low porosity - 20
       if (
         options.analysisFilters.lightweight &&
-        porosityScores.low < POROSITY_THRESHOLDS.LOW_POROSITY - 20
+        porosityScores.low < POROSITY_THRESHOLDS.LIGHTWEIGHT
       ) {
         return false;
       }

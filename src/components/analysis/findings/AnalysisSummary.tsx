@@ -25,6 +25,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import { candlestickBigLit, bottleDispenser, soapBar } from '@lucide/lab';
+import { POROSITY_THRESHOLDS } from '@/lib/porosity';
 
 interface Props {
   result: BaseAnalysisResult;
@@ -359,7 +360,7 @@ export function AnalysisSummary({ result }: Props) {
           </div>
         )}
 
-        {porosityScores.low >= 60 && (
+        {porosityScores.low >= POROSITY_THRESHOLDS.LIGHTWEIGHT && (
           <div className={`p-4 rounded-lg ${getStatusClasses('ok').bg}`}>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">

@@ -72,7 +72,7 @@ export function ProductCard({
             {shouldShowPorosityScores &&
               product.product.extensions?.porosity &&
               product.product.extensions.porosity.low >=
-                POROSITY_THRESHOLDS.LOW_POROSITY && (
+                POROSITY_THRESHOLDS.LIGHTWEIGHT && (
                 <div className="badge badge-accent">Lightweight</div>
               )}
             {shouldShowPorosityScores &&
