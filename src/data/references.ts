@@ -923,7 +923,7 @@ export const defaultReferences: References = {
 */
   '92': {
     id: '92',
-    url: 'https://doi.org/10.1016/j.ajhg.2009.10.009',
+    url: 'https://www.amazon.com/Andre-Talks-Hair-Walker/dp/0684824566',
     title: 'Andre Talks Hair',
     type: 'author',
     author: 'Walker, Andre.',
@@ -963,7 +963,7 @@ Bouabbache S, Galliano A, Littaye P, Leportier M, Pouradier F, Gillot E, Panhard
    */
   '95': {
     id: '95',
-    url: 'https://doi.org/10.1021/acsabm.8b00014',
+    url: 'https://pubs.acs.org/doi/10.1021/acsabm.8b00386',
     title:
       'Multimodal Evidence of Mesostructured Calcium Fatty Acid Deposits in Human Hair and Their Role on Hair Properties',
     type: 'science',
@@ -977,7 +977,7 @@ Bouabbache S, Galliano A, Littaye P, Leportier M, Pouradier F, Gillot E, Panhard
 */
   '96': {
     id: '96',
-    url: 'https://doi.org/10.1021/acsabm.8b00014',
+    url: 'https://www.taylorfrancis.com/books/edit/10.3109/9780203027226/science-hair-care-charles-zviak',
     title: 'The Science of Hair Care',
     type: 'science',
     author: 'Zviak, C.',
@@ -988,7 +988,7 @@ Bouabbache S, Galliano A, Littaye P, Leportier M, Pouradier F, Gillot E, Panhard
    */
   '97': {
     id: '97',
-    url: 'https://doi.org/10.1021/acsabm.8b00014',
+    url: 'https://www.sciencedirect.com/science/article/pii/S0022202X1732938X',
     title:
       'The Effect of Water Hardness on Surfactant Deposition after Washing and Subsequent Skin Irritation in Atopic Dermatitis Patients and Healthy Control Subjects',
     type: 'science',
@@ -1024,7 +1024,7 @@ Bouabbache S, Galliano A, Littaye P, Leportier M, Pouradier F, Gillot E, Panhard
    */
   '100': {
     id: '100',
-    url: 'https://doi.org/10.1021/acsabm.8b00014',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/24574692/',
     title: 'Effects of Hard Water on Hair',
     type: 'science',
     author: 'Srinivasan, G., Srinivas, C. R., Mathew, A. C. & Duraiswami, D.',
@@ -1038,7 +1038,7 @@ Bouabbache S, Galliano A, Littaye P, Leportier M, Pouradier F, Gillot E, Panhard
   */
   '101': {
     id: '101',
-    url: 'https://doi.org/10.1021/acsabm.8b00014',
+    url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6028999/',
     title:
       'To Evaluate and Compare Changes in Baseline Strength of Hairs after Treating them with Deionized Water and Hard Water and its Role in Hair Breakage',
     type: 'science',
@@ -1052,7 +1052,7 @@ Bouabbache S, Galliano A, Littaye P, Leportier M, Pouradier F, Gillot E, Panhard
   */
   '102': {
     id: '102',
-    url: 'https://doi.org/10.1021/acsabm.8b00014',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/26711619/',
     title: 'Scanning electron microscopy of hair treated in hard water',
     type: 'science',
     author: 'Srinivasan, G. & Chakravarthy Rangachari, S.',
@@ -1065,7 +1065,7 @@ Bouabbache S, Galliano A, Littaye P, Leportier M, Pouradier F, Gillot E, Panhard
   */
   '103': {
     id: '103',
-    url: 'https://doi.org/10.1021/acsabm.8b00014',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/31310695/',
     title: 'Seborrheic dermatitis—Looking beyond Malassezia',
     type: 'science',
     author: 'Wikramanayake, T. C., Borda, L. J., Miteva, M. & Paus, R.',
@@ -1078,7 +1078,7 @@ Bouabbache S, Galliano A, Littaye P, Leportier M, Pouradier F, Gillot E, Panhard
 */
   '104': {
     id: '104',
-    url: 'https://doi.org/10.1021/acsabm.8b00014',
+    url: 'https://www.sciencedirect.com/science/article/pii/S0022202X15526146',
     title:
       'Three Etiologic Facets of Dandruff and Seborrheic Dermatitis: Malassezia Fungi, Sebaceous Lipids, and Individual Sensitivity',
     type: 'science',
@@ -1091,7 +1091,7 @@ Bouabbache S, Galliano A, Littaye P, Leportier M, Pouradier F, Gillot E, Panhard
 */
   '105': {
     id: '105',
-    url: 'https://doi.org/10.1021/acsabm.8b00014',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/31360714/',
     title:
       'Assessing Biophysical and Physiological Profiles of Scalp Seborrheic Dermatitis in the Thai Population',
     type: 'science',
@@ -1106,7 +1106,7 @@ Bouabbache S, Galliano A, Littaye P, Leportier M, Pouradier F, Gillot E, Panhard
   */
   '106': {
     id: '106',
-    url: 'https://doi.org/10.1021/acsabm.8b00014',
+    url: 'https://onlinelibrary.wiley.com/doi/abs/10.1111/1346-8138.17102',
     title:
       'Weekly hair washing: The recommended solution for women with afro-textured hair to alleviate dandruff and scalp discomfort',
     type: 'science',
@@ -1131,7 +1131,7 @@ Bouabbache S, Galliano A, Littaye P, Leportier M, Pouradier F, Gillot E, Panhard
   */
   '108': {
     id: '108',
-    url: 'https://doi.org/10.1021/acsabm.8b00014',
+    url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10015641/',
     title: 'Hair Oils May Worsen Seborrheic Dermatitis in Black Patients',
     type: 'science',
     author: 'Mayo, T., Dinkins, J. & Elewski, B.',
@@ -1143,7 +1143,8 @@ Bouabbache S, Galliano A, Littaye P, Leportier M, Pouradier F, Gillot E, Panhard
   '109': {
     id: '109',
     url: 'https://doi.org/10.1021/acsabm.8b00014',
-    title: 'Hair and scalp disorders in adult and pediatric patients with skin of color',
+    title:
+      'Hair and scalp disorders in adult and pediatric patients with skin of color',
     type: 'science',
     author: 'Taylor, S. C. et al.',
     date: '2017',
@@ -1154,8 +1155,9 @@ Bouabbache S, Galliano A, Littaye P, Leportier M, Pouradier F, Gillot E, Panhard
   */
   '110': {
     id: '110',
-    url: 'https://doi.org/10.1021/acsabm.8b00014',
-    title: 'Use of Olive Oil for the Treatment of Seborrheic Dermatitis in Children',
+    url: 'https://jamanetwork.com/journals/jamapediatrics/fullarticle/1308503',
+    title:
+      'Use of Olive Oil for the Treatment of Seborrheic Dermatitis in Children',
     type: 'science',
     author: 'Siegfried, E. & Glenn, E.',
     date: '2012',
@@ -1167,8 +1169,9 @@ Bouabbache S, Galliano A, Littaye P, Leportier M, Pouradier F, Gillot E, Panhard
   */
   '111': {
     id: '111',
-    url: 'https://doi.org/10.1021/acsabm.8b00014',
-    title: 'Longitudinal study of the scalp microbiome suggests coconut oil to enrich healthy scalp commensals',
+    url: 'https://www.nature.com/articles/s41598-021-86454-1',
+    title:
+      'Longitudinal study of the scalp microbiome suggests coconut oil to enrich healthy scalp commensals',
     type: 'science',
     author: 'Saxena, R. et al.',
     date: '2021',
@@ -1179,8 +1182,9 @@ Bouabbache S, Galliano A, Littaye P, Leportier M, Pouradier F, Gillot E, Panhard
   */
   '112': {
     id: '112',
-    url: 'https://doi.org/10.1021/acsabm.8b00014',
-    title: 'Medium-chain triglycerides inhibit growth of Malassezia: implications for prevention of systemic infection',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/10507598/',
+    title:
+      'Medium-chain triglycerides inhibit growth of Malassezia: implications for prevention of systemic infection',
     type: 'science',
     author: 'Papavassilis, C., Mach, K. K. & Mayser, P. A.',
     date: '1999',
@@ -1204,7 +1208,8 @@ Bouabbache S, Galliano A, Littaye P, Leportier M, Pouradier F, Gillot E, Panhard
   '114': {
     id: '114',
     url: 'https://doi.org/10.1021/acsabm.8b00014',
-    title: 'When Patient Diversity Informs Formulation: Reimagining Treatment for Seborrheic Dermatitis',
+    title:
+      'When Patient Diversity Informs Formulation: Reimagining Treatment for Seborrheic Dermatitis',
     type: 'science',
     author: 'Polaskey, M. T. et al.',
     date: '2024',
