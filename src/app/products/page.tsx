@@ -15,6 +15,7 @@ import {
   Dam,
   Droplet,
   Search,
+  Sparkles,
 } from 'lucide-react';
 import { useLocalization } from '@/contexts/LocalizationContext';
 import Link from 'next/link';
@@ -449,26 +450,36 @@ export default function ProductsPage() {
                 <td>
                   <div className="flex flex-wrap gap-1">
                     {product.status === 'ok' && (
-                      <div className="badge badge-primary gap-1">
+                      <div className="badge badge-primary gap-1 whitespace-nowrap text-xs">
                         <CheckCircle className="w-3 h-3" />
                         CGM
                       </div>
                     )}
                     {product.extensions?.frizzbot &&
                       product.extensions.frizzbot.score <= -50 && (
-                        <div className="badge badge-secondary">
+                        <div className="badge badge-secondary whitespace-nowrap text-xs">
                           Humidity Resistant
                         </div>
                       )}
                     {product.extensions?.porosity &&
                       product.extensions.porosity.low >=
                         POROSITY_THRESHOLDS.LIGHTWEIGHT && (
-                        <div className="badge badge-accent">Lightweight</div>
+                        <div className="badge badge-accent whitespace-nowrap text-xs">
+                          Lightweight
+                        </div>
                       )}
                     {product.extensions?.porosity &&
-                      product.extensions.porosity.high >= 80 && (
-                        <div className="badge badge-primary bg-primary/80">
+                      product.extensions.porosity.high >=
+                        POROSITY_THRESHOLDS.HIGH_POROSITY && (
+                        <div className="badge badge-primary bg-primary/80 whitespace-nowrap text-xs">
                           High Porosity
+                        </div>
+                      )}
+                    {product.extensions?.porosity &&
+                      product.extensions.porosity.low >=
+                        POROSITY_THRESHOLDS.LOW_POROSITY && (
+                        <div className="badge badge-secondary bg-secondary/80 whitespace-nowrap text-xs">
+                          Low Porosity
                         </div>
                       )}
                   </div>
@@ -521,8 +532,10 @@ export default function ProductsPage() {
                     <a
                       href="https://curlsmonthly.com/?ref=curlsbot"
                       target="_blank"
-                      className="btn btn-xs btn-outline gap-2 whitespace-nowrap flex items-center mt-1"
+                      rel="noopener noreferrer"
+                      className="btn btn-xs btn-secondary gap-2 whitespace-nowrap flex items-center  text-secondary-content"
                     >
+                      <Sparkles className="w-4 h-4 flex-shrink-0" />
                       Try a sample
                     </a>
                   )}

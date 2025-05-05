@@ -133,7 +133,7 @@ function filterProductsInComponent(
       ) {
         return false;
       }
-      // Lightweight products are a little bit different from low porosity set right now to low porosity - 20
+      // Lightweight products use the LIGHTWEIGHT threshold (50)
       if (
         options.analysisFilters.lightweight &&
         porosityScores.low < POROSITY_THRESHOLDS.LIGHTWEIGHT

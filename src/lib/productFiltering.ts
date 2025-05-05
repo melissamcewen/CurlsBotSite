@@ -59,21 +59,21 @@ export function filterProducts(
     // Porosity filters from analysis
     const porosityScores = product.extensions?.porosity;
     if (porosityScores) {
-      // High porosity products have high score >= 80
+      // High porosity products have high score >= threshold (70)
       if (
         options.analysisFilters.highPorosity &&
         porosityScores.high < POROSITY_THRESHOLDS.HIGH_POROSITY
       ) {
         return false;
       }
-      // Low porosity products have low score >= 80
+      // Low porosity products have low score >= threshold (70)
       if (
         options.analysisFilters.lowPorosity &&
         porosityScores.low < POROSITY_THRESHOLDS.LOW_POROSITY
       ) {
         return false;
       }
-      // Lightweight products can have a slightly worse low porosity score
+      // Lightweight products have low score >= threshold (50)
       if (
         options.analysisFilters.lightweight &&
         porosityScores.low < POROSITY_THRESHOLDS.LIGHTWEIGHT
