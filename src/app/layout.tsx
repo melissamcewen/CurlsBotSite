@@ -9,6 +9,7 @@ import {
 } from '@/components/GoogleTagManager';
 import { AdScripts } from '@/components/ads/AdScripts';
 import { LocalizationProvider } from '@/contexts/LocalizationContext';
+import { MailerLiteUniversal } from '@/components/MailerLite';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -179,6 +180,9 @@ export default function RootLayout({
             <Footer />
           </div>
         </LocalizationProvider>
+
+        {/* MailerLite */}
+        <MailerLiteUniversal />
       </body>
     </html>
   );

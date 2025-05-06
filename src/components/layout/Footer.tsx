@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Script from 'next/script';
+import { NewsletterForm } from './NewsletterForm';
 
 export function Footer() {
   return (
@@ -69,34 +70,7 @@ export function Footer() {
             </a>
           </div>
         </aside>
-        <div className="bg-base-100 rounded-box p-6 space-y-4 md:max-w-sm">
-          <span className="text-lg font-bold text-base-content">
-            Join the CurlsBot Community! 💌
-          </span>
-          <p className="text-sm text-base-content/80">
-            Get hair care tips, product recommendations, and ingredient alerts
-            delivered to your inbox.
-          </p>
-          <form
-            action="https://twitter.us14.list-manage.com/subscribe/post"
-            method="POST"
-            className="flex gap-2"
-            target="_blank"
-          >
-            <input type="hidden" name="u" value="dbc1f6ce69d9c1d849eaa642e" />
-            <input type="hidden" name="id" value="75335f5c10" />
-            <input
-              type="email"
-              name="MERGE0"
-              placeholder="Enter your email"
-              className="input input-bordered flex-1"
-              required
-            />
-            <button type="submit" className="btn btn-primary">
-              Subscribe
-            </button>
-          </form>
-        </div>
+        <NewsletterForm />
         <nav>
           <Link href="/about" className="link link-hover">
             About
@@ -150,6 +124,14 @@ export function Footer() {
             !function(){"use strict";var e;e=document,function(){var t,n;function r(){var t=e.createElement("script");t.src="https://cafemedia-com.videoplayerhub.com/galleryplayer.js",e.head.appendChild(t)}function a(){var t=e.cookie.match("(^|[^;]+)\s*__adblocker\s*=\s*([^;]+)");return t&&t.pop()}function c(){clearInterval(n)}return{init:function(){var e;"true"===(t=a())?r():(e=0,n=setInterval((function(){100!==e&&"false" !== t || c(), "true" === t && (r(), c()), t = a(), e++}), 50))}}}().init()}();
           `,
         }}
+      />
+      <Script
+        src="https://groot.mailerlite.com/js/w/webforms.min.js?v176e10baa5e7ed80d35ae235be3d5024"
+        type="text/javascript"
+      />
+      <Script
+        src="https://assets.mailerlite.com/jsonp/1500551/forms/153675641835750754/takel"
+        type="text/javascript"
       />
     </>
   );

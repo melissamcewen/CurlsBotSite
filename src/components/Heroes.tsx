@@ -140,83 +140,8 @@ export default async function Heroes() {
           </div>
         </div>
       </div>
-      <div className="hero bg-base-200 min-h-screen">
-        <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="text-center lg:text-left">
-            <h2 className="text-5xl font-bold">
-              Join the CurlsBot Community! 💌
-            </h2>
-            <p className="py-6">
-              Get hair care tips, product recommendations, and ingredient alerts
-              delivered to your inbox.
-            </p>
-          </div>
-          <div className="card bg-base-100 w-full max-w-sm shrink-0 justify-center items-center">
-            <form
-              action="https://twitter.us14.list-manage.com/subscribe/post"
-              method="POST"
-              className="card-body items-center justify-center"
-              target="_blank"
-            >
-              <div>
-                <div
-                  className={`rounded-full border-2 border-primary animate-none`}
-                  style={{ animation: 'none', transition: 'none' }}
-                >
-                  <div className="w-20 h-20 mask mask-circle  ">
-                    <div className=" inset-0 flex items-center justify-center">
-                      <Image
-                        src="/normal.svg"
-                        alt="CurlsBot"
-                        width={100}
-                        height={100}
-                        priority
-                        className="animate-none"
-                        style={{ animation: 'none', transition: 'none' }}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <input type="hidden" name="u" value="dbc1f6ce69d9c1d849eaa642e" />
-              <input type="hidden" name="id" value="75335f5c10" />
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Email</span>
-                </label>
-                <input
-                  type="email"
-                  name="MERGE0"
-                  placeholder="Enter your email"
-                  className="input input-bordered"
-                  required
-                />
-              </div>
 
-              <button type="submit" className="btn btn-primary w-full">
-                Subscribe
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-      <div className=" hero bg-base-100 min-h-screen">
-        <div className="hero-content flex-col lg:flex-row-reverse">
-          <Image src="/normal.svg" alt="CurlsBot" width={500} height={500} />
-
-          <div>
-            <h2 className="text-5xl font-bold">Take our Porosity Quiz</h2>
-            <p className="py-6">
-              We&apos;ll ask you a few questions about your hair to help you
-              find your hair porosity and the products that are right for you.
-              No email required!
-            </p>
-            <a href="/porosity-quiz" className="btn btn-primary">
-              Take the Quiz
-            </a>
-          </div>
-        </div>
-      </div>
+ 
       <div className="hero bg-base-200 min-h-screen">
         <div className="hero-content text-center">
           <div className="max-w-5xl">
