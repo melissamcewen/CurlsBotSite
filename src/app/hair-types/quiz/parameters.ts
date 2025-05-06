@@ -26,7 +26,9 @@ export type CurlsBotType =
   | 'Wavy hair'
   | 'Loose curls'
   | 'Curly hair'
-  | 'Very curly hair';
+  | 'Very curly hair'
+  | 'Coily hair'
+  | 'Kinky hair';
 export type WalkerType =
   | '1a'
   | '1b'
@@ -79,7 +81,11 @@ export const parameterDescriptions = {
       'You have loose curls, which can be prone to being weighed down by heavy products.',
     'Curly hair': 'Your hair is definitely curly and there is no question about it.',
     'Very curly hair':
-      'You have very curly hair, which is the most diverse of all the curly hair types. It is characterized by a mixture of tight curls, coils, and kinks. This type may be subdivided into subtypes as more research is done.',
+      'Your hair has very tight strong curl pattern and moderate-high shrinkage.',
+    'Coily hair':
+      'Your hair has tight coils and high shrinkage.',
+    'Kinky hair':
+      'Your hair has coils and kinks, and high shrinkage.',
   },
   versatility: {
     low: "Your hair is a defined type and making it into another type would take chemical treatment. You don't have to worry about heavy products changing your hair type but they can still cause build up.",
@@ -292,7 +298,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     sisterTypes: ['3b', '4a'],
   },
   '4a': {
-    curlsBotType: 'Very curly hair',
+    curlsBotType: 'Coily hair',
     WalkerType: '4a',
     commonType: '4a to 4c',
     versatility: 'low',
@@ -305,7 +311,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     sisterTypes: ['3c', '4b'],
   },
   '4b': {
-    curlsBotType: 'Very curly hair',
+    curlsBotType: 'Kinky hair',
     commonType: '4a to 4c',
     WalkerType: '4b',
     versatility: 'low',
@@ -318,7 +324,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     sisterTypes: ['3c', '4a', '4c'],
   },
   '4c': {
-    curlsBotType: 'Very curly hair',
+    curlsBotType: 'Kinky hair',
     commonType: '4a to 4c',
     WalkerType: '4b',
     versatility: 'low',

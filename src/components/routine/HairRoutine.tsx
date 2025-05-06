@@ -278,6 +278,10 @@ export default function HairRoutine({
           requiredTag = 'wavy';
         } else if (curlsBotType === 'Curly hair') {
           requiredTag = 'curly';
+        } else if (curlsBotType === 'Coily hair') {
+          requiredTag = 'coily';
+        } else if (curlsBotType === 'Kinky hair') {
+          requiredTag = 'coily';
         } else if (curlsBotType === 'Very curly hair') {
           requiredTag = 'coily';
         }
@@ -606,11 +610,11 @@ export default function HairRoutine({
       </div>
       <a
         href="https://curlsmonthly.com/?ref=curlsbot"
-        className="btn btn-secondary w-full col-span-4 h-11 flex gap-2 mt-4"
+        className="btn btn-secondary w-full col-span-4 h-11 flex gap-2 mt-4 text-xs md:text-sm"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Sparkles className="w-4 h-4 flex-shrink-0" />
+        <Sparkles className="w-4 h-4 flex-shrink-0 " />
         Try sample sizes of these products at Curls Monthly
       </a>
     </div>

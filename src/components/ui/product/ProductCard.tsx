@@ -59,7 +59,7 @@ export function ProductCard({
 
           <div className="flex flex-wrap gap-1">
             {product.product.status === 'ok' && (
-              <div className="badge badge-primary gap-1">
+              <div className="badge badge-primary gap-1 whitespace-nowrap text-xs">
                 <CheckCircle className="w-3 h-3" />
                 CGM
               </div>
@@ -67,19 +67,19 @@ export function ProductCard({
             {STYLING_CATEGORIES.includes(category) &&
               product.product.extensions?.frizzbot &&
               product.product.extensions.frizzbot.score <= -50 && (
-                <div className="badge badge-secondary">Humidity Resistant</div>
+                <div className="badge badge-secondary whitespace-nowrap text-xs">Humidity Resistant</div>
               )}
             {shouldShowPorosityScores &&
               product.product.extensions?.porosity &&
               product.product.extensions.porosity.low >=
                 POROSITY_THRESHOLDS.LIGHTWEIGHT && (
-                <div className="badge badge-accent">Lightweight</div>
+                <div className="badge badge-accent whitespace-nowrap text-xs">Lightweight</div>
               )}
             {shouldShowPorosityScores &&
               product.product.extensions?.porosity &&
               product.product.extensions.porosity.high >=
                 POROSITY_THRESHOLDS.HIGH_POROSITY && (
-                <div className="badge badge-primary bg-primary/80">
+                <div className="badge badge-primary bg-primary/80 whitespace-nowrap text-xs">
                   High Porosity
                 </div>
               )}
@@ -87,7 +87,7 @@ export function ProductCard({
               product.product.extensions?.porosity &&
               product.product.extensions.porosity.low >=
                 POROSITY_THRESHOLDS.LOW_POROSITY && (
-                <div className="badge badge-secondary bg-secondary/80">
+                <div className="badge badge-secondary bg-secondary/80 whitespace-nowrap text-xs">
                   Low Porosity
                 </div>
               )}
