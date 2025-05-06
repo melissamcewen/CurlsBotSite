@@ -15,15 +15,18 @@ export function NewsletterForm() {
 
     return () => {
       // Clean up when component unmounts
-      delete window.ml_webform_success_25660567;
+      if (window.ml_webform_success_25660567) {
+        delete window.ml_webform_success_25660567;
+      }
     };
   }, []);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const email = e.target.elements.email.value;
-    if (!email) {
+    const form = e.currentTarget;
+    const email = form.elements.namedItem('email') as HTMLInputElement;
+    if (!email?.value) {
       setErrorMessage('Email is required');
       return;
     }
@@ -33,7 +36,7 @@ export function NewsletterForm() {
 
     try {
       const formData = new FormData();
-      formData.append('fields[email]', email);
+      formData.append('fields[email]', email.value);
       formData.append('ml-submit', '1');
       formData.append('anticsrf', 'true');
 
@@ -42,7 +45,7 @@ export function NewsletterForm() {
         {
           method: 'POST',
           body: formData,
-        }
+        },
       );
 
       const data = await response.json();
@@ -50,7 +53,9 @@ export function NewsletterForm() {
       if (data.success) {
         setIsSuccess(true);
       } else {
-        const errorMsg = data.errors?.fields?.email?.[0] || 'Something went wrong. Please try again.';
+        const errorMsg =
+          data.errors?.fields?.email?.[0] ||
+          'Something went wrong. Please try again.';
         setErrorMessage(errorMsg);
       }
     } catch (error) {
@@ -87,7 +92,9 @@ export function NewsletterForm() {
                   name="email"
                   id="email"
                   placeholder="Enter your email"
-                  className={`input input-bordered w-full ${errorMessage ? 'input-error' : ''}`}
+                  className={`input input-bordered w-full ${
+                    errorMessage ? 'input-error' : ''
+                  }`}
                   required
                   aria-label="email"
                   aria-required="true"
@@ -130,6 +137,6 @@ export function NewsletterForm() {
 // Add this to make TypeScript recognize the global function
 declare global {
   interface Window {
-    ml_webform_success_25660567: () => void;
+    ml_webform_success_25660567?: () => void;
   }
 }
