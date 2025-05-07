@@ -113,7 +113,7 @@ export function CurlyTechniquesForm() {
                   <span className="sm:hidden">...</span>
                 </>
               ) : (
-                'Get Your Free Guide'
+                'Send Me the Cheat Sheet'
               )}
             </button>
           </form>
