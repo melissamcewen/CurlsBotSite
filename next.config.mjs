@@ -29,7 +29,7 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
 
-  webpack: (config, { dev, isServer }) => {
+  webpack: (config, { dev }) => {
     if (!dev) {
       config.optimization = {
         ...config.optimization,

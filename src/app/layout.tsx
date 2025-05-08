@@ -108,17 +108,6 @@ const serviceWorkerScript = `
   }
 `;
 
-// Test mode detection script
-const testModeScript = `
-  window.isTestMode = new URLSearchParams(window.location.search).get('test') === 'true';
-  if (window.isTestMode) {
-    // Disable all external scripts in test mode
-    window.dataLayer = [];
-    window.gtag = function() {};
-    window.__tcfapi = function() {};
-  }
-`;
-
 export default function RootLayout({
   children,
 }: {
@@ -128,7 +117,6 @@ export default function RootLayout({
     <html lang="en" data-theme="cupcake">
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-        <script dangerouslySetInnerHTML={{ __html: testModeScript }} />
         <script dangerouslySetInnerHTML={{ __html: serviceWorkerScript }} />
         <meta name="apple-mobile-web-app-title" content="CurlsBot" />
         <meta property="og:logo" content="/logo.svg" />
@@ -143,41 +131,27 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              if (!window.isTestMode) {
-                function isUserInEurope() {
-                  if (typeof Intl === 'undefined' || typeof Intl.DateTimeFormat === 'undefined' || typeof window.__tcfapi !== 'undefined') {
-                    return true;
-                  }
-                  return Intl.DateTimeFormat().resolvedOptions().timeZone.includes('Europe');
+              function isUserInEurope() {
+                if (typeof Intl === 'undefined' || typeof Intl.DateTimeFormat === 'undefined' || typeof window.__tcfapi !== 'undefined') {
+                  return true;
                 }
-                if (isUserInEurope()) {
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag() {
-                    dataLayer.push(arguments);
-                  }
-                  gtag('consent', 'default', {
-                    'ad_storage': 'denied',
-                    'analytics_storage': 'denied',
-                    'ad_user_data': 'denied',
-                    'ad_personalization': 'denied',
-                    'wait_for_update': 15000
-                  });
-                  dataLayer.push({
-                    'event': 'default_consent'
-                  });
-                }
+                return Intl.DateTimeFormat().resolvedOptions().timeZone.includes('Europe');
               }
-            `,
-          }}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              if (!window.isTestMode) {
-                // Load external scripts only if not in test mode
-                const gtmScript = document.createElement('script');
-                gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-XXXXX';
-                document.head.appendChild(gtmScript);
+              if (isUserInEurope()) {
+                window.dataLayer = window.dataLayer || [];
+                function gtag() {
+                  dataLayer.push(arguments);
+                }
+                gtag('consent', 'default', {
+                  'ad_storage': 'denied',
+                  'analytics_storage': 'denied',
+                  'ad_user_data': 'denied',
+                  'ad_personalization': 'denied',
+                  'wait_for_update': 15000
+                });
+                dataLayer.push({
+                  'event': 'default_consent'
+                });
               }
             `,
           }}
