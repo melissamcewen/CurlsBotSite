@@ -15,15 +15,17 @@ import {
   POROSITY_THRESHOLDS,
 } from '@/lib/porosity';
 import type { ProductCategory } from '@/lib/routineBuilder';
+import { getCustomDescription, type BestProductPage } from '@/lib/bestProducts';
 
 interface ProductListicleProps {
   products: Product[];
-  category: ProductCategory;
+  category: ProductCategory | 'all';
   title: string;
   description: string;
   selectedCountry?: string;
   showRanking?: boolean;
   howWePicked?: string;
+  page: BestProductPage;
 }
 
 export function ProductListicle({
@@ -34,6 +36,7 @@ export function ProductListicle({
   selectedCountry,
   showRanking = true,
   howWePicked,
+  page,
 }: ProductListicleProps) {
   const userCountry = selectedCountry || getCountryFromHostname();
   const shouldShowPorosityScores =
@@ -126,6 +129,13 @@ export function ProductListicle({
                         </p>
                         <p className="text-base-content/70 mb-4">
                           {product.description}
+                          {getCustomDescription(page, product.id) && (
+                            <>
+                              <br />
+                              <br />
+                              {getCustomDescription(page, product.id)}
+                            </>
+                          )}
                         </p>
 
                         <div className="flex flex-wrap gap-2 mb-4">

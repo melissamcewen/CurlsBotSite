@@ -24,7 +24,8 @@ export type ProductCategory =
   | 'gels'
   | 'oils'
   | 'sprays'
-  | 'accessories';
+  | 'accessories'
+  | 'all';
 
 interface FilterCriteria {
   porosity: PorosityType;
@@ -59,6 +60,7 @@ export const CATEGORY_DESCRIPTIONS: Record<ProductCategory, string> = {
   sprays:
     'Optional finishing products that can help seal in moisture and lock in styles.',
   accessories: 'Useful items for anyone with curly or wavy hair.',
+  all: 'All product categories.',
 };
 
 interface GetProductsByCategoryOptions {

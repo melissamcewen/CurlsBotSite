@@ -28,6 +28,8 @@ export interface BestProductPage {
   sortProducts?: (a: any, b: any) => number;
   /** Explanation of how products were selected for this list */
   howWePicked?: string;
+  /** Custom descriptions for specific products on this page */
+  customDescriptions?: Record<string, string>;
 }
 
 export const BEST_PRODUCT_PAGES: BestProductPage[] = [
@@ -41,7 +43,10 @@ export const BEST_PRODUCT_PAGES: BestProductPage[] = [
       tags: ['wavy'],
     },
     howWePicked:
-      "We handpicked these products and tested them ourselves on our own or client's wavy hair, looking for products that had real cleansing power to remove build-up that weighs down waves, but gentle enough to not strip natural oils",
+      "If you have wavy hair, you know it can be frustrating to find the right shampoo. Many curly shampoos are not cleansing enough to remove build-up that weighs down waves, but you also don't want something that dries your hair out. These shampoos have a great balancing of cleansing power with protective conditioners to keep your waves hydrated and bouncy.",
+    /* customDescriptions: {
+      super_moisture_shampoo: 'Melissa @ CurlsBot says: I love the scent and the feel of this shampoo. It does a great job cleansing while not drying out my waves.',
+    },*/
   },
   {
     slug: 'best-wavy-creams',
@@ -53,7 +58,7 @@ export const BEST_PRODUCT_PAGES: BestProductPage[] = [
       tags: ['wavy'],
     },
     howWePicked:
-      "We handpicked these products and tested them ourselves on our own or client's wavy hair, looking for products that would add moisture and shine without weighing down waves. If you have wavy hair we recommend you use these products in small amounts, as even lighter weight creams can weigh down waves if overused.",
+      "We handpicked these products and tested them ourselves on our own or client's wavy hair, looking for products that would add moisture and shine without weighing down waves. If you have wavy hair we recommend you use these products in small amounts (like a quarter or dime-size emulsified in your palms), as even lighter weight creams can weigh down waves if overused.",
   },
 
   {
@@ -171,4 +176,12 @@ export function getBestProductPage(slug: string): BestProductPage | undefined {
 // Helper function to get all page slugs
 export function getAllBestProductSlugs(): string[] {
   return BEST_PRODUCT_PAGES.map((page) => page.slug);
+}
+
+// Helper function to get custom description for a product on a specific page
+export function getCustomDescription(
+  page: BestProductPage,
+  productId: string,
+): string | undefined {
+  return page.customDescriptions?.[productId];
 }

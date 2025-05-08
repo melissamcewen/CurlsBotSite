@@ -99,6 +99,7 @@ export default function BestProductsPage({ params }: PageProps) {
         title={page.title}
         description={page.description}
         howWePicked={page.howWePicked}
+        page={page}
       />
     </div>
   );
