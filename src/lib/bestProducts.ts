@@ -55,6 +55,68 @@ export const BEST_PRODUCT_PAGES: BestProductPage[] = [
     howWePicked:
       "We handpicked these products and tested them ourselves on our own or client's wavy hair, looking for products that would add moisture and shine without weighing down waves. If you have wavy hair we recommend you use these products in small amounts, as even lighter weight creams can weigh down waves if overused.",
   },
+
+  {
+    slug: 'best-wavy-mousses',
+    title: 'The Best Mousses for Wavy Hair',
+    description:
+      'These mousses are perfect for wavy hair, with enough hold to keep waves in place, but not too heavy',
+    category: ['foams'],
+    filters: {
+      tags: ['wavy'],
+    },
+    howWePicked:
+      "We handpicked these products and tested them ourselves on our own or client's wavy hair, looking for products that had real hold to keep waves in place, but lightweight enough to not weigh down waves",
+  },
+  {
+    slug: 'best-curl-mousses',
+    title: 'The Best Mousses for Curly Hair',
+    description:
+      'These mousses are perfect for curly hair, adding hold, definition, humidity-resistance, and texture',
+    category: ['foams'],
+    filters: {
+      tags: ['curly'],
+    },
+    howWePicked:
+      "We handpicked these products and tested them ourselves on our own or client's curly hair, looking for products that added hold, definition, humidity-resistance, and texture",
+  },
+  {
+    slug: 'best-curl-conditioners',
+    title: 'The Best Conditioners for Curly Hair',
+    description:
+      'These conditioners are perfect for keeping curly hair hydrated and bouncy',
+    category: ['conditioners'],
+    filters: {
+      tags: ['curly'],
+    },
+    howWePicked:
+      "We handpicked these products and tested them ourselves on our own or client's curly hair, looking for products that protected hair from everyday damage, added moisture, and added structure",
+  },
+  {
+    slug: 'best-fine-mousses',
+    title: 'The Best Mousses for Fine Hair',
+    description:
+      'These mousses are perfect for fine hair, adding hold and definition without weighing down the hair',
+    category: ['foams'],
+    filters: {
+      lowPorosity: true,
+    },
+    howWePicked:
+      "We handpicked these products and tested them ourselves on our own or client's fine hair, looking for products that added hold, definition, and texture without weighing down the hair",
+  },
+  /* wait until I have tagged list for mens
+  {
+    slug: 'best-mousses-men',
+    title: 'The Best Mousses for Men',
+    description:
+      "These mousses are perfect for men, as they add hold, definition, and texture on even shorter men's styles",
+    category: ['foams'],
+    filters: {
+      tags: [],
+    },
+    howWePicked:
+      "We handpicked these products and tested them ourselves on our boyfriend's hair, looking for products that added hold, definition, and texture on even shorter men's styles",
+  },
   /* {
     slug: 'best-humidity-resistant-gels',
     title: 'The Best Humidity Resistant Gels for Curly Hair',
