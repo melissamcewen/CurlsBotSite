@@ -15,11 +15,7 @@ const nextConfig = {
   experimental: {
     optimizeCss: true,
     optimizePackageImports: ['lucide-react'],
-    optimizeServerReact: true,
-    serverActions: {
-      allowedOrigins: ['localhost:3000', 'curlsbot.com'],
-      bodySizeLimit: '2mb'
-    },
+    optimizeServerReact: true
   },
 
   // Image optimization settings

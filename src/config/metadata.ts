@@ -17,7 +17,7 @@ export function createPageMetadata({
   noindex = false,
   image = '/images/og-default.png',
 }: MetadataParams): Metadata {
-  const fullTitle = title ? `${title} | CurlsBot` : 'CurlsBot';
+  const fullTitle = title || 'CurlsBot';
 
   return {
     title: fullTitle,
@@ -76,7 +76,7 @@ export function createDynamicPageMetadata({
   imageAlt,
 }: DynamicMetadataParams): Metadata {
   return {
-    title: title ? `${title} | CurlsBot` : 'CurlsBot',
+    title: title || 'CurlsBot',
     description,
     robots: hasContent
       ? {
@@ -94,7 +94,7 @@ export function createDynamicPageMetadata({
       canonical: path,
     },
     openGraph: {
-      title: title ? `${title} | CurlsBot` : 'CurlsBot',
+      title: title || 'CurlsBot',
       description,
       url: path,
       type,
@@ -109,7 +109,7 @@ export function createDynamicPageMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title: title ? `${title} | CurlsBot` : 'CurlsBot',
+      title: title || 'CurlsBot',
       description,
       images: [image],
     },

@@ -108,7 +108,7 @@ export default function Navbar() {
                   <Link href="/blog">Blog</Link>
                 </li>
                 <li>
-                  <Link href="/labs">Labs</Link>
+                  <Link href="/best">Products</Link>
                 </li>
                 <li>
                   <details>
@@ -170,6 +170,11 @@ export default function Navbar() {
                       <li>
                         <Link href="/faq" onClick={handleLinkClick}>
                           FAQ
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/labs" onClick={handleLinkClick}>
+                          Labs
                         </Link>
                       </li>
                     </ul>
@@ -237,7 +242,7 @@ export default function Navbar() {
                     <Link href="/blog">Blog</Link>
                   </li>
                   <li>
-                    <Link href="/labs">Labs</Link>
+                    <Link href="/best">Products</Link>
                   </li>
                   <li>
                     <details>
@@ -300,6 +305,11 @@ export default function Navbar() {
                         <li>
                           <Link href="/faq" onClick={handleLinkClick}>
                             FAQ
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href="/labs" onClick={handleLinkClick}>
+                            Labs
                           </Link>
                         </li>
                       </ul>
