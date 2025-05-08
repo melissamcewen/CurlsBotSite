@@ -6,7 +6,7 @@ import { filterProductByCountry } from './countryDetection';
 
 interface FilterOptions {
   country: string;
-  category: string;
+  category: string | string[] | undefined;
   requireFeatured: boolean;
   searchQuery?: string;
   analysisFilters: {
@@ -39,8 +39,22 @@ export function filterProducts(
     }
 
     // Category filter
-    if (options.category !== 'all') {
-      if (!product.product_categories?.includes(options.category)) return false;
+    if (options.category) {
+      if (Array.isArray(options.category)) {
+        // If category is an array, product must match at least one category
+        if (
+          !options.category.some((cat) =>
+            product.product_categories?.includes(cat),
+          )
+        ) {
+          return false;
+        }
+      } else if (options.category !== 'all') {
+        // If category is a string, product must match that category
+        if (!product.product_categories?.includes(options.category)) {
+          return false;
+        }
+      }
     }
 
     // Analysis-based filters - using AND logic
@@ -50,6 +64,8 @@ export function filterProducts(
 
     // Skip porosity filters for exempt categories
     if (
+      options.category &&
+      !Array.isArray(options.category) &&
       options.category !== 'all' &&
       POROSITY_EXEMPT_CATEGORIES.includes(options.category as ProductCategory)
     ) {
