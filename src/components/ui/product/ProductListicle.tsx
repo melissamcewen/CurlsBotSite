@@ -46,7 +46,9 @@ export function ProductListicle({
   const isAllCategories = category === 'all';
   const groupedProducts = isAllCategories
     ? products.reduce((acc, product) => {
-        const productCategory = product.product_categories?.[0] || 'Other';
+        const productCategory = product.product_categories?.length
+          ? product.product_categories[0]
+          : 'Other';
         if (!acc[productCategory]) {
           acc[productCategory] = [];
         }

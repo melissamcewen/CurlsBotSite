@@ -4,6 +4,7 @@ import { getBundledDatabase } from 'haircare-ingredients-analyzer';
 import { idToSlug } from '@/utils/slugs';
 import { existsSync } from 'fs';
 import { join } from 'path';
+import { BEST_PRODUCT_PAGES } from '@/lib/bestProducts';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const database = getBundledDatabase();
@@ -91,6 +92,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date(),
   }));
 
+  // Add best product pages
+  const bestProductEntries = BEST_PRODUCT_PAGES.map((page) => ({
+    url: `https://www.curlsbot.com/best-products/${page.slug}`,
+    lastModified: new Date(),
+  }));
+
   return [
     {
       url: 'https://www.curlsbot.com/',
@@ -166,5 +173,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...groupEntries,
     ...porosityEntries,
     ...blogEntries,
+    ...bestProductEntries,
   ];
 }

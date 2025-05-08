@@ -52,7 +52,7 @@ export const BEST_PRODUCT_PAGES: BestProductPage[] = [
     slug: 'best-wavy-creams',
     title: 'The Best Creams for Wavy Hair',
     description:
-      'These creams are perfect for wavy hair, with enough moisture to keep waves hydrated, but not too heavy',
+      'These creams are perfect for wavy hair, with enough moisture to keep waves hydrated, but so heavy that they weigh down waves',
     category: 'creams',
     filters: {
       tags: ['wavy'],
@@ -108,6 +108,32 @@ export const BEST_PRODUCT_PAGES: BestProductPage[] = [
     },
     howWePicked:
       "We handpicked these products and tested them ourselves on our own or client's fine hair, looking for products that added hold, definition, and texture without weighing down the hair",
+  },
+  {
+    slug: 'best-curls-monthly-low-porosity-products',
+    title: 'The Best Curls Monthly Products for Low Porosity Hair',
+    description:
+      'Products you can sample through Curls Monthly that we think would be great for low porosity hair',
+    category: 'all',
+    filters: {
+      lowPorosity: true,
+      tags: ['samples'],
+    },
+    howWePicked:
+      "We combined our own CurlsBot porosity score and refined it with data from Curls Monthly. Plus Melissa @ CurlsBot is a low porosity hair type and has a subscription to Curls Monthly, so we've tested these products on low porosity hair.",
+  },
+  {
+    slug: 'best-curls-monthly-high-porosity-products',
+    title: 'The Best Products for Low Porosity Wavy Hair',
+    description:
+      'Products that are lightweight enough to not weigh down waves',
+    category: 'all',
+    filters: {
+      lowPorosity: true,
+      tags: ['wavy'],
+    },
+    howWePicked:
+      "We combined our own CurlsBot porosity score and refined it with data from Curls Monthly. Plus Melissa @ CurlsBot is a low porosity wavy hair type and has a lot of experience with finding products that work for this hair type.",
   },
   /* wait until I have tagged list for mens
   {
