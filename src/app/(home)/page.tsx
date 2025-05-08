@@ -93,11 +93,9 @@ export default async function Home({ searchParams }: Props) {
         }}
       />
       <div>
-        <HomeDrawer hasIngredients={!!initialIngredients}>
-          <Suspense fallback={<Loading />}>
-            <AnalyzerWrapper ingredients={initialIngredients} />
-          </Suspense>
-        </HomeDrawer>
+      
+          <AnalyzerWrapper ingredients={initialIngredients} />
+
 
         <Suspense fallback={<HeroesLoading />}>
           <Heroes />

@@ -57,6 +57,7 @@ export default async function Heroes() {
                     src="/images/blog/brush-through-shampoo/bouncecurl.jpeg"
                     alt="Bounce Curl Brush"
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover rounded-t-xl"
                   />
                 </figure>
@@ -87,6 +88,7 @@ export default async function Heroes() {
                     src="/images/blog/best-ordinary-products-for-wavy-and-curly-hair/hero.png"
                     alt="Info emoji"
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover rounded-t-xl"
                   />
                 </figure>
@@ -117,6 +119,7 @@ export default async function Heroes() {
                     src="/images/curlsmonthly2.jpg"
                     alt="Curls Monthly"
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover rounded-t-xl"
                   />
                 </figure>
@@ -141,7 +144,6 @@ export default async function Heroes() {
         </div>
       </div>
 
- 
       <div className="hero bg-base-200 min-h-screen">
         <div className="hero-content text-center">
           <div className="max-w-5xl">
@@ -159,6 +161,7 @@ export default async function Heroes() {
                         src={post.frontmatter.image}
                         alt={post.frontmatter.title}
                         fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="object-cover rounded-t-xl"
                       />
                     </figure>
