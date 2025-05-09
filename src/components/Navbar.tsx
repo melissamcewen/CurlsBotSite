@@ -105,54 +105,28 @@ export default function Navbar() {
                   </details>
                 </li>
                 <li>
-                  <Link href="/blog">Blog</Link>
-                </li>
-                <li>
-                  <Link href="/best">Products</Link>
-                </li>
-                <li>
                   <details>
-                    <summary>Porosity</summary>
+                    <summary>Quizzes</summary>
                     <ul className="p-2 bg-accent rounded-t-none">
                       <li>
-                        <Link href="/porosity-quiz">Quiz</Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/porosity/high-porosity"
-                          onClick={handleLinkClick}
-                        >
-                          High Porosity
+                        <Link href="/hair-types/quiz" onClick={handleLinkClick}>
+                          Hair Type
                         </Link>
                       </li>
                       <li>
-                        <Link
-                          href="/porosity/low-porosity"
-                          onClick={handleLinkClick}
-                        >
-                          Low Porosity
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/porosity/normal-porosity"
-                          onClick={handleLinkClick}
-                        >
-                          Normal Porosity
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/porosity/mixed-porosity"
-                          onClick={handleLinkClick}
-                        >
-                          Mixed Porosity
+                        <Link href="/porosity-quiz" onClick={handleLinkClick}>
+                          Porosity
                         </Link>
                       </li>
                     </ul>
                   </details>
                 </li>
-
+                <li>
+                  <Link href="/blog">Blog</Link>
+                </li>
+                <li>
+                  <Link href="/best">Products</Link>
+                </li>
                 <li>
                   <details>
                     <summary>More</summary>
@@ -239,54 +213,30 @@ export default function Navbar() {
                     </details>
                   </li>
                   <li>
-                    <Link href="/blog">Blog</Link>
-                  </li>
-                  <li>
-                    <Link href="/best">Products</Link>
-                  </li>
-                  <li>
                     <details>
-                      <summary>Porosity</summary>
+                      <summary>Quizzes</summary>
                       <ul className="p-2 bg-accent rounded-t-none">
                         <li>
+                          <Link
+                            href="/hair-types/quiz"
+                            onClick={handleLinkClick}
+                          >
+                            Hair Type
+                          </Link>
+                        </li>
+                        <li>
                           <Link href="/porosity-quiz" onClick={handleLinkClick}>
-                            Quiz
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/porosity/high-porosity"
-                            onClick={handleLinkClick}
-                          >
-                            High Porosity
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/porosity/low-porosity"
-                            onClick={handleLinkClick}
-                          >
-                            Low Porosity
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/porosity/normal-porosity"
-                            onClick={handleLinkClick}
-                          >
-                            Normal Porosity
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/porosity/mixed-porosity"
-                            onClick={handleLinkClick}
-                          >
-                            Mixed Porosity
+                            Porosity
                           </Link>
                         </li>
                       </ul>
                     </details>
+                  </li>
+                  <li>
+                    <Link href="/blog">Blog</Link>
+                  </li>
+                  <li>
+                    <Link href="/best">Products</Link>
                   </li>
                   <li>
                     <details>

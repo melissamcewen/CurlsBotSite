@@ -69,6 +69,7 @@ const config: Config = {
       {
         curlsbotdark: {
           primary: '#65c3c8', // Keep cupcake's primary
+          'primary-content': '#faf7f5', // Light text (inverted from cupcake)
           secondary: '#ef9fbc', // Keep cupcake's secondary
           accent: '#eeaf3a', // Keep cupcake's accent
           neutral: '#291334', // Keep cupcake's neutral
