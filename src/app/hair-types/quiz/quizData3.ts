@@ -4,7 +4,7 @@ export const type3Questions: Question[] = [
   // Section: Type 2/3 vs Type 3/4 determination
   {
     section: '23vs34',
-    question: 'Do heavy products make your hair limp?',
+    question: 'Do heavy products make your hair limp with stringy almost straight pieces?',
     answers: [
       {
         content: 'Yes',

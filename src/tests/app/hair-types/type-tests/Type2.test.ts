@@ -74,7 +74,8 @@ describe('Type 2 Hair Quiz Logic', () => {
       },
       {
         section: '23vs34',
-        question: 'Do heavy products make your hair limp with stringy almost straight pieces?',
+        question:
+          'Do heavy products make your hair limp with stringy almost straight pieces?',
         answer: 'Yes',
       },
       {
@@ -99,7 +100,8 @@ describe('Type 2 Hair Quiz Logic', () => {
       },
       {
         section: '23vs34',
-        question: 'Do heavy products make your hair limp?',
+        question:
+          'Do heavy products make your hair limp with stringy almost straight pieces?',
         answer: 'Yes',
       },
       {
@@ -130,7 +132,8 @@ describe('Type 2 Hair Quiz Logic', () => {
       },
       {
         section: '23vs34',
-        question: 'Do heavy products make your hair limp?',
+        question:
+          'Do heavy products make your hair limp with stringy almost straight pieces?',
         answer: 'Yes',
       },
       {

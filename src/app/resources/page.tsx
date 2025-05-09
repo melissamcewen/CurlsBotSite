@@ -51,7 +51,9 @@ export default function Resources() {
                 downloads.
               </li>
               <li>
-                <a href="https://www.curlyhairartistry.com/the-map-method-online-course">Cultivate Your Curls</a>
+                <a href="https://www.curlyhairartistry.com/the-map-method-online-course">
+                  Cultivate Your Curls
+                </a>
               </li>
             </ul>
             <h2 className="text-2xl font-bold mt-6">Communities</h2>
@@ -80,6 +82,18 @@ export default function Resources() {
                   r/curlyhair
                 </a>{' '}
                 - Reddit&apos;s curly hair community
+              </li>
+              <li>
+                <a
+                  href="https://www.reddit.com/r/curlyhaircare"
+                  className="link link-primary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  r/curlyhaircare
+                </a>{' '}
+                - A smaller community for those who want to learn more about
+                curly/wavy hair care
               </li>
               <li>
                 <a
