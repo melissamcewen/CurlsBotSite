@@ -14,6 +14,7 @@ import {
 } from './quizData';
 import { useState } from 'react';
 import HairRoutine from '@/components/routine/HairRoutine';
+import EmailSignup from '@/components/EmailSignup';
 
 declare global {
   interface Window {
@@ -56,7 +57,7 @@ export default function QuizResultComponent({
             <div className="flex items-center gap-2 mb-6">
               <BookOpenText className="w-8 h-8 text-primary" />
               <h1 className="text-3xl font-bold m-0">
-                The CurlsBot Guide to Type {result.type.toUpperCase()}
+                Basics of Hair Type {result.type.toUpperCase()}
               </h1>
             </div>
             <div className="">
@@ -78,6 +79,9 @@ export default function QuizResultComponent({
                     }
                   </p>
                 </div>
+
+                {/* Email Signup */}
+                <EmailSignup hairType={result.parameters.curlsBotType} />
 
                 {/* cards for other type systems */}
                 <div className="bg-base-100 cb-card-lite">
@@ -247,6 +251,11 @@ export default function QuizResultComponent({
                     hairType={`${result.parameters.curlsBotType.toLowerCase()}`}
                     initialPorosity="normal_porosity"
                     curlsBotType={result.parameters.curlsBotType}
+                    productTypeDescription={
+                      parameterDescriptions.productType[
+                        result.parameters.productType
+                      ]
+                    }
                   />
                 </div>
               </div>

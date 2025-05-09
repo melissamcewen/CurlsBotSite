@@ -46,100 +46,16 @@ export default async function Heroes() {
       <div className="hero bg-base-300 min-h-screen">
         <div className="hero-content text-center">
           <div className="max-w-5xl">
-            <h2 className="text-5xl font-bold mb-8">What&apos;s New?</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <a
-                href="https://glnk.io/x26q/curlsbot"
-                className="card bg-base-100 hover:bg-base-200 transition-colors"
-              >
-                <figure className="relative h-48 bg-primary">
-                  <Image
-                    src="/images/blog/brush-through-shampoo/bouncecurl.jpeg"
-                    alt="Bounce Curl Brush"
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover rounded-t-xl"
-                  />
-                </figure>
-
-                <div className="card-body flex flex-col justify-between">
-                  <div>
-                    <h3 className="card-title text-lg ">
-                      10% Off BounceCurl with code: CURLSBOT10
-                    </h3>
-                    <p className="text-base-content/70 text-sm line-clamp-2 mt-2 text-left">
-                      Grab their famous Bounce Curl Brush and other great
-                      products at 10% off.
-                    </p>
-                  </div>
-                  <div className="card-actions justify-end mt-4">
-                    <div className="text-primary flex items-center gap-1 text-sm">
-                      Bouncecurl.com <ArrowRight className="w-4 h-4" />
-                    </div>
-                  </div>
-                </div>
-              </a>
-              <Link
-                href="/blog/best-ordinary-products-for-wavy-and-curly-hair"
-                className="card bg-base-100 hover:bg-base-200 transition-colors"
-              >
-                <figure className="relative h-48 bg-primary">
-                  <Image
-                    src="/images/blog/best-ordinary-products-for-wavy-and-curly-hair/hero.png"
-                    alt="Info emoji"
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover rounded-t-xl"
-                  />
-                </figure>
-
-                <div className="card-body flex flex-col justify-between">
-                  <div>
-                    <h3 className="card-title text-lg ">
-                      Best The Ordinary Products for Wavy/Curly Hair
-                    </h3>
-                    <p className="text-base-content/70 text-sm line-clamp-2 mt-2 text-left">
-                      Every hair product from The Ordinary for wavy/curly hair,
-                      ranked
-                    </p>
-                  </div>
-                  <div className="card-actions justify-end mt-4">
-                    <div className="text-primary flex items-center gap-1 text-sm">
-                      Read more <ArrowRight className="w-4 h-4" />
-                    </div>
-                  </div>
-                </div>
-              </Link>
-              <a
-                href="https://curlsmonthly.com/?ref=curlsbot"
-                className="card bg-base-100 hover:bg-base-200 transition-colors"
-              >
-                <figure className="relative h-48 bg-primary">
-                  <Image
-                    src="/images/curlsmonthly2.jpg"
-                    alt="Curls Monthly"
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover rounded-t-xl"
-                  />
-                </figure>
-
-                <div className="card-body flex flex-col justify-between">
-                  <div>
-                    <h3 className="card-title text-lg ">Try Samples</h3>
-                    <p className="text-base-content/70 text-sm line-clamp-2 mt-2 text-left">
-                      Tired of trying to find the right products? Try samples
-                      sizes of the best curly/wavy products with Curls Monthly!
-                    </p>
-                  </div>
-                  <div className="card-actions justify-end mt-4">
-                    <div className="text-primary flex items-center gap-1 text-sm">
-                      Read more <ArrowRight className="w-4 h-4" />
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div>
+            <h2 className="text-5xl font-bold mb-4">
+              🔍 Not sure what your curl type is?
+            </h2>
+            <p className="text-xl mb-8">
+              Take our quick hair type quiz to find out your curl pattern,
+              product tips, and custom routine.
+            </p>
+            <Link href="/hair-types/quiz" className="btn btn-primary btn-lg">
+              Take the Quiz <ArrowRight className="ml-2 w-5 h-5" />
+            </Link>
           </div>
         </div>
       </div>

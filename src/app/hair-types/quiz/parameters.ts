@@ -53,6 +53,7 @@ export type SisterTypes =
   | '4a'
   | '4b'
   | '4c';
+export type ProductType = 'A' | 'B' | 'C' | 'D';
 export interface HairParameters {
   curlsBotType: CurlsBotType;
   versatility: VersatilityLevel;
@@ -65,27 +66,29 @@ export interface HairParameters {
   tangling: TanglingLevel;
   WalkerType: WalkerType;
   sisterTypes: SisterTypes[];
+  productType: ProductType;
 }
 
 export const parameterDescriptions = {
   curlsBotType: {
     'Straight fine hair':
       'Your hair is very straight and very fine, it can be prone to static frizz and breakage.',
-    'Straight hair': 'You have straight hair that may have a very slight wave towards the ends',
+    'Straight hair':
+      'You have straight hair that may have a very slight wave towards the ends',
     'Straight thick hair':
       'Your hair has thicker than average strands, that resist being styled as curls or waves.',
     'Wavy fine hair':
-      'You have wavy hair, which is a type of highly variable curl pattern, combined with fine strands. This type of hair is especiallyprone to being weighed down by heavy products.',
-    'Wavy hair': 'You have wavy hair, which is a type of highly variable curl pattern characterized by a mixture of curls and waves. It is prone to being weighed down by heavy products.',
+      'You have wavy hair, which is a type of highly variable curl pattern, combined with fine strands. This type of hair is especially prone to being weighed down by heavy products.',
+    'Wavy hair':
+      'You have wavy hair, which is a type of highly variable curl pattern characterized by a mixture of curls and waves. It is prone to being weighed down by heavy products.',
     'Loose curls':
       'You have loose curls, which can be prone to being weighed down by heavy products.',
-    'Curly hair': 'Your hair is definitely curly and there is no question about it.',
+    'Curly hair':
+      'Your hair is definitely curly and there is no question about it.',
     'Very curly hair':
       'Your hair has very tight strong curl pattern and moderate-high shrinkage.',
-    'Coily hair':
-      'Your hair has tight coils and high shrinkage.',
-    'Kinky hair':
-      'Your hair has coils and kinks, and high shrinkage.',
+    'Coily hair': 'Your hair has tight coils and high shrinkage.',
+    'Kinky hair': 'Your hair has coils and kinks, and high shrinkage.',
   },
   versatility: {
     low: "Your hair is a defined type and making it into another type would take chemical treatment. You don't have to worry about heavy products changing your hair type but they can still cause build up.",
@@ -105,23 +108,24 @@ export const parameterDescriptions = {
     any: 'Your hair type is not associated with a strand thickness, you may have fine, medium, or thick strands',
     small:
       'You have fine hair, so you will want to use products that protect from static, wash with a cleansing shampoo, and avoid heavy products.',
-    medium: 'Your hair is about average in thickness, neither fine nor thick(coarse)',
+    medium:
+      'Your hair is about average in thickness, neither fine nor thick(coarse)',
     large:
       'You have thicker hair strands, sometimes referred to as coarse hair. You may want to use products with humectants like panthenol that increase softness and manageability.',
     varies: 'Each individual strand of your hair has thicker and thinner parts',
   },
   curvature: {
     none: 'Your hair is straight or almost straight',
-    varies: 'Your hair can be straight, wavy, and curly, sometimes all three at once!',
+    varies:
+      'Your hair can be straight, wavy, and curly, sometimes all three at once!',
     large: 'Your curls are loose and large',
     medium: 'Your curls are medium-sized',
     small:
       'You likely have tight curls, which need to be carefully protected from breakage',
-    'extra small':
-      'You likely have tight curls/coils/kinks',
+    'extra small': 'You likely have tight curls/coils/kinks',
   },
   shapes: {
-    none: 'Your hair is straight and doesn\'t have much or any wave',
+    none: "Your hair is straight and doesn't have much or any wave",
     curved: 'Your hair has waves and/or curls',
     angled: 'Your hair may have an angled zig-zag pattern',
     varies:
@@ -132,7 +136,8 @@ export const parameterDescriptions = {
     medium:
       'Your hair has some volume, especially towards the ends. Volume can be enhanced with root clipping, pixie diffusing, and avoiding heavy products',
     high: 'Your hair has a lot of volume, especially horizontally, but you still may have some lower volume sections at your roots',
-    'very high': 'Your hair has a lot of volume, both vertically and horizontally',
+    'very high':
+      'Your hair has a lot of volume, both vertically and horizontally',
   },
   commonType: {
     '1a': 'In the case of your hair, straight hair in the common system is just 1a',
@@ -165,6 +170,16 @@ export const parameterDescriptions = {
     '4a': 'Kinky hair',
     '4b': 'Tight Coils to Z-Angled Coils',
   },
+  productType: {
+    A:
+      'we recommend these lightweight, curl-defining products that won’t weigh your hair down',
+    B:
+      'we recommend these products that are formulated to give you shine and definition while protecting your hair from breakage',
+    C:
+      'we recommend these products that add volume and reduce frizz',
+    D:
+      'we recommend these products that are formulated to define curls and reduce frizz',
+  },
 } as const;
 
 export const parameterDisplayNames = {
@@ -192,6 +207,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     shapes: 'none',
     tangling: 'medium',
     sisterTypes: ['1b', '2a'],
+    productType: 'C',
   },
   '1b': {
     curlsBotType: 'Straight hair',
@@ -205,6 +221,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     shapes: 'none',
     tangling: 'low',
     sisterTypes: ['2b'],
+    productType: 'C',
   },
   '1c': {
     curlsBotType: 'Straight thick hair',
@@ -218,6 +235,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     shapes: 'none',
     tangling: 'low',
     sisterTypes: [],
+    productType: 'C',
   },
   '2a': {
     curlsBotType: 'Wavy fine hair',
@@ -231,6 +249,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     shapes: 'curved',
     tangling: 'medium',
     sisterTypes: ['1b', '2b', '3a'],
+    productType: 'A',
   },
   '2b': {
     curlsBotType: 'Wavy hair',
@@ -244,6 +263,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     shapes: 'curved',
     tangling: 'medium',
     sisterTypes: ['1b', '2a', '2c', '3a'],
+    productType: 'A',
   },
   '2c': {
     curlsBotType: 'Wavy hair',
@@ -257,6 +277,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     shapes: 'curved',
     tangling: 'medium',
     sisterTypes: ['1b', '2b', '3a'],
+    productType: 'A',
   },
   '3a': {
     curlsBotType: 'Loose curls',
@@ -270,6 +291,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     shapes: 'curved',
     tangling: 'high',
     sisterTypes: ['2a', '2b', '2c', '3b'],
+    productType: 'A',
   },
   '3b': {
     curlsBotType: 'Curly hair',
@@ -283,6 +305,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     shapes: 'curved',
     tangling: 'high',
     sisterTypes: ['3a', '3c'],
+    productType: 'D',
   },
   '3c': {
     curlsBotType: 'Very curly hair',
@@ -296,6 +319,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     shapes: 'curved',
     tangling: 'very high',
     sisterTypes: ['3b', '4a'],
+    productType: 'B',
   },
   '4a': {
     curlsBotType: 'Coily hair',
@@ -309,6 +333,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     shapes: 'curved',
     tangling: 'very high',
     sisterTypes: ['3c', '4b'],
+    productType: 'B',
   },
   '4b': {
     curlsBotType: 'Kinky hair',
@@ -322,6 +347,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     shapes: 'angled',
     tangling: 'very high',
     sisterTypes: ['3c', '4a', '4c'],
+    productType: 'B',
   },
   '4c': {
     curlsBotType: 'Kinky hair',
@@ -335,6 +361,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     volume: 'very high',
     tangling: 'very high',
     sisterTypes: ['4a', '4b'],
+    productType: 'B',
   },
 };
 

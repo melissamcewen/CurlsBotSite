@@ -50,6 +50,7 @@ interface HairRoutineProps {
   hairType?: string;
   initialPorosity?: PorosityType;
   curlsBotType?: string;
+  productTypeDescription?: string;
 }
 
 // Straight hair types that shouldn't use leave-in conditioners
@@ -165,6 +166,7 @@ export default function HairRoutine({
   hairType,
   initialPorosity = 'normal_porosity',
   curlsBotType,
+  productTypeDescription,
 }: HairRoutineProps) {
   const { country, countryName } = useLocalization();
   const [isCGM, setIsCGM] = useState(true);
@@ -217,7 +219,7 @@ export default function HairRoutine({
               category: selectedCategory,
               requireFeatured: false,
               analysisFilters: {
-                cgmApproved: isCGM,
+                cgmApproved: isStraightHair ? false : isCGM,
                 frizzResistant: false,
                 lightweight: false,
                 // Pass porosity information to filter, but allow fallbacks
@@ -245,7 +247,7 @@ export default function HairRoutine({
             category,
             requireFeatured: false,
             analysisFilters: {
-              cgmApproved: isCGM,
+              cgmApproved: isStraightHair ? false : isCGM,
               frizzResistant: false,
               lightweight: false,
               highPorosity:
@@ -475,6 +477,12 @@ export default function HairRoutine({
           <Sparkles className="w-5 h-5 text-primary" />
           <h3 className="text-xl font-bold">Routine Generator</h3>
         </div>
+
+        {productTypeDescription && (
+          <p className="text-sm mb-4">
+            Based on your hair type {productTypeDescription}
+          </p>
+        )}
 
         {/* Settings in a more compact grid layout */}
         <div className="grid grid-cols-2 gap-3">
