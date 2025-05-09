@@ -37,7 +37,7 @@ export const BEST_PRODUCT_PAGES: BestProductPage[] = [
     slug: 'best-wavy-shampoos',
     title: 'The Best Shampoos for Wavy Hair',
     description:
-      'These shampoos and conditioners are perfect for wavy hair, with enough cleansing power to remove build-up that weighs down waves, but gentle enough to not strip natural oils',
+      'These shampoos are perfect for wavy hair, with enough cleansing power to remove build-up that weighs down waves, but gentle enough to not strip natural oils',
     category: ['shampoos'],
     filters: {
       tags: ['wavy'],
