@@ -1,7 +1,11 @@
 import { getBundledProducts } from 'haircare-ingredients-analyzer';
 import { ProductListicle } from '@/components/ui/product/ProductListicle';
 import { filterProducts } from '@/lib/productFiltering';
-import { getBestProductPage, getAllBestProductSlugs } from '@/lib/bestProducts';
+import {
+  getBestProductPage,
+  getAllBestProductSlugs,
+  defaultProductSort,
+} from '@/lib/bestProducts';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
@@ -72,17 +76,8 @@ export default function BestProductsPage({ params }: PageProps) {
         return page.sortProducts(a, b);
       }
 
-      // Default sorting:
-      // 1. Products with descriptions first
-      if (a.description && !b.description) return -1;
-      if (!a.description && b.description) return 1;
-
-      // 2. CGM approved products
-      if (a.status === 'ok' && b.status !== 'ok') return -1;
-      if (a.status !== 'ok' && b.status === 'ok') return 1;
-
-      // 3. Alphabetically by brand
-      return a.brand.localeCompare(b.brand);
+      // Use default sorting that prioritizes products with custom descriptions
+      return defaultProductSort(a, b, page);
     });
 
   return (

@@ -72,6 +72,10 @@ export const BEST_PRODUCT_PAGES: BestProductPage[] = [
     },
     howWePicked:
       "We handpicked these products and tested them ourselves on our own or client's wavy hair, looking for products that had real hold to keep waves in place, but lightweight enough to not weigh down waves",
+    customDescriptions: {
+      set_gel_to_foam_styling_mousse:
+        'Melissa @ CurlsBot says: This is so easy to apply and I love that it has the hold of a gel, but the volume-building and ease of application of a mousse',
+    },
   },
   {
     slug: 'best-wavy-gels',
@@ -84,6 +88,12 @@ export const BEST_PRODUCT_PAGES: BestProductPage[] = [
     },
     howWePicked:
       "We handpicked these products and tested them ourselves on our own or client's wavy hair, looking for products that had real hold to keep waves in place, but lightweight enough to not weigh down waves",
+    customDescriptions: {
+      curl_keeper_original_liquid_styler:
+        'Melissa @ CurlsBot says: Liquid gels like Curl Keeper are uniquely easy to apply and form an excellent hold even in high humidity. I almost always go for liquid gels on my wavy hair.',
+      all_weather_styling_gel:
+        'Melissa @ CurlsBot says: Liquid gels are my favorite type of gel for wavy hair because of their lightweight hold and resistance to humidity. This gel has very high performance in even the worst weather. Best of all you only need a very small amount, so it lasts a long time.',
+    },
   },
   {
     slug: 'best-curl-mousses',
@@ -96,6 +106,18 @@ export const BEST_PRODUCT_PAGES: BestProductPage[] = [
     },
     howWePicked:
       "We handpicked these products and tested them ourselves on our own or client's curly hair, looking for products that added hold, definition, humidity-resistance, and texture",
+  },
+  {
+    slug: 'best-protein-free-deep-conditioners',
+    title: 'The Best Protein-Free Deep Conditioners and Masks',
+    description:
+      'These deep conditioners and masks are protein-free so you can add moisture without adding protein',
+    category: ['deep_conditioners'],
+    filters: {
+      tags: ['protein-free'],
+    },
+    howWePicked:
+      'We used our CurlsBot algorithm to find deep conditioners and masks that are protein-free.',
   },
   {
     slug: 'best-curl-conditioners',
@@ -137,27 +159,25 @@ export const BEST_PRODUCT_PAGES: BestProductPage[] = [
   {
     slug: 'best-high-porosity-treatments',
     title: 'The Best High Porosity Treatments',
-    description:
-      'These treatments help smooth and protect high porosity hair',
+    description: 'These treatments help smooth and protect high porosity hair',
     category: 'treatments',
     filters: {
       highPorosity: true,
     },
     howWePicked:
-      "These products have been analyzed by our algorithm and found to contain ingredients that are great for high porosity hair like cationic conditioners and humectants.",
+      'These products have been analyzed by our algorithm and found to contain ingredients that are great for high porosity hair like cationic conditioners and humectants.',
   },
 
   {
     slug: 'best-protein-free-hair-products',
     title: 'The Best Protein-Free Hair Products',
-    description:
-      'The best hair products that are free of protein',
+    description: 'The best hair products that are free of protein',
     category: 'all',
     filters: {
       tags: ['protein-free'],
     },
     howWePicked:
-      "Our CurlsBot algorithm analyzed these products and found that they are free of protein.",
+      'Our CurlsBot algorithm analyzed these products and found that they are free of protein.',
   },
 
   {
@@ -247,4 +267,25 @@ export function getCustomDescription(
   productId: string,
 ): string | undefined {
   return page.customDescriptions?.[productId];
+}
+
+// Default sorting function that prioritizes products with custom descriptions
+export function defaultProductSort(
+  a: any,
+  b: any,
+  page: BestProductPage,
+): number {
+  const aHasCustomDesc = page.customDescriptions?.[a.id] !== undefined;
+  const bHasCustomDesc = page.customDescriptions?.[b.id] !== undefined;
+
+  // First tier: Custom descriptions
+  if (aHasCustomDesc && !bHasCustomDesc) return -1;
+  if (!aHasCustomDesc && bHasCustomDesc) return 1;
+
+  // Second tier: Regular descriptions
+  if (a.description && !b.description) return -1;
+  if (!a.description && b.description) return 1;
+
+  // If both have same description status, sort by brand
+  return a.brand.localeCompare(b.brand);
 }
