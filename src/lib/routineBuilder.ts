@@ -62,6 +62,8 @@ export const CATEGORY_DESCRIPTIONS: Record<ProductCategory, string> = {
     'Optional finishing products that can help seal in moisture and lock in styles.',
   accessories: 'Useful items for anyone with curly or wavy hair.',
   all: 'All product categories.',
+  treatments:
+    'Treatments to help with specific hair concerns like dryness, buildup, and breakage.',
 };
 
 interface GetProductsByCategoryOptions {
