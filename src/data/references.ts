@@ -1215,5 +1215,19 @@ Bouabbache S, Galliano A, Littaye P, Leportier M, Pouradier F, Gillot E, Panhard
     date: '2024',
     source: 'Dermatol Ther (Heidelb)',
   },
+  /* Surfactants: Cleansing descriptions and increasing mildness – rinsability, films, and hard water
+  https://www.swiftcraftymonkey.blog/surfactants-cleansing-descriptions-and-increasing-mildness-rinsability-films-and-hard-water/
+  */
+  '115': {
+    id: '115',
+    url: 'https://www.swiftcraftymonkey.blog/surfactants-cleansing-descriptions-and-increasing-mildness-rinsability-films-and-hard-water/',
+    title:
+      'Surfactants: Cleansing descriptions and increasing mildness – rinsability, films, and hard water',
+    type: 'science',
+    author: 'Swiftcraftymonkey',
+    date: '2024',
+    source: 'Swiftcraftymonkey',
+  },
+
 };
 
