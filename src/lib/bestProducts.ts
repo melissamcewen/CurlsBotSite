@@ -134,8 +134,22 @@ export const BEST_PRODUCT_PAGES: BestProductPage[] = [
     howWePicked:
       "We combined our own CurlsBot porosity score and refined it with data from Curls Monthly. Plus Melissa @ CurlsBot is a low porosity hair type and has a subscription to Curls Monthly, so we've tested these products on low porosity hair.",
   },
+  /* wait until I fix bug
   {
-    slug: 'best-curls-monthly-high-porosity-products',
+    slug: 'best-protein-free-hair-products',
+    title: 'The Best Protein-Free Hair Products',
+    description:
+      'The best hair products that are free of protein',
+    category: 'all',
+    filters: {
+      tags: ['protein-free'],
+    },
+    howWePicked:
+      "Our CurlsBot algorithm analyzed these products and found that they are free of protein.",
+  },
+  */
+  {
+    slug: 'best-curls-monthly-low-porosity-products',
     title: 'The Best Products for Low Porosity Wavy Hair',
     description: 'Products that are lightweight enough to not weigh down waves',
     category: 'all',
