@@ -74,6 +74,18 @@ export const BEST_PRODUCT_PAGES: BestProductPage[] = [
       "We handpicked these products and tested them ourselves on our own or client's wavy hair, looking for products that had real hold to keep waves in place, but lightweight enough to not weigh down waves",
   },
   {
+    slug: 'best-wavy-gels',
+    title: 'The Best Gels for Wavy Hair',
+    description:
+      'These gels are perfect for wavy hair, with enough hold to keep waves in place, but not too heavy',
+    category: ['gels'],
+    filters: {
+      tags: ['wavy'],
+    },
+    howWePicked:
+      "We handpicked these products and tested them ourselves on our own or client's wavy hair, looking for products that had real hold to keep waves in place, but lightweight enough to not weigh down waves",
+  },
+  {
     slug: 'best-curl-mousses',
     title: 'The Best Mousses for Curly Hair',
     description:
@@ -125,15 +137,14 @@ export const BEST_PRODUCT_PAGES: BestProductPage[] = [
   {
     slug: 'best-curls-monthly-high-porosity-products',
     title: 'The Best Products for Low Porosity Wavy Hair',
-    description:
-      'Products that are lightweight enough to not weigh down waves',
+    description: 'Products that are lightweight enough to not weigh down waves',
     category: 'all',
     filters: {
       lowPorosity: true,
       tags: ['wavy'],
     },
     howWePicked:
-      "We combined our own CurlsBot porosity score and refined it with data from Curls Monthly. Plus Melissa @ CurlsBot is a low porosity wavy hair type and has a lot of experience with finding products that work for this hair type.",
+      'We combined our own CurlsBot porosity score and refined it with data from Curls Monthly. Plus Melissa @ CurlsBot is a low porosity wavy hair type and has a lot of experience with finding products that work for this hair type.',
   },
   /* wait until I have tagged list for mens
   {
