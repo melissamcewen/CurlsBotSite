@@ -25,6 +25,7 @@ export type ProductCategory =
   | 'oils'
   | 'sprays'
   | 'accessories'
+  | 'treatments'
   | 'all';
 
 interface FilterCriteria {
