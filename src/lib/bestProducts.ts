@@ -181,6 +181,33 @@ export const BEST_PRODUCT_PAGES: BestProductPage[] = [
   },
 
   {
+    slug: 'best-protein-free-products-for-low-porosity',
+    title: 'The Best Protein-Free Products for Low Porosity',
+    description:
+      'The best products that are free of protein for low porosity hair',
+    category: 'all',
+    filters: {
+      tags: ['protein-free'],
+      lowPorosity: true,
+    },
+    howWePicked:
+      'Our CurlsBot algorithm analyzed these products and found that they are free of protein and great for low porosity hair.',
+  },
+  {
+    slug: 'best-protein-products-for-low-porosity',
+    title: 'The Best Protein Products for Low Porosity',
+    description:
+      'The best products that are high in protein for low porosity hair',
+    category: 'all',
+    filters: {
+      tags: ['protein'],
+      lowPorosity: true,
+    },
+    howWePicked:
+      'Our CurlsBot algorithm analyzed these products and found that they are high in protein and great for low porosity hair.',
+  },
+
+  {
     slug: 'best-low-porosity-wavy-hair-products',
     title: 'The Best Products for Low Porosity Wavy Hair',
     description: 'Products that are lightweight enough to not weigh down waves',

@@ -1229,5 +1229,129 @@ Bouabbache S, Galliano A, Littaye P, Leportier M, Pouradier F, Gillot E, Panhard
     source: 'Swiftcraftymonkey',
   },
 
+  /* https://www.swiftcraftymonkey.blog/alltheingredients-keratin-hydrolysate-silox-hair-care-active 2019 */
+  '116': {
+    id: '116',
+    url: 'https://www.swiftcraftymonkey.blog/alltheingredients-keratin-hydrolysate-silox-hair-care-active/',
+    title: 'All the Ingredients: Keratin Hydrolysate, Silox, Hair Care Active',
+    date: '2019',
+    type: 'science',
+    author: 'Swiftcraftymonkey',
+  },
+
+  /*
+  https://incidecoder.com/ingredients/tremella-fuciformis-polysaccharide
+
+  */
+  '117': {
+    id: '117',
+    url: 'https://incidecoder.com/ingredients/tremella-fuciformis-polysaccharide',
+    title: 'Tremella Fuciformis Polysaccharide',
+    type: 'science',
+    author: 'Incidecoder',
+    date: '2024',
+    source: 'Incidecoder',
+  },
+
+  /* https://podcasts.apple.com/ro/podcast/episode-392-protein-overload-witch-hazel-and-razor-burns/id733300242?i=1000702093637 */
+  '118': {
+    id: '118',
+    url: 'https://podcasts.apple.com/ro/podcast/episode-392-protein-overload-witch-hazel-and-razor-burns/id733300242?i=1000702093637',
+    title: 'Episode 392: Protein Overload, Witch Hazel, and Razor Burns',
+    type: 'science',
+    author: 'Valerie George and Perry Romanowski',
+    date: '2025',
+    source: 'The Beauty Brains',
+  },
+
+  /* https://science-yhairblog.blogspot.com/2013/09/more-about-protein.html */
+  '119': {
+    id: '119',
+    url: 'https://science-yhairblog.blogspot.com/2013/09/more-about-protein.html',
+    title: 'More About Protein',
+    type: 'science',
+    author: 'Wendy M.S.',
+    date: '2013',
+    source: 'Science-Y Hair Blog',
+  },
+
+  /* Chapter Teglia, Alessandro, and Gianfranco Secchi. "Proteins in cosmetics."  in Principles of polymer science and technology in cosmetics and personal care edited by E. Desmond Goddard · 1999 */
+  '120': {
+    id: '120',
+    url: 'https://www.google.com/books/edition/Principles_of_Polymer_Science_and_Techno/56R-6Wyyo6IC?hl=en&gbpv=0',
+    title: 'Proteins in cosmetics',
+    type: 'science',
+    author: 'Teglia, Alessandro, and Gianfranco Secchi.',
+    date: '1999',
+    source:
+      'Principles of polymer science and technology in cosmetics and personal care',
+  },
+
+  /* https://www.swiftcraftymonkey.blog/the-big-post-on-hydrolyzed-proteins-and-amino-acids/ */
+  '121': {
+    id: '121',
+    url: 'https://www.swiftcraftymonkey.blog/the-big-post-on-hydrolyzed-proteins-and-amino-acids/',
+    title: 'The Big Post on Hydrolyzed Proteins and Amino Acids',
+    type: 'science',
+    author: 'Swiftcraftymonkey',
+    date: '2024',
+    source: 'Swiftcraftymonkey',
+  },
+
+  /* Adsorption Properties of Hair chapter by Evans, in  Evans, Trefor, and R. Randall Wickett, eds. Practical modern hair science. Alluredbooks, 2012.*/
+  '122': {
+    id: '122',
+    url: 'https://library.triprinceton.org/1t0nsnb/',
+    title: 'Adsorption Properties of Hair',
+    type: 'science',
+    author: 'Evans, Trefor',
+    date: '2012',
+    source: 'Practical Modern Hair Science',
+  },
+  /* https://www.swiftcraftymonkey.blog/alltheingredients-hydrolyzed-rice-protein/ 2023 */
+  '123': {
+    id: '123',
+    url: 'https://www.swiftcraftymonkey.blog/alltheingredients-hydrolyzed-rice-protein/',
+    title: 'All the Ingredients: Hydrolyzed Rice Protein',
+    type: 'science',
+    author: 'Swiftcraftymonkey',
+    date: '2023',
+    source: 'Swiftcraftymonkey',
+  },
+
+  /* https://www.youtube.com/watch?v=KUQJSxc1p8g  Why are scientific studies so bad? A deep dive into rosemary oil
+Lab Muffin Beauty Science
+ 7 months ago  */
+  '124': {
+    id: '124',
+    url: 'https://www.youtube.com/watch?v=KUQJSxc1p8g',
+    title: 'Why are scientific studies so bad? A deep dive into rosemary oil',
+    type: 'science',
+    author: 'Lab Muffin Beauty Science',
+    date: '2024',
+    source: 'YouTube',
+  },
+
+  /* Scalp and Hair Hygiene: Shampoos 92 Bernard Beauquey in Bouillon, Claude. "The science of hair care." The Science of Hair Care, 2nd (2005).*/
+  '125': {
+    id: '125',
+    url: 'https://www.canadiancosmeticcluster.com/uploads/3/7/9/8/37984461/epdf.pub_the-science-of-hair-care.pdf',
+    title: 'Scalp and Hair Hygiene: Shampoos',
+    type: 'science',
+    author: 'Bouillon, Claude.',
+    date: '2005',
+    source: 'The Science of Hair Care',
+  },
+
+  /* Trefor Evans https://www.youtube.com/watch?v=nEJygXgtG-0 Hair Structure 101, Trefor Evans Ph.D. from TRI Princeton at the Hair Science E-Summit 2024 */
+  '126': {
+    id: '126',
+    url: 'https://www.youtube.com/watch?v=nEJygXgtG-0',
+    title: 'Hair Structure 101',
+    type: 'science',
+    author: 'Trefor, Evans',
+    date: '2024',
+    source: 'TRI Princeton at the Hair Science E-Summit 2024',
+  },
 };
 
