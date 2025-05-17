@@ -94,7 +94,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Add best product pages
   const bestProductEntries = BEST_PRODUCT_PAGES.map((page) => ({
-    url: `https://www.curlsbot.com/best-products/${page.slug}`,
+    url: `https://www.curlsbot.com/best/${page.slug}`,
     lastModified: new Date(),
   }));
 
