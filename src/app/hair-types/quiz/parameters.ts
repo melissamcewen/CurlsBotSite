@@ -80,15 +80,17 @@ export const parameterDescriptions = {
     'Wavy fine hair':
       'You have wavy hair, which is a type of highly variable curl pattern, combined with fine strands. This type of hair is especially prone to being weighed down by heavy products.',
     'Wavy hair':
-      'You have wavy hair, which is a type of highly variable curl pattern characterized by a mixture of curls and waves. It is prone to being weighed down by heavy products.',
+      'You have wavy hair, which is a type of highly variable curl pattern characterized by a mixture of curls and waves. It is prone to being weighed down by heavy products. It may be one of several subtypes based on hair diameter, density, and porosity.',
     'Loose curls':
-      'You have loose curls, which can be prone to being weighed down by heavy products.',
+      'You have loose curls, which can be prone to being weighed down by heavy products. It may be one of several subtypes based on hair diameter, density, and porosity.',
     'Curly hair':
-      'Your hair is definitely curly and there is no question about it.',
+      'Your hair is definitely curly and there is no question about it. It may be one of several subtypes based on hair diameter, density, and porosity.',
     'Very curly hair':
-      'Your hair has very tight strong curl pattern and moderate-high shrinkage.',
-    'Coily hair': 'Your hair has tight coils and high shrinkage.',
-    'Kinky hair': 'Your hair has coils and kinks, and high shrinkage.',
+      'Your hair has very tight strong curl pattern and moderate-high shrinkage. It may be one of several subtypes based on hair diameter, density, and porosity.',
+    'Coily hair':
+      'Your hair has tight coils and high shrinkage. It may be one of several subtypes based on hair diameter, density, and porosity.',
+    'Kinky hair':
+      'Your hair has coils and kinks, and high shrinkage. It may be one of several subtypes based on hair diameter, density, and porosity.',
   },
   versatility: {
     low: "Your hair is a defined type and making it into another type would take chemical treatment. You don't have to worry about heavy products changing your hair type but they can still cause build up.",
