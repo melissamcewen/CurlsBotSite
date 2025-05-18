@@ -157,6 +157,24 @@ export const BEST_PRODUCT_PAGES: BestProductPage[] = [
       "We combined our own CurlsBot porosity score and refined it with data from Curls Monthly. Plus Melissa @ CurlsBot is a low porosity hair type and has a subscription to Curls Monthly, so we've tested these products on low porosity hair.",
   },
   {
+    slug: 'best-curls-monthly-high-porosity-products',
+    title: 'The Best Curls Monthly Products for High Porosity Hair',
+    description:
+      'Products you can sample through Curls Monthly that we think would be great for high porosity hair',
+    category: 'all',
+    filters: {
+      highPorosity: true,
+      tags: ['samples'],
+    },
+    howWePicked:
+      "We combined our own CurlsBot porosity score and refined it with data from Curls Monthly. Plus Melissa @ CurlsBot has mixed porosity (with high porosity ends) and has a subscription to Curls Monthly, so we've tested these products on high porosity hair.",
+
+    customDescriptions: {
+      'bond_curl_rehab_salve,_bond_building_strength_treatment_for_weak,_damaged_hair':
+        'Melissa @ CurlsBot says: I have long hair and my ends were looking kind of ragged, so I tried this pre-poo and it helped so much! They felt smooth and well-conditioned.',
+    },
+  },
+  {
     slug: 'best-high-porosity-treatments',
     title: 'The Best High Porosity Treatments',
     description: 'These treatments help smooth and protect high porosity hair',
