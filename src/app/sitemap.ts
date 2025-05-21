@@ -20,7 +20,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       const markdownPath = join(
         process.cwd(),
         'src/content/ingredients',
-        `${idToSlug(ingredient.id)}.md`,
+        `${idToSlug(ingredient.id)}.mdx`,
       );
       return existsSync(markdownPath);
     })
@@ -40,7 +40,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       const markdownPath = join(
         process.cwd(),
         'src/content/categories',
-        `${idToSlug(category.id)}.md`,
+        `${idToSlug(category.id)}.mdx`,
       );
       return existsSync(markdownPath);
     })
@@ -60,7 +60,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       const markdownPath = join(
         process.cwd(),
         'src/content/groups',
-        `${idToSlug(group.id)}.md`,
+        `${idToSlug(group.id)}.mdx`,
       );
       return existsSync(markdownPath);
     })

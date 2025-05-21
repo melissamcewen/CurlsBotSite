@@ -237,6 +237,17 @@ export const BEST_PRODUCT_PAGES: BestProductPage[] = [
     howWePicked:
       'We combined our own CurlsBot porosity score and refined it with data from Curls Monthly. Plus Melissa @ CurlsBot is a low porosity wavy hair type and has a lot of experience with finding products that work for this hair type.',
   },
+  {
+    slug: 'best-wavy-leave-ins',
+    title: 'The Best Leave-Ins for Wavy Hair',
+    description: 'The best leave-ins for wavy hair',
+    category: 'leave_ins',
+    filters: {
+      tags: ['wavy'],
+    },
+    howWePicked:
+      'We handpicked these products and tested them ourselves on our own or client\'s wavy hair, looking for products that provided frizz-resistance without weighing down waves',
+  },
   /* wait until I have tagged list for mens
   {
     slug: 'best-mousses-men',

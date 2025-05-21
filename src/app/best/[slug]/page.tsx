@@ -25,7 +25,8 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const page = getBestProductPage(params.slug);
+  const { slug } = await params;
+  const page = getBestProductPage(slug);
   if (!page) return {};
 
   return {
@@ -39,8 +40,9 @@ export async function generateMetadata({
   };
 }
 
-export default function BestProductsPage({ params }: PageProps) {
-  const page = getBestProductPage(params.slug);
+export default async function BestProductsPage({ params }: PageProps) {
+  const { slug } = await params;
+  const page = getBestProductPage(slug);
   if (!page) notFound();
 
   const products = getBundledProducts();
