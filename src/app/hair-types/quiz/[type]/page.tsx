@@ -4,12 +4,13 @@ import QuizResult from '../QuizResult';
 import { notFound } from 'next/navigation';
 
 interface Props {
-  params: {
+  params: Promise<{
     type: string;
-  };
+  }>;
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const params = await props.params;
   try {
     const result = getQuizResult(params.type);
     return {
@@ -24,7 +25,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default function HairTypePage({ params }: Props) {
+export default async function HairTypePage(props: Props) {
+  const params = await props.params;
   try {
     const result = getQuizResult(params.type);
     return (

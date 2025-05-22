@@ -3,14 +3,13 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 
 interface PageProps {
-  params: {
+  params: Promise<{
     type: string;
-  };
+  }>;
 }
 
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
   const hairType = params.type;
   const title = `Type ${hairType.toUpperCase()} Hair - Characteristics and Care Guide`;
   const description = `Learn about Type ${hairType.toUpperCase()} hair characteristics, care tips, styling techniques, and product recommendations. Find out how to best care for your Type ${hairType.toUpperCase()} hair.`;
@@ -26,7 +25,8 @@ export async function generateMetadata({
   };
 }
 
-export default async function HairTypePage({ params }: PageProps) {
+export default async function HairTypePage(props: PageProps) {
+  const params = await props.params;
   const hairType = params.type;
 
   // Try to get MDX content
