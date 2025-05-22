@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import Avatar from '@/components/avatar';
 import Link from 'next/link';
+import PorosityEmailSignup from '@/components/PorosityEmailSignup';
 
 interface PorosityInfo {
   title: string;
@@ -66,6 +67,8 @@ export function PorosityPageClient({ porosityType, porosityInfo }: Props) {
       </div>
       <h1 className="text-3xl font-bold mb-4">{porosityInfo.title}</h1>
       <p className="text-lg mb-8">{porosityInfo.description}</p>
+
+      <PorosityEmailSignup porosityType={porosityType} />
 
       <Link href="/porosity" className="btn btn-primary gap-2  mb-4">
         <ArrowLeft className="w-5 h-5" />
@@ -186,7 +189,6 @@ function RoutineSteps({ porosity, country }: RoutineStepsProps) {
           <div className="card-body">
             <h3 className="text-2xl font-semibold">{step.title}</h3>
             <div className="">
-
               <p>{step.description}</p>
             </div>
             <div className="alert alert-info bg-info/30 flex items-start">

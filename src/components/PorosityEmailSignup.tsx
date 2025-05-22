@@ -3,11 +3,13 @@
 import { Sparkles } from 'lucide-react';
 import { useEffect } from 'react';
 
-interface EmailSignupProps {
-  hairType: string;
+interface PorosityEmailSignupProps {
+  porosityType: string;
 }
 
-export default function EmailSignup({ hairType }: EmailSignupProps) {
+export default function PorosityEmailSignup({
+  porosityType,
+}: PorosityEmailSignupProps) {
   useEffect(() => {
     // Load MailerLite script
     const script = document.createElement('script');
@@ -22,11 +24,11 @@ export default function EmailSignup({ hairType }: EmailSignupProps) {
   }, []);
 
   return (
-    <div className="bg-base-100 cb-card-lite md:col-span-2">
+    <div className="bg-base-100 cb-card-lite md:col-span-2 mb-8">
       <div className="flex items-center gap-2 mb-4">
         <Sparkles className="w-6 h-6 text-primary" />
         <h3 className="text-xl font-bold">
-          Want help mastering your curls or waves?
+          Want to master your {porosityType.replace('-', ' ')} hair?
         </h3>
       </div>
 
@@ -66,15 +68,17 @@ export default function EmailSignup({ hairType }: EmailSignupProps) {
                   <input
                     type="hidden"
                     name="fields[hair_type]"
-                    value={hairType}
+                    value={porosityType}
+                  />
+                  <input
+                    type="hidden"
+                    name="fields[porosity]"
+                    value={porosityType}
                   />
                   <input type="hidden" name="ml-submit" value="1" />
                   <input type="hidden" name="anticsrf" value="true" />
 
-                  <button
-                    type="submit"
-                    className="btn btn-primary whitespace-nowrap"
-                  >
+                  <button type="submit" className="btn btn-primary whitespace-nowrap">
                     Get the Free Guide →
                   </button>
                 </div>
