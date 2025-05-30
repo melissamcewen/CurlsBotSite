@@ -39,7 +39,12 @@ export async function generateMetadata({
     };
   }
 
-  return baseMetadata;
+  return {
+    ...baseMetadata,
+    alternates: {
+      canonical: 'https://www.curlsbot.com',
+    },
+  };
 }
 
 interface Props {
@@ -89,8 +94,7 @@ export default async function Home({ searchParams }: Props) {
         }}
       />
       <div>
-
-          <AnalyzerWrapper ingredients={initialIngredients} />
+        <AnalyzerWrapper ingredients={initialIngredients} />
 
         <HomePageCards />
       </div>
