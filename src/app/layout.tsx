@@ -41,9 +41,6 @@ export const metadata: Metadata = {
     'max-image-preview': 'large',
     'max-video-preview': -1,
   },
-  alternates: {
-    canonical: 'https://www.curlsbot.com',
-  },
   openGraph: {
     title: 'CurlsBot - Curly Hair Product Analyzer',
     description:
@@ -124,7 +121,7 @@ export default function RootLayout({
           as="image"
           type="image/svg+xml"
         />
-    
+
         <script
           dangerouslySetInnerHTML={{
             __html: `
