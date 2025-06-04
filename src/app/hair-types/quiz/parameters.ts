@@ -1,4 +1,4 @@
-export type VersatilityLevel = 'low' | 'medium' | 'high';
+export type PatternStrengthLevel = 'none' | 'low' | 'medium' | 'high';
 export type ShrinkageLevel = 'none' | 'low' | 'medium' | 'high' | 'very high';
 export type StrandThickness = 'any' | 'small' | 'medium' | 'large' | 'varies';
 export type CurvatureType =
@@ -56,7 +56,7 @@ export type SisterTypes =
 export type ProductType = 'A' | 'B' | 'C' | 'D';
 export interface HairParameters {
   curlsBotType: CurlsBotType;
-  versatility: VersatilityLevel;
+  patternStrength: PatternStrengthLevel;
   shrinkage: ShrinkageLevel;
   strandThickness: StrandThickness;
   curvature: CurvatureType;
@@ -92,11 +92,12 @@ export const parameterDescriptions = {
     'Kinky hair':
       'Your hair has coils and kinks, and high shrinkage. It may be one of several subtypes based on hair diameter, density, and porosity.',
   },
-  versatility: {
-    low: "Your hair is a defined type and making it into another type would take chemical treatment. You don't have to worry about heavy products changing your hair type but they can still cause build up.",
+  patternStrength: {
+    'none': 'Your hair does not have any curls or waves',
+    low: "Your pattern is highly variable, and any curls or waves may loosen out easily.",
     medium:
-      'Your hair is easily styled into other types with heat, though make sure you use a heat protectant.',
-    high: 'Your hair might have many different types naturally but holding on to just one type is hard. Curls/waves tend to loosen up during the day and straightened hair can get puffy. Avoid heavy products (with lots of oils and butters) that will weigh your hair down.',
+      'Your pattern strength is moderate, and stays pretty consistent but may loosen out a little.',
+    high: 'Your hair pattern is strong and not easily loosened out or elongated.',
   },
   shrinkage: {
     none: 'Your hair is the same length wet or dry.',
@@ -180,13 +181,13 @@ export const parameterDescriptions = {
     C:
       'we recommend these products that add volume and reduce frizz',
     D:
-      'we recommend these products that are formulated to define curls and reduce frizz',
+      'we recommend these products that are formulated to reduce frizz, protect from breakage, and add shine',
   },
 } as const;
 
 export const parameterDisplayNames = {
   commonType: 'Common Type',
-  versatility: 'Versatility',
+  patternStrength: 'Pattern Strength',
   shrinkage: 'Shrinkage',
   strandThickness: 'Strand Thickness',
   curvature: 'Curvature',
@@ -201,7 +202,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     curlsBotType: 'Straight fine hair',
     WalkerType: '1a',
     commonType: '1b to 1c',
-    versatility: 'low',
+    patternStrength: 'none',
     shrinkage: 'none',
     strandThickness: 'small',
     curvature: 'none',
@@ -215,7 +216,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     curlsBotType: 'Straight hair',
     WalkerType: '1b',
     commonType: '1b to 1c',
-    versatility: 'medium',
+    patternStrength: 'none',
     shrinkage: 'none',
     strandThickness: 'medium',
     curvature: 'none',
@@ -229,7 +230,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     curlsBotType: 'Straight thick hair',
     WalkerType: '1c',
     commonType: '1a',
-    versatility: 'low',
+    patternStrength: 'none',
     shrinkage: 'none',
     strandThickness: 'large',
     curvature: 'none',
@@ -243,7 +244,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     curlsBotType: 'Wavy fine hair',
     WalkerType: '2a',
     commonType: '2a to 3a',
-    versatility: 'high',
+    patternStrength: 'low',
     shrinkage: 'low',
     strandThickness: 'small',
     curvature: 'varies',
@@ -257,7 +258,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     curlsBotType: 'Wavy hair',
     WalkerType: '2b',
     commonType: '2a to 3a',
-    versatility: 'high',
+    patternStrength: 'low',
     shrinkage: 'low',
     strandThickness: 'medium',
     curvature: 'varies',
@@ -271,7 +272,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     curlsBotType: 'Wavy hair',
     WalkerType: '2c',
     commonType: '2a to 3a',
-    versatility: 'high',
+    patternStrength: 'low',
     shrinkage: 'low',
     strandThickness: 'large',
     curvature: 'varies',
@@ -285,7 +286,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     curlsBotType: 'Loose curls',
     WalkerType: '3a',
     commonType: '3a',
-    versatility: 'medium',
+    patternStrength: 'medium',
     shrinkage: 'medium',
     strandThickness: 'any',
     curvature: 'large',
@@ -299,7 +300,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     curlsBotType: 'Curly hair',
     WalkerType: '3b',
     commonType: '3a to 3c',
-    versatility: 'medium',
+    patternStrength: 'medium',
     shrinkage: 'medium',
     strandThickness: 'any',
     curvature: 'medium',
@@ -313,7 +314,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     curlsBotType: 'Very curly hair',
     WalkerType: '3b',
     commonType: '3a to 3c',
-    versatility: 'low',
+    patternStrength: 'high',
     shrinkage: 'high',
     strandThickness: 'any',
     curvature: 'small',
@@ -327,7 +328,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     curlsBotType: 'Coily hair',
     WalkerType: '4a',
     commonType: '4a to 4c',
-    versatility: 'low',
+    patternStrength: 'high',
     shrinkage: 'high',
     strandThickness: 'any',
     curvature: 'extra small',
@@ -341,7 +342,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     curlsBotType: 'Kinky hair',
     commonType: '4a to 4c',
     WalkerType: '4b',
-    versatility: 'low',
+    patternStrength: 'high',
     shrinkage: 'high',
     strandThickness: 'any',
     curvature: 'extra small',
@@ -355,7 +356,7 @@ export const hairTypeParameters: Record<string, HairParameters> = {
     curlsBotType: 'Kinky hair',
     commonType: '4a to 4c',
     WalkerType: '4b',
-    versatility: 'low',
+    patternStrength: 'high',
     shrinkage: 'high',
     strandThickness: 'varies',
     curvature: 'extra small',
