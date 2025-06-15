@@ -67,13 +67,17 @@ export function ProductCard({
             {STYLING_CATEGORIES.includes(category) &&
               product.product.extensions?.frizzbot &&
               product.product.extensions.frizzbot.score <= -50 && (
-                <div className="badge badge-secondary whitespace-nowrap text-xs">Humidity Resistant</div>
+                <div className="badge badge-secondary whitespace-nowrap text-xs">
+                  Humidity Resistant
+                </div>
               )}
             {shouldShowPorosityScores &&
               product.product.extensions?.porosity &&
               product.product.extensions.porosity.low >=
                 POROSITY_THRESHOLDS.LIGHTWEIGHT && (
-                <div className="badge badge-accent whitespace-nowrap text-xs">Lightweight</div>
+                <div className="badge badge-accent whitespace-nowrap text-xs">
+                  Lightweight
+                </div>
               )}
             {shouldShowPorosityScores &&
               product.product.extensions?.porosity &&
@@ -108,7 +112,7 @@ export function ProductCard({
         <div className="card-actions mt-2 flex-col gap-2">
           {product.product.ingredients_raw && (
             <Link
-              href={`/?ingredients=${encodeURIComponent(
+              href={`/cgm-analyzer?ingredients=${encodeURIComponent(
                 product.product.ingredients_raw,
               )}`}
               className="cb-button w-full gap-2"

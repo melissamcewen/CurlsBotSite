@@ -114,7 +114,21 @@ export default function CurlyTechniquesDictionaryPage() {
                 Created by the team (ok the one women) behind CurlsBot.com
               </h2>
               <p className="text-base-content/80">
-                You may know CurlsBot from my <Link href="/" className="link link-primary link-hover">hair ingredient analyzer</Link> and <Link href="/porosity-quiz" className="link link-secondary link-hover">porosity quiz</Link>, helping people understand and find great products since 2017.
+                You may know CurlsBot from my{' '}
+                <Link
+                  href="/cgm-analyzer"
+                  className="link link-primary link-hover"
+                >
+                  hair ingredient analyzer
+                </Link>{' '}
+                and{' '}
+                <Link
+                  href="/porosity-quiz"
+                  className="link link-secondary link-hover"
+                >
+                  porosity quiz
+                </Link>
+                , helping people understand and find great products since 2017.
               </p>
             </div>
           </div>

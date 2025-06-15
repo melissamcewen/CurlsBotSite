@@ -77,7 +77,7 @@ export default function Navbar() {
             <div className="navbar-center hidden lg:flex">
               <ul className="menu menu-horizontal px-1">
                 <li>
-                  <Link href="/">Analysis</Link>
+                  <Link href="/cgm-analyzer">Analysis</Link>
                 </li>
                 <li>
                   <details>
@@ -185,7 +185,7 @@ export default function Navbar() {
                   className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-accent rounded-box w-52"
                 >
                   <li>
-                    <Link href="/">Analysis</Link>
+                    <Link href="/cgm-analyzer">Analysis</Link>
                   </li>
                   <li>
                     <details>

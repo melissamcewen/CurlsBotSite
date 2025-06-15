@@ -44,7 +44,9 @@ export default function AdvancedIngredientForm({
       return;
     }
 
-    const url = `/?ingredients=${encodeURIComponent(trimmedIngredients)}`;
+    const url = `/cgm-analyzer?ingredients=${encodeURIComponent(
+      trimmedIngredients,
+    )}`;
     try {
       await router.push(url);
     } catch (error) {
@@ -63,7 +65,7 @@ export default function AdvancedIngredientForm({
           </ChatBubble>
 
           <ChatFooter>
-            <Link href="/">Go to standard version</Link>
+            <Link href="/cgm-analyzer">Go to standard version</Link>
           </ChatFooter>
         </ChatBubbleRobot>
 

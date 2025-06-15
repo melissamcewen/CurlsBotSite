@@ -487,7 +487,7 @@ export default function ProductsPage() {
                 <td className="flex flex-col gap-2">
                   {product.ingredients_raw && (
                     <Link
-                      href={`/?ingredients=${encodeURIComponent(
+                      href={`/cgm-analyzer?ingredients=${encodeURIComponent(
                         product.ingredients_raw,
                       )}`}
                       className="btn btn-xs btn-secondary gap-2 whitespace-nowrap flex items-center min-w-24 text-secondary-content"

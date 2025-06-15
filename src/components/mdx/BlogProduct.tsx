@@ -108,7 +108,9 @@ export function BlogProduct({
 
           {ingredients && ingredients.length > 0 && (
             <Link
-              href={`/?ingredients=${encodeURIComponent(ingredients)}`}
+              href={`/cgm-analyzer?ingredients=${encodeURIComponent(
+                ingredients,
+              )}`}
               className="btn btn-primary btn-sm w-full flex items-center justify-center gap-2"
             >
               <Search className="w-5 h-5" />
