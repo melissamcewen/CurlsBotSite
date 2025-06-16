@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { User, Book, Droplet } from 'lucide-react';
+import { Icon, Book, Droplet } from 'lucide-react';
+import { bottleDispenser } from '@lucide/lab';
 import RelatedPostsGrid from '@/components/RelatedPostsGrid';
 import { getRandomBlogPosts } from '@/utils/blog';
 import {
@@ -52,23 +53,24 @@ export default async function Home() {
         <section className="flex flex-col items-center bg-base-200 rounded-xl p-8 mb-12">
           <Image
             src="/images/hero.png"
-            alt="Curly hair illustration"
-            width={200}
-            height={200}
-            className="mb-4 rounded-lg"
+            alt="CurlsBot logo"
+            width={768}
+            height={512}
+            className="mb-4 rounded-lg max-w-lg"
             priority
           />
           <h1 className="text-3xl font-bold mb-2 text-center">
-            Your guide to ingredient-conscious curly hair care.
+            Master Your Curls and Waves
           </h1>
-          <p className="text-base-content/70 mb-2 text-center">
-            Simple tools and science-backed resources for every curl type.
+          <p className="text-base text-base-content/80 leading-relaxed mb-4 text-center max-w-xl mx-auto">
+            Get personalized tools, tips, and product picks to help you
+            understand and care for your unique hair type.
           </p>
           <Link
             href="/cgm-analyzer"
             className="text-sm underline text-primary mt-2"
           >
-            Go to the analyzer
+            Go to the classic ingredient analyzer &rarr;
           </Link>
         </section>
 
@@ -77,40 +79,40 @@ export default async function Home() {
           {/* Learn About Your Hair */}
           <div className="card bg-base-100 rounded-box shadow-none h-full">
             <div className="card-body flex flex-col text-left">
-              <User className="w-8 h-8 mb-2 text-primary" />
+              <Book className="w-8 h-8 mb-2 text-primary" />
               <h2 className="card-title text-xl mb-2">Learn About Your Hair</h2>
               <p className="mb-4">
-                Take our quick quiz to discover your curl type and get
-                personalized tips.
+                Not sure if your hair is wavy, curly, or straight? Take our
+                quick quiz to discover your hair type and get personalized care
+                tips.
               </p>
               <div className="card-actions justify-end w-full mt-auto">
                 <Link
                   href="/hair-types/quiz"
                   className="btn btn-secondary w-full"
                 >
-                  Take the Hair Type Quiz
+                  Find Your Hair Type
                 </Link>
               </div>
             </div>
           </div>
-          {/* Curly Girl Method */}
           <div className="card bg-base-100 rounded-box shadow-none h-full">
             <div className="card-body flex flex-col text-left">
-              <Book className="w-8 h-8 mb-2 text-primary" />
-              <h2 className="card-title text-xl mb-2">Curly Girl Method</h2>
+              <Droplet className="w-8 h-8 mb-2 text-primary" />
+              <h2 className="card-title text-xl mb-2">Porosity</h2>
               <p className="mb-4">
-                Explore the CGM approach and see if it&apos;s right for your
-                hair.
+                Hair porosity affects how well your hair absorbs and retains
+                moisture. <br />
+                <br />
+                Understanding porosity helps you choose the best products and
+                techniques for your hair.
               </p>
               <div className="card-actions flex flex-col gap-2 w-full mt-auto">
-                <Link href="/cgm-analyzer" className="btn btn-primary w-full">
-                  Go to Analyzer
+                <Link href="/porosity/quiz" className="btn btn-primary w-full">
+                  Find Your Porosity
                 </Link>
-                <Link
-                  href="/curly-girl-method"
-                  className="btn btn-outline w-full"
-                >
-                  Go to CGM Hub
+                <Link href="/labs/porosity" className="btn btn-outline w-full">
+                  Analyze Products
                 </Link>
               </div>
             </div>
@@ -118,18 +120,17 @@ export default async function Home() {
           {/* Porosity */}
           <div className="card bg-base-100 rounded-box shadow-none h-full">
             <div className="card-body flex flex-col text-left">
-              <Droplet className="w-8 h-8 mb-2 text-primary" />
-              <h2 className="card-title text-xl mb-2">Porosity</h2>
+              <Icon
+                iconNode={bottleDispenser}
+                className="w-8 h-8 mb-2 text-primary"
+              />
+              <h2 className="card-title text-xl mb-2">Products</h2>
               <p className="mb-4">
-                Find out how your hair absorbs and retains moisture, and why it
-                matters.
+                Our curated lists of the best products for curly and wavy hair.
               </p>
               <div className="card-actions flex flex-col gap-2 w-full mt-auto">
-                <Link href="/porosity/quiz" className="btn btn-accent w-full">
-                  Porosity Quiz
-                </Link>
-                <Link href="/cgm-analyzer" className="btn btn-outline w-full">
-                  Analyze Ingredients
+                <Link href="/best" className="btn btn-accent w-full">
+                  Find Your Best Products
                 </Link>
               </div>
             </div>
@@ -137,7 +138,11 @@ export default async function Home() {
         </section>
 
         {/* Blog Section */}
-        <RelatedPostsGrid posts={randomPosts} heading="From the Blog" />
+        <RelatedPostsGrid
+          posts={randomPosts}
+          heading="From the Blog"
+          variant="light"
+        />
       </main>
     </>
   );

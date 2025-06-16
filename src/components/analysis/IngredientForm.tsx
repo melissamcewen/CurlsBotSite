@@ -97,9 +97,13 @@ export default function IngredientForm({
             }
           >
             <ChatBubble status="ok">
-              Hi! I&apos;m CurlsBot! I analyze hair care ingredients with curly
-              and wavy hair in mind. Just paste an ingredients list below and
-              I&apos;ll analyze it for you.
+              Hi! I&apos;m CurlsBot! I analyze hair care products to see if they
+              are compatible with the{' '}
+              <Link href="/curly-girl-method" className="link">
+                Curly Girl Method
+              </Link>
+              . Just paste an ingredients list below and I&apos;ll analyze it for
+              you.
             </ChatBubble>
 
             <ChatFooter>

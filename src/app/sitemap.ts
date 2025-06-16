@@ -128,6 +128,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
     },
     {
+      url: 'https://www.curlsbot.com/best',
+      lastModified: new Date(),
+    },
+    {
+      url: 'https://www.curlsbot.com/hair-types/quiz',
+      lastModified: new Date(),
+    },
+    {
+      url: 'https://www.curlsbot.com/curly-girl-method',
+      lastModified: new Date(),
+    },
+    {
       url: 'https://www.curlsbot.com/porosity-quiz',
       lastModified: new Date(),
     },

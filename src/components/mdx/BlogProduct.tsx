@@ -54,7 +54,9 @@ export function BlogProduct({
           {cgmApproved && (
             <div className="badge badge-outline badge-info gap-1 whitespace-nowrap">
               <CheckCircle className="w-4 h-4" />
-              CGM Approved
+              <Link href="/curly-girl-method" className="link">
+                CGM Approved
+              </Link>
             </div>
           )}
           {sulfateFree && (

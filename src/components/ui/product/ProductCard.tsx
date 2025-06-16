@@ -61,7 +61,9 @@ export function ProductCard({
             {product.product.status === 'ok' && (
               <div className="badge badge-primary gap-1 whitespace-nowrap text-xs">
                 <CheckCircle className="w-3 h-3" />
-                CGM
+                <Link href="/curly-girl-method" className="link">
+                  CGM
+                </Link>
               </div>
             )}
             {STYLING_CATEGORIES.includes(category) &&

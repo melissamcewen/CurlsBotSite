@@ -77,7 +77,24 @@ export default function Navbar() {
             <div className="navbar-center hidden lg:flex">
               <ul className="menu menu-horizontal px-1">
                 <li>
-                  <Link href="/cgm-analyzer">Analysis</Link>
+                  <Link href="/cgm-analyzer">Analyzer</Link>
+                </li>
+                <li>
+                  <details>
+                    <summary>Quizzes</summary>
+                    <ul className="p-2 bg-accent rounded-t-none">
+                      <li>
+                        <Link href="/hair-types/quiz" onClick={handleLinkClick}>
+                          Hair Type
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/porosity-quiz" onClick={handleLinkClick}>
+                          Porosity
+                        </Link>
+                      </li>
+                    </ul>
+                  </details>
                 </li>
                 <li>
                   <details>
@@ -104,23 +121,7 @@ export default function Navbar() {
                     </ul>
                   </details>
                 </li>
-                <li>
-                  <details>
-                    <summary>Quizzes</summary>
-                    <ul className="p-2 bg-accent rounded-t-none">
-                      <li>
-                        <Link href="/hair-types/quiz" onClick={handleLinkClick}>
-                          Hair Type
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/porosity-quiz" onClick={handleLinkClick}>
-                          Porosity
-                        </Link>
-                      </li>
-                    </ul>
-                  </details>
-                </li>
+
                 <li>
                   <Link href="/blog">Blog</Link>
                 </li>
@@ -185,7 +186,27 @@ export default function Navbar() {
                   className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-accent rounded-box w-52"
                 >
                   <li>
-                    <Link href="/cgm-analyzer">Analysis</Link>
+                    <Link href="/cgm-analyzer">Analyzer</Link>
+                  </li>
+                  <li>
+                    <details>
+                      <summary>Quizzes</summary>
+                      <ul className="p-2 bg-accent rounded-t-none">
+                        <li>
+                          <Link
+                            href="/hair-types/quiz"
+                            onClick={handleLinkClick}
+                          >
+                            Hair Type
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href="/porosity-quiz" onClick={handleLinkClick}>
+                            Porosity
+                          </Link>
+                        </li>
+                      </ul>
+                    </details>
                   </li>
                   <li>
                     <details>
@@ -212,26 +233,7 @@ export default function Navbar() {
                       </ul>
                     </details>
                   </li>
-                  <li>
-                    <details>
-                      <summary>Quizzes</summary>
-                      <ul className="p-2 bg-accent rounded-t-none">
-                        <li>
-                          <Link
-                            href="/hair-types/quiz"
-                            onClick={handleLinkClick}
-                          >
-                            Hair Type
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href="/porosity-quiz" onClick={handleLinkClick}>
-                            Porosity
-                          </Link>
-                        </li>
-                      </ul>
-                    </details>
-                  </li>
+
                   <li>
                     <Link href="/blog">Blog</Link>
                   </li>

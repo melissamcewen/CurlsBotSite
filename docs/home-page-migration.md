@@ -56,14 +56,15 @@ Create a visually appealing and user-friendly information hub for the Curly Girl
     - What to avoid (link to Ingredient Cheat SHeet and Analyzer)
     - Key Techniques
 - [x] Move analyzer from homepage to /cgm-analyzer
-- [x] Should we put in a redirect for SEO purposes?
+- [ ] Should we put in a redirect for SEO purposes?
 - [ ] Other things that need to be fixed
   - [x] the lab photo needs to use /cgm analyzer
   - [x] Redirect any / with params to analyzer
   - [x] "Analyze" buttons across site
   - [x] Any other links to "analyzer"
+  - [ ] loading scaffold
 - [ ] Publish guide
-- [ ] Redesign homepage (Daisy UI 4)
+- [x] Redesign homepage (Daisy UI 4)
   - [ ] Top box = quizzes
   - [ ] Next box = CGM (link to hub)
   - [ ] Other boxes like read our blog

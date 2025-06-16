@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ArrowUpDown } from 'lucide-react';
+import { ArrowUpDown, Info } from 'lucide-react';
+import Link from 'next/link';
 
 interface Product {
   name: string;
@@ -96,6 +97,16 @@ export default function ProductsTable({ products }: ProductsTableProps) {
             >
               <div className="flex items-center">
                 CGM
+                <Link
+                  href="/curly-girl-method"
+                  target="_blank"
+                  className="ml-2 text-primary hover:text-primary-focus"
+                  title="Learn about the Curly Girl Method"
+                  tabIndex={-1}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <Info className="w-4 h-4 inline" aria-label="About CGM" />
+                </Link>
                 {sortField === 'cgmApproved' && (
                   <ArrowUpDown className="ml-1 h-3 w-3 sm:ml-2 sm:h-4 sm:w-4" />
                 )}

@@ -22,3 +22,5 @@ the analysis results statuses correspond to the following daisy ui colors:
 DO NOT ADD FEATURES I DID NOT EXPLICITLY ASK FOR
 
 We're using Next 15 NOT 13
+
+don't use  rel="noopener noreferrer" on internal links

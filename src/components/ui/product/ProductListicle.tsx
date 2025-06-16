@@ -144,7 +144,9 @@ export function ProductListicle({
                           {product.status === 'ok' && (
                             <div className="badge badge-primary gap-1 whitespace-nowrap text-xs">
                               <CheckCircle className="w-3 h-3" />
-                              CGM Approved
+                              <Link href="/curly-girl-method" className="link">
+                                CGM Approved
+                              </Link>
                             </div>
                           )}
                           {product.extensions?.frizzbot &&

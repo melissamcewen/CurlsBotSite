@@ -6,12 +6,14 @@ import {
   ShoppingBag,
   Layers,
   ExternalLink,
+  Info,
 } from 'lucide-react';
 import { getBundledProducts } from 'haircare-ingredients-analyzer';
 import type { Product } from 'haircare-ingredients-analyzer';
 import { useLocalization } from '@/contexts/LocalizationContext';
 import type { CountryCode } from '@/lib/countryDetection';
 import { POROSITY_THRESHOLDS } from '@/lib/porosity';
+import Link from 'next/link';
 
 // Define internal types rather than importing from routineBuilder
 export type PorosityType =
@@ -487,7 +489,17 @@ export default function HairRoutine({
         {/* Settings in a more compact grid layout */}
         <div className="grid grid-cols-2 gap-3">
           <div className="col-span-2 sm:col-span-1 flex items-center justify-between bg-base-100 rounded-lg p-3">
-            <span className="text-sm font-medium">CGM</span>
+            <span className="text-sm font-medium flex items-center">
+              CGM
+              <Link
+                href="/curly-girl-method"
+                target="_blank"
+                className="ml-2 text-primary hover:text-primary-focus flex items-center"
+                title="Learn about the Curly Girl Method"
+              >
+                <Info className="w-4 h-4" aria-label="About CGM" />
+              </Link>
+            </span>
             <input
               type="checkbox"
               className="toggle toggle-primary toggle-sm"

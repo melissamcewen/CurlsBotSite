@@ -26,7 +26,15 @@ export default function CGMHub() {
             </h2>
             <p className="mb-4 text-base-content/80">
               The Curly Girl Method was created by Lorraine Massey and
-              popularized with her book, The Curly Girl Handbook
+              popularized with her book,{' '}
+              <a
+                href="https://amzn.to/45oIJsP"
+                className="link"
+      
+
+              >
+                The Curly Girl Handbook
+              </a>
               <br />
               <br />
               CGM is about embracing your natural curl pattern and using

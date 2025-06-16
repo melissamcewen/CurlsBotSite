@@ -14,13 +14,18 @@ interface BlogPost {
 interface RelatedPostsGridProps {
   posts: BlogPost[];
   heading?: string;
+  variant?: 'light' | 'dark';
 }
 
 export default function RelatedPostsGrid({
   posts,
   heading = 'Related Articles',
+  variant = 'dark',
 }: RelatedPostsGridProps) {
   if (!posts || posts.length === 0) return null;
+  const cardBg = variant === 'light' ? 'bg-base-100' : 'bg-base-200';
+  const cardHover =
+    variant === 'light' ? 'hover:bg-base-50' : 'hover:bg-base-300';
   return (
     <div className="mt-16 not-prose">
       <h2 className="text-3xl font-bold mb-8">{heading}</h2>
@@ -29,7 +34,7 @@ export default function RelatedPostsGrid({
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className="card bg-base-200 hover:bg-base-300 transition-colors"
+            className={`card ${cardBg} ${cardHover} transition-colors`}
           >
             {post.frontmatter.image && (
               <figure className="relative h-48">
