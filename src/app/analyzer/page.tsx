@@ -20,7 +20,7 @@ export async function generateMetadata({
     title: 'CGM Ingredient Analysis',
     description:
       'Analyze hair care ingredients for Curly Girl Method compatibility. Find ingredient-conscious products and tips for healthy curly hair.',
-    path: '/cgm-analyzer',
+    path: '/analyzer',
   });
 
   // If there are ingredients in the URL, add robots meta tag to prevent indexing
@@ -37,7 +37,7 @@ export async function generateMetadata({
   return {
     ...baseMetadata,
     alternates: {
-      canonical: 'https://www.curlsbot.com/cgm-analyzer',
+      canonical: 'https://www.curlsbot.com/analyzer',
     },
   };
 }

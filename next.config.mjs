@@ -56,7 +56,7 @@ const nextConfig = {
             key: 'ingredients',
           },
         ],
-        destination: '/cgm-analyzer',
+        destination: '/analyzer',
         permanent: true,
       },
       {
@@ -105,7 +105,7 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/harder-water',
+        source: '/hard-water',
         destination: '/blog/curly-hair-hard-water',
         permanent: true,
       },

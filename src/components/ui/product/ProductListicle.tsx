@@ -184,7 +184,7 @@ export function ProductListicle({
                         <div className="flex flex-wrap gap-2">
                           {product.ingredients_raw && (
                             <Link
-                              href={`/cgm-analyzer?ingredients=${encodeURIComponent(
+                              href={`/analyzer?ingredients=${encodeURIComponent(
                                 product.ingredients_raw,
                               )}`}
                               className="btn btn-secondary gap-2"

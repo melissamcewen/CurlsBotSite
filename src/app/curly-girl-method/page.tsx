@@ -27,12 +27,7 @@ export default function CGMHub() {
             <p className="mb-4 text-base-content/80">
               The Curly Girl Method was created by Lorraine Massey and
               popularized with her book,{' '}
-              <a
-                href="https://amzn.to/45oIJsP"
-                className="link"
-      
-
-              >
+              <a href="https://amzn.to/45oIJsP" className="link">
                 The Curly Girl Handbook
               </a>
               <br />
@@ -111,7 +106,7 @@ export default function CGMHub() {
               CGM no-nos, making product selection easier than ever.
             </p>
             <div className="card-actions justify-end w-full mt-auto">
-              <a href="/cgm-analyzer" className="btn btn-accent w-full">
+              <a href="/analyzer" className="btn btn-accent w-full">
                 Try the Analyzer
               </a>
             </div>

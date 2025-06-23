@@ -5,17 +5,18 @@ Context: CurlsBot was originally a hackathon project and only had the CGM analyz
 ## Design Prompts
 
 ### Homepage
+
 - goal: make it easy to see what the site does at a glance for new visitors while making it more accessible
 - Our main CGM tool the analyzer is moving elsewhere, and I'm reducing our emphasis/promotion of CGM so I want it to be easy to get to but not a focus
 - Maybe first card (or something like a mini hero, but I don't want to use real daisyui hero element because it takes up too much space) a one sentence intro, a friendly image (use placeholders), then in small text a link like "go to the analyzer" but don't make it a button
 - Second would be learn about your hair, with a short 1 sentence CTA, button to hair type quiz
-- Third would be Curly Girl Method,  buttons link to analyzer and cgm hub
+- Third would be Curly Girl Method, buttons link to analyzer and cgm hub
 - Forth would be porosity, say what it is and link to quiz and analyzer
 - then idk if this would be a card or a section, we could copy the relaeted blog post design src/app/blog/[slug]/page.tsx to show a selection of blog posts
 - no images in the cards (except the top hero-ish thing), but use icons
 
-
 ### CGM Hub
+
 **Design Prompt: CGM Hub for Curlsbot.com**
 
 Create a visually appealing and user-friendly information hub for the Curly Girl Method (CGM) using a card-based UI. The goal is to give users a simple overview of CGM and guide them to more detailed resources. The target audience is people new to CGM—especially those seeking beginner-friendly info.
@@ -55,19 +56,20 @@ Create a visually appealing and user-friendly information hub for the Curly Girl
     - What is CGM (link to guide)
     - What to avoid (link to Ingredient Cheat SHeet and Analyzer)
     - Key Techniques
-- [x] Move analyzer from homepage to /cgm-analyzer
+- [x] Move analyzer from homepage to /analyzer
 - [ ] Should we put in a redirect for SEO purposes?
-- [ ] Other things that need to be fixed
+- [x] Other things that need to be fixed
   - [x] the lab photo needs to use /cgm analyzer
   - [x] Redirect any / with params to analyzer
   - [x] "Analyze" buttons across site
   - [x] Any other links to "analyzer"
-  - [ ] loading scaffold
+  - [x] loading scaffold
 - [ ] Publish guide
+- [ ] Testing
 - [x] Redesign homepage (Daisy UI 4)
-  - [ ] Top box = quizzes
-  - [ ] Next box = CGM (link to hub)
-  - [ ] Other boxes like read our blog
+  - [x] Top box = quizzes
+  - [x] Next box = CGM (link to hub)
+  - [x] Other boxes like read our blog
 
 # Log
 
@@ -75,7 +77,7 @@ Create a visually appealing and user-friendly information hub for the Curly Girl
 
 ### 1. Created New CGM Analyzer Page
 
-- Created new page at `/cgm-analyzer`
+- Created new page at `/analyzer`
 - Moved analyzer component from homepage to new page
 - Set up proper metadata and SEO for the new page
 - Implemented server-side analysis functionality
@@ -84,11 +86,11 @@ Create a visually appealing and user-friendly information hub for the Curly Girl
 
 Updated all components that had links to the old analyzer URL:
 
-- `ProductCard.tsx` - Updated to `/cgm-analyzer?ingredients=`
-- `ProductListicle.tsx` - Updated to `/cgm-analyzer?ingredients=`
-- `products/page.tsx` - Updated to `/cgm-analyzer?ingredients=`
-- `LocalizedProductLink.tsx` - Updated to `/cgm-analyzer?ingredients=`
-- `BlogProduct.tsx` - Updated to `/cgm-analyzer?ingredients=`
+- `ProductCard.tsx` - Updated to `/analyzer?ingredients=`
+- `ProductListicle.tsx` - Updated to `/analyzer?ingredients=`
+- `products/page.tsx` - Updated to `/analyzer?ingredients=`
+- `LocalizedProductLink.tsx` - Updated to `/analyzer?ingredients=`
+- `BlogProduct.tsx` - Updated to `/analyzer?ingredients=`
 
 ### 3. Updated Blog Content
 

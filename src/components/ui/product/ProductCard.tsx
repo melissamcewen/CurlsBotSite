@@ -114,7 +114,7 @@ export function ProductCard({
         <div className="card-actions mt-2 flex-col gap-2">
           {product.product.ingredients_raw && (
             <Link
-              href={`/cgm-analyzer?ingredients=${encodeURIComponent(
+              href={`/analyzer?ingredients=${encodeURIComponent(
                 product.product.ingredients_raw,
               )}`}
               className="cb-button w-full gap-2"

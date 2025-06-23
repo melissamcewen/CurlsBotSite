@@ -87,7 +87,7 @@ const LocalizedProductLink = ({
     return (
       <>
         <a
-          href={`/cgm-analyzer?ingredients=${encodeURIComponent(
+          href={`/analyzer?ingredients=${encodeURIComponent(
             product.ingredients_raw,
           )}`}
           className="link link-primary"

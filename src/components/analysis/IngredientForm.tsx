@@ -56,7 +56,7 @@ export default function IngredientForm({
     setAnalysisResult(null);
     setIngredients('');
     setError(null);
-    router.replace('/', { scroll: false });
+    router.replace('/analyzer', { scroll: false });
   };
 
   // Only handle URL ingredients if there's no initial analysis
@@ -97,13 +97,14 @@ export default function IngredientForm({
             }
           >
             <ChatBubble status="ok">
-              Hi! I&apos;m CurlsBot! I analyze hair care products to see if they
-              are compatible with the{' '}
+              Hi! I&apos;m CurlsBot, your curly and wavy hair product analyzer.
+              I&apos;ll check if a product is compatible with the{' '}
               <Link href="/curly-girl-method" className="link">
                 Curly Girl Method
               </Link>
-              . Just paste an ingredients list below and I&apos;ll analyze it for
-              you.
+              , estimate humidity resistance, detect if it&apos;s likely
+              lightweight, and more. Just paste an ingredients list below, and
+              I&apos;ll take care of the rest!
             </ChatBubble>
 
             <ChatFooter>

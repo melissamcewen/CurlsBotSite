@@ -67,10 +67,10 @@ export default async function Home() {
             understand and care for your unique hair type.
           </p>
           <Link
-            href="/cgm-analyzer"
+            href="/analyzer"
             className="text-sm underline text-primary mt-2"
           >
-            Go to the classic ingredient analyzer &rarr;
+            Go to the ingredient analyzer &rarr;
           </Link>
         </section>
 
@@ -84,7 +84,7 @@ export default async function Home() {
               <p className="mb-4">
                 Not sure if your hair is wavy, curly, or straight? Take our
                 quick quiz to discover your hair type and get personalized care
-                tips.
+                tips and product recommendations.
               </p>
               <div className="card-actions justify-end w-full mt-auto">
                 <Link
@@ -124,13 +124,24 @@ export default async function Home() {
                 iconNode={bottleDispenser}
                 className="w-8 h-8 mb-2 text-primary"
               />
-              <h2 className="card-title text-xl mb-2">Products</h2>
+              <h2 className="card-title text-xl mb-2">Ingredients Analyzer</h2>
               <p className="mb-4">
-                Our curated lists of the best products for curly and wavy hair.
+                CurlsBot is the most popular ingredient analyzer for curly and
+                wavy hair.
+
+                <br />
+                <br />
+                It&apos;s perfect for analyzing if a product is right for your
+                porosity or finding products compatible with the{' '}
+                <Link href="/curly-girl-method" className="link">
+                  Curly Girl Method
+                </Link>
+                .
               </p>
+
               <div className="card-actions flex flex-col gap-2 w-full mt-auto">
-                <Link href="/best" className="btn btn-accent w-full">
-                  Find Your Best Products
+                <Link href="/analyzer" className="btn btn-accent w-full">
+                  Analyze Your Products
                 </Link>
               </div>
             </div>

@@ -115,10 +115,7 @@ export default function CurlyTechniquesDictionaryPage() {
               </h2>
               <p className="text-base-content/80">
                 You may know CurlsBot from my{' '}
-                <Link
-                  href="/cgm-analyzer"
-                  className="link link-primary link-hover"
-                >
+                <Link href="/analyzer" className="link link-primary link-hover">
                   hair ingredient analyzer
                 </Link>{' '}
                 and{' '}

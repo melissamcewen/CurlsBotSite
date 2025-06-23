@@ -44,7 +44,7 @@ export default function AdvancedIngredientForm({
       return;
     }
 
-    const url = `/cgm-analyzer?ingredients=${encodeURIComponent(
+    const url = `/analyzer?ingredients=${encodeURIComponent(
       trimmedIngredients,
     )}`;
     try {
@@ -65,7 +65,7 @@ export default function AdvancedIngredientForm({
           </ChatBubble>
 
           <ChatFooter>
-            <Link href="/cgm-analyzer">Go to standard version</Link>
+            <Link href="/analyzer">Go to standard version</Link>
           </ChatFooter>
         </ChatBubbleRobot>
 
