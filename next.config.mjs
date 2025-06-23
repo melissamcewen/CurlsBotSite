@@ -94,7 +94,7 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/harder-water',
+        source: '/hard-water',
         destination: '/blog/curly-hair-hard-water',
         permanent: true,
       },
