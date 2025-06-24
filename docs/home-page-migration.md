@@ -65,6 +65,8 @@ Create a visually appealing and user-friendly information hub for the Curly Girl
   - [x] Any other links to "analyzer"
   - [x] loading scaffold
 - [ ] Publish guide
+  - [ ] Add to files
+  - [ ] Add images
 - [ ] Testing
 - [x] Redesign homepage (Daisy UI 4)
   - [x] Top box = quizzes

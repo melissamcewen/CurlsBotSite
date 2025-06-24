@@ -50,12 +50,12 @@ export default async function Home() {
       />
       <main className="max-w-6xl mx-auto px-4 py-8">
         {/* Mini Hero */}
-        <section className="flex flex-col items-center bg-base-200 rounded-xl p-8 mb-12">
+        <section className="flex flex-col items-center bg-base-200 rounded-xl p-8 mb-5">
           <Image
-            src="/images/hero.png"
+            src="/hero.svg"
             alt="CurlsBot logo"
-            width={768}
-            height={512}
+            width={1420}
+            height={935}
             className="mb-4 rounded-lg max-w-lg"
             priority
           />
@@ -68,7 +68,7 @@ export default async function Home() {
           </p>
           <Link
             href="/analyzer"
-            className="text-sm underline text-primary mt-2"
+            className="btn btn-primary mt-2"
           >
             Go to the ingredient analyzer &rarr;
           </Link>
@@ -110,9 +110,6 @@ export default async function Home() {
               <div className="card-actions flex flex-col gap-2 w-full mt-auto">
                 <Link href="/porosity/quiz" className="btn btn-primary w-full">
                   Find Your Porosity
-                </Link>
-                <Link href="/labs/porosity" className="btn btn-outline w-full">
-                  Analyze Products
                 </Link>
               </div>
             </div>
