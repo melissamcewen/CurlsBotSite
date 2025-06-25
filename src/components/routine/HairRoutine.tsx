@@ -548,7 +548,7 @@ export default function HairRoutine({
             className="btn btn-primary col-span-2 h-11 flex gap-2"
             onClick={handleShuffle}
           >
-            <Shuffle className="w-4 h-4 flex-shrink-0" />
+            <Shuffle className="w-4 h-4 shrink-0" />
             Shuffle
           </button>
         </div>
@@ -586,7 +586,7 @@ export default function HairRoutine({
 
             return (
               <div key={key} className="bg-base-100 rounded-lg p-4 flex gap-3">
-                <div className="flex-shrink-0 bg-base-100 rounded-full w-10 h-10 flex items-center justify-center">
+                <div className="shrink-0 bg-base-100 rounded-full w-10 h-10 flex items-center justify-center">
                   {productIcons[key as keyof typeof productIcons]}
                 </div>
                 <div className="flex-1">
@@ -610,7 +610,7 @@ export default function HairRoutine({
                         className="text-primary hover:underline inline-flex items-center gap-1"
                       >
                         {product.brand} {product.name}
-                        <ExternalLink className="w-3 h-3 flex-shrink-0" />
+                        <ExternalLink className="w-3 h-3 shrink-0" />
                       </a>
                     ) : (
                       <span>
@@ -634,7 +634,7 @@ export default function HairRoutine({
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Sparkles className="w-4 h-4 flex-shrink-0 " />
+        <Sparkles className="w-4 h-4 shrink-0 " />
         Try sample sizes of these products
       </a>
     </div>

@@ -170,7 +170,7 @@ export default function CategoriesPage() {
                       <div key={id} className="card bg-base-100">
                         <div className="card-body">
                           <h3 className="card-title">{category.name}</h3>
-                          <p className="text-base-content/70 flex-grow">
+                          <p className="text-base-content/70 grow">
                             {category.description || 'No description available'}
                           </p>
                           <div className="card-actions justify-end mt-4">

@@ -5,7 +5,7 @@ import { NewsletterForm } from './NewsletterForm';
 export function Footer() {
   return (
     <>
-      <footer className="footer bg-base-300 text-base-content p-2 md:p-10">
+      <footer className="footer md:footer-horizontal bg-base-300 text-base-content p-2 md:p-10">
         <aside>
           <h2 className="text-xl font-bold">CurlsBot</h2>
           <p className="text-sm opacity-80">
@@ -92,7 +92,7 @@ export function Footer() {
 
       {/* Copyright and Disclaimer */}
       <div className="bg-base-300 py-6 px-4">
-        <div className="max-w-[90rem] mx-auto space-y-4">
+        <div className="max-w-360 mx-auto space-y-4">
           <div className="text-sm text-base-content/60 text-center">
             © {new Date().getFullYear()} CurlsBot. All rights reserved.
           </div>

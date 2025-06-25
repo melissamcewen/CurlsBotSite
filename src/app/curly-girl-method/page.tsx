@@ -62,7 +62,7 @@ export default function CGMHub() {
             <h2 className="card-title flex items-center gap-2 w-full">
               <FlaskConical className="w-5 h-5" /> Ingredient Rules
             </h2>
-            <p className="text-base-content/80 flex-grow-0">
+            <p className="text-base-content/80 grow-0">
               On a basic level, on CGM there are certain ingredients you want to
               avoid:
             </p>

@@ -30,7 +30,7 @@ export default function CountrySwitcher() {
           {mounted ? countryName : 'United States'}
         </span>
       </summary>
-      <ul className="menu dropdown-content z-[1] p-2 shadow bg-accent rounded-box w-52 mt-4">
+      <ul className="menu dropdown-content z-1 p-2 shadow bg-accent rounded-box w-52 mt-4">
         <li>
           <button
             className={country === 'US' ? 'active' : ''}

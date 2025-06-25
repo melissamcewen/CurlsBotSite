@@ -174,7 +174,7 @@ export default function ProductsPage() {
           email me at <a href="mailto:info@curlsbot.com">info@curlsbot.com</a>
         </p>
         <p className="text-base-content/70 text-sm flex items-center gap-2">
-          <ShoppingBag className="w-4 h-4 flex-shrink-0" />
+          <ShoppingBag className="w-4 h-4 shrink-0" />
           Product links are affiliate links that help support the site
         </p>
       </div>
@@ -516,7 +516,7 @@ export default function ProductsPage() {
                           rel="noopener noreferrer"
                           className="btn btn-xs btn-outline flex items-center gap-2 flex-nowrap min-w-48"
                         >
-                          <ShoppingCart className="w-4 h-4 flex-shrink-0" />
+                          <ShoppingCart className="w-4 h-4 shrink-0" />
                           <span className="flex-nowrap">
                             Buy on{' '}
                             {link.retailer ||
@@ -537,7 +537,7 @@ export default function ProductsPage() {
                       rel="noopener noreferrer"
                       className="btn btn-xs btn-secondary gap-2 whitespace-nowrap flex items-center  text-secondary-content"
                     >
-                      <Sparkles className="w-4 h-4 flex-shrink-0" />
+                      <Sparkles className="w-4 h-4 shrink-0" />
                       Try a sample
                     </a>
                   )}

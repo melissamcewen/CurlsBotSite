@@ -57,7 +57,7 @@ export function ReferencesList({ references }: ReferencesListProps) {
 
           return (
             <div key={id} className="flex gap-2">
-              <span className="text-base-content/70 font-medium min-w-[2rem]">
+              <span className="text-base-content/70 font-medium min-w-8">
                 {number}.
               </span>
               <div>

@@ -9,15 +9,15 @@ interface ReferencesListProps {
 function getTypeIcon(type?: string) {
   switch (type?.toLowerCase()) {
     case 'author':
-      return <BookOpen className="w-4 h-4 inline-block mr-2 flex-shrink-0" />;
+      return <BookOpen className="w-4 h-4 inline-block mr-2 shrink-0" />;
     case 'science':
       return (
-        <FlaskConical className="w-4 h-4 inline-block mr-2 flex-shrink-0" />
+        <FlaskConical className="w-4 h-4 inline-block mr-2 shrink-0" />
       );
     case 'hairpro':
-      return <Scissors className="w-4 h-4 inline-block mr-2 flex-shrink-0" />;
+      return <Scissors className="w-4 h-4 inline-block mr-2 shrink-0" />;
     case 'industry':
-      return <Factory className="w-4 h-4 inline-block mr-2 flex-shrink-0" />;
+      return <Factory className="w-4 h-4 inline-block mr-2 shrink-0" />;
     default:
       return null;
   }
@@ -108,15 +108,15 @@ export function Notes({ references }: ReferencesListProps) {
       </div>
       <div className="mt-4 flex flex-wrap gap-4 text-sm text-base-content/70">
         <div className="flex items-center">
-          <BookOpen className="w-4 h-4 mr-2 flex-shrink-0" />
+          <BookOpen className="w-4 h-4 mr-2 shrink-0" />
           <span>Popular Author</span>
         </div>
         <div className="flex items-center">
-          <FlaskConical className="w-4 h-4 mr-2 flex-shrink-0" />
+          <FlaskConical className="w-4 h-4 mr-2 shrink-0" />
           <span>Cosmetic Chemist</span>
         </div>
         <div className="flex items-center">
-          <Scissors className="w-4 h-4 mr-2 flex-shrink-0" />
+          <Scissors className="w-4 h-4 mr-2 shrink-0" />
           <span>Hair Professional</span>
         </div>
       </div>

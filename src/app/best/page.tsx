@@ -64,7 +64,7 @@ export default function BestProductsIndexPage() {
                   >
                     <div className="p-4">
                       <div className="flex items-start gap-4">
-                        <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                        <div className="shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
                           <Award className="w-6 h-6 text-primary" />
                         </div>
                         <div className="flex-1">

@@ -174,11 +174,11 @@ export default async function BlogPostPage({ params }: PageProps) {
 
           <article className="prose prose-lg max-w-none">
             <div className="flex items-center gap-2 mb-6">
-              <BookOpenText className="w-8 h-8 text-primary flex-shrink-0" />
+              <BookOpenText className="w-8 h-8 text-primary shrink-0" />
               <h1 className="text-3xl font-bold m-0">{frontmatter.title}</h1>
             </div>
 
-            <div className="min-h-[3rem] -mt-4">
+            <div className="min-h-12 -mt-4">
               {frontmatter.description && (
                 <p className="text-xl text-base-content/70">
                   {frontmatter.description}

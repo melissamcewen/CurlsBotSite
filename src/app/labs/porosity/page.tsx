@@ -111,7 +111,8 @@ export default function PorosityLabPage() {
                 <li className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-success shrink-0" />
                   <Link href="/groups/oils" className="link">
-                    Positively charged conditioning agents that bond to damaged hair
+                    Positively charged conditioning agents that bond to damaged
+                    hair
                   </Link>
                 </li>
                 <li className="flex items-center gap-2">
@@ -154,10 +155,10 @@ export default function PorosityLabPage() {
             </div>
             <div className="flex flex-col">
               <p className="text-sm mb-2">
-                Products that score well for low porosity hair are water-based and low in the following ingredients:
+                Products that score well for low porosity hair are water-based
+                and low in the following ingredients:
               </p>
               <ul className="space-y-2">
-
                 <li className="flex items-center gap-2">
                   <XCircle className="w-4 h-4 text-error shrink-0" />
                   <Link href="/groups/oils" className="link">
@@ -170,7 +171,6 @@ export default function PorosityLabPage() {
                     Waxes
                   </Link>
                 </li>
-
               </ul>
             </div>
           </div>
@@ -187,7 +187,7 @@ export default function PorosityLabPage() {
               </span>
             </label>
             <textarea
-              className="textarea textarea-bordered h-32"
+              className="textarea ed h-32"
               value={ingredients}
               onChange={(e) => setIngredients(e.target.value)}
               placeholder="Example: Water, Glycerin, Aloe Barbadensis Leaf Juice"

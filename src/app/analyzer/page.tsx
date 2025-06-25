@@ -17,9 +17,9 @@ export async function generateMetadata({
   const hasIngredients = typeof resolvedParams.ingredients === 'string';
 
   const baseMetadata = createPageMetadata({
-    title: 'CGM Ingredient Analysis',
+    title: 'Curly Hair Ingredient Analysis',
     description:
-      'Analyze hair care ingredients for Curly Girl Method compatibility. Find ingredient-conscious products and tips for healthy curly hair.',
+      'Analyze hair care ingredients for Curly Girl Method compatibility, humidity resistance, and more.',
     path: '/analyzer',
   });
 

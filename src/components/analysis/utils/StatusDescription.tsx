@@ -18,10 +18,9 @@ export const StatusDescription: React.FC<StatusDescriptionProps> = ({
     case 'ok':
       return (
         <>
-          This product doesn’t include any ingredients typically avoided under
-          the {cgmLink}. That’s a good sign if you’re following the method — but
-          keep in mind that product performance depends on more than just the
-          ingredient list. Scroll down for the full breakdown.
+          This product doesn’t include any ingredients typically avoided in
+          the {cgmLink}. Scroll down to view the whole report.
+          
         </>
       );
     case 'warning':

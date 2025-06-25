@@ -149,7 +149,7 @@ export function ProductCard({
                   rel="noopener"
                   className="btn btn-outline flex items-center gap-2 flex-nowrap min-w-48"
                 >
-                  <ShoppingCart className="w-4 h-4 flex-shrink-0" />
+                  <ShoppingCart className="w-4 h-4 shrink-0" />
                   <span className="flex-nowrap">
                     Buy on{' '}
                     {link.retailer ||
@@ -169,7 +169,7 @@ export function ProductCard({
               rel="noopener noreferrer"
               className="btn btn-secondary border-secondary w-full flex items-center gap-2"
             >
-              <Sparkles className="w-4 h-4 flex-shrink-0" />{' '}
+              <Sparkles className="w-4 h-4 shrink-0" />{' '}
               <span className="flex-nowrap">Try a sample</span>
             </a>
           )}

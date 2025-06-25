@@ -96,7 +96,7 @@ export default function FrizzbotIngredients() {
           <span className="label-text">Enter Product Ingredients</span>
         </label>
         <textarea
-          className="textarea textarea-bordered h-24"
+          className="textarea ed h-24"
           placeholder="Paste your product ingredients here..."
           value={ingredientInput}
           onChange={(e) => setIngredientInput(e.target.value)}

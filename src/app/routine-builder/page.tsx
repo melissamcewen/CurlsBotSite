@@ -112,7 +112,7 @@ export default function RoutineBuilder() {
         Customize your hair care routine based on your unique needs
       </p>
       <p className="text-base-content/70 text-sm mb-8 flex items-center gap-2 justify-center">
-        <ShoppingBag className="w-4 h-4 flex-shrink-0" />
+        <ShoppingBag className="w-4 h-4 shrink-0" />
         Product links are affiliate links that help support the site
       </p>
 
@@ -232,11 +232,11 @@ function RoutineSteps({
           <div className="card-body">
             <h3 className="text-2xl font-semibold">{step.title}</h3>
             <div className="alert bg-base-100 mb-4 flex items-start">
-              <HelpCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
+              <HelpCircle className="w-5 h-5 mt-0.5 shrink-0" />
               <p>{step.description}</p>
             </div>
             <div className="alert alert-info bg-info/30 flex items-start">
-              <Info className="w-5 h-5 mt-0.5 flex-shrink-0" />
+              <Info className="w-5 h-5 mt-0.5 shrink-0" />
               <p>
                 For {porosity.replace('_', ' ').replace('porosity', '').trim()}{' '}
                 porosity hair, we recommend: {step.recommendation}

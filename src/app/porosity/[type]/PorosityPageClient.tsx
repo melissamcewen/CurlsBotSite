@@ -136,7 +136,7 @@ export function PorosityPageClient({ porosityType, porosityInfo }: Props) {
       </div>
 
       <p className="text-base-content/70 text-sm mt-4 flex items-center gap-2">
-        <ShoppingBag className="w-4 h-4 flex-shrink-0" />
+        <ShoppingBag className="w-4 h-4 shrink-0" />
         Product links are affiliate links that help support the site
       </p>
 
@@ -192,7 +192,7 @@ function RoutineSteps({ porosity, country }: RoutineStepsProps) {
               <p>{step.description}</p>
             </div>
             <div className="alert alert-info bg-info/30 flex items-start">
-              <Info className="w-5 h-5 mt-0.5 flex-shrink-0" />
+              <Info className="w-5 h-5 mt-0.5 shrink-0" />
               <p className="font-bold">
                 For {porosity.replace('_', ' ').replace('porosity', '').trim()}{' '}
                 porosity hair, we recommend: {step.recommendation}

@@ -1,100 +1,223 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-  transition: background-color 0s !important;
+@plugin "daisyui" {
+  themes: cupcake --default, curlsbotdark --prefersdark;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@plugin "daisyui/theme" {
+  name: 'cupcake';
+  default: true;
+--color-primary: oklch(76.172% 0.089 200.026);
+--color-primary-content: oklch(15.234% 0.017 200.026);
+--color-secondary: oklch(78.935% 0.101 356.299);
+--color-secondary-content: oklch(15.787% 0.02 356.299);
+--color-accent: oklch(79.381% 0.146 78.618);
+--color-accent-content: oklch(15.876% 0.029 78.618);
+}
+
+@plugin "daisyui/theme" {
+  name: "curlsbotdark";
+  default: false;
+  prefersdark: false;
+  color-scheme: "dark";
+  --color-base-100: oklch(15% 0.09 281.288);
+  --color-base-200: oklch(20% 0.09 281.288);
+  --color-base-300: oklch(25% 0.09 281.288);
+  --color-base-content: oklch(78% 0.115 274.713);
+  --color-primary: oklch(76.172% 0.089 200.026);
+  --color-primary-content: oklch(27% 0.046 192.524);
+  --color-secondary: oklch(78.935% 0.101 356.299);
+  --color-secondary-content: oklch(28% 0.109 3.907);
+  --color-accent: oklch(79.381% 0.146 78.618);
+  --color-accent-content: oklch(28% 0.066 53.813);
+  --color-neutral: oklch(0.2357 0.0662 313.19);
+  --color-neutral-content: oklch(94% 0.029 294.588);
+  --color-info: oklch(74% 0.16 232.661);
+  --color-info-content: oklch(29% 0.066 243.157);
+  --color-success: oklch(77% 0.152 181.912);
+  --color-success-content: oklch(27% 0.046 192.524);
+  --color-warning: oklch(90% 0.182 98.111);
+  --color-warning-content: oklch(42% 0.095 57.708);
+  --color-error: oklch(73.7% 0.121 32.639);
+  --color-error-content: oklch(23.501% 0.096 290.329);
+  --radius-selector: 1rem;
+  --radius-field: 2rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+
+@theme {
+  --animate-slide-up: slide-up 0.4s ease-out forwards;
+  --animate-slide-in-bottom: slide-in-bottom 0.4s ease-out forwards;
+  --animate-slide-up-exit: slide-up-exit 0.4s ease-out forwards;
+  --animate-slide-in-enter: slide-in-enter 0.4s ease-out forwards;
+
+  @keyframes slide-up {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-30px);
+      opacity: 0;
+    }
+  }
+  @keyframes slide-in-bottom {
+    0% {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slide-up-exit {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-30px);
+      opacity: 0;
+    }
+  }
+  @keyframes slide-in-enter {
+    0% {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
 }
 
-html {
-  transition: background-color 0s !important;
+@utility cb-border {
+  @apply border-2 border-base-300;
 }
 
-/* Prevent button and image flash */
-.btn, .chat-image {
-  transition: all 0s !important;
+@utility cb-divider {
+  @apply border-t-2 border-base-300;
 }
 
-@layer components {
-  .cb-border {
-    @apply border-2 border-base-300;
-  }
+@utility cb-header {
+  @apply text-xl leading-7 font-semibold flex items-center gap-1 mb-5;
+}
 
-  .cb-divider {
-    @apply border-t-2 border-base-300;
-  }
-  .cb-header {
-    @apply text-xl leading-7 font-semibold flex items-center gap-1 mb-5;
-  }
+@utility cb-header-icon {
+  @apply w-6 h-6;
+}
 
-  .cb-header-icon {
-    @apply w-6 h-6;
-  }
+@utility cb-smaller-header {
+  @apply text-lg leading-7 font-semibold flex items-center gap-1 mb-2;
+}
 
-  .cb-smaller-header {
-    @apply text-lg leading-7 font-semibold flex items-center gap-1 mb-2;
-  }
+@utility cb-smaller-header-icon {
+  @apply w-5 h-5;
+}
 
-  .cb-smaller-header-icon {
-    @apply w-5 h-5;
-  }
+@utility cb-bold {
+  @apply font-bold;
+}
 
-  .cb-bold {
-    @apply font-bold;
-  }
+@utility cb-grouping-header {
+  @apply font-semibold text-base-content/70;
+}
 
-  .cb-grouping-header {
-    @apply font-semibold text-base-content/70;
-  }
+@utility cb-badge {
+  @apply badge badge-outline;
+}
 
-  .cb-badge {
-    @apply badge badge-outline;
-  }
+@utility cb-button {
+  @apply btn btn-outline;
+}
 
-  .cb-button {
-    @apply btn btn-outline;
-  }
+@utility cb-text-ghost {
+  @apply text-base-content/60 font-medium;
+}
 
-  .cb-text-ghost {
-    @apply text-base-content/60 font-medium
-  }
+@utility link-primary {
+  color: #41aeb4;
+}
 
-  .link-primary{
-    color: #41AEB4;
-  }
+@utility cb-card-lite {
+  @apply rounded-lg p-4;
+}
 
-  .cb-card-lite{
-    @apply  rounded-lg p-4;
-  }
-  .cb-card-liter{
-    @apply  rounded-lg p-2;
-  }
+@utility cb-card-liter {
+  @apply rounded-lg p-2;
+}
 
-  .cb-link-emphasized{
-    color: #41AEB4;
-    font-weight: 600;
-  }
+@utility cb-link-emphasized {
+  color: #41aeb4;
+  font-weight: 600;
+}
 
+@utility bg-warning/10 {
   /* Alert link styles */
-  .bg-warning\/10 a, .bg-info\/10 a {
+  & a {
     @apply underline decoration-base-content/30 hover:decoration-base-content/70 font-medium;
   }
+}
 
+@utility bg-info/10 {
+  & a {
+    @apply underline decoration-base-content/30 hover:decoration-base-content/70 font-medium;
+  }
+}
 
+@layer utilities {
+  :root {
+    --background: #ffffff;
+    --foreground: #171717;
+    transition: background-color 0s !important;
+  }
 
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background: #0a0a0a;
+      --foreground: #ededed;
+    }
+  }
+
+  body {
+    color: var(--foreground);
+    background: var(--background);
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  html {
+    transition: background-color 0s !important;
+  }
+
+  /* Prevent button and image flash */
+  .btn,
+  .chat-image {
+    transition: all 0s !important;
+  }
 }
