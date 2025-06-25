@@ -64,10 +64,10 @@ Create a visually appealing and user-friendly information hub for the Curly Girl
   - [x] "Analyze" buttons across site
   - [x] Any other links to "analyzer"
   - [x] loading scaffold
-- [ ] Publish guide
-  - [ ] Add to files
-  - [ ] Add images
-- [ ] Testing
+- [x] Publish guide
+  - [x] Add to files
+  - [x] Add images
+- [x] Testing
 - [x] Redesign homepage (Daisy UI 4)
   - [x] Top box = quizzes
   - [x] Next box = CGM (link to hub)
@@ -127,3 +127,8 @@ Updated all components that had links to the old analyzer URL:
    - Add quizzes section
    - Add CGM hub section
    - Add blog section
+
+
+## Phase 2
+
+Redo Analyzer to reduce dependance on CGM

@@ -46,8 +46,8 @@ export const StatusDescription: React.FC<StatusDescriptionProps> = ({
     case 'error':
       return (
         <>
-          Hmm, that doesn't look like an ingredient list. Want to try pasting it
-          again?
+          Hmm, that doesn&apos;t look like an ingredient list. Want to try
+          pasting it again?
         </>
       );
     default:

@@ -1,5 +1,6 @@
 import { Book, FlaskConical, ListChecks, Search } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function CGMHub() {
   return (
@@ -36,12 +37,12 @@ export default function CGMHub() {
               products and techniques that are compatible with it.
             </p>
             <div className="card-actions justify-end w-full mt-auto">
-              <a
-                href="/guides/curly-girl-method"
+              <Link
+                href="/blog/the-curly-girl-method-guide"
                 className="btn btn-primary w-full"
               >
                 Read Full CGM Guide
-              </a>
+              </Link>
             </div>
           </div>
         </div>

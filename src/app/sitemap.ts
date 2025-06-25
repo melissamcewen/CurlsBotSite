@@ -128,6 +128,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
     },
     {
+      url: 'https://www.curlsbot.com/curly-techniques-dictionary',
+      lastModified: new Date(),
+    },
+    {
       url: 'https://www.curlsbot.com/best',
       lastModified: new Date(),
     },
