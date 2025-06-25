@@ -61,9 +61,9 @@ const config: Config = {
   plugins: [
     /* eslint-disable */
     require('@tailwindcss/typography'),
-    require('daisyui'),
+   // require('daisyui'),
   ],
-  daisyui: {
+ /* daisyui: {
     themes: [
       'cupcake',
       {
@@ -88,7 +88,7 @@ const config: Config = {
       },
     ],
     darkTheme: 'curlsbotdark',
-  },
+  },*/
 } satisfies Config;
 
 export default config;
