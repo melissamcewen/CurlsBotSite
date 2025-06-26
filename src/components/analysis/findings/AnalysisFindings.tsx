@@ -66,10 +66,10 @@ export function AnalysisFindings({ ingredients }: Props) {
         </h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
           {Object.entries(groupedFindings).map(([setting, group]) => (
-            <div key={setting} className={`card bg-base-100 cb-border`}>
-              <div className="card-body p-4">
+            <div key={setting} className="card card-border bg-base-100 h-full">
+              <div className="card-body flex flex-col h-full">
                 <div className="flex items-center justify-between mb-1">
-                  <h3 className="text-lg font-semibold">{group.name}</h3>
+                  <h2 className="card-title">{group.name}</h2>
                   <span
                     className={`cb-badge capitalize ${
                       group.status === 'warning'
@@ -84,29 +84,31 @@ export function AnalysisFindings({ ingredients }: Props) {
                   {group.reason}
                 </span>
 
-                <div className="space-y-4 mt-4">
-                  {group.ingredients.map((ingredient, index) => (
-                    <div
-                      key={index}
-                      className={`border-l-4 pl-4 ${
-                        group.status === 'warning'
-                          ? 'border-error'
-                          : 'border-warning'
-                      }`}
-                    >
-                      <div className="font-medium">{ingredient.name}</div>
-                      {ingredient.ingredient &&
-                        ingredient.name !== ingredient.ingredient.name && (
-                          <div className="text-base-content/70 text-sm">
-                            matched {ingredient.ingredient.name}
-                          </div>
-                        )}
-                    </div>
-                  ))}
+                <div className="flex-1">
+                  <div className="space-y-4 mt-4">
+                    {group.ingredients.map((ingredient, index) => (
+                      <div
+                        key={index}
+                        className={`border-l-4 pl-4 ${
+                          group.status === 'warning'
+                            ? 'border-error'
+                            : 'border-warning'
+                        }`}
+                      >
+                        <div className="font-medium">{ingredient.name}</div>
+                        {ingredient.ingredient &&
+                          ingredient.name !== ingredient.ingredient.name && (
+                            <div className="text-base-content/70 text-sm">
+                              matched {ingredient.ingredient.name}
+                            </div>
+                          )}
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
                 {group.guide && (
-                  <div className="mt-4 pt-4 border-t border-base-200 card-actions justify-end">
+                  <div className="card-actions justify-end mt-4 pt-4 border-t border-base-200">
                     <Link
                       href={group.guide}
                       className="btn btn-sm btn-secondary btn-outline gap-2 w-full"
