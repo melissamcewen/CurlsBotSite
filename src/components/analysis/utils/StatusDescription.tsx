@@ -18,26 +18,25 @@ export const StatusDescription: React.FC<StatusDescriptionProps> = ({
     case 'ok':
       return (
         <>
-          This product doesn’t include any ingredients typically avoided in
+          This product doesn&apos;t include any ingredients that people prefer to avoid if they are following curly hair methods like
           the {cgmLink}. Scroll down to view the whole report.
-          
+
         </>
       );
     case 'warning':
       return (
         <>
-          This product contains some ingredients that aren’t considered
-          compatible with the {cgmLink}. That doesn’t necessarily mean they’re
-          harmful — just that they fall outside the method’s guidelines. Scroll
-          down to see the full analysis and decide what works best for your
-          routine.
+          This product contains some ingredients some people prefer to avoid,
+          especially if they are following the {cgmLink}. That doesn&apos;t
+          necessarily mean they&apos;re harmful, and in fact they can work for some
+          people. Scroll down to see the full analysis and decide what works best
+          for your routine.
         </>
       );
     case 'caution':
       return (
         <>
-          We found a few ingredients that are typically avoided by people
-          following the {cgmLink}. Whether or not they’re a concern depends on
+          We found a few ingredients that some people prefer to avoid, especially if they are following the {cgmLink} strictly. Whether or not they&apos;re a concern depends on
           your hair needs and preferences. Keep scrolling for the detailed
           results.
         </>

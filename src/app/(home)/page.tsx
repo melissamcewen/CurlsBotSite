@@ -48,9 +48,9 @@ export default async function Home() {
           __html: JSON.stringify(generateOrganizationSchema()),
         }}
       />
-      <main className="max-w-6xl mx-auto px-4 py-8">
+      <div className="max-w-6xl mx-auto px-2 py-2">
         {/* Mini Hero */}
-        <section className="flex flex-col items-center bg-base-200 rounded-xl p-8 mb-5">
+        <section className="flex flex-col items-center bg-base-200 rounded-xl p-2 mb-5">
           <Image
             src="/hero.svg"
             alt="CurlsBot logo"
@@ -151,7 +151,7 @@ export default async function Home() {
           heading="From the Blog"
           variant="light"
         />
-      </main>
+      </div>
     </>
   );
 }

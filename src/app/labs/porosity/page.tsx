@@ -180,19 +180,17 @@ export default function PorosityLabPage() {
       <div className="card bg-base-200">
         <div className="card-body">
           <h2 className="card-title mb-4">Try It Out</h2>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">
-                Enter ingredients (comma-separated)
-              </span>
-            </label>
+          <fieldset className="fieldset">
+            <legend className="fieldset-legend">
+              Enter ingredients (comma-separated)
+            </legend>
             <textarea
-              className="textarea ed h-32"
+              className="textarea w-full h-32"
               value={ingredients}
               onChange={(e) => setIngredients(e.target.value)}
               placeholder="Example: Water, Glycerin, Aloe Barbadensis Leaf Juice"
             />
-          </div>
+          </fieldset>
           <button
             className="btn btn-primary mt-4"
             onClick={handleAnalyze}

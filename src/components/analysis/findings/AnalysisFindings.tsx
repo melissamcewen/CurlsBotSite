@@ -80,7 +80,9 @@ export function AnalysisFindings({ ingredients }: Props) {
                     {group.status}
                   </span>
                 </div>
-                <p className="text-sm text-base-content/70">{group.reason}</p>
+                <span className="text-sm text-base-content/70">
+                  {group.reason}
+                </span>
 
                 <div className="space-y-4 mt-4">
                   {group.ingredients.map((ingredient, index) => (
@@ -104,7 +106,7 @@ export function AnalysisFindings({ ingredients }: Props) {
                 </div>
 
                 {group.guide && (
-                  <div className="mt-4 pt-4 border-t border-base-200">
+                  <div className="mt-4 pt-4 border-t border-base-200 card-actions justify-end">
                     <Link
                       href={group.guide}
                       className="btn btn-sm btn-secondary btn-outline gap-2 w-full"

@@ -187,7 +187,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             </div>
 
             {formattedDate && (
-              <div className="text-base-content/50 -mt-4 mb-8">
+              <div className="text-base-content/50 mb-8">
                 {formattedDate}
               </div>
             )}
