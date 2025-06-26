@@ -44,7 +44,9 @@ export default function AdvancedIngredientForm({
       return;
     }
 
-    const url = `/?ingredients=${encodeURIComponent(trimmedIngredients)}`;
+    const url = `/analyzer?ingredients=${encodeURIComponent(
+      trimmedIngredients,
+    )}`;
     try {
       await router.push(url);
     } catch (error) {
@@ -63,7 +65,7 @@ export default function AdvancedIngredientForm({
           </ChatBubble>
 
           <ChatFooter>
-            <Link href="/">Go to standard version</Link>
+            <Link href="/analyzer">Go to standard version</Link>
           </ChatFooter>
         </ChatBubbleRobot>
 
@@ -100,7 +102,7 @@ export default function AdvancedIngredientForm({
 
               <textarea
                 id="ingredients-input"
-                className="textarea textarea-bordered bg-base-100 text-base-content h-48 w-full"
+                className="textarea ed bg-base-100 text-base-content h-48 w-full"
                 value={ingredients}
                 onChange={handleTextChange}
                 placeholder="Enter ingredients, ideally from a brand's website or a retailer such as Ulta Beauty"

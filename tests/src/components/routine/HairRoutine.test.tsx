@@ -15,14 +15,15 @@ jest.mock('@/contexts/LocalizationContext', () => ({
 }));
 
 // Mock the lucide-react icons
-jest.mock('lucide-react', () => ({
-  Shuffle: () => <div data-testid="shuffle-icon" />,
-  Droplets: () => <div data-testid="droplets-icon" />,
-  Sparkles: () => <div data-testid="sparkles-icon" />,
-  ShoppingBag: () => <div data-testid="shopping-bag-icon" />,
-  Layers: () => <div data-testid="layers-icon" />,
-  ExternalLink: () => <div data-testid="external-link-icon" />,
-}));
+jest.mock('lucide-react', () => {
+  return new Proxy(
+    {},
+    {
+      get: (target, prop) => () =>
+        <span data-testid={`icon-${String(prop)}`} />,
+    },
+  );
+});
 
 // Mock the product data
 jest.mock('haircare-ingredients-analyzer', () => {

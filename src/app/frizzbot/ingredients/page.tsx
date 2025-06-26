@@ -91,12 +91,10 @@ export default function FrizzbotIngredients() {
         for more information on complex film forming vs. simple humectants.
       </p>
 
-      <div className="form-control">
-        <label className="label">
-          <span className="label-text">Enter Product Ingredients</span>
-        </label>
+      <fieldset className="fieldset w-full">
+        <legend className="fieldset-legend">Enter Product Ingredients</legend>
         <textarea
-          className="textarea textarea-bordered h-24"
+          className="textarea w-full h-24"
           placeholder="Paste your product ingredients here..."
           value={ingredientInput}
           onChange={(e) => setIngredientInput(e.target.value)}
@@ -108,7 +106,7 @@ export default function FrizzbotIngredients() {
         >
           Analyze Ingredients
         </button>
-      </div>
+      </fieldset>
 
       {error && (
         <div className="alert alert-error mt-4">

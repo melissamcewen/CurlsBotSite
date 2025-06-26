@@ -49,6 +49,17 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/',
+        has: [
+          {
+            type: 'query',
+            key: 'ingredients',
+          },
+        ],
+        destination: '/analyzer',
+        permanent: true,
+      },
+      {
         source: '/ads.txt',
         destination: 'https://ads.adthrive.com/sites/67aceaec554bb80802312182/ads.txt',
         permanent: true, // 301 status code

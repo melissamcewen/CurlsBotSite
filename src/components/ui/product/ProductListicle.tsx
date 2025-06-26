@@ -70,7 +70,7 @@ export function ProductListicle({
           <div className="card bg-base-100 mb-8">
             <div className="card-body">
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-info/10 flex items-center justify-center">
+                <div className="shrink-0 w-12 h-12 rounded-full bg-info/10 flex items-center justify-center">
                   <Info className="w-6 h-6 text-info" />
                 </div>
                 <div>
@@ -116,7 +116,7 @@ export function ProductListicle({
                   <div className="card-body">
                     <div className="flex items-start gap-4">
                       {showRanking && (
-                        <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                        <div className="shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
                           <span className="text-2xl font-bold text-primary">
                             #{index + 1}
                           </span>
@@ -144,7 +144,9 @@ export function ProductListicle({
                           {product.status === 'ok' && (
                             <div className="badge badge-primary gap-1 whitespace-nowrap text-xs">
                               <CheckCircle className="w-3 h-3" />
-                              CGM Approved
+                              <Link href="/curly-girl-method" className="link">
+                                CGM Approved
+                              </Link>
                             </div>
                           )}
                           {product.extensions?.frizzbot &&
@@ -182,7 +184,7 @@ export function ProductListicle({
                         <div className="flex flex-wrap gap-2">
                           {product.ingredients_raw && (
                             <Link
-                              href={`/?ingredients=${encodeURIComponent(
+                              href={`/analyzer?ingredients=${encodeURIComponent(
                                 product.ingredients_raw,
                               )}`}
                               className="btn btn-secondary gap-2"

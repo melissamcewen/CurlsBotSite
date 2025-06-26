@@ -74,7 +74,7 @@ export default function EmailSignupForm({
                 target="_blank"
               >
                 <div className="flex flex-col md:flex-row gap-3">
-                  <div className="flex-grow">
+                  <div className="grow">
                     <input
                       aria-label="email"
                       aria-required="true"

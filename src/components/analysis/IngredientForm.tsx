@@ -56,7 +56,7 @@ export default function IngredientForm({
     setAnalysisResult(null);
     setIngredients('');
     setError(null);
-    router.replace('/', { scroll: false });
+    router.replace('/analyzer', { scroll: false });
   };
 
   // Only handle URL ingredients if there's no initial analysis
@@ -97,9 +97,14 @@ export default function IngredientForm({
             }
           >
             <ChatBubble status="ok">
-              Hi! I&apos;m CurlsBot! I analyze hair care ingredients with curly
-              and wavy hair in mind. Just paste an ingredients list below and
-              I&apos;ll analyze it for you.
+              Hi! I&apos;m CurlsBot, your curly and wavy hair product analyzer.
+              I&apos;ll check if a product is compatible with the{' '}
+              <Link href="/curly-girl-method" className="link">
+                Curly Girl Method
+              </Link>
+              , estimate humidity resistance, detect if it&apos;s
+              lightweight, and more. Just paste an ingredients list below, and
+              I&apos;ll take care of the rest!
             </ChatBubble>
 
             <ChatFooter>
@@ -116,26 +121,28 @@ export default function IngredientForm({
           >
             <ChatBubbleUser>
               <form onSubmit={handleSubmit} className="w-full">
-                <div className="form-control w-full">
-                  <label htmlFor="ingredients-input" className="label">
-                    <span className="label-text font-semibold">
-                      Enter ingredients, ideally copy and paste from a
-                      brand&apos;s website or a retailer such as Ulta Beauty or{' '}
-                      <Link href="labs/photo" className="link">
-                        click here to upload a picture of the ingredients list.
-                      </Link>
-                    </span>
-                  </label>
+                <fieldset className="fieldset w-full">
+                  <legend className="fieldset-legend font-semibold">
+                    Enter ingredients, ideally copy and paste from a
+                    brand&apos;s website or a retailer such as Ulta Beauty
+                  </legend>
 
                   <textarea
                     id="ingredients-input"
-                    className="textarea textarea-bordered bg-base-100 text-base-content h-48 w-full text-base"
+                    className="textarea bg-base-100 text-base-content h-48 w-full text-base"
                     value={ingredients}
                     onChange={(e) => setIngredients(e.target.value)}
                     placeholder="Enter ingredients, ideally copy and paste from a brand's website or a retailer such as Ulta Beauty"
                     aria-label="ingredients"
                   />
-                </div>
+
+                  <p className="label">
+                    Or{' '}
+                    <Link href="labs/photo" className="link">
+                      click here to upload a picture of the ingredients list
+                    </Link>
+                  </p>
+                </fieldset>
 
                 <button
                   type="submit"

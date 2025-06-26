@@ -4,6 +4,7 @@ import React from 'react';
 import { AnalysisResult } from 'haircare-ingredients-analyzer';
 import { IngredientsList } from './ingredients/IngredientsList';
 import { getStatusConfig } from './utils/statusConfig';
+import { StatusDescription } from './utils/StatusDescription';
 import { ChatBubbleRobot, ChatBubble, ChatFooter } from './ChatBubbleRobot';
 import { AnalysisFindings } from './findings/AnalysisFindings';
 import { AnalysisSummary } from './findings/AnalysisSummary';
@@ -21,7 +22,6 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
 
   if (!result) return null;
 
-  const { description } = getStatusConfig(result.status);
   const hasIngredients = result.ingredients && result.ingredients.length > 0;
   const isUS = country === 'US';
 
@@ -61,7 +61,7 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
                     <span className="inline-block align-text-bottom mr-1">
                       {getStatusIcon(result.status)}
                     </span>
-                    {description}
+                    <StatusDescription status={result.status} />
                   </p>
 
                   <p>
@@ -82,7 +82,7 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
                         href="https://collabs.shop/ea393f"
                         className="link link-primary"
                       >
-                       Try the Tootilab Curly Hair Starter Bundle
+                        Try the Tootilab Curly Hair Starter Bundle
                       </a>
                     )}{' '}
                     or try our{' '}

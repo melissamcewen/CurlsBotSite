@@ -149,8 +149,8 @@ export default function Labs() {
               <h2 className="card-title">Porosity Score</h2>
             </div>
             <p>
-              Get a porosity score for your hair based on your product
-              ingredients.
+              Find out if a product is suitable for your hair porosity based on
+              its ingredients.
             </p>
             <div className="card-actions justify-end mt-4">
               <div className="badge badge-primary">Porosity</div>

@@ -100,11 +100,11 @@ export default function About() {
                     <p>For brands with active affiliate programs</p>
                     <ul className="text-left space-y-2">
                       <li className="flex items-center">
-                        <Info className="w-4 h-4 mr-2 flex-shrink-0" /> Basic
+                        <Info className="w-4 h-4 mr-2 shrink-0" /> Basic
                         ingredient audit
                       </li>
                       <li className="flex items-center">
-                        <Info className="w-4 h-4 mr-2 flex-shrink-0" /> Database
+                        <Info className="w-4 h-4 mr-2 shrink-0" /> Database
                         inclusion
                       </li>
                     </ul>
@@ -129,23 +129,23 @@ export default function About() {
                     <ul className="text-left space-y-2">
 
                       <li className="flex items-center">
-                        <Info className="w-4 h-4 mr-2 flex-shrink-0" /> Everything in Affiliate Partners
+                        <Info className="w-4 h-4 mr-2 shrink-0" /> Everything in Affiliate Partners
                       </li>
                       <li className="flex items-center">
-                        <Info className="w-4 h-4 mr-2 flex-shrink-0" />
+                        <Info className="w-4 h-4 mr-2 shrink-0" />
                         Custom product descriptions
                       </li>
                       <li className="flex items-center">
-                        <Info className="w-4 h-4 mr-2 flex-shrink-0" />
+                        <Info className="w-4 h-4 mr-2 shrink-0" />
                         Monthly analytics report
                       </li>
                       <li className="flex items-center">
-                        <Info className="w-4 h-4 mr-2 flex-shrink-0" /> Monthly
+                        <Info className="w-4 h-4 mr-2 shrink-0" /> Monthly
                         brand newsletter with trends and insights
                       </li>
 
                       <li className="flex items-center">
-                        <Info className="w-4 h-4 mr-2 flex-shrink-0" />
+                        <Info className="w-4 h-4 mr-2 shrink-0" />
                         Twice yearly feature on our newsletter and homepage
                       </li>
                     </ul>
@@ -169,23 +169,23 @@ export default function About() {
                   <div className="space-y-2">
                     <ul className="text-left space-y-2">
                       <li className="flex items-center">
-                        <Info className="w-4 h-4 mr-2 flex-shrink-0" />{' '}
+                        <Info className="w-4 h-4 mr-2 shrink-0" />{' '}
                         Everything in Basic
                       </li>
                       <li className="flex items-center">
-                        <Info className="w-4 h-4 mr-2 flex-shrink-0" /> Featured
+                        <Info className="w-4 h-4 mr-2 shrink-0" /> Featured
                         placement on homepage
                       </li>
                       <li className="flex items-center">
-                        <Info className="w-4 h-4 mr-2 flex-shrink-0" />
+                        <Info className="w-4 h-4 mr-2 shrink-0" />
                         Monthly feature on our newsletter and social media
                       </li>
                       <li className="flex items-center">
-                        <Info className="w-4 h-4 mr-2 flex-shrink-0" /> Priority
+                        <Info className="w-4 h-4 mr-2 shrink-0" /> Priority
                         support
                       </li>
                       <li className="flex items-center">
-                        <Info className="w-4 h-4 mr-2 flex-shrink-0" /> Advanced
+                        <Info className="w-4 h-4 mr-2 shrink-0" /> Advanced
                         analytics
                       </li>
                     </ul>

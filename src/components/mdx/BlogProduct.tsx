@@ -32,7 +32,7 @@ export function BlogProduct({
   sample,
 }: BlogProductProps) {
   return (
-    <div className="card md:card-side cb-border not-prose mb-4">
+    <div className="card md:card-side cb-border not-prose mb-4  bg-neutral-50">
       <figure className="relative w-full md:w-[40%] h-[350px] mx-auto bg-base-200/20">
         <Image
           src={image}
@@ -54,7 +54,9 @@ export function BlogProduct({
           {cgmApproved && (
             <div className="badge badge-outline badge-info gap-1 whitespace-nowrap">
               <CheckCircle className="w-4 h-4" />
-              CGM Approved
+              <Link href="/curly-girl-method" className="link">
+                CGM Approved
+              </Link>
             </div>
           )}
           {sulfateFree && (
@@ -108,7 +110,7 @@ export function BlogProduct({
 
           {ingredients && ingredients.length > 0 && (
             <Link
-              href={`/?ingredients=${encodeURIComponent(ingredients)}`}
+              href={`/analyzer?ingredients=${encodeURIComponent(ingredients)}`}
               className="btn btn-primary btn-sm w-full flex items-center justify-center gap-2"
             >
               <Search className="w-5 h-5" />

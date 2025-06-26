@@ -86,7 +86,7 @@ export default function Quiz() {
                     <button
                       key={index}
                       onClick={() => handleAnswerClick(answer)}
-                      className="card card-compact bg-primary/20 text-primary-content w-full text-left normal-case hover:bg-primary"
+                      className="card card-sm bg-primary/20 text-primary-content w-full text-left normal-case hover:bg-primary"
                     >
                       <div className="card-body">
                         <p>{answer.content}</p>

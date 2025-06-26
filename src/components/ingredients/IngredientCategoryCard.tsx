@@ -67,7 +67,7 @@ export function IngredientCategoryCard({
             {examples.map((example) => (
               <li key={example} className="flex items-center gap-2">
                 <svg
-                  className="w-4 h-4 text-success flex-shrink-0"
+                  className="w-4 h-4 text-success shrink-0"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -97,7 +97,7 @@ export function IngredientCategoryCard({
               {exceptions.items.map((item) => (
                 <li key={item} className="flex items-center gap-2">
                   <svg
-                    className="w-4 h-4 text-info flex-shrink-0"
+                    className="w-4 h-4 text-info shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"

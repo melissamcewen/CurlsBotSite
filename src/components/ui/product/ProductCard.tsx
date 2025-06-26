@@ -61,19 +61,25 @@ export function ProductCard({
             {product.product.status === 'ok' && (
               <div className="badge badge-primary gap-1 whitespace-nowrap text-xs">
                 <CheckCircle className="w-3 h-3" />
-                CGM
+                <Link href="/curly-girl-method" className="link">
+                  CGM
+                </Link>
               </div>
             )}
             {STYLING_CATEGORIES.includes(category) &&
               product.product.extensions?.frizzbot &&
               product.product.extensions.frizzbot.score <= -50 && (
-                <div className="badge badge-secondary whitespace-nowrap text-xs">Humidity Resistant</div>
+                <div className="badge badge-secondary whitespace-nowrap text-xs">
+                  Humidity Resistant
+                </div>
               )}
             {shouldShowPorosityScores &&
               product.product.extensions?.porosity &&
               product.product.extensions.porosity.low >=
                 POROSITY_THRESHOLDS.LIGHTWEIGHT && (
-                <div className="badge badge-accent whitespace-nowrap text-xs">Lightweight</div>
+                <div className="badge badge-accent whitespace-nowrap text-xs">
+                  Lightweight
+                </div>
               )}
             {shouldShowPorosityScores &&
               product.product.extensions?.porosity &&
@@ -108,7 +114,7 @@ export function ProductCard({
         <div className="card-actions mt-2 flex-col gap-2">
           {product.product.ingredients_raw && (
             <Link
-              href={`/?ingredients=${encodeURIComponent(
+              href={`/analyzer?ingredients=${encodeURIComponent(
                 product.product.ingredients_raw,
               )}`}
               className="cb-button w-full gap-2"
@@ -143,7 +149,7 @@ export function ProductCard({
                   rel="noopener"
                   className="btn btn-outline flex items-center gap-2 flex-nowrap min-w-48"
                 >
-                  <ShoppingCart className="w-4 h-4 flex-shrink-0" />
+                  <ShoppingCart className="w-4 h-4 shrink-0" />
                   <span className="flex-nowrap">
                     Buy on{' '}
                     {link.retailer ||
@@ -163,7 +169,7 @@ export function ProductCard({
               rel="noopener noreferrer"
               className="btn btn-secondary border-secondary w-full flex items-center gap-2"
             >
-              <Sparkles className="w-4 h-4 flex-shrink-0" />{' '}
+              <Sparkles className="w-4 h-4 shrink-0" />{' '}
               <span className="flex-nowrap">Try a sample</span>
             </a>
           )}

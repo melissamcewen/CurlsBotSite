@@ -216,7 +216,7 @@ export default function Resources() {
             </div>
 
             <div className="flex items-start gap-2 text-info text-sm mt-6 p-4 bg-info/10 rounded-xl">
-              <Info className="w-5 h-5 flex-shrink-0 mt-0.5" />
+              <Info className="w-5 h-5 shrink-0 mt-0.5" />
               <p className="m-0">
                 External links open in a new tab for your convenience. CurlsBot
                 is not affiliated with these resources and cannot guarantee

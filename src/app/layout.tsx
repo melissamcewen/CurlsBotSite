@@ -162,7 +162,7 @@ export default function RootLayout({
           <div className="min-h-screen overflow-x-hidden">
             <div className="absolute inset-0 pointer-events-none" />
             <Navbar />
-            <main className="bg-base-200">{children}</main>
+            <main className="bg-base-200 pt-5">{children}</main>
             <Footer />
           </div>
         </LocalizationProvider>

@@ -17,13 +17,13 @@ export const SourceItem: React.FC<SourceItemProps> = ({
   const getStatusIcon = () => {
     switch (status) {
       case 'warning':
-        return <AlertCircle className="w-5 h-5 flex-shrink-0 text-error" />;
+        return <AlertCircle className="w-5 h-5 shrink-0 text-error" />;
       case 'caution':
-        return <AlertTriangle className="w-5 h-5 flex-shrink-0 text-warning" />;
+        return <AlertTriangle className="w-5 h-5 shrink-0 text-warning" />;
       case 'good':
-        return <CheckCircle className="w-5 h-5 flex-shrink-0 text-success" />;
+        return <CheckCircle className="w-5 h-5 shrink-0 text-success" />;
       case 'ok':
-        return <Info className="w-5 h-5 flex-shrink-0 text-info" />;
+        return <Info className="w-5 h-5 shrink-0 text-info" />;
       default:
         return null;
     }
@@ -46,7 +46,7 @@ export const SourceItem: React.FC<SourceItemProps> = ({
 
   return (
     <div className="flex items-center gap-2">
-      <div className="flex-shrink-0">{getStatusIcon()}</div>
+      <div className="shrink-0">{getStatusIcon()}</div>
       <div className="flex items-center flex-wrap">
         {link ? (
           <a
@@ -90,13 +90,13 @@ export const IdentificationSection: React.FC<IdentificationSectionProps> = ({
     if (!status) return null;
     switch (status) {
       case 'warning':
-        return <AlertCircle className="w-5 h-5 flex-shrink-0 text-error" />;
+        return <AlertCircle className="w-5 h-5 shrink-0 text-error" />;
       case 'caution':
-        return <AlertTriangle className="w-5 h-5 flex-shrink-0 text-warning" />;
+        return <AlertTriangle className="w-5 h-5 shrink-0 text-warning" />;
       case 'good':
-        return <CheckCircle className="w-5 h-5 flex-shrink-0 text-success" />;
+        return <CheckCircle className="w-5 h-5 shrink-0 text-success" />;
       case 'ok':
-        return <Info className="w-5 h-5 flex-shrink-0 text-info" />;
+        return <Info className="w-5 h-5 shrink-0 text-info" />;
       default:
         return null;
     }
