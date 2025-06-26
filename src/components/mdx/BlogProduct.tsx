@@ -32,7 +32,7 @@ export function BlogProduct({
   sample,
 }: BlogProductProps) {
   return (
-    <div className="card md:card-side cb-border not-prose mb-4">
+    <div className="card md:card-side cb-border not-prose mb-4  bg-neutral-50">
       <figure className="relative w-full md:w-[40%] h-[350px] mx-auto bg-base-200/20">
         <Image
           src={image}

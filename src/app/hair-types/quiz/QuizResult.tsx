@@ -162,6 +162,7 @@ export default function QuizResultComponent({
                       key !== 'WalkerType' &&
                       key !== 'sisterTypes' &&
                       key !== 'curlsBotType' &&
+                      key !== 'productType' &&
                       key in parameterDescriptions,
                   )
                   .map(([parameter, value]) => (
