@@ -101,17 +101,33 @@ function getProductsByCategory(
     },
   });
 
-  // Sort products by prioritizing those with the "samples" tag first, then alphabetically
-  return filteredProducts.sort((a, b) => {
+  // Prioritize products with the 'premium' tag, but fill up to 3 with non-premium if needed
+  const premiumProducts = filteredProducts.filter((p) =>
+    p.tags?.includes('premium'),
+  );
+  const nonPremiumProducts = filteredProducts.filter(
+    (p) => !p.tags?.includes('premium'),
+  );
+  const productsToShow = [
+    ...premiumProducts,
+    ...nonPremiumProducts.slice(0, Math.max(0, 3 - premiumProducts.length)),
+  ];
+
+  // Sort products by prioritizing those with the "samples" tag first, then those with a description, then alphabetically
+  return productsToShow.sort((a, b) => {
     // First prioritize products with the "samples" tag
     const aSample = a.tags?.includes('samples') || false;
     const bSample = b.tags?.includes('samples') || false;
-
-    // If one has samples tag and the other doesn't, prioritize the one with samples
     if (aSample && !bSample) return -1;
     if (!aSample && bSample) return 1;
 
-    // If both or neither have samples, sort alphabetically
+    // Next, prioritize products with a description
+    const aHasDesc = !!a.description;
+    const bHasDesc = !!b.description;
+    if (aHasDesc && !bHasDesc) return -1;
+    if (!aHasDesc && bHasDesc) return 1;
+
+    // If both or neither have description, sort alphabetically
     return (a.brand + a.name).localeCompare(b.brand + b.name);
   });
 }

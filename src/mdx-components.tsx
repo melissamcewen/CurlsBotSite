@@ -8,6 +8,7 @@ import { BlogProduct } from '@/components/mdx/BlogProduct';
 import { Affiliate } from '@/components/mdx/Affiliate';
 import { TableOfContents } from '@/components/mdx/TableOfContents';
 import { SiteFixBanner } from '@/components/mdx/SiteFixBanner';
+import { AuthorBio } from '@/components/mdx/AuthorBio';
 import RoutineTable from '@/components/mdx/RoutineTable';
 import ProductComparisonTable from '@/components/mdx/ProductComparisonTable';
 
@@ -21,6 +22,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     Affiliate,
     TableOfContents,
     SiteFixBanner,
+    AuthorBio,
     RoutineTable,
     ProductComparisonTable,
     ...components,
