@@ -96,6 +96,19 @@ export const BEST_PRODUCT_PAGES: BestProductPage[] = [
     },
   },
   {
+    slug: 'best-curly-gels',
+    title: 'The Best Gels for Curly Hair',
+    description:
+      'These gels are perfect for curly hair, providing definition and hold that lasts all day',
+    category: ['gels'],
+    filters: {
+      tags: ['curly'],
+    },
+    howWePicked:
+      "We handpicked these products and tested them ourselves on our own or client's curly hair, looking for products did a great job at defining curls and keeping them in place",
+
+  },
+  {
     slug: 'best-curl-mousses',
     title: 'The Best Mousses for Curly Hair',
     description:
@@ -246,7 +259,7 @@ export const BEST_PRODUCT_PAGES: BestProductPage[] = [
       tags: ['wavy'],
     },
     howWePicked:
-      'We handpicked these products and tested them ourselves on our own or client\'s wavy hair, looking for products that provided frizz-resistance without weighing down waves',
+      "We handpicked these products and tested them ourselves on our own or client's wavy hair, looking for products that provided frizz-resistance without weighing down waves",
   },
   /* wait until I have tagged list for mens
   {
