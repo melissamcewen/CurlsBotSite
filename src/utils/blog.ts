@@ -27,7 +27,12 @@ export async function getRandomBlogPosts(count = 3): Promise<BlogPost[]> {
 
   // Filter for posts with images and exclude 'welcome-back'
   const eligiblePosts = posts
-    .filter((post) => post.frontmatter.image && post.slug !== 'welcome-back')
+    .filter(
+      (post) =>
+        post.frontmatter.image &&
+        post.slug !== 'welcome-back' &&
+        post.slug !== 'prime-day-deals',
+    )
     .sort(() => Math.random() - 0.5); // Randomize the array
 
   return eligiblePosts.slice(0, count);
