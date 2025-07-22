@@ -1353,5 +1353,27 @@ Lab Muffin Beauty Science
     date: '2024',
     source: 'TRI Princeton at the Hair Science E-Summit 2024',
   },
+  /* 1. Marsh JM, Davis MG, Lucas RL, et al. Preserving fibre health: reducing oxidative stress throughout the life of the hair fibre. International Journal of Cosmetic Science. 2015;37(S2):16-24. doi:10.1111/ics.12285
+*/
+'127': {
+  id: '127',
+  url: 'https://onlinelibrary.wiley.com/doi/full/10.1111/ics.12285',
+  title: 'Preserving fibre health: reducing oxidative stress throughout the life of the hair fibre',
+  type: 'science',
+  author: 'Marsh JM, Davis MG, Lucas RL, et al.',
+  date: '2015',
+  source: 'International Journal of Cosmetic Science',
+},
+/* 1. Marsh JM, Davis MG, Flagler MJ, et al. Advanced hair damage model from ultra-violet radiation in the presence of copper. Int J Cosmet Sci. 2015;37(5):532-541. doi:10.1111/ics.12231
+*/
+'128': {
+  id: '128',
+  url: 'https://onlinelibrary.wiley.com/doi/full/10.1111/ics.12231',
+  title: 'Advanced hair damage model from ultra-violet radiation in the presence of copper',
+  type: 'science',
+  author: 'Marsh JM, Davis MG, Flagler MJ, et al.',
+  date: '2015',
+  source: 'Int J Cosmet Sci',
+},
 };
 
