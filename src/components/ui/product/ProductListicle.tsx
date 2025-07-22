@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { Product } from 'haircare-ingredients-analyzer';
 import {
@@ -9,13 +11,14 @@ import {
   Award,
   Info,
 } from 'lucide-react';
-import { getCountryFromHostname } from '@/lib/countryDetection';
+import { useLocalization } from '@/contexts/LocalizationContext';
 import {
   POROSITY_EXEMPT_CATEGORIES,
   POROSITY_THRESHOLDS,
 } from '@/lib/porosity';
 import type { ProductCategory } from '@/lib/routineBuilder';
 import { getCustomDescription, type BestProductPage } from '@/lib/bestProducts';
+import { filterProducts } from '@/lib/productFiltering';
 
 interface ProductListicleProps {
   products: Product[];
@@ -38,14 +41,35 @@ export function ProductListicle({
   howWePicked,
   page,
 }: ProductListicleProps) {
-  const userCountry = selectedCountry || getCountryFromHostname();
+  const { country } = useLocalization();
+  const userCountry = selectedCountry || country;
   const shouldShowPorosityScores =
     !POROSITY_EXEMPT_CATEGORIES.includes(category);
+
+  // Re-filter products based on current country (handles country changes)
+  const filteredProducts = filterProducts(products, {
+    category: category === 'all' ? undefined : category,
+    country: userCountry,
+    requireFeatured: false,
+    analysisFilters: {
+      cgmApproved: page.filters.cgmApproved || false,
+      frizzResistant: page.filters.frizzResistant || false,
+      lightweight: page.filters.lightweight || false,
+      highPorosity: page.filters.highPorosity || false,
+      lowPorosity: page.filters.lowPorosity || false,
+    },
+  }).filter((product) => {
+    // Apply tag filters if specified
+    if (page.filters.tags) {
+      return page.filters.tags.every((tag) => product.tags?.includes(tag));
+    }
+    return true;
+  });
 
   // Group products by category if showing all categories
   const isAllCategories = category === 'all';
   const groupedProducts = isAllCategories
-    ? products.reduce((acc, product) => {
+    ? filteredProducts.reduce((acc, product) => {
         const productCategory = product.product_categories?.length
           ? product.product_categories[0]
           : 'Other';
@@ -55,7 +79,7 @@ export function ProductListicle({
         acc[productCategory].push(product);
         return acc;
       }, {} as Record<string, Product[]>)
-    : { [category]: products };
+    : { [category]: filteredProducts };
 
   // Sort categories alphabetically
   const sortedCategories = Object.keys(groupedProducts).sort();

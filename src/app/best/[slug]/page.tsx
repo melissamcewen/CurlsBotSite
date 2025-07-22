@@ -1,6 +1,5 @@
 import { getBundledProducts } from 'haircare-ingredients-analyzer';
 import { ProductListicle } from '@/components/ui/product/ProductListicle';
-import { filterProducts } from '@/lib/productFiltering';
 import {
   getBestProductPage,
   getAllBestProductSlugs,
@@ -8,8 +7,6 @@ import {
 } from '@/lib/bestProducts';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { headers } from 'next/headers';
-import { getCountryFromHostname } from '@/lib/countryDetection';
 
 interface PageProps {
   params: {
@@ -47,31 +44,10 @@ export default async function BestProductsPage({ params }: PageProps) {
   const page = getBestProductPage(slug);
   if (!page) notFound();
 
-  // Get the hostname from headers to detect country
-  const headersList = await headers();
-  const hostname = headersList.get('host') || '';
-  const country = getCountryFromHostname(hostname);
-
   const products = getBundledProducts();
 
-  // Filter products based on page configuration
-  const filteredProducts = filterProducts(Object.values(products.products), {
-    category:
-      page.category === 'all'
-        ? undefined
-        : Array.isArray(page.category)
-        ? page.category
-        : [page.category],
-    country: country, // Use detected country instead of 'all'
-    requireFeatured: false,
-    analysisFilters: {
-      cgmApproved: page.filters.cgmApproved || false,
-      frizzResistant: page.filters.frizzResistant || false,
-      lightweight: page.filters.lightweight || false,
-      highPorosity: page.filters.highPorosity || false,
-      lowPorosity: page.filters.lowPorosity || false,
-    },
-  })
+  // Get all products and let the client component handle filtering
+  const allProducts = Object.values(products.products)
     .filter((product) => {
       // Apply tag filters if specified
       if (page.filters.tags) {
@@ -92,7 +68,7 @@ export default async function BestProductsPage({ params }: PageProps) {
   return (
     <div className="container mx-auto px-4 py-8">
       <ProductListicle
-        products={filteredProducts}
+        products={allProducts}
         category={
           page.category === 'all'
             ? 'all'
@@ -104,7 +80,6 @@ export default async function BestProductsPage({ params }: PageProps) {
         description={page.description}
         howWePicked={page.howWePicked}
         page={page}
-        selectedCountry={country}
       />
     </div>
   );

@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { Product } from 'haircare-ingredients-analyzer';
 import {
@@ -7,7 +9,7 @@ import {
   ShoppingCart,
   Sparkles,
 } from 'lucide-react';
-import { getCountryFromHostname } from '@/lib/countryDetection';
+import { useLocalization } from '@/contexts/LocalizationContext';
 import {
   POROSITY_EXEMPT_CATEGORIES,
   POROSITY_THRESHOLDS,
@@ -43,7 +45,8 @@ export function ProductCard({
   isSelected,
   selectedCountry,
 }: ProductCardProps) {
-  const userCountry = selectedCountry || getCountryFromHostname();
+  const { country } = useLocalization();
+  const userCountry = selectedCountry || country;
   const porosityScores = product.product.extensions?.porosity;
 
   const shouldShowPorosityScores =
