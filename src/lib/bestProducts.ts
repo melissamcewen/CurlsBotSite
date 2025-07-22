@@ -106,7 +106,6 @@ export const BEST_PRODUCT_PAGES: BestProductPage[] = [
     },
     howWePicked:
       "We handpicked these products and tested them ourselves on our own or client's curly hair, looking for products did a great job at defining curls and keeping them in place",
-
   },
   {
     slug: 'best-curl-mousses',
@@ -155,6 +154,24 @@ export const BEST_PRODUCT_PAGES: BestProductPage[] = [
     },
     howWePicked:
       "We handpicked these products and tested them ourselves on our own or client's fine hair, looking for products that added hold, definition, and texture without weighing down the hair",
+  },
+  {
+    slug: 'best-conditioning-shampoos',
+    title: 'The Best Conditioning Shampoos',
+    description:
+      'These shampoos have conditioning ingredients that provide a slippery lather, which helps reduce friction damage from washing',
+    category: ['shampoos'],
+    filters: {
+      highPorosity: true,
+    },
+    howWePicked:
+      'These shampoos have conditioning ingredients, namely cationic conditioners, which provide slip',
+    customDescriptions: {
+      gentle_shampoo:
+        'Melissa @ CurlsBot says: This is a gentle shampoo with a rich lather that cleanses effectively without stripping the hair.',
+      pure_silk_moisturizing_shampoo:
+        'Melissa @ CurlsBot says: Another shampoo with an excellent lather, that feels silky and smooth on the hair.',
+    },
   },
   {
     slug: 'best-curls-monthly-low-porosity-products',

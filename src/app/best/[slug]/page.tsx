@@ -8,6 +8,8 @@ import {
 } from '@/lib/bestProducts';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { headers } from 'next/headers';
+import { getCountryFromHostname } from '@/lib/countryDetection';
 
 interface PageProps {
   params: {
@@ -45,6 +47,11 @@ export default async function BestProductsPage({ params }: PageProps) {
   const page = getBestProductPage(slug);
   if (!page) notFound();
 
+  // Get the hostname from headers to detect country
+  const headersList = await headers();
+  const hostname = headersList.get('host') || '';
+  const country = getCountryFromHostname(hostname);
+
   const products = getBundledProducts();
 
   // Filter products based on page configuration
@@ -55,7 +62,7 @@ export default async function BestProductsPage({ params }: PageProps) {
         : Array.isArray(page.category)
         ? page.category
         : [page.category],
-    country: 'all', // We'll handle country filtering client-side
+    country: country, // Use detected country instead of 'all'
     requireFeatured: false,
     analysisFilters: {
       cgmApproved: page.filters.cgmApproved || false,
@@ -97,6 +104,7 @@ export default async function BestProductsPage({ params }: PageProps) {
         description={page.description}
         howWePicked={page.howWePicked}
         page={page}
+        selectedCountry={country}
       />
     </div>
   );
