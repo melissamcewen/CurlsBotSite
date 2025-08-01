@@ -53,6 +53,7 @@ export default async function BestProductsPage({ params }: PageProps) {
       if (page.filters.tags) {
         return page.filters.tags.every((tag) => product.tags?.includes(tag));
       }
+
       return true;
     })
     .sort((a, b) => {
