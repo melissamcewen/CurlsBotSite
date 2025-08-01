@@ -278,6 +278,29 @@ export const BEST_PRODUCT_PAGES: BestProductPage[] = [
     howWePicked:
       "We handpicked these products and tested them ourselves on our own or client's wavy hair, looking for products that provided frizz-resistance without weighing down waves",
   },
+  {
+    slug: 'best-protein-free-glycerin-free-products',
+    title: 'The Best Protein-Free and Glycerin-Free Products',
+    description: 'The best products that are free of protein and glycerin',
+    category: 'all',
+    filters: {
+      tags: ['glycerin-free', 'protein-free'],
+    },
+    howWePicked:
+      'These are products analyzed by our algorithm that are free of protein and glycerin',
+  },
+  {
+    slug: 'best-protein-free-glycerin-free-products-for-low-porosity',
+    title: 'The Best Protein-Free and Glycerin-Free Products For Low Porosity Hair',
+    description: 'The best products great for low porosity hair that are free of protein and glycerin',
+    category: 'all',
+    filters: {
+      tags: ['glycerin-free', 'protein-free'],
+      lowPorosity: true,
+    },
+    howWePicked:
+      'These are products analyzed by our algorithm that are free of protein and glycerin and great for low porosity hair',
+  },
   /* wait until I have tagged list for mens
   {
     slug: 'best-mousses-men',
