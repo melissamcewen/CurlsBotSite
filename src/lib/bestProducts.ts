@@ -280,7 +280,7 @@ export const BEST_PRODUCT_PAGES: BestProductPage[] = [
   },
   {
     slug: 'best-protein-free-glycerin-free-products',
-    title: 'The Best Protein-Free and Glycerin-Free Products',
+    title: 'The Best Protein and Glycerin Free Products',
     description: 'The best products that are free of protein and glycerin',
     category: 'all',
     filters: {
@@ -291,7 +291,7 @@ export const BEST_PRODUCT_PAGES: BestProductPage[] = [
   },
   {
     slug: 'best-protein-free-glycerin-free-products-for-low-porosity',
-    title: 'The Best Protein-Free and Glycerin-Free Products For Low Porosity Hair',
+    title: 'The Best Protein and Glycerin Free Products For Low Porosity Hair',
     description: 'The best products great for low porosity hair that are free of protein and glycerin',
     category: 'all',
     filters: {
