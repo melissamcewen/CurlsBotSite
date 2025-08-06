@@ -21,6 +21,8 @@ export interface BestProductPage {
     highPorosity?: boolean;
     /** Whether to only show low porosity products */
     lowPorosity?: boolean;
+    /** Whether to only show sebderm safe products */
+    sebdermSafe?: boolean;
     /** Specific tags to filter by */
     tags?: string[];
   };
@@ -292,7 +294,8 @@ export const BEST_PRODUCT_PAGES: BestProductPage[] = [
   {
     slug: 'best-protein-free-glycerin-free-products-for-low-porosity',
     title: 'The Best Protein and Glycerin Free Products For Low Porosity Hair',
-    description: 'The best products great for low porosity hair that are free of protein and glycerin',
+    description:
+      'The best products great for low porosity hair that are free of protein and glycerin',
     category: 'all',
     filters: {
       tags: ['glycerin-free', 'protein-free'],
