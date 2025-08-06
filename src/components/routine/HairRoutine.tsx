@@ -86,6 +86,7 @@ function filterProductsInComponent(
       lightweight: boolean;
       highPorosity: boolean;
       lowPorosity: boolean;
+      sebdermSafe: boolean;
     };
   },
 ): Product[] {
@@ -160,6 +161,14 @@ function filterProductsInComponent(
       }
     }
 
+    // Sebderm safety filter
+    const sebdermAnalysis = product.extensions?.sebderm;
+    if (options.analysisFilters.sebdermSafe) {
+      if (!sebdermAnalysis || sebdermAnalysis.hasTriggers) {
+        return false;
+      }
+    }
+
     return true;
   });
 }
@@ -224,6 +233,7 @@ export default function HairRoutine({
                 cgmApproved: isStraightHair ? false : isCGM,
                 frizzResistant: false,
                 lightweight: false,
+                sebdermSafe: false,
                 // Pass porosity information to filter, but allow fallbacks
                 // if products aren't found with strict filtering
                 highPorosity:
@@ -252,6 +262,7 @@ export default function HairRoutine({
               cgmApproved: isStraightHair ? false : isCGM,
               frizzResistant: false,
               lightweight: false,
+              sebdermSafe: false,
               highPorosity:
                 porosity === 'high_porosity' || porosity === 'mixed_porosity',
               lowPorosity:

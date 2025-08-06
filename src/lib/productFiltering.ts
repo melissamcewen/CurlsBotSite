@@ -15,6 +15,7 @@ interface FilterOptions {
     lightweight: boolean;
     highPorosity: boolean;
     lowPorosity: boolean;
+    sebdermSafe: boolean;
   };
 }
 
@@ -55,6 +56,11 @@ export function filterProducts(
           return false;
         }
       }
+    }
+
+    // Exclude accessories from best product pages
+    if (product.product_categories?.includes('accessories')) {
+      return false;
     }
 
     // Analysis-based filters - using AND logic
@@ -109,6 +115,14 @@ export function filterProducts(
     const frizzScore = product.extensions?.frizzbot?.score;
     if (options.analysisFilters.frizzResistant) {
       if (!frizzScore || frizzScore > -50) {
+        return false;
+      }
+    }
+
+    // Sebderm safety filter
+    const sebdermAnalysis = product.extensions?.sebderm;
+    if (options.analysisFilters.sebdermSafe) {
+      if (!sebdermAnalysis || sebdermAnalysis.hasTriggers) {
         return false;
       }
     }

@@ -57,6 +57,7 @@ export function ProductListicle({
       lightweight: page.filters.lightweight || false,
       highPorosity: page.filters.highPorosity || false,
       lowPorosity: page.filters.lowPorosity || false,
+      sebdermSafe: page.filters.sebdermSafe || false,
     },
   }).filter((product) => {
     // Apply tag filters if specified

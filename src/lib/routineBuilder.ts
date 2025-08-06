@@ -77,6 +77,7 @@ interface GetProductsByCategoryOptions {
     lightweight: boolean;
     highPorosity: boolean;
     lowPorosity: boolean;
+    sebdermSafe: boolean;
   };
 }
 
@@ -98,6 +99,7 @@ function getProductsByCategory(
       lightweight: false,
       highPorosity: false,
       lowPorosity: false,
+      sebdermSafe: false,
     },
   });
 
@@ -254,6 +256,7 @@ export function getRoutineSteps(
     lightweight: false,
     highPorosity: false,
     lowPorosity: false,
+    sebdermSafe: false,
   },
 ): RoutineStepConfig[] {
   return Object.entries(ROUTINE_STEPS)

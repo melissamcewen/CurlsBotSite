@@ -16,6 +16,7 @@ import {
   Droplet,
   Search,
   Sparkles,
+  Shield,
 } from 'lucide-react';
 import { useLocalization } from '@/contexts/LocalizationContext';
 import Link from 'next/link';
@@ -59,6 +60,7 @@ export default function ProductsPage() {
   const [lightweight, setLightweight] = useState(false);
   const [highPorosity, setHighPorosity] = useState(false);
   const [lowPorosity, setLowPorosity] = useState(false);
+  const [sebdermSafe, setSebdermSafe] = useState(false);
 
   const products = getBundledProducts();
 
@@ -74,6 +76,7 @@ export default function ProductsPage() {
       lightweight,
       highPorosity,
       lowPorosity,
+      sebdermSafe,
     },
   });
 
@@ -386,6 +389,20 @@ export default function ProductsPage() {
                   <Droplet className="w-4 h-4" />
                   Low Porosity
                   {lowPorosity && (
+                    <span className="badge badge-sm">
+                      <XCircle className="w-3 h-3" />
+                    </span>
+                  )}
+                </button>
+                <button
+                  onClick={() => setSebdermSafe(!sebdermSafe)}
+                  className={`btn btn-sm gap-2 ${
+                    sebdermSafe ? 'btn-warning' : 'btn-outline'
+                  }`}
+                >
+                  <Shield className="w-4 h-4" />
+                  Sebderm Safe
+                  {sebdermSafe && (
                     <span className="badge badge-sm">
                       <XCircle className="w-3 h-3" />
                     </span>

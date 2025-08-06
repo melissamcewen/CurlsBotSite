@@ -304,6 +304,18 @@ export const BEST_PRODUCT_PAGES: BestProductPage[] = [
     howWePicked:
       'These are products analyzed by our algorithm that are free of protein and glycerin and great for low porosity hair',
   },
+  {
+    slug: 'best-sebderm-safe-products',
+    title: 'The Best Seborrheic Dermatitis Safe Products',
+    description:
+      "Products that are safest for seborrheic dermatitis because they don't feed Malassezia",
+    category: 'all',
+    filters: {
+      sebdermSafe: true,
+    },
+    howWePicked:
+      'These products have been analyzed and found to be free of common triggers for seborrheic dermatitis such as fatty alcohols, oils, and other ingredient that Malassezia, the fungus that causes seborrheic dermatitis, can thrive on. It is more important to avoid products that stay on the scalp and rinse-off products are less important.',
+  },
   /* wait until I have tagged list for mens
   {
     slug: 'best-mousses-men',
