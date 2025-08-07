@@ -172,7 +172,7 @@ function RoutineSteps({ porosity, country }: RoutineStepsProps) {
     country,
     undefined,
     productOffsets,
-    analysisFilters,
+    {...analysisFilters, sebdermSafe: false},
   );
 
   const handleSeeMore = (category: string, totalProducts: number) => {

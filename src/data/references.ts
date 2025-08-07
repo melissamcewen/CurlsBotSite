@@ -1375,5 +1375,51 @@ Lab Muffin Beauty Science
   date: '2015',
   source: 'Int J Cosmet Sci',
 },
+/* 1. Wilde PF, Stewart PS. A study of the fatty acid metabolism of the yeast Pityrosporum ovale. Biochem J. 1968;108(2):225-231. doi:10.1042/bj1080225
+*/
+'129': {
+  id: '129',
+  url: 'https://onlinelibrary.wiley.com/doi/full/10.1042/bj1080225',
+  title: 'A study of the fatty acid metabolism of the yeast Pityrosporum ovale',
+  type: 'science',
+  author: 'Wilde PF, Stewart PS.',
+  date: '1968',
+  source: 'Biochem J',
+},
+/* 1. Mayser P, Führer D, Schmidt R, Gründer K. Hydrolysis of fatty acid esters by Malassezia furfur: different utilization depending on alcohol moiety. Acta Derm Venereol. 1995;75(2):105-109. doi:10.2340/0001555575105109
+*/
+'130': {
+  id: '130',
+  url: 'https://onlinelibrary.wiley.com/doi/full/10.2340/0001555575105109',
+  title: 'Hydrolysis of fatty acid esters by Malassezia furfur: different utilization depending on alcohol moiety',
+  type: 'science',
+  author: 'Mayser P, Führer D, Schmidt R, Gründer K.',
+  date: '1995',
+  source: 'Acta Derm Venereol',
+},
+/* 1. Mayser P, Imkampe A, Winkeler M, Papavassilis C. Growth requirements and nitrogen metabolism of Malassezia furfur. Arch Dermatol Res. 1998;290(5):277-282. doi:10.1007/s004030050304
+*/
+'131': {
+  id: '131',
+  url: 'https://link.springer.com/article/10.1007/s004030050304',
+  title: 'Growth requirements and nitrogen metabolism of Malassezia furfur',
+  type: 'science',
+  author: 'Mayser P, Imkampe A, Winkeler M, Papavassilis C.',
+  date: '1998',
+  source: 'Arch Dermatol Res',
+},
+
+/* 1. Akaza N, Akamatsu H, Takeoka S, et al. Malassezia globosa tends to grow actively in summer conditions more than other cutaneous Malassezia species. J Dermatol. 2012;39(7):613-616. doi:10.1111/j.1346-8138.2011.01477.x
+*/
+'132': {
+  id: '132',
+  url: 'https://onlinelibrary.wiley.com/doi/full/10.1111/j.1346-8138.2011.01477.x',
+  title: 'Malassezia globosa tends to grow actively in summer conditions more than other cutaneous Malassezia species',
+  type: 'science',
+  author: 'Akaza N, Akamatsu H, Takeoka S, et al.',
+  date: '2012',
+  source: 'J Dermatol',
+},
+
 };
 

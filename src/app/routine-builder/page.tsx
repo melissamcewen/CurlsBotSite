@@ -62,6 +62,7 @@ export default function RoutineBuilder() {
         cgmApproved: false,
         frizzResistant: false,
         lightweight: false,
+        sebdermSafe: false,
         highPorosity:
           porosity === 'high_porosity' || porosity === 'mixed_porosity',
         lowPorosity:
@@ -221,6 +222,7 @@ function RoutineSteps({
     cgmApproved: false,
     frizzResistant: false,
     lightweight: false,
+    sebdermSafe: false,
     highPorosity: porosity === 'high_porosity' || porosity === 'mixed_porosity',
     lowPorosity: porosity === 'low_porosity' || porosity === 'mixed_porosity',
   });
