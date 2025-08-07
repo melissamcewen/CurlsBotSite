@@ -168,6 +168,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
     },
     {
+      url: 'https://www.curlsbot.com/labs/sebderm',
+      lastModified: new Date(),
+    },
+    {
       url: 'https://www.curlsbot.com/frizzbot/ingredients',
       lastModified: new Date(),
     },

@@ -77,7 +77,6 @@ export default function Labs() {
               <Camera className="h-8 w-8 text-primary" />
               <div className="flex items-center gap-2">
                 <h2 className="card-title">Photo Analysis</h2>
-                <div className="badge badge-accent">New!</div>
               </div>
             </div>
             <p>
@@ -91,30 +90,10 @@ export default function Labs() {
           </div>
         </Link>
 
-        {/* Routine Builder Card */}
-        <Link
-          href="/routine-builder"
-          className="card bg-base-100 hover:bg-base-300 transition-colors"
-        >
-          <div className="card-body">
-            <div className="flex items-center gap-3 mb-4">
-              <ListChecks className="h-8 w-8 text-primary" />
-              <h2 className="card-title">Routine Builder</h2>
-            </div>
-            <p>
-              Create a personalized hair care routine based on your hair&apos;s
-              needs and characteristics.
-            </p>
-            <div className="card-actions justify-end mt-4">
-              <div className="badge badge-primary">Routine</div>
-              <div className="badge badge-secondary">Personalized</div>
-            </div>
-          </div>
-        </Link>
 
-        {/* The Ordinary Routine Builder Card */}
+        {/* Malassezia Ingredients Checker for SebDerm Card */}
         <a
-          href="https://www.myroutinebuilder.com/ordinary?tod=day"
+          href="/labs/sebderm"
           target="_blank"
           rel="noopener noreferrer"
           className="card bg-base-100 hover:bg-base-300 transition-colors"
@@ -123,17 +102,19 @@ export default function Labs() {
             <div className="flex items-center gap-3 mb-4">
               <FlaskConical className="h-8 w-8 text-primary" />
               <div className="flex items-center gap-2">
-                <h2 className="card-title">The Ordinary Builder</h2>
-                <ArrowRight className="h-4 w-4 text-base-content/70" />
+                <h2 className="card-title">
+                  Malassezia Ingredients Checker for SebDerm
+                </h2>
+                <div className="badge badge-accent">New!</div>
               </div>
             </div>
             <p>
-              Advanced skincare routine builder for The Ordinary products. Build
-              your perfect regimen with active ingredients.
+              Check if your haircare products contain ingredients that feed
+              Malassezia or promote its growth.
             </p>
             <div className="card-actions justify-end mt-4">
-              <div className="badge badge-primary">Skincare</div>
-              <div className="badge badge-secondary">External Tool</div>
+              <div className="badge badge-primary">Haircare</div>
+              <div className="badge badge-secondary">Scalp Care</div>
             </div>
           </div>
         </a>

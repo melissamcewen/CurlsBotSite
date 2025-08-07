@@ -411,12 +411,15 @@ export interface SebdermAnalysis extends ExtensionAnalysis {
                 <Shield className="w-6 h-6" />
                 <div className="indicator flex items-center gap-2">
                   <Link
-                    href="/labs"
+                    href="/labs/sebderm"
                     className="indicator-item badge badge-accent badge-xs"
                   >
                     Labs
                   </Link>
-                  <Link href="/labs" className="hover:text-primary underline">
+                  <Link
+                    href="/labs/sebderm"
+                    className="hover:text-primary underline"
+                  >
                     Sebderm Safe
                   </Link>
                 </div>
