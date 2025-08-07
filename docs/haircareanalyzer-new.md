@@ -194,6 +194,12 @@ export interface SebdermAnalysis extends ExtensionAnalysis {
     reason: string;
   }>;
 }
+/**
+ * Represents the analysis result for the AutoTagger system
+ */
+export interface AutoTaggerAnalysis extends ExtensionAnalysis {
+  tags: string[];
+}
 
 /**
  * Represents all available extensions for analysis
@@ -204,6 +210,7 @@ export interface Extensions {
   frizzbot?: FrizzbotAnalysis;
   porosity?: PorosityAnalysis;
   sebderm?: SebdermAnalysis;
+  autoTagger?: AutoTaggerAnalysis;
 }
 
 /**

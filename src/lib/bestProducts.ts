@@ -314,7 +314,7 @@ export const BEST_PRODUCT_PAGES: BestProductPage[] = [
       sebdermSafe: true,
     },
     howWePicked:
-      'These products have been analyzed and found to be free of common triggers for seborrheic dermatitis such as fatty alcohols, oils, and other ingredient that Malassezia, the fungus that causes seborrheic dermatitis, can thrive on. It is more important to avoid products that stay on the scalp and rinse-off products are less important.',
+      'These products have been analyzed and found to be free of common triggers for seborrheic dermatitis such as fatty alcohols, oils, and other ingredient that Malassezia, the fungus that causes seborrheic dermatitis, can thrive on. It is more important to avoid these ingredients on products that are leave in (vs rinse-off like shampoos and conditioners).',
   },
   /* wait until I have tagged list for mens
   {

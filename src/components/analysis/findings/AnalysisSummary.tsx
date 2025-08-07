@@ -2,6 +2,7 @@ import {
   AnalysisResult as BaseAnalysisResult,
   porosity,
   frizzbot,
+  sebderm,
 } from 'haircare-ingredients-analyzer';
 import {
   AlertTriangle,
@@ -22,6 +23,7 @@ import {
   Wind,
   Dam,
   Cloud,
+  Shield,
 } from 'lucide-react';
 import Link from 'next/link';
 import { candlestickBigLit, bottleDispenser, soapBar } from '@lucide/lab';
@@ -63,7 +65,18 @@ export function AnalysisSummary({ result }: Props) {
   const { status, reasons } = result;
   const porosityScores = porosity(result);
   const frizzAnalysis = frizzbot(result);
+  /*
 
+export interface SebdermAnalysis extends ExtensionAnalysis {
+  hasTriggers: boolean;
+  triggers: Array<{
+    id: string;
+    name: string;
+    reason: string;
+  }>;
+}
+  */
+  const sebdermAnalysis = sebderm(result);
   // Helper function to check if a specific setting exists in reasons
   const hasReason = (setting: string) =>
     reasons.some((r) => r.setting === setting);
@@ -377,6 +390,34 @@ export function AnalysisSummary({ result }: Props) {
                     className="hover:text-primary underline"
                   >
                     Lightweight Product
+                  </Link>
+                </div>
+              </div>
+              <div
+                className={`flex items-end gap-2 ${
+                  getStatusClasses('ok').text
+                }`}
+              >
+                <span className="text-md font-medium">Yes</span>
+                <CheckCircle className="w-5 h-5" />
+              </div>
+            </div>
+          </div>
+        )}
+        {sebdermAnalysis && !sebdermAnalysis.hasTriggers && (
+          <div className={`p-4 rounded-lg ${getStatusClasses('ok').bg}`}>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Shield className="w-6 h-6" />
+                <div className="indicator flex items-center gap-2">
+                  <Link
+                    href="/labs"
+                    className="indicator-item badge badge-accent badge-xs"
+                  >
+                    Labs
+                  </Link>
+                  <Link href="/labs" className="hover:text-primary underline">
+                    Sebderm Safe
                   </Link>
                 </div>
               </div>
