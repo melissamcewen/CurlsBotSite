@@ -97,15 +97,16 @@ export default function SebdermLabPage() {
                 Oils and fatty acids
               </Link>
             </li>
-            <li>Polysorbate</li>
             <li>
               <Link href="/groups/waxes" className="link">
                 Waxes and esters
               </Link>
             </li>
             <li>
-              Some emollient/fatty alcohols (like emulsifying wax, cetearyl
-              alcohol)
+              <Link href="/groups/emollient-alcohols" className="link">
+                Some emollient/fatty alcohols (like emulsifying wax, cetearyl
+                alcohol)
+              </Link>
             </li>
             <li>
               <Link href="/groups/humectants" className="link">
