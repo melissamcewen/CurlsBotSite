@@ -306,15 +306,15 @@ export const BEST_PRODUCT_PAGES: BestProductPage[] = [
   },
   {
     slug: 'best-sebderm-safe-products',
-    title: 'The Best Seborrheic Dermatitis Safe Products',
+    title: 'The Best Seborrheic Dermatitis Safe Hair Products',
     description:
-      "Products that are safest for seborrheic dermatitis because they don't feed Malassezia",
+      "Products without ingredients that feed Malassezia, which is the fungus that causes seborrheic dermatitis (and fungal acne)",
     category: 'all',
     filters: {
       sebdermSafe: true,
     },
     howWePicked:
-      'These products have been analyzed and found to be free of common triggers for seborrheic dermatitis such as fatty alcohols, oils, and other ingredient that Malassezia, the fungus that causes seborrheic dermatitis, can thrive on. It is more important to avoid these ingredients on products that are leave in (vs rinse-off like shampoos and conditioners).',
+      'These products have been analyzed and found to be free of common triggers for seborrheic dermatitis such as fatty alcohols, oils, and other ingredients that Malassezia, the fungus that causes seborrheic dermatitis, can thrive on. It is more important to avoid these ingredients on products that are leave in (vs rinse-off like shampoos and conditioners).',
   },
   /* wait until I have tagged list for mens
   {
