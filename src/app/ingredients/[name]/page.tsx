@@ -53,7 +53,9 @@ export async function generateMetadata({ params }: PageProps) {
       ingredient.description ||
       `Learn about ${ingredient.name} in hair care products and its effects on curly and wavy hair.`,
     path: `/ingredients/${resolvedParams.name}`,
-    hasContent: !!markdownContent,
+    hasContent:
+      !!markdownContent ||
+      (ingredient.references && ingredient.references.length > 0),
     imageAlt: `${ingredient.name} - Hair Care Ingredient`,
   });
 }
