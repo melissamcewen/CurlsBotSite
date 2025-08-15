@@ -82,7 +82,7 @@ export default function SebdermLabPage() {
             on the scalp. Rinse-off products like shampoos and conditioners are
             less important. If you&apos;re looking for products that are safe
             for sebderm, check out our{' '}
-            <Link href="/best-products/sebderm-safe-products" className="link">
+            <Link href="/best/best-sebderm-safe-products" className="link">
               best sebderm safe products
             </Link>
             .
