@@ -1354,120 +1354,125 @@ Lab Muffin Beauty Science
     source: 'TRI Princeton at the Hair Science E-Summit 2024',
   },
   /* 1. Marsh JM, Davis MG, Lucas RL, et al. Preserving fibre health: reducing oxidative stress throughout the life of the hair fibre. International Journal of Cosmetic Science. 2015;37(S2):16-24. doi:10.1111/ics.12285
-*/
-'127': {
-  id: '127',
-  url: 'https://onlinelibrary.wiley.com/doi/full/10.1111/ics.12285',
-  title: 'Preserving fibre health: reducing oxidative stress throughout the life of the hair fibre',
-  type: 'science',
-  author: 'Marsh JM, Davis MG, Lucas RL, et al.',
-  date: '2015',
-  source: 'International Journal of Cosmetic Science',
-},
-/* 1. Marsh JM, Davis MG, Flagler MJ, et al. Advanced hair damage model from ultra-violet radiation in the presence of copper. Int J Cosmet Sci. 2015;37(5):532-541. doi:10.1111/ics.12231
-*/
-'128': {
-  id: '128',
-  url: 'https://onlinelibrary.wiley.com/doi/full/10.1111/ics.12231',
-  title: 'Advanced hair damage model from ultra-violet radiation in the presence of copper',
-  type: 'science',
-  author: 'Marsh JM, Davis MG, Flagler MJ, et al.',
-  date: '2015',
-  source: 'Int J Cosmet Sci',
-},
-/* 1. Wilde PF, Stewart PS. A study of the fatty acid metabolism of the yeast Pityrosporum ovale. Biochem J. 1968;108(2):225-231. doi:10.1042/bj1080225
-*/
-'129': {
-  id: '129',
-  url: 'https://onlinelibrary.wiley.com/doi/full/10.1042/bj1080225',
-  title: 'A study of the fatty acid metabolism of the yeast Pityrosporum ovale',
-  type: 'science',
-  author: 'Wilde PF, Stewart PS.',
-  date: '1968',
-  source: 'Biochem J',
-},
-/* 1. Mayser P, Führer D, Schmidt R, Gründer K. Hydrolysis of fatty acid esters by Malassezia furfur: different utilization depending on alcohol moiety. Acta Derm Venereol. 1995;75(2):105-109. doi:10.2340/0001555575105109
-*/
-'130': {
-  id: '130',
-  url: 'https://onlinelibrary.wiley.com/doi/full/10.2340/0001555575105109',
-  title: 'Hydrolysis of fatty acid esters by Malassezia furfur: different utilization depending on alcohol moiety',
-  type: 'science',
-  author: 'Mayser P, Führer D, Schmidt R, Gründer K.',
-  date: '1995',
-  source: 'Acta Derm Venereol',
-},
-/* 1. Mayser P, Imkampe A, Winkeler M, Papavassilis C. Growth requirements and nitrogen metabolism of Malassezia furfur. Arch Dermatol Res. 1998;290(5):277-282. doi:10.1007/s004030050304
-*/
-'131': {
-  id: '131',
-  url: 'https://link.springer.com/article/10.1007/s004030050304',
-  title: 'Growth requirements and nitrogen metabolism of Malassezia furfur',
-  type: 'science',
-  author: 'Mayser P, Imkampe A, Winkeler M, Papavassilis C.',
-  date: '1998',
-  source: 'Arch Dermatol Res',
-},
+   */
+  '127': {
+    id: '127',
+    url: 'https://onlinelibrary.wiley.com/doi/full/10.1111/ics.12285',
+    title:
+      'Preserving fibre health: reducing oxidative stress throughout the life of the hair fibre',
+    type: 'science',
+    author: 'Marsh JM, Davis MG, Lucas RL, et al.',
+    date: '2015',
+    source: 'International Journal of Cosmetic Science',
+  },
+  /* 1. Marsh JM, Davis MG, Flagler MJ, et al. Advanced hair damage model from ultra-violet radiation in the presence of copper. Int J Cosmet Sci. 2015;37(5):532-541. doi:10.1111/ics.12231
+   */
+  '128': {
+    id: '128',
+    url: 'https://onlinelibrary.wiley.com/doi/full/10.1111/ics.12231',
+    title:
+      'Advanced hair damage model from ultra-violet radiation in the presence of copper',
+    type: 'science',
+    author: 'Marsh JM, Davis MG, Flagler MJ, et al.',
+    date: '2015',
+    source: 'Int J Cosmet Sci',
+  },
+  /* 1. Wilde PF, Stewart PS. A study of the fatty acid metabolism of the yeast Pityrosporum ovale. Biochem J. 1968;108(2):225-231. doi:10.1042/bj1080225
+   */
+  '129': {
+    id: '129',
+    url: 'https://onlinelibrary.wiley.com/doi/full/10.1042/bj1080225',
+    title:
+      'A study of the fatty acid metabolism of the yeast Pityrosporum ovale',
+    type: 'science',
+    author: 'Wilde PF, Stewart PS.',
+    date: '1968',
+    source: 'Biochem J',
+  },
+  /* 1. Mayser P, Führer D, Schmidt R, Gründer K. Hydrolysis of fatty acid esters by Malassezia furfur: different utilization depending on alcohol moiety. Acta Derm Venereol. 1995;75(2):105-109. doi:10.2340/0001555575105109
+   */
+  '130': {
+    id: '130',
+    url: 'https://onlinelibrary.wiley.com/doi/full/10.2340/0001555575105109',
+    title:
+      'Hydrolysis of fatty acid esters by Malassezia furfur: different utilization depending on alcohol moiety',
+    type: 'science',
+    author: 'Mayser P, Führer D, Schmidt R, Gründer K.',
+    date: '1995',
+    source: 'Acta Derm Venereol',
+  },
+  /* 1. Mayser P, Imkampe A, Winkeler M, Papavassilis C. Growth requirements and nitrogen metabolism of Malassezia furfur. Arch Dermatol Res. 1998;290(5):277-282. doi:10.1007/s004030050304
+   */
+  '131': {
+    id: '131',
+    url: 'https://link.springer.com/article/10.1007/s004030050304',
+    title: 'Growth requirements and nitrogen metabolism of Malassezia furfur',
+    type: 'science',
+    author: 'Mayser P, Imkampe A, Winkeler M, Papavassilis C.',
+    date: '1998',
+    source: 'Arch Dermatol Res',
+  },
 
-/* 1. Akaza N, Akamatsu H, Takeoka S, et al. Malassezia globosa tends to grow actively in summer conditions more than other cutaneous Malassezia species. J Dermatol. 2012;39(7):613-616. doi:10.1111/j.1346-8138.2011.01477.x
-*/
-'132': {
-  id: '132',
-  url: 'https://onlinelibrary.wiley.com/doi/full/10.1111/j.1346-8138.2011.01477.x',
-  title: 'Malassezia globosa tends to grow actively in summer conditions more than other cutaneous Malassezia species',
-  type: 'science',
-  author: 'Akaza N, Akamatsu H, Takeoka S, et al.',
-  date: '2012',
-  source: 'J Dermatol',
-},
-/*
+  /* 1. Akaza N, Akamatsu H, Takeoka S, et al. Malassezia globosa tends to grow actively in summer conditions more than other cutaneous Malassezia species. J Dermatol. 2012;39(7):613-616. doi:10.1111/j.1346-8138.2011.01477.x
+   */
+  '132': {
+    id: '132',
+    url: 'https://onlinelibrary.wiley.com/doi/full/10.1111/j.1346-8138.2011.01477.x',
+    title:
+      'Malassezia globosa tends to grow actively in summer conditions more than other cutaneous Malassezia species',
+    type: 'science',
+    author: 'Akaza N, Akamatsu H, Takeoka S, et al.',
+    date: '2012',
+    source: 'J Dermatol',
+  },
+  /*
 Valerie George and perry romanowski Episode 397 - Heat protectants, protein and sunburns | The Beauty Brains. Patreon. June 1, 2025. Accessed August 15, 2025. https://www.patreon.com/posts/episode-397-heat-130308558
 */
-'133': {
-  id: '133',
-  url: 'https://www.patreon.com/posts/episode-397-heat-130308558',
-  title: 'Episode 397: Heat protectants, protein and sunburns',
-  type: 'science',
-  author: 'Valerie George and Perry Romanowski',
-  date: '2025',
-  source: 'The Beauty Brains',
-},
-/*
+  '133': {
+    id: '133',
+    url: 'https://www.patreon.com/posts/episode-397-heat-130308558',
+    title: 'Episode 397: Heat protectants, protein and sunburns',
+    type: 'science',
+    author: 'Valerie George and Perry Romanowski',
+    date: '2025',
+    source: 'The Beauty Brains',
+  },
+  /*
 1. Byrd A, Tharps L. Hair Story: Untangling the Roots of Black Hair in America. Macmillan; 2002.
 */
-'134': {
-  id: '134',
-  url: 'https://www.google.com/books/edition/Hair_Story/UStkDwAAQBAJ?hl=en&gbpv=0',
-  title: 'Hair Story: Untangling the Roots of Black Hair in America',
-  type: 'science',
-  author: 'Byrd A, Tharps L.',
-  date: '2002',
-  source: 'Macmillan',
-},
+  '134': {
+    id: '134',
+    url: 'https://www.google.com/books/edition/Hair_Story/UStkDwAAQBAJ?hl=en&gbpv=0',
+    title: 'Hair Story: Untangling the Roots of Black Hair in America',
+    type: 'science',
+    author: 'Byrd A, Tharps L.',
+    date: '2002',
+    source: 'Macmillan',
+  },
 
-/*
+  /*
 Kahre, Joerg. "Ethnic Differences in Haircare Products." Handbook of Cosmetic Science and Technology. CRC Press, 2001. 621-634.
 */
-'135': {
-  id: '135',
-  url: 'https://www.google.com/books/edition/Handbook_of_Cosmetic_Science_and_Techn/Dz8oEAAAQBAJ?hl=en&gbpv=0',
-  title: 'Ethnic Differences in Haircare Products',
-  type: 'science',
-  author: 'Kahre, Joerg.',
-  date: '2001',
-  source: 'Handbook of Cosmetic Science and Technology',
-},
-/*
+  '135': {
+    id: '135',
+    url: 'https://www.google.com/books/edition/Handbook_of_Cosmetic_Science_and_Technol/qAPLBQAAQBAJ',
+    title: 'Ethnic Differences in Haircare Products',
+    type: 'science',
+    author: 'Kahre, Joerg.',
+    date: '2001',
+    source: 'Handbook of Cosmetic Science and Technology',
+  },
+  /*
 1. Draelos ZD. Hair Care: An Illustrated Dermatologic Handbook. CRC Press; 2004.
 */
-'136': {
-  id: '136',
-  url: 'https://www.google.com/books/edition/Hair_Care/Dz8oEAAAQBAJ?hl=en&gbpv=0',
-  title: 'Hair Care: An Illustrated Dermatologic Handbook',
-  type: 'science',
-  author: 'Draelos ZD.',
-  date: '2004',
-  source: 'CRC Press',
-},
+  '136': {
+    id: '136',
+    url: 'https://www.google.com/books/edition/Hair_Care/zfCcw3qon7cC',
+    title: 'Hair Care: An Illustrated Dermatologic Handbook',
+    type: 'science',
+    author: 'Draelos ZD.',
+    date: '2004',
+    source: 'CRC Press',
+  },
 };
 
