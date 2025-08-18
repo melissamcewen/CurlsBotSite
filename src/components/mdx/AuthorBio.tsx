@@ -16,9 +16,8 @@ export function AuthorBio() {
         <h2 className="card-title text-lg">About the Author</h2>
         <p className="text-sm">
           Melissa McEwen is the creator of CurlsBot. She is a software developer
-          with training in science writing and chemistry as part of her degree
-          in Agriculture. Her writing has appeared in publications such as NPR
-          and Quartz.
+          with training in science writing and chemistry. Her writing has
+          appeared in publications such as NPR and Quartz.
         </p>
       </div>
     </div>

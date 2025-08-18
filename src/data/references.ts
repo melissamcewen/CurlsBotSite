@@ -1420,6 +1420,54 @@ Lab Muffin Beauty Science
   date: '2012',
   source: 'J Dermatol',
 },
+/*
+Valerie George and perry romanowski Episode 397 - Heat protectants, protein and sunburns | The Beauty Brains. Patreon. June 1, 2025. Accessed August 15, 2025. https://www.patreon.com/posts/episode-397-heat-130308558
+*/
+'133': {
+  id: '133',
+  url: 'https://www.patreon.com/posts/episode-397-heat-130308558',
+  title: 'Episode 397: Heat protectants, protein and sunburns',
+  type: 'science',
+  author: 'Valerie George and Perry Romanowski',
+  date: '2025',
+  source: 'The Beauty Brains',
+},
+/*
+1. Byrd A, Tharps L. Hair Story: Untangling the Roots of Black Hair in America. Macmillan; 2002.
+*/
+'134': {
+  id: '134',
+  url: 'https://www.google.com/books/edition/Hair_Story/UStkDwAAQBAJ?hl=en&gbpv=0',
+  title: 'Hair Story: Untangling the Roots of Black Hair in America',
+  type: 'science',
+  author: 'Byrd A, Tharps L.',
+  date: '2002',
+  source: 'Macmillan',
+},
 
+/*
+Kahre, Joerg. "Ethnic Differences in Haircare Products." Handbook of Cosmetic Science and Technology. CRC Press, 2001. 621-634.
+*/
+'135': {
+  id: '135',
+  url: 'https://www.google.com/books/edition/Handbook_of_Cosmetic_Science_and_Techn/Dz8oEAAAQBAJ?hl=en&gbpv=0',
+  title: 'Ethnic Differences in Haircare Products',
+  type: 'science',
+  author: 'Kahre, Joerg.',
+  date: '2001',
+  source: 'Handbook of Cosmetic Science and Technology',
+},
+/*
+1. Draelos ZD. Hair Care: An Illustrated Dermatologic Handbook. CRC Press; 2004.
+*/
+'136': {
+  id: '136',
+  url: 'https://www.google.com/books/edition/Hair_Care/Dz8oEAAAQBAJ?hl=en&gbpv=0',
+  title: 'Hair Care: An Illustrated Dermatologic Handbook',
+  type: 'science',
+  author: 'Draelos ZD.',
+  date: '2004',
+  source: 'CRC Press',
+},
 };
 

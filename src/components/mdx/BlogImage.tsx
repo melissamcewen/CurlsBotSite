@@ -53,7 +53,7 @@ export function BlogImage({ src, alt, caption, href, float }: BlogImageProps) {
 
   return (
     <figure className={`${containerClass} m-0`}>
-      <div className="bg-base-200 rounded-lg overflow-hidden">
+      <div className="bg-base-200 rounded-lg overflow-hidden not-prose ">
         <ImageWrapper href={href}>
           <div>
             <Image
@@ -61,7 +61,7 @@ export function BlogImage({ src, alt, caption, href, float }: BlogImageProps) {
               alt={alt}
               width={1200}
               height={630}
-              className="w-full h-auto m-0"
+              className="w-full h-auto m-0 p-0 max-h-[450px] object-contain"
             />
             {caption && (
               <div className="p-4">
