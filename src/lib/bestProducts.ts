@@ -32,6 +32,13 @@ export interface BestProductPage {
   howWePicked?: string;
   /** Custom descriptions for specific products on this page */
   customDescriptions?: Record<string, string>;
+  /** Optional buttons to display on the page */
+  buttons?: Array<{
+    /** URL for the button link */
+    url: string;
+    /** Text to display on the button */
+    text: string;
+  }>;
 }
 
 export const BEST_PRODUCT_PAGES: BestProductPage[] = [
@@ -308,13 +315,23 @@ export const BEST_PRODUCT_PAGES: BestProductPage[] = [
     slug: 'best-sebderm-safe-products',
     title: 'The Best Seborrheic Dermatitis Safe Hair Products',
     description:
-      "Products without ingredients that feed Malassezia, which is the fungus that causes seborrheic dermatitis (and fungal acne)",
+      'Products without ingredients that feed Malassezia, which is the fungus that causes seborrheic dermatitis (and fungal acne)',
     category: 'all',
     filters: {
       sebdermSafe: true,
     },
     howWePicked:
       'These products have been analyzed and found to be free of common triggers for seborrheic dermatitis such as fatty alcohols, oils, and other ingredients that Malassezia, the fungus that causes seborrheic dermatitis, can thrive on. It is more important to avoid these ingredients on products that are leave in (vs rinse-off like shampoos and conditioners).',
+    buttons: [
+      {
+        url: '/blog/can-curly-routines-products-cause-dandruff',
+        text: 'The science behind seborrheic dermatitis',
+      },
+      {
+        url: '/labs/sebderm',
+        text: 'Sebderm ingredient checker',
+      },
+    ],
   },
   /* wait until I have tagged list for mens
   {

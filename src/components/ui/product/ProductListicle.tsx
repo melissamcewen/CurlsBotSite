@@ -107,6 +107,24 @@ export function ProductListicle({
           </div>
         )}
 
+        {page.buttons && page.buttons.length > 0 && (
+          <div className="card bg-base-100 mb-8">
+            <div className="card-body">
+              <div className="flex flex-wrap gap-3">
+                {page.buttons.map((button, index) => (
+                  <Link
+                    key={index}
+                    href={button.url}
+                    className="btn btn-primary"
+                  >
+                    {button.text}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
         {isAllCategories && (
           <nav className="card bg-base-100 mb-8">
             <div className="card-body">

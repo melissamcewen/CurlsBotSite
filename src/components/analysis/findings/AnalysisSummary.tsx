@@ -337,7 +337,7 @@ export interface SebdermAnalysis extends ExtensionAnalysis {
             </div>
           </div>
         )}
-        {porosityScores.low >= 70 && (
+        {porosityScores.low >= POROSITY_THRESHOLDS.LIGHTWEIGHT && (
           <div
             className={`p-4 rounded-lg ${
               getStatusClasses(getPorosityStatus(porosityScores.low)).bg

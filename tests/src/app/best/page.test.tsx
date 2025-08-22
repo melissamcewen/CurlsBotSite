@@ -167,4 +167,19 @@ describe('Best Products Page Filtering', () => {
       false,
     );
   });
+
+  it('supports buttons configuration on best product pages', () => {
+    const page = getBestProductPage('best-sebderm-safe-products');
+    expect(page).toBeDefined();
+    expect(page?.buttons).toBeDefined();
+    expect(page?.buttons).toHaveLength(2);
+    expect(page?.buttons?.[0]).toEqual({
+      url: '/blog/can-curly-routines-products-cause-dandruff',
+      text: 'The science behind seborrheic dermatitis',
+    });
+    expect(page?.buttons?.[1]).toEqual({
+      url: '/labs/sebderm',
+      text: 'Sebderm ingredient checker',
+    });
+  });
 });
