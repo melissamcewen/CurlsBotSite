@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import Script from 'next/script';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import { Footer } from '@/components/layout/Footer';
@@ -151,6 +152,38 @@ export default function RootLayout({
           }}
         />
         <GoogleTagManagerHead />
+
+        {/* Early AdThrive identity/tracking script for Newsletter Link ID */}
+        <Script
+          id="adthrive-identity"
+          strategy="afterInteractive"
+          data-no-optimize="1"
+          data-cfasync="false"
+        >
+          {`
+            (function() {
+              try {
+                const w = window;
+                w.adthrive = w.adthrive || {};
+                w.adthrive.cmd = w.adthrive.cmd || [];
+                w.adthrive.plugin = 'adthrive-ads-manual';
+                w.adthrive.host = 'ads.adthrive.com';
+
+                // Set up identity tracking early for Newsletter Link ID
+                w.adthrive.identity = w.adthrive.identity || {};
+
+                // Initialize command queue for early tracking
+                w.adthrive.cmd.push(function() {
+                  // Early identity setup - this ensures Newsletter Link ID works
+                  console.debug('AdThrive identity initialized');
+                });
+              } catch (e) {
+                console.debug('AdThrive identity setup failed:', e);
+              }
+            })();
+          `}
+        </Script>
+
         <AdScripts />
       </head>
       <body
