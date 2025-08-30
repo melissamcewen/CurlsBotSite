@@ -70,12 +70,12 @@ export function CurlyTechniquesForm() {
     <div className="space-y-4">
       {!isSuccess ? (
         <>
-          <div className="text-center">
+          <div className="text">
             <h4 className="text-xl font-bold mb-2">
-              Get The Curly Techniques Dictionary
+              Subscribe to get the book sent to your inbox!
             </h4>
             <p className="text-base-content/80">
-              60+ techniques with videos, tips, and more
+              I think our newsletter is pretty cool. I only send out interesting emails about new blog posts and Curlsbot features! You can unsubscribe at any time.
             </p>
           </div>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -113,7 +113,7 @@ export function CurlyTechniquesForm() {
                   <span className="sm:hidden">...</span>
                 </>
               ) : (
-                'Send Me the Cheat Sheet'
+                'Subscribe & Send Me the Book'
               )}
             </button>
           </form>

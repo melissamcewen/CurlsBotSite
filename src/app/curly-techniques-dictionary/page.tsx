@@ -95,7 +95,13 @@ export default function CurlyTechniquesDictionaryPage() {
           </div>
 
           <div className="bg-base-100 rounded-box p-6">
-            <CurlyTechniquesForm />
+            <a
+              href="https://docs.google.com/spreadsheets/d/11l-IPULdqqwMYAFv7FVLKsOFDwzdlvIyqXKwbu5XLHE/edit?usp=sharing"
+              target="_blank"
+              className="btn btn-primary w-full"
+            >
+              Get The Curly Techniques Dictionary
+            </a>
           </div>
         </div>
 
