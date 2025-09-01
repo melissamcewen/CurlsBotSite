@@ -19,7 +19,7 @@ export default function EmailSignupForm({
   fieldName,
   fieldValue,
   title,
-  description = 'Get our free Curly Techniques Dictionary with 60+ methods to define curls, boost volume, and fight frizz—sorted by difficulty and curl-friendliness.',
+  description = 'Join our newsletter and get weekly tips, tricks, and product recommendations delivered to your inbox.',
   className = 'bg-base-100 cb-card-lite md:col-span-2',
 }: EmailSignupFormProps) {
   const successFunctionName = containerId.replace(
