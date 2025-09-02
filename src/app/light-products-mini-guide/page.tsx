@@ -1,7 +1,14 @@
 import { CurlyTechniquesForm } from '@/components/CurlyTechniquesForm';
 import Image from 'next/image';
 import Link from 'next/link';
-
+import { createPageMetadata } from '@/config/metadata';
+export const metadata = createPageMetadata({
+  title: 'Hair Care Ingredients Cheat Sheet',
+  description:
+    'The CurlsBot Mini Guide to Light Products',
+  path: '/light-products-mini-guide',
+  image: '/images/light-products-mini-guide.png'
+});
 export default function CurlyTechniquesDictionaryPage() {
   return (
     <div className="container mx-auto px-4 py-8">

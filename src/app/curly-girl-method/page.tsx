@@ -1,7 +1,14 @@
 import { Book, FlaskConical, ListChecks, Search } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-
+import { createPageMetadata } from '@/config/metadata';
+export const metadata = createPageMetadata({
+  title: 'The Curly Girl Method Hub',
+  description:
+    'Everything you need to know about the Curly Girl Method and how to follow it!',
+  path: '/curly-girl-method',
+  image: '/images/cgm-hub/book.png'
+});
 export default function CGMHub() {
   return (
     <div className="max-w-6xl mx-auto px-4 py-12">
