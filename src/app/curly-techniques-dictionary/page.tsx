@@ -1,6 +1,14 @@
 import { CurlyTechniquesForm } from '@/components/CurlyTechniquesForm';
 import Image from 'next/image';
 import Link from 'next/link';
+import { createPageMetadata } from '@/config/metadata';
+export const metadata = createPageMetadata({
+  title: 'The Curly Techniques Dictionary',
+  description:
+    'Master your curly routine with 60+ techniques, tips, and videos—organized by curl type and goals.',
+  path: '/curly-techniques-dictionary',
+  image: '/images/dictionary4.png'
+});
 
 export default function CurlyTechniquesDictionaryPage() {
   return (

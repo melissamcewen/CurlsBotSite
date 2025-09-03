@@ -11,6 +11,7 @@ import { SiteFixBanner } from '@/components/mdx/SiteFixBanner';
 import { AuthorBio } from '@/components/mdx/AuthorBio';
 import RoutineTable from '@/components/mdx/RoutineTable';
 import ProductComparisonTable from '@/components/mdx/ProductComparisonTable';
+import NewsletterSignup from '@/components/mdx/NewsletterSignup';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -25,6 +26,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     AuthorBio,
     RoutineTable,
     ProductComparisonTable,
+    NewsletterSignup,
     ...components,
   };
 }

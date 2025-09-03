@@ -95,7 +95,7 @@ export default function EmailSignupForm({
                     type="submit"
                     className="btn btn-primary whitespace-nowrap"
                   >
-                    Get the Free Guide →
+                    Subscribe →
                   </button>
                 </div>
               </form>
