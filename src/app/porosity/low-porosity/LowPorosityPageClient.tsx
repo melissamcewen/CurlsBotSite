@@ -25,17 +25,18 @@ export function LowPorosityPageClient() {
       <div className="card bg-base-200">
         <div className="card-body">
           <div className="flex flex-col lg:flex-row gap-8">
-            <div className="flex-1">
+            <div className="flex-2">
               <h1 className="text-4xl font-bold mb-6">
                 Your Hair is Low Porosity
               </h1>
               <div className="prose prose-lg max-w-none">
+
                 <p className="text-lg leading-relaxed mb-6">
                   Low porosity hair is healthy hair with a smooth, tightly
                   packed cuticle + a water-repellent oily F-layer that make it
                   harder for water and products to get in. That&apos;s why{' '}
-                  <strong>light</strong> products work best — heavy oils and
-                  butters tend to just sit on top and can make hair look greasy
+                  <strong>light</strong> products work best. Heavy oils and
+                  butters can make low porosity hair look greasy
                   and stringy. Heat can help products like deep conditioners
                   penetrate the hair.
                 </p>
@@ -76,92 +77,6 @@ export function LowPorosityPageClient() {
         </div>
       </div>
 
-      {/* Comparison Section */}
-      <div className="card bg-base-100">
-        <div className="card-body">
-          <h2 className="card-title text-3xl text-center mb-8">
-            Compare Porosity Types
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {/* Low Porosity - Highlighted */}
-            <div className="card bg-primary/10 border-2 border-primary">
-              <div className="card-body">
-                <figure className="px-6 pt-6">
-                  <div className="w-full h-32 bg-primary/20 rounded-lg flex items-center justify-center">
-                    <span className="text-primary text-sm text-center font-semibold">
-                      Low Porosity Cuticle
-                    </span>
-                  </div>
-                </figure>
-                <div className="card-body">
-                  <h3 className="card-title flex items-center gap-2">
-                    <span className="badge badge-primary">Your Hair</span>
-                    Low Porosity
-                  </h3>
-                  <p className="text-sm">
-                    Low porosity hair is healthy hair with a smooth, tightly
-                    packed cuticle
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* High Porosity */}
-            <div className="card bg-base-100">
-              <div className="card-body">
-                <figure className="px-6 pt-6">
-                  <div className="w-full h-32 bg-base-200 rounded-lg flex items-center justify-center">
-                    <span className="text-base-content/50 text-sm text-center">
-                      High Porosity Cuticle
-                    </span>
-                  </div>
-                </figure>
-                <div className="card-body">
-                  <h3 className="card-title">
-                    <Link
-                      href="/porosity/high-porosity"
-                      className="link link-primary"
-                    >
-                      High Porosity
-                    </Link>
-                  </h3>
-                  <p className="text-sm">
-                    High porosity hair is damaged hair with broken cuticles that
-                    easily let in water and products
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Mixed Porosity */}
-            <div className="card bg-base-100">
-              <div className="card-body">
-                <figure className="px-6 pt-6">
-                  <div className="w-full h-32 bg-base-200 rounded-lg flex items-center justify-center">
-                    <span className="text-base-content/50 text-sm text-center">
-                      Mixed Porosity Hair
-                    </span>
-                  </div>
-                </figure>
-                <div className="card-body">
-                  <h3 className="card-title">
-                    <Link
-                      href="/porosity/mixed-porosity"
-                      className="link link-primary"
-                    >
-                      Mixed Porosity
-                    </Link>
-                  </h3>
-                  <p className="text-sm">
-                    This is hair with low porosity roots and high porosity ends
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* Curls Monthly Banner */}
       <div className="card bg-base-100">
