@@ -100,8 +100,8 @@ export function LowPorosityPageClient() {
                     Low Porosity
                   </h3>
                   <p className="text-sm">
-                    Low porosity hair has a smooth cuticle and an oily F-layer
-                    that blocks water and products from entering.
+                    Low porosity hair is healthy hair with a smooth, tightly
+                    packed cuticle
                   </p>
                 </div>
               </div>
@@ -127,8 +127,8 @@ export function LowPorosityPageClient() {
                     </Link>
                   </h3>
                   <p className="text-sm">
-                    The cuticles of high porosity hair are broken and the oily
-                    f-layer is stripped off.
+                    High porosity hair is damaged hair with broken cuticles that
+                    easily let in water and products
                   </p>
                 </div>
               </div>
@@ -164,7 +164,7 @@ export function LowPorosityPageClient() {
       </div>
 
       {/* Curls Monthly Banner */}
-      <div className="card bg-info text-info-content">
+      <div className="card bg-base-100">
         <div className="card-body">
           <div className="flex flex-col sm:flex-row items-center gap-4">
             <div className="flex-1">
@@ -237,7 +237,8 @@ export function LowPorosityPageClient() {
                       A light conditioner + a cleansing shampoo
                     </p>
                     <p className="text-sm mb-4">
-                      This duo provides cleansing and lightweight conditioning.
+                      A light conditioner for detangling + a cleansing shampoo
+                      for when you&apos;re not clarifying
                     </p>
                     <div className="flex flex-wrap gap-2">
                       <button className="btn btn-primary btn-sm">
@@ -266,7 +267,7 @@ export function LowPorosityPageClient() {
                   <div className="flex-1">
                     <h3 className="card-title text-lg">XMondo Mousse</h3>
                     <p className="text-sm font-semibold opacity-60 mb-2">
-                      Provides definition without weight
+                      Easy to use with flexible hold
                     </p>
                     <p className="text-sm mb-4">
                       This mousse helps pump up your volume without weight.
@@ -301,8 +302,8 @@ export function LowPorosityPageClient() {
                       A lightweight spray conditioner
                     </p>
                     <p className="text-sm mb-4">
-                      This spray conditioner is perfect for lightweight
-                      protection, as well as refreshing.
+                      Provides UV/heat/frcition protection + useful for
+                      refreshing/detangling
                     </p>
                     <div className="flex flex-wrap gap-2">
                       <button className="btn btn-primary btn-sm">
@@ -341,9 +342,15 @@ export function LowPorosityPageClient() {
                 <h3 className="card-title">Rahua Mask</h3>
                 <p className="mb-4">
                   <strong>A deep conditioner</strong> helps soften hair but will
-                  work best with heat
+                  work best with heat, try it with a{' '}
+                  <a
+                    href="https://www.amazon.com/dp/B000J3J2AK"
+                    target="_blank"
+                  >
+                    heat cap
+                  </a>
                 </p>
-                <div className="flex flex-wrap gap-2">
+                <div className="card-actions justify-end">
                   <button className="btn btn-primary btn-sm">
                     <ShoppingBag className="w-4 h-4 mr-1" />
                     Buy Mask
@@ -370,7 +377,7 @@ export function LowPorosityPageClient() {
                   Flo-etry is a cream formulated not to weigh low porosity hair
                   down.
                 </p>
-                <div className="flex flex-wrap gap-2">
+                <div className="card-actions justify-end">
                   <button className="btn btn-primary btn-sm">
                     <ShoppingBag className="w-4 h-4 mr-1" />
                     Amazon
@@ -405,7 +412,7 @@ export function LowPorosityPageClient() {
                   CurlKeeper Liquid Styler is a perfect gel for wavy hair and
                   loose curls that you don&apos;t want to weigh down
                 </p>
-                <div className="flex flex-wrap gap-2">
+                <div className="card-actions justify-end">
                   <button className="btn btn-primary btn-sm">
                     <ShoppingBag className="w-4 h-4 mr-1" />
                     Amazon
@@ -430,7 +437,7 @@ export function LowPorosityPageClient() {
                 <p className="text-sm mb-4">
                   A regular gel like XYZ provides hold and prevents frizz
                 </p>
-                <div className="flex flex-wrap gap-2">
+                <div className="card-actions justify-end">
                   <button className="btn btn-primary btn-sm">
                     <ShoppingBag className="w-4 h-4 mr-1" />
                     Amazon
@@ -455,7 +462,7 @@ export function LowPorosityPageClient() {
                 <p className="text-sm mb-4">
                   A thick gel like a custard can elongate tighter patterns
                 </p>
-                <div className="flex flex-wrap gap-2">
+                <div className="card-actions justify-end">
                   <button className="btn btn-primary btn-sm">
                     <ShoppingBag className="w-4 h-4 mr-1" />
                     Amazon
@@ -479,7 +486,7 @@ export function LowPorosityPageClient() {
                   Use just a little of a light oil/serum to scrunch out the
                   crunch from gel when your hair is dry
                 </p>
-                <div className="flex flex-wrap gap-2">
+                <div className="card-actions justify-end">
                   <button className="btn btn-primary btn-sm">
                     <ShoppingBag className="w-4 h-4 mr-1" />
                     Amazon
