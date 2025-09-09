@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Mail, ShoppingBag } from 'lucide-react';
 import Image from 'next/image';
+import { ProductStepCard } from '@/components/ProductStepCard';
 
 export function LowPorosityPageClient() {
   const [email, setEmail] = useState('');
@@ -61,71 +62,44 @@ export function LowPorosityPageClient() {
             basics
           </p>
 
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
             {/* Cleansing */}
-            <div className="card card-side bg-base-200">
-              <figure className="relative w-full mx-auto bg-base-200/20">
-                <Image
-                  src="/images/porosity/odele.png"
-                  alt="Odele Clarifying Shampoo"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 40vw"
-                  className=" object-cover "
-                />
-              </figure>
-              <div className="card-body">
-                <h3 className="card-title text-xl">1. Cleansing</h3>
-                <p>
-                  The fatty outer layer of low porosity hair can attract buildup
-                  of oils from your scalp and products. I like to use a
-                  clarifying shampoo like Odele Clarifying at least once a week.
-                </p>
-                <div className="card-actions justify-end">
-                  <button className="btn btn-primary btn-sm">
-                    <ShoppingBag className="w-4 h-4 mr-1" />
-                    Buy on Amazon
-                  </button>
-                </div>
-              </div>
-            </div>
+            <ProductStepCard
+              stepNumber={1}
+              title="Cleansing"
+              imageSrc="/images/porosity/odele.png"
+              imageAlt="Odele Clarifying Shampoo"
+              buttonLink="https://amazon.com"
+            >
+              <p>
+                The fatty outer layer of low porosity hair can attract buildup
+                of oils from your scalp and products. I like to use a clarifying
+                shampoo like Odele Clarifying at least once a week.
+              </p>
+            </ProductStepCard>
 
             {/* Conditioning */}
-            <div className="card bg-base-200">
-              <div className="card-body">
-                <h3 className="card-title text-xl mb-4">2. Conditioning</h3>
-                <div className="flex gap-4 flex-col lg:flex-row">
-                  <figure className="flex-shrink-0">
-                    <Image
-                      src="/images/porosity/bigenergy.png"
-                      alt="Big Energy Shampoo & Conditioner"
-                      width={120}
-                      height={120}
-                      className="rounded-lg"
-                    />
-                  </figure>
-                  <p className="mb-4">
-                    Low porosity hair generally needs less conditioning, so opt
-                    for a lightweight conditioner like Curl Keeper Big Energy.
-                    The shampoo is also great for days you&apos;re not
-                    clarifying.
-                  </p>
-                </div>
-                <div className="card-actions justify-end ">
-                  <button className="btn btn-primary btn-sm">
-                    <ShoppingBag className="w-4 h-4 mr-1" />
-                    Buy on Amazon
-                  </button>
-                </div>
-              </div>
-            </div>
+            <ProductStepCard
+              stepNumber={2}
+              title="Conditioning"
+              imageSrc="/images/porosity/bigenergy.png"
+              imageAlt="Big Energy Shampoo & Conditioner"
+              buttonLink="https://amazon.com"
+            >
+              <p>
+                Low porosity hair generally needs less conditioning, so opt for
+                a lightweight conditioner like Curl Keeper Big Energy. The
+                shampoo is also great for days you're not clarifying.
+              </p>
+            </ProductStepCard>
 
             {/* CTA Section for Guide */}
             <div className="card bg-primary text-primary-content">
               <div className="card-body">
                 <h2 className="card-title text-2xl mb-4">
-                  Grab our free guide to lightweight products
+                  Find lightweight products anywhere!
                 </h2>
-                <div className="flex flex-col md:flex-row gap-6 items-center">
+                <div className="flex flex-col lg:flex-row gap-6 items-center">
                   <figure className="flex-shrink-0">
                     <Image
                       src="/images/porosity/book.png"
@@ -138,19 +112,17 @@ export function LowPorosityPageClient() {
                   <div className="card-actions justify-end">
                     <p className="mb-4">
                       It&apos;s perfect for finding light products in the
-                      drugstore.
-                      <br />
-                      Get it free when you subscribe to our (really useful)
+                      drugstore. Get it free when you subscribe to our
                       newsletter
                     </p>
                     <form
                       onSubmit={handleEmailSubmit}
-                      className="flex flex-col sm:flex-row gap-2 w-full max-w-md"
+                      className="flex flex-col lg:flex-row gap-2 w-full max-w-md"
                     >
                       <input
                         type="email"
                         placeholder="Enter your email"
-                        className="input input-bordered flex-1 w-full"
+                        className="input input-bordered flex-1 w-full "
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
@@ -166,99 +138,55 @@ export function LowPorosityPageClient() {
             </div>
 
             {/* Leave-in */}
-            <div className="card bg-base-200">
-              <div className="card-body">
-                <h3 className="card-title text-xl mb-4">3. Leave in</h3>
-                <div className="flex gap-4">
-                  <figure className="flex-shrink-0">
-                    <Image
-                      src="/images/porosity/eva.png"
-                      alt="Eva 10-in-1 Leave-in"
-                      width={120}
-                      height={120}
-                      className="rounded-lg"
-                    />
-                  </figure>
-                  <div className="card-actions justify-end">
-                    <p className="mb-4">
-                      You might not need leave-in but if you do its for{' '}
-                      <strong>protection</strong>, so your hair <strong>stays</strong> low
-                      porosity. You may need this more if you have finer hair,
-                      aging hair, or other textures prone to breakage. A light
-                      multi-purpose spray leave in like Eva 10-in-1 is perfect
-                      for this!
-                    </p>
-                    <button className="btn btn-primary btn-sm">
-                      <ShoppingBag className="w-4 h-4 mr-1" />
-                      Buy on Amazon
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <ProductStepCard
+              stepNumber={3}
+              title="Leave in"
+              imageSrc="/images/porosity/eva.png"
+              imageAlt="Eva 10-in-1 Leave-in"
+              buttonLink="https://amazon.com"
+            >
+              <p>
+                You might not need leave-in but if you do its for{' '}
+                <strong>protection</strong>, so your hair <strong>stays</strong>{' '}
+                low porosity. You may need this more if you have finer hair,
+                aging hair, or other textures prone to breakage. A light
+                multi-purpose spray leave in like Eva 10-in-1 is perfect for
+                this!
+              </p>
+            </ProductStepCard>
 
             {/* Stylers */}
-            <div className="card bg-base-200">
-              <div className="card-body">
-                <h3 className="card-title text-xl mb-4">4. Stylers</h3>
-                <div className="flex gap-4">
-                  <figure className="flex-shrink-0">
-                    <Image
-                      src="/images/porosity/xmondo.png"
-                      alt="XMondo Wavetech"
-                      width={120}
-                      height={120}
-                      className="rounded-lg"
-                    />
-                  </figure>
-                  <div className="card-actions justify-end">
-                    <p className="mb-4">
-                      Also optional, opt for lighter options like mousses, gels,
-                      and custards. One we love is XMondo Wavetech! If your hair
-                      needs an oil we recommend using serums emulsions labeled
-                      &quot;lightweight&quot; like Verb Ghost Oil.
-                    </p>
-                    <button className="btn btn-primary btn-sm">
-                      <ShoppingBag className="w-4 h-4 mr-1" />
-                      Buy on Amazon
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <ProductStepCard
+              stepNumber={4}
+              title="Stylers"
+              imageSrc="/images/porosity/xmondo.png"
+              imageAlt="XMondo Wavetech"
+              buttonLink="https://amazon.com"
+            >
+              <p>
+                Also optional, opt for lighter options like mousses, gels, and
+                custards. One we love is XMondo Wavetech! If your hair needs an
+                oil we recommend using serums emulsions labeled
+                &quot;lightweight&quot; like Verb Ghost Oil.
+              </p>
+            </ProductStepCard>
 
             {/* Deep Conditioning */}
-            <div className="card bg-base-200">
-              <div className="card-body">
-                <h3 className="card-title text-xl mb-4">
-                  5. Deep Conditioning
-                </h3>
-                <div className="flex gap-4">
-                  <figure className="flex-shrink-0">
-                    <Image
-                      src="/images/porosity/mask.png"
-                      alt="Deep Conditioning Mask"
-                      width={120}
-                      height={120}
-                      className="rounded-lg"
-                    />
-                  </figure>
-                  <div className="card-actions justify-end">
-                    <p className="mb-4">
-                      It&apos;s a myth that low porosity hair is always smooth
-                      and soft. It can be coarse and even feel &quot;dry&quot;
-                      due to other factors like hair texture or age. Deep
-                      conditioning will soften hair nicely, but you&apos;ll want
-                      to use heat to help it penetrate.
-                    </p>
-                    <button className="btn btn-primary btn-sm">
-                      <ShoppingBag className="w-4 h-4 mr-1" />
-                      Buy on Amazon
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <ProductStepCard
+              stepNumber={5}
+              title="Deep Conditioning"
+              imageSrc="/images/porosity/mask.png"
+              imageAlt="Deep Conditioning Mask"
+              buttonLink="https://amazon.com"
+            >
+              <p>
+                It&apos;s a myth that low porosity hair is always smooth and
+                soft. It can be coarse and even feel &quot;dry&quot; due to
+                other factors like hair texture or age. Deep conditioning will
+                soften hair nicely, but you&apos;ll want to use heat to help it
+                penetrate.
+              </p>
+            </ProductStepCard>
           </div>
         </div>
       </div>
