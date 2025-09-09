@@ -57,9 +57,8 @@ export function LowPorosityPageClient() {
         <div className="card-body">
           <h2 className="card-title text-2xl mb-4">Low Porosity 101</h2>
           <p className="mb-6">
-            Our full guide coming soon will offer a more extensive exploration
-            of low porosity hair and how to make a routine but here are some
-            basics
+            Our full guide coming soon will offer more detailed information, but
+            here are some basics.
           </p>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -69,7 +68,7 @@ export function LowPorosityPageClient() {
               title="Cleansing"
               imageSrc="/images/porosity/odele.png"
               imageAlt="Odele Clarifying Shampoo"
-              buttonLink="https://amazon.com"
+              buttonLink="https://amzn.to/47vQbTX"
             >
               <p>
                 The fatty outer layer of low porosity hair can attract buildup
@@ -84,12 +83,12 @@ export function LowPorosityPageClient() {
               title="Conditioning"
               imageSrc="/images/porosity/bigenergy.png"
               imageAlt="Big Energy Shampoo & Conditioner"
-              buttonLink="https://amazon.com"
+              buttonLink="https://amzn.to/4nnNxUQ"
             >
               <p>
                 Low porosity hair generally needs less conditioning, so opt for
                 a lightweight conditioner like Curl Keeper Big Energy. The
-                shampoo is also great for days you're not clarifying.
+                shampoo is also great for days you&apos;re not clarifying.
               </p>
             </ProductStepCard>
 
@@ -117,17 +116,20 @@ export function LowPorosityPageClient() {
                     </p>
                     <form
                       onSubmit={handleEmailSubmit}
-                      className="flex flex-col lg:flex-row gap-2 w-full max-w-md"
+                      className="flex flex-col sm:flex-row gap-2 w-full "
                     >
                       <input
                         type="email"
                         placeholder="Enter your email"
-                        className="input input-bordered flex-1 w-full "
+                        className="input input-bordered w-full sm:flex-1"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
                       />
-                      <button type="submit" className="btn btn-secondary">
+                      <button
+                        type="submit"
+                        className="btn btn-secondary w-full sm:w-auto"
+                      >
                         <Mail className="w-4 h-4 mr-2" />
                         Subscribe
                       </button>
@@ -143,7 +145,7 @@ export function LowPorosityPageClient() {
               title="Leave in"
               imageSrc="/images/porosity/eva.png"
               imageAlt="Eva 10-in-1 Leave-in"
-              buttonLink="https://amazon.com"
+              buttonLink="https://amzn.to/4mVlwEi"
             >
               <p>
                 You might not need leave-in but if you do its for{' '}
@@ -161,13 +163,15 @@ export function LowPorosityPageClient() {
               title="Stylers"
               imageSrc="/images/porosity/xmondo.png"
               imageAlt="XMondo Wavetech"
-              buttonLink="https://amazon.com"
+              buttonLink="https://amzn.to/3V9PxUU"
             >
               <p>
                 Also optional, opt for lighter options like mousses, gels, and
                 custards. One we love is XMondo Wavetech! If your hair needs an
                 oil we recommend using serums emulsions labeled
-                &quot;lightweight&quot; like Verb Ghost Oil.
+                &quot;lightweight&quot; like Verb Ghost Oil. If tangly/coarse
+                hair, I love Curl Wow Flo-etry, which is the lighest cream I've
+                ever tested.
               </p>
             </ProductStepCard>
 
@@ -177,7 +181,7 @@ export function LowPorosityPageClient() {
               title="Deep Conditioning"
               imageSrc="/images/porosity/mask.png"
               imageAlt="Deep Conditioning Mask"
-              buttonLink="https://amazon.com"
+              buttonLink="https://amzn.to/3Vc2a1D"
             >
               <p>
                 It&apos;s a myth that low porosity hair is always smooth and
@@ -203,9 +207,9 @@ export function LowPorosityPageClient() {
               finding what works for your hair.
             </p>
             <div className="flex justify-center">
-              <button className="bg-teal-600 hover:bg-teal-700 hover:shadow-md text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200">
+              <a href="https://curlsmonthly.com/?ref=curlsbot" className="bg-teal-600 hover:bg-teal-700 hover:shadow-md text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200">
                 Subscribe to Curls Monthly
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -216,8 +220,10 @@ export function LowPorosityPageClient() {
         <div className="card-body text-center">
           <p className="flex items-center justify-center gap-2">
             <ShoppingBag className="w-4 h-4 shrink-0" />
-            Product links are affiliate links we earn a small commission if you
-            buy through them
+            All products featured on CurlsBot are independently and thoughtfully
+            selected by us. However, when you buy something through our retail
+            links, we may earn an affiliate commission. This helps us keep
+            CurlsBot running. We thank you for your support!
           </p>
         </div>
       </div>
