@@ -1,20 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Mail, ShoppingBag } from 'lucide-react';
+import { ArrowLeft, ShoppingBag } from 'lucide-react';
 import Image from 'next/image';
 import { ProductStepCard } from '@/components/ProductStepCard';
+import LightProductsEmailSignup from '@/components/LightProductsEmailSignup';
 
 export function LowPorosityPageClient() {
-  const [email, setEmail] = useState('');
-
-  const handleEmailSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle email submission
-    console.log('Email submitted:', email);
-  };
-
   return (
     <div className="container mx-auto py-8 px-4 space-y-8">
       {/* Back to Quiz Button */}
@@ -93,51 +86,7 @@ export function LowPorosityPageClient() {
             </ProductStepCard>
 
             {/* CTA Section for Guide */}
-            <div className="card bg-primary text-primary-content">
-              <div className="card-body">
-                <h2 className="card-title text-2xl mb-4">
-                  Find lightweight products anywhere!
-                </h2>
-                <div className="flex flex-col lg:flex-row gap-6 items-center">
-                  <figure className="flex-shrink-0">
-                    <Image
-                      src="/images/porosity/book.png"
-                      alt="Lightweight Products Guide"
-                      width={120}
-                      height={120}
-                      className="rounded-lg"
-                    />
-                  </figure>
-                  <div className="card-actions justify-end">
-                    <p className="mb-4">
-                      It&apos;s perfect for finding light products in the
-                      drugstore. Get it free when you subscribe to our
-                      newsletter
-                    </p>
-                    <form
-                      onSubmit={handleEmailSubmit}
-                      className="flex flex-col sm:flex-row gap-2 w-full "
-                    >
-                      <input
-                        type="email"
-                        placeholder="Enter your email"
-                        className="input input-bordered w-full sm:flex-1"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                      />
-                      <button
-                        type="submit"
-                        className="btn btn-secondary w-full sm:w-auto"
-                      >
-                        <Mail className="w-4 h-4 mr-2" />
-                        Subscribe
-                      </button>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <LightProductsEmailSignup />
 
             {/* Leave-in */}
             <ProductStepCard
@@ -170,8 +119,8 @@ export function LowPorosityPageClient() {
                 custards. One we love is XMondo Wavetech! If your hair needs an
                 oil we recommend using serums emulsions labeled
                 &quot;lightweight&quot; like Verb Ghost Oil. If tangly/coarse
-                hair, I love Curl Wow Flo-etry, which is the lighest cream I've
-                ever tested.
+                hair, I love Curl Wow Flo-etry, which is the lighest cream
+                I&apos;ve ever tested.
               </p>
             </ProductStepCard>
 
@@ -207,7 +156,10 @@ export function LowPorosityPageClient() {
               finding what works for your hair.
             </p>
             <div className="flex justify-center">
-              <a href="https://curlsmonthly.com/?ref=curlsbot" className="bg-teal-600 hover:bg-teal-700 hover:shadow-md text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200">
+              <a
+                href="https://curlsmonthly.com/?ref=curlsbot"
+                className="bg-teal-600 hover:bg-teal-700 hover:shadow-md text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200"
+              >
                 Subscribe to Curls Monthly
               </a>
             </div>
