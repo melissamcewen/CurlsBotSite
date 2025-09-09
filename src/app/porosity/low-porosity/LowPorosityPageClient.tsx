@@ -128,7 +128,7 @@ export function LowPorosityPageClient() {
                 <div className="flex flex-col md:flex-row gap-6 items-center">
                   <figure className="flex-shrink-0">
                     <Image
-                      src="/images/porosity/bigenergy.png"
+                      src="/images/porosity/book.png"
                       alt="Lightweight Products Guide"
                       width={120}
                       height={120}
@@ -181,8 +181,8 @@ export function LowPorosityPageClient() {
                   </figure>
                   <div className="card-actions justify-end">
                     <p className="mb-4">
-                      You might not need this but if you do its for{' '}
-                      <strong>protection</strong>, so your hair stays low
+                      You might not need leave-in but if you do its for{' '}
+                      <strong>protection</strong>, so your hair <strong>stays</strong> low
                       porosity. You may need this more if you have finer hair,
                       aging hair, or other textures prone to breakage. A light
                       multi-purpose spray leave in like Eva 10-in-1 is perfect
@@ -264,19 +264,22 @@ export function LowPorosityPageClient() {
       </div>
 
       {/* Curls Monthly CTA */}
-      <div className="card bg-secondary text-secondary-content">
-        <div className="card-body text-center">
-          <h2 className="card-title text-2xl mb-4 justify-center">
-            All these recommendations and more are available at Curls Monthly
-          </h2>
-          <p className="mb-6">
-            A curated subscription service for wavy and curly hair that lets you
-            try tons of amazing products. It takes so much of the guesswork out
-            of finding products that work.
-          </p>
-          <button className="btn btn-primary btn-lg">
-            Subscribe to Curls Monthly
-          </button>
+      <div className="flex justify-center">
+        <div className="card bg-gradient-to-br from-pink-200 to-white rounded-2xl p-8 md:p-12 max-w-2xl w-full">
+          <div className="card-body text-center p-0">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+              Get these (and more) with Curls Monthly
+            </h2>
+            <p className="text-base md:text-lg text-gray-700 max-w-lg mx-auto mb-6">
+              Curls Monthly is a subscription that takes the guesswork out of
+              finding what works for your hair.
+            </p>
+            <div className="flex justify-center">
+              <button className="bg-teal-600 hover:bg-teal-700 hover:shadow-md text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200">
+                Subscribe to Curls Monthly
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
