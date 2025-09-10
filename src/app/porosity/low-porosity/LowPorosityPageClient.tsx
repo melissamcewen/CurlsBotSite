@@ -66,7 +66,15 @@ export function LowPorosityPageClient() {
               <p>
                 The fatty outer layer of low porosity hair can attract buildup
                 of oils from your scalp and products. I like to use a clarifying
-                shampoo like Odele Clarifying at least once a week.
+                shampoo like{' '}
+                <a
+                  href="https://amzn.to/47vQbTX"
+                  target="_blank"
+                  className="link-primary"
+                >
+                  Odele Clarifying
+                </a>{' '}
+                at least once a week.
               </p>
             </ProductStepCard>
 
@@ -80,13 +88,20 @@ export function LowPorosityPageClient() {
             >
               <p>
                 Low porosity hair generally needs less conditioning, so opt for
-                a lightweight conditioner like Curl Keeper Big Energy. The
-                shampoo is also great for days you&apos;re not clarifying.
+                a lightweight conditioner like{' '}
+                <a
+                  href="https://amzn.to/4nnNxUQ"
+                  target="_blank"
+                  className="link-primary"
+                >
+                  Curl Keeper Big Energy
+                </a>
+                . The shampoo is also great for days you&apos;re not clarifying.
               </p>
             </ProductStepCard>
 
             {/* CTA Section for Guide */}
-            <LightProductsEmailSignup />
+            <LightProductsEmailSignup porosityType="low-porosity" />
 
             {/* Leave-in */}
             <ProductStepCard
@@ -101,8 +116,15 @@ export function LowPorosityPageClient() {
                 <strong>protection</strong>, so your hair <strong>stays</strong>{' '}
                 low porosity. You may need this more if you have finer hair,
                 aging hair, or other textures prone to breakage. A light
-                multi-purpose spray leave in like Eva 10-in-1 is perfect for
-                this!
+                multi-purpose spray leave in like{' '}
+                <a
+                  href="https://amzn.to/4mVlwEi"
+                  target="_blank"
+                  className="link-primary"
+                >
+                  Eva 10-in-1
+                </a>{' '}
+                is perfect for this!
               </p>
             </ProductStepCard>
 
@@ -116,11 +138,25 @@ export function LowPorosityPageClient() {
             >
               <p>
                 Also optional, opt for lighter options like mousses, gels, and
-                custards. One we love is XMondo Wavetech! If your hair needs an
-                oil we recommend using serums emulsions labeled
-                &quot;lightweight&quot; like Verb Ghost Oil. If tangly/coarse
-                hair, I love Curl Wow Flo-etry, which is the lighest cream
-                I&apos;ve ever tested.
+                custards. One we love is{' '}
+                <a
+                  href="https://amzn.to/3V9PxUU"
+                  target="_blank"
+                  className="link-primary"
+                >
+                  XMondo Wavetech
+                </a>
+                ! If your hair needs an oil we recommend using serums emulsions
+                labeled &quot;lightweight&quot; like Verb Ghost Oil. If
+                tangly/coarse hair, I love{' '}
+                <a
+                  href="https://amzn.to/48bKfQd"
+                  target="_blank"
+                  className="link-primary"
+                >
+                  Curl Wow Flo-etry
+                </a>
+                , which is the lighest cream I&apos;ve ever tested.
               </p>
             </ProductStepCard>
 
@@ -135,9 +171,24 @@ export function LowPorosityPageClient() {
               <p>
                 It&apos;s a myth that low porosity hair is always smooth and
                 soft. It can be coarse and even feel &quot;dry&quot; due to
-                other factors like hair texture or age. Deep conditioning will
-                soften hair nicely, but you&apos;ll want to use heat to help it
-                penetrate.
+                other factors like hair texture or age. A deep conditioner like{' '}
+                <a
+                  href="https://amzn.to/3Vc2a1D"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-primary"
+                >
+                  Rahua&apos;s
+                </a>{' '}
+                will soften hair nicely. Ideally use heat (like a{' '}
+                <a
+                  href="https://amzn.to/3JQlMpL"
+                  target="_blank"
+                  className="link-primary"
+                >
+                  heat cap
+                </a>
+                ) to help it penetrate.
               </p>
             </ProductStepCard>
           </div>

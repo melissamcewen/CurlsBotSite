@@ -4,6 +4,8 @@ this app uses a flat rounded design style so no shadows or sharp edges, also no 
 
 use lucide icons
 
+don't add noreferrer noopener to links
+
 tests go in the tests/src library
 
 tests should mainly be smoke tests, we're just trying to make sure nothing is broken. Don't focus on specific text in tests.

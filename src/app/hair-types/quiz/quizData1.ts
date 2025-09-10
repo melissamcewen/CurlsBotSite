@@ -136,37 +136,7 @@ export const type1Questions: Question[] = [
     ],
   },
 
-  /*
-  {
-    section: '1bvs1ac',
-    question: 'Can you easily curl your hair with a curling iron?',
-    answers: [
-      {
-        content: 'Yes',
-        nextSection: '1avs1b',
-      },
-      {
-        content: 'No',
-        result: '1c',
-      },
-    ],
-  },
-  {
-    section: '1bvs1ac',
-    question:
-      "Do you think your hair grows faster than other people's hair on average",
-    answers: [
-      {
-        content: 'No',
-        nextSection: '1avs1b',
-      },
-      {
-        content: 'Yes',
-        result: '1c',
-      },
-    ],
-  },
-*/
+
   // Section: Type 1A vs 1C final determination
   {
     section: '1avs1c',
@@ -217,55 +187,5 @@ export const type1Questions: Question[] = [
     ],
   },
 
-  /*
-  {
-    section: '1avs1b',
-    question: 'Do heatless curls work well in your hair?',
-    answers: [
-      {
-        content: 'Yes',
-        result: '1b',
-      },
-      {
-        content: 'No',
-        result: '1a',
-      },
-      {
-        content: "I've never tried heatless curls",
-      },
-    ],
-  },
-  {
-    section: '1avs1b',
-    question:
-      'Do you get "triangle hair" (where hair is flat on top and wide at the bottom)?',
-    answers: [
-      {
-        content: 'Yes',
-        result: '1b',
-      },
-      {
-        content: 'No',
-        result: '1a',
-      },
-      {
-        content: "I'm not sure",
-      },
-    ],
-  },
-  {
-    section: '1avs1b',
-    question: 'Is frizz a major problem for you?',
-    answers: [
-      {
-        content: 'Yes',
-        result: '1b',
-      },
-      {
-        content: 'No',
-        result: '1a',
-      },
-    ],
-  },
-  */
+ 
 ];
