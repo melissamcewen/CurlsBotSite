@@ -338,11 +338,7 @@ export interface SebdermAnalysis extends ExtensionAnalysis {
           </div>
         )}
         {porosityScores.low >= POROSITY_THRESHOLDS.LIGHTWEIGHT && (
-          <div
-            className={`p-4 rounded-lg ${
-              getStatusClasses(getPorosityStatus(porosityScores.low)).bg
-            }`}
-          >
+          <div className={`p-4 rounded-lg ${getStatusClasses('ok').bg}`}>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Droplet className="w-6 h-6" />
@@ -363,7 +359,7 @@ export interface SebdermAnalysis extends ExtensionAnalysis {
               </div>
               <div
                 className={`flex items-end gap-2 ${
-                  getStatusClasses(getPorosityStatus(porosityScores.low)).text
+                  getStatusClasses('ok').text
                 }`}
               >
                 <span className="text-md font-medium">Yes</span>
