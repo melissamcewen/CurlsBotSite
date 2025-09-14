@@ -77,7 +77,7 @@ export default function CGMHub() {
               <li>No sulfates (in shampoos)</li>
               <li>No silicones</li>
               <li>No waxes</li>
-              <li>Avoid drying alcohols</li>
+              <li>Avoid volatile alcohols</li>
             </ul>
             <div className="card-actions justify-end w-full mt-auto">
               <a

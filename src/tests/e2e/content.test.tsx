@@ -21,9 +21,9 @@ jest.mock('haircare-ingredients-analyzer', () => ({
         name: 'Silicones',
         group: 'others',
       },
-      drying_alcohols: {
-        id: 'drying_alcohols',
-        name: 'Drying Alcohols',
+      volatile_alcohols: {
+        id: 'volatile_alcohols',
+        name: 'Volatile Alcohols',
         group: 'alcohols',
       },
     },
@@ -73,10 +73,10 @@ describe('Content Pages Smoke Tests', () => {
   });
 
   it('category page renders without crashing', async () => {
-    const params = { name: 'drying-alcohols' };
+    const params = { name: 'volatile-alcohols' };
     render(await CategoryPage({ params: Promise.resolve(params) }));
     expect(
-      screen.getByRole('heading', { name: /drying alcohols/i, level: 1 }),
+      screen.getByRole('heading', { name: /volatile alcohols/i, level: 1 }),
     ).toBeInTheDocument();
   });
 

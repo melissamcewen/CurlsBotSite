@@ -44,7 +44,7 @@ const GUIDE_URLS: Record<string, string> = {
   Astringents: '/categories/astringents',
   Petroleum: '/categories/petroleum-oils',
   Parabens: '/categories/parabens',
-  'Drying Alcohols': '/groups/alcohols',
+  'Volatile Alcohols': '/groups/alcohols',
 };
 
 // Add function to get status color based on score
@@ -134,10 +134,10 @@ export interface SebdermAnalysis extends ExtensionAnalysis {
         return 'Contains Petroleum Oils';
       case 'Parabens':
         return 'Contains Parabens';
-      case 'Drying Alcohols':
+      case 'Volatile Alcohols':
         return item.status === 'ok'
           ? 'Drying Alcohol Free'
-          : 'Contains Drying Alcohols';
+          : 'Contains Volatile Alcohols';
       default:
         return item.status === 'ok' ? 'OK' : item.status;
     }
@@ -186,8 +186,8 @@ export interface SebdermAnalysis extends ExtensionAnalysis {
       show: true,
     },
     {
-      label: 'Drying Alcohols',
-      status: hasReason('drying_alcohol')
+      label: 'Volatile Alcohols',
+      status: hasReason('volatile_alcohol')
         ? ('warning' as const)
         : ('ok' as const),
       icon: <SprayCan className="w-6 h-6" />,

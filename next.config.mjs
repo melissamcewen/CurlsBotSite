@@ -70,6 +70,11 @@ const nextConfig = {
         permanent: true, // 308 status code
       },
       {
+        source: '/categories/drying-alcohols',
+        destination: '/categories/volatile-alcohols',
+        permanent: true, // 308 status code
+      },
+      {
         source: '/cg-lite',
         destination: '/porosity/low-porosity',
         permanent: true, // 308 status code

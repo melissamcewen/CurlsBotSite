@@ -20,7 +20,7 @@ interface GroupedFindings {
 const SETTING_GUIDES: Record<string, string> = {
   sulfate_free: '/categories/sulfates',
   paraben_caution: '/categories/parabens',
-  drying_alcohol: '/groups/alcohols',
+  volatile_alcohol: '/groups/alcohols',
   mild_surfactants_only: '/groups/surfactants',
   mild_surfactants_caution_others: '/groups/surfactants',
   no_water_insoluble_silicones: '/groups/silicones',
