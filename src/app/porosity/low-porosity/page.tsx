@@ -4,7 +4,7 @@ import { LowPorosityPageClient } from './LowPorosityPageClient';
 export const metadata: Metadata = {
   title: 'Low Porosity Hair Guide and Best Products | CurlsBot',
   description:
-    "Low porosity hair has a smooth cuticle and an oily F-layer that blocks water and products from entering. That's why light products work best — heavy oils and butters tend to just sit on top and can make hair look greasy and stringy.",
+    "Low porosity hair has a smooth cuticle and an oily F-layer that blocks water and products from entering. That's why light products work best, heavy oils and butters tend to just sit on top and can make hair look greasy and stringy.",
   robots: {
     index: true,
     follow: true,
