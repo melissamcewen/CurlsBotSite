@@ -43,23 +43,23 @@ export const CATEGORY_DESCRIPTIONS: Record<ProductCategory, string> = {
   shampoos:
     'Cleansers that remove buildup and oil from your hair. Essential for low-porosity hair and should be used on other porosity types at least occasionally.',
   conditioners:
-    'Products that add moisture and help detangle hair. Almost everyone needs conditioner!',
+    'Products that add protection, softness, and shine, as well as helping to detangle hair. Almost everyone needs conditioner!',
   cowashes:
     'Gentle, non-lathering cleansers that clean without stripping natural oils. Use these for daily wash if you have high-porosity hair.',
   deep_conditioners:
     'Intensive treatments that restore moisture and repair damage. Essential at least weekly for high porosity hair and good for all porosity types occasionally.',
   leave_ins:
-    'Light conditioners that stay in your hair to provide ongoing moisture. Most important for high-porosity hair. May weigh down low-porosity hair.',
+    'Light conditioners that stay in your hair to provide ongoing protection and softness. Most important for high-porosity hair. May weigh down low-porosity hair.',
   creams:
-    'Rich moisturizers that help define and shape curls, and provide a barrier to protect against moisture loss. Essential for high-porosity hair. May weigh down low-porosity hair.',
+    'Rich moisturizers that help define and shape curls, and provide a barrier to protect against damage. Essential for high-porosity hair. May weigh down low-porosity hair.',
   gels: 'Styling products that provide hold and definition. Useful for all porosity types.',
   foams:
     'Light styling products that add volume and definition without weight. A great option for low-porosity hair.',
   custards:
-    'Thick styling products that provide moisture and definition. Useful for all porosity types.',
-  oils: 'Optional finishing products that can help seal in moisture. Best for high porosity hair.',
+    'Thick styling products that provide hold and definition. Useful for all porosity types.',
+  oils: 'Optional finishing products that can help provide more protection and shine. Best for high porosity hair.',
   sprays:
-    'Optional finishing products that can help seal in moisture and lock in styles.',
+    'Optional finishing products that can help provide more protection and shine. Best for high porosity hair.',
   accessories: 'Useful items for anyone with curly or wavy hair.',
   all: 'All product categories.',
   treatments:

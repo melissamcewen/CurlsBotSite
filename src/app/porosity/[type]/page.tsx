@@ -32,20 +32,21 @@ const POROSITY_DATA: Record<string, PorosityInfo> = {
   'high-porosity': {
     title: 'High Porosity Hair Guide and Best Products',
     description:
-      'High porosity hair has a raised or damaged cuticle layer, allowing moisture to easily enter and exit the hair shaft. This type of hair can become easily moisturized but also loses moisture quickly.',
+      'High porosity hair has a raised or damaged cuticle layer, allowing moisture to easily enter and exit the hair shaft. This type of hair absorbs water and products quickly but also loses moisture quickly. It also has a missing or damaged lipid layer, which means it needs more conditioning to protect it and make it feel healthy.',
     characteristics: [
       'Absorbs water and products quickly',
       'Dries very quickly',
       'Prone to frizz and tangles',
-      'Can become overly moisturized easily',
       'May look dull without proper care',
+      'Products made with plain oils/butters may not work as well as those with positively charged conditioning agents',
     ],
     tips: [
-      'Use leave-in conditioners and oils to seal in moisture',
-      'Deep condition regularly',
+      'Use leave-in conditioners to protect the hair from further damage',
+      'Be gentle with your hair when styling and protect it from friction with bonnets/silk pillowcases when you sleep',
+      'Consider bonding products to help repair the hair',
       'Look for products with positively charged conditioning agents that bond to damaged hair like behentrimonium chloride',
-      'Use anti-humectants in humid weather',
-      'Consider using protein treatments to strengthen hair',
+      'Look for products specifically formulated for damaged hair',
+      'If using heat, always use a heat protectant',
     ],
   },
   'normal-porosity': {

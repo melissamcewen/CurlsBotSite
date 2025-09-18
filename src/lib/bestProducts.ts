@@ -61,7 +61,7 @@ export const BEST_PRODUCT_PAGES: BestProductPage[] = [
     slug: 'best-wavy-creams',
     title: 'The Best Creams for Wavy Hair',
     description:
-      'These creams are perfect for wavy hair, with enough moisture to keep waves hydrated, but so heavy that they weigh down waves',
+      'These creams are perfect for wavy hair, with enough conditioning to keep waves soft and smooth, but not so heavy that they weigh down waves',
     category: 'creams',
     filters: {
       tags: ['wavy'],
