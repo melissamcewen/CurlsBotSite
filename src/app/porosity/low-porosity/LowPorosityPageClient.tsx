@@ -50,8 +50,15 @@ export function LowPorosityPageClient() {
         <div className="card-body">
           <h2 className="card-title text-2xl mb-4">Low Porosity 101</h2>
           <p className="mb-6">
-            Our full guide coming soon will offer more detailed information, but
-            here are some basics.
+            Low porosity just means undamaged hair and doesn&apos;t tell us much
+            about what products you should use, just that you DON&apos;T need
+            anything formulated for damaged hair. This is a general routine that
+            will work for many people, but if you want something more specific
+            take our {' '}
+            <Link href="/hair-types/quiz" className="link-primary">
+              hair types quiz
+            </Link>
+            .
           </p>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -138,7 +145,7 @@ export function LowPorosityPageClient() {
             >
               <p>
                 Also optional, opt for lighter options like mousses, gels, and
-                custards. One we love is{' '}
+                custards if you have easily weighed down hair, and creams if you have hair that needs a bit more conditioning. One mousse we love is{' '}
                 <a
                   href="https://amzn.to/3V9PxUU"
                   target="_blank"
