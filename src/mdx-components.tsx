@@ -12,6 +12,7 @@ import { AuthorBio } from '@/components/mdx/AuthorBio';
 import RoutineTable from '@/components/mdx/RoutineTable';
 import ProductComparisonTable from '@/components/mdx/ProductComparisonTable';
 import NewsletterSignup from '@/components/mdx/NewsletterSignup';
+import AbbeyYungMethodTable from '@/components/mdx/AbbeyYungMethodTable';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -27,6 +28,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     RoutineTable,
     ProductComparisonTable,
     NewsletterSignup,
+    AbbeyYungMethodTable,
     ...components,
   };
 }

@@ -34,13 +34,30 @@ export function BlogProduct({
   return (
     <div className="card md:card-side cb-border not-prose mb-4  bg-neutral-50">
       <figure className="relative w-full md:w-[40%] h-[350px] mx-auto bg-base-200/20">
-        <Image
-          src={image}
-          alt={name}
-          fill
-          sizes="(max-width: 768px) 100vw, 40vw"
-          className="object-contain md:object-cover rounded-t-lg md:rounded-l-lg md:rounded-t-none"
-        />
+        {amazonLink ? (
+          <a
+            href={amazonLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block w-full h-full"
+          >
+            <Image
+              src={image}
+              alt={name}
+              fill
+              sizes="(max-width: 768px) 100vw, 40vw"
+              className="object-contain md:object-cover rounded-t-lg md:rounded-l-lg md:rounded-t-none hover:opacity-90 transition-opacity"
+            />
+          </a>
+        ) : (
+          <Image
+            src={image}
+            alt={name}
+            fill
+            sizes="(max-width: 768px) 100vw, 40vw"
+            className="object-contain md:object-cover rounded-t-lg md:rounded-l-lg md:rounded-t-none"
+          />
+        )}
       </figure>
       <div className="card-body flex flex-col md:w-[60%] p-4">
         <div className="space-y-2">
