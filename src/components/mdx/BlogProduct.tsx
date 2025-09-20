@@ -33,7 +33,7 @@ export function BlogProduct({
 }: BlogProductProps) {
   return (
     <div className="card md:card-side cb-border not-prose mb-4  bg-neutral-50">
-      <figure className="relative w-full md:w-[40%] h-[350px] mx-auto bg-base-200/20">
+      <figure className="relative w-full md:w-[40%] h-[200px] md:h-[350px] mx-auto bg-base-200/20">
         {amazonLink ? (
           <a
             href={amazonLink}
@@ -59,44 +59,50 @@ export function BlogProduct({
           />
         )}
       </figure>
-      <div className="card-body flex flex-col md:w-[60%] p-4">
-        <div className="space-y-2">
-          <div className="card-title text-xl">{name}</div>
+      <div className="card-body flex flex-col md:w-[60%] p-3 md:p-4">
+        <div className="space-y-1 md:space-y-2">
+          <div className="card-title text-lg md:text-xl">{name}</div>
           {subtitle && (
-            <p className="text-lg text-base-content/80">{subtitle}</p>
+            <p className="text-sm md:text-lg text-base-content/80">
+              {subtitle}
+            </p>
           )}
         </div>
 
-        <div className="flex flex-wrap gap-2 mb-4">
+        <div className="flex flex-wrap gap-1 md:gap-2 mb-2 md:mb-4">
           {cgmApproved && (
-            <div className="badge badge-outline badge-info gap-1 whitespace-nowrap">
-              <CheckCircle className="w-4 h-4" />
+            <div className="badge badge-outline badge-info gap-1 whitespace-nowrap text-xs">
+              <CheckCircle className="w-3 h-3 md:w-4 md:h-4" />
               <Link href="/curly-girl-method" className="link">
                 CGM Approved
               </Link>
             </div>
           )}
           {sulfateFree && (
-            <span className="badge badge-info">Sulfate Free</span>
+            <span className="badge badge-info text-xs">Sulfate Free</span>
           )}
           {siliconeFree && (
-            <span className="badge badge-info">Silicone Free</span>
+            <span className="badge badge-info text-xs">Silicone Free</span>
           )}
         </div>
 
-        {description && <p className="text-base-content/80">{description}</p>}
+        {description && (
+          <p className="text-sm md:text-base text-base-content/80">
+            {description}
+          </p>
+        )}
 
-        <div className="card-actions flex-col gap-2 mt-auto w-full max-w-md mx-auto">
+        <div className="card-actions flex-col gap-1 md:gap-2 mt-auto w-full max-w-md mx-auto">
           {(buyLink || amazonLink || sample) && (
-            <div className="flex flex-col gap-2 w-full">
+            <div className="flex flex-col gap-1 md:gap-2 w-full">
               {buyLink && (
                 <a
                   href={buyLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn-secondary btn-sm flex items-center justify-center gap-2 w-full"
+                  className="btn btn-secondary btn-xs md:btn-sm flex items-center justify-center gap-1 md:gap-2 w-full"
                 >
-                  <ShoppingCart className="w-5 h-5" />
+                  <ShoppingCart className="w-4 h-4 md:w-5 md:h-5" />
                   {buyText}
                 </a>
               )}
@@ -105,9 +111,9 @@ export function BlogProduct({
                   href={amazonLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn-secondary btn-sm flex items-center justify-center gap-2 w-full"
+                  className="btn btn-secondary btn-xs md:btn-sm flex items-center justify-center gap-1 md:gap-2 w-full"
                 >
-                  <ShoppingCart className="w-5 h-5" />
+                  <ShoppingCart className="w-4 h-4 md:w-5 md:h-5" />
                   Buy on Amazon
                 </a>
               )}
@@ -116,9 +122,9 @@ export function BlogProduct({
                   href="https://curlsmonthly.com/?ref=curlsbot"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn-accent btn-sm flex items-center justify-center gap-2 w-full"
+                  className="btn btn-accent btn-xs md:btn-sm flex items-center justify-center gap-1 md:gap-2 w-full"
                 >
-                  <Sparkles className="w-5 h-5" />
+                  <Sparkles className="w-4 h-4 md:w-5 md:h-5" />
                   Try a sample
                 </a>
               )}
@@ -128,9 +134,9 @@ export function BlogProduct({
           {ingredients && ingredients.length > 0 && (
             <Link
               href={`/analyzer?ingredients=${encodeURIComponent(ingredients)}`}
-              className="btn btn-primary btn-sm w-full flex items-center justify-center gap-2"
+              className="btn btn-primary btn-xs md:btn-sm w-full flex items-center justify-center gap-1 md:gap-2"
             >
-              <Search className="w-5 h-5" />
+              <Search className="w-4 h-4 md:w-5 md:h-5" />
               Analyze with Curlsbot
             </Link>
           )}
