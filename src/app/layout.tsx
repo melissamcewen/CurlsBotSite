@@ -9,6 +9,7 @@ import {
   GoogleTagManagerBody,
 } from '@/components/GoogleTagManager';
 import { AdScripts } from '@/components/ads/AdScripts';
+import { EmailDetectionScript } from '@/components/EmailDetectionScript';
 import { LocalizationProvider } from '@/contexts/LocalizationContext';
 import { MailerLiteUniversal } from '@/components/MailerLite';
 
@@ -184,6 +185,7 @@ export default function RootLayout({
           `}
         </Script>
 
+        <EmailDetectionScript />
         <AdScripts />
       </head>
       <body
