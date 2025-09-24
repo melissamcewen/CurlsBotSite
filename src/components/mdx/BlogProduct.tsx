@@ -113,7 +113,7 @@ export function BlogProduct({
                       const mockProduct = {
                         id: name.toLowerCase().replace(/\s+/g, '-'),
                         name,
-                        brand: subtitle || '',
+                        brand: '', // Don't use subtitle as brand to avoid concatenation issues
                         product_categories: [],
                         buy_links: [{ url: buyLink, retailer: undefined }],
                       };
@@ -130,7 +130,7 @@ export function BlogProduct({
                     const mockProduct = {
                       id: name.toLowerCase().replace(/\s+/g, '-'),
                       name,
-                      brand: subtitle || '',
+                      brand: '', // Don't use subtitle as brand to avoid concatenation issues
                       product_categories: [],
                       buy_links: [{ url: buyLink, retailer: undefined }],
                     };
@@ -153,7 +153,7 @@ export function BlogProduct({
                       const mockProduct = {
                         id: name.toLowerCase().replace(/\s+/g, '-'),
                         name,
-                        brand: subtitle || '',
+                        brand: '', // Don't use subtitle as brand to avoid concatenation issues
                         product_categories: [],
                         buy_links: [{ url: amazonLink, retailer: 'Amazon' }],
                       };
@@ -170,7 +170,7 @@ export function BlogProduct({
                     const mockProduct = {
                       id: name.toLowerCase().replace(/\s+/g, '-'),
                       name,
-                      brand: subtitle || '',
+                      brand: '', // Don't use subtitle as brand to avoid concatenation issues
                       product_categories: [],
                       buy_links: [{ url: amazonLink, retailer: 'Amazon' }],
                     };
@@ -193,7 +193,7 @@ export function BlogProduct({
                       const mockProduct = {
                         id: name.toLowerCase().replace(/\s+/g, '-'),
                         name,
-                        brand: subtitle || '',
+                        brand: '', // Don't use subtitle as brand to avoid concatenation issues
                         product_categories: [],
                         buy_links: [
                           {
@@ -215,7 +215,7 @@ export function BlogProduct({
                     const mockProduct = {
                       id: name.toLowerCase().replace(/\s+/g, '-'),
                       name,
-                      brand: subtitle || '',
+                      brand: '', // Don't use subtitle as brand to avoid concatenation issues
                       product_categories: [],
                       buy_links: [
                         {

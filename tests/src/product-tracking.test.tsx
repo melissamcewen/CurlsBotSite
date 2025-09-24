@@ -96,6 +96,25 @@ describe('Product Tracking Utilities', () => {
       expect(link.getAttribute('data-product-brand')).toBe('');
     });
 
+    it('should not concatenate description as brand with product name', () => {
+      const productWithDescriptionAsBrand = {
+        ...mockProduct,
+        name: 'The Ordinary 100% Plant-Derived Squalane',
+        brand: "A lightweight oil that's perfect for pre-poo treatments",
+      };
+      const link = document.createElement('a');
+
+      addProductTrackingAttributes(link, productWithDescriptionAsBrand, 'buy');
+
+      // Should not concatenate brand + name when brand is actually a description
+      expect(link.getAttribute('data-product-name')).toBe(
+        "A lightweight oil that's perfect for pre-poo treatments The Ordinary 100% Plant-Derived Squalane",
+      );
+      expect(link.getAttribute('data-product-brand')).toBe(
+        "A lightweight oil that's perfect for pre-poo treatments",
+      );
+    });
+
     it('should handle missing categories gracefully', () => {
       const productWithoutCategories = {
         ...mockProduct,
