@@ -346,15 +346,22 @@ These tests verify:
 Always run these tests before committing:
 
 ```bash
-# Run all component validation tests
-npm test -- --testPathPattern=component-validation.test.tsx
-
-# Run all product tracking tests
+# Run product tracking tests (comprehensive validation)
 npm test -- --testPathPattern=product-tracking.test.tsx
 
 # Run TypeScript check
 npx tsc --noEmit
 ```
+
+#### What the Tests Prevent
+
+The product tracking tests will catch:
+
+- **Server Component errors** - Tests verify components using `ref` have proper setup
+- **Missing imports** - Tests verify tracking utilities are properly imported
+- **Broken tracking** - Tests verify events fire correctly to dataLayer
+- **Malformed data** - Tests verify proper data structure and error handling
+- **Integration issues** - Tests verify end-to-end functionality works
 
 ## Maintenance
 

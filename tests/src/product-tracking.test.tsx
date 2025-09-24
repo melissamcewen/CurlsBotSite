@@ -1,3 +1,4 @@
+import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import {
   addProductTrackingAttributes,
@@ -44,6 +45,12 @@ const originalConsoleError = console.error;
 beforeEach(() => {
   // Clear dataLayer before each test
   mockDataLayer.length = 0;
+
+  // Ensure window.dataLayer is properly set up
+  if (!window.dataLayer) {
+    window.dataLayer = mockDataLayer;
+  }
+
   // Suppress console warnings/errors during tests
   console.warn = jest.fn();
   console.error = jest.fn();
@@ -160,7 +167,7 @@ describe('Product Tracking Utilities', () => {
     });
 
     it('should not throw error when dataLayer is undefined', () => {
-      // @ts-ignore - Intentionally setting dataLayer to undefined
+      // @ts-expect-error - Intentionally setting dataLayer to undefined
       window.dataLayer = undefined;
 
       expect(() => {
