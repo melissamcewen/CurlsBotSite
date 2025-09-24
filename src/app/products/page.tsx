@@ -23,6 +23,10 @@ import Link from 'next/link';
 import type { PorosityType } from '@/lib/routineBuilder';
 import { filterProducts } from '@/lib/productFiltering';
 import { POROSITY_THRESHOLDS } from '@/lib/porosity';
+import {
+  addProductTrackingAttributes,
+  trackProductInteraction,
+} from '@/utils/productTracking';
 
 type CountryCode = 'US' | 'UK' | 'AU' | 'EU';
 type PriceRange = '$' | '$$' | '$$$';
@@ -532,6 +536,23 @@ export default function ProductsPage() {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="btn btn-xs btn-outline flex items-center gap-2 flex-nowrap min-w-48"
+                          ref={(el) => {
+                            if (el) {
+                              addProductTrackingAttributes(
+                                el,
+                                product,
+                                'buy',
+                                link.retailer,
+                              );
+                            }
+                          }}
+                          onClick={() =>
+                            trackProductInteraction(
+                              product,
+                              'buy',
+                              link.retailer,
+                            )
+                          }
                         >
                           <ShoppingCart className="w-4 h-4 shrink-0" />
                           <span className="flex-nowrap">
@@ -553,6 +574,23 @@ export default function ProductsPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn btn-xs btn-secondary gap-2 whitespace-nowrap flex items-center  text-secondary-content"
+                      ref={(el) => {
+                        if (el) {
+                          addProductTrackingAttributes(
+                            el,
+                            product,
+                            'sample',
+                            'Curls Monthly',
+                          );
+                        }
+                      }}
+                      onClick={() =>
+                        trackProductInteraction(
+                          product,
+                          'sample',
+                          'Curls Monthly',
+                        )
+                      }
                     >
                       <Sparkles className="w-4 h-4 shrink-0" />
                       Try a sample

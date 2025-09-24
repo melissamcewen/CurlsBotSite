@@ -15,6 +15,10 @@ import {
   POROSITY_THRESHOLDS,
 } from '@/lib/porosity';
 import type { ProductCategory } from '@/lib/routineBuilder';
+import {
+  addProductTrackingAttributes,
+  trackProductInteraction,
+} from '@/utils/productTracking';
 
 // Categories that can have humidity resistance
 const STYLING_CATEGORIES: ProductCategory[] = [
@@ -151,6 +155,23 @@ export function ProductCard({
                   target="_blank"
                   rel="noopener"
                   className="btn btn-outline flex items-center gap-2 flex-nowrap min-w-48"
+                  ref={(el) => {
+                    if (el) {
+                      addProductTrackingAttributes(
+                        el,
+                        product.product,
+                        'buy',
+                        link.retailer,
+                      );
+                    }
+                  }}
+                  onClick={() =>
+                    trackProductInteraction(
+                      product.product,
+                      'buy',
+                      link.retailer,
+                    )
+                  }
                 >
                   <ShoppingCart className="w-4 h-4 shrink-0" />
                   <span className="flex-nowrap">
@@ -171,6 +192,23 @@ export function ProductCard({
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-secondary border-secondary w-full flex items-center gap-2"
+              ref={(el) => {
+                if (el) {
+                  addProductTrackingAttributes(
+                    el,
+                    product.product,
+                    'sample',
+                    'Curls Monthly',
+                  );
+                }
+              }}
+              onClick={() =>
+                trackProductInteraction(
+                  product.product,
+                  'sample',
+                  'Curls Monthly',
+                )
+              }
             >
               <Sparkles className="w-4 h-4 shrink-0" />{' '}
               <span className="flex-nowrap">Try a sample</span>

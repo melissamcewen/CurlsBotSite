@@ -14,6 +14,10 @@ import { useLocalization } from '@/contexts/LocalizationContext';
 import type { CountryCode } from '@/lib/countryDetection';
 import { POROSITY_THRESHOLDS } from '@/lib/porosity';
 import Link from 'next/link';
+import {
+  addProductTrackingAttributes,
+  trackProductInteraction,
+} from '@/utils/productTracking';
 
 // Define internal types rather than importing from routineBuilder
 export type PorosityType =
@@ -619,6 +623,39 @@ export default function HairRoutine({
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-primary hover:underline inline-flex items-center gap-1"
+                        ref={(el) => {
+                          if (el) {
+                            const buyLink =
+                              product.buy_links?.find(
+                                (link) =>
+                                  link.countries?.includes(country) ||
+                                  (country === 'US' &&
+                                    (!link.countries ||
+                                      link.countries.length === 0)),
+                              ) || product.buy_links?.[0];
+                            addProductTrackingAttributes(
+                              el,
+                              product,
+                              'buy',
+                              buyLink?.retailer,
+                            );
+                          }
+                        }}
+                        onClick={() => {
+                          const buyLink =
+                            product.buy_links?.find(
+                              (link) =>
+                                link.countries?.includes(country) ||
+                                (country === 'US' &&
+                                  (!link.countries ||
+                                    link.countries.length === 0)),
+                            ) || product.buy_links?.[0];
+                          trackProductInteraction(
+                            product,
+                            'buy',
+                            buyLink?.retailer,
+                          );
+                        }}
                       >
                         {product.brand} {product.name}
                         <ExternalLink className="w-3 h-3 shrink-0" />

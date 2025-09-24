@@ -6,6 +6,10 @@ import {
   type AbbeyYungProduct,
 } from '@/data/abbeyYungProducts';
 import { ChevronUp, ChevronDown, ExternalLink } from 'lucide-react';
+import {
+  addProductTrackingAttributes,
+  trackProductInteraction,
+} from '@/utils/productTracking';
 
 type SortField = 'product' | 'step';
 type SortDirection = 'asc' | 'desc';
@@ -177,6 +181,47 @@ export default function AbbeyYungTable({
                           href={product.amazon}
                           target="_blank"
                           className="link link-primary hover:link-hover text-xs leading-tight"
+                          ref={(el) => {
+                            if (el) {
+                              // Create a mock product object for tracking
+                              const mockProduct = {
+                                id: product.product
+                                  .toLowerCase()
+                                  .replace(/\s+/g, '-'),
+                                name: product.product,
+                                brand: '',
+                                product_categories: [],
+                                buy_links: [
+                                  { url: product.amazon, retailer: 'Amazon' },
+                                ],
+                              };
+                              addProductTrackingAttributes(
+                                el,
+                                mockProduct,
+                                'buy',
+                                'Amazon',
+                              );
+                            }
+                          }}
+                          onClick={() => {
+                            // Create a mock product object for tracking
+                            const mockProduct = {
+                              id: product.product
+                                .toLowerCase()
+                                .replace(/\s+/g, '-'),
+                              name: product.product,
+                              brand: '',
+                              product_categories: [],
+                              buy_links: [
+                                { url: product.amazon, retailer: 'Amazon' },
+                              ],
+                            };
+                            trackProductInteraction(
+                              mockProduct,
+                              'buy',
+                              'Amazon',
+                            );
+                          }}
                         >
                           {product.product}
                           <ExternalLink className="w-3 h-3 inline ml-1" />

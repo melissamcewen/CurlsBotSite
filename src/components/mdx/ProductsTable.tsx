@@ -3,6 +3,10 @@
 import React, { useState } from 'react';
 import { ArrowUpDown, Info } from 'lucide-react';
 import Link from 'next/link';
+import {
+  addProductTrackingAttributes,
+  trackProductInteraction,
+} from '@/utils/productTracking';
 
 interface Product {
   name: string;
@@ -151,6 +155,39 @@ export default function ProductsTable({ products }: ProductsTableProps) {
                       rel="noopener noreferrer"
                       className="btn btn-xs sm:btn-sm btn-primary text-xs sm:text-sm whitespace-normal sm:whitespace-nowrap h-auto min-h-[24px] sm:min-h-[32px] py-1 px-2"
                       title={product.buyText}
+                      ref={(el) => {
+                        if (el) {
+                          // Create a mock product object for tracking
+                          const mockProduct = {
+                            id: product.name.toLowerCase().replace(/\s+/g, '-'),
+                            name: product.name,
+                            brand: '',
+                            product_categories: [],
+                            buy_links: [
+                              { url: product.url, retailer: undefined },
+                            ],
+                          };
+                          addProductTrackingAttributes(
+                            el,
+                            mockProduct,
+                            'buy',
+                            undefined,
+                          );
+                        }
+                      }}
+                      onClick={() => {
+                        // Create a mock product object for tracking
+                        const mockProduct = {
+                          id: product.name.toLowerCase().replace(/\s+/g, '-'),
+                          name: product.name,
+                          brand: '',
+                          product_categories: [],
+                          buy_links: [
+                            { url: product.url, retailer: undefined },
+                          ],
+                        };
+                        trackProductInteraction(mockProduct, 'buy', undefined);
+                      }}
                     >
                       <span className="line-clamp-1">{product.buyText}</span>
                     </a>
@@ -161,6 +198,39 @@ export default function ProductsTable({ products }: ProductsTableProps) {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn btn-xs sm:btn-sm btn-accent text-xs sm:text-sm whitespace-normal sm:whitespace-nowrap h-auto min-h-[24px] sm:min-h-[32px] py-1 px-2"
+                      ref={(el) => {
+                        if (el) {
+                          // Create a mock product object for tracking
+                          const mockProduct = {
+                            id: product.name.toLowerCase().replace(/\s+/g, '-'),
+                            name: product.name,
+                            brand: '',
+                            product_categories: [],
+                            buy_links: [
+                              { url: product.amazonUrl!, retailer: 'Amazon' },
+                            ],
+                          };
+                          addProductTrackingAttributes(
+                            el,
+                            mockProduct,
+                            'buy',
+                            'Amazon',
+                          );
+                        }
+                      }}
+                      onClick={() => {
+                        // Create a mock product object for tracking
+                        const mockProduct = {
+                          id: product.name.toLowerCase().replace(/\s+/g, '-'),
+                          name: product.name,
+                          brand: '',
+                          product_categories: [],
+                          buy_links: [
+                            { url: product.amazonUrl!, retailer: 'Amazon' },
+                          ],
+                        };
+                        trackProductInteraction(mockProduct, 'buy', 'Amazon');
+                      }}
                     >
                       Amazon
                     </a>

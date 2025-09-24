@@ -1,6 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Search, ShoppingCart, CheckCircle, Sparkles } from 'lucide-react';
+import {
+  addProductTrackingAttributes,
+  trackProductInteraction,
+} from '@/utils/productTracking';
 
 interface BlogProductProps {
   name: string;
@@ -101,6 +105,35 @@ export function BlogProduct({
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-secondary btn-xs md:btn-sm flex items-center justify-center gap-1 md:gap-2 w-full"
+                  ref={(el) => {
+                    if (el) {
+                      // Create a mock product object for tracking
+                      const mockProduct = {
+                        id: name.toLowerCase().replace(/\s+/g, '-'),
+                        name,
+                        brand: subtitle || '',
+                        product_categories: [],
+                        buy_links: [{ url: buyLink, retailer: undefined }],
+                      };
+                      addProductTrackingAttributes(
+                        el,
+                        mockProduct,
+                        'buy',
+                        undefined,
+                      );
+                    }
+                  }}
+                  onClick={() => {
+                    // Create a mock product object for tracking
+                    const mockProduct = {
+                      id: name.toLowerCase().replace(/\s+/g, '-'),
+                      name,
+                      brand: subtitle || '',
+                      product_categories: [],
+                      buy_links: [{ url: buyLink, retailer: undefined }],
+                    };
+                    trackProductInteraction(mockProduct, 'buy', undefined);
+                  }}
                 >
                   <ShoppingCart className="w-4 h-4 md:w-5 md:h-5" />
                   {buyText}
@@ -112,6 +145,35 @@ export function BlogProduct({
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-secondary btn-xs md:btn-sm flex items-center justify-center gap-1 md:gap-2 w-full"
+                  ref={(el) => {
+                    if (el) {
+                      // Create a mock product object for tracking
+                      const mockProduct = {
+                        id: name.toLowerCase().replace(/\s+/g, '-'),
+                        name,
+                        brand: subtitle || '',
+                        product_categories: [],
+                        buy_links: [{ url: amazonLink, retailer: 'Amazon' }],
+                      };
+                      addProductTrackingAttributes(
+                        el,
+                        mockProduct,
+                        'buy',
+                        'Amazon',
+                      );
+                    }
+                  }}
+                  onClick={() => {
+                    // Create a mock product object for tracking
+                    const mockProduct = {
+                      id: name.toLowerCase().replace(/\s+/g, '-'),
+                      name,
+                      brand: subtitle || '',
+                      product_categories: [],
+                      buy_links: [{ url: amazonLink, retailer: 'Amazon' }],
+                    };
+                    trackProductInteraction(mockProduct, 'buy', 'Amazon');
+                  }}
                 >
                   <ShoppingCart className="w-4 h-4 md:w-5 md:h-5" />
                   Buy on Amazon
@@ -123,6 +185,49 @@ export function BlogProduct({
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-accent btn-xs md:btn-sm flex items-center justify-center gap-1 md:gap-2 w-full"
+                  ref={(el) => {
+                    if (el) {
+                      // Create a mock product object for tracking
+                      const mockProduct = {
+                        id: name.toLowerCase().replace(/\s+/g, '-'),
+                        name,
+                        brand: subtitle || '',
+                        product_categories: [],
+                        buy_links: [
+                          {
+                            url: 'https://curlsmonthly.com/?ref=curlsbot',
+                            retailer: 'Curls Monthly',
+                          },
+                        ],
+                      };
+                      addProductTrackingAttributes(
+                        el,
+                        mockProduct,
+                        'sample',
+                        'Curls Monthly',
+                      );
+                    }
+                  }}
+                  onClick={() => {
+                    // Create a mock product object for tracking
+                    const mockProduct = {
+                      id: name.toLowerCase().replace(/\s+/g, '-'),
+                      name,
+                      brand: subtitle || '',
+                      product_categories: [],
+                      buy_links: [
+                        {
+                          url: 'https://curlsmonthly.com/?ref=curlsbot',
+                          retailer: 'Curls Monthly',
+                        },
+                      ],
+                    };
+                    trackProductInteraction(
+                      mockProduct,
+                      'sample',
+                      'Curls Monthly',
+                    );
+                  }}
                 >
                   <Sparkles className="w-4 h-4 md:w-5 md:h-5" />
                   Try a sample

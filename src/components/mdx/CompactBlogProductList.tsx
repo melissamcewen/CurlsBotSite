@@ -1,6 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Search, ShoppingCart } from 'lucide-react';
+import {
+  addProductTrackingAttributes,
+  trackProductInteraction,
+} from '@/utils/productTracking';
 
 interface CompactBlogProductProps {
   name: string;
@@ -65,6 +69,49 @@ function CompactBlogProductItem({
           target="_blank"
           className="btn btn-square btn-ghost"
           title={amazonLink ? 'Buy on Amazon' : buyText}
+          ref={(el) => {
+            if (el) {
+              // Create a mock product object for tracking
+              const mockProduct = {
+                id: name.toLowerCase().replace(/\s+/g, '-'),
+                name,
+                brand: subtitle || '',
+                product_categories: [],
+                buy_links: [
+                  {
+                    url: primaryLink,
+                    retailer: amazonLink ? 'Amazon' : undefined,
+                  },
+                ],
+              };
+              addProductTrackingAttributes(
+                el,
+                mockProduct,
+                'buy',
+                amazonLink ? 'Amazon' : undefined,
+              );
+            }
+          }}
+          onClick={() => {
+            // Create a mock product object for tracking
+            const mockProduct = {
+              id: name.toLowerCase().replace(/\s+/g, '-'),
+              name,
+              brand: subtitle || '',
+              product_categories: [],
+              buy_links: [
+                {
+                  url: primaryLink,
+                  retailer: amazonLink ? 'Amazon' : undefined,
+                },
+              ],
+            };
+            trackProductInteraction(
+              mockProduct,
+              'buy',
+              amazonLink ? 'Amazon' : undefined,
+            );
+          }}
         >
           <ShoppingCart className="size-[1.2em]" />
         </a>
@@ -95,4 +142,3 @@ export function CompactBlogProductList({
 
 // Export individual item component for flexibility
 export { CompactBlogProductItem };
-

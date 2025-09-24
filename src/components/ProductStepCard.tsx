@@ -1,5 +1,9 @@
 import Image from 'next/image';
 import { ShoppingBag } from 'lucide-react';
+import {
+  addProductTrackingAttributes,
+  trackProductInteraction,
+} from '@/utils/productTracking';
 
 interface ProductStepCardProps {
   stepNumber: number;
@@ -45,6 +49,35 @@ export function ProductStepCard({
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-primary btn-sm"
+              ref={(el) => {
+                if (el) {
+                  // Create a mock product object for tracking
+                  const mockProduct = {
+                    id: title.toLowerCase().replace(/\s+/g, '-'),
+                    name: title,
+                    brand: '',
+                    product_categories: [],
+                    buy_links: [{ url: buttonLink, retailer: undefined }],
+                  };
+                  addProductTrackingAttributes(
+                    el,
+                    mockProduct,
+                    'buy',
+                    undefined,
+                  );
+                }
+              }}
+              onClick={() => {
+                // Create a mock product object for tracking
+                const mockProduct = {
+                  id: title.toLowerCase().replace(/\s+/g, '-'),
+                  name: title,
+                  brand: '',
+                  product_categories: [],
+                  buy_links: [{ url: buttonLink, retailer: undefined }],
+                };
+                trackProductInteraction(mockProduct, 'buy', undefined);
+              }}
             >
               <ShoppingBag className="w-4 h-4 mr-1" />
               {buttonText}

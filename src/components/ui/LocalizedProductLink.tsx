@@ -2,6 +2,10 @@
 
 import { useLocalization } from '@/contexts/LocalizationContext';
 import type { Product, Products } from 'haircare-ingredients-analyzer';
+import {
+  addProductTrackingAttributes,
+  trackProductInteraction,
+} from '@/utils/productTracking';
 import Link from 'next/link';
 import { ShoppingCart } from 'lucide-react';
 
@@ -99,6 +103,19 @@ const LocalizedProductLink = ({
           className="link link-secondary"
           target="_blank"
           rel="noopener noreferrer"
+          ref={(el) => {
+            if (el) {
+              addProductTrackingAttributes(
+                el,
+                product,
+                'buy',
+                buyLink.retailer,
+              );
+            }
+          }}
+          onClick={() =>
+            trackProductInteraction(product, 'buy', buyLink.retailer)
+          }
         >
           {displayName}
         </a>
@@ -112,6 +129,12 @@ const LocalizedProductLink = ({
       className={className}
       target="_blank"
       rel="noopener noreferrer"
+      ref={(el) => {
+        if (el) {
+          addProductTrackingAttributes(el, product, 'buy', buyLink.retailer);
+        }
+      }}
+      onClick={() => trackProductInteraction(product, 'buy', buyLink.retailer)}
     >
       {displayName}
     </a>

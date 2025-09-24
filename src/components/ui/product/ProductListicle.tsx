@@ -19,6 +19,10 @@ import {
 import type { ProductCategory } from '@/lib/routineBuilder';
 import { getCustomDescription, type BestProductPage } from '@/lib/bestProducts';
 import { filterProducts } from '@/lib/productFiltering';
+import {
+  addProductTrackingAttributes,
+  trackProductInteraction,
+} from '@/utils/productTracking';
 
 interface ProductListicleProps {
   products: Product[];
@@ -251,6 +255,23 @@ export function ProductListicle({
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="btn btn-outline gap-2"
+                                ref={(el) => {
+                                  if (el) {
+                                    addProductTrackingAttributes(
+                                      el,
+                                      product,
+                                      'buy',
+                                      link.retailer,
+                                    );
+                                  }
+                                }}
+                                onClick={() =>
+                                  trackProductInteraction(
+                                    product,
+                                    'buy',
+                                    link.retailer,
+                                  )
+                                }
                               >
                                 <ShoppingCart className="w-4 h-4" />
                                 Buy on {link.retailer || 'Amazon'}
@@ -262,6 +283,23 @@ export function ProductListicle({
                               target="_blank"
                               rel="noopener noreferrer"
                               className="btn btn-secondary gap-2"
+                              ref={(el) => {
+                                if (el) {
+                                  addProductTrackingAttributes(
+                                    el,
+                                    product,
+                                    'sample',
+                                    'Curls Monthly',
+                                  );
+                                }
+                              }}
+                              onClick={() =>
+                                trackProductInteraction(
+                                  product,
+                                  'sample',
+                                  'Curls Monthly',
+                                )
+                              }
                             >
                               <Sparkles className="w-4 h-4" />
                               Try a sample
