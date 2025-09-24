@@ -9,6 +9,11 @@ export function addProductTrackingAttributes(
   linkType: 'buy' | 'analyze' | 'sample' = 'buy',
   retailer?: string,
 ) {
+  // Check if link exists
+  if (!link) {
+    return;
+  }
+
   const productName = product.brand
     ? `${product.brand} ${product.name}`
     : product.name;

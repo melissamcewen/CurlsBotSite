@@ -119,6 +119,8 @@ Then create a second tag that uses this trigger with the same configuration as a
 
 ### For Components with Real Product Objects
 
+**Important**: Components using `ref` attributes must be Client Components. Add `'use client';` at the top of your component file.
+
 If your component has access to a real `Product` object from the `haircare-ingredients-analyzer` library:
 
 ```tsx
@@ -145,6 +147,8 @@ import type { Product } from 'haircare-ingredients-analyzer';
 ```
 
 ### For Components with Mock Product Data
+
+**Important**: Components using `ref` attributes must be Client Components. Add `'use client';` at the top of your component file.
 
 If your component doesn't have access to a real `Product` object, create a mock one:
 
@@ -267,6 +271,16 @@ interface MockProduct {
 3. Use GTM Preview mode to debug
 4. Check that the `product_link_click` event is being pushed to dataLayer
 
+### Server Component Error
+
+If you get the error "Refs cannot be used in Server Components":
+
+1. Add `'use client';` directive at the top of your component file
+2. This is required for any component using `ref` attributes
+3. The component must be a Client Component to use refs and event handlers
+
+**Prevention**: Run the component validation tests before committing to catch this automatically.
+
 ### Missing Data
 
 1. Ensure all required data layer variables are created in GTM
@@ -289,14 +303,69 @@ With this tracking system, you can:
 4. **User Journey**: Track how users interact with products across different pages
 5. **Conversion Funnel**: Analyze the path from content to product clicks
 
+## Testing Strategy
+
+### Preventing Server Component Errors
+
+We have comprehensive tests to prevent the "Refs cannot be used in Server Components" error:
+
+#### Component Validation Tests
+
+Run these tests to catch Server Component issues:
+
+```bash
+npm test -- --testPathPattern=component-validation.test.tsx
+```
+
+These tests check:
+
+- Components using `ref` attributes have `'use client';` directive
+- Components using `onClick` handlers have `'use client';` directive
+- Components using React hooks have `'use client';` directive
+- Product tracking components have proper implementation
+- Import patterns are consistent
+
+#### Product Tracking Tests
+
+Run these tests to verify tracking functionality:
+
+```bash
+npm test -- --testPathPattern=product-tracking.test.tsx
+```
+
+These tests verify:
+
+- Tracking utilities work correctly
+- Data attributes are added properly
+- Events are fired to dataLayer
+- Error handling works gracefully
+- Mock product objects are structured correctly
+
+#### Running Tests Before Commits
+
+Always run these tests before committing:
+
+```bash
+# Run all component validation tests
+npm test -- --testPathPattern=component-validation.test.tsx
+
+# Run all product tracking tests
+npm test -- --testPathPattern=product-tracking.test.tsx
+
+# Run TypeScript check
+npx tsc --noEmit
+```
+
 ## Maintenance
 
 ### Adding New Components
 
-1. Import the tracking utilities
-2. Add `ref` and `onClick` handlers to product links
-3. Use appropriate link type (`buy`, `analyze`, `sample`)
-4. Test in GTM Preview mode
+1. **Add `'use client';` directive** at the top of the component file (required for `ref` attributes)
+2. Import the tracking utilities
+3. Add `ref` and `onClick` handlers to product links
+4. Use appropriate link type (`buy`, `analyze`, `sample`)
+5. **Run component validation tests** to catch any issues
+6. Test in GTM Preview mode
 
 ### Updating Existing Components
 
