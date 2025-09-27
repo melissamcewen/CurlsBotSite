@@ -171,13 +171,13 @@ export const ROUTINE_STEPS: Record<RoutineStep, StepConfig> = {
     categories: ['conditioners', 'deep_conditioners'],
     porosityRecommendations: {
       high_porosity:
-        'Use conditioner every wash and deep conditioner every 1-2 months',
+        'Use conditioner every wash and deep conditioner every 1-2 weeks',
       low_porosity:
         'Use conditioner every wash and deep conditioner every 1-2 months',
       normal_porosity:
         'Use conditioner every wash and deep conditioner every 1-2 months',
       mixed_porosity:
-        'Use conditioner every wash and deep conditioner every 1-2 months',
+        'Use conditioner every wash and deep conditioner focusing on the ends every 1-2 weeks',
     },
   },
   enhance: {
