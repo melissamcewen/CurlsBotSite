@@ -332,7 +332,19 @@ export const BEST_PRODUCT_PAGES: BestProductPage[] = [
         text: 'Sebderm ingredient checker',
       },
     ],
+
   },
+  {
+    slug: 'best-gels-for-high-porosity-hair',
+    title: 'The Best Gels for High Porosity Hair',
+    description: 'The best gels for high porosity hair',
+    category: 'gels',
+    filters: {
+      highPorosity: true,
+    },
+    howWePicked:
+      'These products have been analyzed and found to be great for high porosity hair, which is damaged and needs extra conditioning and softness compared to regular gels that can feel dry and brittle.',
+  }
   /* wait until I have tagged list for mens
   {
     slug: 'best-mousses-men',

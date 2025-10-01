@@ -108,7 +108,7 @@ export default async function Home() {
                 techniques for your hair.
               </p>
               <div className="card-actions flex flex-col gap-2 w-full mt-auto">
-                <Link href="/porosity/quiz" className="btn btn-primary w-full">
+                <Link href="/porosity-quiz" className="btn btn-primary w-full">
                   Find Your Porosity
                 </Link>
               </div>
