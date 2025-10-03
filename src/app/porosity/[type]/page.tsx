@@ -10,25 +10,6 @@ interface PorosityInfo {
 }
 
 const POROSITY_DATA: Record<string, PorosityInfo> = {
-  'low-porosity': {
-    title: 'Low Porosity Hair Guide and Best Products',
-    description:
-      'Low porosity hair has a tightly bound cuticle layer, making it difficult for moisture to penetrate the hair shaft. This type of hair is often resistant to treatments and can be prone to product buildup.',
-    characteristics: [
-      'Takes a long time to get wet and dry',
-      'Products tend to sit on top of hair rather than absorb',
-      'Resistant to chemical processes',
-      'Prone to product buildup',
-      'Often appears shiny when healthy',
-    ],
-    tips: [
-      'Use heat or steam to help products penetrate',
-      'Focus on lightweight, easily absorbed products',
-      'Regular clarifying treatments to remove buildup',
-      'Apply products to damp hair to improve absorption',
-      'May better tolerate sulfates than other porosity types and even benefit from them',
-    ],
-  },
   'high-porosity': {
     title: 'High Porosity Hair Guide and Best Products',
     description:
@@ -149,10 +130,9 @@ export default async function PorosityPage(props: Props) {
   return <PorosityPageClient porosityType={type} porosityInfo={porosityInfo} />;
 }
 
-// Generate static paths for all porosity types
+// Generate static paths for all porosity types except low-porosity (handled by specific route)
 export function generateStaticParams() {
   return [
-    { type: 'low-porosity' },
     { type: 'high-porosity' },
     { type: 'normal-porosity' },
     { type: 'mixed-porosity' },
