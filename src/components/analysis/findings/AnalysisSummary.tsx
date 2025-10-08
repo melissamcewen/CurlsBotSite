@@ -136,7 +136,7 @@ export interface SebdermAnalysis extends ExtensionAnalysis {
         return 'Contains Parabens';
       case 'Volatile Alcohols':
         return item.status === 'ok'
-          ? 'Drying Alcohol Free'
+          ? 'Volatile Alcohol Free'
           : 'Contains Volatile Alcohols';
       default:
         return item.status === 'ok' ? 'OK' : item.status;
