@@ -19,7 +19,7 @@ export default function EmailSignupForm({
   fieldName,
   fieldValue,
   title,
-  description = 'Join our newsletter and get weekly tips, tricks, and product recommendations delivered to your inbox.',
+  description = 'Hack Your Hair is our 5-part email series that will help you master your curls or waves.',
   className = 'bg-base-100 cb-card-lite md:col-span-2',
 }: EmailSignupFormProps) {
   const successFunctionName = containerId.replace(

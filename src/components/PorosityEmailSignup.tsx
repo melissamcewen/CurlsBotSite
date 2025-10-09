@@ -11,8 +11,8 @@ export default function PorosityEmailSignup({
 }: PorosityEmailSignupProps) {
   return (
     <EmailSignupForm
-      formId="155127816633976075"
-      containerId="mlb2-26314505"
+      formId="167823633053386557"
+      containerId="mlb2-31908045"
       fieldName="fields[porosity]"
       fieldValue={porosityType}
       title={`Want to master your ${porosityType.replace('-', ' ')} hair?`}
