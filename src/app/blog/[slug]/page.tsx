@@ -6,6 +6,7 @@ import { BookOpenText, ArrowRight } from 'lucide-react';
 import { promises as fs } from 'fs';
 import path from 'path';
 import RelatedPostsGrid from '@/components/RelatedPostsGrid';
+import BlogSidebar from '@/components/BlogSidebar';
 
 interface BlogFrontmatter {
   title: string;
@@ -164,7 +165,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           __html: JSON.stringify(structuredData),
         }}
       />
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="p-3">
           <div className="flex items-center gap-2 mb-4">
             <Link href="/blog" className="btn btn-ghost btn-sm">
@@ -172,46 +173,57 @@ export default async function BlogPostPage({ params }: PageProps) {
             </Link>
           </div>
 
-          <article className="prose prose-lg max-w-none">
-            <div className="flex items-center gap-2 mb-6">
-              <BookOpenText className="w-8 h-8 text-primary shrink-0" />
-              <h1 className="text-3xl font-bold m-0">{frontmatter.title}</h1>
-            </div>
+          <div className="lg:grid lg:grid-cols-[1fr_280px] lg:gap-8">
+            <div className="min-w-0">
+              <article className="prose prose-lg max-w-none">
+                <div className="flex items-center gap-2 mb-6">
+                  <BookOpenText className="w-8 h-8 text-primary shrink-0" />
+                  <h1 className="text-3xl font-bold m-0">
+                    {frontmatter.title}
+                  </h1>
+                </div>
 
-            <div className="min-h-12 -mt-4">
-              {frontmatter.description && (
-                <p className="text-xl text-base-content/70">
-                  {frontmatter.description}
-                </p>
+                <div className="min-h-12 -mt-4">
+                  {frontmatter.description && (
+                    <p className="text-xl text-base-content/70">
+                      {frontmatter.description}
+                    </p>
+                  )}
+                </div>
+
+                {formattedDate && (
+                  <div className="text-base-content/50 mb-8">
+                    {formattedDate}
+                  </div>
+                )}
+
+                {frontmatter.image && (
+                  <div className="my-8">
+                    <Image
+                      src={frontmatter.image}
+                      alt={frontmatter.title}
+                      width={2400}
+                      height={1260}
+                      className="rounded-lg w-full h-auto"
+                      priority
+                      quality={90}
+                    />
+                  </div>
+                )}
+
+                <Content />
+              </article>
+
+              {relatedPosts.length > 0 && (
+                <RelatedPostsGrid
+                  posts={relatedPosts}
+                  heading="Related Articles"
+                />
               )}
             </div>
 
-            {formattedDate && (
-              <div className="text-base-content/50 mb-8">
-                {formattedDate}
-              </div>
-            )}
-
-            {frontmatter.image && (
-              <div className="my-8">
-                <Image
-                  src={frontmatter.image}
-                  alt={frontmatter.title}
-                  width={2400}
-                  height={1260}
-                  className="rounded-lg w-full h-auto"
-                  priority
-                  quality={90}
-                />
-              </div>
-            )}
-
-            <Content />
-          </article>
-
-          {relatedPosts.length > 0 && (
-            <RelatedPostsGrid posts={relatedPosts} heading="Related Articles" />
-          )}
+            <BlogSidebar />
+          </div>
         </div>
       </div>
     </div>
