@@ -77,6 +77,33 @@ export function BlogImage({ src, alt, caption, href, float }: BlogImageProps) {
   );
 }
 
+export function FlowchartImage({ src, alt, caption, href }: BlogImageProps) {
+  return (
+    <figure className="my-8 w-full m-0">
+      <div className="bg-base-200 rounded-lg overflow-hidden not-prose">
+        <ImageWrapper href={href}>
+          <div>
+            <Image
+              src={src}
+              alt={alt}
+              width={1600}
+              height={1200}
+              className="w-full h-auto m-0 p-0 object-contain"
+            />
+            {caption && (
+              <div className="p-4">
+                <p className="text-sm text-base-content/70 text-center">
+                  {caption}
+                </p>
+              </div>
+            )}
+          </div>
+        </ImageWrapper>
+      </div>
+    </figure>
+  );
+}
+
 export function DualImage({ image1, image2, caption }: DualImageProps) {
   return (
     <figure className="my-8">

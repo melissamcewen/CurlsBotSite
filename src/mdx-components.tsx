@@ -3,7 +3,11 @@
 import type { MDXComponents } from 'mdx/types';
 import { InlineReference } from '@/components/references/InlineReference';
 import { AutoReferencesList } from '@/components/references/AutoReferencesList';
-import { BlogImage, DualImage } from '@/components/mdx/BlogImage';
+import {
+  BlogImage,
+  DualImage,
+  FlowchartImage,
+} from '@/components/mdx/BlogImage';
 import { BlogProduct } from '@/components/mdx/BlogProduct';
 import { BlogProductCard } from '@/components/mdx/BlogProductCard';
 import { CompactBlogProductList } from '@/components/mdx/CompactBlogProductList';
@@ -24,6 +28,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     AutoReferencesList,
     BlogImage,
     DualImage,
+    FlowchartImage,
     BlogProduct,
     BlogProductCard,
     CompactBlogProductList,
