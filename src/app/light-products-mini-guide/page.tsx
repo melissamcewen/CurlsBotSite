@@ -3,11 +3,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { createPageMetadata } from '@/config/metadata';
 export const metadata = createPageMetadata({
-  title: 'Hair Care Ingredients Cheat Sheet',
-  description:
-    'The CurlsBot Mini Guide to Light Products',
+  title: 'The CurlsBot Mini Guide to Light Products',
+  description: 'Looking for the right products for your fine, wavy, or low-porosity hair? This guide will tell you how to find them anywhere, as well as how to use them effectively!',
   path: '/light-products-mini-guide',
-  image: '/images/light-products-mini-guide.png'
+  image: '/images/light-products-mini-guide.png',
 });
 export default function CurlyTechniquesDictionaryPage() {
   return (
