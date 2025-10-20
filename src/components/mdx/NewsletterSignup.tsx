@@ -11,10 +11,10 @@ interface NewsletterSignupProps {
 
 export default function NewsletterSignup({
   fieldName = 'fields[source]',
-  fieldValue = 'newsletter-inline',
-  text = 'Get weekly curly hair tips delivered to your inbox',
-  buttonText = 'Subscribe',
-  placeholder = 'Email',
+  fieldValue = 'light-products-newsletter',
+  text = 'Get our free lightweight products guide! It has tips for finding light products at any store with dozens of example products and routines',
+  buttonText = 'Get the ebook',
+  placeholder = 'Enter your email',
   className = '',
 }: NewsletterSignupProps) {
   return (

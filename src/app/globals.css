@@ -8,21 +8,21 @@
 @plugin "daisyui/theme" {
   name: 'cupcake';
   default: true;
---color-primary: oklch(76.172% 0.089 200.026);
---color-primary-content: oklch(15.234% 0.017 200.026);
---color-secondary: oklch(78.935% 0.101 356.299);
---color-secondary-content: oklch(15.787% 0.02 356.299);
---color-accent: oklch(79.381% 0.146 78.618);
---color-accent-content: oklch(15.876% 0.029 78.618);
+  --color-primary: oklch(76.172% 0.089 200.026);
+  --color-primary-content: oklch(15.234% 0.017 200.026);
+  --color-secondary: oklch(78.935% 0.101 356.299);
+  --color-secondary-content: oklch(15.787% 0.02 356.299);
+  --color-accent: oklch(79.381% 0.146 78.618);
+  --color-accent-content: oklch(15.876% 0.029 78.618);
   --color-error: oklch(71.76% 0.221 22.18);
   --color-error-content: oklch(27% 0.105 12.094);
 }
 
 @plugin "daisyui/theme" {
-  name: "curlsbotdark";
+  name: 'curlsbotdark';
   default: false;
   prefersdark: false;
-  color-scheme: "dark";
+  color-scheme: 'dark';
   --color-base-100: oklch(15% 0.09 281.288);
   --color-base-200: oklch(20% 0.09 281.288);
   --color-base-300: oklch(25% 0.09 281.288);
@@ -52,7 +52,6 @@
   --depth: 0;
   --noise: 0;
 }
-
 
 @theme {
   --animate-slide-up: slide-up 0.4s ease-out forwards;
@@ -199,6 +198,13 @@
     --background: #ffffff;
     --foreground: #171717;
     transition: background-color 0s !important;
+  }
+
+  /* Fix for sidebar ads sticky positioning - more targeted approach */
+  .blog-sidebar-container {
+    position: sticky;
+    top: 1rem;
+    align-self: start;
   }
 
   @media (prefers-color-scheme: dark) {

@@ -49,7 +49,7 @@ interface BaseEmailSignupProps {
   buttonText?: string;
   className?: string;
   // Layout variants
-  layout?: 'card' | 'compact' | 'inline' | 'hero';
+  layout?: 'card' | 'compact' | 'inline' | 'inline-image' | 'hero';
   // Visual variants
   showIcon?: boolean;
   icon?: 'mail' | 'sparkles' | 'book';
@@ -224,6 +224,30 @@ export default function BaseEmailSignup({
             {renderIcon()}
             <span className="text-sm">{title}</span>
           </div>
+          {renderForm()}
+        </div>
+      </div>
+    );
+  }
+
+  if (layout === 'inline-image') {
+    return (
+      <div
+        className={`card card-side bg-base-100 shadow-sm border border-base-300 not-prose ${className}`}
+      >
+        {showImage && imageSrc && (
+          <figure className="flex-shrink-0">
+            <Image
+              src={imageSrc}
+              alt={imageAlt || 'Guide'}
+              width={80}
+              height={80}
+              className="object-cover w-full h-full"
+            />
+          </figure>
+        )}
+        <div className="card-body ">
+          <h3 className="text-sm font-medium mb-3">{title}</h3>
           {renderForm()}
         </div>
       </div>

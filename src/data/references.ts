@@ -1474,5 +1474,19 @@ Kahre, Joerg. "Ethnic Differences in Haircare Products." Handbook of Cosmetic Sc
     date: '2004',
     source: 'CRC Press',
   },
+
+  /*
+  1. Mkentane K, Wyk JCV, Sishi N, et al. Geometric classification of scalp hair for valid drug testing, 6 more reliable than 8 hair curl groups. PLOS ONE. 2017;12(6):e0172834. doi:10.1371/journal.pone.0172834
+*/
+
+'137': {
+    id: '137',
+    url: 'https://doi.org/10.1371/journal.pone.0172834',
+    title: 'Geometric classification of scalp hair for valid drug testing, 6 more reliable than 8 hair curl groups',
+    type: 'science',
+    author: 'Mkentane K, Wyk JCV, Sishi N, et al.',
+    date: '2017',
+    source: 'PLOS ONE',
+  },
 };
 

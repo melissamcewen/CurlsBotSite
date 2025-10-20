@@ -114,7 +114,8 @@ async function getRelatedPosts(currentSlug: string): Promise<BlogPost[]> {
       (post) =>
         post.frontmatter.image &&
         post.slug !== currentSlug &&
-        post.slug !== 'welcome-back',
+        post.slug !== 'welcome-back' &&
+      post.slug !== 'prime-day-deals',
     )
     .sort(() => Math.random() - 0.5); // Randomize the array
 

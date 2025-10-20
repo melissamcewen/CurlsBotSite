@@ -22,6 +22,7 @@ import NewsletterSignup from '@/components/mdx/NewsletterSignup';
 import AbbeyYungMethodTable from '@/components/mdx/AbbeyYungMethodTable';
 import AbbeyYungTable from '@/components/mdx/AbbeyYungTable';
 
+
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     InlineReference,

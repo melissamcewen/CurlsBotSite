@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function BlogSidebar() {
   return (
-    <aside className="hidden lg:block sticky top-4 space-y-4">
+    <aside className="hidden lg:block blog-sidebar-container space-y-4">
       {/* Quizzes Section */}
       <div className="card border-2 border-primary bg-base-100">
         <div className="card-body">

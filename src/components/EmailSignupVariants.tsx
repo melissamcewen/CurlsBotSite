@@ -124,14 +124,44 @@ export function NewsletterSignup({
 }: NewsletterSignupProps) {
   return (
     <BaseEmailSignup
-      variant="newsletter"
+      variant="lightProducts"
       fieldValue={fieldValue}
       title={text}
       placeholder={placeholder}
       buttonText={buttonText}
       className={className}
-      layout="inline"
-      icon="sparkles"
+      layout="inline-image"
+      showImage={true}
+      imageSrc="/images/porosity/book.png"
+      imageAlt="Lightweight Products Guide"
+    />
+  );
+}
+
+// Light Products Newsletter Signup - Hero Layout with Image
+export function LightProductsNewsletterSignup({
+  fieldName = 'fields[source]',
+  fieldValue = 'light-products-newsletter',
+  text = 'Get our free lightweight products guide!',
+  buttonText = 'Get the ebook',
+  placeholder = 'Enter your email',
+  className = '',
+}: NewsletterSignupProps) {
+  return (
+    <BaseEmailSignup
+      variant="lightProducts"
+      fieldValue={fieldValue}
+      title={text}
+      description="Perfect for finding light products in the drugstore. Get it free when you subscribe to our newsletter."
+      placeholder={placeholder}
+      buttonText={buttonText}
+      className={className}
+      layout="hero"
+      showImage={true}
+      imageSrc="/images/light-products-mini-guide.png"
+      imageAlt="Lightweight Products Mini Guide"
+      imageSize={120}
+      icon="book"
     />
   );
 }
