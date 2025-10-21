@@ -1,6 +1,12 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { ExternalLink, BookOpen, Mail, ChevronRight } from 'lucide-react';
+import {
+  ExternalLink,
+  BookOpen,
+  Mail,
+  ChevronRight,
+  ChevronDown,
+} from 'lucide-react';
 import { TikTokEmailSignup } from '@/components/EmailSignupVariants';
 
 export default function TikTokPage() {
@@ -45,6 +51,119 @@ export default function TikTokPage() {
             <TikTokEmailSignup />
           </div>
         </section>
+
+        {/* Featured Source: Dr. Crystal Porter */}
+        <div className="collapse collapse-arrow bg-base-100 border border-base-300 rounded-2xl mb-6">
+          <input type="checkbox" />
+          <div className="collapse-title text-base font-medium flex items-center gap-2">
+            <ChevronDown className="w-4 h-4" />
+            Featured Source: Dr. Crystal Porter
+          </div>
+          <div className="collapse-content">
+            <div className="pt-2 space-y-3">
+              <Link
+                href="https://www.theecowell.com/podcast/crystal"
+                target="_blank"
+                className="group block rounded-xl border border-base-300 bg-base-200 p-3 hover:bg-base-300/50 transition"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-base-300 grid place-items-center shrink-0">
+                    <ExternalLink className="w-3 h-3" aria-hidden="true" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-sm font-medium">Ecowell podcast</div>
+                    <div className="text-xs text-base-content/60 truncate">
+                      www.theecowell.com/podcast/crystal
+                    </div>
+                  </div>
+                  <ChevronRight className="ml-auto w-3 h-3 text-base-content/50 group-hover:translate-x-0.5 transition" />
+                </div>
+              </Link>
+
+              <Link
+                href="https://www.youtube.com/channel/UCrz1LHl9lq0nn3xzguxADdA"
+                target="_blank"
+                className="group block rounded-xl border border-base-300 bg-base-200 p-3 hover:bg-base-300/50 transition"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-base-300 grid place-items-center shrink-0">
+                    <ExternalLink className="w-3 h-3" aria-hidden="true" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-sm font-medium">
+                      Mane Insights Youtube
+                    </div>
+                    <div className="text-xs text-base-content/60 truncate">
+                      www.youtube.com/channel/UCrz1LHl9lq0nn3xzguxADdA
+                    </div>
+                  </div>
+                  <ChevronRight className="ml-auto w-3 h-3 text-base-content/50 group-hover:translate-x-0.5 transition" />
+                </div>
+              </Link>
+
+              <Link
+                href="https://www.youtube.com/@OurBlackHairMatters"
+                target="_blank"
+                className="group block rounded-xl border border-base-300 bg-base-200 p-3 hover:bg-base-300/50 transition"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-base-300 grid place-items-center shrink-0">
+                    <ExternalLink className="w-3 h-3" aria-hidden="true" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-sm font-medium">
+                      Our Black Hair Matters
+                    </div>
+                    <div className="text-xs text-base-content/60 truncate">
+                      www.youtube.com/@OurBlackHairMatters
+                    </div>
+                  </div>
+                  <ChevronRight className="ml-auto w-3 h-3 text-base-content/50 group-hover:translate-x-0.5 transition" />
+                </div>
+              </Link>
+
+              <Link
+                href="https://www.maneinsights.com"
+                target="_blank"
+                className="group block rounded-xl border border-base-300 bg-base-200 p-3 hover:bg-base-300/50 transition"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-base-300 grid place-items-center shrink-0">
+                    <ExternalLink className="w-3 h-3" aria-hidden="true" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-sm font-medium">Mane Insights</div>
+                    <div className="text-xs text-base-content/60 truncate">
+                      www.maneinsights.com
+                    </div>
+                  </div>
+                  <ChevronRight className="ml-auto w-3 h-3 text-base-content/50 group-hover:translate-x-0.5 transition" />
+                </div>
+              </Link>
+
+              <Link
+                href="https://www.youtube.com/live/HFqKfqUOo98"
+                target="_blank"
+                className="group block rounded-xl border border-base-300 bg-base-200 p-3 hover:bg-base-300/50 transition"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-base-300 grid place-items-center shrink-0">
+                    <ExternalLink className="w-3 h-3" aria-hidden="true" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-sm font-medium">
+                      Beauty Claims E-Summit
+                    </div>
+                    <div className="text-xs text-base-content/60 truncate">
+                      www.youtube.com/live/HFqKfqUOo98
+                    </div>
+                  </div>
+                  <ChevronRight className="ml-auto w-3 h-3 text-base-content/50 group-hover:translate-x-0.5 transition" />
+                </div>
+              </Link>
+            </div>
+          </div>
+        </div>
 
         {/* Links */}
         <nav className="space-y-3">
