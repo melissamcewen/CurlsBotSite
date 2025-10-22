@@ -6,7 +6,7 @@ image: /images/blog/irish-curls-explained/hero2.png
 author: "Melissa McEwen"
 ---
 If you’ve been on social media recently, you may have heard of *“Irish curls”*, a hair pattern where the outer canopy layers are straighter than the inner layers.
-You might wonder: is this a real thing? Does it have anything to do with being Irish? And can it be fixed? (Many of us with it have asked that!) 
+You might wonder: is this a real thing? Does it have anything to do with being Irish? And can it be fixed? (Many of us with it have asked that!)
 
 I was especially curious because this is *my* hair pattern. I've often been annoyed by the fact my outer layers seemed flat while my inner less visible layers had lovely curls.
 
@@ -102,32 +102,90 @@ Focus on:
 
 <BlogProductGrid title="Recommended Products" columns={4}>
 
-<BlogProductCard
+<BlogProductCardEnhanced
   name="Redken Volume Injection Shampoo"
   subtitle="Redken's volumizing line is a great example of a product line that is appropriate for Irish curls"
   image="/images/blog/irish-curls-explained/redken.png"
-  amazonLink="https://amzn.to/3J8xrQE"
+  links={[
+    {
+      url: 'https://www.ulta.com/p/volume-injection-shampoo-pimprod2024524?sku=25802067',
+      text: 'Buy at Ulta',
+      retailer: 'ulta',
+      icon: 'shopping-cart',
+    },
+    {
+      url: 'https://amzn.to/3J8xrQE',
+      text: 'Buy on Amazon',
+      retailer: 'amazon',
+      icon: 'shopping-cart',
+    },
+  ]}
 />
 
-<BlogProductCard
+<BlogProductCardEnhanced
   name="Biolage Volume Boost Conditioner"
   subtitle="The Biolage Volume boost line is another great choice for Irish curls"
   image="/images/blog/irish-curls-explained/biolage.png"
-  amazonLink="https://amzn.to/4qpizOI"
+  links={[
+    {
+      url: 'https://amzn.to/4qpizOI',
+      text: 'Buy on Amazon',
+      retailer: 'amazon',
+      icon: 'shopping-cart',
+    },
+    {
+      url: 'https://www.ulta.com/p/volume-boost-conditioner-fine-hair-pimprod2051408?sku=2121346',
+      text: 'Buy at Ulta',
+      retailer: 'ulta',
+      icon: 'shopping-cart',
+    },
+  ]}
 />
 
-<BlogProductCard
+<BlogProductCardEnhanced
   name="Ouidad Advanced Climate Control Volumizing Foam"
   subtitle="This foam is a great option for lightweight hold and texture that boosts the outer layer of Irish curls"
   image="/images/blog/irish-curls-explained/ouidad.png"
-  amazonLink="https://amzn.to/46YddlK"
+  links={[
+    {
+      url: 'https://amzn.to/46YddlK',
+      text: 'Buy on Amazon',
+      retailer: 'amazon',
+      icon: 'shopping-cart',
+    },
+    {
+      url: 'https://www.ouidad.com/products/advanced-climate-control-featherlight-volumizing-foam?srsltid=AfmBOorHriSIvVEPY14JYdVPTMhplk_Z-BZYvJZ33dfSDvgOnl9AFZvn',
+      text: 'Buy at Ouidad',
+      retailer: 'ouidad',
+      icon: 'shopping-cart',
+    },
+    {
+      url: 'https://www.ulta.com/p/advanced-climate-control-featherlight-volumizing-foam-pimprod2041152?sku=2613600',
+      text: 'Buy at Ulta',
+      retailer: 'ulta',
+      icon: 'shopping-cart',
+    },
+  ]}
 />
 
-<BlogProductCard
+<BlogProductCardEnhanced
   name="Pantene Miracle Rescue 10 in 1 Multitasking Leave in Conditioner Spray"
   subtitle="This is my most-recommended leave-in, as it's BOTH lightweight and effective. "
   image="/images/blog/the-abbey-yung-method/21.png"
-  amazonLink="https://amzn.to/4nEWXvw"
+  links={[
+    {
+      url: 'https://amzn.to/4nEWXvw',
+      text: 'Buy on Amazon',
+      retailer: 'amazon',
+      icon: 'shopping-cart',
+    },
+    {
+      url: 'https://www.kroger.com/p/pantene-miracle-rescue-10-in-1-multitasking-leave-in-conditioner-spray/0008087819246',
+      text: 'Buy at Kroger',
+      retailer: 'kroger',
+      icon: 'shopping-cart',
+    },
+  ]}
 />
 </BlogProductGrid>
 
