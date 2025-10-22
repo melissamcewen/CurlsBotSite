@@ -120,6 +120,11 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: '/tik-tok',
+        destination: '/link-in-bio',
+        permanent: true,
+      },
+      {
         source: '/blog/is-soap-good-for-curls',
         destination: '/categories/soaps',
         permanent: true,

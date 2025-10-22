@@ -52,6 +52,25 @@ export default function TikTokPage() {
           </div>
         </section>
 
+        {/* Irish Curls Explained */}
+        <Link
+          href="/blog/irish-curls-explained"
+          className="group block rounded-2xl border border-base-300 bg-base-100 p-4 hover:bg-base-200/50 transition mb-6"
+        >
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-full bg-base-200 grid place-items-center shrink-0">
+              <BookOpen className="w-4 h-4" aria-hidden="true" />
+            </div>
+            <div className="min-w-0">
+              <div className="text-base font-medium">Irish Curls Explained</div>
+              <div className="text-sm text-base-content/60 truncate">
+                Is this hair pattern real? Or just damage? Is it even Irish?
+              </div>
+            </div>
+            <ChevronRight className="ml-auto w-4 h-4 text-base-content/50 group-hover:translate-x-0.5 transition" />
+          </div>
+        </Link>
+
         {/* Featured Source: Dr. Crystal Porter */}
         <div className="collapse collapse-arrow bg-base-100 border border-base-300 rounded-2xl mb-6">
           <input type="checkbox" />
@@ -205,28 +224,6 @@ export default function TikTokPage() {
                 <div className="text-sm text-base-content/60 truncate">
                   Full Abbey Yung Method guide with step-by-step instructions,
                   product lists, routine examples, and a curly/wavy hair review.
-                </div>
-              </div>
-              <ChevronRight className="ml-auto w-4 h-4 text-base-content/50 group-hover:translate-x-0.5 transition" />
-            </div>
-          </Link>
-          {/* Worst Curly Hair Routine */}
-          <Link
-            href="/blog/the-worst-curly-hair-routine"
-            className="group block rounded-2xl border border-base-300 bg-base-100 p-3.5 hover:bg-base-200/50 transition"
-          >
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full bg-base-200 grid place-items-center shrink-0">
-                <BookOpen className="w-4 h-4" aria-hidden="true" />
-              </div>
-              <div className="min-w-0">
-                <div className="text-base font-medium">
-                  The Worst Curly Hair Routine on the Internet: A Step by Step
-                  Guide
-                </div>
-                <div className="text-sm text-base-content/60 truncate">
-                  The viral routine explained and broken down into a step by
-                  step guide.
                 </div>
               </div>
               <ChevronRight className="ml-auto w-4 h-4 text-base-content/50 group-hover:translate-x-0.5 transition" />
