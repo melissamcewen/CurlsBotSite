@@ -54,13 +54,30 @@ This keeps your scalp and hair free of buildup, which is especially important if
 
 Example Product
 
-<BlogProduct
+<BlogProductEnhanced
   name="K18 Detox Shampoo"
   subtitle="A shampoo formulated for gently clarifying damaged hair"
   image="/images/blog/the-abbey-yung-method/k18-shampoo.png"
-  buyLink="https://www.k18hair.com/products/peptide-prep-detox-shampoo-8-5oz"
-  buyText="Buy at k18"
-  amazonLink="https://amzn.to/40YyNDe"
+  links={[
+    {
+      url: 'https://www.k18hair.com/products/peptide-prep-detox-shampoo-8-5oz',
+      text: 'Buy at k18',
+      retailer: 'k18',
+      icon: 'shopping-cart',
+    },
+    {
+      url: 'https://amzn.to/40YyNDe',
+      text: 'Buy on Amazon',
+      retailer: 'amazon',
+      icon: 'shopping-cart',
+    },
+    {
+      url: 'https://www.sephora.com/product/peptide-prep-clarifying-detox-shampoo-P501449',
+      text: 'Buy at Sephora',
+      retailer: 'sephora',
+      icon: 'shopping-cart',
+    },
+  ]}
 />
 
 ### Rinse-out conditioner #6
@@ -75,32 +92,81 @@ Abbey suggests tailoring this to your hair’s needs: use a gloss if you want so
 
 Example products:
 
-<BlogProduct
+<BlogProductEnhanced
   name="Amika The Kure Strength Repair Conditioner"
   subtitle="A conditioner formulated for adding strength to damaged hair"
   image="/images/blog/the-abbey-yung-method/amika-conditioner.png"
-  buyLink="https://loveamika.com/products/the-kure-strength-repair-conditioner"
-  buyText="Buy at Amika"
-  amazonLink="https://amzn.to/4fraofq"
+  links={[
+    {
+      url: 'https://loveamika.com/products/the-kure-strength-repair-conditioner',
+      text: 'Buy at Amika',
+      retailer: 'amika',
+      icon: 'shopping-cart',
+    },
+    {
+  url: 'https://amzn.to/4fraofq',
+text: 'Buy on Amazon',
+retailer: 'amazon',
+icon: 'shopping-cart',
+},
+{
+url: 'https://www.sephora.com/product/the-kure-strength-repair-conditioner-P468627',
+text: 'Buy at Sephora',
+retailer: 'sephora',
+icon: 'shopping-cart',
+}
+]}
 />
 
-<BlogProduct
+<BlogProductEnhanced
   name="Amika Flash Instant Shine Mask"
   subtitle="A gloss that provides a lighter alternative to conditioner"
   image="/images/blog/the-abbey-yung-method/amika-flash.png"
-  buyLink="https://loveamika.com/products/flash-instant-shine-mask"
-  buyText="Buy at Amika"
-  amazonLink="https://amzn.to/4oA1eSc"
-/>
+  links={[
+    {
+      url: 'https://loveamika.com/products/flash-instant-shine-mask',
+      text: 'Buy at Amika',
+      retailer: 'amika',
+      icon: 'shopping-cart',
+    },
+  {
+    url: 'https://amzn.to/4oA1eSc',
+    text: 'Buy on Amazon',
+    retailer: 'amazon',
+    icon: 'shopping-cart',
+  },
+  {
+    url: 'https://www.sephora.com/product/flash-instant-shine-hair-gloss-mask-P501705',
+    text: 'Buy at Sephora',
+    retailer: 'sephora',
+    icon: 'shopping-cart',
+  }
+]} />
 
-<BlogProduct
+<BlogProductEnhanced
   name="Amika The Kure Intense Strength Repair Mask"
   subtitle="A mask that provides a richer, heavier alternative to conditioner"
   image="/images/blog/the-abbey-yung-method/amika-mask.png"
-  buyLink="https://loveamika.com/products/kure-intense-strength-repair-mask"
-  buyText="Buy at Amika"
-  amazonLink="https://amzn.to/4lqtP9M"
-/>
+  links={[
+    {
+      url: 'https://loveamika.com/products/kure-intense-strength-repair-mask',
+      text: 'Buy at Amika',
+      retailer: 'amika',
+      icon: 'shopping-cart',
+    },
+    {
+      url: 'https://amzn.to/4lqtP9M',
+      text: 'Buy on Amazon',
+      retailer: 'amazon',
+      icon: 'shopping-cart',
+    },
+    {
+      url: 'https://www.sephora.com/product/the-kure-intense-strength-repair-mask-P47481',
+      text: 'Buy at Sephora',
+      retailer: 'sephora',
+      icon: 'shopping-cart',
+    }
+]} />
 
 ### Leave-in conditioner + heat protection #8
 
@@ -109,24 +175,62 @@ The key here is sectioning your hair so every strand gets covered.
 **Products:** Leave-ins that specifically include heat protection. She has different recommendations for light, medium, and heavy products.
 
 Example:
+
 <BlogProductGrid title="Recommended Products" columns={3}>
 
-<BlogProductCard
+<BlogProductCardEnhanced
   name="Bumble and bumble. Hairdresser's Invisible Oil Primer"
   subtitle="A heat protectant leave-in conditioner that Abbey has as one of her heavy options"
   image="/images/blog/the-abbey-yung-method/bb-primer.png"
-  buyLink="https://www.bumbleandbumble.com/product/19055/31247/style/pre-stylers/hairdressers-invisible-oil-heatuv-protective-hair-primer-leave-in-conditioner"
-  buyText="Buy at Bumble and bumble"
-  amazonLink="https://amzn.to/4fz9FJi"
+  links={[
+    {
+      url: 'https://www.bumbleandbumble.com/product/19055/31247/style/pre-stylers/hairdressers-invisible-oil-heatuv-protective-hair-primer-leave-in-conditioner',
+      text: 'Buy at Bumble and bumble',
+      retailer: 'bumbleandbumble',
+      icon: 'shopping-cart',
+    },
+    {
+      url: 'https://amzn.to/4fz9FJi',
+      text: 'Buy on Amazon',
+      retailer: 'amazon',
+      icon: 'shopping-cart',
+    },
+    {
+      url: 'https://www.sephora.com/product/hairdresser-s-invisible-oil-primer-P386464',
+      text: 'Buy at Sephora',
+      retailer: 'sephora',
+      icon: 'shopping-cart',
+    }
+  ]}
 />
 
-<BlogProductCard
+<BlogProductCardEnhanced
   name="Redken One United All-In-One Leave In Conditioner"
   subtitle="A multi-purpose heat protectant leave-in conditioner that Abbey has as one of her medium options"
   image="/images/blog/the-abbey-yung-method/redken.png"
   buyLink="https://www.redken.com/hair-styling/one-united-leave-in-conditioner.html"
   buyText="Buy at Redken"
   amazonLink="https://amzn.to/4mzgcpB"
+  links={[
+    {
+      url: 'https://www.redken.com/hair-styling/one-united-leave-in-conditioner.html',
+      text: 'Buy at Redken',
+      retailer: 'redken',
+      icon: 'shopping-cart',
+    },
+    {
+      url: 'https://amzn.to/4mzgcpB',
+      text: 'Buy on Amazon',
+      retailer: 'amazon',
+      icon: 'shopping-cart',
+    },
+    {
+      url: 'https://www.ulta.com/p/one-united-all-in-one-multi-benefit-treatment-xlsImpprod12541003?sku=2290071',
+      text: 'Buy at Ulta',
+      retailer: 'ulta',
+      icon: 'shopping-cart',
+    }
+  ]}
 />
 
 <BlogProductCard
@@ -134,6 +238,21 @@ Example:
   subtitle="A multi-purpose heat protectant leave-in conditioner that Abbey has as one of her light options. I personally use this one on my fine, wavy hair."
   image="/images/blog/the-abbey-yung-method/21.png"
   amazonLink="https://amzn.to/4nEWXvw"
+  links={[
+    {
+      url: 'https://amzn.to/4nEWXvw',
+      text: 'Buy on Amazon',
+      retailer: 'amazon',
+      icon: 'shopping-cart',
+    },
+    {
+      url: 'https://www.kroger.com/p/pantene-miracle-rescue-10-in-1-multitasking-leave-in-conditioner-spray/0008087819246',
+      text: 'Buy at Kroger',
+      retailer: 'kroger',
+      icon: 'shopping-cart',
+    }
+
+  ]}
 />
 </BlogProductGrid>
 ### Optional Steps
@@ -177,11 +296,25 @@ For people who wash more than once a week but need something gentler than the st
 
 Example:
 
-<BlogProduct
+<BlogProductEnhanced
   name="Pureology Strength Cure Shampoo"
   subtitle="A shampoo formulated for damaged or color-treated hair"
   image="/images/blog/the-abbey-yung-method/pureology-shampoo.png"
   amazonLink="https://amzn.to/4lgccsZ"
+  links={[
+    {
+      url: 'https://amzn.to/4lgccsZ',
+      text: 'Buy on Amazon',
+      retailer: 'amazon',
+      icon: 'shopping-cart',
+    },
+    {
+      url: 'https://www.ulta.com/p/strength-cure-shampoo-damaged-hair-pimprod2017814?sku=2565130',
+      text: 'Buy at Ulta',
+      retailer: 'ulta',
+      icon: 'shopping-cart',
+    },
+  ]}
 />
 
 ### Post-shampoo bond repair treatment (2x a week) #5
@@ -192,13 +325,30 @@ For damaged hair. This is where Abbey usually recommends K18, but she also prese
 
 Example:
 
-<BlogProduct
+<BlogProductEnhanced
   name="K18 Molecular Repair Hair Mask"
   subtitle="A bond repair hair mask formulated for repairing damaged hair"
   image="/images/blog/the-abbey-yung-method/k18.png"
-  amazonLink="https://amzn.to/4lqESzv"
-  buyText="Buy at K18"
-  buyLink="https://www.k18hair.com/products/leave-in-molecular-repair-hair-mask-50-ml?"
+  links={[
+    {
+      url: 'https://www.k18hair.com/products/leave-in-molecular-repair-hair-mask-50-ml',
+      text: 'Buy at K18',
+      retailer: 'k18',
+      icon: 'shopping-cart',
+    },
+    {
+      url: 'https://amzn.to/4lqESzv',
+      text: 'Buy on Amazon',
+      retailer: 'amazon',
+      icon: 'shopping-cart',
+    },
+    {
+      url: 'https://www.sephora.com/product/leave-in-molecular-repair-mask-P479846',
+      text: 'Buy at Sephora',
+      retailer: 'sephora',
+      icon: 'shopping-cart',
+    },
+  ]}
 />
 
 ### Post-wash bond repair #7
@@ -207,13 +357,30 @@ For very damaged hair you can apply this treatment to towel-dried hair and let i
 
 **Products:** Another single-product category: **Living Proof Triple Bond Complex.**
 
-<BlogProduct
+<BlogProductEnhanced
   name="Living Proof Triple Bond Complex"
   subtitle="A bond repair treatment formulated for repairing damaged hair"
   image="/images/blog/the-abbey-yung-method/triple-bond-complex.png"
-  amazonLink="https://amzn.to/45yVak5"
-  buyText="Buy at Living Proof"
-  buyLink="https://www.livingproof.com/products/triple-bond-complex"
+  links={[
+    {
+      url: 'https://www.livingproof.com/products/triple-bond-complex',
+      text: 'Buy at Living Proof',
+      retailer: 'livingproof',
+      icon: 'shopping-cart',
+    },
+    {
+      url: 'https://amzn.to/45yVak5',
+      text: 'Buy on Amazon',
+      retailer: 'amazon',
+      icon: 'shopping-cart',
+    },
+    {
+      url: 'https://www.sephora.com/product/triple-bond-complex-leave-in-hair-treatment-P501168',
+      text: 'Buy at Sephora',
+      retailer: 'sephora',
+      icon: 'shopping-cart',
+    },
+  ]}
 />
 
 ### Styling products #9
@@ -224,13 +391,30 @@ For volume, curl definition, texture, or hold. Choose what works best for your s
 
 Example:
 
-<BlogProduct
+<BlogProductEnhanced
   name="K18 AstroLift™ Reparative Volume Spray"
   subtitle="A volumizing hair spray formulated for damaged hair"
   image="/images/blog/the-abbey-yung-method/astrolift.png"
-  amazonLink="https://amzn.to/3UnU5Xb"
-  buyText="Buy at K18"
-  buyLink="https://www.k18hair.com/products/astrolift-reparative-volume-spray-4oz"
+  links={[
+    {
+      url: 'https://www.k18hair.com/products/astrolift-reparative-volume-spray-4oz',
+      text: 'Buy at K18',
+      retailer: 'k18',
+      icon: 'shopping-cart',
+    },
+    {
+      url: 'https://amzn.to/3UnU5Xb',
+      text: 'Buy on Amazon',
+      retailer: 'amazon',
+      icon: 'shopping-cart',
+    },
+    {
+      url: 'https://www.sephora.com/product/mini-astrolift-reparative-volume-spray-P517726?skuId=2902120',
+      text: 'Buy at Sephora',
+      retailer: 'sephora',
+      icon: 'shopping-cart',
+    },
+  ]}
 />
 
 ### Style sealers #10
@@ -240,24 +424,59 @@ Add softness, shine, or smoothness after styling.
 **Products:** Lotions, creams, and oil serums. She has different recommendations for light, medium, and heavy products.
 
 Examples:
+
 <BlogProductGrid title="Recommended Products" columns={2}>
 
-<BlogProduct
+<BlogProductEnhanced
   name="Living Proof No Frizz Vanishing Oil"
   subtitle="A frizz-fighting oil that Abbey has as one of her light options"
   image="/images/blog/the-abbey-yung-method/living-proof-oil.png"
-  amazonLink="https://amzn.to/4llTv7e"
-  buyText="Buy at Living Proof"
-  buyLink="https://www.livingproof.com/products/no-frizz-vanishing-oil"
+  links={[
+    {
+      url: 'https://www.livingproof.com/products/no-frizz-vanishing-oil',
+      text: 'Buy at Living Proof',
+      retailer: 'livingproof',
+      icon: 'shopping-cart',
+    },
+    {
+      url: 'https://amzn.to/4llTv7e',
+      text: 'Buy on Amazon',
+      retailer: 'amazon',
+      icon: 'shopping-cart',
+    },
+    {
+      url: 'https://www.sephora.com/product/no-frizz-vanishing-oil-P501315',
+      text: 'Buy at Sephora',
+      retailer: 'sephora',
+      icon: 'shopping-cart',
+    },
+  ]}
 />
 
-<BlogProduct
+<BlogProductEnhanced
   name="Bumble and bumble. Hairdresser's Invisible Oil Long Last Styling Cream"
   subtitle="A styling cream that Abbey has as one of her medium and heavyoptions"
   image="/images/blog/the-abbey-yung-method/bb-cream.png"
-  buyText="Buy at Bumble and bumble"
-  buyLink="https://www.bumbleandbumble.com/product/19053/130912/care/treatments/hairdressers-invisible-oil-long-last-styling-cream"
-  amazonLink="https://amzn.to/469LpKx"
+  links={[
+    {
+      url: 'https://www.bumbleandbumble.com/product/19053/130912/care/treatments/hairdressers-invisible-oil-long-last-styling-cream',
+      text: 'Buy at Bumble and bumble',
+      retailer: 'bumbleandbumble',
+      icon: 'shopping-cart',
+    },
+    {
+      url: 'https://amzn.to/469LpKx',
+      text: 'Buy on Amazon',
+      retailer: 'amazon',
+      icon: 'shopping-cart',
+    },
+    {
+      url: 'https://www.sephora.com/product/bumble-bumble-long-last-hydrating-hair-styling-cream-P511619',
+      text: 'Buy at Sephora',
+      retailer: 'sephora',
+      icon: 'shopping-cart',
+    },
+  ]}
 />
 </BlogProductGrid>
 ### Between-wash care #11
@@ -270,31 +489,82 @@ Examples: Amika Midnight Mender hair feeling dry between wash
 IGK GOOD BEHAVIOR Spirulina Protein Smoothing Spray: heat protection
 dry shampoo: Living Proof Perfect Hair Day Advanced Clean Dry shampoo
 
-<BlogProduct
+<BlogProductEnhanced
   name="Amika Midnight Mender"
   subtitle="An overnight strength repair treatment"
   image="/images/blog/the-abbey-yung-method/amika-mender-mender.png"
-  amazonLink="https://amzn.to/45I917Q"
-  buyText="Buy at Amika"
-  buyLink="https://loveamika.com/products/midnight-mender-overnight-strength-repair-treatment-mask"
+  links={[
+    {
+      url: 'https://loveamika.com/products/midnight-mender-overnight-strength-repair-treatment-mask',
+      text: 'Buy at Amika',
+      retailer: 'amika',
+      icon: 'shopping-cart',
+    },
+    {
+      url: 'https://amzn.to/45I917Q',
+      text: 'Buy on Amazon',
+      retailer: 'amazon',
+      icon: 'shopping-cart',
+    },
+    {
+      url: 'https://www.sephora.com/product/midnight-mender-overnight-strength-repair-hair-treatment-mask-P515515?skuId=2834687',
+      text: 'Buy at Sephora',
+      retailer: 'sephora',
+      icon: 'shopping-cart',
+    },
+  ]}
 />
 
-<BlogProduct
+<BlogProductEnhanced
   name="IGK GOOD BEHAVIOR Spirulina Protein Smoothing Spray"
   subtitle="A heat protectant spray Abbey recommends for if you do any heat styling between washes"
   image="/images/blog/the-abbey-yung-method/igk-good-behavior.png"
-  amazonLink="https://amzn.to/3UAS6Py"
-  buyText="Buy at IGK"
-  buyLink="https://www.igkhair.com/products/good-behavior-spirulina-protein-smoothing-spray"
+  links={[
+    {
+      url: 'https://www.igkhair.com/products/good-behavior-spirulina-protein-smoothing-spray',
+      text: 'Buy at IGK',
+      retailer: 'igk',
+      icon: 'shopping-cart',
+    },
+    {
+      url: 'https://amzn.to/3UAS6Py',
+      text: 'Buy on Amazon',
+      retailer: 'amazon',
+      icon: 'shopping-cart',
+    },
+    {
+      url: 'https://www.sephora.com/product/good-behavior-spirulina-protein-smoothing-spray-P433830',
+      text: 'Buy at Sephora',
+      retailer: 'sephora',
+      icon: 'shopping-cart',
+    },
+  ]}
 />
 
-<BlogProduct
+<BlogProductEnhanced
   name="Living Proof Perfect Hair Day Advanced Clean Dry Shampoo"
   subtitle="A dry shampoo Abbey recommends for if you need to refresh your hair between washes"
   image="/images/blog/the-abbey-yung-method/living-proof-perfect-hair-day.png"
-  amazonLink="https://amzn.to/3UBkykc"
-  buyText="Buy at Living Proof"
-  buyLink="https://www.livingproof.com/products/perfect-hair-day-advanced-clean-dry-shampoo"
+  links={[
+    {
+      url: 'https://www.livingproof.com/products/perfect-hair-day-advanced-clean-dry-shampoo',
+      text: 'Buy at Living Proof',
+      retailer: 'livingproof',
+      icon: 'shopping-cart',
+    },
+    {
+      url: 'https://amzn.to/3UBkykc',
+      text: 'Buy on Amazon',
+      retailer: 'amazon',
+      icon: 'shopping-cart',
+    },
+    {
+      url: 'https://www.sephora.com/product/living-proof-perfect-hair-day-phd-advanced-clean-dry-shampoo-P474072',
+      text: 'Buy at Sephora',
+      retailer: 'sephora',
+      icon: 'shopping-cart',
+    },
+  ]}
 />
 
 ## How often to wash
@@ -456,6 +726,5 @@ Either way, she’s given the haircare space something valuable: permission to c
   alt="A flowchart for the Abbey Yung Method"
   caption="A flowchart for the Abbey Yung Method"
 />
-
 
 <AuthorBio />

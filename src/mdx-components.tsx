@@ -9,7 +9,9 @@ import {
   FlowchartImage,
 } from '@/components/mdx/BlogImage';
 import { BlogProduct } from '@/components/mdx/BlogProduct';
+import { BlogProductEnhanced } from '@/components/mdx/BlogProductEnhanced';
 import { BlogProductCard } from '@/components/mdx/BlogProductCard';
+import { BlogProductCardEnhanced } from '@/components/mdx/BlogProductCardEnhanced';
 import { CompactBlogProductList } from '@/components/mdx/CompactBlogProductList';
 import { BlogProductGrid } from '@/components/mdx/BlogProductGrid';
 import { Affiliate } from '@/components/mdx/Affiliate';
@@ -22,7 +24,6 @@ import NewsletterSignup from '@/components/mdx/NewsletterSignup';
 import AbbeyYungMethodTable from '@/components/mdx/AbbeyYungMethodTable';
 import AbbeyYungTable from '@/components/mdx/AbbeyYungTable';
 
-
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     InlineReference,
@@ -31,7 +32,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     DualImage,
     FlowchartImage,
     BlogProduct,
+    BlogProductEnhanced,
     BlogProductCard,
+    BlogProductCardEnhanced,
     CompactBlogProductList,
     BlogProductGrid,
     Affiliate,
