@@ -19,11 +19,11 @@ export default function About() {
           <div>
             <h2 className="text-5xl font-bold">CurlsBot for Brands</h2>
             <p className="py-6">
-              While I no longer work with brands individually, CurlsBot
+              While I don&apos;t work with brands individually, CurlsBot
               continues to help hair care brands reach our engaged community
               through our trusted partners.
             </p>
-            <div className="alert alert-info mb-6">
+            <div className="alert bg-base-200 mb-6">
               <Info className="w-6 h-6" />
               <div>
                 <h3 className="font-bold">Want to get your brand listed?</h3>
@@ -36,6 +36,12 @@ export default function About() {
                     Curls Monthly
                   </a>{' '}
                   to get your products featured on CurlsBot!
+                </p>
+                <p className="mt-2 text-sm">
+                  <strong>Note:</strong> If you're already on Curls Monthly but
+                  not listed on CurlsBot, it's likely because I was unable to
+                  join your affiliate program or your products aren't available
+                  on common retailers like Amazon, Ulta, or Sephora.
                 </p>
               </div>
             </div>
