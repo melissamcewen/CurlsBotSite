@@ -38,9 +38,9 @@ export default function About() {
                   to get your products featured on CurlsBot!
                 </p>
                 <p className="mt-2 text-sm">
-                  <strong>Note:</strong> If you're already on Curls Monthly but
-                  not listed on CurlsBot, it's likely because I was unable to
-                  join your affiliate program or your products aren't available
+                  <strong>Note:</strong> If you&apos;re already on Curls Monthly but
+                  not listed on CurlsBot, it&apos;s likely because I was unable to
+                  join your affiliate program or your products aren&apos;t available
                   on common retailers like Amazon, Ulta, or Sephora.
                 </p>
               </div>
