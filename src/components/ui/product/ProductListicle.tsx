@@ -10,6 +10,7 @@ import {
   Sparkles,
   Award,
   Info,
+  ShoppingBag,
 } from 'lucide-react';
 import { useLocalization } from '@/contexts/LocalizationContext';
 import {
@@ -314,6 +315,19 @@ export function ProductListicle({
             </div>
           </section>
         ))}
+      </div>
+
+      {/* Affiliate Disclosure */}
+      <div className="card bg-base-200 mt-8">
+        <div className="card-body text-center">
+          <p className="flex items-center justify-center gap-2">
+            <ShoppingBag className="w-4 h-4 shrink-0" />
+            All products featured on CurlsBot are independently and thoughtfully
+            selected by us. However, when you buy something through our retail
+            links, we may earn an affiliate commission. This helps us keep
+            CurlsBot running. We thank you for your support!
+          </p>
+        </div>
       </div>
     </article>
   );
