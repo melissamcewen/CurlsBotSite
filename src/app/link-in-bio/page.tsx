@@ -51,7 +51,23 @@ export default function TikTokPage() {
             <TikTokEmailSignup />
           </div>
         </section>
-
+        {/* gel bracket subscribepage.io/curlsbotgels */}
+        <a
+          href="https://page.io/curlsbotgels"
+          className="group block rounded-2xl border border-base-300 bg-base-100 p-4 hover:bg-base-200/50 transition mb-6"
+        >
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-full bg-base-200 grid place-items-center shrink-0">
+              <BookOpen className="w-4 h-4" aria-hidden="true" />
+            </div>
+            <div className="min-w-0">
+              <div className="text-base font-medium">Gel Showdown Bracket</div>
+              <div className="text-sm text-base-content/60 truncate">
+                I&apos;m on the quest to find the best gel for my hair by testing two gels head to head in a bracket. See results and get updates here!
+              </div>
+            </div>
+          </div>
+        </a>
         {/* Irish Curls Explained */}
         <Link
           href="/blog/irish-curls-explained"
