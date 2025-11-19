@@ -23,6 +23,7 @@ import ProductComparisonTable from '@/components/mdx/ProductComparisonTable';
 import NewsletterSignup from '@/components/mdx/NewsletterSignup';
 import AbbeyYungMethodTable from '@/components/mdx/AbbeyYungMethodTable';
 import AbbeyYungTable from '@/components/mdx/AbbeyYungTable';
+import BondProductsTable from '@/components/mdx/BondProductsTable';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -46,6 +47,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     NewsletterSignup,
     AbbeyYungMethodTable,
     AbbeyYungTable,
+    BondProductsTable,
     ...components,
   };
 }

@@ -9,7 +9,8 @@
     "lint": "next lint",
     "type-check": "tsc --noEmit",
     "test": "jest --env=jsdom",
-    "test:watch": "jest --env=jsdom --watch"
+    "test:watch": "jest --env=jsdom --watch",
+    "convert-bond-products": "tsx scripts/convert-bond-products-csv.ts"
   },
   "dependencies": {
     "@lucide/lab": "^0.1.2",
