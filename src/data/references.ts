@@ -1488,5 +1488,110 @@ Kahre, Joerg. "Ethnic Differences in Haircare Products." Handbook of Cosmetic Sc
     date: '2017',
     source: 'PLOS ONE',
   },
+
+  /* Martins E, Castro P, Ribeiro AB, et al. Bleached Hair as Standard Template to Insight the Performance of Commercial Hair Repair Products. Cosmetics. 2024;11(5):150. doi:10.3390/cosmetics11050150
+*/
+'138': {
+    id: '138',
+    url: 'https://doi.org/10.3390/cosmetics11050150',
+    title: 'Bleached Hair as Standard Template to Insight the Performance of Commercial Hair Repair Products',
+    type: 'science',
+    author: 'Martins E, Castro P, Ribeiro AB, et al.',
+    date: '2024',
+    source: 'Cosmetics',
+  },
+  /* Di Foggia M, Boga C, Micheletti G, Nocentini B, Taddei P. Structural investigation on damaged hair keratin treated with α,β-unsaturated Michael acceptors used as repairing agents. International Journal of Biological Macromolecules. 2021;167:620-632. doi:10.1016/j.ijbiomac.2020.11.194 */
+  '139': {
+    id: '139',
+    url: 'https://doi.org/10.1016/j.ijbiomac.2020.11.194',
+    title: 'Structural investigation on damaged hair keratin treated with α,β-unsaturated Michael acceptors used as repairing agents',
+    type: 'science',
+    author: 'Di Foggia M, Boga C, Micheletti G, Nocentini B, Taddei P.',
+    date: '2021',
+    source: 'International Journal of Biological Macromolecules',
+  },
+  /*Kim JH, Kim SY, Choi J, Lee HJ. Visible Light-Mediated Environmentally Friendly and Universally Applicable Green Chemistry for Hair Cross-Linking. ACS Sustainable Chem Eng. 2023;11(27):10029-10040. doi:10.1021/acssuschemeng.3c01797*/
+  '140': {
+    id: '140',
+    url: 'https://doi.org/10.1021/acssuschemeng.3c01797',
+    title: 'Visible Light-Mediated Environmentally Friendly and Universally Applicable Green Chemistry for Hair Cross-Linking',
+    type: 'science',
+    author: 'Kim JH, Kim SY, Choi J, Lee HJ.',
+    date: '2023',
+    source: 'ACS Sustainable Chem Eng',
+  },
+  /*Marsh JM, Cron S, Chen T, et al. Strengthening benefits of panthenol for hair: Mechanistic evidence from advanced spectroscopic techniques. International Journal of Cosmetic Science. n/a(n/a). doi:10.1111/ics.70024*/
+  '141': {
+    id: '141',
+    url: 'https://doi.org/10.1111/ics.70024',
+    title: 'Strengthening benefits of panthenol for hair: Mechanistic evidence from advanced spectroscopic techniques',
+    type: 'science',
+    author: 'Marsh JM, Cron S, Chen T, et al.',
+    date: 'n/a',
+    source: 'International Journal of Cosmetic Science',
+  },
+  /* Zhang D, Baghdadli N, Greaves AJ. Reinforcing chemically treated human hair with citric acid. Int J Cosmet Sci. Published online January 6, 2025. doi:10.1111/ics.13039*/
+  '142': {
+    id: '142',
+    url: 'https://doi.org/10.1111/ics.13039',
+    title: 'Reinforcing chemically treated human hair with citric acid',
+    type: 'science',
+    author: 'Zhang D, Baghdadli N, Greaves AJ.',
+    date: '2025',
+    source: 'Int J Cosmet Sci',
+  },
+  /* 1. Malinauskyte E, Shrestha R, Cornwell PA, Gourion-Arsiquaud S, Hindley M. Penetration of different molecular weight hydrolysed keratins into hair fibres and their effects on the physical properties of textured hair. International Journal of Cosmetic Science. 2021;43(1):26-37. doi:10.1111/ics.12663 */
+  '143': {
+    id: '143',
+    url: 'https://doi.org/10.1111/ics.12663',
+    title: 'Penetration of different molecular weight hydrolysed keratins into hair fibres and their effects on the physical properties of textured hair',
+    type: 'science',
+    author: 'Malinauskyte E, Shrestha R, Cornwell PA, Gourion-Arsiquaud S, Hindley M.',
+    date: '2021',
+    source: 'International Journal of Cosmetic Science',
+  },
+  /* Chambers LI, Yufit DS, Musa OM, Steed JW. Understanding the Interaction of Gluconamides and Gluconates with Amino Acids in Hair Care. Cryst Growth Des. 2022;22(10):6190-6200. doi:10.1021/acs.cgd.2c00753*/
+  '144': {
+    id: '144',
+    url: 'https://doi.org/10.1021/acs.cgd.2c00753',
+    title: 'Understanding the Interaction of Gluconamides and Gluconates with Amino Acids in Hair Care',
+    type: 'science',
+    author: 'Chambers LI, Yufit DS, Musa OM, Steed JW.',
+    date: '2022',
+    source: 'Cryst Growth Des',
+  },
+  /* 1. Cornwell P, Ph.D., Princeton TRI, et al. How Bond Builders ‘Repair’ Hair. Cosmetics & Toiletries. February 27, 2023. Accessed November 17, 2025. https://www.cosmeticsandtoiletries.com/formulas-products/hair-care/article/22737591/how-bond-builders-repair-hair
+*/
+'145': {
+    id: '145',
+    url: 'https://www.cosmeticsandtoiletries.com/formulas-products/hair-care/article/22737591/how-bond-builders-repair-hair',
+    title: 'How Bond Builders ‘Repair’ Hair',
+    type: 'science',
+    author: 'Cornwell P, Ph.D., Princeton TRI, et al.',
+    date: '2023',
+    source: 'Cosmetics & Toiletries',
+  },
+  /*  Sureka P, Agrawal T, Majumder S, Ritambhara K. A Method to Measure Oil Penetration into Hair and Correlation to Tensile Strength. Int J Trichology. 2022;14(4):128-134. doi:10.4103/ijt.ijt_122_20  */
+  '146': {
+    id: '146',
+    url: 'https://doi.org/10.4103/ijt.ijt_122_20',
+    title: 'A Method to Measure Oil Penetration into Hair and Correlation to Tensile Strength',
+    type: 'science',
+    author: 'Sureka P, Agrawal T, Majumder S, Ritambhara K.',
+    date: '2022',
+    source: 'Int J Trichology',
+  },
+  /* 1. Gamez M, Foltis L, Everaert E, et al. Dual Defense: Protecting and Repairing Hair Holistically, Inside and Out. Cosmetics & Toiletries. June 1, 2020. Accessed November 17, 2025. https://www.cosmeticsandtoiletries.com/testing/efficacy/article/21835676/ashland-specialty-ingredients-dual-defense-protecting-and-repairing-hair-holistically-inside-and-out
+*/
+'147': {
+    id: '147',
+    url: 'https://www.cosmeticsandtoiletries.com/testing/efficacy/article/21835676/ashland-specialty-ingredients-dual-defense-protecting-and-repairing-hair-holistically-inside-and-out',
+    title: 'Dual Defense: Protecting and Repairing Hair Holistically, Inside and Out',
+    type: 'science',
+    author: 'Gamez M, Foltis L, Everaert E, et al.',
+    date: '2020',
+    source: 'Cosmetics & Toiletries',
+  },
+
 };
 
