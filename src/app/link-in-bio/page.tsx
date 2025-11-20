@@ -51,6 +51,27 @@ export default function TikTokPage() {
             <TikTokEmailSignup />
           </div>
         </section>
+        {/* Amazon Black Friday Deals */}
+        <a
+          href="https://www.amazon.com/shop/curlsbot/list/HETQHXTWJG9N"
+          target="_blank"
+          className="group block rounded-2xl border border-base-300 bg-base-100 p-4 hover:bg-base-200/50 transition mb-6"
+        >
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-full bg-base-200 grid place-items-center shrink-0">
+              <ExternalLink className="w-4 h-4" aria-hidden="true" />
+            </div>
+            <div className="min-w-0 flex-1">
+              <div className="text-base font-medium">
+                Early CurlsBot Black Friday Deals
+              </div>
+              <div className="text-sm text-base-content/60 truncate">
+                My handpicked deals for the season
+              </div>
+            </div>
+            <ChevronRight className="w-4 h-4 text-base-content/50 group-hover:translate-x-0.5 transition shrink-0" />
+          </div>
+        </a>
         {/* link to porosity post external on reddit */}
         <a
           href="https://www.reddit.com/r/HaircareScience/comments/1ng1p5g/a_summary_of_all_current_research_and_opinion_on/"
@@ -60,15 +81,15 @@ export default function TikTokPage() {
             <div className="w-9 h-9 rounded-full bg-base-200 grid place-items-center shrink-0">
               <ExternalLink className="w-4 h-4" aria-hidden="true" />
             </div>
-            <div className="min-w-0">
+            <div className="min-w-0 flex-1">
               <div className="text-base font-medium">
                 A Summary of All Current Research and Opinion on Porosity
               </div>
               <div className="text-sm text-base-content/60 truncate">
                 A reddit post I made about porosity variation in healthy hair.
               </div>
-              <ChevronRight className="ml-auto w-4 h-4 text-base-content/50 group-hover:translate-x-0.5 transition" />
             </div>
+            <ChevronRight className="w-4 h-4 text-base-content/50 group-hover:translate-x-0.5 transition shrink-0" />
           </div>
         </a>
         {/* gel bracket subscribepage.io/curlsbotgels */}
@@ -80,7 +101,7 @@ export default function TikTokPage() {
             <div className="w-9 h-9 rounded-full bg-base-200 grid place-items-center shrink-0">
               <BookOpen className="w-4 h-4" aria-hidden="true" />
             </div>
-            <div className="min-w-0">
+            <div className="min-w-0 flex-1">
               <div className="text-base font-medium">Gel Showdown Bracket</div>
               <div className="text-sm text-base-content/60 truncate">
                 I&apos;m on the quest to find the best gel for my hair by
@@ -88,6 +109,7 @@ export default function TikTokPage() {
                 updates here!
               </div>
             </div>
+            <ChevronRight className="w-4 h-4 text-base-content/50 group-hover:translate-x-0.5 transition shrink-0" />
           </div>
         </a>
         {/* Irish Curls Explained */}
