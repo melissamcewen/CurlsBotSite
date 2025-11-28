@@ -63,7 +63,7 @@ export default function TikTokPage() {
             </div>
             <div className="min-w-0 flex-1">
               <div className="text-base font-medium">
-                Early CurlsBot Black Friday Deals
+                Black Friday/Cyber Monday Deals
               </div>
               <div className="text-sm text-base-content/60 truncate">
                 My handpicked deals for the season
