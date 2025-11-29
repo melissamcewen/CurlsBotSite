@@ -112,9 +112,9 @@ export default function TikTokPage() {
             <ChevronRight className="w-4 h-4 text-base-content/50 group-hover:translate-x-0.5 transition shrink-0" />
           </div>
         </a>
-        {/* Irish Curls Explained */}
+        {/* Protein Bad for low porosity hair */}
         <Link
-          href="/blog/irish-curls-explained"
+          href="/blog/is-protein-bad-for-low-porosity-hair"
           className="group block rounded-2xl border border-base-300 bg-base-100 p-4 hover:bg-base-200/50 transition mb-6"
         >
           <div className="flex items-center gap-3">
@@ -122,9 +122,9 @@ export default function TikTokPage() {
               <BookOpen className="w-4 h-4" aria-hidden="true" />
             </div>
             <div className="min-w-0">
-              <div className="text-base font-medium">Irish Curls Explained</div>
+              <div className="text-base font-medium">Is Protein Bad for Low Porosity Hair?</div>
               <div className="text-sm text-base-content/60 truncate">
-                Is this hair pattern real? Or just damage? Is it even Irish?
+                Busting the myth that protein is bad for low porosity hair with the power of science.
               </div>
             </div>
             <ChevronRight className="ml-auto w-4 h-4 text-base-content/50 group-hover:translate-x-0.5 transition" />
