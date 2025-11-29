@@ -72,9 +72,10 @@ export default function TikTokPage() {
             <ChevronRight className="w-4 h-4 text-base-content/50 group-hover:translate-x-0.5 transition shrink-0" />
           </div>
         </a>
-        {/* link to porosity post external on reddit */}
+        {/* Link to bond video */}
         <a
-          href="https://www.reddit.com/r/HaircareScience/comments/1ng1p5g/a_summary_of_all_current_research_and_opinion_on/"
+          href="https://www.youtube.com/watch?v=fME13jt0kWY"
+          target="_blank"
           className="group block rounded-2xl border border-base-300 bg-base-100 p-4 hover:bg-base-200/50 transition mb-6"
         >
           <div className="flex items-center gap-3">
@@ -83,10 +84,10 @@ export default function TikTokPage() {
             </div>
             <div className="min-w-0 flex-1">
               <div className="text-base font-medium">
-                A Summary of All Current Research and Opinion on Porosity
+                Excellent bond repair video
               </div>
               <div className="text-sm text-base-content/60 truncate">
-                A reddit post I made about porosity variation in healthy hair.
+                Covers an ingredient in Curlsmith&apos;s bond product that I didn&apos;t cover.
               </div>
             </div>
             <ChevronRight className="w-4 h-4 text-base-content/50 group-hover:translate-x-0.5 transition shrink-0" />
@@ -126,7 +127,9 @@ export default function TikTokPage() {
                 Skeptics Guide To Bond Repair
               </div>
               <div className="text-sm text-base-content/60 truncate">
-                A comprehensive guide to bond repair products for curly/wavy hair, including what they are, when to use them, and which ones are worth it.
+                A comprehensive guide to bond repair products for curly/wavy
+                hair, including what they are, when to use them, and which ones
+                are worth it.
               </div>
             </div>
             <ChevronRight className="ml-auto w-4 h-4 text-base-content/50 group-hover:translate-x-0.5 transition" />
