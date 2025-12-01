@@ -154,6 +154,71 @@ const nextConfig = {
         destination: '/groups/oils',
         permanent: true,
       },
+      // Old hair type quiz results → New pattern-based system
+      // Type 1 (Straight) → Straight
+      {
+        source: '/hair-types/quiz/1a',
+        destination: '/hair-types/quiz/straight',
+        permanent: true,
+      },
+      {
+        source: '/hair-types/quiz/1b',
+        destination: '/hair-types/quiz/straight',
+        permanent: true,
+      },
+      {
+        source: '/hair-types/quiz/1c',
+        destination: '/hair-types/quiz/straight',
+        permanent: true,
+      },
+      // Type 2 (Wavy) → Wavy / Loose Curls
+      {
+        source: '/hair-types/quiz/2a',
+        destination: '/hair-types/quiz/wavy-loose-curls',
+        permanent: true,
+      },
+      {
+        source: '/hair-types/quiz/2b',
+        destination: '/hair-types/quiz/wavy-loose-curls',
+        permanent: true,
+      },
+      {
+        source: '/hair-types/quiz/2c',
+        destination: '/hair-types/quiz/wavy-loose-curls',
+        permanent: true,
+      },
+      // Type 3 (Curly)
+      {
+        source: '/hair-types/quiz/3a',
+        destination: '/hair-types/quiz/loose-curls',
+        permanent: true,
+      },
+      {
+        source: '/hair-types/quiz/3b',
+        destination: '/hair-types/quiz/tight-curls',
+        permanent: true,
+      },
+      {
+        source: '/hair-types/quiz/3c',
+        destination: '/hair-types/quiz/coily',
+        permanent: true,
+      },
+      // Type 4 (Coily)
+      {
+        source: '/hair-types/quiz/4a',
+        destination: '/hair-types/quiz/coily',
+        permanent: true,
+      },
+      {
+        source: '/hair-types/quiz/4b',
+        destination: '/hair-types/quiz/tight-coils-zigzags',
+        permanent: true,
+      },
+      {
+        source: '/hair-types/quiz/4c',
+        destination: '/hair-types/quiz/tight-coils-zigzags',
+        permanent: true,
+      },
     ];
   },
 }

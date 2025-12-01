@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import NewQuizResult from '../NewQuizResult';
+import NewQuizResult from '../../quiz/NewQuizResult';
 import {
   isValidPatternType,
   HairPatternType,
-} from '../newTypes';
+} from '../../quiz/newTypes';
 
 interface Props {
   params: Promise<{
@@ -34,7 +34,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   }
 
   // Import here to avoid circular dependency
-  const { getPatternType } = await import('../newTypes');
+  const { getPatternType } = await import('../../quiz/newTypes');
   const patternData = getPatternType(type as HairPatternType);
 
   return {
@@ -43,7 +43,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   };
 }
 
-export default async function HairTypePage(props: Props) {
+export default async function NewHairTypeResultPage(props: Props) {
   const params = await props.params;
   const type = params.type;
 
@@ -67,3 +67,4 @@ export default async function HairTypePage(props: Props) {
     </main>
   );
 }
+
