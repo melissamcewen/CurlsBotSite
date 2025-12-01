@@ -13,7 +13,7 @@ One of six pattern results:
 2. **Coily**
 3. **Tight Curls**
 4. **Loose Curls**
-5. **Wavy / Loose Curls**
+5. **Wavy**
 6. **Swavy**
 
 Straight should have a listing on the landing page but is not part of the system
@@ -91,7 +91,7 @@ Sure! Here’s that table rewritten cleanly as bullet points:
 
 ---
 
-### **Wavy / Loose Curls**
+### **Wavy**
 
 - **Shrinkage:** Little
 - **Typical behaviors:** Mix of waves and occasional curls
@@ -151,7 +151,7 @@ Only appears after Q1. Asks if they have other patterns in addition to their pri
 - If Q1 = **Coils** → Show: Curls, Zig-zags
 - If Q1 = **Zig-zags** → Show: Curls, Coils
 
-**Note on "Straight" option:** When primary pattern is Waves, "Straight" appears as a checkbox option in Q2 to capture straight-like behavior. If checked alone (without Curls), this directly leads to Swavy result (no need for shrinkage question). However, if both "Straight" and "Curls" are checked, the result is Wavy / Loose Curls (curls take precedence). This represents sections of hair that may be barely wavy or dry mostly straight.
+**Note on "Straight" option:** When primary pattern is Waves, "Straight" appears as a checkbox option in Q2 to capture straight-like behavior. If checked alone (without Curls), this directly leads to Swavy result (no need for shrinkage question). However, if both "Straight" and "Curls" are checked, the result is Wavy (curls take precedence). This represents sections of hair that may be barely wavy or dry mostly straight.
 
 User can select **none, one, or multiple** additional patterns. Selecting none means they only have the primary pattern.
 
@@ -210,7 +210,7 @@ Q1: Primary Pattern
 │  └─ Result: Swavy (straight-like behavior indicates barely wavy)
 │
 ├─ Waves + Q2: Also has Curls? (checked, with or without Straight)
-│  └─ Result: Wavy / Loose Curls (curls indicate wavy pattern; Straight + Curls together = Wavy)
+│  └─ Result: Wavy (curls indicate wavy pattern; Straight + Curls together = Wavy)
 │
 ├─ Curls (only)
 │  └─ Q4: Shrinkage?
@@ -254,8 +254,8 @@ Q1: Primary Pattern
 
 - **Waves only (no additional patterns selected)** → **Swavy** (if they had curls, they would have selected "Curls" in Q2)
 - **Waves + Straight only (checked, no Curls)** → **Swavy** (straight-like sections indicate barely wavy)
-- **Waves + Curls** → **Wavy / Loose Curls** (curls indicate wavy pattern)
-- **Waves + Straight + Curls (both checked)** → **Wavy / Loose Curls** (curls take precedence, indicating wavy not swavy)
+- **Waves + Curls** → **Wavy** (curls indicate wavy pattern)
+- **Waves + Straight + Curls (both checked)** → **Wavy** (curls take precedence, indicating wavy not swavy)
 - **Curls only + little–25% shrinkage** → **Loose Curls**
 - **Curls only + 25–50% shrinkage** → **Tight Curls**
 - **Curls + Waves** → **Loose Curls**
@@ -745,8 +745,8 @@ Result determination combines Q1 + Q2 + Q3/Q4
   - **Straight hair path:** Q0: Yes → Straight result page
   - **Swavy path (Waves only):** Q1: Waves → Q2: No additional → Q4: Little shrinkage → Swavy
   - **Swavy path (Waves + Straight only):** Q1: Waves → Q2: "Straight" checked (Curls not checked) → Swavy (direct result, no shrinkage question needed)
-  - **Wavy path (Waves + Curls):** Q1: Waves → Q2: "Curls" checked → Q4: Some shrinkage → Wavy / Loose Curls
-  - **Wavy path (Waves + Straight + Curls):** Q1: Waves → Q2: Both "Straight" and "Curls" checked → Wavy / Loose Curls (curls take precedence)
+  - **Wavy path (Waves + Curls):** Q1: Waves → Q2: "Curls" checked → Q4: Some shrinkage → Wavy
+  - **Wavy path (Waves + Straight + Curls):** Q1: Waves → Q2: Both "Straight" and "Curls" checked → Wavy (curls take precedence)
   - **Loose Curls path:** Q1: Curls → Q2: Also Waves → Loose Curls
   - **Tight Curls path:** Q1: Curls → Q2: No additional → Q4: 25-50% shrinkage → Tight Curls
   - **Coily path:** Q1: Coils → Q2: No additional → Q3: Yes (elongates) → Coily

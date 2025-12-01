@@ -15,12 +15,22 @@ export type PrimaryPattern = 'waves' | 'curls' | 'coils' | 'zig-zags';
 /**
  * Additional patterns that can appear in Q2 (includes 'straight' for waves)
  */
-export type AdditionalPattern = 'straight' | 'waves' | 'curls' | 'coils' | 'zig-zags';
+export type AdditionalPattern =
+  | 'straight'
+  | 'waves'
+  | 'curls'
+  | 'coils'
+  | 'zig-zags';
 
 /**
  * Shrinkage level options for Q4
  */
-export type ShrinkageLevel = 'little-none' | 'little-25' | '25-50' | '50-75' | '75-plus';
+export type ShrinkageLevel =
+  | 'little-none'
+  | 'little-25'
+  | '25-50'
+  | '50-75'
+  | '75-plus';
 
 /**
  * Pattern adjacency mapping - defines which additional patterns can appear for each primary pattern
@@ -70,10 +80,7 @@ export function shouldAskElongation(
   }
 
   // Ask if curls + coils is selected
-  if (
-    primaryPattern === 'curls' &&
-    additionalPatterns.includes('coils')
-  ) {
+  if (primaryPattern === 'curls' && additionalPatterns.includes('coils')) {
     return true;
   }
 
@@ -98,10 +105,7 @@ export function shouldAskShrinkage(
   }
 
   // Ask for curls + waves path
-  if (
-    primaryPattern === 'curls' &&
-    additionalPatterns.includes('waves')
-  ) {
+  if (primaryPattern === 'curls' && additionalPatterns.includes('waves')) {
     return true;
   }
 
@@ -111,7 +115,9 @@ export function shouldAskShrinkage(
 /**
  * Determine the final hair type result based on quiz answers
  */
-export function determineHairType(answers: QuizAnswers): HairPatternType | 'straight' {
+export function determineHairType(
+  answers: QuizAnswers,
+): HairPatternType | 'straight' {
   // Q0: Straight gate
   if (answers.isStraight === true) {
     return 'straight';
@@ -122,7 +128,12 @@ export function determineHairType(answers: QuizAnswers): HairPatternType | 'stra
     throw new Error('Primary pattern is required');
   }
 
-  const { primaryPattern, additionalPatterns = [], elongatesWhenWet, shrinkage } = answers;
+  const {
+    primaryPattern,
+    additionalPatterns = [],
+    elongatesWhenWet,
+    shrinkage,
+  } = answers;
 
   // Waves paths
   if (primaryPattern === 'waves') {
@@ -136,7 +147,7 @@ export function determineHairType(answers: QuizAnswers): HairPatternType | 'stra
 
     // Waves + Curls (with or without Straight) → Wavy / Loose Curls
     if (hasCurls) {
-      return 'wavy-loose-curls';
+      return 'wavy';
     }
 
     // Waves only (no additional patterns) → Swavy (waves that never curl)
@@ -208,7 +219,9 @@ export function determineHairType(answers: QuizAnswers): HairPatternType | 'stra
     return 'tight-coils-zigzags';
   }
 
-  throw new Error(`Unable to determine hair type for pattern: ${primaryPattern}`);
+  throw new Error(
+    `Unable to determine hair type for pattern: ${primaryPattern}`,
+  );
 }
 
 /**
@@ -239,7 +252,10 @@ export function validateQuizAnswers(answers: QuizAnswers): {
   // Check if we need elongation answer
   if (
     answers.primaryPattern &&
-    shouldAskElongation(answers.primaryPattern, answers.additionalPatterns || [])
+    shouldAskElongation(
+      answers.primaryPattern,
+      answers.additionalPatterns || [],
+    )
   ) {
     if (answers.elongatesWhenWet === undefined) {
       missingFields.push('elongatesWhenWet');
@@ -261,4 +277,3 @@ export function validateQuizAnswers(answers: QuizAnswers): {
     missingFields,
   };
 }
-

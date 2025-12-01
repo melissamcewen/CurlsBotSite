@@ -174,17 +174,17 @@ const nextConfig = {
       // Type 2 (Wavy) → Wavy / Loose Curls
       {
         source: '/hair-types/quiz/2a',
-        destination: '/hair-types/quiz/wavy-loose-curls',
+        destination: '/hair-types/quiz/wavy',
         permanent: true,
       },
       {
         source: '/hair-types/quiz/2b',
-        destination: '/hair-types/quiz/wavy-loose-curls',
+        destination: '/hair-types/quiz/wavy',
         permanent: true,
       },
       {
         source: '/hair-types/quiz/2c',
-        destination: '/hair-types/quiz/wavy-loose-curls',
+        destination: '/hair-types/quiz/wavy',
         permanent: true,
       },
       // Type 3 (Curly)
