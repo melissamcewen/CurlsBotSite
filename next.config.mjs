@@ -211,12 +211,12 @@ const nextConfig = {
       },
       {
         source: '/hair-types/quiz/4b',
-        destination: '/hair-types/quiz/tight-coils-zigzags',
+        destination: '/hair-types/quiz/tight-coils',
         permanent: true,
       },
       {
         source: '/hair-types/quiz/4c',
-        destination: '/hair-types/quiz/tight-coils-zigzags',
+        destination: '/hair-types/quiz/tight-coils',
         permanent: true,
       },
     ];

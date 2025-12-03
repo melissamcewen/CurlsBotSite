@@ -1,14 +1,9 @@
+'use client';
+
 import Link from 'next/link';
-import { createPageMetadata } from '@/config/metadata';
 import { getAllPatternTypes, getPatternType } from './quiz/newTypes';
 import { HelpCircle } from 'lucide-react';
-
-export const metadata = createPageMetadata({
-  title: 'Hair Types - Pattern-Based Classification System',
-  description:
-    'Discover your hair pattern using our new classification system based on natural behavior and pattern recognition, not just appearance.',
-  path: '/hair-types',
-});
+import HairPatternVisualization from '@/components/HairPatternVisualization';
 
 export default function HairTypesPage() {
   const allTypes = getAllPatternTypes();
@@ -17,44 +12,51 @@ export default function HairTypesPage() {
   return (
     <div className="bg-base-100 p-0 md:p-8">
       <div className="container mx-auto p-4 max-w-4xl">
-        {/* Take the Quiz CTA */}
-        <div className="mb-8 mt-8 text-center">
-          <Link href="/hair-types/quiz" className="btn btn-primary btn-lg">
-            Take the Quiz
-          </Link>
-        </div>
         {/* Hero/Intro Section */}
         <div className="mb-12">
-          <h1 className="text-4xl font-bold mb-6">The CurlsBot Hair Type System</h1>
+          <h1 className="text-4xl font-bold mb-6">
+            The CurlsBot Hair Type System
+          </h1>
           <p className="text-lg mb-4">
-            Our new hair typing system is based on how your hair naturally
-            behaves, not comparing it to a chart. This approach focuses on
-            understanding your hair&apos;s natural behavior to guide better care
-            decisions, while using easy to understand language.
-          </p>
-          <p className="text-lg mb-4 prose">
-            {' '}
-            The key to our systems are the concepts of shrinkage and elongation. All patterns are variations of a coil pattern.
-            <ul className="list-disc list-inside">
-              <li>
-                Shrinkage is when the hair in its dry resting state is longer
-                than it is when stretched out.
-              </li>
-              <li>
-                Elongation is the process of the curl pattern stretching out due
-                to gravity.
-              </li>
-            </ul>
+            The new CurlsBot Hair Type System is based on how your hair acts,
+            not just how it looks. No trying to compare it to a chart.
           </p>
 
-          <p className="text-base opacity-80">
+          {/* Interactive Visualization */}
+          <div className="mb-6 md:float-left md:mr-6 md:mb-4">
+            <HairPatternVisualization />
+          </div>
+
+          <p className="text-lg mb-4">
+            {' '}
+            The key to our systems are the concepts of shrinkage and elongation.
+            All patterns are variations of a coil pattern.
+          </p>
+          <ul className="list-disc list-inside text-lg indent-4">
+            <li>
+              Shrinkage is when the hair in its dry resting state is longer than
+              it is when stretched out.
+            </li>
+            <li>
+              Elongation is the process of the curl pattern stretching out due
+              to gravity.
+            </li>
+          </ul>
+
+          <p className="text-base opacity-80 mt-8 clear-both md:clear-none">
             Take our quick quiz to discover your pattern, or browse the types
             below to learn more.
           </p>
         </div>
 
+        {/* Take the Quiz CTA */}
+        <div className="mb-8 mt-8 text-center clear-left">
+          <Link href="/hair-types/quiz" className="btn btn-primary btn-lg">
+            Take the Quiz
+          </Link>
+        </div>
         {/* Type Grid */}
-        <div className="mb-16">
+        <div className="mb-16 clear-left">
           <h2 className="text-2xl font-bold mb-6">The Six Pattern Types</h2>
           <div className="grid gap-6 md:grid-cols-2">
             {patternTypes.map((type) => (
@@ -186,7 +188,7 @@ export default function HairTypesPage() {
               </thead>
               <tbody>
                 <tr>
-                  <td>Tight Coils / Zig-zags</td>
+                  <td>Tightly Coiled</td>
                   <td>4B–4C</td>
                   <td>4B–4C</td>
                 </tr>

@@ -198,7 +198,7 @@ export function determineHairType(
 
     // Coils + Zig-zags → Tight Coils/Zig-zags
     if (hasZigZags) {
-      return 'tight-coils-zigzags';
+      return 'tight-coils';
     }
 
     // Coils only or Coils + Curls → check elongation
@@ -206,7 +206,7 @@ export function determineHairType(
       return 'coily';
     }
 
-    return 'tight-coils-zigzags';
+    return 'tight-coils';
   }
 
   // Zig-zags paths
@@ -216,7 +216,7 @@ export function determineHairType(
       return 'coily'; // Edge case
     }
 
-    return 'tight-coils-zigzags';
+    return 'tight-coils';
   }
 
   throw new Error(

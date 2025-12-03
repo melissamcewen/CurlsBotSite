@@ -19,6 +19,7 @@
     "@mdx-js/react": "^3.1.0",
     "@next/mdx": "^15.2.0",
     "@types/mdast": "^4.0.4",
+    "@types/three": "^0.181.0",
     "critters": "^0.0.23",
     "fuse.js": "^7.0.0",
     "gray-matter": "^4.0.3",
@@ -34,6 +35,7 @@
     "remark-mdx-frontmatter": "^5.0.0",
     "schema-dts": "^1.1.2",
     "tesseract.js": "^5.1.1",
+    "three": "^0.181.2",
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {

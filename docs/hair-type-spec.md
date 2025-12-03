@@ -985,5 +985,6 @@ Result determination combines Q1 + Q2 + Q3/Q4
   - [ ] Graphics
   - [ ] Design
   - [ ] Copy
+    - [ ] Email CTA
 - [ ] Assets
   - [ ] Chart
