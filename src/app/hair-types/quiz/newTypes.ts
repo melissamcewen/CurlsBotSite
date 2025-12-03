@@ -45,13 +45,13 @@ export const hairPatternTypes: Record<HairPatternType, HairPatternParameters> =
       patternType: 'tight-coils-zigzags',
       displayName: 'Tight Coils / Zig-zags',
       shrinkage: '75%+',
-      walkerMapping: '4B–4C',
+      walkerMapping: '4B–4B',
       commonMapping: '4B–4C',
       description:
         'Tight coils and zig-zag patterns with very high shrinkage and minimal elongation.',
       typicalBehaviors:
         'Minimal elongation even when wet, dense and water-resistant, the tightest curl pattern you can have',
-      carePriorities: [],
+      carePriorities: ["Reducing friction between strands", "Protecting from breakage"],
       elongation: 'Little to none',
     },
     coily: {
@@ -114,7 +114,7 @@ export const hairPatternTypes: Record<HairPatternType, HairPatternParameters> =
         'Barely wavy hair that may dry mostly straight with minimal pattern.',
       typicalBehaviors:
         'This is loose waves, sometimes called "beach wavees" that do not form curls',
-      carePriorities: [],
+      carePriorities: ["Reducing frizz without adding weight", "Protecting from static cling"],
       elongation: 'Very high',
     },
   };

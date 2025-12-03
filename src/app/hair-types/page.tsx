@@ -34,7 +34,7 @@ export default function HairTypesPage() {
           </p>
           <p className="text-lg mb-4 prose">
             {' '}
-            The key to our systems are the concepts of shrinkage and elongation.
+            The key to our systems are the concepts of shrinkage and elongation. All patterns are variations of a coil pattern.
             <ul className="list-disc list-inside">
               <li>
                 Shrinkage is when the hair in its dry resting state is longer
@@ -77,7 +77,7 @@ export default function HairTypesPage() {
                     </span>
                   </div>
                   <div className="card-actions justify-end mt-4">
-                    <span className="btn btn-ghost">Guide coming soon</span>
+                    <span className="btn">Guide coming soon</span>
                   </div>
                 </div>
               </div>
