@@ -11,14 +11,14 @@ interface FeaturedProductProps {
 
 export function FeaturedProduct({ product }: FeaturedProductProps) {
   return (
-    <div className="card card-side bg-base-100 shadow-sm md:flex-row flex-col">
+    <div className="card card-side bg-base-100 rounded-xl border border-base-300 md:flex-row flex-col">
       <figure className="relative w-full md:w-48 h-48 md:h-auto bg-base-200/20 flex-shrink-0">
         <Image
           src={product.image}
           alt={product.title}
           fill
           sizes="(max-width: 768px) 100vw, 192px"
-          className="object-contain p-4"
+          className="object-contain p-4 mask mask-squircle"
         />
       </figure>
       <div className="card-body">
@@ -48,7 +48,7 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
             className="btn btn-primary gap-2 flex-1 md:flex-none"
           >
             <ShoppingCart className="w-4 h-4" />
-            <span className="hidden sm:inline">Buy at </span>
+            Buy at {' '}
             {product.primaryLink.text}
           </a>
           <a
@@ -58,7 +58,7 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
             className="btn btn-secondary gap-2 flex-1 md:flex-none"
           >
             <Sparkles className="w-4 h-4" />
-            <span className="hidden sm:inline">Sample at </span>
+            Sample at
             Curls Monthly
           </a>
         </div>

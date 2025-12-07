@@ -32,6 +32,9 @@ export default function NewQuizResult({ patternType }: Props) {
             <Link href="/hair-types/quiz" className="btn btn-ghost btn-sm">
               ← Retake Quiz
             </Link>
+            <Link href="/hair-types" className="btn btn-ghost btn-sm">
+              ← Back to Hair Types
+            </Link>
           </div>
 
           <article className="max-w-none">
@@ -68,6 +71,9 @@ export default function NewQuizResult({ patternType }: Props) {
           <Link href="/hair-types/quiz" className="btn btn-ghost btn-sm">
             ← Retake Quiz
           </Link>
+          <Link href="/hair-types" className="btn btn-ghost btn-sm">
+            Back to Hair Types
+          </Link>
         </div>
 
         <article className="max-w-none">
@@ -101,17 +107,29 @@ export default function NewQuizResult({ patternType }: Props) {
 
             <div className="flex flex-col gap-4">
               {/* Hero/Description Section */}
-              <div className="bg-base-100 cb-card-lite flex flex-col">
+              <div className="bg-base-100 cb-card-lite flex flex-col rounded-xl border border-base-300">
                 <h2 className="font-bold text-xl mb-4">Your Pattern</h2>
                 <p className="mb-4 flex-1">{patternData.description}</p>
-                <p className="text-sm opacity-80 mt-auto">
+                <p className="text-sm opacity-80 mb-4">
                   <strong>Typical behaviors:</strong>{' '}
                   {patternData.typicalBehaviors}
                 </p>
+                {patternData.guideUrl ? (
+                  <Link
+                    href={patternData.guideUrl}
+                    className="btn btn-primary w-full"
+                  >
+                    View Guide
+                  </Link>
+                ) : (
+                  <button className="btn btn-disabled w-full" disabled>
+                    Guide Coming Soon
+                  </button>
+                )}
               </div>
 
               {/* Combined Quick Reference */}
-              <div className="rounded-xl bg-base-100 shadow-sm border border-base-300">
+              <div className="rounded-xl bg-base-100  border border-base-300">
                 <h3 className="px-4 pt-4 pb-2 text-xs opacity-60 tracking-wide uppercase">
                   At a Glance
                 </h3>
@@ -143,8 +161,14 @@ export default function NewQuizResult({ patternType }: Props) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Featured Product */}
+            {featuredProducts[patternType] && (
+              <div className="md:col-span-2 ">
+                <FeaturedProduct product={featuredProducts[patternType]} />
+              </div>
+            )}
             {/* What This Means Section */}
-            <div className="bg-base-100 cb-card-lite md:col-span-2">
+            <div className="bg-base-100 cb-card-lite md:col-span-1">
               <h2 className="font-bold text-xl mb-4">What This Means</h2>
               <div className="space-y-3 text-sm">
                 <p>
@@ -155,22 +179,36 @@ export default function NewQuizResult({ patternType }: Props) {
                   techniques that work with your hair&apos;s natural behavior.
                 </p>
                 <p>
-                  Shrinkage of {patternData.shrinkage} indicates how much your
+                  Shrinkage of <b className="font-semibold">{patternData.shrinkage}</b> indicates how much your
                   hair contracts when it dries, which affects length retention
-                  and styling approaches.
+                  and styling approaches. Elongation of <b className="font-semibold">{patternData.elongation}</b> indicates how easily your hair stretches out.
                 </p>
-                {patternData.carePriorities.length > 0 && (
-                  <div>
-                    <h4 className="font-semibold mt-4 mb-2">
-                      Key Care Priorities:
-                    </h4>
-                    <ul className="list-disc list-inside space-y-1">
-                      {patternData.carePriorities.map((priority, index) => (
-                        <li key={index}>{priority}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+              </div>
+            </div>
+            {/* Care Overview Card */}
+            <div className="bg-base-100 border border-base-300 rounded-xl p-4 space-y-4">
+              <h3 className="font-semibold text-sm tracking-wide uppercase opacity-70">
+                Care Overview
+              </h3>
+
+              {patternData.carePriorities.length > 0 && (
+                <div>
+                  <h4 className="font-semibold mb-2 text-sm">Key Care Priorities</h4>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    {patternData.carePriorities.map((priority, index) => (
+                      <li key={index}>{priority}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              <div className="border-t border-base-300 pt-4">
+                <h4 className="font-semibold mb-2 text-sm">What to Avoid</h4>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  {patternData.avoid?.map((avoid, index) => (
+                    <li key={index}>{avoid}</li>
+                  ))}
+                </ul>
               </div>
             </div>
 
@@ -179,14 +217,6 @@ export default function NewQuizResult({ patternType }: Props) {
               patternType={patternType}
               displayName={patternData.displayName}
             />
-
-            {/* Featured Product */}
-            {featuredProducts[patternType] && (
-              <div className="bg-base-100 cb-card-lite md:col-span-2">
-                <h2 className="font-bold text-xl mb-4">Featured Product</h2>
-                <FeaturedProduct product={featuredProducts[patternType]} />
-              </div>
-            )}
           </div>
         </article>
       </div>

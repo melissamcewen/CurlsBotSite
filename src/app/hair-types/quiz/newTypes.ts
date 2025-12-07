@@ -32,6 +32,8 @@ export interface HairPatternParameters {
   guideUrl?: string;
   /** elongation range description */
   elongation: string;
+  /** Avoid products */
+  avoid?: string[];
 }
 
 /**
@@ -51,9 +53,13 @@ export const hairPatternTypes: Record<HairPatternType, HairPatternParameters> =
       carePriorities: [
         'Reducing friction between strands',
         'Protecting from breakage',
+        'Protecting against tangles/knots',
+        'Excessively heavy products unless they are the last product in your routine used to "seal" the hair',
+        'Using a clarifying shampoo every 1-2 weeks to remove buildup',
       ],
       elongation: 'Little to none',
-      
+      avoid: ['Products that make hair brittle like hairspray', 'Sleeping without a bonnet', 'Dry detangling', 'Harsh shampoos without any protective conditioning ingredients'],
+
     },
     coily: {
       patternType: 'coily',
@@ -63,8 +69,14 @@ export const hairPatternTypes: Record<HairPatternType, HairPatternParameters> =
       description:
         'Tight coils  and sometimes zig-zag patterns with high shrinkage that elongate slightly when wet.',
       typicalBehaviors: 'Very tight curls with a strong defined pattern.',
-      carePriorities: [],
+      carePriorities: [
+        'Soft-moderate hold products to protect from frizz',
+        'Moderate to high conditioning to protect from friction and breakage',
+        'Protecting against tangles/knots',
+        'Using a clarifying shampoo every 1-2 weeks to remove buildup',
+      ],
       elongation: 'A little when wet',
+      avoid: ['Products that make hair brittle like hairspray', 'Sleeping without a bonnet', 'Dry detangling', 'Harsh shampoos without any protective conditioning ingredients'],
     },
     'tight-curls': {
       patternType: 'tight-curls',
@@ -75,8 +87,14 @@ export const hairPatternTypes: Record<HairPatternType, HairPatternParameters> =
         'Springy, well-defined curls with noticeable shrinkage when dry.',
       typicalBehaviors:
         "A strong, defined curl pattern that doesn't easily elongate when dry",
-      carePriorities: [],
+      carePriorities: [
+        'Soft-moderate hold products to protect from frizz',
+        'Moderate to high conditioning to protect from friction and breakage',
+        'Protecting against tangles/knots',
+        'Using a clarifying shampoo every 1-2 weeks to remove buildup',
+      ],
       elongation: 'Some when wet',
+      avoid: ['Products that make hair brittle like hairspray', 'Sleeping without a bonnet', 'Dry detangling'],
     },
     'loose-curls': {
       patternType: 'loose-curls',
@@ -87,8 +105,14 @@ export const hairPatternTypes: Record<HairPatternType, HairPatternParameters> =
         'Loose curls that elongate easily and may stretch into waves.',
       typicalBehaviors:
         'A loose curl pattern that can easily elongate into waves due to weight and gravity',
-      carePriorities: [],
+      carePriorities: [
+        'High hold products to reduce frizz and elongation',
+        'Lightweight conditioning that doesn\'t weigh down curls',
+        'Protecting against tangles/knots',
+        'Using a clarifying shampoo every 1-2 weeks to remove buildup',
+      ],
       elongation: 'Medium',
+      avoid: ['Heavy products that weigh down curls', 'Cowashes and other cleansers that don\'t cleanse very well'],
     },
     wavy: {
       patternType: 'wavy',
@@ -98,8 +122,14 @@ export const hairPatternTypes: Record<HairPatternType, HairPatternParameters> =
       description: 'A mix of waves and occasional curls that elongate readily.',
       typicalBehaviors:
         "Many people think wavy hair is a totally seperate hair type, but its just elongated curls, that's why this hair type may occasionally form curls when the conditions are right",
-      carePriorities: [],
+      carePriorities: [
+        'May benefit from dry detangling',
+        'Protecting against tangles/knots',
+        'High hold light products to reduce frizz and elongation',
+        'Using a clarifying shampoo every 1-2 weeks to remove buildup',
+      ],
       elongation: 'High',
+      avoid: ['Heavy products that weigh down waves', 'Cowashes and other cleansers that don\'t cleanse very well'],
     },
     swavy: {
       patternType: 'swavy',
@@ -112,9 +142,12 @@ export const hairPatternTypes: Record<HairPatternType, HairPatternParameters> =
         'This is very loose waves, sometimes called "beach waves" that do not form curls',
       carePriorities: [
         'Reducing frizz without adding weight',
+        'Using a clarifying shampoo every 1-2 weeks to remove buildup',
         'Protecting from static flyaways',
+        'May benefit from dry detangling/brushing unlike other curl types',
       ],
       elongation: 'Very high',
+      avoid: ['Heavy products that weigh down waves', 'Cowashes and other cleansers that don\'t cleanse very well'],
     },
   };
 
