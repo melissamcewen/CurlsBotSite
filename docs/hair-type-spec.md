@@ -974,8 +974,8 @@ Result determination combines Q1 + Q2 + Q3/Q4
 - [ ] Accessible (keyboard navigation, screen readers)
 - [ ] No console errors or warnings
 
-
 ## Launch Checklist
+
 - [ ] Landing Page
   - [ ] Graphics
   - [ ] Copy

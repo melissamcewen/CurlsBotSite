@@ -20,10 +20,8 @@ export interface HairPatternParameters {
   displayName: string;
   /** Shrinkage range description */
   shrinkage: string;
-  /** Walker system mapping (e.g., "4B-4C") */
-  walkerMapping: string;
-  /** Common System mapping (e.g., "4B-4C") */
-  commonMapping: string;
+  /** Other type systems */
+  otherTypeSystems: string;
   /** Short description of the pattern */
   description: string;
   /** Typical behaviors and characteristics */
@@ -45,8 +43,7 @@ export const hairPatternTypes: Record<HairPatternType, HairPatternParameters> =
       patternType: 'tight-coils',
       displayName: 'Tightly Coiled',
       shrinkage: '75%+',
-      walkerMapping: '4B–4B',
-      commonMapping: '4B–4C',
+      otherTypeSystems: '4B-4C',
       description:
         'Tight coils and sometimes zig-zag patterns with very high shrinkage and minimal elongation.',
       typicalBehaviors:
@@ -56,13 +53,13 @@ export const hairPatternTypes: Record<HairPatternType, HairPatternParameters> =
         'Protecting from breakage',
       ],
       elongation: 'Little to none',
+      
     },
     coily: {
       patternType: 'coily',
       displayName: 'Coily',
       shrinkage: '50–75%',
-      walkerMapping: '4A',
-      commonMapping: '3C-4A',
+      otherTypeSystems: '4A',
       description:
         'Tight coils  and sometimes zig-zag patterns with high shrinkage that elongate slightly when wet.',
       typicalBehaviors: 'Very tight curls with a strong defined pattern.',
@@ -73,8 +70,7 @@ export const hairPatternTypes: Record<HairPatternType, HairPatternParameters> =
       patternType: 'tight-curls',
       displayName: 'Tight Curls',
       shrinkage: '25–50%',
-      walkerMapping: '3B',
-      commonMapping: '3B-3C',
+      otherTypeSystems: '3B-3C',
       description:
         'Springy, well-defined curls with noticeable shrinkage when dry.',
       typicalBehaviors:
@@ -86,8 +82,7 @@ export const hairPatternTypes: Record<HairPatternType, HairPatternParameters> =
       patternType: 'loose-curls',
       displayName: 'Loose Curls',
       shrinkage: 'Little–25%',
-      walkerMapping: '3A',
-      commonMapping: '3A',
+      otherTypeSystems: '2C-3A',
       description:
         'Loose curls that elongate easily and may stretch into waves.',
       typicalBehaviors:
@@ -99,8 +94,7 @@ export const hairPatternTypes: Record<HairPatternType, HairPatternParameters> =
       patternType: 'wavy',
       displayName: 'Wavy',
       shrinkage: 'Little',
-      walkerMapping: '2A–3A',
-      commonMapping: '2A–3A',
+      otherTypeSystems: '2A–3A',
       description: 'A mix of waves and occasional curls that elongate readily.',
       typicalBehaviors:
         "Many people think wavy hair is a totally seperate hair type, but its just elongated curls, that's why this hair type may occasionally form curls when the conditions are right",
@@ -111,15 +105,14 @@ export const hairPatternTypes: Record<HairPatternType, HairPatternParameters> =
       patternType: 'swavy',
       displayName: 'Swavy',
       shrinkage: 'Little to none',
-      walkerMapping: '2A–2C',
-      commonMapping: '1B–2A',
+      otherTypeSystems: '1B-2A',
       description:
-        'Barely wavy hair that may dry mostly straight with minimal pattern.',
+        'Loose waves that easily elongate into straighter sections.',
       typicalBehaviors:
-        'This is loose waves, sometimes called "beach wavees" that do not form curls',
+        'This is very loose waves, sometimes called "beach waves" that do not form curls',
       carePriorities: [
         'Reducing frizz without adding weight',
-        'Protecting from static cling',
+        'Protecting from static flyaways',
       ],
       elongation: 'Very high',
     },

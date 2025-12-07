@@ -1,9 +1,22 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { getPatternType, HairPatternType } from './newTypes';
-import { EmailSignup } from '@/components/EmailSignupVariants';
 import { BookOpen, Droplets, Sparkles } from 'lucide-react';
+import { FeaturedProduct } from '@/components/hairTypes/FeaturedProduct';
+import { featuredProducts } from './featuredProducts';
+import { HairTypeResultEmailSignup } from '@/components/hairTypes/HairTypeResultEmailSignup';
+
+// Map pattern types to their image files
+const patternImageMap: Record<HairPatternType, string> = {
+  'tight-coils': '/images/hair-types/tightly.svg',
+  coily: '/images/hair-types/coily.svg',
+  'tight-curls': '/images/hair-types/curl.svg',
+  'loose-curls': '/images/hair-types/loosecurls.svg',
+  wavy: '/images/hair-types/wave.svg',
+  swavy: '/images/hair-types/swave.svg',
+};
 
 interface Props {
   patternType: HairPatternType | 'straight';
@@ -16,7 +29,7 @@ export default function NewQuizResult({ patternType }: Props) {
       <div className="w-full">
         <div className="max-w-4xl mx-auto p-3">
           <div className="flex items-center gap-2 mb-4">
-            <Link href="/hair-types/quiz-new" className="btn btn-ghost btn-sm">
+            <Link href="/hair-types/quiz" className="btn btn-ghost btn-sm">
               ← Retake Quiz
             </Link>
           </div>
@@ -38,48 +51,6 @@ export default function NewQuizResult({ patternType }: Props) {
                   or curls; dries completely straight without products or tools
                 </p>
               </div>
-
-              {/* Next Steps Section */}
-              <div className="bg-base-100 cb-card-lite md:col-span-2">
-                <div className="flex items-center gap-2 mb-4">
-                  <Sparkles className="w-5 h-5 text-primary" />
-                  <h2 className="font-bold text-xl">Next Steps</h2>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Link
-                    href="/porosity-quiz"
-                    className="card bg-base-200 hover:bg-base-300 transition-colors rounded-box"
-                  >
-                    <div className="card-body">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Droplets className="w-5 h-5 text-primary" />
-                        <h3 className="font-semibold">
-                          Take the Porosity Quiz
-                        </h3>
-                      </div>
-                      <p className="text-sm text-base-content/70">
-                        Learn how well your hair absorbs and retains moisture
-                      </p>
-                    </div>
-                  </Link>
-
-                  <Link
-                    href="/routine-builder"
-                    className="card bg-base-200 hover:bg-base-300 transition-colors rounded-box"
-                  >
-                    <div className="card-body">
-                      <div className="flex items-center gap-2 mb-2">
-                        <BookOpen className="w-5 h-5 text-primary" />
-                        <h3 className="font-semibold">Build Your Routine</h3>
-                      </div>
-                      <p className="text-sm text-base-content/70">
-                        Create a personalized hair care routine with product
-                        recommendations
-                      </p>
-                    </div>
-                  </Link>
-                </div>
-              </div>
             </div>
           </article>
         </div>
@@ -94,48 +65,84 @@ export default function NewQuizResult({ patternType }: Props) {
     <div className="w-full">
       <div className="max-w-4xl mx-auto p-3">
         <div className="flex items-center gap-2 mb-4">
-          <Link href="/hair-types/quiz-new" className="btn btn-ghost btn-sm">
+          <Link href="/hair-types/quiz" className="btn btn-ghost btn-sm">
             ← Retake Quiz
           </Link>
         </div>
 
         <article className="max-w-none">
-          <h1 className="text-3xl font-bold mb-6">{patternData.displayName}</h1>
+          <div className="flex items-center gap-4 mb-6">
+            <div className="avatar placeholder">
+              <div className="bg-base-300 rounded-full w-20 h-20 border-2 border-base-content/20 flex items-center justify-center flex-shrink-0">
+                <Image
+                  src={patternImageMap[patternType]}
+                  alt={`${patternData.displayName} hair pattern`}
+                  width={60}
+                  height={60}
+                  className="w-[60px] h-[60px]"
+                />
+              </div>
+            </div>
+            <h1 className="text-3xl font-bold">{patternData.displayName}</h1>
+          </div>
+
+          {/* Photo Collage and Pattern Info */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            {/* Photo Collage */}
+            <div>
+              <Image
+                src={`/images/hair-types/photos/${patternType}.png`}
+                alt={`${patternData.displayName} hair examples`}
+                width={600}
+                height={400}
+                className="w-full h-auto rounded-box"
+              />
+            </div>
+
+            <div className="flex flex-col gap-4">
+              {/* Hero/Description Section */}
+              <div className="bg-base-100 cb-card-lite flex flex-col">
+                <h2 className="font-bold text-xl mb-4">Your Pattern</h2>
+                <p className="mb-4 flex-1">{patternData.description}</p>
+                <p className="text-sm opacity-80 mt-auto">
+                  <strong>Typical behaviors:</strong>{' '}
+                  {patternData.typicalBehaviors}
+                </p>
+              </div>
+
+              {/* Combined Quick Reference */}
+              <div className="rounded-xl bg-base-100 shadow-sm border border-base-300">
+                <h3 className="px-4 pt-4 pb-2 text-xs opacity-60 tracking-wide uppercase">
+                  At a Glance
+                </h3>
+
+                <div className="divide-y divide-base-300">
+                  <div className="flex justify-between items-center px-4 py-3">
+                    <span className="font-medium text-sm">Shrinkage</span>
+                    <span className="text-sm opacity-80">
+                      {patternData.shrinkage}
+                    </span>
+                  </div>
+
+                  <div className="flex justify-between items-center px-4 py-3">
+                    <span className="font-medium text-sm">Elongation</span>
+                    <span className="text-sm opacity-80">
+                      {patternData.elongation}
+                    </span>
+                  </div>
+
+                  <div className="flex justify-between items-center px-4 py-3">
+                    <span className="font-medium text-sm">Walker System</span>
+                    <span className="text-sm opacity-80">
+                      {patternData.otherTypeSystems}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Hero/Description Section */}
-            <div className="bg-base-100 cb-card-lite md:col-span-2">
-              <h2 className="font-bold text-xl mb-4">Your Pattern</h2>
-              <p className="mb-4">{patternData.description}</p>
-              <p className="text-sm opacity-80">
-                <strong>Typical behaviors:</strong>{' '}
-                {patternData.typicalBehaviors}
-              </p>
-            </div>
-
-            {/* Quick Comparison Cards */}
-            <div className="bg-base-100 cb-card-lite">
-              <h3 className="font-semibold mb-2">Shrinkage</h3>
-              <p className="text-sm">{patternData.shrinkage}</p>
-            </div>
-
-            <div className="bg-base-100 cb-card-lite">
-              <h3 className="font-semibold mb-2">Walker System</h3>
-              <p className="text-sm">{patternData.walkerMapping}</p>
-              <p className="text-xs opacity-70 mt-2">
-                Our pattern-based system maps to the classic Andre Walker types
-                for reference
-              </p>
-            </div>
-
-            <div className="bg-base-100 cb-card-lite">
-              <h3 className="font-semibold mb-2">Common System</h3>
-              <p className="text-sm">{patternData.commonMapping}</p>
-              <p className="text-xs opacity-70 mt-2">
-                The system you might see on social media based on visual charts
-              </p>
-            </div>
-
             {/* What This Means Section */}
             <div className="bg-base-100 cb-card-lite md:col-span-2">
               <h2 className="font-bold text-xl mb-4">What This Means</h2>
@@ -168,61 +175,18 @@ export default function NewQuizResult({ patternType }: Props) {
             </div>
 
             {/* Email Signup */}
-            <div className="md:col-span-2">
-              <EmailSignup hairType={patternData.displayName} />
-            </div>
+            <HairTypeResultEmailSignup
+              patternType={patternType}
+              displayName={patternData.displayName}
+            />
 
-            {/* Next Steps Section */}
-            <div className="bg-base-100 cb-card-lite md:col-span-2">
-              <div className="flex items-center gap-2 mb-4">
-                <Sparkles className="w-5 h-5 text-primary" />
-                <h2 className="font-bold text-xl">Next Steps</h2>
+            {/* Featured Product */}
+            {featuredProducts[patternType] && (
+              <div className="bg-base-100 cb-card-lite md:col-span-2">
+                <h2 className="font-bold text-xl mb-4">Featured Product</h2>
+                <FeaturedProduct product={featuredProducts[patternType]} />
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Link
-                  href="/porosity-quiz"
-                  className="card bg-base-200 hover:bg-base-300 transition-colors rounded-box"
-                >
-                  <div className="card-body">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Droplets className="w-5 h-5 text-primary" />
-                      <h3 className="font-semibold">Take the Porosity Quiz</h3>
-                    </div>
-                    <p className="text-sm text-base-content/70">
-                      Learn how well your hair absorbs and retains moisture
-                    </p>
-                  </div>
-                </Link>
-
-                <Link
-                  href="/routine-builder"
-                  className="card bg-base-200 hover:bg-base-300 transition-colors rounded-box"
-                >
-                  <div className="card-body">
-                    <div className="flex items-center gap-2 mb-2">
-                      <BookOpen className="w-5 h-5 text-primary" />
-                      <h3 className="font-semibold">Build Your Routine</h3>
-                    </div>
-                    <p className="text-sm text-base-content/70">
-                      Create a personalized hair care routine with product
-                      recommendations
-                    </p>
-                  </div>
-                </Link>
-              </div>
-            </div>
-
-            {/* Product Recommendations Placeholder */}
-            <div className="bg-base-100 cb-card-lite md:col-span-2">
-              <h2 className="font-bold text-xl mb-4">
-                Product Recommendations
-              </h2>
-              <p className="text-sm opacity-60 italic mb-4">
-                Product recommendations will be added here. These will include
-                affiliate-linked products specifically suited for{' '}
-                {patternData.displayName.toLowerCase()} hair patterns.
-              </p>
-            </div>
+            )}
           </div>
         </article>
       </div>

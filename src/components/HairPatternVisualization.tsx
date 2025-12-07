@@ -196,8 +196,8 @@ export default function HairPatternVisualization({
       <div className="w-full max-w-[300px] space-y-3">
         <label className="form-control w-full">
           <div className="label justify-center">
-            <span className="label-text font-semibold">
-              Adjust the coil pattern
+            <span className="label-text font-semibold text-xs whitespace-pre-wrap">
+              Move the to left to increase elongation and to the right to increase shrinkage.
             </span>
           </div>
           <div className="flex justify-center">
@@ -216,11 +216,7 @@ export default function HairPatternVisualization({
             <span className="text-base-content/70">Tight (Tightly Coiled)</span>
           </div>
         </label>
-        <p className="text-sm text-base-content/70 text-center">
-          All hair patterns are variations of a coil. Use the slider to see how
-          the same coil pattern can be loose (like Swavy hair) or tight (like
-          Tight Coils).
-        </p>
+    
       </div>
     </div>
   );

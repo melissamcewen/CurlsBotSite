@@ -1,9 +1,24 @@
 'use client';
 
 import Link from 'next/link';
-import { getAllPatternTypes, getPatternType } from './quiz/newTypes';
+import Image from 'next/image';
+import {
+  getAllPatternTypes,
+  getPatternType,
+  type HairPatternType,
+} from './quiz/newTypes';
 import { HelpCircle } from 'lucide-react';
 import HairPatternVisualization from '@/components/HairPatternVisualization';
+
+// Map pattern types to their image files
+const patternImageMap: Record<HairPatternType, string> = {
+  'tight-coils': '/images/hair-types/tightly.svg',
+  coily: '/images/hair-types/coily.svg',
+  'tight-curls': '/images/hair-types/curl.svg',
+  'loose-curls': '/images/hair-types/loosecurls.svg',
+  wavy: '/images/hair-types/wave.svg',
+  swavy: '/images/hair-types/swave.svg',
+};
 
 export default function HairTypesPage() {
   const allTypes = getAllPatternTypes();
@@ -27,32 +42,41 @@ export default function HairTypesPage() {
             <HairPatternVisualization />
           </div>
 
-          <p className="text-lg mb-4">
-            {' '}
-            The key to our systems are the concepts of shrinkage and elongation.
-            All patterns are variations of a coil pattern.
+          <div className="overflow-hidden">
+            <p className="text-md mb-4">
+              {' '}
+              The key to our system is the coil shape, and how it can elongate
+              and shrink.{' '}
+              <i>
+                Waves, curls, and coils aren&apos;t completely separate types,
+                they are variations of the same coil shape.
+              </i>
+            </p>
+            <ul className="list-disc list-outside text-md ml-6 space-y-2">
+              <li>
+                <b>Shrinkage</b> is when the hair in its dry resting state is
+                longer than it is when stretched out.
+              </li>
+              <li>
+                <b>Elongation</b> is the process of the curl pattern stretching
+                out due to gravity.
+              </li>
+            </ul>
+          </div>
+          <p className="text-md mt-4">
+            Shrinkage and elongation determine which products, routines, and
+            techniques will actually work for your hair.
           </p>
-          <ul className="list-disc list-inside text-lg indent-4">
-            <li>
-              Shrinkage is when the hair in its dry resting state is longer than
-              it is when stretched out.
-            </li>
-            <li>
-              Elongation is the process of the curl pattern stretching out due
-              to gravity.
-            </li>
-          </ul>
-
           <p className="text-base opacity-80 mt-8 clear-both md:clear-none">
-            Take our quick quiz to discover your pattern, or browse the types
+            Take our quick quiz (only 1-5 questions!) to discover your pattern, or browse the types
             below to learn more.
           </p>
         </div>
 
         {/* Take the Quiz CTA */}
-        <div className="mb-8 mt-8 text-center clear-left">
+        <div className="mb-8 mt-8 text-center">
           <Link href="/hair-types/quiz" className="btn btn-primary btn-lg">
-            Take the Quiz
+            Find Your Hair Type
           </Link>
         </div>
         {/* Type Grid */}
@@ -65,7 +89,20 @@ export default function HairTypesPage() {
                 className="card bg-base-200 hover:bg-base-300 transition-colors rounded-box"
               >
                 <div className="card-body">
-                  <h3 className="card-title text-xl">{type.displayName}</h3>
+                  <div className="flex items-center gap-4 mb-2">
+                    <div className="avatar placeholder">
+                      <div className="bg-base-300 rounded-full w-16 h-16 border-2 border-base-content/20 flex items-center justify-center">
+                        <Image
+                          src={patternImageMap[type.patternType]}
+                          alt={`${type.displayName} hair pattern`}
+                          width={48}
+                          height={48}
+                          className="w-12 h-12"
+                        />
+                      </div>
+                    </div>
+                    <h3 className="card-title text-xl">{type.displayName}</h3>
+                  </div>
                   <p className="text-base-content/70">{type.description}</p>
                   <div className="flex flex-wrap gap-2 mt-2">
                     <span className="badge badge-outline text-xs">

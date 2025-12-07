@@ -44,7 +44,7 @@ interface BaseEmailSignupProps {
   variant: EmailSignupVariant;
   fieldValue: string;
   title: string;
-  description?: string;
+  description?: string | React.ReactNode;
   placeholder?: string;
   buttonText?: string;
   className?: string;
@@ -272,7 +272,15 @@ export default function BaseEmailSignup({
               </figure>
             )}
             <div className="flex-1">
-              {description && <p className="mb-4">{description}</p>}
+              {description && (
+                <div className="mb-4">
+                  {typeof description === 'string' ? (
+                    <p>{description}</p>
+                  ) : (
+                    description
+                  )}
+                </div>
+              )}
               {renderForm()}
             </div>
           </div>
@@ -288,7 +296,15 @@ export default function BaseEmailSignup({
         {renderIcon()}
         <h3 className="text-xl font-bold">{title}</h3>
       </div>
-      {description && <p className="mb-6">{description}</p>}
+      {description && (
+        <div className="mb-6">
+          {typeof description === 'string' ? (
+            <p>{description}</p>
+          ) : (
+            description
+          )}
+        </div>
+      )}
       {renderForm()}
     </div>
   );
