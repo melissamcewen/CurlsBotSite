@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import * as THREE from 'three';
 
 interface HairPatternVisualizationProps {
@@ -26,7 +26,8 @@ export default function HairPatternVisualization({
     const r = ((color >> 16) & 0xff) + variation;
     const g = ((color >> 8) & 0xff) + variation;
     const b = (color & 0xff) + variation;
-    const adjustedColor = (Math.min(255, r) << 16) | (Math.min(255, g) << 8) | Math.min(255, b);
+    const adjustedColor =
+      (Math.min(255, r) << 16) | (Math.min(255, g) << 8) | Math.min(255, b);
 
     return new THREE.MeshToonMaterial({
       color: adjustedColor,
@@ -35,39 +36,46 @@ export default function HairPatternVisualization({
   };
 
   // Function to create or update the hair strand
-  const createHairStrand = (
-    scene: THREE.Scene,
-    tightnessValue: number,
-  ): THREE.Mesh => {
-    // Clean up old strand if it exists
-    if (sceneRef.current?.strands?.[0]) {
-      const oldStrand = sceneRef.current.strands[0];
-      scene.remove(oldStrand);
-      oldStrand.geometry.dispose();
-      if (Array.isArray(oldStrand.material)) {
-        oldStrand.material.forEach((mat) => mat.dispose());
-      } else {
-        oldStrand.material.dispose();
+  const createHairStrand = useCallback(
+    (scene: THREE.Scene, tightnessValue: number): THREE.Mesh => {
+      // Clean up old strand if it exists
+      if (sceneRef.current?.strands?.[0]) {
+        const oldStrand = sceneRef.current.strands[0];
+        scene.remove(oldStrand);
+        oldStrand.geometry.dispose();
+        if (Array.isArray(oldStrand.material)) {
+          oldStrand.material.forEach((mat) => mat.dispose());
+        } else {
+          oldStrand.material.dispose();
+        }
       }
-    }
 
-    const hairColor = 0x4a3428; // Dark brown hair color
+      const hairColor = 0x4a3428; // Dark brown hair color
 
-    // Create helix path
-    const path = new THREE.Curve();
-    path.getPoint = function (t) {
-      const angle = t * tightnessValue * Math.PI * 2;
-      return new THREE.Vector3(Math.cos(angle), t * 8, Math.sin(angle));
-    };
+      // Create helix path
+      class HelixCurve extends THREE.Curve<THREE.Vector3> {
+        constructor(private tightness: number) {
+          super();
+        }
 
-    const geometry = new THREE.TubeGeometry(path, 200, 0.15, 12, false);
-    const material = makeHairMaterial(hairColor);
-    const strand = new THREE.Mesh(geometry, material);
-    strand.position.y = 1;
-    scene.add(strand);
+        getPoint(t: number): THREE.Vector3 {
+          const angle = t * this.tightness * Math.PI * 2;
+          return new THREE.Vector3(Math.cos(angle), t * 8, Math.sin(angle));
+        }
+      }
 
-    return strand;
-  };
+      const path = new HelixCurve(tightnessValue);
+
+      const geometry = new THREE.TubeGeometry(path, 200, 0.15, 12, false);
+      const material = makeHairMaterial(hairColor);
+      const strand = new THREE.Mesh(geometry, material);
+      strand.position.y = 1;
+      scene.add(strand);
+
+      return strand;
+    },
+    [],
+  );
 
   // Initialize Three.js scene
   useEffect(() => {
@@ -101,7 +109,6 @@ export default function HairPatternVisualization({
       if (!containerRef.current) return;
       const newSize = Math.min(300, container.clientWidth || 300);
       renderer.setSize(newSize, newSize);
-      camera.aspect = 1;
       camera.updateProjectionMatrix();
     };
 
@@ -176,7 +183,7 @@ export default function HairPatternVisualization({
       }
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [createHairStrand, tightness]);
 
   // Update hair strand when tightness changes
   useEffect(() => {
@@ -188,7 +195,7 @@ export default function HairPatternVisualization({
     if (sceneRef.current) {
       sceneRef.current.strands = [strand];
     }
-  }, [tightness]);
+  }, [createHairStrand, tightness]);
 
   return (
     <div className={`flex flex-col items-center gap-4 ${className}`}>
@@ -197,7 +204,8 @@ export default function HairPatternVisualization({
         <label className="form-control w-full">
           <div className="label justify-center">
             <span className="label-text font-semibold text-xs whitespace-pre-wrap">
-              Move the to left to increase elongation and to the right to increase shrinkage.
+              Move the to left to increase elongation and to the right to
+              increase shrinkage.
             </span>
           </div>
           <div className="flex justify-center">
@@ -216,9 +224,7 @@ export default function HairPatternVisualization({
             <span className="text-base-content/70">Tight (Tightly Coiled)</span>
           </div>
         </label>
-    
       </div>
     </div>
   );
 }
-

@@ -79,7 +79,7 @@ export default function NewQuizResult({ patternType }: Props) {
         <article className="max-w-none">
           <div className="flex items-center gap-4 mb-6">
             <div className="avatar placeholder">
-              <div className="bg-base-300 rounded-full w-20 h-20 border-2 border-base-content/20 flex items-center justify-center flex-shrink-0">
+              <div className="bg-base-100 rounded-full w-20 h-20 border-2 border-base-content/20 flex items-center justify-center flex-shrink-0">
                 <Image
                   src={patternImageMap[patternType]}
                   alt={`${patternData.displayName} hair pattern`}

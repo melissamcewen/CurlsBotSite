@@ -129,8 +129,11 @@ describe('NewQuiz Component', () => {
           screen.getByText(/what's your most common hair pattern/i),
         ).toBeInTheDocument();
       });
-      const wavesRadio = screen.getByRole('radio', { value: 'waves' });
-      fireEvent.click(wavesRadio);
+      const wavesLabel = screen.getByText(/^Waves$/i).closest('label');
+      if (wavesLabel) {
+        const wavesRadio = wavesLabel.querySelector('input[type="radio"]');
+        if (wavesRadio) fireEvent.click(wavesRadio);
+      }
       fireEvent.click(screen.getByRole('button', { name: /next/i }));
 
       // Skip additional patterns (none selected)
@@ -166,8 +169,11 @@ describe('NewQuiz Component', () => {
           screen.getByText(/what's your most common hair pattern/i),
         ).toBeInTheDocument();
       });
-      const curlsRadio = screen.getByRole('radio', { value: 'curls' });
-      fireEvent.click(curlsRadio);
+      const curlsLabel = screen.getByText(/^Curls$/i).closest('label');
+      if (curlsLabel) {
+        const curlsRadio = curlsLabel.querySelector('input[type="radio"]');
+        if (curlsRadio) fireEvent.click(curlsRadio);
+      }
       fireEvent.click(screen.getByRole('button', { name: /next/i }));
 
       // Skip additional patterns
@@ -203,8 +209,11 @@ describe('NewQuiz Component', () => {
           screen.getByText(/what's your most common hair pattern/i),
         ).toBeInTheDocument();
       });
-      const curlsRadio = screen.getByRole('radio', { value: 'curls' });
-      fireEvent.click(curlsRadio);
+      const curlsLabel = screen.getByText(/^Curls$/i).closest('label');
+      if (curlsLabel) {
+        const curlsRadio = curlsLabel.querySelector('input[type="radio"]');
+        if (curlsRadio) fireEvent.click(curlsRadio);
+      }
       fireEvent.click(screen.getByRole('button', { name: /next/i }));
 
       // Skip additional patterns
@@ -221,8 +230,11 @@ describe('NewQuiz Component', () => {
           screen.getByText(/how much does your hair shrink/i),
         ).toBeInTheDocument();
       });
-      const shrinkageRadio = screen.getByRole('radio', { value: '25-50' });
-      fireEvent.click(shrinkageRadio);
+      const shrinkageLabel = screen.getByText(/moderate shrinkage/i).closest('label');
+      if (shrinkageLabel) {
+        const shrinkageRadio = shrinkageLabel.querySelector('input[type="radio"]');
+        if (shrinkageRadio) fireEvent.click(shrinkageRadio);
+      }
       fireEvent.click(screen.getByRole('button', { name: /next/i }));
 
       // Should redirect
@@ -250,8 +262,11 @@ describe('NewQuiz Component', () => {
           screen.getByText(/what's your most common hair pattern/i),
         ).toBeInTheDocument();
       });
-      const coilsRadio = screen.getByRole('radio', { value: 'coils' });
-      fireEvent.click(coilsRadio);
+      const coilsLabel = screen.getByText(/^Coils$/i).closest('label');
+      if (coilsLabel) {
+        const coilsRadio = coilsLabel.querySelector('input[type="radio"]');
+        if (coilsRadio) fireEvent.click(coilsRadio);
+      }
       fireEvent.click(screen.getByRole('button', { name: /next/i }));
 
       // Skip additional patterns
