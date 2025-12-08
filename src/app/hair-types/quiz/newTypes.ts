@@ -119,7 +119,7 @@ export const hairPatternTypes: Record<HairPatternType, HairPatternParameters> =
       displayName: 'Wavy',
       shrinkage: 'Little',
       otherTypeSystems: '2A–3A',
-      description: 'A mix of waves and occasional curls that elongate readily.',
+      description: 'A mix of waves and occasional curls that elongate easily.',
       typicalBehaviors:
         "Many people think wavy hair is a totally seperate hair type, but its just elongated curls, that's why this hair type may occasionally form curls when the conditions are right",
       carePriorities: [

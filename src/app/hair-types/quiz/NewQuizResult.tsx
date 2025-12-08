@@ -150,7 +150,7 @@ export default function NewQuizResult({ patternType }: Props) {
                   </div>
 
                   <div className="flex justify-between items-center px-4 py-3">
-                    <span className="font-medium text-sm">Walker System</span>
+                    <span className="font-medium text-sm">Other Type Systems</span>
                     <span className="text-sm opacity-80">
                       {patternData.otherTypeSystems}
                     </span>

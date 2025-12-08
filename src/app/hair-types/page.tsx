@@ -68,8 +68,8 @@ export default function HairTypesPage() {
             techniques will actually work for your hair.
           </p>
           <p className="text-base opacity-80 mt-8 clear-both md:clear-none">
-            Take our quick quiz (only 1-5 questions!) to discover your pattern, or browse the types
-            below to learn more.
+            Take our quick quiz (only 1-5 questions!) to discover your pattern,
+            or browse the types below to learn more.
           </p>
         </div>
 
@@ -91,7 +91,7 @@ export default function HairTypesPage() {
                 <div className="card-body">
                   <div className="flex items-center gap-4 mb-2">
                     <div className="avatar placeholder">
-                      <div className="bg-base-300 rounded-full w-16 h-16 border-2 border-base-content/20 flex items-center justify-center">
+                      <div className="bg-base-100 rounded-full w-16 h-16 border-2 border-base-content/20 flex items-center justify-center">
                         <Image
                           src={patternImageMap[type.patternType]}
                           alt={`${type.displayName} hair pattern`}
@@ -109,7 +109,7 @@ export default function HairTypesPage() {
                       Shrinkage: {type.shrinkage}
                     </span>
                     <span className="badge badge-outline text-xs">
-                      Other Systems: {type.commonMapping}
+                      Other Systems: {type.otherTypeSystems}
                     </span>
                     <span className="badge badge-outline text-xs">
                       Elongation: {type.elongation}
