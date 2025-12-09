@@ -34,6 +34,8 @@ export interface HairPatternParameters {
   elongation: string;
   /** Avoid products */
   avoid?: string[];
+  /** sister curl types */
+  sisterCurlTypes?: HairPatternType[];
 }
 
 /**
@@ -54,12 +56,11 @@ export const hairPatternTypes: Record<HairPatternType, HairPatternParameters> =
         'Reducing friction between strands',
         'Protecting from breakage',
         'Protecting against tangles/knots',
-        'Excessively heavy products unless they are the last product in your routine used to "seal" the hair',
-        'Using a clarifying shampoo every 1-2 weeks to remove buildup',
+        'Using a clarifying shampoo or treatment every 1-2 weeks to remove buildup',
       ],
       elongation: 'Little to none',
-      avoid: ['Products that make hair brittle like hairspray', 'Sleeping without a bonnet', 'Dry detangling', 'Harsh shampoos without any protective conditioning ingredients'],
-
+      avoid: ['Sleeping without a bonnet or other protection', 'Dry detangling', 'Harsh shampoos without any protective conditioning ingredients'],
+      sisterCurlTypes: ['coily'],
     },
     coily: {
       patternType: 'coily',
@@ -70,13 +71,14 @@ export const hairPatternTypes: Record<HairPatternType, HairPatternParameters> =
         'Tight coils  and sometimes zig-zag patterns with high shrinkage that elongate slightly when wet.',
       typicalBehaviors: 'Very tight curls with a strong defined pattern.',
       carePriorities: [
-        'Soft-moderate hold products to protect from frizz',
+        'Products with hold to protect from frizz',
         'Moderate to high conditioning to protect from friction and breakage',
         'Protecting against tangles/knots',
         'Using a clarifying shampoo every 1-2 weeks to remove buildup',
       ],
       elongation: 'A little when wet',
-      avoid: ['Products that make hair brittle like hairspray', 'Sleeping without a bonnet', 'Dry detangling', 'Harsh shampoos without any protective conditioning ingredients'],
+      avoid: ['Sleeping without a bonnet or other protection', 'Dry detangling', 'Harsh shampoos without any protective conditioning ingredients'],
+      sisterCurlTypes: ['tight-coils', 'tight-curls'],
     },
     'tight-curls': {
       patternType: 'tight-curls',
@@ -94,7 +96,8 @@ export const hairPatternTypes: Record<HairPatternType, HairPatternParameters> =
         'Using a clarifying shampoo every 1-2 weeks to remove buildup',
       ],
       elongation: 'Some when wet',
-      avoid: ['Products that make hair brittle like hairspray', 'Sleeping without a bonnet', 'Dry detangling'],
+      avoid: ['Sleeping without a bonnet or other protection', 'Dry detangling', 'Harsh shampoos without any protective conditioning ingredients'],
+      sisterCurlTypes: ['coily', 'loose-curls'],
     },
     'loose-curls': {
       patternType: 'loose-curls',
@@ -113,6 +116,7 @@ export const hairPatternTypes: Record<HairPatternType, HairPatternParameters> =
       ],
       elongation: 'Medium',
       avoid: ['Heavy products that weigh down curls', 'Cowashes and other cleansers that don\'t cleanse very well'],
+      sisterCurlTypes: ['tight-curls', 'wavy'],
     },
     wavy: {
       patternType: 'wavy',
@@ -130,6 +134,7 @@ export const hairPatternTypes: Record<HairPatternType, HairPatternParameters> =
       ],
       elongation: 'High',
       avoid: ['Heavy products that weigh down waves', 'Cowashes and other cleansers that don\'t cleanse very well'],
+      sisterCurlTypes: ['loose-curls', 'swavy'],
     },
     swavy: {
       patternType: 'swavy',
@@ -148,6 +153,7 @@ export const hairPatternTypes: Record<HairPatternType, HairPatternParameters> =
       ],
       elongation: 'Very high',
       avoid: ['Heavy products that weigh down waves', 'Cowashes and other cleansers that don\'t cleanse very well'],
+      sisterCurlTypes: ['wavy'],
     },
   };
 
