@@ -82,47 +82,67 @@ export default function HairTypesPage() {
         {/* Type Grid */}
         <div className="mb-16 clear-left">
           <h2 className="text-2xl font-bold mb-6">The Six Pattern Types</h2>
-          <div className="grid gap-6 md:grid-cols-2">
-            {patternTypes.map((type) => (
-              <div
-                key={type.patternType}
-                className="card bg-base-200 hover:bg-base-300 transition-colors rounded-box"
-              >
-                <div className="card-body">
-                  <div className="flex items-center gap-4 mb-2">
-                    <div className="avatar placeholder">
-                      <div className="bg-base-100 rounded-full w-16 h-16 border-2 border-base-content/20 flex items-center justify-center">
-                        <Image
-                          src={patternImageMap[type.patternType]}
-                          alt={`${type.displayName} hair pattern`}
-                          width={48}
-                          height={48}
-                          className="w-12 h-12"
-                        />
+
+          {/* Group by patternGroup */}
+          {['Tight Curls/Coils', 'Loose Curls/Waves'].map((group) => {
+            const groupTypes = patternTypes.filter(
+              (type) => type.patternGroup === group,
+            );
+            return (
+              <div key={group} className="mb-8">
+                <h3 className="text-xl font-semibold mb-4">{group}</h3>
+                <div className="grid gap-6 md:grid-cols-3 mb-8">
+                  {groupTypes.map((type) => (
+                    <div
+                      key={type.patternType}
+                      className="card bg-base-200 hover:bg-base-300 transition-colors rounded-box"
+                    >
+                      <div className="card-body">
+                        <div className="flex items-center gap-4 mb-2">
+                          <div className="avatar placeholder">
+                            <div className="bg-base-100 rounded-full w-16 h-16 border-2 border-base-content/20 flex items-center justify-center">
+                              <Image
+                                src={patternImageMap[type.patternType]}
+                                alt={`${type.displayName} hair pattern`}
+                                width={48}
+                                height={48}
+                                className="w-12 h-12"
+                              />
+                            </div>
+                          </div>
+                          <h3 className="card-title text-xl">
+                            {type.displayName}
+                          </h3>
+                        </div>
+                        <p className="text-base-content/70">
+                          {type.description}
+                        </p>
+                        <div className="flex flex-wrap gap-2 mt-2">
+                          <span className="badge badge-xs badge-primary">
+                            Shrinkage: {type.shrinkage}
+                          </span>
+                          <span className="badge badge-xs badge-secondary">
+                            Other Systems: {type.otherTypeSystems}
+                          </span>
+                          <span className="badge badge-xs badge-accent">
+                            Elongation: {type.elongation}
+                          </span>
+                        </div>
+
+                        <div className="card-actions justify-end mt-4">
+                          <Link href={`/hair-types/${type.patternType}`} className="btn btn-primary btn-sm">Basic Info</Link>
+                          <span className="btn">Guide coming soon</span>
+                        </div>
                       </div>
                     </div>
-                    <h3 className="card-title text-xl">{type.displayName}</h3>
-                  </div>
-                  <p className="text-base-content/70">{type.description}</p>
-                  <div className="flex flex-wrap gap-2 mt-2">
-                    <span className="badge badge-outline text-xs">
-                      Shrinkage: {type.shrinkage}
-                    </span>
-                    <span className="badge badge-outline text-xs">
-                      Other Systems: {type.otherTypeSystems}
-                    </span>
-                    <span className="badge badge-outline text-xs">
-                      Elongation: {type.elongation}
-                    </span>
-                  </div>
-                  <div className="card-actions justify-end mt-4">
-                    <span className="btn">Guide coming soon</span>
-                  </div>
+                  ))}
                 </div>
               </div>
-            ))}
+            );
+          })}
 
-            {/* Straight Hair Card */}
+          {/* Straight Hair Card */}
+          <div className="mt-8">
             <div className="card bg-base-200 hover:bg-base-300 transition-colors rounded-box">
               <div className="card-body">
                 <h3 className="card-title text-xl">Straight</h3>

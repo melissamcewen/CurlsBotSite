@@ -36,6 +36,8 @@ export interface HairPatternParameters {
   avoid?: string[];
   /** sister curl types */
   sisterCurlTypes?: HairPatternType[];
+  /* pattern group */
+  patternGroup: 'Tight Curls/Coils' | 'Loose Curls/Waves';
 }
 
 /**
@@ -61,6 +63,7 @@ export const hairPatternTypes: Record<HairPatternType, HairPatternParameters> =
       elongation: 'Little to none',
       avoid: ['Sleeping without a bonnet or other protection', 'Dry detangling', 'Harsh shampoos without any protective conditioning ingredients'],
       sisterCurlTypes: ['coily'],
+      patternGroup: 'Tight Curls/Coils',
     },
     coily: {
       patternType: 'coily',
@@ -79,6 +82,7 @@ export const hairPatternTypes: Record<HairPatternType, HairPatternParameters> =
       elongation: 'A little when wet',
       avoid: ['Sleeping without a bonnet or other protection', 'Dry detangling', 'Harsh shampoos without any protective conditioning ingredients'],
       sisterCurlTypes: ['tight-coils', 'tight-curls'],
+      patternGroup: 'Tight Curls/Coils',
     },
     'tight-curls': {
       patternType: 'tight-curls',
@@ -98,6 +102,7 @@ export const hairPatternTypes: Record<HairPatternType, HairPatternParameters> =
       elongation: 'Some when wet',
       avoid: ['Sleeping without a bonnet or other protection', 'Dry detangling', 'Harsh shampoos without any protective conditioning ingredients'],
       sisterCurlTypes: ['coily', 'loose-curls'],
+      patternGroup: 'Tight Curls/Coils',
     },
     'loose-curls': {
       patternType: 'loose-curls',
@@ -117,6 +122,7 @@ export const hairPatternTypes: Record<HairPatternType, HairPatternParameters> =
       elongation: 'Medium',
       avoid: ['Heavy products that weigh down curls', 'Cowashes and other cleansers that don\'t cleanse very well'],
       sisterCurlTypes: ['tight-curls', 'wavy'],
+      patternGroup: 'Loose Curls/Waves',
     },
     wavy: {
       patternType: 'wavy',
@@ -135,6 +141,7 @@ export const hairPatternTypes: Record<HairPatternType, HairPatternParameters> =
       elongation: 'High',
       avoid: ['Heavy products that weigh down waves', 'Cowashes and other cleansers that don\'t cleanse very well'],
       sisterCurlTypes: ['loose-curls', 'swavy'],
+      patternGroup: 'Loose Curls/Waves',
     },
     swavy: {
       patternType: 'swavy',
@@ -154,6 +161,7 @@ export const hairPatternTypes: Record<HairPatternType, HairPatternParameters> =
       elongation: 'Very high',
       avoid: ['Heavy products that weigh down waves', 'Cowashes and other cleansers that don\'t cleanse very well'],
       sisterCurlTypes: ['wavy'],
+      patternGroup: 'Loose Curls/Waves',
     },
   };
 

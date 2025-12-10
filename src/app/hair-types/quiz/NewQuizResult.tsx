@@ -157,6 +157,13 @@ export default function NewQuizResult({ patternType }: Props) {
                       {patternData.otherTypeSystems}
                     </span>
                   </div>
+
+                  <div className="flex justify-between items-center px-4 py-3">
+                    <span className="font-medium text-sm">Pattern Group</span>
+                    <span className="text-sm opacity-80">
+                      {patternData.patternGroup}
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
