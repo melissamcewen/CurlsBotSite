@@ -17,6 +17,7 @@ import { BlogProductGrid } from '@/components/mdx/BlogProductGrid';
 import { Affiliate } from '@/components/mdx/Affiliate';
 import { TableOfContents } from '@/components/mdx/TableOfContents';
 import { SiteFixBanner } from '@/components/mdx/SiteFixBanner';
+import { HairTypeQuizBanner } from '@/components/mdx/HairTypeQuizBanner';
 import { AuthorBio } from '@/components/mdx/AuthorBio';
 import RoutineTable from '@/components/mdx/RoutineTable';
 import ProductComparisonTable from '@/components/mdx/ProductComparisonTable';
@@ -41,6 +42,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     Affiliate,
     TableOfContents,
     SiteFixBanner,
+    HairTypeQuizBanner,
     AuthorBio,
     RoutineTable,
     ProductComparisonTable,

@@ -95,43 +95,68 @@ export default function HairTypesPage() {
                   {groupTypes.map((type) => (
                     <div
                       key={type.patternType}
-                      className="card bg-base-200 hover:bg-base-300 transition-colors rounded-box"
+                      className="card bg-base-200 border border-base-300 rounded-box"
                     >
-                      <div className="card-body">
-                        <div className="flex items-center gap-4 mb-2">
-                          <div className="avatar placeholder">
-                            <div className="bg-base-100 rounded-full w-16 h-16 border-2 border-base-content/20 flex items-center justify-center">
+                      <div className="card-body p-5">
+                        {/* Icon and Title */}
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="avatar placeholder flex-shrink-0">
+                            <div className="bg-base-100 rounded-full w-14 h-14 border-2 border-base-content/20 flex items-center justify-center">
                               <Image
                                 src={patternImageMap[type.patternType]}
                                 alt={`${type.displayName} hair pattern`}
-                                width={48}
-                                height={48}
-                                className="w-12 h-12"
+                                width={40}
+                                height={40}
+                                className="w-10 h-10"
                               />
                             </div>
                           </div>
-                          <h3 className="card-title text-xl">
+                          <h3 className="text-lg font-semibold mb-0 leading-tight">
                             {type.displayName}
                           </h3>
                         </div>
-                        <p className="text-base-content/70">
+
+                        {/* Description */}
+                        <p className="text-base-content/70 text-sm leading-relaxed line-clamp-3 mb-4">
                           {type.description}
                         </p>
-                        <div className="flex flex-wrap gap-2 mt-2">
-                          <span className="badge badge-xs badge-primary">
-                            Shrinkage: {type.shrinkage}
-                          </span>
-                          <span className="badge badge-xs badge-secondary">
-                            Other Systems: {type.otherTypeSystems}
-                          </span>
-                          <span className="badge badge-xs badge-accent">
-                            Elongation: {type.elongation}
-                          </span>
-                        </div>
 
-                        <div className="card-actions justify-end mt-4">
-                          <Link href={`/hair-types/${type.patternType}`} className="btn btn-primary btn-sm">Basic Info</Link>
-                          <span className="btn">Guide coming soon</span>
+                        {/* Stats List */}
+                        <ul className="text-xs text-base-content/60 space-y-0.5 mb-5">
+                          <li>
+                            <span className="font-semibold text-base-content">
+                              Shrinkage:
+                            </span>{' '}
+                            {type.shrinkage}
+                          </li>
+                          <li>
+                            <span className="font-semibold text-base-content">
+                              Elongation:
+                            </span>{' '}
+                            {type.elongation}
+                          </li>
+                          <li>
+                            <span className="font-semibold text-base-content">
+                              Other Systems:
+                            </span>{' '}
+                            {type.otherTypeSystems}
+                          </li>
+                        </ul>
+
+                        {/* Actions */}
+                        <div className="flex flex-col sm:flex-row gap-2 mt-auto">
+                          <Link
+                            href={`/hair-types/quiz/${type.patternType}`}
+                            className="btn btn-primary btn-sm w-full sm:flex-1"
+                          >
+                            Basic Info
+                          </Link>
+                          <span
+                            className="btn btn-sm btn-ghost bg-base-300 text-base-content/60 border-base-content/20 cursor-default w-full sm:flex-1 tooltip"
+                            data-tip="Coming soon"
+                          >
+                            Guide
+                          </span>
                         </div>
                       </div>
                     </div>
