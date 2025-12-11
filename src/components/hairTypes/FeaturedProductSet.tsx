@@ -17,7 +17,7 @@ export function FeaturedProductSet({ productSet }: FeaturedProductSetProps) {
           alt={productSet.title}
           fill
           sizes="(max-width: 768px) 100vw, 192px"
-          className="object-contain p-4"
+          className="object-contain p-4 rounded-box"
         />
       </figure>
       <div className="card-body">

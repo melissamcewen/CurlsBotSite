@@ -18,6 +18,7 @@ import { Affiliate } from '@/components/mdx/Affiliate';
 import { TableOfContents } from '@/components/mdx/TableOfContents';
 import { SiteFixBanner } from '@/components/mdx/SiteFixBanner';
 import { HairTypeQuizBanner } from '@/components/mdx/HairTypeQuizBanner';
+import { HairTypeFactors } from '@/components/mdx/HairTypeFactors';
 import { AuthorBio } from '@/components/mdx/AuthorBio';
 import RoutineTable from '@/components/mdx/RoutineTable';
 import ProductComparisonTable from '@/components/mdx/ProductComparisonTable';
@@ -25,6 +26,7 @@ import NewsletterSignup from '@/components/mdx/NewsletterSignup';
 import AbbeyYungMethodTable from '@/components/mdx/AbbeyYungMethodTable';
 import AbbeyYungTable from '@/components/mdx/AbbeyYungTable';
 import BondProductsTable from '@/components/mdx/BondProductsTable';
+import HairPatternVisualization from '@/components/HairPatternVisualization';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -43,6 +45,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     TableOfContents,
     SiteFixBanner,
     HairTypeQuizBanner,
+    HairTypeFactors,
     AuthorBio,
     RoutineTable,
     ProductComparisonTable,
@@ -50,6 +53,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     AbbeyYungMethodTable,
     AbbeyYungTable,
     BondProductsTable,
+    HairPatternVisualization,
     ...components,
   };
 }

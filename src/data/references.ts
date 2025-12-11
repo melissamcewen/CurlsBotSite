@@ -1592,6 +1592,51 @@ Kahre, Joerg. "Ethnic Differences in Haircare Products." Handbook of Cosmetic Sc
     date: '2020',
     source: 'Cosmetics & Toiletries',
   },
+  /* 1. Cloete E, Ngoepe MN, Ismail E, Khumalo NP. Weak Hydrogen Bonds in Temporary Shape Changes of Curly Human Hair Fibers: Preliminary Evidence. J Invest Dermatol. 2025;145(1):185-188. doi:10.1016/j.jid.2024.06.1282
+*/
+'148': {
+    id: '148',
+    url: 'https://doi.org/10.1016/j.jid.2024.06.1282',
+    title: 'Weak Hydrogen Bonds in Temporary Shape Changes of Curly Human Hair Fibers: Preliminary Evidence',
+    type: 'science',
+    author: 'Cloete E, Ngoepe MN, Ismail E, Khumalo NP.',
+    date: '2025',
+    source: 'J Invest Dermatol',
+  },
+  /* 1. Tan J, Yang Y, Tang K, Sabeti PC, Jin L, Wang S. The adaptive variant EDARV370A is associated with straight hair in East Asians. Hum Genet. 2013;132(10):1187-1191. doi:10.1007/s00439-013-1324-1
+*/
+'149': {
+    id: '149',
+    url: 'https://doi.org/10.1007/s00439-013-1324-1',
+    title: 'The adaptive variant EDARV370A is associated with straight hair in East Asians',
+    type: 'science',
+    author: 'Tan J, Yang Y, Tang K, Sabeti PC, Jin L, Wang S.',
+    date: '2013',
+    source: 'Hum Genet',
+  },
+
+  /* 1. Is Hydration Destroying Your Hair? The REAL Science.; 2024. Accessed December 10, 2025. https://www.youtube.com/watch?v=khNaXP11zc8
+*/
+'150': {
+    id: '150',
+    url: 'https://www.youtube.com/watch?v=khNaXP11zc8',
+    title: 'Is Hydration Destroying Your Hair? The REAL Science.',
+    type: 'science',
+    author: 'Lab Muffin Beauty Science',
+    date: '2024',
+    source: 'YouTube',
+  },
+
+  /* Ife, Knowing Your Curl Type, https://www.tiktok.com/@ife.cltv/video/7533231123090902302 */
+  '151': {
+    id: '151',
+    url: 'https://www.tiktok.com/@ife.cltv/video/7533231123090902302',
+    title: 'Knowing Your Curl Type',
+    type: 'other',
+    author: 'Ife',
+    date: '2025',
+    source: 'TikTok',
+  },
 
 };
 

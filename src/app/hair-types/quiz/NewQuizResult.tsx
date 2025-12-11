@@ -415,7 +415,7 @@ export default function NewQuizResult({ patternType }: Props) {
                     <p className="text-sm mb-4">
                       Hair type can change over your life due to factors like
                       hormones. If your type changes its likely to change to one
-                      of its sister types
+                      of its sister types. Also if we got your type wrong (oops sorry!), you&apos;re likely to be one of these sister types.
                     </p>
                     <div className="flex flex-wrap gap-3">
                       {patternData.sisterCurlTypes.map((sisterType) => {
