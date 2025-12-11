@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowLeft, ShoppingBag } from 'lucide-react';
+import { ArrowLeft, ShoppingBag, FlaskConical } from 'lucide-react';
 import Image from 'next/image';
 import { ProductStepCard } from '@/components/ProductStepCard';
 import LightProductsEmailSignup from '@/components/LightProductsEmailSignup';
@@ -45,6 +45,34 @@ export function LowPorosityPageClient() {
         </div>
       </div>
 
+      {/* Strandprint Promotion */}
+      <div className="card bg-base-100">
+        <div className="card-body">
+          <div className="flex items-start gap-4">
+            <FlaskConical className="w-8 h-8 text-primary shrink-0 mt-1" />
+            <div className="flex-1">
+              <h2 className="card-title text-xl mb-2">
+                Get Your Exact Porosity with Scientific Analysis
+              </h2>
+              <p className="mb-4">
+                Want to know your exact porosity? Strandprint provides
+                scientific analysis of your hair&apos;s porosity with detailed
+                results. Use code{' '}
+                <strong className="text-primary">CBOT10</strong> for 10% off
+                your order.
+              </p>
+              <a
+                href="https://www.strandprint.com/"
+                target="_blank"
+                className="btn btn-primary"
+              >
+                Visit Strandprint
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Low Porosity 101 Section */}
       <div className="card bg-base-100">
         <div className="card-body">
@@ -54,7 +82,7 @@ export function LowPorosityPageClient() {
             about what products you should use, just that you DON&apos;T need
             anything formulated for damaged hair. This is a general routine that
             will work for many people, but if you want something more specific
-            take our {' '}
+            take our{' '}
             <Link href="/hair-types/quiz" className="link-primary">
               hair types quiz
             </Link>
@@ -145,7 +173,9 @@ export function LowPorosityPageClient() {
             >
               <p>
                 Also optional, opt for lighter options like mousses, gels, and
-                custards if you have easily weighed down hair, and creams if you have hair that needs a bit more conditioning. One mousse we love is{' '}
+                custards if you have easily weighed down hair, and creams if you
+                have hair that needs a bit more conditioning. One mousse we love
+                is{' '}
                 <a
                   href="https://amzn.to/3V9PxUU"
                   target="_blank"

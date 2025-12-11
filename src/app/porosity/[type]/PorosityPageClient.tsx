@@ -16,6 +16,7 @@ import {
   ArrowLeft,
   Info,
   HelpCircle,
+  FlaskConical,
 } from 'lucide-react';
 import Avatar from '@/components/avatar';
 import Link from 'next/link';
@@ -95,6 +96,34 @@ export function PorosityPageClient({ porosityType, porosityInfo }: Props) {
         </div>
       </div>
 
+      {/* Strandprint Promotion */}
+      <div className="card bg-base-100 mt-8">
+        <div className="card-body">
+          <div className="flex items-start gap-4">
+            <FlaskConical className="w-8 h-8 text-primary shrink-0 mt-1" />
+            <div className="flex-1">
+              <h2 className="card-title text-xl mb-2">
+                Get Your Exact Porosity with Scientific Analysis
+              </h2>
+              <p className="mb-4">
+                Want to know your exact porosity? Strandprint provides
+                scientific analysis of your hair&apos;s porosity with detailed
+                results. Use code{' '}
+                <strong className="text-primary">CBOT10</strong> for 10% off
+                your order.
+              </p>
+              <a
+                href="https://www.strandprint.com/"
+                target="_blank"
+                className="btn btn-primary"
+              >
+                Visit Strandprint
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="card bg-base-100 mt-8">
         <div className="card-body">
           <h2 className="card-title">Build Your Routine</h2>
@@ -167,13 +196,10 @@ function RoutineSteps({ porosity, country }: RoutineStepsProps) {
     lowPorosity: porosity === 'low_porosity' || porosity === 'mixed_porosity',
   };
 
-  const steps = getRoutineSteps(
-    porosity,
-    country,
-    undefined,
-    productOffsets,
-    {...analysisFilters, sebdermSafe: false},
-  );
+  const steps = getRoutineSteps(porosity, country, undefined, productOffsets, {
+    ...analysisFilters,
+    sebdermSafe: false,
+  });
 
   const handleSeeMore = (category: string, totalProducts: number) => {
     setProductOffsets((prev) => ({
