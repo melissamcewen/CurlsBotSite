@@ -126,12 +126,17 @@ export default function Navbar() {
                   <Link href="/blog">Blog</Link>
                 </li>
                 <li>
-                  <Link href="/best">Products</Link>
+                  <Link href="/hair-types">Hair Types</Link>
                 </li>
                 <li>
                   <details>
                     <summary>More</summary>
                     <ul className="p-2 bg-accent rounded-t-none">
+                      <li>
+                        <Link href="/best" onClick={handleLinkClick}>
+                          Products
+                        </Link>
+                      </li>
                       <li>
                         <Link href="/resources" onClick={handleLinkClick}>
                           Resources
@@ -238,12 +243,17 @@ export default function Navbar() {
                     <Link href="/blog">Blog</Link>
                   </li>
                   <li>
-                    <Link href="/best">Products</Link>
+                    <Link href="/hair-types">Hair Types</Link>
                   </li>
                   <li>
                     <details>
                       <summary>More</summary>
                       <ul className="p-2 bg-accent rounded-t-none">
+                        <li>
+                          <Link href="/best" onClick={handleLinkClick}>
+                            Products
+                          </Link>
+                        </li>
                         <li>
                           <Link href="/resources" onClick={handleLinkClick}>
                             Resources
