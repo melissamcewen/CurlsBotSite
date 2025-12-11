@@ -19,6 +19,7 @@ import { TableOfContents } from '@/components/mdx/TableOfContents';
 import { SiteFixBanner } from '@/components/mdx/SiteFixBanner';
 import { HairTypeQuizBanner } from '@/components/mdx/HairTypeQuizBanner';
 import { HairTypeFactors } from '@/components/mdx/HairTypeFactors';
+import { HairTypesGrid } from '@/components/mdx/HairTypesGrid';
 import { AuthorBio } from '@/components/mdx/AuthorBio';
 import RoutineTable from '@/components/mdx/RoutineTable';
 import ProductComparisonTable from '@/components/mdx/ProductComparisonTable';
@@ -46,6 +47,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     SiteFixBanner,
     HairTypeQuizBanner,
     HairTypeFactors,
+    HairTypesGrid,
     AuthorBio,
     RoutineTable,
     ProductComparisonTable,

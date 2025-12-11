@@ -51,9 +51,9 @@ export default function TikTokPage() {
             <TikTokEmailSignup />
           </div>
         </section>
-        {/* Amazon Black Friday Deals */}
-        <a
-          href="https://www.amazon.com/shop/curlsbot/list/HETQHXTWJG9N"
+        {/* Hair Type Quiz */}
+        <Link
+          href="/hair-types/quiz"
           target="_blank"
           className="group block rounded-2xl border border-base-300 bg-base-100 p-4 hover:bg-base-200/50 transition mb-6"
         >
@@ -63,15 +63,15 @@ export default function TikTokPage() {
             </div>
             <div className="min-w-0 flex-1">
               <div className="text-base font-medium">
-                Black Friday/Cyber Monday Deals
+                Learn your hair type
               </div>
               <div className="text-sm text-base-content/60 truncate">
-                My handpicked deals for the season
+                Take our hair type quiz to find out in just 2 minutes! (Or read about the [CurlsBot Curl Typing System](/blog/curlsbot-curl-typing))
               </div>
             </div>
             <ChevronRight className="w-4 h-4 text-base-content/50 group-hover:translate-x-0.5 transition shrink-0" />
           </div>
-        </a>
+        </Link>
         {/* Link to bond video */}
         <a
           href="https://www.youtube.com/watch?v=fME13jt0kWY"
