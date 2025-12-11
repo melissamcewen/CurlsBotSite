@@ -194,18 +194,19 @@ export function determineHairType(
 
   // Coils paths
   if (primaryPattern === 'coils') {
-    const hasZigZags = additionalPatterns.includes('zig-zags');
-
-    // Coils + Zig-zags → Tight Coils/Zig-zags
-    if (hasZigZags) {
-      return 'tight-coils';
-    }
-
-    // Coils only or Coils + Curls → check elongation
+    // Check elongation first - if hair elongates when wet, it's coily
     if (elongatesWhenWet === true) {
       return 'coily';
     }
 
+    const hasZigZags = additionalPatterns.includes('zig-zags');
+
+    // Coils + Zig-zags (without elongation) → Tight Coils/Zig-zags
+    if (hasZigZags) {
+      return 'tight-coils';
+    }
+
+    // Coils only or Coils + Curls (without elongation) → Tight Coils
     return 'tight-coils';
   }
 

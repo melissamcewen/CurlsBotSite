@@ -33,7 +33,7 @@ export default function NewQuizResult({ patternType }: Props) {
               ← Retake Quiz
             </Link>
             <Link href="/hair-types" className="btn btn-ghost btn-sm">
-              ← Back to Hair Types
+              ← Back to Curl Types
             </Link>
           </div>
 
@@ -72,7 +72,7 @@ export default function NewQuizResult({ patternType }: Props) {
             ← Retake Quiz
           </Link>
           <Link href="/hair-types" className="btn btn-ghost btn-sm">
-            Back to Hair Types
+            Back to Curl Types
           </Link>
         </div>
 
@@ -523,19 +523,18 @@ export default function NewQuizResult({ patternType }: Props) {
                 </Link>
 
                 <Link
-                  href="/hair-types"
+                  href="/blog/curlsbot-curl-typing"
                   className="card bg-base-200 hover:bg-base-300 transition-colors rounded-box"
                 >
                   <div className="card-body">
                     <div className="flex items-center gap-2 mb-2">
                       <BookOpen className="w-5 h-5 text-primary" />
                       <h3 className="font-semibold">
-                        Explore Our Hair Types Page
+                        Read more about the CurlsBot Curl Typing System
                       </h3>
                     </div>
                     <p className="text-sm text-base-content/70">
-                      Learn more about how the CurlsBot curl type system and
-                      explore the other 5 types.
+                      Learn more about how the CurlsBot curl type system works and why I created it.
                     </p>
                   </div>
                 </Link>

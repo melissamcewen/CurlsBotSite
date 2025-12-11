@@ -224,13 +224,24 @@ describe('NewQuizLogic', () => {
         expect(determineHairType(answers)).toBe('tight-coils');
       });
 
-      test('Coils + Zig-zags → Tight Coils', () => {
+      test('Coils + Zig-zags + no elongation → Tight Coils', () => {
         const answers: QuizAnswers = {
           isStraight: false,
           primaryPattern: 'coils',
           additionalPatterns: ['zig-zags'],
+          elongatesWhenWet: false,
         };
         expect(determineHairType(answers)).toBe('tight-coils');
+      });
+
+      test('Coils + Zig-zags + elongates → Coily', () => {
+        const answers: QuizAnswers = {
+          isStraight: false,
+          primaryPattern: 'coils',
+          additionalPatterns: ['zig-zags'],
+          elongatesWhenWet: true,
+        };
+        expect(determineHairType(answers)).toBe('coily');
       });
     });
 

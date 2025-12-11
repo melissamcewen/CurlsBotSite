@@ -30,11 +30,17 @@ export default function HairTypesPage() {
         {/* Hero/Intro Section */}
         <div className="mb-12">
           <h1 className="text-4xl font-bold mb-6">
-            The CurlsBot Hair Type System
+            The CurlsBot Curl Type System
           </h1>
           <p className="text-lg mb-4">
-            The new CurlsBot Hair Type System is based on how your hair acts,
-            not just how it looks. No trying to compare it to a chart.
+            The new CurlsBot Curl Type System is based on how your hair acts,
+            not just how it looks. No trying to compare it to a chart.{' '}
+            <Link
+              href="/blog/curlsbot-curl-typing"
+              className="link link-primary"
+            >
+              Learn more in our blog post
+            </Link>
           </p>
 
           {/* Interactive Visualization */}
@@ -76,7 +82,7 @@ export default function HairTypesPage() {
         {/* Take the Quiz CTA */}
         <div className="mb-8 mt-8 text-center">
           <Link href="/hair-types/quiz" className="btn btn-primary btn-lg">
-            Find Your Hair Type
+            Find Your Curl Type
           </Link>
         </div>
         {/* Type Grid */}
