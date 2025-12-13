@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   MapPin,
   FlaskConical,
@@ -13,6 +13,8 @@ import { analyzeDewPoint } from '@/lib/weather';
 import Link from 'next/link';
 import Avatar from '@/components/avatar';
 
+type TemperatureUnit = 'celsius' | 'fahrenheit';
+
 export default function FrizzBot() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -20,11 +22,44 @@ export default function FrizzBot() {
   const [analysis, setAnalysis] = useState<WeatherAnalysis | null>(null);
   const [showManualInput, setShowManualInput] = useState(false);
   const [location, setLocation] = useState('');
+  const [temperatureUnit, setTemperatureUnit] =
+    useState<TemperatureUnit>('celsius');
   const [manualInputs, setManualInputs] = useState({
     temp: '',
     humidity: '',
     dewPoint: '',
   });
+
+  // Load temperature unit preference from localStorage
+  useEffect(() => {
+    const savedUnit = localStorage.getItem('frizzbot-temperature-unit');
+    if (savedUnit === 'celsius' || savedUnit === 'fahrenheit') {
+      setTemperatureUnit(savedUnit);
+    }
+  }, []);
+
+  // Save temperature unit preference to localStorage
+  const handleUnitToggle = (unit: TemperatureUnit) => {
+    setTemperatureUnit(unit);
+    localStorage.setItem('frizzbot-temperature-unit', unit);
+  };
+
+  // Update analysis when temperature unit changes
+  useEffect(() => {
+    if (weatherData) {
+      setAnalysis(analyzeDewPoint(weatherData.dewPoint, temperatureUnit));
+    }
+  }, [temperatureUnit, weatherData]);
+
+  // Convert temperature based on selected unit (API returns Celsius)
+  const convertTemp = (celsius: number): number => {
+    return temperatureUnit === 'fahrenheit' ? (celsius * 9) / 5 + 32 : celsius;
+  };
+
+  // Convert from user input to Celsius for storage
+  const convertToCelsius = (value: number): number => {
+    return temperatureUnit === 'fahrenheit' ? ((value - 32) * 5) / 9 : value;
+  };
 
   const getLocation = () => {
     setLoading(true);
@@ -50,7 +85,7 @@ export default function FrizzBot() {
           }
 
           setWeatherData(data);
-          setAnalysis(analyzeDewPoint(data.dewPoint));
+          setAnalysis(analyzeDewPoint(data.dewPoint, temperatureUnit));
         } catch (err) {
           setError(err instanceof Error ? err.message : 'An error occurred');
         } finally {
@@ -84,7 +119,7 @@ export default function FrizzBot() {
       }
 
       setWeatherData(data);
-      setAnalysis(analyzeDewPoint(data.dewPoint));
+      setAnalysis(analyzeDewPoint(data.dewPoint, temperatureUnit));
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred');
     } finally {
@@ -109,8 +144,11 @@ export default function FrizzBot() {
     }
 
     setError(null);
-    setWeatherData({ temp, humidity, dewPoint });
-    setAnalysis(analyzeDewPoint(dewPoint));
+    // Convert user input to Celsius for storage (API returns Celsius)
+    const tempC = convertToCelsius(temp);
+    const dewPointC = convertToCelsius(dewPoint);
+    setWeatherData({ temp: tempC, humidity, dewPoint: dewPointC });
+    setAnalysis(analyzeDewPoint(dewPointC, temperatureUnit));
   };
 
   return (
@@ -132,44 +170,73 @@ export default function FrizzBot() {
         </span>
       </div>
 
-      <div className="flex flex-col md:flex-row gap-4 mb-4">
-        <button
-          onClick={getLocation}
-          disabled={loading}
-          className="btn btn-primary w-full md:w-auto"
-        >
-          <MapPin className="h-5 w-5 mr-2" />
-          {loading ? 'Getting Location...' : 'Get My Location (US only)'}
-        </button>
-
-        <form onSubmit={handleLocationSubmit} className="join w-full md:w-auto">
-          <input
-            type="text"
-            placeholder="Enter city, state (e.g. Chicago, IL), US only"
-            className="input input-bordered join-item w-full md:w-80"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-            required
-          />
+      <div className="flex flex-col gap-4 mb-4">
+        <div className="flex flex-col md:flex-row gap-4">
           <button
-            type="submit"
-            className="btn btn-primary join-item"
+            onClick={getLocation}
             disabled={loading}
+            className="btn btn-primary w-full md:w-auto"
           >
-            {loading ? 'Loading...' : 'Get Weather'}
+            <MapPin className="h-5 w-5 mr-2" />
+            {loading ? 'Getting Location...' : 'Get My Location'}
           </button>
-        </form>
 
-        <button
-          onClick={() => {
-            setShowManualInput(!showManualInput);
-            setError(null);
-          }}
-          className="btn btn-secondary w-full md:w-auto"
-        >
-          <FlaskConical className="h-5 w-5 mr-2" />
-          {showManualInput ? 'Hide Manual Input' : 'Enter Values Manually'}
-        </button>
+          <form
+            onSubmit={handleLocationSubmit}
+            className="join w-full md:w-auto"
+          >
+            <input
+              type="text"
+              placeholder="Enter city, country (e.g. London, UK or Chicago, IL)"
+              className="input input-bordered join-item w-full md:w-80"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              required
+            />
+            <button
+              type="submit"
+              className="btn btn-primary join-item"
+              disabled={loading}
+            >
+              {loading ? 'Loading...' : 'Get Weather'}
+            </button>
+          </form>
+
+          <button
+            onClick={() => {
+              setShowManualInput(!showManualInput);
+              setError(null);
+            }}
+            className="btn btn-secondary w-full md:w-auto"
+          >
+            <FlaskConical className="h-5 w-5 mr-2" />
+            {showManualInput ? 'Hide Manual Input' : 'Enter Values Manually'}
+          </button>
+        </div>
+
+        <div className="flex items-center gap-2 justify-center md:justify-start">
+          <span className="text-sm">Temperature:</span>
+          <div className="join">
+            <button
+              type="button"
+              onClick={() => handleUnitToggle('celsius')}
+              className={`btn btn-sm join-item ${
+                temperatureUnit === 'celsius' ? 'btn-active' : ''
+              }`}
+            >
+              °C
+            </button>
+            <button
+              type="button"
+              onClick={() => handleUnitToggle('fahrenheit')}
+              className={`btn btn-sm join-item ${
+                temperatureUnit === 'fahrenheit' ? 'btn-active' : ''
+              }`}
+            >
+              °F
+            </button>
+          </div>
+        </div>
       </div>
 
       {showManualInput && (
@@ -180,12 +247,14 @@ export default function FrizzBot() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Temperature (°F)</span>
+                <span className="label-text">
+                  Temperature ({temperatureUnit === 'celsius' ? '°C' : '°F'})
+                </span>
               </label>
               <input
                 type="number"
                 step="0.1"
-                placeholder="75"
+                placeholder={temperatureUnit === 'celsius' ? '24' : '75'}
                 className="input input-bordered"
                 value={manualInputs.temp}
                 onChange={(e) =>
@@ -219,12 +288,14 @@ export default function FrizzBot() {
 
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Dew Point (°F)</span>
+                <span className="label-text">
+                  Dew Point ({temperatureUnit === 'celsius' ? '°C' : '°F'})
+                </span>
               </label>
               <input
                 type="number"
                 step="0.1"
-                placeholder="65"
+                placeholder={temperatureUnit === 'celsius' ? '18' : '65'}
                 className="input input-bordered"
                 value={manualInputs.dewPoint}
                 onChange={(e) =>
@@ -280,7 +351,8 @@ export default function FrizzBot() {
                 <Thermometer className="w-4 h-4  mx-auto text-primary" />
                 <div className="text-xs text-primary">Temp</div>
                 <div className="text-lg font-bold">
-                  {Math.round((weatherData.temp * 9) / 5 + 32)}°F
+                  {Math.round(convertTemp(weatherData.temp))}
+                  {temperatureUnit === 'celsius' ? '°C' : '°F'}
                 </div>
               </div>
 
@@ -296,7 +368,8 @@ export default function FrizzBot() {
                 <Cloud className="w-4 h-4 text-primary mx-auto" />
                 <div className="text-primary text-xs">Dew Point</div>
                 <div className="text-lg font-bold">
-                  {Math.round((weatherData.dewPoint * 9) / 5 + 32)}°F
+                  {Math.round(convertTemp(weatherData.dewPoint))}
+                  {temperatureUnit === 'celsius' ? '°C' : '°F'}
                 </div>
               </div>
             </div>

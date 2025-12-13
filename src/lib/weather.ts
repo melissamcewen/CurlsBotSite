@@ -14,9 +14,15 @@ export interface WeatherAnalysis {
   explanation: string;
 }
 
-export function analyzeDewPoint(dewPoint: number): WeatherAnalysis {
-  // Convert to Fahrenheit for analysis (since the docs use Fahrenheit)
-  const dewPointF = (dewPoint * 9) / 5 + 32;
+export function analyzeDewPoint(
+  dewPoint: number,
+  unit: 'celsius' | 'fahrenheit' = 'celsius',
+): WeatherAnalysis {
+  // Always work in Fahrenheit for thresholds (since the docs use Fahrenheit)
+  const dewPointF =
+    unit === 'fahrenheit' ? dewPoint : (dewPoint * 9) / 5 + 32;
+  const dewPointC =
+    unit === 'celsius' ? dewPoint : ((dewPoint - 32) * 5) / 9;
 
   if (dewPointF <= 30) {
     return {
@@ -24,7 +30,7 @@ export function analyzeDewPoint(dewPoint: number): WeatherAnalysis {
       status: 'warning',
       forecast: 'FRIZZ ALERT: Very Dry Air!',
       explanation: `The dew point is ${Math.round(dewPointF)}°F (${Math.round(
-        dewPoint,
+        dewPointC,
       )}°C), which means the air is very dry. In these conditions, humectants in your products might draw moisture out of your hair instead of from the air, potentially causing dryness and frizz.`,
       recommendations: [
         'Be careful with simple humectants, make sure they are balanced with anti-humectants to keep moisture in',
@@ -37,7 +43,7 @@ export function analyzeDewPoint(dewPoint: number): WeatherAnalysis {
       status: 'caution',
       forecast: 'Hair Day: Proceed with Caution',
       explanation: `The dew point is ${Math.round(dewPointF)}°F (${Math.round(
-        dewPoint,
+        dewPointC,
       )}°C), which is in a tricky range. At this dew point, your hair's reaction to humectants can be unpredictable - they might help or hurt depending on your specific hair type.`,
       recommendations: [
         'This will require trial and error to see what your hair likes',
@@ -51,7 +57,7 @@ export function analyzeDewPoint(dewPoint: number): WeatherAnalysis {
       status: 'ok',
       forecast: "You're Going to Have a Great Hair Day!",
       explanation: `The dew point is ${Math.round(dewPointF)}°F (${Math.round(
-        dewPoint,
+        dewPointC,
       )}°C) - this is the sweet spot for most curly hair! There's just enough moisture in the air for humectants to work effectively without causing frizz.`,
       recommendations: [
         'You will enjoy the best curls at this dew point',
@@ -64,7 +70,7 @@ export function analyzeDewPoint(dewPoint: number): WeatherAnalysis {
       status: 'warning',
       forecast: 'FRIZZ ALERT: High Humidity!',
       explanation: `The dew point is ${Math.round(dewPointF)}°F (${Math.round(
-        dewPoint,
+        dewPointC,
       )}°C), which means there's a lot of moisture in the air. Your hair may absorb excess moisture, leading to frizz unless you use the right products to seal your hair.`,
       recommendations: [
         'Use hard hold products like gels to control your hair',

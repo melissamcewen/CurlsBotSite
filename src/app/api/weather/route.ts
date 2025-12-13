@@ -1,7 +1,5 @@
 import { NextResponse } from 'next/server';
 
-const BASE_URL = 'https://api.weather.gov';
-
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const lat = searchParams.get('lat');
@@ -18,7 +16,7 @@ export async function GET(request: Request) {
       const geocodeResponse = await fetch(
         `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(
           location,
-        )}&format=json&limit=1&countrycodes=us`,
+        )}&format=json&limit=1`,
         {
           headers: {
             'User-Agent': '(curlsbot.com, melissa@melissa.dev)',
@@ -31,7 +29,7 @@ export async function GET(request: Request) {
         return new NextResponse(
           JSON.stringify({
             error:
-              'Location not found. Please try entering your city and state (e.g. "Chicago, IL")',
+              'Location not found. Please try entering your city and country (e.g. "London, UK" or "Chicago, IL")',
           }),
           { status: 400 },
         );
@@ -55,65 +53,30 @@ export async function GET(request: Request) {
   }
 
   try {
-    // First, get the grid coordinates for the location
-    const pointsResponse = await fetch(
-      `${BASE_URL}/points/${finalLat},${finalLon}`,
+    // Use Open-Meteo API for international weather data (free, no API key required)
+    const weatherResponse = await fetch(
+      `https://api.open-meteo.com/v1/forecast?latitude=${finalLat}&longitude=${finalLon}&current=temperature_2m,relative_humidity_2m,dew_point_2m&temperature_unit=celsius`,
       {
         headers: {
           'User-Agent': '(curlsbot.com, melissa@melissa.dev)',
-          Accept: 'application/geo+json',
         },
       },
     );
 
-    if (!pointsResponse.ok) {
-      throw new Error('Failed to get grid points');
+    if (!weatherResponse.ok) {
+      throw new Error('Failed to fetch weather data');
     }
 
-    const pointsData = await pointsResponse.json();
-    const { gridId, gridX, gridY } = pointsData.properties;
+    const weatherData = await weatherResponse.json();
 
-    // Then, get the current conditions using the grid coordinates
-    const stationsResponse = await fetch(
-      `${BASE_URL}/gridpoints/${gridId}/${gridX},${gridY}/stations`,
-      {
-        headers: {
-          'User-Agent': '(curlsbot.com, melissa@melissa.dev)',
-          Accept: 'application/geo+json',
-        },
-      },
-    );
-
-    if (!stationsResponse.ok) {
-      throw new Error('Failed to get stations');
+    if (!weatherData.current) {
+      throw new Error('Invalid weather data received');
     }
 
-    const stationsData = await stationsResponse.json();
-    const nearestStation =
-      stationsData.features[0].properties.stationIdentifier;
-
-    // Get the latest observations from the nearest station
-    const observationsResponse = await fetch(
-      `${BASE_URL}/stations/${nearestStation}/observations/latest`,
-      {
-        headers: {
-          'User-Agent': '(curlsbot.com, melissa@melissa.dev)',
-          Accept: 'application/geo+json',
-        },
-      },
-    );
-
-    if (!observationsResponse.ok) {
-      throw new Error('Failed to get weather observations');
-    }
-
-    const observationsData = await observationsResponse.json();
-    const properties = observationsData.properties;
-
-    // Extract the data we need
-    const temp = properties.temperature.value;
-    const dewPoint = properties.dewpoint.value;
-    const humidity = properties.relativeHumidity.value;
+    // Extract the data we need (all values are in Celsius)
+    const temp = weatherData.current.temperature_2m;
+    const humidity = weatherData.current.relative_humidity_2m;
+    const dewPoint = weatherData.current.dew_point_2m;
 
     return new NextResponse(
       JSON.stringify({
