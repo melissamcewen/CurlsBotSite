@@ -84,6 +84,8 @@ export function BlogProductEnhanced({
         return <Search className="w-4 h-4 md:w-5 md:h-5" />;
       case 'external-link':
         return <ExternalLink className="w-4 h-4 md:w-5 md:h-5" />;
+      case 'sparkles':
+        return <Sparkles className="w-4 h-4 md:w-5 md:h-5" />;
       default:
         return <ShoppingCart className="w-4 h-4 md:w-5 md:h-5" />;
     }
@@ -158,9 +160,6 @@ export function BlogProductEnhanced({
             {cgmApproved && (
               <div className="badge badge-success badge-sm">CGM Approved</div>
             )}
-            {sample && (
-              <div className="badge badge-warning badge-sm">Sample</div>
-            )}
           </div>
         </div>
 
@@ -175,7 +174,7 @@ export function BlogProductEnhanced({
         )}
 
         <div className="card-actions flex-col gap-1 md:gap-2 mt-auto w-full max-w-md mx-auto">
-          {allLinks.length > 0 && (
+          {(allLinks.length > 0 || sample) && (
             <div className="flex flex-col gap-1 md:gap-2 w-full">
               {allLinks.map((link, index) => (
                 <a
@@ -195,6 +194,60 @@ export function BlogProductEnhanced({
                   {link.text}
                 </a>
               ))}
+              {sample && (
+                <a
+                  href="https://curlsmonthly.com/?ref=curlsbot"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-accent btn-xs md:btn-sm flex items-center justify-center gap-1 md:gap-2 w-full"
+                  ref={(el) => {
+                    if (el) {
+                      // Create a mock product object for tracking
+                      const mockProduct = {
+                        id: name.toLowerCase().replace(/\s+/g, '-'),
+                        name,
+                        brand: '', // Don't use subtitle as brand to avoid concatenation issues
+                        product_categories: [],
+                        buy_links: [
+                          {
+                            url: 'https://curlsmonthly.com/?ref=curlsbot',
+                            retailer: 'Curls Monthly',
+                          },
+                        ],
+                      };
+                      addProductTrackingAttributes(
+                        el,
+                        mockProduct,
+                        'sample',
+                        'Curls Monthly',
+                      );
+                    }
+                  }}
+                  onClick={() => {
+                    // Create a mock product object for tracking
+                    const mockProduct = {
+                      id: name.toLowerCase().replace(/\s+/g, '-'),
+                      name,
+                      brand: '', // Don't use subtitle as brand to avoid concatenation issues
+                      product_categories: [],
+                      buy_links: [
+                        {
+                          url: 'https://curlsmonthly.com/?ref=curlsbot',
+                          retailer: 'Curls Monthly',
+                        },
+                      ],
+                    };
+                    trackProductInteraction(
+                      mockProduct,
+                      'sample',
+                      'Curls Monthly',
+                    );
+                  }}
+                >
+                  <Sparkles className="w-4 h-4 md:w-5 md:h-5" />
+                  Try sample
+                </a>
+              )}
             </div>
           )}
         </div>

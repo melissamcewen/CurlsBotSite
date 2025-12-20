@@ -116,7 +116,7 @@ export function BlogProductCardEnhanced({
   };
 
   return (
-    <div className="card bg-neutral-50 cb-border h-full flex flex-col md:flex-col rounded-box">
+    <div className="card bg-neutral-50 cb-border h-full flex flex-col md:flex-col rounded-box not-prose">
       {/* Mobile: side layout, Desktop: top layout */}
       <div className="flex md:flex-col h-full">
         <figure className="relative w-[120px] md:w-full h-[120px] md:h-[200px] bg-base-200/20 flex-shrink-0 overflow-hidden rounded-l-box md:rounded-t-box md:rounded-l-none">

@@ -28,3 +28,5 @@ We're using Next 15 NOT 13
 don't use  rel="noopener noreferrer" on internal links
 
 We are using DaisyUI 5
+
+for mdx components they should have a .not-prose class unless they are really part of the text
