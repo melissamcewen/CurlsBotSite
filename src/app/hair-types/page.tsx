@@ -157,12 +157,21 @@ export default function HairTypesPage() {
                           >
                             Basic Info
                           </Link>
-                          <span
-                            className="btn btn-sm btn-ghost bg-base-300 text-base-content/60 border-base-content/20 cursor-default w-full sm:flex-1 tooltip"
-                            data-tip="Coming soon"
-                          >
-                            Guide
-                          </span>
+                          {type.guideUrl ? (
+                            <Link
+                              href={type.guideUrl}
+                              className="btn btn-sm btn-secondary text-secondary-content border-base-content/20 w-full sm:flex-1"
+                            >
+                              Guide
+                            </Link>
+                          ) : (
+                            <span
+                              className="btn btn-sm btn-ghost bg-base-300 text-base-content/60 border-base-content/20 cursor-default w-full sm:flex-1 tooltip"
+                              data-tip="Coming soon"
+                            >
+                              Guide
+                            </span>
+                          )}
                         </div>
                       </div>
                     </div>
