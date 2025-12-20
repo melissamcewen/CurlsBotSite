@@ -328,7 +328,7 @@ export default function FrizzBot() {
           <div className="card bg-base-100 p-6">
             <div className="flex justify-between mb-2 items-start">
               <div>
-                <h2 className="text-xl font-bold  mb-1">Frizzy</h2>
+                <h2 className="text-xl font-bold  mb-1">{analysis.forecast}</h2>
                 <h3 className="text-lg">Today&apos;s Hair Forecast</h3>
               </div>
               <Avatar
