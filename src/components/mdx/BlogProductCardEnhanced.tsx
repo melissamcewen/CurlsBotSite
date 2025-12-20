@@ -119,7 +119,7 @@ export function BlogProductCardEnhanced({
     <div className="card bg-neutral-50 cb-border h-full flex flex-col md:flex-col rounded-box not-prose">
       {/* Mobile: side layout, Desktop: top layout */}
       <div className="flex md:flex-col h-full">
-        <figure className="relative w-[120px] md:w-full h-[120px] md:h-[200px] bg-base-200/20 flex-shrink-0 overflow-hidden rounded-l-box md:rounded-t-box md:rounded-l-none">
+        <figure className="relative w-[120px] md:w-full md:h-[200px] bg-base-200/20 flex-shrink-0 overflow-hidden rounded-l-box md:rounded-t-box md:rounded-l-none">
           {allLinks.length > 0 ? (
             <a
               href={allLinks[0].url}
@@ -132,7 +132,7 @@ export function BlogProductCardEnhanced({
                 alt={name}
                 fill
                 sizes="(max-width: 768px) 120px, 33vw"
-                className="object-contain hover:opacity-90 transition-opacity"
+                className="object-cover md:object-contain hover:opacity-90 transition-opacity"
               />
             </a>
           ) : (
