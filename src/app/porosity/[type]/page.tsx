@@ -67,6 +67,24 @@ const POROSITY_DATA: Record<string, PorosityInfo> = {
       'Consider protein treatments for the ends',
     ],
   },
+
+  'low-porosity': {
+    title: 'Low Porosity Hair Guide and Best Products',
+    description:
+      'Low porosity hair is healthy, undamaged hair. It does not need protein or bond repair treatments. It is often shiny and healthy looking.',
+    characteristics: [
+      'Healthy, undamaged hair',
+      'Treatments and products that rely on penetration might not be as effective because the healthy hair is already protected by a tight cuticle',
+      'Fat-based products can coat this type of hair, which can be good or bad depending on the product and how much you use',
+
+    ],
+    tips: [
+      'Use heat or steam to help products penetrate',
+      'Regular clarifying treatments to remove buildup',
+      'Apply products to damp hair to improve absorption',
+      'May better tolerate sulfates than other porosity types and even benefit from them',
+    ],
+  },
 };
 
 interface Props {
