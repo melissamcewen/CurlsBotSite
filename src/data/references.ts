@@ -1479,10 +1479,11 @@ Kahre, Joerg. "Ethnic Differences in Haircare Products." Handbook of Cosmetic Sc
   1. Mkentane K, Wyk JCV, Sishi N, et al. Geometric classification of scalp hair for valid drug testing, 6 more reliable than 8 hair curl groups. PLOS ONE. 2017;12(6):e0172834. doi:10.1371/journal.pone.0172834
 */
 
-'137': {
+  '137': {
     id: '137',
     url: 'https://doi.org/10.1371/journal.pone.0172834',
-    title: 'Geometric classification of scalp hair for valid drug testing, 6 more reliable than 8 hair curl groups',
+    title:
+      'Geometric classification of scalp hair for valid drug testing, 6 more reliable than 8 hair curl groups',
     type: 'science',
     author: 'Mkentane K, Wyk JCV, Sishi N, et al.',
     date: '2017',
@@ -1490,11 +1491,12 @@ Kahre, Joerg. "Ethnic Differences in Haircare Products." Handbook of Cosmetic Sc
   },
 
   /* Martins E, Castro P, Ribeiro AB, et al. Bleached Hair as Standard Template to Insight the Performance of Commercial Hair Repair Products. Cosmetics. 2024;11(5):150. doi:10.3390/cosmetics11050150
-*/
-'138': {
+   */
+  '138': {
     id: '138',
     url: 'https://doi.org/10.3390/cosmetics11050150',
-    title: 'Bleached Hair as Standard Template to Insight the Performance of Commercial Hair Repair Products',
+    title:
+      'Bleached Hair as Standard Template to Insight the Performance of Commercial Hair Repair Products',
     type: 'science',
     author: 'Martins E, Castro P, Ribeiro AB, et al.',
     date: '2024',
@@ -1504,7 +1506,8 @@ Kahre, Joerg. "Ethnic Differences in Haircare Products." Handbook of Cosmetic Sc
   '139': {
     id: '139',
     url: 'https://doi.org/10.1016/j.ijbiomac.2020.11.194',
-    title: 'Structural investigation on damaged hair keratin treated with α,β-unsaturated Michael acceptors used as repairing agents',
+    title:
+      'Structural investigation on damaged hair keratin treated with α,β-unsaturated Michael acceptors used as repairing agents',
     type: 'science',
     author: 'Di Foggia M, Boga C, Micheletti G, Nocentini B, Taddei P.',
     date: '2021',
@@ -1514,7 +1517,8 @@ Kahre, Joerg. "Ethnic Differences in Haircare Products." Handbook of Cosmetic Sc
   '140': {
     id: '140',
     url: 'https://doi.org/10.1021/acssuschemeng.3c01797',
-    title: 'Visible Light-Mediated Environmentally Friendly and Universally Applicable Green Chemistry for Hair Cross-Linking',
+    title:
+      'Visible Light-Mediated Environmentally Friendly and Universally Applicable Green Chemistry for Hair Cross-Linking',
     type: 'science',
     author: 'Kim JH, Kim SY, Choi J, Lee HJ.',
     date: '2023',
@@ -1524,7 +1528,8 @@ Kahre, Joerg. "Ethnic Differences in Haircare Products." Handbook of Cosmetic Sc
   '141': {
     id: '141',
     url: 'https://doi.org/10.1111/ics.70024',
-    title: 'Strengthening benefits of panthenol for hair: Mechanistic evidence from advanced spectroscopic techniques',
+    title:
+      'Strengthening benefits of panthenol for hair: Mechanistic evidence from advanced spectroscopic techniques',
     type: 'science',
     author: 'Marsh JM, Cron S, Chen T, et al.',
     date: 'n/a',
@@ -1544,9 +1549,11 @@ Kahre, Joerg. "Ethnic Differences in Haircare Products." Handbook of Cosmetic Sc
   '143': {
     id: '143',
     url: 'https://doi.org/10.1111/ics.12663',
-    title: 'Penetration of different molecular weight hydrolysed keratins into hair fibres and their effects on the physical properties of textured hair',
+    title:
+      'Penetration of different molecular weight hydrolysed keratins into hair fibres and their effects on the physical properties of textured hair',
     type: 'science',
-    author: 'Malinauskyte E, Shrestha R, Cornwell PA, Gourion-Arsiquaud S, Hindley M.',
+    author:
+      'Malinauskyte E, Shrestha R, Cornwell PA, Gourion-Arsiquaud S, Hindley M.',
     date: '2021',
     source: 'International Journal of Cosmetic Science',
   },
@@ -1554,15 +1561,16 @@ Kahre, Joerg. "Ethnic Differences in Haircare Products." Handbook of Cosmetic Sc
   '144': {
     id: '144',
     url: 'https://doi.org/10.1021/acs.cgd.2c00753',
-    title: 'Understanding the Interaction of Gluconamides and Gluconates with Amino Acids in Hair Care',
+    title:
+      'Understanding the Interaction of Gluconamides and Gluconates with Amino Acids in Hair Care',
     type: 'science',
     author: 'Chambers LI, Yufit DS, Musa OM, Steed JW.',
     date: '2022',
     source: 'Cryst Growth Des',
   },
   /* 1. Cornwell P, Ph.D., Princeton TRI, et al. How Bond Builders ‘Repair’ Hair. Cosmetics & Toiletries. February 27, 2023. Accessed November 17, 2025. https://www.cosmeticsandtoiletries.com/formulas-products/hair-care/article/22737591/how-bond-builders-repair-hair
-*/
-'145': {
+   */
+  '145': {
     id: '145',
     url: 'https://www.cosmeticsandtoiletries.com/formulas-products/hair-care/article/22737591/how-bond-builders-repair-hair',
     title: 'How Bond Builders ‘Repair’ Hair',
@@ -1575,40 +1583,44 @@ Kahre, Joerg. "Ethnic Differences in Haircare Products." Handbook of Cosmetic Sc
   '146': {
     id: '146',
     url: 'https://doi.org/10.4103/ijt.ijt_122_20',
-    title: 'A Method to Measure Oil Penetration into Hair and Correlation to Tensile Strength',
+    title:
+      'A Method to Measure Oil Penetration into Hair and Correlation to Tensile Strength',
     type: 'science',
     author: 'Sureka P, Agrawal T, Majumder S, Ritambhara K.',
     date: '2022',
     source: 'Int J Trichology',
   },
   /* 1. Gamez M, Foltis L, Everaert E, et al. Dual Defense: Protecting and Repairing Hair Holistically, Inside and Out. Cosmetics & Toiletries. June 1, 2020. Accessed November 17, 2025. https://www.cosmeticsandtoiletries.com/testing/efficacy/article/21835676/ashland-specialty-ingredients-dual-defense-protecting-and-repairing-hair-holistically-inside-and-out
-*/
-'147': {
+   */
+  '147': {
     id: '147',
     url: 'https://www.cosmeticsandtoiletries.com/testing/efficacy/article/21835676/ashland-specialty-ingredients-dual-defense-protecting-and-repairing-hair-holistically-inside-and-out',
-    title: 'Dual Defense: Protecting and Repairing Hair Holistically, Inside and Out',
+    title:
+      'Dual Defense: Protecting and Repairing Hair Holistically, Inside and Out',
     type: 'science',
     author: 'Gamez M, Foltis L, Everaert E, et al.',
     date: '2020',
     source: 'Cosmetics & Toiletries',
   },
   /* 1. Cloete E, Ngoepe MN, Ismail E, Khumalo NP. Weak Hydrogen Bonds in Temporary Shape Changes of Curly Human Hair Fibers: Preliminary Evidence. J Invest Dermatol. 2025;145(1):185-188. doi:10.1016/j.jid.2024.06.1282
-*/
-'148': {
+   */
+  '148': {
     id: '148',
     url: 'https://doi.org/10.1016/j.jid.2024.06.1282',
-    title: 'Weak Hydrogen Bonds in Temporary Shape Changes of Curly Human Hair Fibers: Preliminary Evidence',
+    title:
+      'Weak Hydrogen Bonds in Temporary Shape Changes of Curly Human Hair Fibers: Preliminary Evidence',
     type: 'science',
     author: 'Cloete E, Ngoepe MN, Ismail E, Khumalo NP.',
     date: '2025',
     source: 'J Invest Dermatol',
   },
   /* 1. Tan J, Yang Y, Tang K, Sabeti PC, Jin L, Wang S. The adaptive variant EDARV370A is associated with straight hair in East Asians. Hum Genet. 2013;132(10):1187-1191. doi:10.1007/s00439-013-1324-1
-*/
-'149': {
+   */
+  '149': {
     id: '149',
     url: 'https://doi.org/10.1007/s00439-013-1324-1',
-    title: 'The adaptive variant EDARV370A is associated with straight hair in East Asians',
+    title:
+      'The adaptive variant EDARV370A is associated with straight hair in East Asians',
     type: 'science',
     author: 'Tan J, Yang Y, Tang K, Sabeti PC, Jin L, Wang S.',
     date: '2013',
@@ -1616,8 +1628,8 @@ Kahre, Joerg. "Ethnic Differences in Haircare Products." Handbook of Cosmetic Sc
   },
 
   /* 1. Is Hydration Destroying Your Hair? The REAL Science.; 2024. Accessed December 10, 2025. https://www.youtube.com/watch?v=khNaXP11zc8
-*/
-'150': {
+   */
+  '150': {
     id: '150',
     url: 'https://www.youtube.com/watch?v=khNaXP11zc8',
     title: 'Is Hydration Destroying Your Hair? The REAL Science.',
@@ -1638,5 +1650,179 @@ Kahre, Joerg. "Ethnic Differences in Haircare Products." Handbook of Cosmetic Sc
     source: 'TikTok',
   },
 
-};
+  /* Mantuan Gasparin, R., Botelho Lourenço, C., & Ricci Leonardi, G. (2025). Porosity and Resistance of Textured Hair: Assessing Chemical and Physical Damage Under Consumer-Relevant Conditions. Cosmetics, 12(3), 93.*/
+  '152': {
+    id: '152',
+    url: 'https://doi.org/10.3390/cosmetics12030093',
+    title:
+      'Porosity and Resistance of Textured Hair: Assessing Chemical and Physical Damage Under Consumer-Relevant Conditions',
+    type: 'science',
+    author: 'Mantuan Gasparin, R., Botelho Lourenço, C., & Ricci Leonardi, G.',
+    date: '2025',
+    source: 'Cosmetics',
+  },
+  /* 1. Wei G, Bhushan B, Torgerson PM. Nanomechanical characterization of human hair using nanoindentation and SEM. Ultramicroscopy. 2005;105(1-4):248-266. doi:10.1016/j.ultramic.2005.06.033 */
+  '153': {
+    id: '153',
+    url: 'https://doi.org/10.1016/j.ultramic.2005.06.033',
+    title:
+      'Nanomechanical characterization of human hair using nanoindentation and SEM',
+    type: 'science',
+    author: 'Wei G, Bhushan B, Torgerson PM.',
+    date: '2005',
+    source: 'Ultramicroscopy',
+  },
+  /* 1. Colourists S of D and. Journal of the Society of Dyers and Colourists. Society of Dyers and Colourists; 1889.
+   */
+  '154': {
+    id: '154',
+    url: 'https://www.google.com/books/edition/Journal_of_the_Society_of_Dyers_and_Colo/ag18wEhQvKsC?hl=en',
+    title: 'Colourists S of D and',
+    type: 'other',
+    author: 'Colourists S of D and.',
+    date: '1889',
+    source: 'Journal of the Society of Dyers and Colourists',
+  },
 
+  /* 1. Ad "A message in the interest of better permanent waving by Society for the Advanacement of hair science in Harper’s Bazaar. Hearst Corporation; 1928.  https://www.google.com/books/edition/Harper_s_Bazaar/FbnARPmH4WMC?hl=en */
+  '155': {
+    id: '155',
+    url: 'https://www.google.com/books/edition/Harper_s_Bazaar/FbnARPmH4WMC?hl=en',
+    title:
+      'A message in the interest of better permanent waving by Society for the Advanacement of hair science in Harper’s Bazaar',
+    type: 'other',
+    author: 'Ad',
+    date: '1928',
+    source: 'Harper’s Bazaar',
+  },
+  /* 1. Zhang Y, Alsop RJ, Soomro A, Yang FC, Rheinstädter MC. Effect of shampoo, conditioner and permanent waving on the molecular structure of human hair. PeerJ. 2015;3:e1296. doi:10.7717/peerj.1296*/
+  '156': {
+    id: '156',
+    url: 'https://doi.org/10.7717/peerj.1296',
+    title:
+      'Effect of shampoo, conditioner and permanent waving on the molecular structure of human hair',
+    type: 'science',
+    author: 'Zhang Y, Alsop RJ, Soomro A, Yang FC, Rheinstädter MC.',
+    date: '2015',
+    source: 'PeerJ',
+  },
+  /*  Adlam, C.* (2021, June 9) The Effectiveness of LOC/LCO Method on Moisture Locking in Textured Hair and Its Impact on Breakage and Other Hair Properties 9th International Conference on Applied Hair Science, On-line, Poster Presentation 9th June
+ Chantal Adlam, Katerin Mateo, Ernesta Malinauskyte · TRI Princeton, USA https://library.triprinceton.org/1kptlko/ */
+  '157': {
+    id: '157',
+    url: 'https://library.triprinceton.org/1kptlko/',
+    title:
+      'The Effectiveness of LOC/LCO Method on Moisture Locking in Textured Hair and Its Impact on Breakage and Other Hair Properties',
+    type: 'science',
+    author: 'Adlam, C., Mateo, K., Malinauskyte, E.',
+    date: '2021',
+    source: '9th International Conference on Applied Hair Science',
+  },
+  /* Journal of Korea Society of Ingrielogy, 4(1).
+
+Volume 4, Issue 1 (2022.12)
+
+Lee Ji-yeon, Park Anna
+
+https://www.earticle.net/Article/A422803
+
+A Study on the Actual Condition of Using Scalp and Hair Products as Well as the Satisfaction of Using Hair Essence: For Female Customers in Their 10s to 60s */
+  '158': {
+    id: '158',
+    url: 'https://www.earticle.net/Article/A422803',
+    title:
+      'A Study on the Actual Condition of Using Scalp and Hair Products as Well as the Satisfaction of Using Hair Essence: For Female Customers in Their 10s to 60s',
+    type: 'science',
+    author: 'Lee Ji-yeon, Park Anna',
+    date: '2022',
+    source: 'Journal of Korea Society of Ingrielogy',
+  },
+  /* Beauty Brains Podcast https://podcasts.apple.com/us/podcast/episode-380-patented-ingredients-porosity-quats-and-more/id733300242?i=1000678545363&t=1235
+Episode 380: Patented ingredients, porosity, quats and more */
+  '159': {
+    id: '159',
+    url: 'https://podcasts.apple.com/us/podcast/episode-380-patented-ingredients-porosity-quats-and-more/id733300242?i=1000678545363&t=1235',
+    title: 'Episode 380: Patented ingredients, porosity, quats and more',
+    type: 'science',
+    author: 'Valerie George and Perry Romanowski',
+    date: '2024',
+    source: 'The Beauty Brains',
+  },
+
+  /*  Lab Muffin https://www.youtube.com/shorts/dIIyTTD4p-A Hair Porosity Test: The Science, Wong M.*/
+  '160': {
+    id: '160',
+    url: 'https://www.youtube.com/shorts/dIIyTTD4p-A',
+    title: 'Hair Porosity Test: The Science',
+    type: 'science',
+    author: 'Wong M.',
+    date: '2024',
+    source: 'Lab Muffin',
+  },
+
+  /* The Truth about Hair porosity https://www.youtube.com/shorts/b6wCJ6its3g Abbey Yung quoting dr. Heleen Kibbelaar
+   */
+  '161': {
+    id: '161',
+    url: 'https://www.youtube.com/shorts/b6wCJ6its3g',
+    title: 'The Truth about Hair porosity',
+    type: 'science',
+    author: 'Abbey Yung, dr. Heleen Kibbelaar',
+    date: '2024',
+    source: 'YouTube',
+  },
+  /* 1. Coderch L, Sabatier L, Pasini I, Alonso C, Martí M, Baghdadli N. Role of Lipids in Water Permeation of Different Curl Pattern Hair Types. Cosmetics. 2025;12(5):193. doi:10.3390/cosmetics12050193 */
+  '162': {
+    id: '162',
+    url: 'https://doi.org/10.3390/cosmetics12050193',
+    title:
+      'Role of Lipids in Water Permeation of Different Curl Pattern Hair Types',
+    type: 'science',
+    author: 'Coderch L, Sabatier L, Pasini I, Alonso C, Martí M, Baghdadli N.',
+    date: '2025',
+    source: 'Cosmetics',
+  },
+
+  /* https://youtu.be/M27QzbADybI?si=v2W4uJ71RSNuCTJa&t=975 Lab Muffin  Which viral hair hacks actually work? Supplements, shampoos, curly care  */
+  '163': {
+    id: '163',
+    url: 'https://youtu.be/M27QzbADybI?si=v2W4uJ71RSNuCTJa&t=975',
+    title:
+      'Which viral hair hacks actually work? Supplements, shampoos, curly care',
+    type: 'science',
+    author: 'Lab Muffin',
+    date: '2025',
+    source: 'YouTube',
+  },
+  /* 1. Aguh C, Okoye GA, eds. Fundamentals of Ethnic Hair. Springer International Publishing; 2017. doi:10.1007/978-3-319-45695-9 */
+  '164': {
+    id: '164',
+    url: 'https://doi.org/10.1007/978-3-319-45695-9',
+    title: 'Fundamentals of Ethnic Hair',
+    type: 'science',
+    author: 'Aguh C, Okoye GA, eds.',
+    date: '2017',
+    source: 'Springer International Publishing',
+  },
+  /* 1. Oliver MA, Marti M, Coderch L, Carrer V, Kreuzer M, Barba C. Lipid loses and barrier function modifications of the brown-to-white hair transition. Skin Research and Technology. 2019;25(4):517-525. doi:10.1111/srt.12681 */
+  '165': {
+    id: '165',
+    url: 'https://doi.org/10.1111/srt.12681',
+    title:
+      'Lipid loses and barrier function modifications of the brown-to-white hair transition',
+    type: 'science',
+    author: 'Oliver MA, Marti M, Coderch L, Carrer V, Kreuzer M, Barba C.',
+    date: '2019',
+    source: 'Skin Research and Technology',
+  },
+  /* Syed, A. N. (2018). Ethnic hair care products. In  the bookHair and hair care (pp. 235-259). Routledge.*/
+  '166': {
+    id: '166',
+    url: 'https://www.taylorfrancis.com/chapters/edit/10.1201/9780203719565-9/ethnic-hair-care-products-ali-syed',
+    title: 'Ethnic hair care products',
+    type: 'science',
+    author: 'Syed, A. N.',
+    date: '2018',
+    source: 'Hair and hair care',
+  },
+};

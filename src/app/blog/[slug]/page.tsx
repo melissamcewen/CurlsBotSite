@@ -198,19 +198,6 @@ export default async function BlogPostPage({ params }: PageProps) {
                   </div>
                 )}
 
-                {frontmatter.image && (
-                  <div className="my-8">
-                    <Image
-                      src={frontmatter.image}
-                      alt={frontmatter.title}
-                      width={2400}
-                      height={1260}
-                      className="rounded-lg w-full h-auto"
-                      priority
-                      quality={90}
-                    />
-                  </div>
-                )}
 
                 <Content />
               </article>

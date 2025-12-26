@@ -99,13 +99,6 @@ export default function BlogPage() {
             <h1 className="text-3xl font-bold">Blog</h1>
           </div>
 
-          <div className="alert mb-6 bg-base-100">
-            <Info className="w-5 h-5" />
-            <span>
-              Note: Blog posts from 2018 have been updated and republished in
-              December 2024 with new information and research.
-            </span>
-          </div>
 
           <Suspense fallback={<BlogLoading />}>
             <BlogPosts />
