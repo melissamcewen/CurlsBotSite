@@ -51,6 +51,28 @@ export default function TikTokPage() {
             <TikTokEmailSignup />
           </div>
         </section>
+        {/* Porosity post /blog/hair-porosity-explained */}
+        <Link
+          href="/blog/hair-porosity-explained"
+          className="group block rounded-2xl border border-base-300 bg-base-100 p-4 hover:bg-base-200/50 transition mb-6"
+        >
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-full bg-base-200 grid place-items-center shrink-0">
+              <BookOpen className="w-4 h-4" aria-hidden="true" />
+            </div>
+            <div className="min-w-0">
+              <div className="text-base font-medium">
+                Hair Porosity Explained
+              </div>
+              <div className="text-sm text-base-content/60 truncate">
+                Why internet porosity advice doesn&apos;t work and what actually
+                matters for hair care.
+              </div>
+            </div>
+            <ChevronRight className="ml-auto w-4 h-4 text-base-content/50 group-hover:translate-x-0.5 transition" />
+          </div>
+        </Link>
+
         {/* Hair Type Quiz */}
         <Link
           href="/hair-types/quiz"
@@ -62,57 +84,16 @@ export default function TikTokPage() {
               <ExternalLink className="w-4 h-4" aria-hidden="true" />
             </div>
             <div className="min-w-0 flex-1">
-              <div className="text-base font-medium">
-                Learn your hair type
-              </div>
+              <div className="text-base font-medium">Learn your hair type</div>
               <div className="text-sm text-base-content/60 truncate">
-                Take our hair type quiz to find out in just 2 minutes! (Or read about the [CurlsBot Curl Typing System](/blog/curlsbot-curl-typing))
+                Take our hair type quiz to find out in just 2 minutes! (Or read
+                about the [CurlsBot Curl Typing
+                System](/blog/curlsbot-curl-typing))
               </div>
             </div>
             <ChevronRight className="w-4 h-4 text-base-content/50 group-hover:translate-x-0.5 transition shrink-0" />
           </div>
         </Link>
-        {/* Link to bond video */}
-        <a
-          href="https://www.youtube.com/watch?v=fME13jt0kWY"
-          target="_blank"
-          className="group block rounded-2xl border border-base-300 bg-base-100 p-4 hover:bg-base-200/50 transition mb-6"
-        >
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full bg-base-200 grid place-items-center shrink-0">
-              <ExternalLink className="w-4 h-4" aria-hidden="true" />
-            </div>
-            <div className="min-w-0 flex-1">
-              <div className="text-base font-medium">
-                Excellent bond repair video
-              </div>
-              <div className="text-sm text-base-content/60 truncate">
-                Covers an ingredient in Curlsmith&apos;s bond product that I didn&apos;t cover.
-              </div>
-            </div>
-            <ChevronRight className="w-4 h-4 text-base-content/50 group-hover:translate-x-0.5 transition shrink-0" />
-          </div>
-        </a>
-        {/* gel bracket subscribepage.io/curlsbotgels */}
-        <a
-          href="https://page.io/curlsbotgels"
-          className="group block rounded-2xl border border-base-300 bg-base-100 p-4 hover:bg-base-200/50 transition mb-6"
-        >
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full bg-base-200 grid place-items-center shrink-0">
-              <BookOpen className="w-4 h-4" aria-hidden="true" />
-            </div>
-            <div className="min-w-0 flex-1">
-              <div className="text-base font-medium">Gel Showdown Bracket</div>
-              <div className="text-sm text-base-content/60 truncate">
-                I&apos;m on the quest to find the best gel for my hair by
-                testing two gels head to head in a bracket. See results and get
-                updates here!
-              </div>
-            </div>
-            <ChevronRight className="w-4 h-4 text-base-content/50 group-hover:translate-x-0.5 transition shrink-0" />
-          </div>
-        </a>
         {/* Skeptics Guide To Bond Repair */}
         <Link
           href="/blog/skeptics-guide-to-bond-repair"
@@ -156,119 +137,6 @@ export default function TikTokPage() {
             <ChevronRight className="ml-auto w-4 h-4 text-base-content/50 group-hover:translate-x-0.5 transition" />
           </div>
         </Link>
-
-        {/* Featured Source: Dr. Crystal Porter */}
-        <div className="collapse collapse-arrow bg-base-100 border border-base-300 rounded-2xl mb-6">
-          <input type="checkbox" />
-          <div className="collapse-title text-base font-medium flex items-center gap-2">
-            <ChevronDown className="w-4 h-4" />
-            Featured Source: Dr. Crystal Porter
-          </div>
-          <div className="collapse-content">
-            <div className="pt-2 space-y-3">
-              <Link
-                href="https://www.theecowell.com/podcast/crystal"
-                target="_blank"
-                className="group block rounded-xl border border-base-300 bg-base-200 p-3 hover:bg-base-300/50 transition"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-base-300 grid place-items-center shrink-0">
-                    <ExternalLink className="w-3 h-3" aria-hidden="true" />
-                  </div>
-                  <div className="min-w-0">
-                    <div className="text-sm font-medium">Ecowell podcast</div>
-                    <div className="text-xs text-base-content/60 truncate">
-                      www.theecowell.com/podcast/crystal
-                    </div>
-                  </div>
-                  <ChevronRight className="ml-auto w-3 h-3 text-base-content/50 group-hover:translate-x-0.5 transition" />
-                </div>
-              </Link>
-
-              <Link
-                href="https://www.youtube.com/channel/UCrz1LHl9lq0nn3xzguxADdA"
-                target="_blank"
-                className="group block rounded-xl border border-base-300 bg-base-200 p-3 hover:bg-base-300/50 transition"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-base-300 grid place-items-center shrink-0">
-                    <ExternalLink className="w-3 h-3" aria-hidden="true" />
-                  </div>
-                  <div className="min-w-0">
-                    <div className="text-sm font-medium">
-                      Mane Insights Youtube
-                    </div>
-                    <div className="text-xs text-base-content/60 truncate">
-                      www.youtube.com/channel/UCrz1LHl9lq0nn3xzguxADdA
-                    </div>
-                  </div>
-                  <ChevronRight className="ml-auto w-3 h-3 text-base-content/50 group-hover:translate-x-0.5 transition" />
-                </div>
-              </Link>
-
-              <Link
-                href="https://www.youtube.com/@OurBlackHairMatters"
-                target="_blank"
-                className="group block rounded-xl border border-base-300 bg-base-200 p-3 hover:bg-base-300/50 transition"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-base-300 grid place-items-center shrink-0">
-                    <ExternalLink className="w-3 h-3" aria-hidden="true" />
-                  </div>
-                  <div className="min-w-0">
-                    <div className="text-sm font-medium">
-                      Our Black Hair Matters
-                    </div>
-                    <div className="text-xs text-base-content/60 truncate">
-                      www.youtube.com/@OurBlackHairMatters
-                    </div>
-                  </div>
-                  <ChevronRight className="ml-auto w-3 h-3 text-base-content/50 group-hover:translate-x-0.5 transition" />
-                </div>
-              </Link>
-
-              <Link
-                href="https://www.maneinsights.com"
-                target="_blank"
-                className="group block rounded-xl border border-base-300 bg-base-200 p-3 hover:bg-base-300/50 transition"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-base-300 grid place-items-center shrink-0">
-                    <ExternalLink className="w-3 h-3" aria-hidden="true" />
-                  </div>
-                  <div className="min-w-0">
-                    <div className="text-sm font-medium">Mane Insights</div>
-                    <div className="text-xs text-base-content/60 truncate">
-                      www.maneinsights.com
-                    </div>
-                  </div>
-                  <ChevronRight className="ml-auto w-3 h-3 text-base-content/50 group-hover:translate-x-0.5 transition" />
-                </div>
-              </Link>
-
-              <Link
-                href="https://www.youtube.com/live/HFqKfqUOo98"
-                target="_blank"
-                className="group block rounded-xl border border-base-300 bg-base-200 p-3 hover:bg-base-300/50 transition"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-base-300 grid place-items-center shrink-0">
-                    <ExternalLink className="w-3 h-3" aria-hidden="true" />
-                  </div>
-                  <div className="min-w-0">
-                    <div className="text-sm font-medium">
-                      Beauty Claims E-Summit
-                    </div>
-                    <div className="text-xs text-base-content/60 truncate">
-                      www.youtube.com/live/HFqKfqUOo98
-                    </div>
-                  </div>
-                  <ChevronRight className="ml-auto w-3 h-3 text-base-content/50 group-hover:translate-x-0.5 transition" />
-                </div>
-              </Link>
-            </div>
-          </div>
-        </div>
 
         {/* Links */}
         <nav className="space-y-3">
