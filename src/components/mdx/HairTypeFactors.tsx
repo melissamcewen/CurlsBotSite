@@ -22,8 +22,7 @@ export function HairTypeFactors() {
               </div>
             </div>
             <p className="text-sm">
-              <strong>Porosity</strong> is roughly a measure of how easily your
-              hair absorbs and releases water. Take our{' '}
+              <strong>Porosity</strong> is the damage level of the hair. Take our{' '}
               <a href="/porosity-quiz" className="link link-primary">
                 porosity quiz
               </a>{' '}
