@@ -1825,4 +1825,15 @@ Episode 380: Patented ingredients, porosity, quats and more */
     date: '2018',
     source: 'Hair and hair care',
   },
+  /* 1. Chikami S, Maeda S, Latag GV, et al. Analysis of the hydration water on the surface of human hair using a combination of infrared absorption vibrational spectroscopy and multivariate curve resolution. Surface & Interface Analysis: SIA. 2024;56(8):580. doi:10.1002/sia.7316 */
+  '167': {
+    id: '167',
+    url: 'https://doi.org/10.1002/sia.7316',
+    title:
+      'Analysis of the hydration water on the surface of human hair using a combination of infrared absorption vibrational spectroscopy and multivariate curve resolution',
+    type: 'science',
+    author: 'Chikami S, Maeda S, Latag GV, et al.',
+    date: '2024',
+    source: 'Surface & Interface Analysis: SIA',
+  },
 };
