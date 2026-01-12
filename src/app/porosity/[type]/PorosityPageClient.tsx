@@ -17,6 +17,7 @@ import {
   Info,
   HelpCircle,
   FlaskConical,
+  BookOpen,
 } from 'lucide-react';
 import Avatar from '@/components/avatar';
 import Link from 'next/link';
@@ -68,6 +69,30 @@ export function PorosityPageClient({ porosityType, porosityInfo }: Props) {
       </div>
       <h1 className="text-3xl font-bold mb-4">{porosityInfo.title}</h1>
       <p className="text-lg mb-8">{porosityInfo.description}</p>
+
+      <div className="card bg-base-100 mb-8">
+        <div className="card-body">
+          <div className="flex items-start gap-4">
+            <BookOpen className="w-6 h-6 text-primary shrink-0 mt-1" />
+            <div className="flex-1">
+              <h2 className="card-title text-lg mb-2">
+                Want to learn more about hair porosity?
+              </h2>
+              <p className="mb-4">
+                Read our comprehensive guide to understanding hair porosity,
+                including why internet porosity tests often fail and what
+                actually matters for hair care.
+              </p>
+              <Link
+                href="/blog/hair-porosity-explained"
+                className="btn btn-primary"
+              >
+                Read the Guide
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <PorosityEmailSignup porosityType={porosityType} />
 
