@@ -96,7 +96,7 @@ export default function TikTokPage() {
         </Link>
         {/* Skeptics Guide To Bond Repair */}
         <Link
-          href="/blog/skeptics-guide-to-bond-repair"
+          href="/blog/skeptics-guide-bond-repair"
           className="group block rounded-2xl border border-base-300 bg-base-100 p-4 hover:bg-base-200/50 transition mb-6"
         >
           <div className="flex items-center gap-3">
