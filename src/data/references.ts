@@ -1836,4 +1836,161 @@ Episode 380: Patented ingredients, porosity, quats and more */
     date: '2024',
     source: 'Surface & Interface Analysis: SIA',
   },
+  /* 1. Gupta AK, Economopoulos V, Mann A, Wang T, Mirmirani P. Menopause and hair loss in women: Exploring the hormonal transition. Maturitas. 2025;198. doi:10.1016/j.maturitas.2025.108378
+ */
+'168': {
+    id: '168',
+    url: 'https://doi.org/10.1016/j.maturitas.2025.108378',
+    title:
+      'Menopause and hair loss in women: Exploring the hormonal transition',
+    type: 'science',
+    author: 'Gupta AK, Economopoulos V, Mann A, Wang T, Mirmirani P.',
+    date: '2025',
+    source: 'Maturitas',
+  },
+  /* 1. Zouboulis CC, Blume-Peytavi U, Kosmadaki M, et al. Skin, hair and beyond: the impact of menopause. Climacteric. 2022;25(5):434-442. doi:10.1080/13697137.2022.2050206
+ */
+'169': {
+    id: '169',
+    url: 'https://doi.org/10.1080/13697137.2022.2050206',
+    title:
+      'Skin, hair and beyond: the impact of menopause',
+    type: 'science',
+    author: 'Zouboulis CC, Blume-Peytavi U, Kosmadaki M, et al.',
+    date: '2022',
+    source: 'Climacteric',
+  },
+  /* 1. Mirmirani P. Hormonal changes in menopause: do they contribute to a ‘midlife hair crisis’ in women? Br J Dermatol. 2011;165(s3):7-11. doi:10.1111/j.1365-2133.2011.10629.x
+*/
+'170': {
+    id: '170',
+    url: 'https://doi.org/10.1111/j.1365-2133.2011.10629.x',
+    title:
+      'Hormonal changes in menopause: do they contribute to a ‘midlife hair crisis’ in women?',
+    type: 'science',
+    author: 'Mirmirani P.',
+    date: '2011',
+    source: 'Br J Dermatol',
+  },
+  /* 1. Trüeb RM. Age-Related General Problems Affecting the Condition of Hair. In: Trüeb RM, Tobin DJ, eds. Aging Hair. Springer; 2010:141-166. doi:10.1007/978-3-642-02636-2_15
+*/
+'171': {
+    id: '171',
+    url: 'https://doi.org/10.1007/978-3-642-02636-2_15',
+    title:
+      'Age-Related General Problems Affecting the Condition of Hair',
+    type: 'science',
+    author: 'Trüeb RM.',
+    date: '2010',
+    source: 'Springer',
+  },
+  /* 1. Grymowicz M, Rudnicka E, Podfigurna A, et al. Hormonal Effects on Hair Follicles. International Journal of Molecular Sciences. 2020;21(15):5342. doi:10.3390/ijms21155342
+  */
+ '172': {
+    id: '172',
+    url: 'https://doi.org/10.3390/ijms21155342',
+    title:
+      'Hormonal Effects on Hair Follicles',
+    type: 'science',
+    author: 'Grymowicz M, Rudnicka E, Podfigurna A, et al.',
+    date: '2020',
+    source: 'International Journal of Molecular Sciences',
+  },
+  /* Flagler, M. J., Schwartz, J. R., Robbins, C. R., & Dawson, T. L. (2012). The effects of aging on hair-more than just amount. Practical modern hair science, 1-38. https://library.triprinceton.org/1t0nsnb/ */
+  '173': {
+    id: '173',
+    url: 'https://library.triprinceton.org/1t0nsnb/',
+    title:
+      'The effects of aging on hair-more than just amount',
+    type: 'science',
+    author: 'Flagler, M. J., Schwartz, J. R., Robbins, C. R., & Dawson, T. L.',
+    date: '2012',
+    source: 'Practical modern hair science',
+  },
+  /* 1. Rinaldi F, Trink A, Mondadori G, Giuliani G, Pinto D. The Menopausal Transition: Is the Hair Follicle “Going through Menopause”? Biomedicines. 2023;11(11):3041. doi:10.3390/biomedicines11113041 */
+  '174': {
+    id: '174',
+    url: 'https://doi.org/10.3390/biomedicines11113041',
+    title:
+      'The Menopausal Transition: Is the Hair Follicle “Going through Menopause”?',
+    type: 'science',
+    author: 'Rinaldi F, Trink A, Mondadori G, Giuliani G, Pinto D.',
+    date: '2023',
+    source: 'Biomedicines',
+  },
+
+  /* 1. Davis MG, Piliang MP, Bergfeld WF, et al. Scalp application of the antioxidant piroctone olamine reduces hair shedding in an 8-week randomized, double-blind, placebo-controlled clinical study. International Journal of Cosmetic Science. 2021;43(S1):S26-S33. doi:10.1111/ics.12737
+ */
+'175': {
+    id: '175',
+    url: 'https://doi.org/10.1111/ics.12737',
+    title:
+      'Scalp application of the antioxidant piroctone olamine reduces hair shedding in an 8-week randomized, double-blind, placebo-controlled clinical study',
+    type: 'science',
+    author: 'Davis MG, Piliang MP, Bergfeld WF, et al.',
+    date: '2021',
+    source: 'International Journal of Cosmetic Science',
+  },
+  /* 1. Williams R, Pawlus AD, Thornton MJ. Getting under the skin of hair aging: the impact of the hair follicle environment. Exp Dermatol. 2020;29(7):588-597. doi:10.1111/exd.14109
+*/
+'176': {
+    id: '176',
+    url: 'https://doi.org/10.1111/exd.14109',
+    title:
+      'Getting under the skin of hair aging: the impact of the hair follicle environment',
+    type: 'science',
+    author: 'Williams R, Pawlus AD, Thornton MJ.',
+    date: '2020',
+    source: 'Exp Dermatol',
+  },
+  /* 1. Wills J, Dolphin S, Albiston L, Parmar P, Westgate GE, Harrap GJ. Free internal lipids in hair from pre- and post-menopausal women. International Journal of Cosmetic Science. 2005;27(2):142-142. doi:10.1111/j.1467-2494.2005.00259_2.x
+*/
+'177': {
+    id: '177',
+    url: 'https://doi.org/10.1111/j.1467-2494.2005.00259_2.x',
+    title:
+      'Free internal lipids in hair from pre- and post-menopausal women',
+    type: 'science',
+    author: 'Wills J, Dolphin S, Albiston L, Parmar P, Westgate GE, Harrap GJ.',
+    date: '2005',
+    source: 'International Journal of Cosmetic Science',
+  },
+  /* 1. Mirmirani P, Luo F, Youngquist SR, et al. Hair Growth Parameters in Pre- and Postmenopausal Women. In: Trüeb RM, Tobin DJ, eds. Aging Hair. Springer; 2010:49-60. doi:10.1007/978-3-642-02636-2_6
+  */
+ '178': {
+    id: '178',
+    url: 'https://doi.org/10.1007/978-3-642-02636-2_6',
+    title:
+      'Hair Growth Parameters in Pre- and Postmenopausal Women',
+    type: 'science',
+    author: 'Mirmirani P, Luo F, Youngquist SR, et al.',
+    date: '2010',
+    source: 'Springer',
+  },
+
+  /* 1. Bravo B, Penedo L, Carvalho R, et al. Dermatological Changes during Menopause and HRT: What to Expect? Cosmetics. 2024;11(1):9. doi:10.3390/cosmetics11010009
+ */
+'179': {
+    id: '179',
+    url: 'https://doi.org/10.3390/cosmetics11010009',
+    title:
+      'Dermatological Changes during Menopause and HRT: What to Expect?',
+    type: 'science',
+    author: 'Bravo B, Penedo L, Carvalho R, et al.',
+    date: '2024',
+    source: 'Cosmetics',
+  },
+
+  /* 1. Draelos ZD. Care of Aging Hair and Photoprotection. In: Trüeb RM, Tobin DJ, eds. Aging Hair. Springer; 2010:183-191. doi:10.1007/978-3-642-02636-2_17
+ */
+'180': {
+    id: '180',
+    url: 'https://doi.org/10.1007/978-3-642-02636-2_17',
+    title:
+      'Care of Aging Hair and Photoprotection',
+    type: 'science',
+    author: 'Draelos ZD.',
+    date: '2010',
+    source: 'Springer',
+  },
 };
