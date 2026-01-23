@@ -51,6 +51,26 @@ export default function TikTokPage() {
             <TikTokEmailSignup />
           </div>
         </section>
+        {/* Perimenopause post /blog/hair-scalp-care-perimenopause-guide*/}
+        <Link
+          href="/blog/hair-scalp-care-perimenopause-guide"
+          className="group block rounded-2xl border border-base-300 bg-base-100 p-4 hover:bg-base-200/50 transition mb-6"
+        >
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-full bg-base-200 grid place-items-center shrink-0">
+              <BookOpen className="w-4 h-4" aria-hidden="true" />
+            </div>
+            <div className="min-w-0">
+              <div className="text-base font-medium">
+                Hair Scalp Care in Perimenopause
+              </div>
+              <div className="text-sm text-base-content/60 truncate">
+                A complete guide to hair and scalp care in perimenopause.
+              </div>
+            </div>
+            <ChevronRight className="ml-auto w-4 h-4 text-base-content/50 group-hover:translate-x-0.5 transition" />
+          </div>
+        </Link>
         {/* Porosity post /blog/hair-porosity-explained */}
         <Link
           href="/blog/hair-porosity-explained"
@@ -116,27 +136,6 @@ export default function TikTokPage() {
             <ChevronRight className="ml-auto w-4 h-4 text-base-content/50 group-hover:translate-x-0.5 transition" />
           </div>
         </Link>
-        {/* Protein Bad for low porosity hair */}
-        <Link
-          href="/blog/is-protein-bad-for-low-porosity-hair"
-          className="group block rounded-2xl border border-base-300 bg-base-100 p-4 hover:bg-base-200/50 transition mb-6"
-        >
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full bg-base-200 grid place-items-center shrink-0">
-              <BookOpen className="w-4 h-4" aria-hidden="true" />
-            </div>
-            <div className="min-w-0">
-              <div className="text-base font-medium">
-                Is Protein Bad for Low Porosity Hair?
-              </div>
-              <div className="text-sm text-base-content/60 truncate">
-                Busting the myth that protein is bad for low porosity hair with
-                the power of science.
-              </div>
-            </div>
-            <ChevronRight className="ml-auto w-4 h-4 text-base-content/50 group-hover:translate-x-0.5 transition" />
-          </div>
-        </Link>
 
         {/* Links */}
         <nav className="space-y-3">
@@ -156,28 +155,6 @@ export default function TikTokPage() {
                 </div>
                 <div className="text-sm text-base-content/60 truncate">
                   Try sample sizes of the products I use!
-                </div>
-              </div>
-              <ChevronRight className="ml-auto w-4 h-4 text-base-content/50 group-hover:translate-x-0.5 transition" />
-            </div>
-          </Link>
-
-          {/* Abbey Yung Method */}
-          <Link
-            href="/blog/the-abbey-yung-method"
-            className="group block rounded-2xl border border-base-300 bg-base-100 p-3.5 hover:bg-base-200/50 transition"
-          >
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full bg-base-200 grid place-items-center shrink-0">
-                <BookOpen className="w-4 h-4" aria-hidden="true" />
-              </div>
-              <div className="min-w-0">
-                <div className="text-base font-medium">
-                  The Abbey Yung Method: A Step-by-Step Guide and Review
-                </div>
-                <div className="text-sm text-base-content/60 truncate">
-                  Full Abbey Yung Method guide with step-by-step instructions,
-                  product lists, routine examples, and a curly/wavy hair review.
                 </div>
               </div>
               <ChevronRight className="ml-auto w-4 h-4 text-base-content/50 group-hover:translate-x-0.5 transition" />
