@@ -66,17 +66,16 @@ export default function PorosityLabPage() {
         <div className="card-body">
           <h2 className="card-title">About Porosity Scoring</h2>
           <p>
-            This tool analyzes product ingredients to determine how well they
-            work for{' '}
+            This tool analyzes product ingredients using a{' '}
             <Link href="/porosity-quiz" className="link">
-              different hair porosity types
+              damage-based porosity model
             </Link>
             . The scoring system ranges from -100 to 100:
           </p>
           <ul className="list-disc list-inside space-y-2 mt-4">
             <li>
               <span className="text-success font-semibold">Score ≥ 80</span>:
-              Great match for this porosity type
+              Great match for this category
             </li>
             <li>
               <span className="text-info font-semibold">Score 60-80</span>:
@@ -84,10 +83,27 @@ export default function PorosityLabPage() {
             </li>
             <li>
               <span className="text-error font-semibold">Score ≤ 60</span>: Not
-              ideal for this porosity type
+              ideal for this category
             </li>
           </ul>
-          <p>
+          <p className="mt-4">
+            <strong>High Porosity Score</strong> indicates how well a product
+            works for damaged hair (high porosity in the damage-based model).
+            This scoring is based on scientific research about what damaged hair
+            needs.
+          </p>
+          <p className="mt-2">
+            <strong>Low Porosity Score</strong> indicates how &ldquo;light&rdquo; a product
+            is (low in heavy emollients like oils and butters). This is useful
+            for identifying lightweight products, but remember: low porosity
+            (healthy, undamaged hair) doesn&apos;t necessarily need light products.
+            Product choice should be based on{' '}
+            <Link href="/blog/hair-porosity-explained" className="link">
+              curl pattern, strand thickness, and density
+            </Link>
+            , not just porosity.
+          </p>
+          <p className="mt-4">
             These scores do not apply to products for occasional use like
             clarifying treatments and deep conditioners
           </p>
@@ -113,12 +129,6 @@ export default function PorosityLabPage() {
                   <Link href="/groups/oils" className="link">
                     Positively charged conditioning agents that bond to damaged
                     hair
-                  </Link>
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-success shrink-0" />
-                  <Link href="/groups/oils" className="link">
-                    Penetrating oils
                   </Link>
                 </li>
                 <li className="flex items-center gap-2">
@@ -151,12 +161,13 @@ export default function PorosityLabPage() {
           <div className="card-body">
             <div className="flex items-center gap-2">
               <Droplet className="w-6 h-6" />
-              <h2 className="card-title">Low Porosity Scoring</h2>
+              <h2 className="card-title">Light Product Scoring</h2>
             </div>
             <div className="flex flex-col">
               <p className="text-sm mb-2">
-                Products that score well for low porosity hair are water-based
-                and low in the following ingredients:
+                This score indicates how &ldquo;light&rdquo; a product is (low in heavy
+                emollients). Products that score well are water-based and low in
+                the following ingredients:
               </p>
               <ul className="space-y-2">
                 <li className="flex items-center gap-2">
@@ -172,6 +183,12 @@ export default function PorosityLabPage() {
                   </Link>
                 </li>
               </ul>
+              <p className="text-xs mt-4 text-base-content/70">
+                <strong>Note:</strong> Low porosity (healthy, undamaged hair)
+                doesn&apos;t automatically need light products. Product choice depends
+                on curl pattern, strand thickness, and density. This score
+                simply identifies lightweight formulations.
+              </p>
             </div>
           </div>
         </div>
@@ -221,7 +238,7 @@ export default function PorosityLabPage() {
                   <div className="card-body">
                     <div className="flex items-center gap-2">
                       <Droplet className="w-6 h-6" />
-                      <h4 className="card-title">Low Porosity Score</h4>
+                      <h4 className="card-title">Light Product Score</h4>
                     </div>
                     <p
                       className={`text-4xl font-bold ${getStatus(scores.low)}`}
