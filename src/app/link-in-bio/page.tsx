@@ -51,6 +51,27 @@ export default function TikTokPage() {
             <TikTokEmailSignup />
           </div>
         </section>
+{/* Beauty by the Beaker AMA https://www.reddit.com/r/HaircareScience/comments/1qsl0v5/comment/o3othve/ */}
+<Link
+          href="www.reddit.com/r/HaircareScience/comments/1qsl0v5/ama_natalie_and_sadie_from_beauty_by_the_beaker/"
+          className="group block rounded-2xl border border-base-300 bg-base-100 p-4 hover:bg-base-200/50 transition mb-6"
+        >
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-full bg-base-200 grid place-items-center shrink-0">
+              <BookOpen className="w-4 h-4" aria-hidden="true" />
+            </div>
+            <div className="min-w-0">
+              <div className="text-base font-medium">
+                Beauty by the Beaker Hair Science AMA
+              </div>
+              <div className="text-sm text-base-content/60 truncate">
+                Reddit AMA with hosts Natalie and Sadie
+              </div>
+            </div>
+            <ChevronRight className="ml-auto w-4 h-4 text-base-content/50 group-hover:translate-x-0.5 transition" />
+          </div>
+        </Link>
+
         {/* Perimenopause post /blog/hair-scalp-care-perimenopause-guide*/}
         <Link
           href="/blog/hair-scalp-care-perimenopause-guide"
