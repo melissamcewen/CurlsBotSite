@@ -52,7 +52,7 @@ export default function TikTokPage() {
           </div>
         </section>
 {/* Beauty by the Beaker AMA https://www.reddit.com/r/HaircareScience/comments/1qsl0v5/comment/o3othve/ */}
-<Link
+<a
           href="www.reddit.com/r/HaircareScience/comments/1qsl0v5/ama_natalie_and_sadie_from_beauty_by_the_beaker/"
           className="group block rounded-2xl border border-base-300 bg-base-100 p-4 hover:bg-base-200/50 transition mb-6"
         >
@@ -70,7 +70,7 @@ export default function TikTokPage() {
             </div>
             <ChevronRight className="ml-auto w-4 h-4 text-base-content/50 group-hover:translate-x-0.5 transition" />
           </div>
-        </Link>
+        </a>
 
         {/* Perimenopause post /blog/hair-scalp-care-perimenopause-guide*/}
         <Link
