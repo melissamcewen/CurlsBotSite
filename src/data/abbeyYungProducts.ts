@@ -118,7 +118,8 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     steps: [4],
     comments: '',
     heaviness: '',
-    amazon: 'https://amzn.to/4fzOpDp',
+    amazon:
+      'https://www.amazon.com/dp/B09B8YQ6RF?ref=t_ac_spc_accepted_tile&linkCode=tr1&tag=trevresa-20&linkId=B09B8YQ6RF_1772414975024',
   },
   {
     product: 'Dove Bond Strength Shampoo',
@@ -619,7 +620,8 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     steps: [11],
     comments: 'Hair feeling dry between wash',
     heaviness: '',
-    amazon: 'https://amzn.to/45I917Q',
+    amazon:
+      'https://www.amazon.com/dp/B0F5Y7NPDH?ref=t_ac_spc_accepted_tile&linkCode=tr1&tag=trevresa-20&linkId=B0F5Y7NPDH_1772415128848',
   },
   {
     product: 'Amika Perk Up Plus',
@@ -656,7 +658,8 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     steps: [11],
     comments: 'Heat protection',
     heaviness: '',
-    amazon: 'https://amzn.to/3UAS6Py',
+    amazon:
+      'https://www.amazon.com/dp/B0895K6LG7?ref=t_ac_spc_accepted_tile&linkCode=tr1&tag=trevresa-20&linkId=B0895K6LG7_1772414908058',
   },
   {
     product: 'Living Proof Perfect Hair Day Advanced Clean Dry shampoo',
@@ -719,7 +722,8 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     steps: [10, 11],
     comments: 'Hair feeling dry between wash',
     heaviness: 'Light',
-    amazon: 'https://amzn.to/45sJUpv',
+    amazon:
+      'https://www.amazon.com/dp/B0DX4KRQQ7?ref=t_ac_spc_accepted_tile&linkCode=tr1&tag=trevresa-20&linkId=B0DX4KRQQ7_1772415091642',
   },
   {
     product: 'Dove Damage Therapy Intensive Repair 10 in 1 Serum',
