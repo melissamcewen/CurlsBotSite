@@ -10,6 +10,64 @@ import {
 
 export type { CountryCode, PorosityType };
 
+/**
+ * CurlsBot hair type → product tag mapping (spec: routine-builder).
+ * Used to filter products by hair pattern (loose curls/wavy vs tight curls vs coily).
+ */
+export type HairTypeProductTag = 'wavy' | 'curly' | 'coily';
+
+/** Map CurlsBot type or hair pattern slug to product tag for filtering */
+export function hairTypeToProductTag(
+  type: string,
+): HairTypeProductTag | null {
+  const t = type.toLowerCase().replace(/\s+/g, '-');
+  // Loose curls / waves
+  if (
+    ['swavy', 'wavy', 'loose-curls', 'loose curls'].some((x) =>
+      t.includes(x.replace(/\s/g, '-')),
+    )
+  )
+    return 'wavy';
+  // Tight curls
+  if (['tight-curls', 'tight curls', 'curly'].some((x) => t.includes(x)))
+    return 'curly';
+  // Coily / tightly coiled
+  if (
+    ['coily', 'tight-coils', 'tightly coiled', 'kinky', 'very curly'].some((x) =>
+      t.includes(x.replace(/\s/g, '-')),
+    )
+  )
+    return 'coily';
+  return null;
+}
+
+/** Light widget: 3 steps — clarifying shampoo, conditioner, styler */
+export const LIGHT_ROUTINE_STEP_KEYS = [
+  'clarifying_shampoo',
+  'conditioner',
+  'styler',
+] as const;
+
+export type LightRoutineStepKey = (typeof LIGHT_ROUTINE_STEP_KEYS)[number];
+
+export const LIGHT_STEP_CONFIG: Record<
+  LightRoutineStepKey,
+  { label: string; categories: ProductCategory | ProductCategory[] }
+> = {
+  clarifying_shampoo: {
+    label: 'Clarifying Shampoo',
+    categories: 'clarifying_shampoos',
+  },
+  conditioner: {
+    label: 'Conditioner',
+    categories: 'conditioners',
+  },
+  styler: {
+    label: 'Styler',
+    categories: ['creams', 'foams', 'custards', 'gels', 'oils', 'sprays'],
+  },
+};
+
 export type ProductCategory =
   | 'pre-poo'
   | 'clarifying_shampoos'
@@ -71,6 +129,7 @@ interface GetProductsByCategoryOptions {
   costFilter?: '$' | '$$' | '$$$';
   offset?: number;
   requireFeatured?: boolean;
+  hairTypeTag?: HairTypeProductTag;
   analysisFilters?: {
     cgmApproved: boolean;
     frizzResistant: boolean;
@@ -85,14 +144,15 @@ function getProductsByCategory(
   category: ProductCategory,
   options: GetProductsByCategoryOptions,
 ): Product[] {
-  const { country, costFilter, offset = 0, analysisFilters } = options;
+  const { country, costFilter, offset = 0, analysisFilters, hairTypeTag } = options;
   const products = getBundledProducts();
 
-  // Filter products by category and country
+  // Filter products by category, country, and optional hair type tag
   const filteredProducts = filterProducts(Object.values(products.products), {
     country,
     category,
     requireFeatured: false,
+    hairTypeTag,
     analysisFilters: analysisFilters || {
       cgmApproved: false,
       frizzResistant: false,
@@ -103,35 +163,71 @@ function getProductsByCategory(
     },
   });
 
-  // Prioritize products with the 'premium' tag, but fill up to 3 with non-premium if needed
-  const premiumProducts = filteredProducts.filter((p) =>
-    p.tags?.includes('premium'),
-  );
-  const nonPremiumProducts = filteredProducts.filter(
-    (p) => !p.tags?.includes('premium'),
-  );
-  const productsToShow = [
-    ...premiumProducts,
-    ...nonPremiumProducts.slice(0, Math.max(0, 3 - premiumProducts.length)),
-  ];
-
-  // Sort products by prioritizing those with the "samples" tag first, then those with a description, then alphabetically
-  return productsToShow.sort((a, b) => {
-    // First prioritize products with the "samples" tag
+  // Sort: premium first, then samples, then with description, then alphabetically
+  return filteredProducts.sort((a, b) => {
+    const aPremium = a.tags?.includes('premium') || false;
+    const bPremium = b.tags?.includes('premium') || false;
+    if (aPremium && !bPremium) return -1;
+    if (!aPremium && bPremium) return 1;
     const aSample = a.tags?.includes('samples') || false;
     const bSample = b.tags?.includes('samples') || false;
     if (aSample && !bSample) return -1;
     if (!aSample && bSample) return 1;
-
-    // Next, prioritize products with a description
     const aHasDesc = !!a.description;
     const bHasDesc = !!b.description;
     if (aHasDesc && !bHasDesc) return -1;
     if (!aHasDesc && bHasDesc) return 1;
-
-    // If both or neither have description, sort alphabetically
     return (a.brand + a.name).localeCompare(b.brand + b.name);
   });
+}
+
+export interface LightStepFilters {
+  porosity: PorosityType;
+  country: CountryCode;
+  cgmApproved: boolean;
+  hairTypeTag?: HairTypeProductTag | null;
+}
+
+/** Get one random product for a light routine step; prioritizes products with "samples" tag. */
+export function getRandomProductForLightStep(
+  stepKey: LightRoutineStepKey,
+  filters: LightStepFilters,
+): Product | null {
+  const config = LIGHT_STEP_CONFIG[stepKey];
+  const categories = Array.isArray(config.categories)
+    ? config.categories
+    : [config.categories];
+  const products = getBundledProducts();
+  const allProducts = Object.values(products.products);
+
+  let pooled: Product[] = [];
+  for (const category of categories) {
+    const filtered = filterProducts(allProducts, {
+      country: filters.country,
+      category,
+      requireFeatured: false,
+      hairTypeTag: filters.hairTypeTag ?? undefined,
+      analysisFilters: {
+        cgmApproved: filters.cgmApproved,
+        frizzResistant: false,
+        lightweight: false,
+        highPorosity:
+          filters.porosity === 'high_porosity' ||
+          filters.porosity === 'mixed_porosity',
+        lowPorosity:
+          filters.porosity === 'low_porosity' ||
+          filters.porosity === 'mixed_porosity',
+        sebdermSafe: false,
+      },
+    });
+    pooled = pooled.concat(filtered);
+  }
+  const byId = new Map(pooled.map((p) => [p.id, p]));
+  const unique = Array.from(byId.values());
+  if (unique.length === 0) return null;
+  const withSamples = unique.filter((p) => p.tags?.includes('samples'));
+  const pool = withSamples.length > 0 ? withSamples : unique;
+  return pool[Math.floor(Math.random() * pool.length)];
 }
 
 export type RoutineStep =
@@ -258,6 +354,7 @@ export function getRoutineSteps(
     lowPorosity: false,
     sebdermSafe: false,
   },
+  hairTypeTag?: HairTypeProductTag,
 ): RoutineStepConfig[] {
   return Object.entries(ROUTINE_STEPS)
     .map(([stepId, step]) => {
@@ -271,6 +368,7 @@ export function getRoutineSteps(
             country,
             costFilter,
             offset: productOffsets[category] || 0,
+            hairTypeTag,
             analysisFilters,
           });
 

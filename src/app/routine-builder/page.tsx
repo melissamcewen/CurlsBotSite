@@ -8,6 +8,8 @@ import {
   PorosityType,
   getRoutineSteps,
   ProductCategory,
+  hairTypeToProductTag,
+  type HairTypeProductTag,
 } from '@/lib/routineBuilder';
 import { getCountryFromHostname } from '@/lib/countryDetection';
 import Link from 'next/link';
@@ -16,10 +18,18 @@ import { ProductCard } from '@/components/ui/product/ProductCard';
 import {
   Sparkles,
   ShoppingBag,
-  CheckCircle,
   Info,
   HelpCircle,
 } from 'lucide-react';
+
+const HAIR_TYPE_OPTIONS: { value: string; label: string }[] = [
+  { value: 'swavy', label: 'Swavy' },
+  { value: 'wavy', label: 'Wavy' },
+  { value: 'loose-curls', label: 'Loose Curls' },
+  { value: 'tight-curls', label: 'Tight Curls' },
+  { value: 'coily', label: 'Coily' },
+  { value: 'tight-coils', label: 'Tightly Coiled' },
+];
 
 export default function RoutineBuilder() {
   const router = useRouter();
@@ -27,6 +37,12 @@ export default function RoutineBuilder() {
   const [porosity, setPorosity] = useState<PorosityType>(() => {
     const urlPorosity = searchParams?.get('porosity') ?? null;
     return (urlPorosity as PorosityType) || 'normal_porosity';
+  });
+  const [hairTypeValue, setHairTypeValue] = useState<string>(() => {
+    const urlHair = searchParams?.get('hairType') ?? null;
+    if (urlHair && HAIR_TYPE_OPTIONS.some((o) => o.value === urlHair))
+      return urlHair;
+    return 'wavy';
   });
   const [country, setCountry] = useState<CountryCode>(() =>
     getCountryFromHostname(),
@@ -42,6 +58,7 @@ export default function RoutineBuilder() {
   useEffect(() => {
     const params = new URLSearchParams();
     params.set('porosity', porosity);
+    params.set('hairType', hairTypeValue);
 
     // Add selected products to URL
     Object.entries(selectedProducts).forEach(([category, product]) => {
@@ -49,7 +66,7 @@ export default function RoutineBuilder() {
     });
 
     router.replace(`?${params.toString()}`, { scroll: false });
-  }, [porosity, selectedProducts, router]);
+  }, [porosity, hairTypeValue, selectedProducts, router]);
 
   // Load initial product selections from URL
   useEffect(() => {
@@ -95,7 +112,7 @@ export default function RoutineBuilder() {
     if (Object.keys(initialSelections).length > 0) {
       setSelectedProducts(initialSelections);
     }
-  }, [searchParams, porosity, country, productOffsets]);
+  }, [searchParams, porosity, hairTypeValue, country, productOffsets]);
 
   const handleSeeMore = (category: string, totalProducts: number) => {
     setProductOffsets((prev) => ({
@@ -124,6 +141,14 @@ export default function RoutineBuilder() {
             <div className="form-control w-full">
               <label className="label">
                 <span className="label-text">Porosity</span>
+                <Link
+                  href="/porosity/quiz"
+                  className="label-text-alt link link-primary flex items-center gap-1"
+                  title="Take the porosity quiz"
+                >
+                  <HelpCircle className="w-4 h-4" />
+                  Quiz
+                </Link>
               </label>
               <select
                 className="select select-bordered w-full"
@@ -134,6 +159,31 @@ export default function RoutineBuilder() {
                 <option value="high_porosity">High Porosity</option>
                 <option value="low_porosity">Low Porosity</option>
                 <option value="mixed_porosity">Mixed Porosity</option>
+              </select>
+            </div>
+
+            <div className="form-control w-full">
+              <label className="label">
+                <span className="label-text">Hair type</span>
+                <Link
+                  href="/hair-types/quiz"
+                  className="label-text-alt link link-primary flex items-center gap-1"
+                  title="Take the hair type quiz"
+                >
+                  <HelpCircle className="w-4 h-4" />
+                  Quiz
+                </Link>
+              </label>
+              <select
+                className="select select-bordered w-full"
+                value={hairTypeValue}
+                onChange={(e) => setHairTypeValue(e.target.value)}
+              >
+                {HAIR_TYPE_OPTIONS.map((opt) => (
+                  <option key={opt.value} value={opt.value}>
+                    {opt.label}
+                  </option>
+                ))}
               </select>
             </div>
 
@@ -159,6 +209,7 @@ export default function RoutineBuilder() {
         <RoutineSteps
           porosity={porosity}
           country={country}
+          hairTypeTag={hairTypeToProductTag(hairTypeValue) ?? undefined}
           selectedProducts={selectedProducts}
           onProductSelect={(category, product) => {
             setSelectedProducts((prev) => ({
@@ -204,6 +255,7 @@ export default function RoutineBuilder() {
 interface RoutineStepsProps {
   porosity: PorosityType;
   country: CountryCode;
+  hairTypeTag?: HairTypeProductTag;
   selectedProducts: Partial<Record<ProductCategory, Product>>;
   onProductSelect: (category: ProductCategory, product: Product) => void;
   productOffsets: Record<string, number>;
@@ -213,19 +265,27 @@ interface RoutineStepsProps {
 function RoutineSteps({
   porosity,
   country,
+  hairTypeTag,
   selectedProducts,
   onProductSelect,
   productOffsets,
   onSeeMore,
 }: RoutineStepsProps) {
-  const steps = getRoutineSteps(porosity, country, undefined, productOffsets, {
-    cgmApproved: false,
-    frizzResistant: false,
-    lightweight: false,
-    sebdermSafe: false,
-    highPorosity: porosity === 'high_porosity' || porosity === 'mixed_porosity',
-    lowPorosity: porosity === 'low_porosity' || porosity === 'mixed_porosity',
-  });
+  const steps = getRoutineSteps(
+    porosity,
+    country,
+    undefined,
+    productOffsets,
+    {
+      cgmApproved: false,
+      frizzResistant: false,
+      lightweight: false,
+      sebdermSafe: false,
+      highPorosity: porosity === 'high_porosity' || porosity === 'mixed_porosity',
+      lowPorosity: porosity === 'low_porosity' || porosity === 'mixed_porosity',
+    },
+    hairTypeTag,
+  );
 
   return (
     <div className="space-y-8">

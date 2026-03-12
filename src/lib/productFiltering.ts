@@ -9,6 +9,8 @@ interface FilterOptions {
   category: string | string[] | undefined;
   requireFeatured: boolean;
   searchQuery?: string;
+  /** When set, only products with this tag (wavy/curly/coily) are included */
+  hairTypeTag?: 'wavy' | 'curly' | 'coily';
   analysisFilters: {
     cgmApproved: boolean;
     frizzResistant: boolean;
@@ -61,6 +63,12 @@ export function filterProducts(
     // Exclude accessories from best product pages
     if (product.product_categories?.includes('accessories')) {
       return false;
+    }
+
+    // Hair type filter: product must have the matching tag (from CurlsBot types)
+    if (options.hairTypeTag) {
+      const tags = product.tags ?? [];
+      if (!tags.includes(options.hairTypeTag)) return false;
     }
 
     // Analysis-based filters - using AND logic

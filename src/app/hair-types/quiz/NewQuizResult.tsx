@@ -7,6 +7,7 @@ import { BookOpen, Droplets, Sparkles, Heart, Frown } from 'lucide-react';
 import { FeaturedProductSet } from '@/components/hairTypes/FeaturedProductSet';
 import { featuredProductSets } from './featuredProductSets';
 import { HairTypeResultEmailSignup } from '@/components/hairTypes/HairTypeResultEmailSignup';
+import { RoutineWidget } from '@/components/routine/RoutineWidget';
 
 // Map pattern types to their image files
 const patternImageMap: Record<HairPatternType, string> = {
@@ -184,6 +185,17 @@ export default function NewQuizResult({ patternType }: Props) {
               <HairTypeResultEmailSignup
                 patternType={patternType}
                 displayName={patternData.displayName}
+              />
+            </div>
+
+            {/* Routine Builder - light widget with hair type preset */}
+            <div>
+              <h2 className="text-2xl font-bold mb-4">Build Your Routine</h2>
+              <RoutineWidget
+                presetPorosity={false}
+                presetHairType
+                initialHairType={patternType}
+                productTypeDescription={`Based on your ${patternData.displayName} hair type`}
               />
             </div>
 
