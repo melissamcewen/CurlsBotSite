@@ -190,7 +190,7 @@ export default function NewQuizResult({ patternType }: Props) {
 
             {/* Routine Builder - light widget with hair type preset */}
             <div>
-              <h2 className="text-2xl font-bold mb-4">Build Your Routine</h2>
+            
               <RoutineWidget
                 presetPorosity={false}
                 presetHairType

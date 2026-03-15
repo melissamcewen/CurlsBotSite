@@ -58,12 +58,12 @@ describe('getRoutineSteps', () => {
       },
     );
 
-    // Find the hold step which contains gels
-    const holdStep = steps.find((step) => step.id === 'hold');
-    expect(holdStep).toBeDefined();
+    // Find the styler step which contains gels
+    const stylerStep = steps.find((step) => step.id === 'styler');
+    expect(stylerStep).toBeDefined();
 
     // Should include gel (high porosity) but not foam
-    const products = holdStep?.categories.flatMap((cat) => cat.products);
+    const products = stylerStep?.categories.flatMap((cat) => cat.products);
     expect(products?.some((p) => p.name === 'Test Gel')).toBe(true);
     expect(products?.some((p) => p.name === 'Test Foam')).toBe(false);
   });

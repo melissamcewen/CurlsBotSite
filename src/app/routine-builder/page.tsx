@@ -289,10 +289,12 @@ function RoutineSteps({
 
   return (
     <div className="space-y-8">
-      {steps.map((step) => (
+      {steps.map((step, index) => (
         <div key={step.id} className="card bg-base-200">
           <div className="card-body">
-            <h3 className="text-2xl font-semibold">{step.title}</h3>
+            <h3 className="text-2xl font-semibold">
+              {index + 1}. {step.title}
+            </h3>
             <div className="alert bg-base-100 mb-4 flex items-start">
               <HelpCircle className="w-5 h-5 mt-0.5 shrink-0" />
               <p>{step.description}</p>
@@ -309,7 +311,11 @@ function RoutineSteps({
                 <div key={category.category} className="space-y-4">
                   <div>
                     <h4 className="text-lg font-medium capitalize">
-                      {category.category.replace(/_/g, ' ')}
+                      {category.category === 'leave_ins_creams'
+                        ? 'Leave-ins and creams'
+                        : category.category === 'stylers'
+                          ? 'Gels, foams and custards'
+                          : category.category.replace(/_/g, ' ')}
                     </h4>
                     <p className="text-base-content/70 mt-1">
                       {category.description}

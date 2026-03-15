@@ -11,6 +11,8 @@ interface FilterOptions {
   searchQuery?: string;
   /** When set, only products with this tag (wavy/curly/coily) are included */
   hairTypeTag?: 'wavy' | 'curly' | 'coily';
+  /** When set, only products with this tag are included (e.g. bond-repair) */
+  requiredTag?: string;
   analysisFilters: {
     cgmApproved: boolean;
     frizzResistant: boolean;
@@ -69,6 +71,12 @@ export function filterProducts(
     if (options.hairTypeTag) {
       const tags = product.tags ?? [];
       if (!tags.includes(options.hairTypeTag)) return false;
+    }
+
+    // Required tag filter (e.g. bond-repair for repair treatment step)
+    if (options.requiredTag) {
+      const tags = product.tags ?? [];
+      if (!tags.includes(options.requiredTag)) return false;
     }
 
     // Analysis-based filters - using AND logic

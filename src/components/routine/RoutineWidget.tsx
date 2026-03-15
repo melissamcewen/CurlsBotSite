@@ -119,16 +119,16 @@ export function RoutineWidget({
       )}
 
       {/* Single row: CGM toggle, Porosity, Hair type, Country, Randomize icon */}
-      <div className="flex flex-wrap items-center gap-2">
-        <label className="flex items-center gap-1.5 cursor-pointer">
-          <span className="text-xs whitespace-nowrap">CGM</span>
+      <div className="flex flex-wrap items-center gap-3">
+        <label className="label cursor-pointer gap-2 py-0 min-h-0">
+          <span className="label-text text-xs">CGM</span>
           <Link
             href="/curly-girl-method"
             target="_blank"
-            className="text-primary hover:text-primary-focus"
+            className="link link-primary p-0 min-h-0"
             title="Learn about the Curly Girl Method"
           >
-            <Info className="w-3 h-3" aria-label="About CGM" />
+            <Info className="w-4 h-4" aria-label="About CGM" />
           </Link>
           <input
             type="checkbox"
@@ -139,17 +139,17 @@ export function RoutineWidget({
         </label>
 
         {!presetPorosity && (
-          <label className="flex items-center gap-1.5">
-            <span className="text-xs whitespace-nowrap">Porosity</span>
+          <label className="label gap-2 py-0 min-h-0 flex-row">
+            <span className="label-text text-xs">Porosity</span>
             <Link
               href="/porosity/quiz"
-              className="text-primary hover:text-primary-focus"
+              className="link link-primary p-0 min-h-0"
               title="Take the porosity quiz"
             >
-              <HelpCircle className="w-3 h-3" aria-label="Porosity quiz" />
+              <HelpCircle className="w-4 h-4" aria-label="Porosity quiz" />
             </Link>
             <select
-              className="select select-bordered select-xs w-auto min-w-0 max-w-[7rem] bg-base-100"
+              className="select select-bordered select-xs w-auto min-w-0 max-w-[7rem]"
               value={porosity}
               onChange={(e) => setPorosity(e.target.value as PorosityType)}
             >
@@ -162,17 +162,17 @@ export function RoutineWidget({
         )}
 
         {!presetHairType && (
-          <label className="flex items-center gap-1.5">
-            <span className="text-xs whitespace-nowrap">Hair</span>
+          <label className="label gap-2 py-0 min-h-0 flex-row">
+            <span className="label-text text-xs">Hair</span>
             <Link
               href="/hair-types/quiz"
-              className="text-primary hover:text-primary-focus"
+              className="link link-primary p-0 min-h-0"
               title="Take the hair type quiz"
             >
-              <HelpCircle className="w-3 h-3" aria-label="Hair type quiz" />
+              <HelpCircle className="w-4 h-4" aria-label="Hair type quiz" />
             </Link>
             <select
-              className="select select-bordered select-xs w-auto min-w-0 max-w-[6rem] bg-base-100"
+              className="select select-bordered select-xs w-auto min-w-0 max-w-[6rem]"
               value={hairTypeValue}
               onChange={(e) => setHairTypeValue(e.target.value)}
             >
@@ -185,10 +185,10 @@ export function RoutineWidget({
           </label>
         )}
 
-        <label className="flex items-center gap-1.5">
-          <span className="text-xs whitespace-nowrap">Country</span>
+        <label className="label gap-2 py-0 min-h-0 flex-row">
+          <span className="label-text text-xs">Country</span>
           <select
-            className="select select-bordered select-xs w-auto min-w-0 max-w-[5rem] bg-base-100"
+            className="select select-bordered select-xs w-auto min-w-0 max-w-[5rem]"
             value={country}
             onChange={(e) => setCountry(e.target.value as CountryCode)}
           >
@@ -201,7 +201,7 @@ export function RoutineWidget({
 
         <button
           type="button"
-          className="btn btn-ghost btn-xs shrink-0 ml-auto"
+          className="btn btn-ghost btn-xs btn-square shrink-0 ml-auto"
           onClick={handleRandomize}
           title="Randomize"
           aria-label="Randomize products"
@@ -216,7 +216,7 @@ export function RoutineWidget({
       >
         {isLoading ? (
           <div className="col-span-3 flex items-center justify-center gap-2 py-4">
-            <div className="loading loading-spinner loading-sm text-primary" />
+            <span className="loading loading-spinner loading-sm text-primary" aria-hidden />
             <span className="text-xs">Loading…</span>
           </div>
         ) : allEmpty ? (
@@ -246,41 +246,46 @@ export function RoutineWidget({
                     (!link.countries || link.countries.length === 0)),
               ) ?? product.buy_links?.[0];
             return (
-              <div key={key} className="rounded-lg p-2 bg-base-200 min-w-0">
-                <p className="text-xs font-semibold text-base-content/80 leading-tight">
-                  {config.label}
-                </p>
-                {buyLink ? (
-                  <a
-                    href={buyLink.url}
-                    target="_blank"
-                    className="text-xs text-primary hover:underline inline-flex items-center gap-0.5 break-all leading-tight mt-0.5"
-                    ref={(el) => {
-                      if (el) {
-                        addProductTrackingAttributes(
-                          el,
+              <div
+                key={key}
+                className="card bg-base-200 rounded-box border border-base-300 min-w-0 shadow-none"
+              >
+                <div className="card-body  bg-base-100 rounded-lg p-3 ">
+                  <p className="text-xs font-semibold text-base-content/80 leading-tight">
+                    {config.label}
+                  </p>
+                  {buyLink ? (
+                    <a
+                      href={buyLink.url}
+                      target="_blank"
+                      className="link link-primary text-xs inline-flex items-center gap-0.5 leading-tight mt-0.5"
+                      ref={(el) => {
+                        if (el) {
+                          addProductTrackingAttributes(
+                            el,
+                            product,
+                            'buy',
+                            buyLink?.retailer,
+                          );
+                        }
+                      }}
+                      onClick={() => {
+                        trackProductInteraction(
                           product,
                           'buy',
                           buyLink?.retailer,
                         );
-                      }
-                    }}
-                    onClick={() => {
-                      trackProductInteraction(
-                        product,
-                        'buy',
-                        buyLink?.retailer,
-                      );
-                    }}
-                  >
-                    {product.brand} {product.name}
-                    <ExternalLink className="w-3 h-3 shrink-0" />
-                  </a>
-                ) : (
-                  <span className="text-xs leading-tight mt-0.5 block">
-                    {product.brand} {product.name}
-                  </span>
-                )}
+                      }}
+                    >
+                      {product.brand} {product.name}
+                      <ExternalLink className="w-3 h-3 shrink-0" />
+                    </a>
+                  ) : (
+                    <span className="text-xs leading-tight mt-0.5 block text-base-content">
+                      {product.brand} {product.name}
+                    </span>
+                  )}
+                </div>
               </div>
             );
           })
@@ -290,18 +295,18 @@ export function RoutineWidget({
       <div className="flex flex-wrap gap-2">
         <Link
           href="/routine-builder"
-          className="btn btn-secondary btn-sm gap-1.5"
+          className="btn btn-primary btn-sm gap-1.5"
         >
           <Layers className="w-4 h-4 shrink-0" />
           Build full routine
         </Link>
         <a
           href="https://curlsmonthly.com/?ref=curlsbot"
-          className="btn btn-ghost btn-sm gap-1.5"
+          className="btn btn-secondary btn-sm gap-1.5"
           target="_blank"
         >
           <Sparkles className="w-4 h-4 shrink-0" />
-          Try samples
+          Try samples @ Curls Monthly
         </a>
       </div>
     </div>
