@@ -108,18 +108,19 @@ export function RoutineWidget({
   const allEmpty = LIGHT_ROUTINE_STEP_KEYS.every((k) => !products[k]);
 
   return (
-    <div className="flex flex-col gap-2">
-      <div className="flex items-center gap-2">
-        <Sparkles className="w-4 h-4 text-primary shrink-0" />
-        <h3 className="text-base font-bold">Routine Generator</h3>
-      </div>
+    <div className="card bg-base-100 rounded-xl border border-base-300">
+      <div className="card-body">
+        <div className="flex items-center gap-2">
+          <Sparkles className="w-4 h-4 text-primary shrink-0" />
+          <h3 className="text-base font-bold">Routine Generator</h3>
+        </div>
 
-      {productTypeDescription && (
-        <p className="text-xs text-base-content/80">{productTypeDescription}</p>
-      )}
+        {productTypeDescription && (
+          <p className="text-xs text-base-content/80">{productTypeDescription}</p>
+        )}
 
-      {/* Single row: CGM toggle, Porosity, Hair type, Country, Randomize icon */}
-      <div className="flex flex-wrap items-center gap-3">
+        {/* Single row: CGM toggle, Porosity, Hair type, Country, Randomize icon */}
+        <div className="flex flex-wrap items-center gap-3">
         <label className="label cursor-pointer gap-2 py-0 min-h-0">
           <span className="label-text text-xs">CGM</span>
           <Link
@@ -201,19 +202,19 @@ export function RoutineWidget({
 
         <button
           type="button"
-          className="btn btn-ghost btn-xs btn-square shrink-0 ml-auto"
+          className="btn btn-secondary btn-xs btn-square shrink-0 ml-auto"
           onClick={handleRandomize}
           title="Randomize"
           aria-label="Randomize products"
         >
           <Shuffle className="w-4 h-4" />
         </button>
-      </div>
+        </div>
 
-      <div
-        className="grid grid-cols-1 sm:grid-cols-3 gap-2"
-        data-testid="routine-product-grid"
-      >
+        <div
+          className="grid grid-cols-1 sm:grid-cols-3 gap-2"
+          data-testid="routine-product-grid"
+        >
         {isLoading ? (
           <div className="col-span-3 flex items-center justify-center gap-2 py-4">
             <span className="loading loading-spinner loading-sm text-primary" aria-hidden />
@@ -248,9 +249,9 @@ export function RoutineWidget({
             return (
               <div
                 key={key}
-                className="card bg-base-200 rounded-box border border-base-300 min-w-0 shadow-none"
+                className="card bg-base-100 rounded-box  border-primary/30 border-2 min-w-0 shadow-none"
               >
-                <div className="card-body  bg-base-100 rounded-lg p-3 ">
+                <div className="card-body   ">
                   <p className="text-xs font-semibold text-base-content/80 leading-tight">
                     {config.label}
                   </p>
@@ -290,24 +291,25 @@ export function RoutineWidget({
             );
           })
         )}
-      </div>
+        </div>
 
-      <div className="flex flex-wrap gap-2">
-        <Link
-          href="/routine-builder"
-          className="btn btn-primary btn-sm gap-1.5"
-        >
-          <Layers className="w-4 h-4 shrink-0" />
-          Build full routine
-        </Link>
-        <a
-          href="https://curlsmonthly.com/?ref=curlsbot"
-          className="btn btn-secondary btn-sm gap-1.5"
-          target="_blank"
-        >
-          <Sparkles className="w-4 h-4 shrink-0" />
-          Try samples @ Curls Monthly
-        </a>
+        <div className="card-actions justify-end flex-wrap gap-2 mt-2">
+          <Link
+            href="/routine-builder"
+            className="btn btn-primary btn-sm gap-1.5"
+          >
+            <Layers className="w-4 h-4 shrink-0" />
+            Build full routine
+          </Link>
+          <a
+            href="https://curlsmonthly.com/?ref=curlsbot"
+            className="btn btn-secondary btn-sm gap-1.5"
+            target="_blank"
+          >
+            <Sparkles className="w-4 h-4 shrink-0" />
+            Try samples @ Curls Monthly
+          </a>
+        </div>
       </div>
     </div>
   );

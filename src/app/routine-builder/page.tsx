@@ -309,18 +309,7 @@ function RoutineSteps({
             <div className="space-y-8">
               {step.categories.map((category) => (
                 <div key={category.category} className="space-y-4">
-                  <div>
-                    <h4 className="text-lg font-medium capitalize">
-                      {category.category === 'leave_ins_creams'
-                        ? 'Leave-ins and creams'
-                        : category.category === 'stylers'
-                          ? 'Gels, foams and custards'
-                          : category.category.replace(/_/g, ' ')}
-                    </h4>
-                    <p className="text-base-content/70 mt-1">
-                      {category.description}
-                    </p>
-                  </div>
+              
 
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {category.products.length > 0 ? (

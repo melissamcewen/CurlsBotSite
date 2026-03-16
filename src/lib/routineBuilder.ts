@@ -272,70 +272,70 @@ export const ROUTINE_STEPS: Record<RoutineStep, StepConfig> = {
   clarifying: {
     title: 'Clarifying shampoo',
     description:
-      'Heavier shampoo to remove buildup from oils, products, and hard water. Use weekly for loose curls or every 2–4 weeks for tight curls.',
+      "An essential step in every routine to remove buildup. It's fine to use as your main shampoo if you are prone to buildup.",
     categories: ['clarifying_shampoos'],
     porosityRecommendations: {
-      high_porosity: 'Clarify monthly. Use pre-poo before if needed.',
-      low_porosity: 'Clarify every 1–2 weeks to prevent buildup.',
-      normal_porosity: 'Clarify monthly.',
-      mixed_porosity: 'Clarify every 2–3 weeks; focus on roots.',
+      high_porosity: 'Clarify as needed, at least monthly',
+      low_porosity: 'Clarify at least once a week',
+      normal_porosity: 'Clarify at least once a week',
+      mixed_porosity: 'Clarify at least once a week, focus on roots',
     },
   },
   everyday_shampoo: {
     title: 'Everyday shampoo',
     description:
-      'Gentler option for non-clarifying washes. Required for tight curls; optional for loose curls.',
+      'A clarifying shampoo is going to be too drying for most people to use every wash. Use a gentler everyday shampoo when not using a clarifying shampoo.',
     categories: ['shampoos'],
     porosityRecommendations: {
-      high_porosity: 'Alternate with cowash or gentle shampoo between clarifying.',
-      low_porosity: 'Use regular shampoo; avoid cowash to prevent buildup.',
-      normal_porosity: 'Use shampoo between clarifying washes.',
-      mixed_porosity: 'Use gentler shampoos on ends, shampoo on roots.',
+      high_porosity: 'Should be your main shampoo',
+      low_porosity: 'Use when not using a clarifying shampoo',
+      normal_porosity: 'Use when not using a clarifying shampoo',
+      mixed_porosity: 'Use when not using a clarifying shampoo',
     },
   },
   condition: {
     title: 'Conditioner',
-    description: 'Choose your conditioner based on your needs.',
-    categories: ['conditioners', 'deep_conditioners'],
+    description:
+      'A conditioner is a must have in every routine. It helps detangle hair and protect against damage.',
+    categories: ['conditioners'],
     porosityRecommendations: {
       high_porosity:
-        'Use conditioner every wash and deep conditioner every 1–2 weeks.',
-      low_porosity:
-        'Use conditioner every wash and deep conditioner every 1–2 months.',
-      normal_porosity:
-        'Use conditioner every wash and deep conditioner every 1–2 months.',
-      mixed_porosity:
-        'Use conditioner every wash and deep conditioner on the ends every 1–2 weeks.',
+        'Use conditioner every wash, ideally one made for high porosity hair (often labeled for colored or damaged hair)',
+      low_porosity: 'Use conditioner as needed, focus on the ends',
+      normal_porosity: 'Use conditioner as needed, focus on the ends.',
+      mixed_porosity: 'Use conditioner every wash, focus on the ends',
     },
   },
   repair_treatment: {
-    title: 'Repair treatment',
+    title: 'Treatment',
     description:
-      'Bond repair products for high porosity hair. Can substitute for conditioner when needed.',
+      'Treatments include deep conditioner, which can make hair softer, and bond repair, which can help repair damaged hair',
     categories: ['treatments', 'deep_conditioners'],
     requiredTag: 'bond-repair',
     highPorosityOnly: true,
     porosityRecommendations: {
       high_porosity:
-        'Use bond repair as needed; can substitute for conditioner occasionally.',
-      low_porosity: 'Skip or use rarely; focus on moisture.',
-      normal_porosity: 'Use occasionally if needed.',
-      mixed_porosity: 'Use on damaged or high-porosity sections.',
+        'Use bond repair as needed and deep conditioner if hair feels rough',
+      low_porosity:
+        "Skip bond repair because you don't need it, use deep conditioner if hair feels rough",
+      normal_porosity:
+        'Use bond repair as needed and deep conditioner if hair feels rough',
+      mixed_porosity:
+        'Use bond repair as needed on ends and deep conditioner if hair feels rough',
     },
   },
   leave_in_cream: {
     title: 'Leave-in or cream',
     description:
-      'Use one with heat protection if you use heat. Some creams double as stylers.',
+      'Leave-ins are essential for protecting hair from everyday damage. Creams are also leave-ins but sometimes have some styling benefits. Looser curls/waves should opt for lighter spray leave-ins or creams specifically made for wavy hair.',
     categories: ['leave_ins', 'creams'],
     combineCategories: true,
     combinedCategoryKey: 'leave_ins_creams',
     porosityRecommendations: {
-      high_porosity: 'Use a leave-in and cream.',
-      low_porosity:
-        'Skip unless you use heat; then use a heat protectant.',
+      high_porosity: 'Use a leave-in and cream as needed.',
+      low_porosity: 'Use a leave-in or cream as needed.',
       normal_porosity: 'Use a leave-in or cream as needed.',
-      mixed_porosity: 'Use a leave-in or cream on the ends.',
+      mixed_porosity: 'Use a leave-in or cream as needed.',
     },
   },
   styler: {
@@ -354,14 +354,13 @@ export const ROUTINE_STEPS: Record<RoutineStep, StepConfig> = {
   oils_refreshers: {
     title: 'Oils and refreshers',
     description:
-      'Optional. Dry finisher; scrunch out crunch, spot-treat rough areas.',
+      'Optional. Dry finisher; scrunch out crunch, spot-treat rough areas, and to refresh hair between washes. Loose curls/waves should opt for oils labeled as being lightweight if they use one.',
     categories: ['oils', 'sprays'],
     porosityRecommendations: {
-      high_porosity: 'Use an oil or a spray.',
-      low_porosity: 'Use a foam or spray.',
-      normal_porosity: 'Use a foam, oil, or spray.',
-      mixed_porosity:
-        'Use an oil or moisturizing spray on the ends and a foam or spray on the rest.',
+      high_porosity: 'Use as needed, focus on ends',
+      low_porosity: 'Use as needed',
+      normal_porosity: 'Use as needed, focus on ends',
+      mixed_porosity: 'Use as needed, focus on ends',
     },
   },
 };
