@@ -593,7 +593,7 @@ export default function ProductsPage() {
                       }
                     >
                       <Sparkles className="w-4 h-4 shrink-0" />
-                      Try a sample
+                      Try with Curls Monthly
                     </a>
                   )}
                 </td>

@@ -55,10 +55,10 @@ function getInitialPorosity(initial?: PorosityType): PorosityType {
 }
 
 function getInitialHairTypeValue(initial?: string): string {
-  if (!initial) return 'wavy';
+  if (!initial) return 'tight-curls';
   const tag = hairTypeToProductTag(initial);
   const option = HAIR_TYPE_OPTIONS.find((o) => o.tag === tag);
-  return option?.value ?? 'wavy';
+  return option?.value ?? 'tight-curls';
 }
 
 export function RoutineWidget({

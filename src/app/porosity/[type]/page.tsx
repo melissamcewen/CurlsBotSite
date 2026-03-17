@@ -15,16 +15,16 @@ const POROSITY_DATA: Record<string, PorosityInfo> = {
     description:
       'High porosity hair has a raised or damaged cuticle layer, allowing moisture to easily enter and exit the hair shaft. This type of hair absorbs water and products quickly but also loses moisture quickly. It also has a missing or damaged lipid layer, which means it needs more conditioning to protect it and make it feel healthy.',
     characteristics: [
-      'Absorbs water and products quickly',
-      'Dries very quickly',
-      'Prone to frizz and tangles',
+      'Absorbs water and products easily',
+      'In the past we thought it dried quicker, but scientific research shows it may actually dry slower because it absorbs too much water internally, which can cause swelling and tangles',
+      'Prone to breakage',
       'May look dull without proper care',
       'Products made with plain oils/butters may not work as well as those with positively charged conditioning agents',
     ],
     tips: [
       'Use leave-in conditioners to protect the hair from further damage',
       'Be gentle with your hair when styling and protect it from friction with bonnets/silk pillowcases when you sleep',
-      'Consider bonding products to help repair the hair',
+      'Consider bonding products to help repair the hair and balance its water content',
       'Look for products with positively charged conditioning agents that bond to damaged hair like behentrimonium chloride',
       'Look for products specifically formulated for damaged hair',
       'If using heat, always use a heat protectant',
@@ -64,25 +64,22 @@ const POROSITY_DATA: Record<string, PorosityInfo> = {
       'Section hair when applying products to target different needs',
       'Protect the ends with a pre-poo when shampooing or clarifying',
       'Deep condition focusing on the ends',
-      'Consider protein treatments for the ends',
+      'Consider protein treatments or bond repair treatments for the ends',
     ],
   },
 
   'low-porosity': {
     title: 'Low Porosity Hair Guide and Best Products',
-    description:
-      'Low porosity hair is healthy, undamaged hair. It does not need protein or bond repair treatments. It is often shiny and healthy looking.',
+    description: 'Low porosity hair is healthy, undamaged hair that does not need special products made for damaged hair like bond repair treatments.',
     characteristics: [
       'Healthy, undamaged hair',
       'Treatments and products that rely on penetration might not be as effective because the healthy hair is already protected by a tight cuticle',
-      'Fat-based products can coat this type of hair, which can be good or bad depending on the product and how much you use',
-
+      'Whether you need heavy or light products will depend on other factors like your curl type and strand width',
     ],
     tips: [
-      'Use heat or steam to help products penetrate',
       'Regular clarifying treatments to remove buildup',
-      'Apply products to damp hair to improve absorption',
-      'May better tolerate sulfates than other porosity types and even benefit from them',
+      'Choose products based on your curl type and strand width',
+      'May better tolerate stronger shampoos (such as a standard sulfate shampoo) than other porosity types and even benefit from them',
     ],
   },
 };

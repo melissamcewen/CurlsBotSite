@@ -1,11 +1,15 @@
 import { PorosityEmailSignup as BasePorosityEmailSignup } from './EmailSignupVariants';
 
-interface PorosityEmailSignupProps {
+export interface PorosityEmailSignupProps {
   porosityType: string;
+  layout?: 'card' | 'compact';
+  title?: string;
+  description?: string;
+  buttonText?: string;
+  placeholder?: string;
+  className?: string;
 }
 
-export default function PorosityEmailSignup({
-  porosityType,
-}: PorosityEmailSignupProps) {
-  return <BasePorosityEmailSignup porosityType={porosityType} />;
+export default function PorosityEmailSignup(props: PorosityEmailSignupProps) {
+  return <BasePorosityEmailSignup {...props} />;
 }

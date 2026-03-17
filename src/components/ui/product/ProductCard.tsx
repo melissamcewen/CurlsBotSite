@@ -211,7 +211,7 @@ export function ProductCard({
               }
             >
               <Sparkles className="w-4 h-4 shrink-0" />{' '}
-              <span className="flex-nowrap">Try a sample</span>
+              <span className="flex-nowrap">Try with Curls Monthly</span>
             </a>
           )}
         </div>

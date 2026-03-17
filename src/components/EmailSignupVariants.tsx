@@ -18,17 +18,35 @@ export function EmailSignup({ hairType }: EmailSignupProps) {
 // Porosity Email Signup
 interface PorosityEmailSignupProps {
   porosityType: string;
+  /** Use 'compact' when wrapping in your own card (e.g. book promo); keeps form IDs */
+  layout?: 'card' | 'compact';
+  title?: string;
+  description?: string;
+  buttonText?: string;
+  placeholder?: string;
+  className?: string;
 }
 
 export function PorosityEmailSignup({
   porosityType,
+  layout,
+  title,
+  description,
+  buttonText,
+  placeholder,
+  className,
 }: PorosityEmailSignupProps) {
+  const isCompact = layout === 'compact';
   return (
     <BaseEmailSignup
       variant="porosity"
       fieldValue={porosityType}
-      title={`Want to master your ${porosityType.replace('-', ' ')} hair?`}
-      className="bg-base-100 cb-card-lite md:col-span-2 mb-8"
+      title={title ?? (isCompact ? '' : `Want to master your ${porosityType.replace('-', ' ')} hair?`)}
+      description={description}
+      layout={layout ?? 'card'}
+      buttonText={buttonText}
+      placeholder={placeholder}
+      className={className ?? (isCompact ? '' : 'bg-base-100 cb-card-lite md:col-span-2 mb-8')}
     />
   );
 }
