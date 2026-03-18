@@ -188,17 +188,6 @@ export default function NewQuizResult({ patternType }: Props) {
               />
             </div>
 
-            {/* Routine Builder - light widget with hair type preset */}
-            <div>
-            
-              <RoutineWidget
-                presetPorosity={false}
-                presetHairType
-                initialHairType={patternType}
-                productTypeDescription={`Based on your ${patternData.displayName} hair type`}
-              />
-            </div>
-
             {/* Masonry Layout for Cards */}
             <div className="columns-1 md:columns-2 gap-4 space-y-4">
               {/* What This Means Section */}
@@ -427,7 +416,9 @@ export default function NewQuizResult({ patternType }: Props) {
                     <p className="text-sm mb-4">
                       Hair type can change over your life due to factors like
                       hormones. If your type changes its likely to change to one
-                      of its sister types. Also if we got your type wrong (oops sorry!), you&apos;re likely to be one of these sister types.
+                      of its sister types. Also if we got your type wrong (oops
+                      sorry!), you&apos;re likely to be one of these sister
+                      types.
                     </p>
                     <div className="flex flex-wrap gap-3">
                       {patternData.sisterCurlTypes.map((sisterType) => {
@@ -511,7 +502,15 @@ export default function NewQuizResult({ patternType }: Props) {
                 </a>
               </div>
             </div>
-
+            {/* Routine Builder - light widget with hair type preset */}
+            <div>
+              <RoutineWidget
+                presetPorosity={false}
+                presetHairType
+                initialHairType={patternType}
+                productTypeDescription={`Based on your ${patternData.displayName} hair type`}
+              />
+            </div>
             {/* Next Steps Section */}
             <div className="bg-base-100 cb-card-lite">
               <div className="flex items-center gap-2 mb-4">
@@ -546,7 +545,8 @@ export default function NewQuizResult({ patternType }: Props) {
                       </h3>
                     </div>
                     <p className="text-sm text-base-content/70">
-                      Learn more about how the CurlsBot curl type system works and why I created it.
+                      Learn more about how the CurlsBot curl type system works
+                      and why I created it.
                     </p>
                   </div>
                 </Link>
