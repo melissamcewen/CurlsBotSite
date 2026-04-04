@@ -1993,4 +1993,80 @@ Episode 380: Patented ingredients, porosity, quats and more */
     date: '2010',
     source: 'Springer',
   },
+  /* Evans AO, Marsh JM, Wickett RR. The structural implications of water hardness metal uptake by human hair. Int J Cosmet Sci. 2011;33(5):477-482. doi:10.1111/j.1468-2494.2011.00659.x */
+  '181': {
+    id: '181',
+    url: 'https://doi.org/10.1111/j.1468-2494.2011.00659.x',
+    title:
+      'The structural implications of water hardness metal uptake by human hair',
+    type: 'science',
+    author: 'Evans AO, Marsh JM, Wickett RR.',
+    date: '2011',
+    source: 'Int J Cosmet Sci',
+  },
+
+  /* 1. Do you have information about water hardness in the United States? | U.S. Geological Survey. December 3, 2021. Accessed April 3, 2026. https://www.usgs.gov/faqs/do-you-have-information-about-water-hardness-united-states
+
+  */
+ '182': {
+    id: '182',
+    url: 'https://www.usgs.gov/faqs/do-you-have-information-about-water-hardness-united-states',
+    title:
+      'Do you have information about water hardness in the United States?',
+    type: 'science',
+    author: 'U.S. Geological Survey.',
+    date: '2021',
+    source: 'U.S. Geological Survey',
+  },
+
+  /* 1. Luqman MW, Ali R, Khan Z, Ramzan MH, Hanan F, Javaid U. Effect of topical application of hard water in weakening of hair in men. J Pak Med Assoc. 2016;66(9):1132-1136.
+
+  */
+ '183': {
+    id: '183',
+    url: 'https://doi.org/10.12927/jpmas.2016.32844',
+    title:
+      'Effect of topical application of hard water in weakening of hair in men',
+    type: 'science',
+    author: 'Luqman MW, Ali R, Khan Z, Ramzan MH, Hanan F, Javaid U.',
+    date: '2016',
+    source: 'J Pak Med Assoc',
+  },
+  /* Marsh JM, Davis MG, Flagler MJ, et al. Advanced hair damage model from ultra-violet radiation in the presence of copper. Int J Cosmet Sci. 2015;37(5):532-541. doi:10.1111/ics.12231
+
+  */
+ '184': {
+    id: '184',
+    url: 'https://doi.org/10.1111/ics.12231',
+    title:
+      'Advanced hair damage model from ultra-violet radiation in the presence of copper',
+    type: 'science',
+    author: 'Marsh JM, Davis MG, Flagler MJ, et al.',
+    date: '2015',
+    source: 'Int J Cosmet Sci',
+  },
+  /* 1. Alahmmed LM, Alibrahim EA, Alkhars AF, Almulhim MN, Ali SI, Kaliyadan F. Scanning electron microscopy study of hair shaft changes related to hardness of water. Indian J Dermatol Venereol Leprol. 2017;83:740. doi:10.4103/ijdvl.IJDVL_1119_16
+  */
+ '185': {
+    id: '185',
+    url: 'https://doi.org/10.4103/ijdvl.IJDVL_1119_16',
+    title:
+      'Scanning electron microscopy study of hair shaft changes related to hardness of water',
+    type: 'science',
+    author: 'Alahmmed LM, Alibrahim EA, Alkhars AF, Almulhim MN, Ali SI, Kaliyadan F.',
+    date: '2017',
+    source: 'Indian J Dermatol Venereol Leprol',
+  },
+  /* Zabiszak M, Nowak M, Taras-Goslinska K, Kaczmarek MT, Hnatejko Z, Jastrzab R. Carboxyl groups of citric acid in the process of complex formation with bivalent and trivalent metal ions in biological systems. Journal of Inorganic Biochemistry. 2018;182:37-47. doi:10.1016/j.jinorgbio.2018.01.017
+  */
+ '186': {
+    id: '186',
+    url: 'https://doi.org/10.1016/j.jinorgbio.2018.01.017',
+    title:
+      'Carboxyl groups of citric acid in the process of complex formation with bivalent and trivalent metal ions in biological systems',
+    type: 'science',
+    author: 'Zabiszak M, Nowak M, Taras-Goslinska K, Kaczmarek MT, Hnatejko Z, Jastrzab R.',
+    date: '2018',
+    source: 'Journal of Inorganic Biochemistry',
+  },  
 };

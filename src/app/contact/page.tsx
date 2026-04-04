@@ -64,15 +64,7 @@ export default function ContactPage() {
                 </a>{' '}
                 - Participate in detailed hair care discussions
               </li>
-              <li>
-                <a
-                  href="https://discord.gg/3AkQqkADv9"
-                  className="link link-primary"
-                >
-                  Discord
-                </a>{' '}
-                - Chat with other curly hair enthusiasts
-              </li>
+
             </ul>
 
             <h2>Open Source</h2>

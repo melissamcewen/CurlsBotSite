@@ -51,30 +51,11 @@ export default function TikTokPage() {
             <TikTokEmailSignup />
           </div>
         </section>
-{/* Beauty by the Beaker AMA https://www.reddit.com/r/HaircareScience/comments/1qsl0v5/comment/o3othve/ */}
-<a
-          href="www.reddit.com/r/HaircareScience/comments/1qsl0v5/ama_natalie_and_sadie_from_beauty_by_the_beaker/"
-          className="group block rounded-2xl border border-base-300 bg-base-100 p-4 hover:bg-base-200/50 transition mb-6"
-        >
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full bg-base-200 grid place-items-center shrink-0">
-              <BookOpen className="w-4 h-4" aria-hidden="true" />
-            </div>
-            <div className="min-w-0">
-              <div className="text-base font-medium">
-                Beauty by the Beaker Hair Science AMA
-              </div>
-              <div className="text-sm text-base-content/60 truncate">
-                Reddit AMA with hosts Natalie and Sadie
-              </div>
-            </div>
-            <ChevronRight className="ml-auto w-4 h-4 text-base-content/50 group-hover:translate-x-0.5 transition" />
-          </div>
-        </a>
 
-        {/* Perimenopause post /blog/hair-scalp-care-perimenopause-guide*/}
+
+        {/* Hard water post /blog/curly-hair-hard-water*/}
         <Link
-          href="/blog/hair-scalp-care-perimenopause-guide"
+          href="/blog/curly-hair-hard-water"
           className="group block rounded-2xl border border-base-300 bg-base-100 p-4 hover:bg-base-200/50 transition mb-6"
         >
           <div className="flex items-center gap-3">
@@ -83,31 +64,10 @@ export default function TikTokPage() {
             </div>
             <div className="min-w-0">
               <div className="text-base font-medium">
-                Hair Scalp Care in Perimenopause
+                Hard Water Hair Solutions, Ranked by Scientific Evidence
               </div>
               <div className="text-sm text-base-content/60 truncate">
-                A complete guide to hair and scalp care in perimenopause.
-              </div>
-            </div>
-            <ChevronRight className="ml-auto w-4 h-4 text-base-content/50 group-hover:translate-x-0.5 transition" />
-          </div>
-        </Link>
-        {/* Porosity post /blog/hair-porosity-explained */}
-        <Link
-          href="/blog/hair-porosity-explained"
-          className="group block rounded-2xl border border-base-300 bg-base-100 p-4 hover:bg-base-200/50 transition mb-6"
-        >
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full bg-base-200 grid place-items-center shrink-0">
-              <BookOpen className="w-4 h-4" aria-hidden="true" />
-            </div>
-            <div className="min-w-0">
-              <div className="text-base font-medium">
-                Hair Porosity Explained
-              </div>
-              <div className="text-sm text-base-content/60 truncate">
-                Why internet porosity advice doesn&apos;t work and what actually
-                matters for hair care.
+                Most hard water advice on the internet is bad. Here&apos;s a science-based guide breaking down what actually works and what doesn&apos;t. Updated for 2026.
               </div>
             </div>
             <ChevronRight className="ml-auto w-4 h-4 text-base-content/50 group-hover:translate-x-0.5 transition" />
@@ -135,29 +95,6 @@ export default function TikTokPage() {
             <ChevronRight className="w-4 h-4 text-base-content/50 group-hover:translate-x-0.5 transition shrink-0" />
           </div>
         </Link>
-        {/* Skeptics Guide To Bond Repair */}
-        <Link
-          href="/blog/skeptics-guide-bond-repair"
-          className="group block rounded-2xl border border-base-300 bg-base-100 p-4 hover:bg-base-200/50 transition mb-6"
-        >
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full bg-base-200 grid place-items-center shrink-0">
-              <BookOpen className="w-4 h-4" aria-hidden="true" />
-            </div>
-            <div className="min-w-0">
-              <div className="text-base font-medium">
-                Skeptics Guide To Bond Repair
-              </div>
-              <div className="text-sm text-base-content/60 truncate">
-                A comprehensive guide to bond repair products for curly/wavy
-                hair, including what they are, when to use them, and which ones
-                are worth it.
-              </div>
-            </div>
-            <ChevronRight className="ml-auto w-4 h-4 text-base-content/50 group-hover:translate-x-0.5 transition" />
-          </div>
-        </Link>
-
         {/* Links */}
         <nav className="space-y-3">
           {/* Curls Monthly */}
