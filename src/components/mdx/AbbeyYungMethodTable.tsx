@@ -45,7 +45,7 @@ export default function AbbeyYungMethodTable() {
     {
       step: 7,
       name: 'Post-wash bond repair',
-      productType: 'Bond repair treatment (Living Proof Triple Bond Complex)',
+      productType: 'Bond repair treatment',
       frequency: 'As needed for very damaged hair',
       required: 'Optional',
     },

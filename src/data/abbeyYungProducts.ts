@@ -1,14 +1,32 @@
 // Auto-generated from abbey-yung.csv
 // Run: npm run convert-abbey-yung
 
+type Weight = 'heavy' | 'medium' | 'light' | 'very light' | 'unknown';
+type CleaningPower = 'light' | 'moderate' | 'strong';
+type ScalpType = 'normal' | 'dry' | 'oily' | 'extra oily';
+interface ProductLink {
+  url: string;
+  text: string;
+  retailer?: string;
+  icon?: 'shopping-cart' | 'external-link' | 'search';
+}
 export interface AbbeyYungProduct {
   product: string;
   drugstore: boolean;
   step: number;
   steps: number[];
   comments: string;
-  heaviness: string;
+  heaviness?: string;
   amazon: string;
+  frequency?: string;
+  texture?: string;
+  fragrance?: string;
+  bestFor?: string;
+  weight?: Weight | Weight[];
+  links?: ProductLink[];
+  cleaningPower?: CleaningPower[];
+  scalpType?: ScalpType[];
+  tags?: string[];
 }
 
 export const abbeyYungProducts: AbbeyYungProduct[] = [
@@ -18,8 +36,21 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     step: 1,
     steps: [1],
     comments: '',
-    heaviness: '',
+    heaviness: 'Very light',
     amazon: 'https://amzn.to/40XDnSc',
+    frequency: '1-2x a week',
+    texture: 'Thin liquidy spray',
+    fragrance: 'Fragrance-free',
+    bestFor: 'Most hair types, even those that are weighed down easily',
+    weight: ['very light'],
+    links: [
+      {
+        url: 'https://amzn.to/40XDnSc',
+        text: 'Buy on Amazon',
+        retailer: 'amazon',
+        icon: 'shopping-cart',
+      },
+    ],
   },
   {
     product: 'OGX Extra Strength Damage Remedy + Coconut Miracle Oil',
@@ -29,6 +60,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: '',
     heaviness: 'Heavy',
     amazon: 'https://amzn.to/4786c2n',
+    weight: ['heavy'],
   },
   {
     product: 'OGX Nourishing + Coconut Milk Anti-Breakage Serum',
@@ -38,98 +70,206 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: '',
     heaviness: 'Medium',
     amazon: 'https://amzn.to/4ouRnNn',
+    weight: ['medium'],
   },
   {
     product: 'Dove Scalp + Hair Therapy Clarify',
     drugstore: true,
     step: 3,
     steps: [3],
-    comments: 'Heavy duty clean',
+    comments: 'Residue free',
     heaviness: '',
     amazon: 'https://amzn.to/4fvzKcj',
+    bestFor: 'Normal, dry, or oily scalps',
+    frequency:
+      'Normal to dry scalps for weekly deep clean, normal to oily scalps as main shampoo',
+    texture: 'Lightweight gel',
+    fragrance: 'Sweet citrus',
+    cleaningPower: ['moderate', 'strong'],
+    scalpType: ['normal', 'dry', 'oily'],
+    tags: ['residue-free', 'clarifying-shampoo', 'daily-shampoo'],
   },
   {
     product: 'Garnier Fructis Pure Clean Purifying Shampoo',
     drugstore: true,
     step: 3,
     steps: [3],
-    comments: 'Hair feels heavy, weighed down, stiff',
+    comments: 'Residue free',
     heaviness: '',
     amazon: 'https://amzn.to/4mteZjI',
+    bestFor: 'Normal, dry, or oily scalps',
+    frequency:
+      'Normal to dry scalps for weekly deep clean, normal to oily scalps as main shampoo',
+    texture: 'Lightweight gel',
+    fragrance: 'Green apple',
+    cleaningPower: ['moderate'],
+    scalpType: ['normal', 'dry', 'oily'],
+    tags: ['residue-free', 'clarifying-shampoo', 'daily-shampoo'],
   },
   {
-    product: 'K18 Detox Shampoo',
+    product: 'K18 Peptide Prep Detox Shampoo',
     drugstore: false,
     step: 3,
     steps: [3],
-    comments: 'Heavy duty clean',
+    comments: 'Hard water deposit removal',
     heaviness: '',
     amazon: 'https://amzn.to/40YyNDe',
+    bestFor: 'Normal, dry, or oily scalps',
+    frequency:
+      'Normal to dry scalps for weekly deep clean, normal to oily scalps as main shampoo',
+    texture: 'Slightly stiff gel',
+    fragrance: 'Clean citrus',
+    cleaningPower: ['strong'],
+    scalpType: ['normal', 'dry', 'oily'],
+    tags: ['hard-water-deposit-removal', 'clarifying-shampoo', 'daily-shampoo'],
   },
   {
     product: "L'Oreal EverPure Clarifying Shampoo",
     drugstore: true,
     step: 3,
     steps: [3],
-    comments: 'Hair feels heavy, weighed down, stiff, normal/dry scalp',
+    comments: 'Hard water deposit removal, residue free',
     heaviness: '',
     amazon: 'https://amzn.to/4fwsTz9',
+    bestFor: 'Normal, dry, or oily scalps',
+    frequency:
+      'Normal to dry scalp for weekly deep clean, normal to oily scalps as main shampoo',
+    texture: 'Lightweight gel',
+    fragrance: 'Citrus, cedarwood, neroli',
+    cleaningPower: ['moderate'],
+    scalpType: ['normal', 'dry', 'oily'],
+    tags: [
+      'hard-water-deposit-removal',
+      'clarifying-shampoo',
+      'daily-shampoo',
+      'residue-free',
+    ],
   },
   {
     product: "L'Oréal Professionnel Paris Metal Detox Shampoo",
     drugstore: false,
     step: 3,
     steps: [3],
-    comments: 'Hard water, normal/dry scalp',
+    comments: 'Hard water deposit removal, conditioning',
     heaviness: '',
     amazon: 'https://amzn.to/4mVh8Fd',
+    bestFor: 'Normal to dry scalps, damaged hair in need of more conditioning',
+    frequency: 'Normal to dry scalps for weekly deep clean',
+    texture: 'Milky and creamy',
+    fragrance: 'Citrus and musky wood',
+    cleaningPower: ['light'],
+    tags: [
+      'conditioning-shampoo',
+      'hard-water-deposit-removal',
+      'clarifying-shampoo',
+      'fragile',
+    ],
   },
   {
     product: 'Living Proof Clarifying Detox Shampoo',
     drugstore: false,
     step: 3,
     steps: [3],
-    comments: 'Hard water, normal/dry scalp',
+    comments: 'Hard water deposit removal, conditioning',
     heaviness: '',
     amazon: 'https://amzn.to/4m8f78j',
+    bestFor: 'Normal to dry scalps, damaged hair in need of more conditioning',
+    frequency: 'Normal to dry scalps for weekly deep clean',
+    texture: 'Slightly creamy',
+    fragrance: 'Light citrus and green tea',
+    cleaningPower: ['light', 'moderate'],
+    scalpType: ['normal', 'dry', 'oily'],
+    tags: [
+      'conditioning-shampoo',
+      'hard-water-deposit-removal',
+      'clarifying-shampoo',
+      'fragile',
+    ],
   },
   {
     product: 'Ouai Detox',
     drugstore: false,
     step: 3,
     steps: [3],
-    comments: 'Heavy duty clean, Most powerful',
+    comments: 'Hard water deposit removal, residue free, heavy duty clean',
     heaviness: '',
     amazon: 'https://amzn.to/41zaYC4',
+    bestFor: 'Oily and extra oily scalps',
+    frequency:
+      'Oily and extra oily scalps for weekly deep clean, extra oily as main shampoo',
+    texture: 'Stiff gel',
+    fragrance: 'Rose floral',
+    cleaningPower: ['strong'],
+    scalpType: ['oily', 'extra oily'],
+    tags: ['hard-water-deposit-removal', 'residue-free', 'clarifying-shampoo'],
   },
   {
     product: 'Pantene Sheer Volume Shampoo',
     drugstore: true,
     step: 3,
     steps: [3],
-    comments: 'Heavy duty clean, Most powerful',
+    comments: 'Residue-free',
     heaviness: '',
     amazon: 'https://amzn.to/4mvbVn6',
+    bestFor: 'Oily and extra oily scalps',
+    frequency:
+      'Oily and extra oily scalps for weekly deep clean, extra oily as main shampoo',
+    texture: 'Lightweight gel',
+    fragrance: 'Fresh, clean, fruity',
+    cleaningPower: ['strong'],
+    scalpType: ['oily', 'extra oily'],
+    tags: ['residue-free', 'clarifying-shampoo', 'daily-shampoo'],
   },
   {
     product: 'Amika The Kure Shampoo',
     drugstore: false,
     step: 4,
     steps: [4],
-    comments: '',
-    heaviness: '',
+    comments: 'Conditioning, milder cleanse while strengthening damaged hair',
+    heaviness: 'Light to moderate cleaning power',
     amazon:
       'https://www.amazon.com/dp/B09B8YQ6RF?ref=t_ac_spc_accepted_tile&linkCode=tr1&tag=trevresa-20&linkId=B09B8YQ6RF_1772414975024',
+    bestFor: 'Coarse/thick hair that is NOT easily weighed down',
+    frequency: 'As often as needed',
+    texture: 'Moderately thick peralescent gel',
+    fragrance: 'Vanilla, grapefruit, apricot',
+    cleaningPower: ['light', 'moderate'],
+    tags: ['conditioning-shampoo', 'strength-repair-shampoo', 'fragile'],
   },
   {
     product: 'Dove Bond Strength Shampoo',
     drugstore: true,
     step: 4,
     steps: [4],
-    comments: '',
-    heaviness: '',
+    comments: 'Conditioning, heavier than intensive repair',
+    heaviness: 'Moderate cleaning power',
     amazon: 'https://amzn.to/4lnEK3Y',
+    bestFor:
+      'Coarse/thick hair that not easily weighed down, normal/dry scalps',
+    frequency: 'As often as needed',
+    texture: 'Gel-cream hybrid',
+    fragrance: 'Citrus, white floral, clean',
+    cleaningPower: ['moderate'],
+    tags: ['conditioning-shampoo', 'strength-repair-shampoo'],
   },
+  {
+    product: 'Dove Intensive Repair Shampoo',
+    drugstore: true,
+    step: 4,
+    steps: [4],
+    comments: 'Conditioning',
+    heaviness: 'Moderate to strong cleaning power',
+    amazon: 'https://amzn.to/4sJ9aBz',
+    bestFor:
+      'Coarse/thick hair that not easily weighed down, normal/dry scalps',
+    frequency: 'As often as needed',
+    texture: 'Gel-cream hybrid',
+    fragrance: 'Citrus, white floral, clean',
+    cleaningPower: ['moderate', 'strong'],
+    weight: ['very light', 'light', 'medium', 'heavy'],
+    tags: ['conditioning-shampoo', 'strength-repair-shampoo'],
+  },
+  /* discontinued
   {
     product: 'Garnier Strength Repair Shampoo',
     drugstore: true,
@@ -139,15 +279,70 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     heaviness: '',
     amazon: 'https://amzn.to/4llnMTC',
   },
+  */
+  {
+    product: 'Redken Acidic Bonding Shampoo',
+    drugstore: false,
+    step: 4,
+    steps: [4],
+    comments: 'Conditioning, strengthens damaged hair',
+    heaviness: 'Light to moderate cleaning power',
+    amazon: 'https://amzn.to/3O8SODY',
+    bestFor:
+      'Normal to dry scalps, coarse/thick hair that is NOT easily weighed down',
+    frequency: 'As often as needed',
+    texture: 'Stiff dense gel',
+    fragrance: 'Fresh, citrusy, floral',
+    cleaningPower: ['light', 'moderate'],
+    weight: ['medium', 'heavy'],
+    tags: ['conditioning-shampoo', 'strength-repair-shampoo', 'fragile'],
+  },
+  {
+    product: "L'OREAL Elvive Glycolic Gloss Shampoo",
+    drugstore: true,
+    step: 4,
+    steps: [4],
+    comments: 'Conditioning, soft lightweight results with boosted shine',
+    heaviness: '',
+    amazon: 'https://amzn.to/4dzOMPe',
+    bestFor: 'Most hair types, most scalp types',
+    frequency: 'As often as needed',
+    texture: 'Milky',
+    fragrance: 'Grapefruit, jasmine, and cedarwood',
+    cleaningPower: ['moderate', 'strong'],
+    tags: ['conditioning-shampoo', 'strength-repair-shampoo'],
+  },
+  {
+    product: "L'OREAL Everpure Glossing Shampoo",
+    drugstore: true,
+    step: 4,
+    steps: [4],
+    comments: 'Conditioning, heavier than Elvive Glycolic Gloss Shampoo',
+    heaviness: 'Moderate to strong cleaning power',
+    amazon: 'https://amzn.to/4t1J1i5',
+    bestFor: 'Most hair types, most scalp types',
+    frequency: 'As often as needed',
+    texture: 'Silky smooth and milky',
+    fragrance: 'Peony, bergamot',
+    cleaningPower: ['moderate', 'strong'],
+    tags: ['conditioning-shampoo', 'strength-repair-shampoo'],
+  },
   {
     product: "L'OREAL PARIS Bond Repair Sulfate Free Shampoo for Damaged Hair",
     drugstore: true,
     step: 4,
     steps: [4],
-    comments: '',
-    heaviness: '',
+    comments: 'Conditioning',
+    heaviness: 'Moderate to strong cleaning power',
     amazon: 'https://amzn.to/4mBUa5G',
+    bestFor: 'Most hair types, most scalp types',
+    frequency: 'As often as needed',
+    texture: 'Creamy and milky',
+    fragrance: 'White rose, lemon zest',
+    cleaningPower: ['moderate', 'strong'],
+    tags: ['conditioning-shampoo', 'strength-repair-shampoo'],
   },
+  /* discontinued
   {
     product: "Not Your Mother's Tough Love Bonding Shampoo",
     drugstore: true,
@@ -157,26 +352,25 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     heaviness: '',
     amazon: 'https://amzn.to/413pXEm',
   },
+*/
   {
     product:
       'Pureology Strength Cure Shampoo - For Damaged or Color-Treated Hair',
     drugstore: false,
     step: 4,
     steps: [4],
-    comments: '',
-    heaviness: '',
+    comments: 'Conditioning, strengthens damaged hair',
+    heaviness: 'Light to moderate cleaning power',
     amazon: 'https://amzn.to/4lgccsZ',
+    bestFor:
+      'Normal to dry scalps, coarse/thick hair that is NOT easily weighed down',
+    frequency: 'As often as needed',
+    texture: 'Moderately thick and creamy',
+    fragrance: 'Raspberry, peach, water flower',
+    cleaningPower: ['light', 'moderate'],
+    tags: ['conditioning-shampoo', 'strength-repair-shampoo', 'fragile'],
   },
-  {
-    product:
-      'Redken Acidic Bonding Concentrate Shampoo For Damaged Hair Repair',
-    drugstore: false,
-    step: 4,
-    steps: [4],
-    comments: '',
-    heaviness: '',
-    amazon: 'https://amzn.to/3Hgr1hr',
-  },
+  /* discontinued
   {
     product:
       'Garnier Fructis Hair Filler Bonding Inner Fiber Rinse Out Pre Shampoo Treatment With Bond Repair Complex,',
@@ -187,14 +381,21 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     heaviness: '',
     amazon: 'https://amzn.to/3HtedEj',
   },
+  */
   {
     product: 'k18',
     drugstore: false,
     step: 5,
     steps: [5],
-    comments: '',
-    heaviness: '',
+    comments: 'Reconnects keratin chains and disulfide bonds',
+    heaviness: 'Light to Medium',
     amazon: 'https://amzn.to/4lqESzv',
+    bestFor: 'Most hair types',
+    frequency: '6 consecutive washes, then as needed',
+    texture: 'Light to medium weight cream',
+    fragrance: 'Jasmine, peony',
+    weight: ['light', 'medium'],
+    tags: ['chemical-damage-repair'],
   },
   {
     product:
@@ -202,10 +403,18 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     drugstore: true,
     step: 5,
     steps: [5],
-    comments: '',
-    heaviness: '',
+    comments:
+      'Rebuilds weak ionic bonds to reinforce hair structure, can be used as a pre-shampoo treatment or post-shampoo treatment',
+    heaviness: 'Medium to Heavy',
     amazon: 'https://amzn.to/3Urp7xo',
+    bestFor: 'Most hair types but most likely to cause weigh down',
+    frequency: 'Weekly, more if needed',
+    texture: 'Moderately thick cream',
+    fragrance: 'White rose, lemon zest',
+    weight: ['medium', 'heavy'],
+    tags: ['other-damage-repair'],
   },
+  /* discontinued
   {
     product: "Not Your Mother's  Tough Love Intense Bonding Treatment",
     drugstore: true,
@@ -214,15 +423,22 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: '',
     heaviness: '',
     amazon: 'https://amzn.to/3JsdLqt',
-  },
+  }, */
   {
     product: 'OGX Repair & Protect Bond Protein Repair Pre-Shampoo Treatment',
     drugstore: true,
     step: 5,
     steps: [5],
-    comments: '',
-    heaviness: '',
+    comments:
+      'Abbey recommends using this after the shampoo instead of before for boosted effectiveness. Creates new hydrogen & ionic bonds to support internal keratin structure',
+    heaviness: 'Medium',
     amazon: 'https://amzn.to/4mdszrK',
+    bestFor: 'Most hair types but may cause weigh down',
+    frequency: 'Weekly, more if needed',
+    texture: 'Mid weight cream',
+    fragrance: 'Fresh and floral',
+    weight: ['medium'],
+    tags: ['other-damage-repair'],
   },
   {
     product:
@@ -230,9 +446,15 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     drugstore: false,
     step: 5,
     steps: [5],
-    comments: '',
-    heaviness: '',
+    comments: 'Captures metal ions, reinforces weakened bonds',
+    heaviness: 'Medium to Heavy',
     amazon: 'https://amzn.to/4oxv2P9',
+    bestFor: 'Most hair types but most likely to cause weigh down',
+    frequency: 'Weekly, more if needed',
+    texture: 'Moderately thick cream',
+    fragrance: 'Fresh, citrusy, floral',
+    weight: ['medium', 'heavy'],
+    tags: ['other-damage-repair'],
   },
   {
     product: 'Amika flash instant shine mask',
@@ -242,44 +464,110 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: 'Gloss',
     heaviness: 'Light',
     amazon: 'https://amzn.to/4oA1eSc',
+    weight: ['light'],
   },
   {
     product: 'amika the kure strength repair conditioner',
     drugstore: false,
     step: 6,
     steps: [6],
-    comments: 'Conditioner',
-    heaviness: 'Medium',
+    comments: 'Conditioner for softness without intense smoothing',
+    heaviness: 'Medium to heavy',
     amazon: 'https://amzn.to/4fraofq',
+    bestFor: 'Coarse/thick hair that is NOT easily weighed down',
+    frequency: 'As often as needed',
+    texture: 'Thick, rich, balmy',
+    fragrance: 'Vanilla, grapefruit, apricot',
+    weight: ['medium', 'heavy'],
   },
   {
     product: 'Dove Conditioner Intensive Repair for Damaged Hair',
     drugstore: true,
     step: 6,
     steps: [6],
-    comments: 'Conditioner',
-    heaviness: 'Medium',
+    comments: 'Conditioner, softening and smoothing without heaviness',
+    heaviness: 'Light',
     amazon: 'https://amzn.to/46Lyhw4',
+    bestFor: 'Most hair types',
+    frequency: 'As often as needed',
+    texture: 'Lightweight lotion-like cream',
+    fragrance: 'Citrus, white floral, clean',
+    weight: ['light'],
+  },
+  {
+    product: 'Dove Bond Strength Conditioner',
+    drugstore: true,
+    step: 6,
+    steps: [6],
+    comments: 'Conditioner for intense smoothing',
+    heaviness: 'Medium to heavy',
+    amazon: 'https://amzn.to/3OjSZw2',
+    bestFor: 'Coarse/thick hair that is super tangly and difficult to manage',
+    frequency: 'As often as needed',
+    texture: 'Lightweight gel-lotion',
+    fragrance: 'Citrus, white floral, clean',
+    weight: ['medium', 'heavy'],
   },
   {
     product: 'Dove Hair Intensive Repair 10in1 Serum Mask for Damaged Hair',
     drugstore: true,
     step: 6,
     steps: [6],
-    comments: 'Mask',
-    heaviness: 'Heavy',
+    comments:
+      'Mask, silky soft less sleek results and better repair than dove bond strength',
+    heaviness: 'Medium',
     amazon: 'https://amzn.to/4mxJ4OX',
+    bestFor: 'Most hair types',
+    frequency: 'As often as needed',
+    texture: 'Moderately thick cream',
+    fragrance: 'Citrus, white floral, clean',
+    weight: ['medium'],
+  },
+  {
+    product: 'Dove Hair Bond Strength 10in1 Serum Mask',
+    drugstore: true,
+    step: 6,
+    steps: [6],
+    comments: 'Mask for soft, sleek, silky results',
+    heaviness: 'Medium to heavy',
+    amazon: 'https://amzn.to/4t2leyD',
+    bestFor:
+      'Coarse/thick hair that is difficult to manage, hair that is NOT easily weighed down',
+    frequency: 'As often as needed',
+    texture: 'Moderately thick silky gel cream',
+    fragrance: 'Citrus, white floral, clean',
+    weight: ['medium', 'heavy'],
+  },
+  {
+    product: 'Loreal Bond Repair Conditioner',
+    drugstore: true,
+    step: 6,
+    steps: [6],
+    comments: 'Conditioner for softness without intense smoothing',
+    heaviness: 'Heavy',
+    amazon: 'https://amzn.to/4dF9jlt',
+    bestFor: 'Coarse/thick hair that NOT easily weighed down',
+    frequency: 'As often as needed',
+    texture: 'Very thick and ultra creamy',
+    fragrance: 'White rose, lemon zest',
+    weight: ['heavy'],
   },
   {
     product: 'Elizavecca cer-100 collagen coating hair protein treatment',
     drugstore: false,
     step: 6,
     steps: [6],
-    comments: 'Mask',
-    heaviness: 'Heavy',
+    comments: 'Soft, lightweight mask for damage repair',
+    heaviness: 'Very light',
+    bestFor: 'Fine/thin hair',
+    frequency: 'As often as needed',
+    texture: 'Light lotion-like cream',
+    fragrance: 'Light, fresh and floral',
+    weight: ['very light'],
     amazon:
       'https://www.amazon.com/dp/B01I2ZQJSG?ref=t_ac_spc_accepted_tile&linkCode=tr1&tag=trevresa-20&linkId=B01I2ZQJSG_1772414619389',
   },
+  /* discontinued
   {
     product: 'Garnier Fructis Hair Filler Strength Repair Conditioner',
     drugstore: true,
@@ -288,16 +576,8 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: 'Conditioner',
     heaviness: 'Medium',
     amazon: 'https://amzn.to/3HimPOe',
-  },
-  {
-    product: "L'Oreal Paris Bonding Conditioner for Color Treated Hair",
-    drugstore: true,
-    step: 6,
-    steps: [6],
-    comments: 'Conditioner',
-    heaviness: 'Medium',
-    amazon: 'https://amzn.to/46KifTc',
-  },
+  }, */
+
   {
     product:
       "L'Oreal Paris Elvive Hyaluron Plump Flash Hydration Wonder Water Hair Rinse",
@@ -307,6 +587,37 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: 'Gloss',
     heaviness: 'Light',
     amazon: 'https://amzn.to/4ln7Y2O',
+    weight: ['light'],
+  },
+  {
+    product: 'Loreal Elvive Glycolic Gloss',
+    drugstore: true,
+    step: 6,
+    steps: [6],
+    comments:
+      'Conditioner, good for hair that needs volume, shine and smoothing',
+    heaviness: 'Light',
+    amazon: 'https://amzn.to/4t4A9IF',
+    bestFor: 'Most hair types including fine/thin hair',
+    frequency: 'As often as needed',
+    texture: 'Grapefruit, jasmine, and cedarwood',
+    fragrance: 'Fresh and floral',
+    weight: ['light'],
+  },
+  {
+    product: 'Loreal Everpure Glossing Conditioner',
+    drugstore: true,
+    step: 6,
+    steps: [6],
+    comments:
+      'Conditioner for silky sleek results without heaviness, smoother results than the Elvive conditioner',
+    heaviness: 'Medium',
+    amazon: 'https://amzn.to/3OvU6cc',
+    bestFor: 'Most hair types',
+    frequency: 'As often as needed',
+    texture: 'Silky soft and balmy',
+    fragrance: 'Peony, bergamot',
+    weight: ['medium'],
   },
   {
     product: "L'Oreal Paris Glossing Lamination Hair Mask with Glycolic Acid",
@@ -316,7 +627,10 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: 'Gloss',
     heaviness: 'Light',
     amazon: 'https://amzn.to/46R1FRI',
+    weight: ['light'],
   },
+
+  /* discontinued
   {
     product: "Not Your Mother's Tough Love Conditioner",
     drugstore: true,
@@ -326,14 +640,21 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     heaviness: 'Medium',
     amazon: 'https://amzn.to/40YlKBR',
   },
+  */
   {
     product: 'OGX Repair & Protect Bond Protein Repair 1-Minute Treatment Mask',
     drugstore: true,
     step: 6,
     steps: [6],
-    comments: 'Mask',
-    heaviness: 'Heavy',
+    comments: 'Mask for soft, breathable results',
+    heaviness: 'Medium',
     amazon: 'https://amzn.to/45bxmDV',
+    bestFor:
+      'Normal to coarse/thick hair that need something a little lighter than the Dove masks',
+    frequency: 'As often as needed',
+    texture: 'Thick, soft, plush cream',
+    fragrance: 'Fresh and floral',
+    weight: ['medium'],
   },
   {
     product:
@@ -341,46 +662,102 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     drugstore: true,
     step: 6,
     steps: [6],
-    comments: 'Mask',
-    heaviness: 'Heavy',
+    comments: 'Mask for soft, voluminous results ',
+    heaviness: 'Very light to light',
     amazon: 'https://amzn.to/40YDeOm',
+    bestFor: 'Fine/thin hair',
+    frequency: 'As often as needed',
+    texture: 'Light and airy cream',
+    fragrance: 'Warm, tropical, fruity, coconut',
+    weight: ['light'],
   },
+  {
+    product: 'Pantene Miracle Rescue Mask',
+    drugstore: true,
+    step: 6,
+    steps: [6],
+    comments: 'Mask, more conditioning than the other Pantene option',
+    heaviness: 'Light',
+    amazon: 'https://amzn.to/3Oibdhv',
+    bestFor: 'Most hair types',
+    frequency: 'As often as needed',
+    texture: 'Whipped light cream',
+    fragrance: 'Warm, tropical, fruity, coconut',
+    weight: ['light'],
+  },
+
   {
     product: 'Pureology Strength Cure Conditioner',
     drugstore: false,
     step: 6,
     steps: [6],
-    comments: 'Conditioner',
+    comments: 'Conditioner, for softness without sacrificing volume',
     heaviness: 'Medium',
     amazon: 'https://amzn.to/3Uq9FBE',
+    bestFor: 'Most hair types',
+    frequency: 'As often as needed',
+    texture: 'Moderately thick, soft cream',
+    fragrance: 'Raspberry, peach, water flower',
+    weight: ['medium'],
   },
   {
     product: 'Redken Acidic Bonding Conditioner',
     drugstore: false,
     step: 6,
     steps: [6],
-    comments: 'Conditioner',
-    heaviness: 'Medium',
+    comments: 'Conditioner for those who want a thicker, creamier option',
+    heaviness: 'Heavy',
     amazon: 'https://amzn.to/3JteeIY',
+    bestFor: 'Coarse/thick hair that is NOT easily weighed down',
+    frequency: 'As often as needed',
+    texture: 'Very thick, dense, and creamy',
+    fragrance: 'Fresh, citrusy, floral',
+    weight: ['heavy'],
   },
   {
     product: 'Amika the kure intense strength repair mask',
     drugstore: false,
     step: 6,
     steps: [6],
-    comments: 'Mask',
+    comments: 'Mask for hair that benefits from heavy conditioning',
     heaviness: 'Heavy',
     amazon: 'https://amzn.to/4lqtP9M',
+    bestFor: 'Coarse/thick hair that is NOT easily weighed down',
+    frequency: 'As often as needed',
+    texture: 'Very thick, rich, buttery cream',
+    fragrance: 'Vanilla, sandelwood, grapefruit',
+    weight: ['heavy'],
   },
   {
     product: 'Living Proof Triple Bond Complex',
     drugstore: false,
     step: 7,
     steps: [7],
-    comments: '',
-    heaviness: '',
+    comments: 'Create new hydrogen, ionic and covalent bonds',
+    heaviness: 'Light to Medium',
     amazon: 'https://amzn.to/45yVak5',
+    bestFor:
+      'Most hair types but may weigh some hair down, heat is needed to active this product so best for those who heat style',
+    frequency: 'Weekly, more if needed',
+    texture: 'Lightweight cream',
+    fragrance: 'Fresh and floral',
+    weight: ['light', 'medium'],
   },
+  {
+    product: 'Pantene Pro-Vitamin Essence',
+    drugstore: true,
+    step: 7,
+    steps: [7],
+    comments: 'Increases hair tensile strength',
+    heaviness: 'Very light',
+    amazon: 'https://amzn.to/4tIykkB',
+    bestFor: 'Most hair types, even those that are weighed down easily',
+    frequency: 'As often as needed',
+    texture: 'Thin liquidy spray',
+    fragrance: 'Warm, tropical, fruity, coconut',
+    weight: ['very light'],
+  },
+
   {
     product: "Bumble and bumble. Hairdresser's Invisible Oil Primer",
     drugstore: false,
@@ -389,6 +766,12 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: '',
     heaviness: 'Heavy',
     amazon: 'https://amzn.to/4fz9FJi',
+    bestFor:
+      'Coarse/thick hair nedding heavy conditioning and smoothing than liquid sprays, that is NOT easily weighed down',
+    frequency: 'As often as needed',
+    texture: 'Very thick and creamy',
+    fragrance: 'Fruit, tropical florals, rich musk',
+    weight: ['heavy'],
   },
   {
     product:
@@ -396,10 +779,16 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     drugstore: true,
     step: 8,
     steps: [8],
-    comments: '',
+    comments: 'The most conditioning drugstore option',
     heaviness: 'Heavy',
     amazon: 'https://amzn.to/41xnAtv',
+    bestFor: 'Coarse/thick hair that is NOT easily weighed down',
+    frequency: 'As often as needed',
+    texture: 'Thick and creamy',
+    fragrance: 'Almond blossom and creamy musk',
+    weight: ['heavy'],
   },
+  /* discontinued
   {
     product: 'Not Your Mother’s Tough Love Bonding Leave-In Protector',
     drugstore: true,
@@ -409,15 +798,22 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     heaviness: 'Medium',
     amazon: 'https://amzn.to/3UVv5GW',
   },
+  */
   {
     product:
       'OGX Repair & Protect Bond Protein Repair 450°F Heat Protect Spray,',
     drugstore: true,
     step: 8,
     steps: [8],
-    comments: '',
+    comments:
+      'Good in-between for more conditioning than Pantene and TRESemmé, but still lighter than creamier formulas',
     heaviness: 'Medium',
     amazon: 'https://amzn.to/4fsDTNX',
+    bestFor: 'Most hair types',
+    frequency: 'Weekly, more if needed',
+    texture: 'Light liquidy spray',
+    fragrance: 'Fresh and floral',
+    weight: ['medium'],
   },
   {
     product:
@@ -425,9 +821,15 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     drugstore: true,
     step: 8,
     steps: [8],
-    comments: '',
-    heaviness: 'Light',
-    amazon: '',
+    comments: 'Great for fine/thin hair',
+    heaviness: 'Very light',
+    amazon: 'https://amzn.to/4stoB0d',
+    bestFor:
+      'Hair types that are easily weighed down but still need detangling and damage support',
+    frequency: 'As often as needed',
+    texture: 'Thin liquidy spray',
+    fragrance: 'Warm, tropical, fruity, coconut',
+    weight: ['very light'],
   },
   {
     product:
@@ -438,6 +840,12 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: '',
     heaviness: 'Heavy',
     amazon: 'https://amzn.to/45JpJ7V',
+    bestFor:
+      "Normal to thick/coarse hair that's not easily weighed down, great for VERY tangle-prone hair",
+    frequency: 'As often as needed',
+    texture: 'Thick and creamy',
+    fragrance: 'Rose, floral, ginger, cedarwood',
+    weight: ['heavy'],
   },
   {
     product: 'Redken One United All-In-One Leave In Conditioner',
@@ -445,26 +853,44 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     step: 8,
     steps: [8],
     comments: '',
-    heaviness: 'Medium',
+    heaviness: 'Medium to Heavy',
     amazon: 'https://amzn.to/4mzgcpB',
+    bestFor:
+      'Normal to thick/coarse hair OR any hair types that are dry/damaged/tangled and need more intensive conditioning than liquidy options',
+    frequency: 'Weekly, more if needed',
+    texture: 'Creamy',
+    fragrance: 'Light and clean',
+    weight: ['medium', 'heavy'],
   },
   {
-    product: 'Tresemme Heat Protect Hairspray Keratin Smooth for Frizz Control',
+    product: 'Tresemme Heat Tamer',
     drugstore: true,
     step: 8,
     steps: [8],
-    comments: '',
-    heaviness: 'Medium',
-    amazon: 'https://amzn.to/4osa18u',
+    comments: 'Lightweight smoothing and frizz control',
+    heaviness: 'Very light',
+    amazon: 'https://amzn.to/4vlVQFB',
+    bestFor:
+      'Hair types  that are easily weighed down but not prone to heavy tangling',
+    frequency: 'As often as needed',
+    texture: 'Thin liquidy spray',
+    fragrance: 'Fresh, clean, floral',
+    weight: ['very light'],
   },
   {
-    product: 'TRESemmé Heat Tamer Spray',
+    product: 'TRESemmé Keratin Smooth Blowout',
     drugstore: true,
     step: 8,
     steps: [8],
-    comments: '',
+    comments:
+      'Lightweight smoothing and frizz control, a bit more conditioning and smoothing than Heat Tamer',
     heaviness: 'Light',
-    amazon: 'https://amzn.to/4mHWb0l',
+    amazon: 'https://amzn.to/3NRnwS0',
+    bestFor: 'Fine/thin to normal hair',
+    frequency: 'As often as needed',
+    texture: 'Thin liquidy spray',
+    fragrance: 'Fresh, fruity',
+    weight: ['light'],
   },
   {
     product: 'K18 AstroLift™ Reparative Volume Spray',
@@ -474,6 +900,8 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: 'Volume',
     heaviness: '',
     amazon: 'https://amzn.to/3UnU5Xb',
+    tags: ['style-volume'],
+    weight: ['medium'],
   },
   {
     product: 'Living Proof Full Dry Volume & Texture Spray',
@@ -483,6 +911,8 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: 'Texture',
     heaviness: '',
     amazon: 'https://amzn.to/4mdu1dG',
+    tags: ['style-texture', 'style-volume'],
+    weight: ['medium'],
   },
   {
     product: 'Oribe Dry Texturizing Spray',
@@ -492,6 +922,8 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: 'Texture',
     heaviness: '',
     amazon: 'https://amzn.to/413tEtI',
+    tags: ['style-texture'],
+    weight: ['medium'],
   },
   {
     product: 'R+Co Intense Hold shaping balm',
@@ -501,6 +933,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: 'Hold',
     heaviness: '',
     amazon: 'https://amzn.to/4loYO6a',
+    tags: ['style-hold'],
   },
   {
     product: 'TRESemmé Dry Texture Finishing Mist',
@@ -510,6 +943,8 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: 'Texture',
     heaviness: '',
     amazon: 'https://amzn.to/4mAAhfd',
+    tags: ['style-texture'],
+
   },
   {
     product: 'TRESemmé Plumping Mousse Amplified Volume',
@@ -519,6 +954,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: 'Volume',
     heaviness: '',
     amazon: 'https://amzn.to/45cJEMj',
+    tags: ['style-volume'],
   },
   {
     product: 'Bumble & Bumble Invisible Oil Styling Cream',
@@ -528,6 +964,8 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: '',
     heaviness: 'Medium, Heavy',
     amazon: 'https://amzn.to/4ljiV5t',
+    tags: ['style-hold'],
+    weight: ['medium', 'heavy'],
   },
   {
     product:
@@ -538,6 +976,8 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: '',
     heaviness: 'Medium',
     amazon: 'https://amzn.to/469LpKx',
+    tags: ['style-smoothing'],
+    weight: ['medium'],
   },
   {
     product:
@@ -548,16 +988,10 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: '',
     heaviness: 'Medium',
     amazon: 'https://amzn.to/4oJil3X',
+    tags: ['style-smoothing'],
+    weight: ['medium'],
   },
-  {
-    product: "L'Oreal Elvive Total Repair 5 Protein Recharge Treatment",
-    drugstore: true,
-    step: 10,
-    steps: [10],
-    comments: '',
-    heaviness: 'Medium, Heavy',
-    amazon: '',
-  },
+
   {
     product: "L'Oreal Paris Blow Dry Primer for 48 HR Frizz Control",
     drugstore: true,
@@ -566,6 +1000,8 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: '',
     heaviness: 'Light, Medium',
     amazon: 'https://amzn.to/46WOFdn',
+    tags: ['style-heat'],
+    weight: ['light', 'medium'],
   },
   {
     product: 'Living Proof No Frizz Vanishing Oil',
@@ -575,6 +1011,8 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: '',
     heaviness: 'Light',
     amazon: 'https://amzn.to/4llTv7e',
+    tags: ['style-heat', 'style-smoothing'],
+    weight: ['light'],
   },
   {
     product:
@@ -585,6 +1023,8 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: '',
     heaviness: 'Light',
     amazon: 'https://amzn.to/45tE730',
+    tags: ['style-heat', 'style-smoothing'],
+    weight: ['light'],
   },
   {
     product: 'OGX Repair & Protect Bond Protein Repair 3-in-1 Oil Mist',
@@ -594,6 +1034,8 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: '',
     heaviness: 'Light',
     amazon: 'https://amzn.to/4mw8axI',
+    tags: ['style-heat', 'style-smoothing'],
+    weight: ['light'],
   },
   {
     product: 'Pantene Miracle Rescue 3 in 1 Leave In Conditioner',
@@ -603,6 +1045,8 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: '',
     heaviness: 'Medium, Heavy',
     amazon: 'https://amzn.to/45M0gus',
+    tags: ['style-smoothing', 'style-softening'],
+    weight: ['medium', 'heavy'],
   },
   {
     product: 'Redken Acidic Bonding Leave-In',
@@ -612,6 +1056,8 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: '',
     heaviness: 'Light, Medium',
     amazon: 'https://amzn.to/41CVo8x',
+    tags: ['style-smoothing', 'style-softening'],
+    weight: ['light', 'medium'],
   },
   {
     product: 'Amika Midnight Mender',
@@ -622,6 +1068,8 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     heaviness: '',
     amazon:
       'https://www.amazon.com/dp/B0F5Y7NPDH?ref=t_ac_spc_accepted_tile&linkCode=tr1&tag=trevresa-20&linkId=B0F5Y7NPDH_1772415128848',
+    tags: ['between-wash-dryness-relief'],
+    weight: ['unknown'],
   },
   {
     product: 'Amika Perk Up Plus',
@@ -631,6 +1079,8 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: 'Dry shampoo',
     heaviness: '',
     amazon: 'https://amzn.to/4mOhA7Z',
+    tags: ['between-wash-oil-control-relief'],
+    weight: ['unknown'],
   },
   {
     product:
@@ -641,6 +1091,8 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: 'Hair feeling dry between wash',
     heaviness: '',
     amazon: 'https://amzn.to/45VYHu5',
+    tags: ['between-wash-dryness-relief'],
+    weight: ['unknown'],
   },
   {
     product: 'Dove Volume Advanced Dry Shampoo',
@@ -650,6 +1102,8 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: 'Dry shampoo',
     heaviness: '',
     amazon: 'https://amzn.to/41RAcMb',
+    tags: ['between-wash-oil-control-relief'],
+    weight: ['unknown'],
   },
   {
     product: 'IGK GOOD BEHAVIOR Spirulina Protein Smoothing Spray',
@@ -660,6 +1114,8 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     heaviness: '',
     amazon:
       'https://www.amazon.com/dp/B0895K6LG7?ref=t_ac_spc_accepted_tile&linkCode=tr1&tag=trevresa-20&linkId=B0895K6LG7_1772414908058',
+    tags: ['between-wash-heat-protection'],
+    weight: ['unknown'],
   },
   {
     product: 'Living Proof Perfect Hair Day Advanced Clean Dry shampoo',
@@ -669,6 +1125,8 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: 'Dry shampoo',
     heaviness: '',
     amazon: 'https://amzn.to/3UBkykc',
+    tags: ['between-wash-oil-control-relief'],
+    weight: ['unknown'],
   },
   {
     product: 'Living Proof Perfect Hair Day Heat Styling Spray',
@@ -678,6 +1136,8 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: 'Heat protection',
     heaviness: '',
     amazon: 'https://amzn.to/4oIjY1R',
+    tags: ['between-wash-heat-protection'],
+    weight: ['unknown'],
   },
   {
     product: 'Moroccanoil Perfect Defense Heat Protectant',
@@ -687,6 +1147,8 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: 'Heat protection',
     heaviness: '',
     amazon: 'https://amzn.to/4fIjRzb',
+    tags: ['between-wash-heat-protection'],
+    weight: ['unknown'],
   },
   {
     product: "Not Your Mother's Clean Freak Dry Shampoo",
@@ -696,6 +1158,8 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: 'Dry shampoo',
     heaviness: '',
     amazon: 'https://amzn.to/3V9947G',
+    tags: ['between-wash-oil-control-relief'],
+    weight: ['unknown'],
   },
   {
     product: 'ORIBE Gold Lust Dry Heat Protection Spray',
@@ -705,6 +1169,8 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: 'Heat protection',
     heaviness: '',
     amazon: 'https://amzn.to/45MewT1',
+    tags: ['between-wash-heat-protection'],
+    weight: ['unknown'],
   },
   {
     product: 'OGX Nourishing + Coconut Oil Weightless Hydrating Oil Mist',
@@ -714,6 +1180,8 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: 'Hair feeling dry between wash',
     heaviness: 'Light',
     amazon: 'https://amzn.to/3J74V1h',
+    tags: ['between-wash-dryness-relief'],
+    weight: ['light'],
   },
   {
     product: 'Amika Superfruit Star',
@@ -724,6 +1192,8 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     heaviness: 'Light',
     amazon:
       'https://www.amazon.com/dp/B0DX4KRQQ7?ref=t_ac_spc_accepted_tile&linkCode=tr1&tag=trevresa-20&linkId=B0DX4KRQQ7_1772415091642',
+    tags: ['between-wash-dryness-relief'],
+    weight: ['light'],
   },
   {
     product: 'Dove Damage Therapy Intensive Repair 10 in 1 Serum',
@@ -733,6 +1203,8 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: 'Hair feeling dry between wash',
     heaviness: 'Medium',
     amazon: 'https://amzn.to/3Vez0yF',
+    tags: ['between-wash-dryness-relief'],
+    weight: ['medium'],
   },
   {
     product: 'OGX Renewing + Argan Oil of Morocco Extra Penetrating Oil',
@@ -742,5 +1214,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: 'Hair feeling dry between wash',
     heaviness: 'Heavy',
     amazon: 'https://amzn.to/4fJghVF',
+    tags: ['between-wash-dryness-relief'],
+    weight: ['heavy'],
   },
 ];
