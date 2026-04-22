@@ -1047,7 +1047,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Thin liquidy spray',
     fragrance: 'Warm, tropical, fruity, coconut',
     weight: ['very light'],
-    img: '/images/blog/the-abbey-yung-method/21.png"',
+    img: '/images/blog/the-abbey-yung-method/21.png',
     links: [
       {
         url: 'https://amzn.to/4stoB0d',
@@ -1385,7 +1385,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
       'https://www.amazon.com/dp/B0F5Y7NPDH?ref=t_ac_spc_accepted_tile&linkCode=tr1&tag=trevresa-20&linkId=B0F5Y7NPDH_1772415128848',
     tags: ['between-wash-dryness-relief'],
     weight: ['unknown'],
-    img: '/images/blog/the-abbey-yung-method/amika-midnight-mender.png',
+    img: '/images/blog/the-abbey-yung-method/amika-mender-mender.png',
     links: [
       {
         url: 'https://amzn.to/4lqtP9M',

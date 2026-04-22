@@ -112,10 +112,10 @@ function formatWeightBudget(state: QuizState): string {
   let w = '';
   switch (state.weight) {
     case 'very light':
-      w = 'Hair is easily weighed down — routines favor the lightest products.';
+      w = 'Hair is easily weighed down, choose the lightest products.';
       break;
     case 'light':
-      w = 'Hair is easily weighed down — lighter products usually work best.';
+      w = 'Hair is easily weighed down, lighter products usually work best.';
       break;
     case 'medium':
       w = 'Hair tolerates a moderate amount of product.';

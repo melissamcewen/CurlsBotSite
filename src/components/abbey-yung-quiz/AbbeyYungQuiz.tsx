@@ -138,11 +138,10 @@ export function AbbeyYungQuiz() {
       <div className="flex flex-col gap-6">
         <blockquote className="border-l-4 border-primary pl-4 text-sm italic text-base-content">
           This quiz is my interpretation of Abbey Yung&apos;s method, built by
-          studying her content. I&apos;m not Abbey and this isn&apos;t official
-          — I&apos;m just someone who watched a lot of videos and took notes.
+          studying her content. I&apos;m not Abbey and this isn&apos;t endorsed by Abbey. I&apos;m just someone who watched a lot of videos and took notes.
           Her content is the authoritative source. If you want to learn more
           about this please read{' '}
-          <Link href="/blog/the-abbey-yung-method" className="link link-hover">
+          <Link href="/blog/the-abbey-yung-method" className="link link-primary" target="_blank">
             my guide to the Abbey Yung Method
           </Link>
           .
@@ -172,7 +171,7 @@ export function AbbeyYungQuiz() {
         I&apos;m just someone who watched a lot of videos and took notes. Her
         content is the authoritative source. If you want to learn more about
         this please read{' '}
-        <Link href="/blog/the-abbey-yung-method" className="link link-hover">
+        <Link href="/blog/the-abbey-yung-method" className="link link-primary">
           my guide to the Abbey Yung Method
         </Link>
         .
@@ -201,7 +200,8 @@ export function AbbeyYungQuiz() {
                   these; others don&apos;t. You can read more in our{' '}
                   <Link
                     href="/blog/skeptics-guide-bond-repair"
-                    className="link link-hover"
+                    className="link link-primary"
+                    target="_blank"
                   >
                     bond repair guide
                   </Link>
@@ -383,7 +383,7 @@ export function AbbeyYungQuiz() {
             <Q title="How often do you deal with tangles?">
               <div className="flex flex-col gap-3">
                 {[
-                  ['rare', 'Rarely — easy to detangle'],
+                  ['rare', 'Rarely, it\'s easy to detangle'],
                   ['sometimes', 'Sometimes get tangles'],
                   ['constant', 'Constant tangling issues'],
                 ].map(([v, label]) => (
@@ -429,7 +429,8 @@ export function AbbeyYungQuiz() {
               extra={
                 <Link
                   href="/blog/curly-hair-hard-water"
-                  className="link link-hover text-sm"
+                  className="link link-primary text-sm"
+                  target="_blank"
                 >
                   How to tell if you have hard water →
                 </Link>
@@ -464,7 +465,7 @@ export function AbbeyYungQuiz() {
                 {[
                   [
                     'strong',
-                    'I need a strong shampoo — otherwise my hair still feels dirty',
+                    'I need a strong shampoo, otherwise my hair still feels dirty',
                   ],
                   [
                     'normal',
@@ -472,7 +473,7 @@ export function AbbeyYungQuiz() {
                   ],
                   [
                     'gentle',
-                    'Shampoo tends to make my hair feel dry or rough — I need something gentle',
+                    'Shampoo tends to make my hair feel dry or rough, I need something gentle',
                   ],
                 ].map(([v, label]) => (
                   <button
@@ -515,13 +516,13 @@ export function AbbeyYungQuiz() {
                 {[
                   [
                     'heavy',
-                    'Loves lots of product — never weighed down',
+                    'Loves lots of product and is never weighed down',
                   ],
                   ['medium', 'Fine with a moderate amount'],
                   ['light', 'Easily weighed down'],
                   [
                     'very-light',
-                    'Anything is too much — even a little product weighs it down',
+                    'Anything is too much, even a little product weighs it down',
                   ],
                   ['unknown', 'Not sure'],
                 ].map(([v, label]) => (

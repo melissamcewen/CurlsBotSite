@@ -19,17 +19,6 @@ export const metadata: Metadata = {
 export default function AbbeyYungIshRoutinePage() {
   return (
     <div className="container mx-auto max-w-3xl px-4 py-8">
-      <div className="alert alert-info mb-6 rounded-2xl text-base-content">
-        <FlaskConical className="h-6 w-6" />
-        <span>
-          This is an experimental{' '}
-          <Link href="/labs" className="link link-hover">
-            Labs
-          </Link>{' '}
-          tool — results use CurlsBot&apos;s product data and logic, not medical
-          advice.
-        </span>
-      </div>
 
       <div className="mb-8 flex items-center gap-3">
         <Avatar imageUrl="/normal.svg" altText="Curlsbot" />
