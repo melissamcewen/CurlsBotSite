@@ -8,4 +8,11 @@ export {
   serializeQuizSearchParams,
   PARAM_RESULTS,
 } from './urlParams';
-export { buildHairProfileBullets } from './hairProfileSummary';
+export {
+  buildHairProfileBullets,
+  buildHairProfileSections,
+} from './hairProfileSummary';
+export type {
+  HairProfileSection,
+  HairProfileSectionId,
+} from './hairProfileSummary';

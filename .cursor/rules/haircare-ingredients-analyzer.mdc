@@ -1,0 +1,18 @@
+---
+description: Use when working with haircare-ingredients-analyzer, ingredient lists, product analysis, or bundled ingredient data
+alwaysApply: false
+---
+
+# haircare-ingredients-analyzer
+
+This package is maintained in-repo; treat it as potentially imperfect and verify behavior when something looks off.
+
+- Use types from **haircare-ingredients-analyzer** when working with it.
+- Load ingredient data with **`getBundledDatabase()`** from the library—do not maintain separate ingredient data files.
+- Library docs: @docs/haircareanalyzer.md
+
+Map analysis result statuses to DaisyUI semantic colors:
+
+- `caution` → `warning`
+- `warning` → `error`
+- `ok` → `info`

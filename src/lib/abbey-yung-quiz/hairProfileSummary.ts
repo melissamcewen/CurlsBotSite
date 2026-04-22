@@ -100,12 +100,12 @@ function formatScalpWash(state: QuizState): string {
 
 function formatWater(state: QuizState): string {
   if (state.hardWater === true) {
-    return 'You indicated hard water — buildup-focused clarifying can help.';
+    return 'You indicated you wash your hair with hard water, your ideal clarifying shampoo should be able to remove hard water deposits.';
   }
   if (state.hardWater === false) {
-    return 'You indicated soft water.';
+    return 'You indicated soft water, you can use any clarifying shampoo.';
   }
-  return 'Hard water: not sure — clarify if you notice buildup or mineral film.';
+  return 'Hard water: not sure, if you notice a lot of buildup or films on your hair it might be worth testing a clarifying shampoo that can remove hard water deposits.';
 }
 
 function formatWeightBudget(state: QuizState): string {
@@ -192,55 +192,94 @@ function formatBetweenBoosts(state: QuizState): string | null {
   return combined || null;
 }
 
+export type HairProfileSectionId =
+  | 'basics'
+  | 'heatScalp'
+  | 'waterRoutine'
+  | 'between';
+
+export type HairProfileSection = {
+  id: HairProfileSectionId;
+  title: string;
+  lines: string[];
+};
+
 /**
- * Short bullet lines for the results “hair snapshot” card.
+ * Grouped lines for the results “hair snapshot” card UI.
+ */
+export function buildHairProfileSections(
+  state: QuizState,
+  answers: RawAnswers,
+): HairProfileSection[] {
+  const basics: string[] = [];
+
+  const hl = answers.hairLength ? HAIR_LENGTH[answers.hairLength] : null;
+  if (hl) {
+    basics.push(`Length: ${hl}.`);
+  }
+
+  const types = answers.damageTypes.filter((t) => t !== 'none');
+  if (types.length > 0) {
+    basics.push(
+      `History: ${oxfordJoin(types.map((t) => DAMAGE_TYPE[t] ?? t))}.`,
+    );
+  } else if (answers.damageTypes.includes('none')) {
+    basics.push('History: none of the listed chemical or heat-damage types.');
+  }
+
+  const signs = answers.damageSigns.filter((s) => s !== 'none');
+  if (signs.length > 0) {
+    basics.push(
+      `What you notice: ${oxfordJoin(signs.map((s) => DAMAGE_SIGN[s] ?? s))}.`,
+    );
+  }
+
+  basics.push(
+    `Overall damage signal from your answers: ${damageLevelWord(state.damageLevel)} (level ${state.damageLevel} of 4).`,
+  );
+
+  if (state.fragile) {
+    basics.push('Hair acts fragile (breakage-prone or brittle).');
+  }
+
+  const heatScalp = [formatHeatDetail(answers), formatScalpWash(state)];
+
+  const waterRoutine = [
+    formatWater(state),
+    formatWeightBudget(state),
+    formatTangles(state),
+  ];
+
+  const betweenLine = formatBetweenBoosts(state);
+  const between = betweenLine ? [betweenLine] : [];
+
+  const sections: HairProfileSection[] = [
+    { id: 'basics', title: 'Hair & damage history', lines: basics },
+    { id: 'heatScalp', title: 'Heat & scalp', lines: heatScalp },
+    {
+      id: 'waterRoutine',
+      title: 'Water, weight & tangles',
+      lines: waterRoutine,
+    },
+  ];
+
+  if (between.length > 0) {
+    sections.push({
+      id: 'between',
+      title: 'Between wash days',
+      lines: between,
+    });
+  }
+
+  return sections;
+}
+
+/**
+ * Short bullet lines for the results “hair snapshot” card (flat list).
  */
 export function buildHairProfileBullets(
   state: QuizState,
   answers: RawAnswers,
 ): string[] {
-  const bullets: string[] = [];
-
-  const hl = answers.hairLength ? HAIR_LENGTH[answers.hairLength] : null;
-  if (hl) {
-    bullets.push(`Length: ${hl}.`);
-  }
-
-  const types = answers.damageTypes.filter((t) => t !== 'none');
-  if (types.length > 0) {
-    bullets.push(
-      `History: ${oxfordJoin(types.map((t) => DAMAGE_TYPE[t] ?? t))}.`,
-    );
-  } else if (answers.damageTypes.includes('none')) {
-    bullets.push('History: none of the listed chemical or heat-damage types.');
-  }
-
-  const signs = answers.damageSigns.filter((s) => s !== 'none');
-  if (signs.length > 0) {
-    bullets.push(
-      `What you notice: ${oxfordJoin(signs.map((s) => DAMAGE_SIGN[s] ?? s))}.`,
-    );
-  }
-
-  bullets.push(
-    `Overall damage signal from your answers: ${damageLevelWord(state.damageLevel)} (level ${state.damageLevel} of 4).`,
-  );
-
-  if (state.fragile) {
-    bullets.push('Hair acts fragile (breakage-prone or brittle).');
-  }
-
-  bullets.push(formatHeatDetail(answers));
-
-  bullets.push(formatScalpWash(state));
-  bullets.push(formatWater(state));
-  bullets.push(formatWeightBudget(state));
-  bullets.push(formatTangles(state));
-
-  const extra = formatBetweenBoosts(state);
-  if (extra) {
-    bullets.push(extra);
-  }
-
-  return bullets;
+  return buildHairProfileSections(state, answers).flatMap((s) => s.lines);
 }

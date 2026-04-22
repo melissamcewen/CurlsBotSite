@@ -1,0 +1,14 @@
+---
+description: Core stack, UI design system, links, MDX, and scope for this Next.js app
+alwaysApply: true
+---
+
+# Project conventions
+
+- Use **Next.js 15** (not 13).
+- Use **DaisyUI 5**.
+- **Flat rounded design**: no shadows, no sharp edges, no opacity—use solid colors from the DaisyUI palette.
+- Use **Lucide** icons.
+- Do **not** add `rel="noopener noreferrer"` to links (including internal links).
+- MDX components that are not plain prose should use a `.not-prose` class.
+- **Do not add features** that were not explicitly requested.

@@ -1,0 +1,10 @@
+---
+description: Where tests live and how to write them for this repo
+globs: tests/**/*
+alwaysApply: false
+---
+
+# Testing
+
+- Place tests under **`tests/src`** (library-style layout for this project).
+- Prefer **smoke tests**—confirm nothing is broken; avoid asserting on specific copy or brittle UI strings.
