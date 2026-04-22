@@ -1,7 +1,13 @@
 // Auto-generated from abbey-yung.csv
 // Run: npm run convert-abbey-yung
 
-type Weight = 'heavy' | 'medium' | 'light' | 'very light' | 'unknown';
+export type AbbeyYungWeight =
+  | 'heavy'
+  | 'medium'
+  | 'light'
+  | 'very light'
+  | 'unknown';
+type Weight = AbbeyYungWeight;
 type CleaningPower = 'light' | 'moderate' | 'strong';
 type ScalpType = 'normal' | 'dry' | 'oily' | 'extra oily';
 interface ProductLink {
@@ -27,6 +33,7 @@ export interface AbbeyYungProduct {
   cleaningPower?: CleaningPower[];
   scalpType?: ScalpType[];
   tags?: string[];
+  img?: string;
 }
 
 export const abbeyYungProducts: AbbeyYungProduct[] = [
@@ -43,11 +50,19 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     fragrance: 'Fragrance-free',
     bestFor: 'Most hair types, even those that are weighed down easily',
     weight: ['very light'],
+    tags: ['strong-bond-repair'],
+    img: '/images/blog/the-abbey-yung-method/epres.png',
     links: [
       {
         url: 'https://amzn.to/40XDnSc',
         text: 'Buy on Amazon',
         retailer: 'amazon',
+        icon: 'shopping-cart',
+      },
+      {
+        url: 'https://epres.com/products/bond-repair-treatment',
+        text: 'Buy at Eprès',
+        retailer: 'epres',
         icon: 'shopping-cart',
       },
     ],
@@ -122,6 +137,27 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     cleaningPower: ['strong'],
     scalpType: ['normal', 'dry', 'oily'],
     tags: ['hard-water-deposit-removal', 'clarifying-shampoo', 'daily-shampoo'],
+    img: '/images/blog/the-abbey-yung-method/k18-shampoo.png',
+    links: [
+      {
+        url: 'https://amzn.to/40YyNDe',
+        text: 'Buy on Amazon',
+        retailer: 'amazon',
+        icon: 'shopping-cart',
+      },
+      {
+        url: 'https://www.k18hair.com/products/peptide-prep-detox-shampoo-8-5oz',
+        text: 'Buy at k18',
+        retailer: 'k18',
+        icon: 'shopping-cart',
+      },
+      {
+        url: 'https://www.sephora.com/product/peptide-prep-clarifying-detox-shampoo-P501449',
+        text: 'Buy at Sephora',
+        retailer: 'sephora',
+        icon: 'shopping-cart',
+      },
+    ],
   },
   {
     product: "L'Oreal EverPure Clarifying Shampoo",
@@ -235,6 +271,26 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     fragrance: 'Vanilla, grapefruit, apricot',
     cleaningPower: ['light', 'moderate'],
     tags: ['conditioning-shampoo', 'strength-repair-shampoo', 'fragile'],
+    links: [
+      {
+        url: 'https://amzn.to/4fraofq',
+        text: 'Buy on Amazon',
+        retailer: 'amazon',
+        icon: 'shopping-cart',
+      },
+      {
+        url: 'https://loveamika.com/products/the-kure-shampoo',
+        text: 'Buy at Amika',
+        retailer: 'amika',
+        icon: 'shopping-cart',
+      },
+      {
+        url: 'https://www.sephora.com/product/the-kure-shampoo-P468627',
+        text: 'Buy at Sephora',
+        retailer: 'sephora',
+        icon: 'shopping-cart',
+      },
+    ],
   },
   {
     product: 'Dove Bond Strength Shampoo',
@@ -369,6 +425,21 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     fragrance: 'Raspberry, peach, water flower',
     cleaningPower: ['light', 'moderate'],
     tags: ['conditioning-shampoo', 'strength-repair-shampoo', 'fragile'],
+    img: '/images/blog/the-abbey-yung-method/pureology-shampoo.png',
+    links: [
+      {
+        url: 'https://amzn.to/4lgccsZ',
+        text: 'Buy on Amazon',
+        retailer: 'amazon',
+        icon: 'shopping-cart',
+      },
+      {
+        url: 'https://www.ulta.com/p/strength-cure-shampoo-damaged-hair-pimprod2017814?sku=2565130',
+        text: 'Buy at Ulta',
+        retailer: 'ulta',
+        icon: 'shopping-cart',
+      },
+    ],
   },
   /* discontinued
   {
@@ -383,7 +454,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
   },
   */
   {
-    product: 'k18',
+    product: 'K18 Molecular Repair Hair Mask',
     drugstore: false,
     step: 5,
     steps: [5],
@@ -395,7 +466,28 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Light to medium weight cream',
     fragrance: 'Jasmine, peony',
     weight: ['light', 'medium'],
-    tags: ['chemical-damage-repair'],
+    tags: ['strong-bond-repair'],
+    img: '/images/blog/the-abbey-yung-method/k18-mask.png',
+    links: [
+      {
+        url: 'https://amzn.to/4lqESzv',
+        text: 'Buy on Amazon',
+        retailer: 'amazon',
+        icon: 'shopping-cart',
+      },
+      {
+        url: 'https://www.k18hair.com/products/leave-in-molecular-repair-hair-mask-50-ml',
+        text: 'Buy at K18',
+        retailer: 'k18',
+        icon: 'shopping-cart',
+      },
+      {
+        url: 'https://www.sephora.com/product/leave-in-molecular-repair-mask-P479846',
+        text: 'Buy at Sephora',
+        retailer: 'sephora',
+        icon: 'shopping-cart',
+      },
+    ],
   },
   {
     product:
@@ -412,7 +504,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Moderately thick cream',
     fragrance: 'White rose, lemon zest',
     weight: ['medium', 'heavy'],
-    tags: ['other-damage-repair'],
+    tags: ['weak-bond-repair'],
   },
   /* discontinued
   {
@@ -438,7 +530,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Mid weight cream',
     fragrance: 'Fresh and floral',
     weight: ['medium'],
-    tags: ['other-damage-repair'],
+    tags: ['weak-bond-repair'],
   },
   {
     product:
@@ -454,7 +546,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Moderately thick cream',
     fragrance: 'Fresh, citrusy, floral',
     weight: ['medium', 'heavy'],
-    tags: ['other-damage-repair'],
+    tags: ['weak-bond-repair'],
   },
   {
     product: 'Amika flash instant shine mask',
@@ -464,7 +556,29 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: 'Gloss',
     heaviness: 'Light',
     amazon: 'https://amzn.to/4oA1eSc',
+    tags: ['gloss'],
     weight: ['light'],
+    img: '/images/blog/the-abbey-yung-method/amika-flash.png',
+    links: [
+      {
+        url: 'https://amzn.to/4oA1eSc',
+        text: 'Buy on Amazon',
+        retailer: 'amazon',
+        icon: 'shopping-cart',
+      },
+      {
+        url: 'https://loveamika.com/products/flash-instant-shine-mask',
+        text: 'Buy at Amika',
+        retailer: 'amika',
+        icon: 'shopping-cart',
+      },
+      {
+        url: 'https://www.sephora.com/product/flash-instant-shine-hair-gloss-mask-P501705',
+        text: 'Buy at Sephora',
+        retailer: 'sephora',
+        icon: 'shopping-cart',
+      },
+    ],
   },
   {
     product: 'amika the kure strength repair conditioner',
@@ -479,6 +593,28 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Thick, rich, balmy',
     fragrance: 'Vanilla, grapefruit, apricot',
     weight: ['medium', 'heavy'],
+    tags: ['conditioner'],
+    img: '/images/blog/the-abbey-yung-method/amika-conditioner.png',
+    links: [
+      {
+        url: 'https://amzn.to/4fraofq',
+        text: 'Buy on Amazon',
+        retailer: 'amazon',
+        icon: 'shopping-cart',
+      },
+      {
+        url: 'https://loveamika.com/products/the-kure-strength-repair-conditioner',
+        text: 'Buy at Amika',
+        retailer: 'amika',
+        icon: 'shopping-cart',
+      },
+      {
+        url: 'https://www.sephora.com/product/the-kure-strength-repair-conditioner-P468627',
+        text: 'Buy at Sephora',
+        retailer: 'sephora',
+        icon: 'shopping-cart',
+      },
+    ],
   },
   {
     product: 'Dove Conditioner Intensive Repair for Damaged Hair',
@@ -493,6 +629,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Lightweight lotion-like cream',
     fragrance: 'Citrus, white floral, clean',
     weight: ['light'],
+    tags: ['conditioner'],
   },
   {
     product: 'Dove Bond Strength Conditioner',
@@ -507,6 +644,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Lightweight gel-lotion',
     fragrance: 'Citrus, white floral, clean',
     weight: ['medium', 'heavy'],
+    tags: ['conditioner'],
   },
   {
     product: 'Dove Hair Intensive Repair 10in1 Serum Mask for Damaged Hair',
@@ -522,6 +660,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Moderately thick cream',
     fragrance: 'Citrus, white floral, clean',
     weight: ['medium'],
+    tags: ['mask'],
   },
   {
     product: 'Dove Hair Bond Strength 10in1 Serum Mask',
@@ -537,6 +676,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Moderately thick silky gel cream',
     fragrance: 'Citrus, white floral, clean',
     weight: ['medium', 'heavy'],
+    tags: ['mask'],
   },
   {
     product: 'Loreal Bond Repair Conditioner',
@@ -551,6 +691,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Very thick and ultra creamy',
     fragrance: 'White rose, lemon zest',
     weight: ['heavy'],
+    tags: ['conditioner'],
   },
   {
     product: 'Elizavecca cer-100 collagen coating hair protein treatment',
@@ -566,6 +707,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     weight: ['very light'],
     amazon:
       'https://www.amazon.com/dp/B01I2ZQJSG?ref=t_ac_spc_accepted_tile&linkCode=tr1&tag=trevresa-20&linkId=B01I2ZQJSG_1772414619389',
+    tags: ['mask'],
   },
   /* discontinued
   {
@@ -588,9 +730,10 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     heaviness: 'Light',
     amazon: 'https://amzn.to/4ln7Y2O',
     weight: ['light'],
+    tags: ['gloss'],
   },
   {
-    product: 'Loreal Elvive Glycolic Gloss',
+    product: 'Loreal Elvive Glycolic Gloss Conditioner',
     drugstore: true,
     step: 6,
     steps: [6],
@@ -603,6 +746,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Grapefruit, jasmine, and cedarwood',
     fragrance: 'Fresh and floral',
     weight: ['light'],
+    tags: ['conditioner'],
   },
   {
     product: 'Loreal Everpure Glossing Conditioner',
@@ -618,6 +762,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Silky soft and balmy',
     fragrance: 'Peony, bergamot',
     weight: ['medium'],
+    tags: ['conditioner'],
   },
   {
     product: "L'Oreal Paris Glossing Lamination Hair Mask with Glycolic Acid",
@@ -628,6 +773,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     heaviness: 'Light',
     amazon: 'https://amzn.to/46R1FRI',
     weight: ['light'],
+    tags: ['gloss'],
   },
 
   /* discontinued
@@ -655,6 +801,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Thick, soft, plush cream',
     fragrance: 'Fresh and floral',
     weight: ['medium'],
+    tags: ['mask'],
   },
   {
     product:
@@ -670,6 +817,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Light and airy cream',
     fragrance: 'Warm, tropical, fruity, coconut',
     weight: ['light'],
+    tags: ['mask'],
   },
   {
     product: 'Pantene Miracle Rescue Mask',
@@ -684,6 +832,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Whipped light cream',
     fragrance: 'Warm, tropical, fruity, coconut',
     weight: ['light'],
+    tags: ['mask'],
   },
 
   {
@@ -699,6 +848,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Moderately thick, soft cream',
     fragrance: 'Raspberry, peach, water flower',
     weight: ['medium'],
+    tags: ['conditioner'],
   },
   {
     product: 'Redken Acidic Bonding Conditioner',
@@ -713,6 +863,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Very thick, dense, and creamy',
     fragrance: 'Fresh, citrusy, floral',
     weight: ['heavy'],
+    tags: ['conditioner'],
   },
   {
     product: 'Amika the kure intense strength repair mask',
@@ -727,6 +878,28 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Very thick, rich, buttery cream',
     fragrance: 'Vanilla, sandelwood, grapefruit',
     weight: ['heavy'],
+    tags: ['mask'],
+    img: '/images/blog/the-abbey-yung-method/amika-mask.png',
+    links: [
+      {
+        url: 'https://amzn.to/4lqtP9M',
+        text: 'Buy on Amazon',
+        retailer: 'amazon',
+        icon: 'shopping-cart',
+      },
+      {
+        url: 'https://loveamika.com/products/kure-intense-strength-repair-mask',
+        text: 'Buy at Amika',
+        retailer: 'amika',
+        icon: 'shopping-cart',
+      },
+      {
+        url: 'https://www.sephora.com/product/the-kure-intense-strength-repair-mask-P47481',
+        text: 'Buy at Sephora',
+        retailer: 'sephora',
+        icon: 'shopping-cart',
+      },
+    ],
   },
   {
     product: 'Living Proof Triple Bond Complex',
@@ -742,6 +915,28 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Lightweight cream',
     fragrance: 'Fresh and floral',
     weight: ['light', 'medium'],
+    tags: ['strong-bond-repair'],
+    img: '/images/blog/the-abbey-yung-method/triple-bond-complex.png',
+    links: [
+      {
+        url: 'https://amzn.to/45yVak5',
+        text: 'Buy on Amazon',
+        retailer: 'amazon',
+        icon: 'shopping-cart',
+      },
+      {
+        url: 'https://www.livingproof.com/products/triple-bond-complex',
+        text: 'Buy at Living Proof',
+        retailer: 'livingproof',
+        icon: 'shopping-cart',
+      },
+      {
+        url: 'https://www.sephora.com/product/triple-bond-complex-leave-in-hair-treatment-P501168',
+        text: 'Buy at Sephora',
+        retailer: 'sephora',
+        icon: 'shopping-cart',
+      },
+    ],
   },
   {
     product: 'Pantene Pro-Vitamin Essence',
@@ -756,6 +951,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Thin liquidy spray',
     fragrance: 'Warm, tropical, fruity, coconut',
     weight: ['very light'],
+    tags: ['weak-bond-repair'],
   },
 
   {
@@ -772,6 +968,27 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Very thick and creamy',
     fragrance: 'Fruit, tropical florals, rich musk',
     weight: ['heavy'],
+    img: '/images/blog/the-abbey-yung-method/bb-primer.png',
+    links: [
+      {
+        url: 'https://amzn.to/4fz9FJi',
+        text: 'Buy on Amazon',
+        retailer: 'amazon',
+        icon: 'shopping-cart',
+      },
+      {
+        url: 'https://www.bumbleandbumble.com/product/19055/31247/style/pre-stylers/hairdressers-invisible-oil-heatuv-protective-hair-primer-leave-in-conditioner',
+        text: 'Buy at Bumble and bumble',
+        retailer: 'bumbleandbumble',
+        icon: 'shopping-cart',
+      },
+      {
+        url: 'https://www.sephora.com/product/hairdresser-s-invisible-oil-primer-P386464',
+        text: 'Buy at Sephora',
+        retailer: 'sephora',
+        icon: 'shopping-cart',
+      },
+    ],
   },
   {
     product:
@@ -830,6 +1047,21 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Thin liquidy spray',
     fragrance: 'Warm, tropical, fruity, coconut',
     weight: ['very light'],
+    img: '/images/blog/the-abbey-yung-method/21.png"',
+    links: [
+      {
+        url: 'https://amzn.to/4stoB0d',
+        text: 'Buy on Amazon',
+        retailer: 'amazon',
+        icon: 'shopping-cart',
+      },
+      {
+        url: 'https://www.sephora.com/product/pantene-miracle-rescue-10-in-1-multitasking-leave-in-conditioner-spray-P474072',
+        text: 'Buy at Sephora',
+        retailer: 'sephora',
+        icon: 'shopping-cart',
+      },
+    ],
   },
   {
     product:
@@ -861,6 +1093,27 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Creamy',
     fragrance: 'Light and clean',
     weight: ['medium', 'heavy'],
+    img: '/images/blog/the-abbey-yung-method/redken.png',
+    links: [
+      {
+        url: 'https://amzn.to/4mzgcpB',
+        text: 'Buy on Amazon',
+        retailer: 'amazon',
+        icon: 'shopping-cart',
+      },
+      {
+        url: 'https://www.redken.com/hair-styling/one-united-leave-in-conditioner.html',
+        text: 'Buy at Redken',
+        retailer: 'redken',
+        icon: 'shopping-cart',
+      },
+      {
+        url: 'https://www.ulta.com/p/one-united-all-in-one-multi-benefit-treatment-xlsImpprod12541003?sku=2290071',
+        text: 'Buy at Ulta',
+        retailer: 'ulta',
+        icon: 'shopping-cart',
+      },
+    ],
   },
   {
     product: 'Tresemme Heat Tamer',
@@ -902,6 +1155,27 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     amazon: 'https://amzn.to/3UnU5Xb',
     tags: ['style-volume'],
     weight: ['medium'],
+    img: '/images/blog/the-abbey-yung-method/astrolift.png',
+    links: [
+      {
+        url: 'https://amzn.to/3UnU5Xb',
+        text: 'Buy on Amazon',
+        retailer: 'amazon',
+        icon: 'shopping-cart',
+      },
+      {
+        url: 'https://www.k18hair.com/products/astrolift-reparative-volume-spray-4oz',
+        text: 'Buy at K18',
+        retailer: 'k18',
+        icon: 'shopping-cart',
+      },
+      {
+        url: 'https://www.sephora.com/product/mini-astrolift-reparative-volume-spray-P517726?skuId=2902120',
+        text: 'Buy at Sephora',
+        retailer: 'sephora',
+        icon: 'shopping-cart',
+      },
+    ],
   },
   {
     product: 'Living Proof Full Dry Volume & Texture Spray',
@@ -944,7 +1218,6 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     heaviness: '',
     amazon: 'https://amzn.to/4mAAhfd',
     tags: ['style-texture'],
-
   },
   {
     product: 'TRESemmé Plumping Mousse Amplified Volume',
@@ -978,6 +1251,27 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     amazon: 'https://amzn.to/469LpKx',
     tags: ['style-smoothing'],
     weight: ['medium'],
+    img: '/images/blog/the-abbey-yung-method/bb-cream.png',
+    links: [
+      {
+        url: 'https://amzn.to/469LpKx',
+        text: 'Buy on Amazon',
+        retailer: 'amazon',
+        icon: 'shopping-cart',
+      },
+      {
+        url: 'https://www.bumbleandbumble.com/product/19053/130912/care/treatments/hairdressers-invisible-oil-long-last-styling-cream',
+        text: 'Buy at Bumble and bumble',
+        retailer: 'bumbleandbumble',
+        icon: 'shopping-cart',
+      },
+      {
+        url: 'https://www.sephora.com/product/bumble-bumble-long-last-hydrating-hair-styling-cream-P511619',
+        text: 'Buy at Sephora',
+        retailer: 'sephora',
+        icon: 'shopping-cart',
+      },
+    ],
   },
   {
     product:
@@ -1000,7 +1294,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     comments: '',
     heaviness: 'Light, Medium',
     amazon: 'https://amzn.to/46WOFdn',
-    tags: ['style-heat'],
+    tags: ['style-heat', 'style-smoothing'],
     weight: ['light', 'medium'],
   },
   {
@@ -1013,6 +1307,27 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     amazon: 'https://amzn.to/4llTv7e',
     tags: ['style-heat', 'style-smoothing'],
     weight: ['light'],
+    img: '/images/blog/the-abbey-yung-method/living-proof-oil.png',
+    links: [
+      {
+        url: 'https://amzn.to/4llTv7e',
+        text: 'Buy on Amazon',
+        retailer: 'amazon',
+        icon: 'shopping-cart',
+      },
+      {
+        url: 'https://www.livingproof.com/products/no-frizz-vanishing-oil',
+        text: 'Buy at Living Proof',
+        retailer: 'livingproof',
+        icon: 'shopping-cart',
+      },
+      {
+        url: 'https://www.sephora.com/product/no-frizz-vanishing-oil-P501315',
+        text: 'Buy at Sephora',
+        retailer: 'sephora',
+        icon: 'shopping-cart',
+      },
+    ],
   },
   {
     product:
@@ -1070,6 +1385,27 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
       'https://www.amazon.com/dp/B0F5Y7NPDH?ref=t_ac_spc_accepted_tile&linkCode=tr1&tag=trevresa-20&linkId=B0F5Y7NPDH_1772415128848',
     tags: ['between-wash-dryness-relief'],
     weight: ['unknown'],
+    img: '/images/blog/the-abbey-yung-method/amika-midnight-mender.png',
+    links: [
+      {
+        url: 'https://amzn.to/4lqtP9M',
+        text: 'Buy on Amazon',
+        retailer: 'amazon',
+        icon: 'shopping-cart',
+      },
+      {
+        url: 'https://loveamika.com/products/midnight-mender-overnight-strength-repair-treatment-mask',
+        text: 'Buy at Amika',
+        retailer: 'amika',
+        icon: 'shopping-cart',
+      },
+      {
+        url: 'https://www.sephora.com/product/midnight-mender-overnight-strength-repair-hair-treatment-mask-P515515?skuId=2834687',
+        text: 'Buy at Sephora',
+        retailer: 'sephora',
+        icon: 'shopping-cart',
+      },
+    ],
   },
   {
     product: 'Amika Perk Up Plus',
@@ -1116,6 +1452,27 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
       'https://www.amazon.com/dp/B0895K6LG7?ref=t_ac_spc_accepted_tile&linkCode=tr1&tag=trevresa-20&linkId=B0895K6LG7_1772414908058',
     tags: ['between-wash-heat-protection'],
     weight: ['unknown'],
+    img: '/images/blog/the-abbey-yung-method/igk-good-behavior.png',
+    links: [
+      {
+        url: 'https://amzn.to/41RAcMb',
+        text: 'Buy on Amazon',
+        retailer: 'amazon',
+        icon: 'shopping-cart',
+      },
+      {
+        url: 'https://www.igkhair.com/products/good-behavior-spirulina-protein-smoothing-spray',
+        text: 'Buy at IGK',
+        retailer: 'igk',
+        icon: 'shopping-cart',
+      },
+      {
+        url: 'https://www.sephora.com/product/good-behavior-spirulina-protein-smoothing-spray-P433830',
+        text: 'Buy at Sephora',
+        retailer: 'sephora',
+        icon: 'shopping-cart',
+      },
+    ],
   },
   {
     product: 'Living Proof Perfect Hair Day Advanced Clean Dry shampoo',
@@ -1127,6 +1484,27 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     amazon: 'https://amzn.to/3UBkykc',
     tags: ['between-wash-oil-control-relief'],
     weight: ['unknown'],
+    img: '/images/blog/the-abbey-yung-method/living-proof-perfect-hair-day.png',
+    links: [
+      {
+        url: 'https://amzn.to/3UBkykc',
+        text: 'Buy on Amazon',
+        retailer: 'amazon',
+        icon: 'shopping-cart',
+      },
+      {
+        url: 'https://www.livingproof.com/products/perfect-hair-day-advanced-clean-dry-shampoo',
+        text: 'Buy at Living Proof',
+        retailer: 'livingproof',
+        icon: 'shopping-cart',
+      },
+      {
+        url: 'https://www.sephora.com/product/living-proof-perfect-hair-day-phd-advanced-clean-dry-shampoo-P474072',
+        text: 'Buy at Sephora',
+        retailer: 'sephora',
+        icon: 'shopping-cart',
+      },
+    ],
   },
   {
     product: 'Living Proof Perfect Hair Day Heat Styling Spray',

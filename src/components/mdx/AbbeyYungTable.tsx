@@ -238,7 +238,7 @@ export default function AbbeyYungTable({
                           Drugstore
                         </span>
                       )}
-                      {getHeavinessBadges(product.heaviness)}
+                      {getHeavinessBadges(product.heaviness ?? '')}
                     </div>
                     {product.comments && (
                       <p className="text-xs text-base-content/70 mt-1 leading-tight">

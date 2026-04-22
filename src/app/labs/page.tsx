@@ -119,6 +119,27 @@ export default function Labs() {
           </div>
         </a>
 
+        {/* Abbey Yung–style routine quiz */}
+        <Link
+          href="/labs/abbey-yung-ish-routine"
+          className="card bg-base-100 hover:bg-base-300 transition-colors"
+        >
+          <div className="card-body">
+            <div className="flex items-center gap-3 mb-4">
+              <ListChecks className="h-8 w-8 text-primary" />
+              <h2 className="card-title">Abbey Yung–ish routine quiz</h2>
+            </div>
+            <p>
+              Build a wash-day routine from your hair goals, damage level, and
+              product preferences — inspired by Abbey Yung&apos;s method.
+            </p>
+            <div className="card-actions justify-end mt-4">
+              <div className="badge badge-primary">Quiz</div>
+              <div className="badge badge-secondary">Routine</div>
+            </div>
+          </div>
+        </Link>
+
         {/* Porosity score Card */}
         <Link
           href="/labs/porosity"
