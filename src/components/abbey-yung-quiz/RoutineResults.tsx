@@ -44,7 +44,6 @@ export function RoutineResults({
 
       {result.preShampooOil ? (
         <StepSection
-          stepNumber={2}
           title={meta[2].title}
           description={meta[2].description}
           note={result.preShampooOilNote ?? undefined}
@@ -55,7 +54,6 @@ export function RoutineResults({
 
       {result.clarifyingShampoo ? (
         <StepSection
-          stepNumber={3}
           title={meta[3].title}
           description={meta[3].description}
         >
@@ -65,7 +63,6 @@ export function RoutineResults({
 
       {result.everydayShampoo ? (
         <StepSection
-          stepNumber={4}
           title={meta[4].title}
           description={meta[4].description}
           note={result.everydayShampooNote ?? undefined}
@@ -83,7 +80,6 @@ export function RoutineResults({
 
       {result.conditioner ? (
         <StepSection
-          stepNumber={6}
           title={meta[6].title}
           description={meta[6].description}
         >
@@ -100,7 +96,6 @@ export function RoutineResults({
 
       {result.leaveIn ? (
         <StepSection
-          stepNumber={8}
           title={meta[8].title}
           description={meta[8].description}
         >
@@ -112,9 +107,7 @@ export function RoutineResults({
       result.textureBoost ||
       result.holdBoost ? (
         <section className="rounded-2xl bg-base-200 p-4 md:p-6">
-          <h3 className="text-lg font-bold text-base-content">
-            Step 9 — {meta[9].title}
-          </h3>
+          <h3 className="text-lg font-bold text-base-content">{meta[9].title}</h3>
           <p className="mt-2 text-sm text-base-content">{meta[9].description}</p>
           <div className="mt-4 flex flex-col gap-4">
             {result.volumeBoost ? (
@@ -147,7 +140,6 @@ export function RoutineResults({
 
       {result.smoothingBoost ? (
         <StepSection
-          stepNumber={10}
           title={meta[10].title}
           description={meta[10].description}
         >
@@ -157,9 +149,7 @@ export function RoutineResults({
 
       {betweenAny ? (
         <section className="rounded-2xl bg-base-200 p-4 md:p-6">
-          <h3 className="text-lg font-bold text-base-content">
-            Step 11 — {meta[11].title}
-          </h3>
+          <h3 className="text-lg font-bold text-base-content">{meta[11].title}</h3>
           <p className="mt-2 text-sm text-base-content">{meta[11].description}</p>
           <div className="mt-4 flex flex-col gap-4">
             {result.betweenWashHeatProtection ? (
@@ -210,9 +200,7 @@ function RoutineStepBlock({
 
   return (
     <section className="rounded-2xl bg-base-200 p-4 md:p-6">
-      <h3 className="text-lg font-bold text-base-content">
-        Step {stepNumber} — {meta.title}
-      </h3>
+      <h3 className="text-lg font-bold text-base-content">{meta.title}</h3>
       <p className="mt-2 text-sm text-base-content">{meta.description}</p>
       {showBondIntro ? (
         <p className="mt-3 text-sm text-base-content">
