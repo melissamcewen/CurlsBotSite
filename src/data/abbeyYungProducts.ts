@@ -19,10 +19,11 @@ interface ProductLink {
 export interface AbbeyYungProduct {
   product: string;
   drugstore: boolean;
-  step: number;
+
+  step: number; // todo remove
   steps: number[];
   comments: string;
-  heaviness?: string;
+  heaviness?: string; // todo remove
   amazon: string;
   frequency?: string;
   texture?: string;
@@ -194,6 +195,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Milky and creamy',
     fragrance: 'Citrus and musky wood',
     cleaningPower: ['light'],
+    scalpType: ['normal', 'dry'],
     tags: [
       'conditioning-shampoo',
       'hard-water-deposit-removal',

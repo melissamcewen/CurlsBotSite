@@ -31,7 +31,6 @@ export function RoutineResults({
 
   return (
     <div className="flex flex-col gap-6">
-      <Callouts state={state} result={result} />
 
       <HairProfileSummary state={state} answers={answers} />
 
