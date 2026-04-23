@@ -134,7 +134,7 @@ export default function AbbeyYungProductList({
         </label>
         <span className="text-xs text-base-content">{filtered.length} products</span>
       </div>
-      <div className="overflow-x-auto rounded-2xl border border-base-300 bg-base-100">
+      <div className="max-h-[34rem] overflow-auto rounded-2xl border border-base-300 bg-base-100">
         <table className="table table-zebra table-sm">
           <thead>
             <tr>
@@ -160,11 +160,11 @@ export default function AbbeyYungProductList({
                         />
                       ) : null}
                       <div className="min-w-0 space-y-2">
-                        <p className="font-medium leading-snug text-base-content">{product.product}</p>
+                        <p className="leading-snug text-base-content text-sm">{product.product} </p>
                         {links.length > 0 ? (
                           <div className="flex flex-wrap gap-2">
                             {links.map((link) => (
-                              <a key={link.url} href={link.url} className="link link-primary text-sm">
+                              <a key={link.url} href={link.url} className="link link-primary">
                                 {link.text}
                               </a>
                             ))}
@@ -174,10 +174,10 @@ export default function AbbeyYungProductList({
                     </div>
                   </td>
                   <td className="align-top">
-                    <div className="space-y-2 text-sm text-base-content">
+                    <div className="space-y-2 text-base-content">
                       {product.comments?.trim() ? (
                         <div>
-                          <span className="font-medium">Comments: </span>
+
                           {product.comments}
                         </div>
                       ) : null}
