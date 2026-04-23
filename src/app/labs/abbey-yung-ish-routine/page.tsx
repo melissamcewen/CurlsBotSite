@@ -6,13 +6,40 @@ import Avatar from '@/components/avatar';
 import { AbbeyYungQuiz } from '@/components/abbey-yung-quiz/AbbeyYungQuiz';
 
 export const metadata: Metadata = {
-  title: 'Abbey Yung–style routine quiz',
+  title: 'Abbey Yung-ish Routine Quiz | CurlsBot Labs',
   description:
     'Answer a few questions to get a personalized wash-day routine inspired by Abbey Yung’s method.',
+  robots: {
+    index: true,
+    follow: true,
+    'max-snippet': -1,
+    'max-image-preview': 'large',
+    'max-video-preview': -1,
+  },
+  alternates: {
+    canonical: '/labs/abbey-yung-ish-routine',
+  },
   openGraph: {
-    title: 'Abbey Yung–style routine quiz',
+    title: 'Abbey Yung-ish Routine Quiz',
     description:
       'Answer a few questions to get a personalized wash-day routine inspired by Abbey Yung’s method.',
+    url: '/labs/abbey-yung-ish-routine',
+    type: 'website',
+    images: [
+      {
+        url: '/images/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Abbey Yung-ish Routine Quiz on CurlsBot',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Abbey Yung-ish Routine Quiz',
+    description:
+      'Answer a few questions to get a personalized wash-day routine inspired by Abbey Yung’s method.',
+    images: ['/images/og-default.png'],
   },
 };
 

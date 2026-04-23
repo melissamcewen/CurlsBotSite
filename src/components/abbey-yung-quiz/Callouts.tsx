@@ -108,8 +108,11 @@ export function Callouts({
       key: 'weak-bond',
       variant: 'info',
       Icon: Info,
-      content:
-        "With non chemical/heat damage you won't benefit as much from strong bond builders (k18, Epres) that target that type of damage; you can pick whatever bond products you prefer but the less strong ones are usually cheaper.",
+      content: (
+        <>
+        With non chemical/heat damage you won&apos;t benefit as much from strong bond builders (k18, Epres) that target that type of damage; you can pick whatever bond products you prefer but the less strong ones are usually cheaper. Read more in our <Link href="/blog/skeptics-guide-bond-repair" className="link link-primary font-medium">bond repair guide</Link>.
+        </>
+      ),
     });
   }
 

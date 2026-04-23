@@ -26,6 +26,7 @@ import ProductComparisonTable from '@/components/mdx/ProductComparisonTable';
 import NewsletterSignup from '@/components/mdx/NewsletterSignup';
 import AbbeyYungMethodTable from '@/components/mdx/AbbeyYungMethodTable';
 import AbbeyYungTable from '@/components/mdx/AbbeyYungTable';
+import AbbeyYungProductList from '@/components/mdx/AbbeyYungProductList';
 import BondProductsTable from '@/components/mdx/BondProductsTable';
 import PorosityDefinitionsTable from '@/components/mdx/PorosityDefinitionsTable';
 import HairPatternVisualization from '@/components/HairPatternVisualization';
@@ -55,6 +56,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     NewsletterSignup,
     AbbeyYungMethodTable,
     AbbeyYungTable,
+    AbbeyYungProductList,
     BondProductsTable,
     PorosityDefinitionsTable,
     HairPatternVisualization,
