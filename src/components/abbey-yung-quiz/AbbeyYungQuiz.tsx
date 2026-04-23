@@ -99,7 +99,23 @@ export function AbbeyYungQuiz() {
     if (!urlReady) return;
     const qs = serializeQuizSearchParams(answers, showResults).toString();
     const href = qs ? `${pathname}?${qs}` : pathname;
+    if (
+      typeof window !== 'undefined' &&
+      `${window.location.pathname}${window.location.search}` === href
+    ) {
+      return;
+    }
+    // router.replace(..., { scroll: false }) still jumps to top on some mobile
+    // browsers when the query string updates; preserve scroll explicitly.
+    const scrollY = typeof window !== 'undefined' ? window.scrollY : 0;
     router.replace(href, { scroll: false });
+    if (typeof window === 'undefined') return;
+    const restore = () => window.scrollTo(0, scrollY);
+    queueMicrotask(restore);
+    requestAnimationFrame(() => {
+      restore();
+      requestAnimationFrame(restore);
+    });
   }, [answers, showResults, urlReady, pathname, router]);
 
   const goNext = () => {

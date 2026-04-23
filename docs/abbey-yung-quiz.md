@@ -556,7 +556,7 @@ If `needsStrongBond`:
 2. Apply drugstore filter. If no drugstore strong bond exists, use the salon product and add to `fallbacksUsed` with note "No drugstore option exists for strong bond repair."
 
 Fill remaining slots with weak bond products (`tags` includes `'weak-bond-repair'`):
-- Prefer Step 5 products first, then Step 7
+- Prefer covering **method steps** not already filled: pick from Step 5 weak candidates before Step 7 until Step 5 is covered, then Step 7, then any remaining weak (avoids two Step 5 picks when a Step 7 weak exists)
 - Apply weight filter
 - Apply drugstore filter
 - Do not duplicate products already selected

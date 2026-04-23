@@ -1,5 +1,6 @@
 import type { AbbeyYungProduct } from '@/data/abbeyYungProducts';
 import { abbeyYungProducts } from '@/data/abbeyYungProducts';
+import { bucketBondRepairProduct } from './bondBuckets';
 import type { QuizState, RoutineResult } from './types';
 import { weightIsEligible } from './weightFilter';
 
@@ -323,8 +324,32 @@ export function selectProducts(state: QuizState): RoutineResult {
 
       while (remaining > 0) {
         const available = weakOrdered.filter((p) => !names.has(p.product));
+        if (available.length === 0) break;
+
+        const usedBondSteps = new Set(
+          selected
+            .map((p) => bucketBondRepairProduct(p))
+            .filter((s): s is 1 | 5 | 7 => s != null),
+        );
+
+        let tierPreferred: AbbeyYungProduct[];
+        if (!usedBondSteps.has(5)) {
+          tierPreferred = available.filter(
+            (p) => bucketBondRepairProduct(p) === 5,
+          );
+        } else if (!usedBondSteps.has(7)) {
+          tierPreferred = available.filter(
+            (p) => bucketBondRepairProduct(p) === 7,
+          );
+        } else {
+          tierPreferred = available;
+        }
+
+        const pool =
+          tierPreferred.length > 0 ? tierPreferred : available;
+
         const picked = pickWithFilters(
-          available,
+          pool,
           state,
           'Bond repair (weak)',
           result,

@@ -1,10 +1,10 @@
 'use client';
 
+import { Info } from 'lucide-react';
 import type { AbbeyYungProduct } from '@/data/abbeyYungProducts';
 import { abbeyYungMethodSteps } from '@/lib/abbey-yung-quiz/methodSteps';
 import { partitionBondRepairByStep } from '@/lib/abbey-yung-quiz/bondBuckets';
 import type { QuizState, RawAnswers, RoutineResult } from '@/lib/abbey-yung-quiz/types';
-import { Callouts } from './Callouts';
 import { HairProfileSummary } from './HairProfileSummary';
 import { ProductCard } from './ProductCard';
 import { StepSection } from './StepSection';
@@ -209,8 +209,19 @@ function RoutineStepBlock({
         </p>
       ) : null}
       {showBondIntro && fallbackNote ? (
-        <div className="alert alert-info mt-4 rounded-2xl text-base-content">
-          <span>{fallbackNote}</span>
+        <div
+          role="note"
+          className="mt-4 flex gap-3 rounded-2xl border-2 border-info bg-base-100 p-3 sm:gap-4 sm:p-4"
+        >
+          <div
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-info text-info-content sm:h-10 sm:w-10"
+            aria-hidden
+          >
+            <Info className="h-[18px] w-[18px] sm:h-5 sm:w-5" strokeWidth={1.75} />
+          </div>
+          <p className="min-w-0 flex-1 text-sm leading-snug text-base-content sm:leading-relaxed">
+            {fallbackNote}
+          </p>
         </div>
       ) : null}
       <div className="mt-4 flex flex-col gap-4">
