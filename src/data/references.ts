@@ -1837,8 +1837,8 @@ Episode 380: Patented ingredients, porosity, quats and more */
     source: 'Surface & Interface Analysis: SIA',
   },
   /* 1. Gupta AK, Economopoulos V, Mann A, Wang T, Mirmirani P. Menopause and hair loss in women: Exploring the hormonal transition. Maturitas. 2025;198. doi:10.1016/j.maturitas.2025.108378
- */
-'168': {
+   */
+  '168': {
     id: '168',
     url: 'https://doi.org/10.1016/j.maturitas.2025.108378',
     title:
@@ -1849,20 +1849,19 @@ Episode 380: Patented ingredients, porosity, quats and more */
     source: 'Maturitas',
   },
   /* 1. Zouboulis CC, Blume-Peytavi U, Kosmadaki M, et al. Skin, hair and beyond: the impact of menopause. Climacteric. 2022;25(5):434-442. doi:10.1080/13697137.2022.2050206
- */
-'169': {
+   */
+  '169': {
     id: '169',
     url: 'https://doi.org/10.1080/13697137.2022.2050206',
-    title:
-      'Skin, hair and beyond: the impact of menopause',
+    title: 'Skin, hair and beyond: the impact of menopause',
     type: 'science',
     author: 'Zouboulis CC, Blume-Peytavi U, Kosmadaki M, et al.',
     date: '2022',
     source: 'Climacteric',
   },
   /* 1. Mirmirani P. Hormonal changes in menopause: do they contribute to a ‘midlife hair crisis’ in women? Br J Dermatol. 2011;165(s3):7-11. doi:10.1111/j.1365-2133.2011.10629.x
-*/
-'170': {
+   */
+  '170': {
     id: '170',
     url: 'https://doi.org/10.1111/j.1365-2133.2011.10629.x',
     title:
@@ -1873,24 +1872,22 @@ Episode 380: Patented ingredients, porosity, quats and more */
     source: 'Br J Dermatol',
   },
   /* 1. Trüeb RM. Age-Related General Problems Affecting the Condition of Hair. In: Trüeb RM, Tobin DJ, eds. Aging Hair. Springer; 2010:141-166. doi:10.1007/978-3-642-02636-2_15
-*/
-'171': {
+   */
+  '171': {
     id: '171',
     url: 'https://doi.org/10.1007/978-3-642-02636-2_15',
-    title:
-      'Age-Related General Problems Affecting the Condition of Hair',
+    title: 'Age-Related General Problems Affecting the Condition of Hair',
     type: 'science',
     author: 'Trüeb RM.',
     date: '2010',
     source: 'Springer',
   },
   /* 1. Grymowicz M, Rudnicka E, Podfigurna A, et al. Hormonal Effects on Hair Follicles. International Journal of Molecular Sciences. 2020;21(15):5342. doi:10.3390/ijms21155342
-  */
- '172': {
+   */
+  '172': {
     id: '172',
     url: 'https://doi.org/10.3390/ijms21155342',
-    title:
-      'Hormonal Effects on Hair Follicles',
+    title: 'Hormonal Effects on Hair Follicles',
     type: 'science',
     author: 'Grymowicz M, Rudnicka E, Podfigurna A, et al.',
     date: '2020',
@@ -1900,8 +1897,7 @@ Episode 380: Patented ingredients, porosity, quats and more */
   '173': {
     id: '173',
     url: 'https://library.triprinceton.org/1t0nsnb/',
-    title:
-      'The effects of aging on hair-more than just amount',
+    title: 'The effects of aging on hair-more than just amount',
     type: 'science',
     author: 'Flagler, M. J., Schwartz, J. R., Robbins, C. R., & Dawson, T. L.',
     date: '2012',
@@ -1920,8 +1916,8 @@ Episode 380: Patented ingredients, porosity, quats and more */
   },
 
   /* 1. Davis MG, Piliang MP, Bergfeld WF, et al. Scalp application of the antioxidant piroctone olamine reduces hair shedding in an 8-week randomized, double-blind, placebo-controlled clinical study. International Journal of Cosmetic Science. 2021;43(S1):S26-S33. doi:10.1111/ics.12737
- */
-'175': {
+   */
+  '175': {
     id: '175',
     url: 'https://doi.org/10.1111/ics.12737',
     title:
@@ -1932,8 +1928,8 @@ Episode 380: Patented ingredients, porosity, quats and more */
     source: 'International Journal of Cosmetic Science',
   },
   /* 1. Williams R, Pawlus AD, Thornton MJ. Getting under the skin of hair aging: the impact of the hair follicle environment. Exp Dermatol. 2020;29(7):588-597. doi:10.1111/exd.14109
-*/
-'176': {
+   */
+  '176': {
     id: '176',
     url: 'https://doi.org/10.1111/exd.14109',
     title:
@@ -1944,24 +1940,22 @@ Episode 380: Patented ingredients, porosity, quats and more */
     source: 'Exp Dermatol',
   },
   /* 1. Wills J, Dolphin S, Albiston L, Parmar P, Westgate GE, Harrap GJ. Free internal lipids in hair from pre- and post-menopausal women. International Journal of Cosmetic Science. 2005;27(2):142-142. doi:10.1111/j.1467-2494.2005.00259_2.x
-*/
-'177': {
+   */
+  '177': {
     id: '177',
     url: 'https://doi.org/10.1111/j.1467-2494.2005.00259_2.x',
-    title:
-      'Free internal lipids in hair from pre- and post-menopausal women',
+    title: 'Free internal lipids in hair from pre- and post-menopausal women',
     type: 'science',
     author: 'Wills J, Dolphin S, Albiston L, Parmar P, Westgate GE, Harrap GJ.',
     date: '2005',
     source: 'International Journal of Cosmetic Science',
   },
   /* 1. Mirmirani P, Luo F, Youngquist SR, et al. Hair Growth Parameters in Pre- and Postmenopausal Women. In: Trüeb RM, Tobin DJ, eds. Aging Hair. Springer; 2010:49-60. doi:10.1007/978-3-642-02636-2_6
-  */
- '178': {
+   */
+  '178': {
     id: '178',
     url: 'https://doi.org/10.1007/978-3-642-02636-2_6',
-    title:
-      'Hair Growth Parameters in Pre- and Postmenopausal Women',
+    title: 'Hair Growth Parameters in Pre- and Postmenopausal Women',
     type: 'science',
     author: 'Mirmirani P, Luo F, Youngquist SR, et al.',
     date: '2010',
@@ -1969,12 +1963,11 @@ Episode 380: Patented ingredients, porosity, quats and more */
   },
 
   /* 1. Bravo B, Penedo L, Carvalho R, et al. Dermatological Changes during Menopause and HRT: What to Expect? Cosmetics. 2024;11(1):9. doi:10.3390/cosmetics11010009
- */
-'179': {
+   */
+  '179': {
     id: '179',
     url: 'https://doi.org/10.3390/cosmetics11010009',
-    title:
-      'Dermatological Changes during Menopause and HRT: What to Expect?',
+    title: 'Dermatological Changes during Menopause and HRT: What to Expect?',
     type: 'science',
     author: 'Bravo B, Penedo L, Carvalho R, et al.',
     date: '2024',
@@ -1982,12 +1975,11 @@ Episode 380: Patented ingredients, porosity, quats and more */
   },
 
   /* 1. Draelos ZD. Care of Aging Hair and Photoprotection. In: Trüeb RM, Tobin DJ, eds. Aging Hair. Springer; 2010:183-191. doi:10.1007/978-3-642-02636-2_17
- */
-'180': {
+   */
+  '180': {
     id: '180',
     url: 'https://doi.org/10.1007/978-3-642-02636-2_17',
-    title:
-      'Care of Aging Hair and Photoprotection',
+    title: 'Care of Aging Hair and Photoprotection',
     type: 'science',
     author: 'Draelos ZD.',
     date: '2010',
@@ -2008,11 +2000,10 @@ Episode 380: Patented ingredients, porosity, quats and more */
   /* 1. Do you have information about water hardness in the United States? | U.S. Geological Survey. December 3, 2021. Accessed April 3, 2026. https://www.usgs.gov/faqs/do-you-have-information-about-water-hardness-united-states
 
   */
- '182': {
+  '182': {
     id: '182',
     url: 'https://www.usgs.gov/faqs/do-you-have-information-about-water-hardness-united-states',
-    title:
-      'Do you have information about water hardness in the United States?',
+    title: 'Do you have information about water hardness in the United States?',
     type: 'science',
     author: 'U.S. Geological Survey.',
     date: '2021',
@@ -2022,7 +2013,7 @@ Episode 380: Patented ingredients, porosity, quats and more */
   /* 1. Luqman MW, Ali R, Khan Z, Ramzan MH, Hanan F, Javaid U. Effect of topical application of hard water in weakening of hair in men. J Pak Med Assoc. 2016;66(9):1132-1136.
 
   */
- '183': {
+  '183': {
     id: '183',
     url: 'https://doi.org/10.12927/jpmas.2016.32844',
     title:
@@ -2035,7 +2026,7 @@ Episode 380: Patented ingredients, porosity, quats and more */
   /* Marsh JM, Davis MG, Flagler MJ, et al. Advanced hair damage model from ultra-violet radiation in the presence of copper. Int J Cosmet Sci. 2015;37(5):532-541. doi:10.1111/ics.12231
 
   */
- '184': {
+  '184': {
     id: '184',
     url: 'https://doi.org/10.1111/ics.12231',
     title:
@@ -2046,27 +2037,72 @@ Episode 380: Patented ingredients, porosity, quats and more */
     source: 'Int J Cosmet Sci',
   },
   /* 1. Alahmmed LM, Alibrahim EA, Alkhars AF, Almulhim MN, Ali SI, Kaliyadan F. Scanning electron microscopy study of hair shaft changes related to hardness of water. Indian J Dermatol Venereol Leprol. 2017;83:740. doi:10.4103/ijdvl.IJDVL_1119_16
-  */
- '185': {
+   */
+  '185': {
     id: '185',
     url: 'https://doi.org/10.4103/ijdvl.IJDVL_1119_16',
     title:
       'Scanning electron microscopy study of hair shaft changes related to hardness of water',
     type: 'science',
-    author: 'Alahmmed LM, Alibrahim EA, Alkhars AF, Almulhim MN, Ali SI, Kaliyadan F.',
+    author:
+      'Alahmmed LM, Alibrahim EA, Alkhars AF, Almulhim MN, Ali SI, Kaliyadan F.',
     date: '2017',
     source: 'Indian J Dermatol Venereol Leprol',
   },
   /* Zabiszak M, Nowak M, Taras-Goslinska K, Kaczmarek MT, Hnatejko Z, Jastrzab R. Carboxyl groups of citric acid in the process of complex formation with bivalent and trivalent metal ions in biological systems. Journal of Inorganic Biochemistry. 2018;182:37-47. doi:10.1016/j.jinorgbio.2018.01.017
-  */
- '186': {
+   */
+  '186': {
     id: '186',
     url: 'https://doi.org/10.1016/j.jinorgbio.2018.01.017',
     title:
       'Carboxyl groups of citric acid in the process of complex formation with bivalent and trivalent metal ions in biological systems',
     type: 'science',
-    author: 'Zabiszak M, Nowak M, Taras-Goslinska K, Kaczmarek MT, Hnatejko Z, Jastrzab R.',
+    author:
+      'Zabiszak M, Nowak M, Taras-Goslinska K, Kaczmarek MT, Hnatejko Z, Jastrzab R.',
     date: '2018',
     source: 'Journal of Inorganic Biochemistry',
-  },  
+  },
+  /* 1. Evans T, PhD, LLC TE. Testing Tactics—Consumer vs. Scientific Language: Relating In vivo to In vitro. Cosmetics & Toiletries. August 7, 2013. Accessed April 28, 2026. https://www.cosmeticsandtoiletries.com/testing/method-process/blog/21837721/testing-tacticsconsumer-vs-scientific-language-relating-in-vivo-to-in-vitro
+   */
+  '187': {
+    id: '187',
+    url: 'https://www.cosmeticsandtoiletries.com/testing/method-process/blog/21837721/testing-tacticsconsumer-vs-scientific-language-relating-in-vivo-to-in-vitro',
+    title:
+      'Testing Tactics—Consumer vs. Scientific Language: Relating In vivo to In vitro',
+    type: 'science',
+    author: 'Evans T, PhD, LLC TE.',
+    date: '2013',
+    source: 'Cosmetics & Toiletries',
+  },
+  /* Wong M. Hair, hydration and water: the real science. Lab Muffin Beauty Science. January 28, 2026. Accessed March 11, 2026. https://labmuffin.com/hair-hydration-and-water-the-real-science/ */
+  '188': {
+    id: '188',
+    url: 'https://labmuffin.com/hair-hydration-and-water-the-real-science/',
+    title: 'Hair, hydration and water: the real science',
+    type: 'science',
+    author: 'Wong M.',
+    date: '2026',
+    source: 'Lab Muffin Beauty Science',
+  },
+  /* 1. Tanamachi H. Temperature as a moisture cue in haptics on hair. International Journal of Cosmetic Science. 2011;33(1):25-36. doi:10.1111/j.1468-2494.2010.00586.x
+   */
+  '189': {
+    id: '189',
+    url: 'https://doi.org/10.1111/j.1468-2494.2010.00586.x',
+    title: 'Temperature as a moisture cue in haptics on hair',
+    type: 'science',
+    author: 'Tanamachi H.',
+    date: '2011',
+    source: 'International Journal of Cosmetic Science',
+  },
+  /* Westman, M. (1999). Formulating conditioning products for hair and skin. In Conditioning Agents for Hair and Skin (pp. 281-300). CRC Press. */
+  '190': {
+    id: '190',
+    url: 'https://www.taylorfrancis.com/chapters/edit/10.1201/9781003064954-12/formulating-conditioning-products-hair-skin-mort-westman',
+    title: 'Formulating conditioning products for hair and skin',
+    type: 'science',
+    author: 'Westman M.',
+    date: '1999',
+    source: 'Conditioning Agents for Hair and Skin',
+  },
 };

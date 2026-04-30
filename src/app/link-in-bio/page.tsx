@@ -52,7 +52,25 @@ export default function TikTokPage() {
           </div>
         </section>
 
-
+        {/* Moisture post /blog/moisturization-myth*/}
+        <Link
+          href="/blog/moisturization-myth"
+          className="group block rounded-2xl border border-base-300 bg-base-100 p-4 hover:bg-base-200/50 transition mb-6"
+        >
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-full bg-base-200 grid place-items-center shrink-0">
+              <BookOpen className="w-4 h-4" aria-hidden="true" />
+            </div>
+            <div className="min-w-0">
+              <div className="text-base font-medium">
+                Moisturization: The Haircare Industry’s Biggest Lie
+              </div>
+              <div className="text-sm text-base-content/60 truncate">
+                Moisturizing and hydrating are marketing words, not scientific ones. Here&apos;s what hair products actually do and what dry hair really means.
+              </div>
+            </div>
+          </div>
+        </Link>
         {/* Hard water post /blog/curly-hair-hard-water*/}
         <Link
           href="/blog/curly-hair-hard-water"
@@ -67,7 +85,9 @@ export default function TikTokPage() {
                 Hard Water Hair Solutions, Ranked by Scientific Evidence
               </div>
               <div className="text-sm text-base-content/60 truncate">
-                Most hard water advice on the internet is bad. Here&apos;s a science-based guide breaking down what actually works and what doesn&apos;t. Updated for 2026.
+                Most hard water advice on the internet is bad. Here&apos;s a
+                science-based guide breaking down what actually works and what
+                doesn&apos;t. Updated for 2026.
               </div>
             </div>
             <ChevronRight className="ml-auto w-4 h-4 text-base-content/50 group-hover:translate-x-0.5 transition" />
