@@ -2105,4 +2105,14 @@ Episode 380: Patented ingredients, porosity, quats and more */
     date: '1999',
     source: 'Conditioning Agents for Hair and Skin',
   },
+  /* https://www.triprinceton.org/post/hair-moisturization-claims-101  Hair Moisturization Claims 101 Dr Paul Cornwell Director, Business Development Dr Philippa Cranwell Technical Content Creator */
+  '191': {
+    id: '191',
+    url: 'https://www.triprinceton.org/post/hair-moisturization-claims-101',
+    title: 'Hair Moisturization Claims 101',
+    type: 'science',
+    author: 'Dr Paul Cornwell, Dr Philippa Cranwell',
+    date: '2024',
+    source: 'TRI Princeton',
+  },
 };
