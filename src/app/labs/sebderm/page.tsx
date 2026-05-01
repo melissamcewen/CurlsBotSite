@@ -3,11 +3,10 @@
 import { useState } from 'react';
 import { sebderm, Analyzer } from 'haircare-ingredients-analyzer';
 import {
-  Shield,
-  CheckCircle,
-  XCircle,
+  Info,
   FlaskConical,
   AlertTriangle,
+  BookOpen,
 } from 'lucide-react';
 import Avatar from '@/components/avatar';
 import Link from 'next/link';
@@ -67,23 +66,23 @@ export default function SebdermLabPage() {
 
       <div className="card bg-base-100 mb-8">
         <div className="card-body">
-          <h2 className="card-title">About Sebderm Safety</h2>
+          <h2 className="card-title">What this checker does</h2>
           <p>
-            This tool analyzes product ingredients to check for ingredients
-            known to feed{' '}
+            This tool compares your ingredient list to our database of
+            substances that have been{' '}
             <Link
               href="/blog/can-curly-routines-products-cause-dandruff"
               className="link"
             >
-              Malassezia yeast
+              discussed in connection with Malassezia yeast and seborrheic
+              dermatitis (sebderm)
             </Link>
-            , which can cause or worsen seborrheic dermatitis (sebderm). It is
-            more important to avoid these ingredients on products that may stay
-            on the scalp. Rinse-off products like shampoos and conditioners are
-            less important. If you&apos;re looking for products that are safe
-            for sebderm, check out our{' '}
+            . It does not diagnose you or label a product &quot;safe&quot; or
+            &quot;unsafe.&quot; Leave-on scalp products matter more than
+            rinse-off ones like shampoo. For product ideas that many people with
+            sebderm tolerate, see our{' '}
             <Link href="/best/best-sebderm-safe-products" className="link">
-              best sebderm safe products
+              sebderm-friendly picks
             </Link>
             .
           </p>
@@ -155,60 +154,68 @@ export default function SebdermLabPage() {
               <h3 className="text-xl font-semibold">Results</h3>
               <div className="card bg-base-100">
                 <div className="card-body">
-                  <div className="flex items-center gap-2 mb-4">
+                  <div className="flex items-start gap-3 mb-4">
                     {analysis.hasTriggers ? (
-                      <>
-                        <AlertTriangle className="w-6 h-6 text-error" />
-                        <h4 className="card-title text-error">
-                          Not Sebderm Safe
-                        </h4>
-                      </>
+                      <AlertTriangle
+                        className="w-6 h-6 text-warning shrink-0 mt-0.5"
+                        aria-hidden
+                      />
                     ) : (
-                      <>
-                        <Shield className="w-6 h-6 text-success" />
-                        <h4 className="card-title text-success">
-                          Sebderm Safe
-                        </h4>
-                      </>
+                      <Info
+                        className="w-6 h-6 text-info shrink-0 mt-0.5"
+                        aria-hidden
+                      />
                     )}
+                    <div className="space-y-2">
+                      <h4 className="card-title text-base-content">
+                        {analysis.hasTriggers
+                          ? 'We found ingredients our database links to Malassezia / sebderm'
+                          : 'We didn’t find anything in this list that our database currently flags for Malassezia / sebderm'}
+                      </h4>
+                      <p className="text-sm text-base-content/80">
+                        Sebderm is not only about individual ingredients, it also
+                        depends on scalp barrier health and your personal
+                        microbiome. Use this as one data point, not a guarantee.
+                        For context on routines, flaking, and when to see a
+                        clinician, read our{' '}
+                        <Link
+                          href="/blog/can-curly-routines-products-cause-dandruff"
+                          className="link link-primary inline-flex items-center gap-1"
+                        >
+                          <BookOpen className="w-4 h-4 shrink-0" />
+                          guide to curly routines and dandruff / sebderm
+                        </Link>
+                        .
+                      </p>
+                    </div>
                   </div>
 
                   {analysis.hasTriggers && analysis.triggers.length > 0 && (
                     <div className="mt-4">
                       <h5 className="font-semibold mb-2">
-                        Problematic Ingredients Found:
+                        Matches in this product:
                       </h5>
                       <div className="space-y-2">
                         {analysis.triggers.map((trigger) => (
                           <div key={trigger.id} className="card bg-base-200">
                             <div className="card-body p-4">
-                              <div className="flex items-start justify-between">
-                                <div className="flex-1">
-                                  <Link
-                                    href={`/ingredients/${formatIngredientId(
-                                      trigger.id,
-                                    )}`}
-                                    className="link font-semibold"
-                                  >
-                                    {trigger.name}
-                                  </Link>
-                                  <p className="text-sm mt-1">
-                                    {trigger.reason}
-                                  </p>
-                                </div>
-                                <XCircle className="w-5 h-5 text-error shrink-0 ml-2" />
+                              <div className="flex-1">
+                                <Link
+                                  href={`/ingredients/${formatIngredientId(
+                                    trigger.id,
+                                  )}`}
+                                  className="link font-semibold"
+                                >
+                                  {trigger.name}
+                                </Link>
+                                <p className="text-sm mt-1">
+                                  {trigger.reason}
+                                </p>
                               </div>
                             </div>
                           </div>
                         ))}
                       </div>
-                    </div>
-                  )}
-
-                  {!analysis.hasTriggers && (
-                    <div className="flex items-center gap-2 text-success">
-                      <CheckCircle className="w-5 h-5" />
-                      <span>No problematic ingredients found!</span>
                     </div>
                   )}
                 </div>
