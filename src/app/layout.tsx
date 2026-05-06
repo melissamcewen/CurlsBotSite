@@ -106,7 +106,6 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="cupcake">
       <head>
-  
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <meta name="apple-mobile-web-app-title" content="CurlsBot" />
         <meta
@@ -123,10 +122,7 @@ export default function RootLayout({
           type="image/svg+xml"
         />
 
-        <Script
-          id="raptive-consent"
-          strategy="beforeInteractive"
-        >
+        <Script id="raptive-consent" strategy="beforeInteractive">
           {`
             try {
               function isUserInEurope() {
@@ -203,9 +199,11 @@ export default function RootLayout({
 
         {/* MailerLite */}
         <MailerLiteUniversal />
-        <script
+        <Script
+          id="skimlinks-script"
           type="text/javascript"
           src="https://s.skimresources.com/js/276362X1762442.skimlinks.js"
+          strategy="afterInteractive"
         />
       </body>
     </html>
