@@ -8,6 +8,7 @@ import {
   GoogleTagManagerHead,
   GoogleTagManagerBody,
 } from '@/components/GoogleTagManager';
+import { AdScripts } from '@/components/ads/AdScripts';
 import { LocalizationProvider } from '@/contexts/LocalizationContext';
 import { MailerLiteUniversal } from '@/components/MailerLite';
 
@@ -186,6 +187,7 @@ export default function RootLayout({
         </Script>
 
         <GoogleTagManagerHead />
+        <AdScripts />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-base-100 text-base-content`}
