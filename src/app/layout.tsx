@@ -8,7 +8,6 @@ import {
   GoogleTagManagerHead,
   GoogleTagManagerBody,
 } from '@/components/GoogleTagManager';
-import { AdScripts } from '@/components/ads/AdScripts';
 import { LocalizationProvider } from '@/contexts/LocalizationContext';
 import { MailerLiteUniversal } from '@/components/MailerLite';
 
@@ -187,7 +186,6 @@ export default function RootLayout({
         </Script>
 
         <GoogleTagManagerHead />
-        <AdScripts />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-base-100 text-base-content`}
@@ -205,6 +203,10 @@ export default function RootLayout({
 
         {/* MailerLite */}
         <MailerLiteUniversal />
+        <script
+          type="text/javascript"
+          src="https://s.skimresources.com/js/276362X1762442.skimlinks.js"
+        />
       </body>
     </html>
   );
