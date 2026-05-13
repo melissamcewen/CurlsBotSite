@@ -10,7 +10,8 @@
     "type-check": "tsc --noEmit",
     "test": "jest --env=jsdom",
     "test:watch": "jest --env=jsdom --watch",
-    "convert-bond-products": "tsx scripts/convert-bond-products-csv.ts"
+    "convert-bond-products": "tsx scripts/convert-bond-products-csv.ts",
+    "audit:external-links": "tsx scripts/audit-external-links.ts --output-json scripts/reports/external-links-audit.json"
   },
   "dependencies": {
     "@lucide/lab": "^0.1.2",

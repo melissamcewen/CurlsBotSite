@@ -147,7 +147,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
         icon: 'shopping-cart',
       },
       {
-        url: 'https://fave.co/4nwLzTH',
+        url: 'https://tidd.ly/4tunEpf',
         text: 'Buy at k18',
         retailer: 'k18',
         icon: 'shopping-cart',
@@ -478,7 +478,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
         icon: 'shopping-cart',
       },
       {
-        url: 'https://fave.co/4uABnvC',
+        url: 'https://tidd.ly/4ubtv3Z',
         text: 'Buy at K18',
         retailer: 'k18',
         icon: 'shopping-cart',
@@ -1166,7 +1166,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
         icon: 'shopping-cart',
       },
       {
-        url: 'https://go.skimresources.com?id=276362X1762442&xs=1&url=https%3A%2F%2Fwww.k18hair.com%2Fproducts%2Fastrolift-reparative-volume-spray-4oz',
+        url: 'https://www.awin1.com/cread.php?awinmid=77396&awinaffid=2868201&ued=https%3A%2F%2Fwww.k18hair.com%2Fproducts%2Fastrolift-reparative-volume-spray-4oz',
         text: 'Buy at K18',
         retailer: 'k18',
         icon: 'shopping-cart',

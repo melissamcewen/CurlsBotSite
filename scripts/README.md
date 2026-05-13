@@ -2,6 +2,29 @@
 
 This directory contains utility scripts for the CurlsBot site.
 
+## audit-external-links.ts
+
+Audits outbound links by scanning project files for absolute URLs and reporting external domains and occurrences.
+
+### Usage
+
+```bash
+npm run audit:external-links
+```
+
+Optional flags:
+
+- `--root <path>`: scan a specific folder (default: `src`)
+- `--include <ext1,ext2>`: customize file extensions (default includes mdx/ts/tsx/js/jsx/json/csv)
+- `--internal-domain <domain>`: add an internal domain that should not be treated as external
+- `--output-json <path>`: save a JSON report
+
+Example:
+
+```bash
+tsx scripts/audit-external-links.ts --root src --internal-domain curlsbot.co --output-json scripts/reports/external-links-audit.json
+```
+
 ## convert-techniques-csv.ts
 
 Converts the `src/data/techniques.csv` file to a TypeScript file with proper typing.

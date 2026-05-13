@@ -64,7 +64,7 @@ You can mix legacy props with new links:
   // Legacy props
   amazonLink="https://amzn.to/4lqESzv"
   buyText="Buy at K18"
-  buyLink="https://www.k18hair.com/products/leave-in-molecular-repair-hair-mask-50-ml"
+  buyLink="https://www.awin1.com/cread.php?awinmid=77396&awinaffid=2868201&ued=https%3A%2F%2Fwww.k18hair.com%2Fproducts%2Fleave-in-molecular-repair-hair-mask-50-ml"
   // Additional links
   links={[
     {
