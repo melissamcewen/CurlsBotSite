@@ -176,6 +176,15 @@ function getProductsByCategory(
   return sortRoutineProducts(filteredProducts);
 }
 
+/** Prefer premium products, then samples; otherwise return all candidates. */
+export function prioritizeRoutineProductPool(products: Product[]): Product[] {
+  const premium = products.filter((p) => p.tags?.includes('premium'));
+  if (premium.length > 0) return premium;
+  const samples = products.filter((p) => p.tags?.includes('samples'));
+  if (samples.length > 0) return samples;
+  return products;
+}
+
 /** Sort products for routine display: premium, samples, with description, then alpha. */
 function sortRoutineProducts(products: Product[]): Product[] {
   return [...products].sort((a, b) => {
@@ -202,7 +211,7 @@ export interface LightStepFilters {
   hairTypeTag?: HairTypeProductTag | null;
 }
 
-/** Get one random product for a light routine step; prioritizes products with "samples" tag. */
+/** Get one random product for a light routine step; prioritizes premium, then samples. */
 export function getRandomProductForLightStep(
   stepKey: LightRoutineStepKey,
   filters: LightStepFilters,
@@ -239,8 +248,7 @@ export function getRandomProductForLightStep(
   const byId = new Map(pooled.map((p) => [p.id, p]));
   const unique = Array.from(byId.values());
   if (unique.length === 0) return null;
-  const withSamples = unique.filter((p) => p.tags?.includes('samples'));
-  const pool = withSamples.length > 0 ? withSamples : unique;
+  const pool = prioritizeRoutineProductPool(unique);
   return pool[Math.floor(Math.random() * pool.length)];
 }
 
