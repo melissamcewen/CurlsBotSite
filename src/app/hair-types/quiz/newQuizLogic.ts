@@ -55,8 +55,10 @@ export function getAdjacentPatterns(
  * Quiz answers collected throughout the flow
  */
 export interface QuizAnswers {
-  /** Q0: Is hair straight? */
+  /** Q0: Is hair straight when dry? */
   isStraight?: boolean;
+  /** Q0b: Hangs straight when soaking wet? (only if isStraight is true) */
+  isStraightWhenWet?: boolean;
   /** Q1: Primary pattern selection */
   primaryPattern?: PrimaryPattern;
   /** Q2: Additional patterns selected (multi-select) */
@@ -118,9 +120,15 @@ export function shouldAskShrinkage(
 export function determineHairType(
   answers: QuizAnswers,
 ): HairPatternType | 'straight' {
-  // Q0: Straight gate
+  // Q0: Straight gate → Q0b: wet straight gate
   if (answers.isStraight === true) {
-    return 'straight';
+    if (answers.isStraightWhenWet === true) {
+      return 'straight';
+    }
+    if (answers.isStraightWhenWet === false) {
+      return 'swavy';
+    }
+    throw new Error('Wet straight gate answer is required when hair is straight');
   }
 
   // Validate required answers
@@ -240,9 +248,12 @@ export function validateQuizAnswers(answers: QuizAnswers): {
     return { valid: false, missingFields };
   }
 
-  // If straight, no other fields needed
+  // If straight when dry, wet straight gate is required
   if (answers.isStraight === true) {
-    return { valid: true, missingFields: [] };
+    if (answers.isStraightWhenWet === undefined) {
+      missingFields.push('isStraightWhenWet');
+    }
+    return { valid: missingFields.length === 0, missingFields };
   }
 
   // Primary pattern is always required

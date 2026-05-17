@@ -4,7 +4,13 @@
  * Defines the questions and answer options for the new pattern-based quiz.
  */
 
-export type QuestionType = 'straight-gate' | 'primary-pattern' | 'additional-patterns' | 'elongation' | 'shrinkage';
+export type QuestionType =
+  | 'straight-gate'
+  | 'wet-straight-gate'
+  | 'primary-pattern'
+  | 'additional-patterns'
+  | 'elongation'
+  | 'shrinkage';
 
 export interface QuestionOption {
   /** Display text for the option */
@@ -36,6 +42,12 @@ export const quizQuestions: QuizQuestion[] = [
     id: 'straight-gate',
     question:
       'Does your hair dry perfectly straight — with no bends or curves — naturally, without products, tools, or heat?',
+    type: 'yes-no',
+  },
+  {
+    id: 'wet-straight-gate',
+    question:
+      "Does your hair hang completely straight with no waves or bends when it's soaking wet?",
     type: 'yes-no',
   },
   {

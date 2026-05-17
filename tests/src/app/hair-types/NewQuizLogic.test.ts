@@ -89,9 +89,27 @@ describe('NewQuizLogic', () => {
 
   describe('determineHairType', () => {
     describe('Straight gate', () => {
-      test('returns straight when isStraight is true', () => {
-        const answers: QuizAnswers = { isStraight: true };
+      test('returns straight when dry straight and straight when wet', () => {
+        const answers: QuizAnswers = {
+          isStraight: true,
+          isStraightWhenWet: true,
+        };
         expect(determineHairType(answers)).toBe('straight');
+      });
+
+      test('returns swavy when dry straight and not straight when wet', () => {
+        const answers: QuizAnswers = {
+          isStraight: true,
+          isStraightWhenWet: false,
+        };
+        expect(determineHairType(answers)).toBe('swavy');
+      });
+
+      test('throws when dry straight but wet gate unanswered', () => {
+        const answers: QuizAnswers = { isStraight: true };
+        expect(() => determineHairType(answers)).toThrow(
+          'Wet straight gate answer is required when hair is straight',
+        );
       });
     });
 
@@ -289,11 +307,21 @@ describe('NewQuizLogic', () => {
   });
 
   describe('validateQuizAnswers', () => {
-    test('validates straight answer correctly', () => {
-      const answers: QuizAnswers = { isStraight: true };
+    test('validates straight path when wet gate is answered', () => {
+      const answers: QuizAnswers = {
+        isStraight: true,
+        isStraightWhenWet: true,
+      };
       const result = validateQuizAnswers(answers);
       expect(result.valid).toBe(true);
       expect(result.missingFields).toEqual([]);
+    });
+
+    test('requires wet straight gate when dry straight', () => {
+      const answers: QuizAnswers = { isStraight: true };
+      const result = validateQuizAnswers(answers);
+      expect(result.valid).toBe(false);
+      expect(result.missingFields).toContain('isStraightWhenWet');
     });
 
     test('requires isStraight answer', () => {

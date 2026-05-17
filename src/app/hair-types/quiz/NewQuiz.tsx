@@ -48,6 +48,15 @@ export default function NewQuiz() {
 
     if (currentQuestionId === 'straight-gate') {
       newAnswers.isStraight = value as boolean;
+      if (value === false) {
+        delete newAnswers.isStraightWhenWet;
+      }
+      setAnswers(newAnswers);
+      return;
+    }
+
+    if (currentQuestionId === 'wet-straight-gate') {
+      newAnswers.isStraightWhenWet = value as boolean;
       setAnswers(newAnswers);
       return;
     }
@@ -92,12 +101,6 @@ export default function NewQuiz() {
   const handleNext = () => {
     if (!currentQuestionId) return;
 
-    // Special case: if straight is selected, go directly to result
-    if (currentQuestionId === 'straight-gate' && answers.isStraight === true) {
-      router.push('/hair-types/quiz/straight');
-      return;
-    }
-
     // Determine next question or finalize result
     const nextQuestionId = getNextQuestionIdInternal(
       currentQuestionId,
@@ -128,6 +131,10 @@ export default function NewQuiz() {
       return answers.isStraight !== undefined;
     }
 
+    if (currentQuestionId === 'wet-straight-gate') {
+      return answers.isStraightWhenWet !== undefined;
+    }
+
     if (currentQuestionId === 'primary-pattern') {
       return !!answers.primaryPattern;
     }
@@ -154,9 +161,13 @@ export default function NewQuiz() {
   ): QuestionType | null => {
     if (currentId === 'straight-gate') {
       if (currentAnswers.isStraight === true) {
-        return null; // Result: straight
+        return 'wet-straight-gate';
       }
       return 'primary-pattern';
+    }
+
+    if (currentId === 'wet-straight-gate') {
+      return null; // Result: straight or swavy
     }
 
     if (currentId === 'primary-pattern') {
@@ -271,18 +282,29 @@ export default function NewQuiz() {
       current: currentQuestionId === 'straight-gate',
     });
 
+    if (answers.isStraight === true) {
+      steps.push({
+        id: 'wet-straight-gate',
+        label: '2',
+        completed: answers.isStraightWhenWet !== undefined,
+        current: currentQuestionId === 'wet-straight-gate',
+      });
+    }
+
     // Q1: Primary pattern
+    const primaryStepLabel = answers.isStraight === true ? '3' : '2';
     steps.push({
       id: 'primary-pattern',
-      label: '2',
+      label: primaryStepLabel,
       completed: !!answers.primaryPattern,
       current: currentQuestionId === 'primary-pattern',
     });
 
     // Q2: Additional patterns
+    const additionalStepLabel = answers.isStraight === true ? '4' : '3';
     steps.push({
       id: 'additional-patterns',
-      label: '3',
+      label: additionalStepLabel,
       completed:
         answers.primaryPattern !== undefined &&
         currentQuestionId !== 'additional-patterns',
@@ -428,6 +450,8 @@ export default function NewQuiz() {
                     checked={
                       (currentQuestionId === 'straight-gate' &&
                         answers.isStraight === true) ||
+                      (currentQuestionId === 'wet-straight-gate' &&
+                        answers.isStraightWhenWet === true) ||
                       (currentQuestionId === 'elongation' &&
                         answers.elongatesWhenWet === true)
                     }
@@ -444,6 +468,8 @@ export default function NewQuiz() {
                     checked={
                       (currentQuestionId === 'straight-gate' &&
                         answers.isStraight === false) ||
+                      (currentQuestionId === 'wet-straight-gate' &&
+                        answers.isStraightWhenWet === false) ||
                       (currentQuestionId === 'elongation' &&
                         answers.elongatesWhenWet === false)
                     }
