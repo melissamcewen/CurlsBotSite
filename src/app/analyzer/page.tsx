@@ -19,7 +19,7 @@ export async function generateMetadata({
   const baseMetadata = createPageMetadata({
     title: 'Curly Hair Ingredient Analysis',
     description:
-      'Analyze hair care ingredients for Curly Girl Method compatibility, humidity resistance, and more.',
+      'Analyze hair care ingredients for Curly Girl Method compatibility, protein content, and more.',
     path: '/analyzer',
   });
 
