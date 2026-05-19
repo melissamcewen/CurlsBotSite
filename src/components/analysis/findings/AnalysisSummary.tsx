@@ -1,9 +1,9 @@
 import {
   AnalysisResult as BaseAnalysisResult,
   porosity,
-  frizzbot,
   sebderm,
 } from 'haircare-ingredients-analyzer';
+import { proteinAnalysis } from '@/lib/proteinAnalysis';
 import {
   AlertTriangle,
   XCircle,
@@ -22,7 +22,8 @@ import {
   Factory,
   Wind,
   Dam,
-  Cloud,
+  Info,
+  Dna,
   Shield,
 } from 'lucide-react';
 import Link from 'next/link';
@@ -54,17 +55,10 @@ const getPorosityStatus = (score: number): StatusType => {
   return 'caution';
 };
 
-// Add function to get frizz status
-const getFrizzStatus = (score: number): StatusType => {
-  if (score <= -50) return 'ok';
-  if (score >= 50) return 'warning';
-  return 'caution';
-};
-
 export function AnalysisSummary({ result }: Props) {
   const { status, reasons } = result;
   const porosityScores = porosity(result);
-  const frizzAnalysis = frizzbot(result);
+  const proteinResult = proteinAnalysis(result);
   /*
 
 export interface SebdermAnalysis extends ExtensionAnalysis {
@@ -271,41 +265,35 @@ export interface SebdermAnalysis extends ExtensionAnalysis {
           })}
       </div>
       <div className="mt-2 flex flex-col gap-2">
-        {frizzAnalysis.score <= -50 && (
-          <div
-            className={`p-4 rounded-lg ${
-              getStatusClasses(getFrizzStatus(frizzAnalysis.score)).bg
-            }`}
-          >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Cloud className="w-6 h-6" />
-                <div className="indicator flex items-center gap-2">
-                  <Link
-                    href="/frizzbot/ingredients"
-                    className="indicator-item badge badge-accent badge-xs"
-                  >
-                    Labs
-                  </Link>
-                  <Link
-                    href="/frizzbot/ingredients"
-                    className="hover:text-primary underline"
-                  >
-                    Humidity Resistant
-                  </Link>
-                </div>
-              </div>
-              <div
-                className={`flex items-end gap-2 ${
-                  getStatusClasses(getFrizzStatus(frizzAnalysis.score)).text
-                }`}
-              >
-                <span className="text-md font-medium">Yes</span>
-                <CheckCircle className="w-5 h-5" />
+        <div className={`p-4 rounded-lg ${getStatusClasses('ok').bg}`}>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Dna className="w-6 h-6" />
+              <div className="indicator flex items-center gap-2">
+                <Link
+                  href="/labs/protein"
+                  className="indicator-item badge badge-accent badge-xs"
+                >
+                  Labs
+                </Link>
+                <Link
+                  href="/labs/protein"
+                  className="hover:text-primary underline"
+                >
+                  Protein ingredients
+                </Link>
               </div>
             </div>
+            <div className={`flex items-end gap-2 ${getStatusClasses('ok').text}`}>
+              <span className="text-md font-medium text-end">
+                {proteinResult.matches.length > 0
+                  ? `${proteinResult.matches.length} found`
+                  : 'None detected'}
+              </span>
+              <Info className="w-5 h-5 shrink-0" aria-hidden />
+            </div>
           </div>
-        )}
+        </div>
         {porosityScores.high >= 70 && (
           <div className={`p-4 rounded-lg ${getStatusClasses('ok').bg}`}>
             <div className="flex items-center justify-between">
@@ -323,37 +311,6 @@ export interface SebdermAnalysis extends ExtensionAnalysis {
                     className="hover:text-primary underline"
                   >
                     Good for High Porosity
-                  </Link>
-                </div>
-              </div>
-              <div
-                className={`flex items-end gap-2 ${
-                  getStatusClasses('ok').text
-                }`}
-              >
-                <span className="text-md font-medium">Yes</span>
-                <CheckCircle className="w-5 h-5" />
-              </div>
-            </div>
-          </div>
-        )}
-        {porosityScores.low >= POROSITY_THRESHOLDS.LIGHTWEIGHT && (
-          <div className={`p-4 rounded-lg ${getStatusClasses('ok').bg}`}>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Droplet className="w-6 h-6" />
-                <div className="indicator flex items-center gap-2">
-                  <Link
-                    href="/labs/porosity"
-                    className="indicator-item badge badge-accent badge-xs"
-                  >
-                    Labs
-                  </Link>
-                  <Link
-                    href="/labs/porosity"
-                    className="hover:text-primary underline"
-                  >
-                    Good for Low Porosity
                   </Link>
                 </div>
               </div>

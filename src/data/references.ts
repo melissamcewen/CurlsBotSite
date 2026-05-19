@@ -2115,4 +2115,27 @@ Episode 380: Patented ingredients, porosity, quats and more */
     date: '2024',
     source: 'TRI Princeton',
   },
+
+  /* Mota, A., Caçador, M., Carvalho, J., Tinoco, A., Da Costa, A., Ribeiro, A., Gonçalves, F., & Cavaco-Paulo, A. (2025). Cosmetic Potential of a Structural Protein Copolymer Based on Silk, Elastin, and Keratin.. ACS biomaterials science & engineering. https://doi.org/10.1021/acsbiomaterials.5c01233.
+  */
+  '192': {
+    id: '192',
+    url: 'https://doi.org/10.1021/acsbiomaterials.5c01233',
+    title: 'Cosmetic Potential of a Structural Protein Copolymer Based on Silk, Elastin, and Keratin.',
+    type: 'science',
+    author: 'Mota, A., Caçador, M., Carvalho, J., Tinoco, A., Da Costa, A., Ribeiro, A., Gonçalves, F., & Cavaco-Paulo, A.',
+    date: '2025',
+    source: 'ACS biomaterials science & engineering',
+  },
+  /*Tinoco, A., Martins, M., Cavaco‐Paulo, A., & Ribeiro, A. (2021). Biotechnology of functional proteins and peptides for hair cosmetic formulations.. Trends in biotechnology. https://doi.org/10.1016/j.tibtech.2021.09.010.
+  */
+  '193': {
+    id: '193',
+    url: 'https://doi.org/10.1016/j.tibtech.2021.09.010',
+    title: 'Biotechnology of functional proteins and peptides for hair cosmetic formulations.',
+    type: 'science',
+    author: 'Tinoco, A., Martins, M., Cavaco‐Paulo, A., & Ribeiro, A.',
+    date: '2021',
+    source: 'Trends in Biotechnology',
+  }
 };

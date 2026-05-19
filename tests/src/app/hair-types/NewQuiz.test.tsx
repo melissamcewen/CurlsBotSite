@@ -49,7 +49,7 @@ describe('NewQuiz Component', () => {
       ).toBeInTheDocument();
     });
 
-    test('selecting Yes on straight gate redirects to straight result', async () => {
+    test('selecting Yes on straight gate shows wet straight gate question', async () => {
       render(<NewQuiz />);
       expect(
         screen.getByText(
@@ -57,16 +57,55 @@ describe('NewQuiz Component', () => {
         ),
       ).toBeInTheDocument();
 
-      // Click Yes radio button
-      const yesRadio = screen.getByRole('radio', { name: /yes/i });
-      fireEvent.click(yesRadio);
+      fireEvent.click(screen.getByRole('radio', { name: /yes/i }));
+      fireEvent.click(screen.getByRole('button', { name: /next/i }));
 
-      const nextButton = screen.getByRole('button', { name: /next/i });
-      expect(nextButton).not.toBeDisabled();
-      fireEvent.click(nextButton);
+      await waitFor(() => {
+        expect(
+          screen.getByText(
+            /does your hair hang completely straight with no waves or bends when it's soaking wet/i,
+          ),
+        ).toBeInTheDocument();
+      });
+    });
+
+    test('wet straight Yes redirects to straight result', async () => {
+      render(<NewQuiz />);
+
+      fireEvent.click(screen.getByRole('radio', { name: /yes/i }));
+      fireEvent.click(screen.getByRole('button', { name: /next/i }));
+
+      await waitFor(() => {
+        expect(
+          screen.getByText(/soaking wet/i),
+        ).toBeInTheDocument();
+      });
+
+      fireEvent.click(screen.getByRole('radio', { name: /yes/i }));
+      fireEvent.click(screen.getByRole('button', { name: /next/i }));
 
       await waitFor(() => {
         expect(mockPush).toHaveBeenCalledWith('/hair-types/quiz/straight');
+      });
+    });
+
+    test('wet straight No redirects to swavy result', async () => {
+      render(<NewQuiz />);
+
+      fireEvent.click(screen.getByRole('radio', { name: /yes/i }));
+      fireEvent.click(screen.getByRole('button', { name: /next/i }));
+
+      await waitFor(() => {
+        expect(
+          screen.getByText(/soaking wet/i),
+        ).toBeInTheDocument();
+      });
+
+      fireEvent.click(screen.getByRole('radio', { name: /no/i }));
+      fireEvent.click(screen.getByRole('button', { name: /next/i }));
+
+      await waitFor(() => {
+        expect(mockPush).toHaveBeenCalledWith('/hair-types/quiz/swavy');
       });
     });
   });

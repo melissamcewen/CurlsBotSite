@@ -6,8 +6,8 @@ import {
   FlaskConical,
   ListChecks,
   Camera,
-  ArrowRight,
   Droplets,
+  Dna,
 } from 'lucide-react';
 
 
@@ -136,6 +136,27 @@ export default function Labs() {
             <div className="card-actions justify-end mt-4">
               <div className="badge badge-primary">Quiz</div>
               <div className="badge badge-secondary">Routine</div>
+            </div>
+          </div>
+        </Link>
+
+        {/* Protein checker */}
+        <Link
+          href="/labs/protein"
+          className="card bg-base-100 hover:bg-base-300 transition-colors"
+        >
+          <div className="card-body">
+            <div className="flex items-center gap-3 mb-4">
+              <Dna className="h-8 w-8 text-primary" />
+              <h2 className="card-title">Protein Checker</h2>
+            </div>
+            <p>
+              See which protein and amino acid ingredients we detect in a
+              product list—without labeling protein as good or bad.
+            </p>
+            <div className="card-actions justify-end mt-4">
+              <div className="badge badge-primary">Protein</div>
+              <div className="badge badge-secondary">Ingredients</div>
             </div>
           </div>
         </Link>
