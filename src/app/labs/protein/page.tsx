@@ -199,6 +199,11 @@ function MatchSection({
                   </span>
                 )}
               </div>
+              {match.description && (
+                <p className="text-sm text-base-content/80 mt-2">
+                  {match.description}
+                </p>
+              )}
             </div>
           </div>
         ))}

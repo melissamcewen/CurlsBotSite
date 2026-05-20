@@ -42,6 +42,8 @@ jest.mock('@/lib/proteinAnalysis', () => ({
         position: 1,
         kind: 'protein',
         categories: ['proteins'],
+        description:
+          'Acts like a hybrid between a film-forming humectant and a protein',
       },
     ],
     hasProteins: true,
@@ -81,6 +83,11 @@ describe('ProteinLabPage', () => {
       expect(proteinAnalysis).toHaveBeenCalled();
       expect(
         screen.getByRole('link', { name: /Hydrolyzed Wheat Protein/i }),
+      ).toBeInTheDocument();
+      expect(
+        screen.getByText(
+          /Acts like a hybrid between a film-forming humectant and a protein/i,
+        ),
       ).toBeInTheDocument();
     });
   });

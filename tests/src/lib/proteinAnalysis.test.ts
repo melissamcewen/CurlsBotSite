@@ -36,6 +36,7 @@ describe('proteinAnalysis', () => {
             id: 'hydrolyzed_wheat_protein',
             name: 'Hydrolyzed Wheat Protein',
             categories: ['proteins'],
+            description: 'Acts like a hybrid between a film-forming humectant and a protein',
           },
         },
       ]),
@@ -45,6 +46,9 @@ describe('proteinAnalysis', () => {
     expect(result.matches).toHaveLength(1);
     expect(result.matches[0].kind).toBe('protein');
     expect(result.matches[0].position).toBe(2);
+    expect(result.matches[0].description).toBe(
+      'Acts like a hybrid between a film-forming humectant and a protein',
+    );
   });
 
   it('classifies amino acids separately from proteins', () => {

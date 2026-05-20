@@ -8,6 +8,10 @@ import {
   DualImage,
   FlowchartImage,
 } from '@/components/mdx/BlogImage';
+import {
+  BeforeAfterDiff,
+  BeforeAfterDiffGrid,
+} from '@/components/mdx/BeforeAfterDiff';
 import { BlogProduct } from '@/components/mdx/BlogProduct';
 import { BlogProductEnhanced } from '@/components/mdx/BlogProductEnhanced';
 import { BlogProductCard } from '@/components/mdx/BlogProductCard';
@@ -39,6 +43,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     BlogImage,
     DualImage,
     FlowchartImage,
+    BeforeAfterDiff,
+    BeforeAfterDiffGrid,
     BlogProduct,
     BlogProductEnhanced,
     BlogProductCard,

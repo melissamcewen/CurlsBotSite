@@ -9,6 +9,7 @@ export interface ProteinMatch {
   position: number;
   kind: ProteinMatchKind;
   categories: string[];
+  description?: string;
 }
 
 export interface ProteinAnalysis {
@@ -40,6 +41,7 @@ function toMatch(
     position,
     kind,
     categories,
+    description: ingredient.ingredient.description,
   };
 }
 

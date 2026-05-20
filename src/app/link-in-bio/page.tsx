@@ -52,6 +52,46 @@ export default function TikTokPage() {
           </div>
         </section>
 
+        {/* Protein overload post /blog/mystery-of-protein-overload-a-scientific-investigation*/}
+        <Link
+          href="/blog/mystery-of-protein-overload-a-scientific-investigation"
+          className="group block rounded-2xl border border-base-300 bg-base-100 p-4 hover:bg-base-200/50 transition mb-6"
+        >
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-full bg-base-200 grid place-items-center shrink-0">
+              <BookOpen className="w-4 h-4" aria-hidden="true" />
+            </div>
+            <div className="min-w-0">
+              <div className="text-base font-medium">
+                Protein Overload: What&apos;s Actually Happening
+              </div>
+              <div className="text-sm text-base-content/60 truncate">
+                Protein overload: myth, mystery, or science? We unravel the truth about protein, moisture, and why your hair feels the way it does.
+              </div>
+            </div>
+          </div>
+        </Link>
+
+        {/* protein checker /labs/protein*/}
+        <Link
+          href="/labs/protein"
+          className="group block rounded-2xl border border-base-300 bg-base-100 p-4 hover:bg-base-200/50 transition mb-6"
+        >
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-full bg-base-200 grid place-items-center shrink-0">
+              <BookOpen className="w-4 h-4" aria-hidden="true" />
+            </div>
+            <div className="min-w-0">
+              <div className="text-base font-medium">
+                Protein Checker
+              </div>
+              <div className="text-sm text-base-content/60 truncate">
+                See which protein and amino acid ingredients appear in a hair product list.
+              </div>
+            </div>
+          </div>
+        </Link>
+
         {/* Moisture post /blog/moisturization-myth*/}
         <Link
           href="/blog/moisturization-myth"
