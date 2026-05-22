@@ -135,13 +135,41 @@ export default function AbbeyYungProductList({
         <span className="text-xs text-base-content">{filtered.length} products</span>
       </div>
       <div className="max-h-[34rem] overflow-auto rounded-2xl border border-base-300 bg-base-100">
-        <table className="table table-zebra table-sm">
+        <table className="table table-zebra table-sm table-fixed w-full min-w-[20rem]">
+          <colgroup>
+            <col
+              className={
+                visibleExtraFields.length === 0
+                  ? 'w-[32%] sm:w-[28%]'
+                  : 'w-[32%] sm:w-[22%]'
+              }
+            />
+            <col
+              className={
+                visibleExtraFields.length === 0
+                  ? 'w-[68%] sm:w-[72%]'
+                  : visibleExtraFields.length === 1
+                    ? 'w-[42%] sm:w-[52%]'
+                    : 'w-[36%] sm:w-[44%]'
+              }
+            />
+            {visibleExtraFields.map((field) => (
+              <col
+                key={field}
+                className={
+                  visibleExtraFields.length === 1 ? 'w-[26%] sm:w-[26%]' : 'w-[16%] sm:w-[17%]'
+                }
+              />
+            ))}
+          </colgroup>
           <thead>
             <tr>
-              <th>Product</th>
-              <th>Details</th>
+              <th className="align-bottom">Product</th>
+              <th className="align-bottom">Details</th>
               {visibleExtraFields.map((field) => (
-                <th key={field}>{EXTRA_FIELD_LABEL[field]}</th>
+                <th key={field} className="align-bottom">
+                  {EXTRA_FIELD_LABEL[field]}
+                </th>
               ))}
             </tr>
           </thead>
@@ -150,8 +178,14 @@ export default function AbbeyYungProductList({
               const links = productLinks(product);
               return (
                 <tr key={product.product}>
-                  <td className="align-top">
-                    <div className={`items-start gap-3 ${product.img ? 'flex' : 'block space-y-2'}`}>
+                  <td className="min-w-0 overflow-hidden align-top">
+                    <div
+                      className={
+                        product.img
+                          ? 'flex flex-col items-start gap-2 sm:flex-row sm:items-start sm:gap-3'
+                          : 'block space-y-2'
+                      }
+                    >
                       {product.img ? (
                         <img
                           src={product.img}
@@ -159,8 +193,8 @@ export default function AbbeyYungProductList({
                           className="h-20 w-20 shrink-0 rounded-lg border border-base-300 object-cover"
                         />
                       ) : null}
-                      <div className="min-w-0 space-y-2">
-                        <p className="leading-snug text-base-content text-sm">{product.product} </p>
+                      <div className="min-w-0 w-full space-y-2">
+                        <p className="text-sm leading-snug text-base-content">{product.product}</p>
                         {links.length > 0 ? (
                           <div className="flex flex-wrap gap-2">
                             {links.map((link) => (
@@ -173,27 +207,26 @@ export default function AbbeyYungProductList({
                       </div>
                     </div>
                   </td>
-                  <td className="align-top">
-                    <div className="space-y-2 text-base-content">
+                  <td className="min-w-0 overflow-hidden align-top">
+                    <div className="space-y-2 text-sm text-base-content">
                       {product.comments?.trim() ? (
-                        <div>
-
-                          {product.comments}
-                        </div>
+                        <div className="break-words">{product.comments}</div>
                       ) : null}
                       {product.bestFor?.trim() ? (
-                        <div>
+                        <div className="break-words">
                           <span className="font-medium">Best for: </span>
                           {product.bestFor}
                         </div>
                       ) : null}
                       <div className="flex flex-wrap items-center gap-2">
-                        <span className={`badge ${product.drugstore ? 'badge-success' : 'badge-neutral'}`}>
+                        <span
+                          className={`badge shrink-0 whitespace-nowrap ${product.drugstore ? 'badge-success' : 'badge-neutral'}`}
+                        >
                           {product.drugstore ? 'Drugstore' : 'Non-drugstore'}
                         </span>
                         {product.tags && product.tags.length > 0
                           ? product.tags.map((tag) => (
-                              <span key={tag} className="badge badge-outline">
+                              <span key={tag} className="badge badge-outline shrink-0 whitespace-nowrap">
                                 {tag}
                               </span>
                             ))
@@ -210,8 +243,8 @@ export default function AbbeyYungProductList({
                     if (field === 'texture') value = toListValue(product.texture);
                     if (field === 'fragrance') value = toListValue(product.fragrance);
                     return (
-                      <td key={field} className="align-top text-sm text-base-content">
-                        {value ?? '-'}
+                      <td key={field} className="min-w-0 overflow-hidden align-top text-sm text-base-content">
+                        <span className="whitespace-nowrap">{value ?? '-'}</span>
                       </td>
                     );
                   })}

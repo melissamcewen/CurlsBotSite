@@ -469,7 +469,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     fragrance: 'Jasmine, peony',
     weight: ['light', 'medium'],
     tags: ['strong-bond-repair'],
-    img: '/images/blog/the-abbey-yung-method/k18-mask.png',
+    img: '/images/blog/the-abbey-yung-method/k18.png',
     links: [
       {
         url: 'https://amzn.to/4lqESzv',
