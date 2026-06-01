@@ -5,6 +5,7 @@ export { weightIsEligible } from './weightFilter';
 export { selectProducts, applyDrugstoreFilter } from './selectProducts';
 export {
   parseQuizSearchParams,
+  replaceQuizUrl,
   serializeQuizSearchParams,
   PARAM_RESULTS,
 } from './urlParams';

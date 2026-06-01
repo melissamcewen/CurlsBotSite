@@ -145,3 +145,19 @@ export function serializeQuizSearchParams(
 
   return p;
 }
+
+/**
+ * Update the address bar without Next.js navigation (avoids scroll-to-top on
+ * mobile Safari when syncing quiz answers to the query string).
+ */
+export function replaceQuizUrl(
+  pathname: string,
+  searchParams: URLSearchParams,
+): void {
+  if (typeof window === 'undefined') return;
+  const qs = searchParams.toString();
+  const href = qs ? `${pathname}?${qs}` : pathname;
+  const current = `${window.location.pathname}${window.location.search}`;
+  if (current === href) return;
+  window.history.replaceState(window.history.state, '', href);
+}

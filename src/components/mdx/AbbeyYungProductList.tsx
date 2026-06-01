@@ -134,40 +134,14 @@ export default function AbbeyYungProductList({
         </label>
         <span className="text-xs text-base-content">{filtered.length} products</span>
       </div>
-      <div className="max-h-[34rem] overflow-auto rounded-2xl border border-base-300 bg-base-100">
-        <table className="table table-zebra table-sm table-fixed w-full min-w-[20rem]">
-          <colgroup>
-            <col
-              className={
-                visibleExtraFields.length === 0
-                  ? 'w-[32%] sm:w-[28%]'
-                  : 'w-[32%] sm:w-[22%]'
-              }
-            />
-            <col
-              className={
-                visibleExtraFields.length === 0
-                  ? 'w-[68%] sm:w-[72%]'
-                  : visibleExtraFields.length === 1
-                    ? 'w-[42%] sm:w-[52%]'
-                    : 'w-[36%] sm:w-[44%]'
-              }
-            />
-            {visibleExtraFields.map((field) => (
-              <col
-                key={field}
-                className={
-                  visibleExtraFields.length === 1 ? 'w-[26%] sm:w-[26%]' : 'w-[16%] sm:w-[17%]'
-                }
-              />
-            ))}
-          </colgroup>
+      <div className="max-h-[34rem] overflow-x-auto overflow-y-auto rounded-2xl border border-base-300 bg-base-100">
+        <table className="table table-zebra table-sm w-max min-w-full">
           <thead>
             <tr>
-              <th className="align-bottom">Product</th>
-              <th className="align-bottom">Details</th>
+              <th className="min-w-[9rem] align-bottom sm:min-w-[11rem]">Product</th>
+              <th className="min-w-[12rem] align-bottom sm:min-w-[16rem]">Details</th>
               {visibleExtraFields.map((field) => (
-                <th key={field} className="align-bottom">
+                <th key={field} className="min-w-[4.5rem] whitespace-nowrap align-bottom sm:min-w-[5.5rem]">
                   {EXTRA_FIELD_LABEL[field]}
                 </th>
               ))}
@@ -178,7 +152,7 @@ export default function AbbeyYungProductList({
               const links = productLinks(product);
               return (
                 <tr key={product.product}>
-                  <td className="min-w-0 overflow-hidden align-top">
+                  <td className="min-w-[9rem] align-top sm:min-w-[11rem]">
                     <div
                       className={
                         product.img
@@ -207,7 +181,7 @@ export default function AbbeyYungProductList({
                       </div>
                     </div>
                   </td>
-                  <td className="min-w-0 overflow-hidden align-top">
+                  <td className="min-w-[12rem] align-top sm:min-w-[16rem]">
                     <div className="space-y-2 text-sm text-base-content">
                       {product.comments?.trim() ? (
                         <div className="break-words">{product.comments}</div>
@@ -243,7 +217,10 @@ export default function AbbeyYungProductList({
                     if (field === 'texture') value = toListValue(product.texture);
                     if (field === 'fragrance') value = toListValue(product.fragrance);
                     return (
-                      <td key={field} className="min-w-0 overflow-hidden align-top text-sm text-base-content">
+                      <td
+                        key={field}
+                        className="min-w-[4.5rem] align-top text-sm text-base-content sm:min-w-[5.5rem]"
+                      >
                         <span className="whitespace-nowrap">{value ?? '-'}</span>
                       </td>
                     );

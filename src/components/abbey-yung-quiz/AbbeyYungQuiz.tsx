@@ -1,13 +1,14 @@
 'use client';
 
 import Link from 'next/link';
-import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import {
   computeQuizState,
   createEmptyRawAnswers,
   parseQuizSearchParams,
+  replaceQuizUrl,
   selectProducts,
   serializeQuizSearchParams,
 } from '@/lib/abbey-yung-quiz';
@@ -67,7 +68,6 @@ function canProceed(step: number, a: RawAnswers): boolean {
 }
 
 export function AbbeyYungQuiz() {
-  const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -97,26 +97,8 @@ export function AbbeyYungQuiz() {
 
   useEffect(() => {
     if (!urlReady) return;
-    const qs = serializeQuizSearchParams(answers, showResults).toString();
-    const href = qs ? `${pathname}?${qs}` : pathname;
-    if (
-      typeof window !== 'undefined' &&
-      `${window.location.pathname}${window.location.search}` === href
-    ) {
-      return;
-    }
-    // router.replace(..., { scroll: false }) still jumps to top on some mobile
-    // browsers when the query string updates; preserve scroll explicitly.
-    const scrollY = typeof window !== 'undefined' ? window.scrollY : 0;
-    router.replace(href, { scroll: false });
-    if (typeof window === 'undefined') return;
-    const restore = () => window.scrollTo(0, scrollY);
-    queueMicrotask(restore);
-    requestAnimationFrame(() => {
-      restore();
-      requestAnimationFrame(restore);
-    });
-  }, [answers, showResults, urlReady, pathname, router]);
+    replaceQuizUrl(pathname, serializeQuizSearchParams(answers, showResults));
+  }, [answers, showResults, urlReady, pathname]);
 
   const goNext = () => {
     if (step < TOTAL_STEPS - 1) setStep((s) => s + 1);
@@ -139,7 +121,7 @@ export function AbbeyYungQuiz() {
     setAnswers(createEmptyRawAnswers());
     setStep(0);
     setShowResults(false);
-    router.replace(pathname, { scroll: false });
+    replaceQuizUrl(pathname, new URLSearchParams());
   };
 
   const nextDisabled = !canProceed(step, answers);
