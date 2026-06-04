@@ -5,9 +5,9 @@ import {
   Shuffle,
   Sparkles,
   Layers,
-  ExternalLink,
   Info,
   HelpCircle,
+  ShoppingCart,
 } from 'lucide-react';
 import type { Product } from 'haircare-ingredients-analyzer';
 import Link from 'next/link';
@@ -61,6 +61,24 @@ function getInitialHairTypeValue(initial?: string): string {
   const tag = hairTypeToProductTag(initial);
   const option = HAIR_TYPE_OPTIONS.find((o) => o.tag === tag);
   return option?.value ?? 'tight-curls';
+}
+
+function getBuyLinksForCountry(product: Product, country: CountryCode) {
+  return (
+    product.buy_links?.filter(
+      (link) =>
+        link.countries?.includes(country) ||
+        (country === 'US' &&
+          (!link.countries || link.countries.length === 0)),
+    ) ?? []
+  );
+}
+
+function buyLinkLabel(retailer: string | undefined, country: CountryCode) {
+  return (
+    retailer ||
+    (country === 'US' ? 'Amazon' : `Amazon ${country}`)
+  );
 }
 
 export function RoutineWidget({
@@ -241,52 +259,57 @@ export function RoutineWidget({
             const product = products[key];
             if (!product) return null;
             const config = LIGHT_STEP_CONFIG[key];
-            const buyLink =
-              product.buy_links?.find(
-                (link) =>
-                  link.countries?.includes(country) ||
-                  (country === 'US' &&
-                    (!link.countries || link.countries.length === 0)),
-              ) ?? product.buy_links?.[0];
+            const buyLinks = getBuyLinksForCountry(product, country);
             return (
               <div
                 key={key}
-                className="card bg-base-100 rounded-box  border-primary/30 border-2 min-w-0 shadow-none"
+                className="card bg-base-100 rounded-box border-primary/30 border-2 min-w-0 shadow-none"
               >
-                <div className="card-body   ">
+                <div className="card-body gap-2 p-3">
                   <p className="text-xs font-semibold text-base-content/80 leading-tight">
                     {config.label}
                   </p>
-                  {buyLink ? (
-                    <a
-                      href={buyLink.url}
-                      target="_blank"
-                      className="link link-primary text-xs inline-flex items-center gap-0.5 leading-tight mt-0.5"
-                      ref={(el) => {
-                        if (el) {
-                          addProductTrackingAttributes(
-                            el,
-                            product,
-                            'buy',
-                            buyLink?.retailer,
-                          );
-                        }
-                      }}
-                      onClick={() => {
-                        trackProductInteraction(
-                          product,
-                          'buy',
-                          buyLink?.retailer,
-                        );
-                      }}
-                    >
-                      {product.brand} {product.name}
-                      <ExternalLink className="w-3 h-3 shrink-0" />
-                    </a>
-                  ) : (
-                    <span className="text-xs leading-tight mt-0.5 block text-base-content">
-                      {product.brand} {product.name}
-                    </span>
+                  <p className="text-xs leading-tight text-base-content">
+                    {product.brand} {product.name}
+                  </p>
+                  {product.description && (
+                    <p className="text-xs text-base-content/80 leading-snug line-clamp-3">
+                      {product.description}
+                    </p>
+                  )}
+                  {buyLinks.length > 0 && (
+                    <div className="flex flex-col gap-1">
+                      {buyLinks.map((link, index) => (
+                        <a
+                          key={index}
+                          href={link.url}
+                          target="_blank"
+                          className="btn btn-outline btn-xs gap-1 w-full flex-nowrap"
+                          ref={(el) => {
+                            if (el) {
+                              addProductTrackingAttributes(
+                                el,
+                                product,
+                                'buy',
+                                link.retailer,
+                              );
+                            }
+                          }}
+                          onClick={() => {
+                            trackProductInteraction(
+                              product,
+                              'buy',
+                              link.retailer,
+                            );
+                          }}
+                        >
+                          <ShoppingCart className="w-3 h-3 shrink-0" />
+                          <span className="truncate">
+                            Buy on {buyLinkLabel(link.retailer, country)}
+                          </span>
+                        </a>
+                      ))}
+                    </div>
                   )}
                 </div>
               </div>
