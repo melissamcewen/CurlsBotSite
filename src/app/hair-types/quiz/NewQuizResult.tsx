@@ -8,6 +8,36 @@ import { FeaturedProductSet } from '@/components/hairTypes/FeaturedProductSet';
 import { featuredProductSets } from './featuredProductSets';
 import { HairTypeResultEmailSignup } from '@/components/hairTypes/HairTypeResultEmailSignup';
 import { RoutineWidget } from '@/components/routine/RoutineWidget';
+import {
+  addProductTrackingAttributes,
+  CURLS_MONTHLY_AFFILIATE_URL,
+  curlsMonthlySampleProduct,
+  partnerTrackingProduct,
+  STRANDPRINT_URL,
+  strandprintPartnerProduct,
+  trackProductInteraction,
+} from '@/utils/productTracking';
+
+const HAIR_QUIZ_PARTNER_LINKS = {
+  miche: partnerTrackingProduct(
+    'miche-beauty',
+    'Miche Beauty',
+    'https://www.michebeauty.com/?rfsn=8688386.3de231',
+    'Miche',
+  ),
+  bounceCurl: partnerTrackingProduct(
+    'bounce-curl',
+    'Bounce Curl',
+    'https://glnk.io/x26q/curlsbot',
+    'Bounce Curl',
+  ),
+  curlKeeper: partnerTrackingProduct(
+    'curl-keeper',
+    'Curl Keeper',
+    'https://curlkeeper.com/curlsbotcom',
+    'Curl Keeper',
+  ),
+} as const;
 
 // Map pattern types to their image files
 const patternImageMap: Record<HairPatternType, string> = {
@@ -274,9 +304,27 @@ export default function NewQuizResult({ patternType }: Props) {
                         </Link>{' '}
                         to estimate your porosity or get a{' '}
                         <a
-                          href="https://www.strandprint.com/"
+                          href={STRANDPRINT_URL}
                           target="_blank"
+                          rel="noopener noreferrer"
                           className="text-primary"
+                          ref={(el) => {
+                            if (el) {
+                              addProductTrackingAttributes(
+                                el,
+                                strandprintPartnerProduct,
+                                'buy',
+                                'Strandprint',
+                              );
+                            }
+                          }}
+                          onClick={() =>
+                            trackProductInteraction(
+                              strandprintPartnerProduct,
+                              'buy',
+                              'Strandprint',
+                            )
+                          }
                         >
                           pro analysis from Strandprint to find your actual
                           porosity - use code CBOT10 for 10% off
@@ -469,34 +517,106 @@ export default function NewQuizResult({ patternType }: Props) {
                   can try sample sizes of many great products perfect for your
                   curl type from brands like{' '}
                   <a
-                    href="https://www.michebeauty.com/?rfsn=8688386.3de231"
+                    href={HAIR_QUIZ_PARTNER_LINKS.miche.buy_links[0].url}
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="text-primary"
+                    ref={(el) => {
+                      if (el) {
+                        addProductTrackingAttributes(
+                          el,
+                          HAIR_QUIZ_PARTNER_LINKS.miche,
+                          'buy',
+                          'Miche',
+                        );
+                      }
+                    }}
+                    onClick={() =>
+                      trackProductInteraction(
+                        HAIR_QUIZ_PARTNER_LINKS.miche,
+                        'buy',
+                        'Miche',
+                      )
+                    }
                   >
                     Miche
                   </a>
                   ,{' '}
                   <a
-                    href="https://glnk.io/x26q/curlsbot"
+                    href={HAIR_QUIZ_PARTNER_LINKS.bounceCurl.buy_links[0].url}
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="text-primary"
+                    ref={(el) => {
+                      if (el) {
+                        addProductTrackingAttributes(
+                          el,
+                          HAIR_QUIZ_PARTNER_LINKS.bounceCurl,
+                          'buy',
+                          'Bounce Curl',
+                        );
+                      }
+                    }}
+                    onClick={() =>
+                      trackProductInteraction(
+                        HAIR_QUIZ_PARTNER_LINKS.bounceCurl,
+                        'buy',
+                        'Bounce Curl',
+                      )
+                    }
                   >
                     Bounce Curl
                   </a>
                   , and{' '}
                   <a
-                    href="https://curlkeeper.com/curlsbotcom"
+                    href={HAIR_QUIZ_PARTNER_LINKS.curlKeeper.buy_links[0].url}
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="text-primary"
+                    ref={(el) => {
+                      if (el) {
+                        addProductTrackingAttributes(
+                          el,
+                          HAIR_QUIZ_PARTNER_LINKS.curlKeeper,
+                          'buy',
+                          'Curl Keeper',
+                        );
+                      }
+                    }}
+                    onClick={() =>
+                      trackProductInteraction(
+                        HAIR_QUIZ_PARTNER_LINKS.curlKeeper,
+                        'buy',
+                        'Curl Keeper',
+                      )
+                    }
                   >
                     Curl Keeper
                   </a>
                   .
                 </p>
                 <a
-                  href="https://curlsmonthly.com/?ref=curlsbot"
+                  href={CURLS_MONTHLY_AFFILIATE_URL}
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="btn btn-primary w-full"
+                  ref={(el) => {
+                    if (el) {
+                      addProductTrackingAttributes(
+                        el,
+                        curlsMonthlySampleProduct,
+                        'sample',
+                        'Curls Monthly',
+                      );
+                    }
+                  }}
+                  onClick={() =>
+                    trackProductInteraction(
+                      curlsMonthlySampleProduct,
+                      'sample',
+                      'Curls Monthly',
+                    )
+                  }
                 >
                   Join Curls Monthly
                 </a>

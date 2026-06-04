@@ -1,5 +1,53 @@
 import type { Product } from 'haircare-ingredients-analyzer';
 
+export const CURLS_MONTHLY_AFFILIATE_URL =
+  'https://curlsmonthly.com/?ref=curlsbot';
+
+export const curlsMonthlySampleProduct = {
+  id: 'curls-monthly',
+  name: 'Curls Monthly',
+  brand: 'Curls Monthly',
+  product_categories: ['samples'],
+  buy_links: [
+    { url: CURLS_MONTHLY_AFFILIATE_URL, retailer: 'Curls Monthly' },
+  ],
+} as Product;
+
+export const STRANDPRINT_URL = 'https://www.strandprint.com/';
+
+export const strandprintPartnerProduct = {
+  id: 'strandprint',
+  name: 'Strandprint Hair Analysis',
+  brand: 'Strandprint',
+  product_categories: ['partner'],
+  buy_links: [{ url: STRANDPRINT_URL, retailer: 'Strandprint' }],
+} as Product;
+
+export const TOOTILAB_STARTER_URL = 'https://collabs.shop/ea393f';
+
+export const tootilabStarterProduct = {
+  id: 'tootilab-starter-bundle',
+  name: 'Tootilab Curly Hair Starter Bundle',
+  brand: 'Tootilab',
+  product_categories: ['partner'],
+  buy_links: [{ url: TOOTILAB_STARTER_URL, retailer: 'Tootilab' }],
+} as Product;
+
+export function partnerTrackingProduct(
+  id: string,
+  name: string,
+  url: string,
+  retailer: string,
+): Product {
+  return {
+    id,
+    name,
+    brand: retailer,
+    product_categories: ['partner'],
+    buy_links: [{ url, retailer }],
+  } as Product;
+}
+
 /**
  * Adds product tracking data attributes to a link element for GA4 tracking
  */

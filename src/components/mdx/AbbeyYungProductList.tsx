@@ -2,6 +2,14 @@
 
 import { useMemo, useState } from 'react';
 import { abbeyYungProducts, type AbbeyYungProduct } from '@/data/abbeyYungProducts';
+import {
+  abbeyYungMockProduct,
+  retailerFromAbbeyYungLink,
+} from '@/lib/abbeyYungProductTracking';
+import {
+  addProductTrackingAttributes,
+  trackProductInteraction,
+} from '@/utils/productTracking';
 
 type ExtraFieldKey =
   | 'weight'
@@ -171,11 +179,45 @@ export default function AbbeyYungProductList({
                         <p className="text-sm leading-snug text-base-content">{product.product}</p>
                         {links.length > 0 ? (
                           <div className="flex flex-wrap gap-2">
-                            {links.map((link) => (
-                              <a key={link.url} href={link.url} className="link link-primary">
-                                {link.text}
-                              </a>
-                            ))}
+                            {links.map((link) => {
+                              const retailer = retailerFromAbbeyYungLink(
+                                link.url,
+                                link.text,
+                              );
+                              const mockProduct = abbeyYungMockProduct(
+                                product,
+                                link.url,
+                                retailer,
+                              );
+                              return (
+                                <a
+                                  key={link.url}
+                                  href={link.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="link link-primary"
+                                  ref={(el) => {
+                                    if (el) {
+                                      addProductTrackingAttributes(
+                                        el,
+                                        mockProduct,
+                                        'buy',
+                                        retailer,
+                                      );
+                                    }
+                                  }}
+                                  onClick={() =>
+                                    trackProductInteraction(
+                                      mockProduct,
+                                      'buy',
+                                      retailer,
+                                    )
+                                  }
+                                >
+                                  {link.text}
+                                </a>
+                              );
+                            })}
                           </div>
                         ) : null}
                       </div>

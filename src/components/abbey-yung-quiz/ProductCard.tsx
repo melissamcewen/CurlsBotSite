@@ -2,6 +2,14 @@
 
 import Image from 'next/image';
 import type { AbbeyYungProduct } from '@/data/abbeyYungProducts';
+import {
+  abbeyYungMockProduct,
+  retailerFromAbbeyYungLink,
+} from '@/lib/abbeyYungProductTracking';
+import {
+  addProductTrackingAttributes,
+  trackProductInteraction,
+} from '@/utils/productTracking';
 
 function normalizeBuyUrl(url: string): string {
   try {
@@ -74,20 +82,42 @@ export function ProductCard({
             </p>
           ) : null}
           <div className="mt-3 flex flex-wrap gap-2">
-            {buyButtons.map((link) => (
-              <a
-                key={`${link.url}-${link.text}`}
-                href={link.url}
-                target="_blank"
-                className={
-                  loneAmazonButton
-                    ? 'btn btn-primary btn-sm rounded-xl'
-                    : 'btn btn-secondary btn-sm rounded-xl'
-                }
-              >
-                {link.text}
-              </a>
-            ))}
+            {buyButtons.map((link) => {
+              const retailer = retailerFromAbbeyYungLink(link.url, link.text);
+              const mockProduct = abbeyYungMockProduct(
+                product,
+                link.url,
+                retailer,
+              );
+              return (
+                <a
+                  key={`${link.url}-${link.text}`}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={
+                    loneAmazonButton
+                      ? 'btn btn-primary btn-sm rounded-xl'
+                      : 'btn btn-secondary btn-sm rounded-xl'
+                  }
+                  ref={(el) => {
+                    if (el) {
+                      addProductTrackingAttributes(
+                        el,
+                        mockProduct,
+                        'buy',
+                        retailer,
+                      );
+                    }
+                  }}
+                  onClick={() =>
+                    trackProductInteraction(mockProduct, 'buy', retailer)
+                  }
+                >
+                  {link.text}
+                </a>
+              );
+            })}
           </div>
         </div>
       </div>

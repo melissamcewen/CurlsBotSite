@@ -11,6 +11,12 @@ import Avatar from '@/components/avatar';
 import Link from 'next/link';
 import PorosityEmailSignup from '@/components/PorosityEmailSignup';
 import { RoutineWidget } from '@/components/routine/RoutineWidget';
+import {
+  addProductTrackingAttributes,
+  STRANDPRINT_URL,
+  strandprintPartnerProduct,
+  trackProductInteraction,
+} from '@/utils/productTracking';
 
 interface PorosityInfo {
   title: string;
@@ -158,9 +164,27 @@ export function PorosityPageClient({ porosityType, porosityInfo }: Props) {
             </div>
             <div className="card-actions justify-end mt-4">
               <a
-                href="https://www.strandprint.com/"
+                href={STRANDPRINT_URL}
                 target="_blank"
+                rel="noopener noreferrer"
                 className="btn btn-primary"
+                ref={(el) => {
+                  if (el) {
+                    addProductTrackingAttributes(
+                      el,
+                      strandprintPartnerProduct,
+                      'buy',
+                      'Strandprint',
+                    );
+                  }
+                }}
+                onClick={() =>
+                  trackProductInteraction(
+                    strandprintPartnerProduct,
+                    'buy',
+                    'Strandprint',
+                  )
+                }
               >
                 Visit Strandprint
               </a>

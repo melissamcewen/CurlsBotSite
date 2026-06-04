@@ -24,6 +24,8 @@ import {
 } from '@/lib/routineBuilder';
 import {
   addProductTrackingAttributes,
+  CURLS_MONTHLY_AFFILIATE_URL,
+  curlsMonthlySampleProduct,
   trackProductInteraction,
 } from '@/utils/productTracking';
 
@@ -302,9 +304,27 @@ export function RoutineWidget({
             Build full routine
           </Link>
           <a
-            href="https://curlsmonthly.com/?ref=curlsbot"
+            href={CURLS_MONTHLY_AFFILIATE_URL}
             className="btn btn-secondary btn-sm gap-1.5"
             target="_blank"
+            rel="noopener noreferrer"
+            ref={(el) => {
+              if (el) {
+                addProductTrackingAttributes(
+                  el,
+                  curlsMonthlySampleProduct,
+                  'sample',
+                  'Curls Monthly',
+                );
+              }
+            }}
+            onClick={() =>
+              trackProductInteraction(
+                curlsMonthlySampleProduct,
+                'sample',
+                'Curls Monthly',
+              )
+            }
           >
             <Sparkles className="w-4 h-4 shrink-0" />
             Try samples @ Curls Monthly

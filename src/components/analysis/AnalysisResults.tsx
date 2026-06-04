@@ -11,6 +11,14 @@ import { AnalysisSummary } from './findings/AnalysisSummary';
 import Link from 'next/link';
 import { CheckCircle, AlertTriangle, XCircle } from 'lucide-react';
 import { useLocalization } from '@/contexts/LocalizationContext';
+import {
+  addProductTrackingAttributes,
+  CURLS_MONTHLY_AFFILIATE_URL,
+  curlsMonthlySampleProduct,
+  TOOTILAB_STARTER_URL,
+  tootilabStarterProduct,
+  trackProductInteraction,
+} from '@/utils/productTracking';
 
 interface Props {
   result: AnalysisResult;
@@ -69,8 +77,27 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
                     {isUS ? (
                       <>
                         <a
-                          href="https://curlsmonthly.com/?ref=curlsbot"
+                          href={CURLS_MONTHLY_AFFILIATE_URL}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="link link-primary"
+                          ref={(el) => {
+                            if (el) {
+                              addProductTrackingAttributes(
+                                el,
+                                curlsMonthlySampleProduct,
+                                'sample',
+                                'Curls Monthly',
+                              );
+                            }
+                          }}
+                          onClick={() =>
+                            trackProductInteraction(
+                              curlsMonthlySampleProduct,
+                              'sample',
+                              'Curls Monthly',
+                            )
+                          }
                         >
                           Get $5 off your first month of Curls Monthly—a
                           subscription box packed with top-rated samples for
@@ -79,8 +106,27 @@ export default function AnalysisResults({ result, onTryAnother }: Props) {
                       </>
                     ) : (
                       <a
-                        href="https://collabs.shop/ea393f"
+                        href={TOOTILAB_STARTER_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="link link-primary"
+                        ref={(el) => {
+                          if (el) {
+                            addProductTrackingAttributes(
+                              el,
+                              tootilabStarterProduct,
+                              'buy',
+                              'Tootilab',
+                            );
+                          }
+                        }}
+                        onClick={() =>
+                          trackProductInteraction(
+                            tootilabStarterProduct,
+                            'buy',
+                            'Tootilab',
+                          )
+                        }
                       >
                         Try the Tootilab Curly Hair Starter Bundle
                       </a>

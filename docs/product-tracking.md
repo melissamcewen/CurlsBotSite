@@ -218,11 +218,15 @@ The following components already have product tracking implemented:
 - `ProductCard` - product cards in routine builder
 - `ProductListicle` - product listings in best products pages
 - `ProductsPage` - main products table
-- `HairRoutine` - routine builder product links
+- `HairRoutine` / `RoutineWidget` - routine builder product links (including Curls Monthly sample CTA)
+- `AbbeyYungProductList` - Abbey Yung method product lists on the blog post
+- Abbey Yung quiz `ProductCard` (`src/components/abbey-yung-quiz/ProductCard.tsx`)
+- `AnalysisResults` - Curls Monthly promo on the ingredient analyzer results
+- `PorosityPageClient` - Strandprint CTA on porosity result pages (`/porosity/*`)
 
 ### MDX Components
 
-- `AbbeyYungTable` - Abbey Yung method product table
+- `AbbeyYungTable` - Abbey Yung method product table (legacy; blog uses `AbbeyYungProductList`)
 - `BlogProduct` - blog product cards
 - `BlogProductCard` - blog product cards (alternative)
 - `ProductsTable` - products table in MDX
