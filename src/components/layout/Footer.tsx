@@ -99,23 +99,6 @@ export function Footer() {
         </div>
       </div>
       <Script
-        type="text/javascript"
-        src="https://btloader.com/tag?o=5698917485248512&upapi=true&domain=curlsbot.com"
-        async
-      />
-      <Script
-        id="adblock-recovery"
-        dangerouslySetInnerHTML={{
-          __html: `
-            try {
-              !function(){"use strict";var e;e=document,function(){var t,n;function r(){var t=e.createElement("script");t.src="https://cafemedia-com.videoplayerhub.com/galleryplayer.js",e.head.appendChild(t)}function a(){var t=e.cookie.match("(^|[^;]+)\\s*__adblocker\\s*=\\s*([^;]+)");return t&&t.pop()}function c(){clearInterval(n)}return{init:function(){var e;"true"===(t=a())?r():(e=0,n=setInterval((function(){100!==e&&"false" !== t || c(), "true" === t && (r(), c()), t = a(), e++}), 50))}}}().init()}();
-            } catch (e) {
-              console.debug('Raptive Ad Block Recovery script failed', e);
-            }
-          `,
-        }}
-      />
-      <Script
         src="https://groot.mailerlite.com/js/w/webforms.min.js?v176e10baa5e7ed80d35ae235be3d5024"
         type="text/javascript"
       />

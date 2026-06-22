@@ -87,21 +87,21 @@ export default function PrivacyPage() {
 
             <h2>Advertising</h2>
             <p>
-              This Site is affiliated with CMI Marketing, Inc., d/b/a Raptive
-              (&quot;Raptive&quot;) for the purposes of placing advertising on
-              the Site, and Raptive will collect and use certain data for
-              advertising purposes. To learn more about Raptive&apos;s data
-              usage, click here:{' '}
+              All or partial advertising on this Website or App is managed by
+              Playwire LLC. If Playwire publisher advertising services are used,
+              Playwire LLC may collect and use certain aggregated and
+              anonymized data for advertising purposes. To learn more about the
+              types of data collected, how data is used and your choices as a
+              user, please visit{' '}
               <a
-                href="https://www.raptive.com/publisher-advertising-privacy-policy"
+                href="https://www.playwire.com/privacy-policy"
                 className="link link-primary"
                 target="_blank"
-                rel="noopener noreferrer"
               >
-                https://www.raptive.com/publisher-advertising-privacy-policy
+                https://www.playwire.com/privacy-policy
               </a>
+              .
             </p>
-
             <h2>Your Rights</h2>
             <p>You have the right to:</p>
             <ul>

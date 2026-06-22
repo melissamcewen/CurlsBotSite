@@ -10,6 +10,7 @@ import {
 } from '@/components/GoogleTagManager';
 import { LocalizationProvider } from '@/contexts/LocalizationContext';
 import { MailerLiteUniversal } from '@/components/MailerLite';
+import { PlaywireRamp } from '@/components/PlaywireRamp';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -122,65 +123,6 @@ export default function RootLayout({
           type="image/svg+xml"
         />
 
-        <Script id="raptive-consent" strategy="beforeInteractive">
-          {`
-            try {
-              function isUserInEurope() {
-                if (typeof Intl === 'undefined' || typeof Intl.DateTimeFormat === 'undefined' || typeof window.__tcfapi !== 'undefined') {
-                  return true;
-                }
-                return Intl.DateTimeFormat().resolvedOptions().timeZone.includes('Europe');
-              }
-              if (isUserInEurope()) {
-                window.dataLayer = window.dataLayer || [];
-                function gtag() {
-                  window.dataLayer.push(arguments);
-                }
-                gtag('consent', 'default', {
-                  'ad_storage': 'denied',
-                  'analytics_storage': 'denied',
-                  'ad_user_data': 'denied',
-                  'ad_personalization': 'denied',
-                  'wait_for_update': 15000
-                });
-                window.dataLayer.push({
-                  'event': 'default_consent'
-                });
-              }
-            } catch (e) {
-              console.debug('Raptive consent script failed', e);
-            }
-          `}
-        </Script>
-
-        <Script
-          id="raptive-head-tag"
-          strategy="beforeInteractive"
-          data-no-optimize="1"
-          data-cfasync="false"
-        >
-          {`
-            try {
-              (function(w, d) {
-                w.adthrive = w.adthrive || {};
-                w.adthrive.cmd = w.adthrive.cmd || [];
-                w.adthrive.plugin = 'adthrive-ads-manual';
-                w.adthrive.host = 'ads.adthrive.com';
-                var s = d.createElement('script');
-                s.async = true;
-                s.referrerPolicy = 'no-referrer-when-downgrade';
-                s.src = 'https://' + w.adthrive.host + '/sites/67aceaec554bb80802312182/ads.min.js?referrer=' +
-                  w.encodeURIComponent(w.location.href) +
-                  '&cb=' + (Math.floor(Math.random() * 100) + 1);
-                var n = d.getElementsByTagName('script')[0];
-                n.parentNode.insertBefore(s, n);
-              })(window, document);
-            } catch (e) {
-              console.debug('Raptive head tag failed', e);
-            }
-          `}
-        </Script>
-
         <GoogleTagManagerHead />
       </head>
       <body
@@ -188,6 +130,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <LocalizationProvider>
+          <PlaywireRamp />
           <GoogleTagManagerBody />
           <div className="min-h-screen overflow-x-hidden">
             <div className="absolute inset-0 pointer-events-none" />
