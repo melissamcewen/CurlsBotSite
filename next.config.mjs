@@ -61,7 +61,7 @@ const nextConfig = {
       },
       {
         source: '/ads.txt',
-        destination: 'https://config.playwire.com/dyn_ads/1025861/curlsbot/ads.txt',
+        destination: 'https://config.playwire.com/dyn_ads/1025861/77861/ads.txt',
         permanent: true,
       },
       {
