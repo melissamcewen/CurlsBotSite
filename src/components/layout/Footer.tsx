@@ -96,6 +96,27 @@ export function Footer() {
             . Some links on Curlsbot are Affiliate links. Shopping through these
             links supports the further development of Curlsbot.
           </p>
+          <div className="text-center space-y-2">
+            <a href="https://www.playwire.com" target="_blank">
+              <img
+                src="https://www.playwire.com/hubfs/Powered-by-Playwire-Badges/Ads-Powered-by-playwire-2021-standalone-small-300px.png"
+                alt="Playwire"
+                width={200}
+                height={50}
+                loading="lazy"
+                className="mx-auto block w-[200px]"
+              />
+            </a>
+            <p>
+              <a
+                href="https://www.playwire.com/contact-direct-sales"
+                target="_blank"
+                className="link link-hover text-sm"
+              >
+                Advertise on this site.
+              </a>
+            </p>
+          </div>
         </div>
       </div>
       <Script
