@@ -61,8 +61,8 @@ const nextConfig = {
       },
       {
         source: '/ads.txt',
-        destination: 'https://ads.adthrive.com/sites/67aceaec554bb80802312182/ads.txt',
-        permanent: true, // 301 status code
+        destination: 'https://config.playwire.com/dyn_ads/1025861/77861/ads.txt',
+        permanent: true,
       },
       {
         source: '/howitworks',
