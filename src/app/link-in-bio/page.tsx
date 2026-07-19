@@ -52,6 +52,24 @@ export default function TikTokPage() {
           </div>
         </section>
 
+        {/* https://www.reddit.com/r/HaircareScience/wiki/index/common-myths/ */}
+        <Link
+          href="https://www.reddit.com/r/HaircareScience/wiki/index/common-myths/"
+          className="group block rounded-2xl border border-base-300 bg-base-100 p-4 hover:bg-base-200/50 transition mb-6"
+        >
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-full bg-base-200 grid place-items-center shrink-0">
+              <BookOpen className="w-4 h-4" aria-hidden="true" />
+            </div>
+            <div className="min-w-0">
+              <div className="text-base font-medium">
+                Common Haircare Myths
+              </div>
+              <div className="text-sm text-base-content/60 truncate">
+                A list of common myths about hair care authored by myself and other haircarescience moderators
+              </div>
+            </div>
+
         {/* Protein overload post /blog/mystery-of-protein-overload-a-scientific-investigation*/}
         <Link
           href="/blog/mystery-of-protein-overload-a-scientific-investigation"
