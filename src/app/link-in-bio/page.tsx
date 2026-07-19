@@ -52,6 +52,26 @@ export default function TikTokPage() {
           </div>
         </section>
 
+        {/* blog/hair-porosity-explained */}
+        <Link
+          href="/blog/hair-porosity-explained"
+          className="group block rounded-2xl border border-base-300 bg-base-100 p-4 hover:bg-base-200/50 transition mb-6"
+        >
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-full bg-base-200 grid place-items-center shrink-0">
+              <BookOpen className="w-4 h-4" aria-hidden="true" />
+            </div>
+            <div className="min-w-0">
+              <div className="text-base font-medium">
+                Hair Porosity Explained
+              </div>
+              <div className="text-sm text-base-content/60 truncate">
+                Busting common porosity myths and explaining the science behind it.
+              </div>
+            </div>
+          </div>
+        </Link>
+
         {/* https://www.reddit.com/r/HaircareScience/wiki/index/common-myths/ */}
         <Link
           href="https://www.reddit.com/r/HaircareScience/wiki/index/common-myths/"
