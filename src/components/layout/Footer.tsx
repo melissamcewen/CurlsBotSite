@@ -96,25 +96,29 @@ export function Footer() {
             . Some links on Curlsbot are Affiliate links. Shopping through these
             links supports the further development of Curlsbot.
           </p>
+          <div className="text-center space-y-2">
+            <a href="https://www.playwire.com" target="_blank">
+              <img
+                src="https://www.playwire.com/hubfs/Powered-by-Playwire-Badges/Ads-Powered-by-playwire-2021-standalone-small-300px.png"
+                alt="Playwire"
+                width={200}
+                height={50}
+                loading="lazy"
+                className="mx-auto block w-[200px]"
+              />
+            </a>
+            <p>
+              <a
+                href="https://www.playwire.com/contact-direct-sales"
+                target="_blank"
+                className="link link-hover text-sm"
+              >
+                Advertise on this site.
+              </a>
+            </p>
+          </div>
         </div>
       </div>
-      <Script
-        type="text/javascript"
-        src="https://btloader.com/tag?o=5698917485248512&upapi=true&domain=curlsbot.com"
-        async
-      />
-      <Script
-        id="adblock-recovery"
-        dangerouslySetInnerHTML={{
-          __html: `
-            try {
-              !function(){"use strict";var e;e=document,function(){var t,n;function r(){var t=e.createElement("script");t.src="https://cafemedia-com.videoplayerhub.com/galleryplayer.js",e.head.appendChild(t)}function a(){var t=e.cookie.match("(^|[^;]+)\\s*__adblocker\\s*=\\s*([^;]+)");return t&&t.pop()}function c(){clearInterval(n)}return{init:function(){var e;"true"===(t=a())?r():(e=0,n=setInterval((function(){100!==e&&"false" !== t || c(), "true" === t && (r(), c()), t = a(), e++}), 50))}}}().init()}();
-            } catch (e) {
-              console.debug('Raptive Ad Block Recovery script failed', e);
-            }
-          `,
-        }}
-      />
       <Script
         src="https://groot.mailerlite.com/js/w/webforms.min.js?v176e10baa5e7ed80d35ae235be3d5024"
         type="text/javascript"
