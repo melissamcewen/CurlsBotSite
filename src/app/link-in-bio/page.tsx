@@ -89,6 +89,8 @@ export default function TikTokPage() {
                 A list of common myths about hair care authored by myself and other haircarescience moderators
               </div>
             </div>
+          </div>
+        </Link>
 
         {/* Protein overload post /blog/mystery-of-protein-overload-a-scientific-investigation*/}
         <Link
