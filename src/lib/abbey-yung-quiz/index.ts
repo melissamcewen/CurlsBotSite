@@ -1,4 +1,11 @@
-export type { RawAnswers, QuizState, RoutineResult } from './types';
+export type {
+  RawAnswers,
+  QuizState,
+  RoutineResult,
+  ShampooPick,
+  ShampooRole,
+  ScalpNeed,
+} from './types';
 export { createEmptyRawAnswers } from './types';
 export { computeQuizState } from './computeQuizState';
 export { weightIsEligible } from './weightFilter';

@@ -1,10 +1,33 @@
 import type { AbbeyYungProduct } from '@/data/abbeyYungProducts';
 import { abbeyYungProducts } from '@/data/abbeyYungProducts';
 import { bucketBondRepairProduct } from './bondBuckets';
-import type { QuizState, RoutineResult } from './types';
+import type {
+  QuizState,
+  RoutineResult,
+  ScalpNeed,
+  ShampooPick,
+  ShampooRole,
+} from './types';
 import { weightIsEligible } from './weightFilter';
 
 const LIVING_PROOF_TRIPLE = 'Living Proof Triple Bond Complex';
+const MAX_SHAMPOOS = 2;
+
+const SCALP_NEED_TAG: Record<ScalpNeed, string> = {
+  buildup: 'scalp-buildup-removal',
+  exfoliation: 'scalp-exfoliation',
+  density: 'scalp-density-support',
+  'skin-health': 'scalp-skin-health',
+  growth: 'scalp-growth-stimulating',
+};
+
+const ROLE_LABEL: Record<ShampooRole, string> = {
+  'deep-cleaning': 'deep cleaning',
+  chelating: 'chelating',
+  strengthening: 'strengthening',
+  'scalp-health': 'scalp health',
+  medicated: 'medicated',
+};
 
 export function applyDrugstoreFilter(
   candidates: AbbeyYungProduct[],
@@ -66,52 +89,293 @@ function pickWithFilters(
   return pickPreferred(candidates);
 }
 
-function sortClarifying(
+function hasTag(p: AbbeyYungProduct, tag: string): boolean {
+  return Boolean(p.tags?.includes(tag));
+}
+
+function rolesFromTags(p: AbbeyYungProduct): ShampooRole[] {
+  const roles: ShampooRole[] = [];
+  if (hasTag(p, 'deep-cleaning-shampoo')) roles.push('deep-cleaning');
+  if (hasTag(p, 'benefit-chelating')) roles.push('chelating');
+  if (hasTag(p, 'benefit-strengthening')) roles.push('strengthening');
+  if (hasTag(p, 'benefit-scalp-health')) roles.push('scalp-health');
+  if (hasTag(p, 'benefit-medicated')) roles.push('medicated');
+  return roles;
+}
+
+function uniqueRoles(roles: ShampooRole[]): ShampooRole[] {
+  return [...new Set(roles)];
+}
+
+function scalpFitScore(p: AbbeyYungProduct, state: QuizState): number {
+  if (state.scalpType === 'unknown' || !p.scalpType?.length) return 1;
+  if (p.scalpType.includes(state.scalpType)) return 0;
+  if (
+    (state.scalpType === 'extra oily' && p.scalpType.includes('oily')) ||
+    (state.scalpType === 'oily' && p.scalpType.includes('extra oily'))
+  ) {
+    return 0;
+  }
+  return 2;
+}
+
+function cleaningFitScore(p: AbbeyYungProduct, state: QuizState): number {
+  const cp = p.cleaningPower ?? [];
+  if (state.cleansingNeeds === 'strong') return cp.includes('strong') ? 0 : 1;
+  if (state.cleansingNeeds === 'gentle') return cp.includes('light') ? 0 : 1;
+  return cp.includes('moderate') ? 0 : 1;
+}
+
+function sortByScalpAndClean(
   candidates: AbbeyYungProduct[],
   state: QuizState,
 ): AbbeyYungProduct[] {
-  const copy = [...candidates];
-
-  function scalpScore(p: AbbeyYungProduct): number {
-    if (state.scalpType === 'unknown') return 0;
-    return p.scalpType?.includes('normal') ? 0 : 1;
-  }
-
-  function cleaningScore(p: AbbeyYungProduct): number {
-    const cp = p.cleaningPower ?? [];
-    if (state.cleansingNeeds === 'strong')
-      return cp.includes('strong') ? 0 : 1;
-    if (state.cleansingNeeds === 'gentle')
-      return cp.includes('light') ? 0 : 1;
-    return cp.includes('moderate') ? 0 : 1;
-  }
-
-  function fragileScore(p: AbbeyYungProduct): number {
-    if (!state.fragile) return 0;
-    return p.tags?.includes('fragile') ? 0 : 1;
-  }
-
-  copy.sort((a, b) => {
-    const d =
-      scalpScore(a) - scalpScore(b) ||
-      cleaningScore(a) - cleaningScore(b) ||
-      fragileScore(a) - fragileScore(b);
-    return d;
+  return [...candidates].sort((a, b) => {
+    return (
+      scalpFitScore(a, state) - scalpFitScore(b, state) ||
+      cleaningFitScore(a, state) - cleaningFitScore(b, state) ||
+      (state.fragile
+        ? (hasTag(a, 'fragile') ? 0 : 1) - (hasTag(b, 'fragile') ? 0 : 1)
+        : 0)
+    );
   });
-
-  return copy;
 }
 
-function sortEveryday(candidates: AbbeyYungProduct[], state: QuizState) {
-  const copy = [...candidates];
-  if (state.fragile) {
-    copy.sort((a, b) => {
-      const fa = a.tags?.includes('fragile') ? 0 : 1;
-      const fb = b.tags?.includes('fragile') ? 0 : 1;
-      return fa - fb;
-    });
+function needOverlap(p: AbbeyYungProduct, needs: ScalpNeed[]): number {
+  if (needs.length === 0) return 0;
+  return needs.reduce((sum, need) => {
+    return sum + (hasTag(p, SCALP_NEED_TAG[need]) ? 1 : 0);
+  }, 0);
+}
+
+function picksCoverDeep(picks: ShampooPick[]): boolean {
+  return picks.some(
+    (pick) =>
+      pick.roles.includes('deep-cleaning') ||
+      hasTag(pick.product, 'deep-cleaning-shampoo'),
+  );
+}
+
+function picksCoverChelating(picks: ShampooPick[]): boolean {
+  return picks.some(
+    (pick) =>
+      pick.roles.includes('chelating') ||
+      hasTag(pick.product, 'benefit-chelating'),
+  );
+}
+
+function picksCoverScalp(picks: ShampooPick[]): boolean {
+  return picks.some((pick) => pick.roles.includes('scalp-health'));
+}
+
+function multiRoleNote(roles: ShampooRole[]): string | null {
+  if (roles.length < 2) return null;
+  const labels = roles.map((r) => ROLE_LABEL[r]);
+  return `Covers: ${labels.join(', ')}.`;
+}
+
+function mergeOrAddShampoo(
+  picks: ShampooPick[],
+  product: AbbeyYungProduct,
+  roles: ShampooRole[],
+  note: string | null,
+): boolean {
+  const mergedRoles = uniqueRoles([...roles, ...rolesFromTags(product)]);
+  const existing = picks.find((p) => p.product.product === product.product);
+  if (existing) {
+    existing.roles = uniqueRoles([...existing.roles, ...mergedRoles]);
+    if (note && !existing.note) existing.note = note;
+    const cover = multiRoleNote(existing.roles);
+    if (cover && (!existing.note || existing.note.startsWith('Covers:'))) {
+      existing.note = existing.note?.startsWith('Covers:')
+        ? cover
+        : [existing.note, cover].filter(Boolean).join(' ');
+    }
+    return true;
   }
-  return copy;
+  if (picks.length >= MAX_SHAMPOOS) return false;
+  const cover = multiRoleNote(mergedRoles);
+  picks.push({
+    product,
+    roles: mergedRoles,
+    note: note ?? cover,
+  });
+  return true;
+}
+
+function selectShampoos(state: QuizState, result: RoutineResult): ShampooPick[] {
+  const picks: ShampooPick[] = [];
+
+  /* 1. Medicated (priority when dandruff) */
+  if (state.hasDandruff) {
+    let meds = abbeyYungProducts.filter((p) =>
+      hasTag(p, 'benefit-medicated'),
+    );
+    meds = sortByScalpAndClean(meds, state);
+    meds.sort((a, b) => {
+      const da = hasTag(a, 'deep-cleaning-shampoo') ? 0 : 1;
+      const db = hasTag(b, 'deep-cleaning-shampoo') ? 0 : 1;
+      return da - db;
+    });
+    const pick = pickWithFilters(
+      meds,
+      state,
+      'Medicated shampoo',
+      result,
+      false,
+    );
+    if (pick) {
+      mergeOrAddShampoo(
+        picks,
+        pick,
+        ['medicated'],
+        'OTC medicated shampoo — this is not medical advice; please see a doctor for a diagnosis.',
+      );
+    }
+  }
+
+  /* 2. Scalp-health match */
+  if (state.scalpNeeds.length > 0) {
+    let scalp = abbeyYungProducts.filter((p) =>
+      hasTag(p, 'benefit-scalp-health'),
+    );
+    scalp = [...scalp].sort((a, b) => {
+      const needDelta =
+        needOverlap(b, state.scalpNeeds) - needOverlap(a, state.scalpNeeds);
+      if (needDelta !== 0) return needDelta;
+      if (!picksCoverDeep(picks)) {
+        const da = hasTag(a, 'deep-cleaning-shampoo') ? 0 : 1;
+        const db = hasTag(b, 'deep-cleaning-shampoo') ? 0 : 1;
+        if (da !== db) return da - db;
+      }
+      return (
+        scalpFitScore(a, state) - scalpFitScore(b, state) ||
+        cleaningFitScore(a, state) - cleaningFitScore(b, state)
+      );
+    });
+    if (
+      state.cleansingNeeds === 'strong' ||
+      state.scalpType === 'oily' ||
+      state.scalpType === 'extra oily'
+    ) {
+      scalp.sort((a, b) => {
+        const ra = hasTag(a, 'residue-free') ? 0 : 1;
+        const rb = hasTag(b, 'residue-free') ? 0 : 1;
+        return ra - rb;
+      });
+    }
+    const pick = pickWithFilters(
+      scalp,
+      state,
+      'Scalp health shampoo',
+      result,
+      false,
+    );
+    if (pick) {
+      mergeOrAddShampoo(picks, pick, ['scalp-health'], null);
+    }
+  }
+
+  /* 3. Deep cleaning if not already covered */
+  if (!picksCoverDeep(picks)) {
+    let deep = abbeyYungProducts.filter((p) =>
+      hasTag(p, 'deep-cleaning-shampoo'),
+    );
+    if (state.hardWater === true) {
+      const hw = deep.filter((p) => hasTag(p, 'benefit-chelating'));
+      if (hw.length > 0) deep = hw;
+    }
+    deep = sortByScalpAndClean(deep, state);
+    const pick = pickWithFilters(
+      deep,
+      state,
+      'Deep cleaning shampoo',
+      result,
+      false,
+    );
+    if (pick) {
+      const note =
+        state.hardWater === true && hasTag(pick, 'benefit-chelating')
+          ? 'Also covers hard-water / chelating needs.'
+          : null;
+      mergeOrAddShampoo(picks, pick, ['deep-cleaning'], note);
+    }
+  }
+
+  /* 4. Extra chelating if hard water and not covered (and slot free) */
+  if (
+    state.hardWater === true &&
+    !picksCoverChelating(picks) &&
+    picks.length < MAX_SHAMPOOS
+  ) {
+    let chelates = abbeyYungProducts.filter(
+      (p) =>
+        hasTag(p, 'benefit-chelating') &&
+        !picks.some((pick) => pick.product.product === p.product),
+    );
+    chelates = sortByScalpAndClean(chelates, state);
+    const pick = pickWithFilters(
+      chelates,
+      state,
+      'Chelating shampoo',
+      result,
+      false,
+    );
+    if (pick) {
+      mergeOrAddShampoo(
+        picks,
+        pick,
+        ['chelating'],
+        'For hard-water mineral buildup (about once a week or more).',
+      );
+    }
+  }
+
+  /* 5. Strengthening on remaining wash days */
+  const hasScalpShampoo = picksCoverScalp(picks);
+  const wantsStrengthening =
+    !hasScalpShampoo &&
+    state.washFrequency !== 'weekly-or-less' &&
+    (state.cleansingNeeds === 'gentle' ||
+      state.fragile ||
+      state.tanglyDuringShampoo ||
+      state.tanglyGeneral === 'constant' ||
+      state.weight === 'medium' ||
+      state.weight === 'heavy');
+
+  if (wantsStrengthening && picks.length < MAX_SHAMPOOS) {
+    let strength = abbeyYungProducts.filter((p) =>
+      hasTag(p, 'benefit-strengthening'),
+    );
+    if (state.fragile) {
+      strength = [...strength].sort(
+        (a, b) =>
+          (hasTag(a, 'fragile') ? 0 : 1) - (hasTag(b, 'fragile') ? 0 : 1),
+      );
+    }
+    const pick = pickWithFilters(
+      strength,
+      state,
+      'Strengthening shampoo',
+      result,
+      true,
+    );
+    if (pick) {
+      mergeOrAddShampoo(
+        picks,
+        pick,
+        ['strengthening'],
+        'For non-deep-cleaning wash days — softening and manageability.',
+      );
+    }
+  }
+
+  for (const pick of picks) {
+    const cover = multiRoleNote(pick.roles);
+    if (cover && !pick.note) pick.note = cover;
+  }
+
+  return picks;
 }
 
 function sortConditioner(candidates: AbbeyYungProduct[], state: QuizState) {
@@ -189,9 +453,7 @@ export function selectProducts(state: QuizState): RoutineResult {
   const result: RoutineResult = {
     preShampooOil: null,
     preShampooOilNote: null,
-    clarifyingShampoo: null,
-    everydayShampoo: null,
-    everydayShampooNote: null,
+    shampoos: [],
     bondRepair: [],
     bondRepairStrongFallbackNote: null,
     conditioner: null,
@@ -224,62 +486,7 @@ export function selectProducts(state: QuizState): RoutineResult {
     }
   }
 
-  /* Clarifying shampoo */
-  let clarifying = abbeyYungProducts.filter(
-    (p) =>
-      p.steps.includes(3) && p.tags?.includes('clarifying-shampoo'),
-  );
-
-  if (state.hardWater === true) {
-    const hw = clarifying.filter((p) =>
-      p.tags?.includes('hard-water-deposit-removal'),
-    );
-    if (hw.length > 0) clarifying = hw;
-  }
-
-  clarifying = sortClarifying(clarifying, state);
-  result.clarifyingShampoo = pickWithFilters(
-    clarifying,
-    state,
-    'Clarifying shampoo',
-    result,
-    false,
-  );
-
-  let showEverydayShampoo = true;
-  let everydayShampooNote: string | null = null;
-
-  if (state.washFrequency === 'weekly-or-less') {
-    showEverydayShampoo = false;
-  } else if (
-    (state.scalpType === 'oily' || state.scalpType === 'extra oily') &&
-    state.cleansingNeeds === 'strong' &&
-    result.clarifyingShampoo?.tags?.includes('daily-shampoo')
-  ) {
-    showEverydayShampoo = false;
-    everydayShampooNote =
-      'This shampoo is gentle enough to use daily — it can double as your everyday shampoo too.';
-  }
-
-  result.everydayShampooNote = everydayShampooNote;
-
-  /* Everyday / strengthening shampoo */
-  if (showEverydayShampoo) {
-    let everyday = abbeyYungProducts.filter(
-      (p) =>
-        p.steps.includes(4) &&
-        (p.tags?.includes('conditioning-shampoo') ||
-          p.tags?.includes('strength-repair-shampoo')),
-    );
-    everyday = sortEveryday(everyday, state);
-    result.everydayShampoo = pickWithFilters(
-      everyday,
-      state,
-      'Everyday shampoo',
-      result,
-      true,
-    );
-  }
+  result.shampoos = selectShampoos(state, result);
 
   /* Bond repair */
   const skipBond =

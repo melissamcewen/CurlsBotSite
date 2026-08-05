@@ -37,6 +37,43 @@ type AbbeyYungProductListProps = {
 
 type SortBy = 'featured' | 'name' | 'drugstore';
 
+/** Shampoo-type tags shown as human-readable badges; other tags stay hidden in the widget. */
+const SHAMPOO_TYPE_LABEL: Record<string, string> = {
+  'deep-cleaning-shampoo': 'Deep Cleaning',
+  'benefit-chelating': 'Chelating',
+  'benefit-strengthening': 'Strengthening',
+  'benefit-scalp-health': 'Scalp Health',
+  'benefit-medicated': 'Medicated',
+};
+
+function shampooTypeBadges(
+  product: AbbeyYungProduct,
+  stepFilter: number[],
+): string[] {
+  const tags = product.tags ?? [];
+  const benefitOnlyList =
+    stepFilter.includes(4) && !stepFilter.includes(3);
+  return Object.keys(SHAMPOO_TYPE_LABEL).filter((tag) => {
+    if (!tags.includes(tag)) return false;
+    // On Benefit lists, deep cleaning is shown via "Also deep cleaning" instead
+    if (benefitOnlyList && tag === 'deep-cleaning-shampoo') return false;
+    return true;
+  });
+}
+
+function isShampooProduct(product: AbbeyYungProduct): boolean {
+  return product.steps.some((s) => s === 3 || s === 4);
+}
+
+function alsoDeepCleaning(product: AbbeyYungProduct, stepFilter: number[]): boolean {
+  // On Benefit lists (step 4), note overlap with deep cleaning
+  if (!stepFilter.includes(4) || stepFilter.includes(3)) return false;
+  return (
+    product.steps.includes(3) ||
+    Boolean(product.tags?.includes('deep-cleaning-shampoo'))
+  );
+}
+
 function toListValue(value?: string | string[]): string | null {
   if (Array.isArray(value)) {
     if (value.length === 0) return null;
@@ -240,13 +277,30 @@ export default function AbbeyYungProductList({
                         >
                           {product.drugstore ? 'Drugstore' : 'Non-drugstore'}
                         </span>
-                        {product.tags && product.tags.length > 0
-                          ? product.tags.map((tag) => (
-                              <span key={tag} className="badge badge-outline shrink-0 whitespace-nowrap">
-                                {tag}
+                        {isShampooProduct(product)
+                          ? shampooTypeBadges(product, stepFilter).map((tag) => (
+                              <span
+                                key={tag}
+                                className="badge badge-outline shrink-0 whitespace-nowrap"
+                              >
+                                {SHAMPOO_TYPE_LABEL[tag]}
                               </span>
                             ))
-                          : <span>-</span>}
+                          : product.tags && product.tags.length > 0
+                            ? product.tags.map((tag) => (
+                                <span
+                                  key={tag}
+                                  className="badge badge-outline shrink-0 whitespace-nowrap"
+                                >
+                                  {tag}
+                                </span>
+                              ))
+                            : null}
+                        {alsoDeepCleaning(product, stepFilter) ? (
+                          <span className="badge badge-primary badge-soft shrink-0 whitespace-nowrap">
+                            Also deep cleaning
+                          </span>
+                        ) : null}
                       </div>
                     </div>
                   </td>

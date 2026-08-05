@@ -2,13 +2,15 @@
 **For**: Claude Code / AI coding tool handoff
 **Stack**: Next.js, React, TypeScript, DaisyUI 5, Tailwind CSS
 
+> **Summer 2026 update:** Shampoo framework is now Deep Cleaning (step 3) + Benefit shampoos (step 4: chelating / strengthening / scalp health / medicated). The quiz has **16 questions** (added dandruff + scalp-care needs). `selectProducts` returns `shampoos: ShampooPick[]` (max 2) with roles — not `clarifyingShampoo` / `everydayShampoo`. Prefer the TypeScript sources under `src/lib/abbey-yung-quiz/` as the source of truth; sections below about clarifying/everyday are historical.
+
 ---
 
 ## What You're Building
 
 A multi-step wizard quiz that collects hair/scalp information, then outputs a personalized product routine. The product data is a static TypeScript array (`abbeyYungProducts`). All logic is client-side — no backend needed.
 
-The quiz has **14 questions**, followed by a **results page** showing a curated routine.
+The quiz has **16 questions**, followed by a **results page** showing a curated routine.
 
 ---
 
@@ -17,72 +19,36 @@ The quiz has **14 questions**, followed by a **results page** showing a curated 
 should go in
 /labs/abbey-yung-ish-routine
 
-products are already in /src/data/AbbeyYungProducts.ts
+products are already in /src/data/abbeyYungProducts.ts
 
 ---
 
 ## Types
 
+See `src/lib/abbey-yung-quiz/types.ts` for current `RawAnswers`, `QuizState`, `RoutineResult`, and `ShampooPick`.
 
+Key shampoo fields:
 
 ```ts
-// Raw answers from the quiz wizard — stored as the user progresses
-interface RawAnswers {
-  damageTypes: string[];          // Q1 values
-  damageSigns: string[];          // Q2 values
-  hairLength: string;             // Q3 value
-  heatStyling: string[];          // Q4 values
-  tanglyDuringShampoo: boolean;   // Q5
-  tanglyGeneral: string;          // Q6 value
-  scalpType: string;              // Q7 value
-  hardWater: 'yes' | 'no' | 'unknown';  // Q8
-  cleansingNeeds: string;         // Q9 value
-  washFrequency: string;          // Q10 value
-  productWeight: string;          // Q11 value
-  drugstore: 'yes' | 'no' | 'either';  // Q12
-  betweenWash: string[];          // Q13 values
-  boosts: string[];               // Q14 values
-}
+hasDandruff?: boolean;       // raw
+scalpNeeds: string[];        // raw: buildup | exfoliation | density | skin-health | growth | none
 
-// Derived state — computed by computeQuizState()
-interface QuizState {
-  chemicalDamage: boolean;
-  heatDamage: boolean;
-  damageLevel: 1 | 2 | 3 | 4;
-  heatStyling: 'none' | 'low' | 'high';
-  fragile: boolean;
-  tanglyDuringShampoo: boolean;
-  tanglyGeneral: 'rare' | 'sometimes' | 'constant';
-  scalpType: 'dry' | 'normal' | 'oily' | 'extra oily' | 'unknown';
-  hardWater: boolean | null;
-  cleansingNeeds: 'gentle' | 'normal' | 'strong';
-  washFrequency: 'daily' | 'multi-weekly' | 'weekly-or-less';
-  weight: 'very light' | 'light' | 'medium' | 'heavy';
-  drugstoreOnly: boolean;
-  noPreference: boolean;
-  betweenWashHeat: boolean;
-  betweenWashDryness: boolean;
-  betweenWashOiliness: boolean;
-  boosts: Array<'smoothing' | 'volume' | 'texture' | 'hold'>;
-}
+hasDandruff: boolean;        // state
+scalpNeeds: ScalpNeed[];     // state (none filtered out)
 
-// Shape returned by selectProducts()
+shampoos: ShampooPick[];     // result — up to 2 picks with roles
+```
+
+Legacy shape (pre–Summer 2026) for reference only:
+
+```ts
+// Shape returned by selectProducts() — HISTORICAL
 interface RoutineResult {
   preShampooOil: AbbeyYungProduct | null;
   clarifyingShampoo: AbbeyYungProduct | null;
   everydayShampoo: AbbeyYungProduct | null;
-  everydayShampooNote: string | null;  // e.g. "can double as daily shampoo"
-  bondRepair: AbbeyYungProduct[];      // 0–3 items
-  conditioner: AbbeyYungProduct | null;
-  leaveIn: AbbeyYungProduct | null;
-  betweenWashHeatProtection: AbbeyYungProduct | null;
-  betweenWashDryness: AbbeyYungProduct | null;
-  betweenWashOilControl: AbbeyYungProduct | null;
-  smoothingBoost: AbbeyYungProduct | null;
-  volumeBoost: AbbeyYungProduct | null;
-  textureBoost: AbbeyYungProduct | null;
-  holdBoost: AbbeyYungProduct | null;
-  fallbacksUsed: string[];  // list of step names where drugstore filter was relaxed
+  everydayShampooNote: string | null;
+  // ...
 }
 ```
 
@@ -458,7 +424,7 @@ candidates = abbeyYungProducts.filter(p =>
 ```
 
 Apply in order:
-1. If `state.hardWater === true`: filter to `p.tags?.includes('hard-water-deposit-removal')`
+1. If `state.hardWater === true`: prefer products with `benefit-chelating`
 2. If `state.scalpType !== 'unknown'`: prefer products where `p.scalpType` is `normal`
 3. Prefer products where `cleaningPower` matches:
    - `'strong'` → prefer includes `'strong'`

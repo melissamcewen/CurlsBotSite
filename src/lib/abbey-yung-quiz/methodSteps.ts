@@ -14,14 +14,14 @@ export const abbeyYungMethodSteps: Record<
       'Oil on dry hair before you shampoo, which helps with slip and tangles so you can still use a stronger cleanser at the roots.',
   },
   3: {
-    title: 'Clarifying / deep cleaning shampoo',
+    title: 'Deep cleaning shampoo',
     description:
-      'Deep clean to remove buildup, oils, and hard-water residue. Abbey recommends using this at least once a week.',
+      'Stronger residue-free clean to remove buildup, oils, and hard-water residue. Abbey recommends using this at least once a week.',
   },
   4: {
-    title: 'Gentle cleansing shampoo',
+    title: 'Benefit shampoo',
     description:
-      'A milder shampoo for other wash days with conditioning or strengthening actives.',
+      'Optional shampoo for other wash days or specific needs: strengthening (softening/smoothing), chelating, scalp health, or medicated.',
   },
   5: {
     title: 'Post-shampoo bond repair treatment',

@@ -15,7 +15,7 @@ import {
 import type { RawAnswers } from '@/lib/abbey-yung-quiz/types';
 import { RoutineResults } from './RoutineResults';
 
-const TOTAL_STEPS = 14;
+const TOTAL_STEPS = 16;
 
 function toggleNoneMulti(
   current: string[],
@@ -49,18 +49,22 @@ function canProceed(step: number, a: RawAnswers): boolean {
     case 6:
       return a.scalpType !== '';
     case 7:
-      return true;
+      return a.hasDandruff !== undefined;
     case 8:
-      return a.cleansingNeeds !== '';
+      return a.scalpNeeds.length > 0;
     case 9:
-      return a.washFrequency !== '';
+      return true;
     case 10:
-      return a.productWeight !== '';
+      return a.cleansingNeeds !== '';
     case 11:
-      return a.drugstore === 'yes' || a.drugstore === 'no' || a.drugstore === 'either';
+      return a.washFrequency !== '';
     case 12:
-      return a.betweenWash.length > 0;
+      return a.productWeight !== '';
     case 13:
+      return a.drugstore === 'yes' || a.drugstore === 'no' || a.drugstore === 'either';
+    case 14:
+      return a.betweenWash.length > 0;
+    case 15:
       return a.boosts.length > 0;
     default:
       return false;
@@ -423,6 +427,95 @@ export function AbbeyYungQuiz() {
 
           {step === 7 && (
             <Q
+              title="Do you deal with itching, scaling, or flaking on your scalp?"
+              details={
+                <>
+                  This quiz may suggest OTC medicated shampoos that Abbey groups
+                  for these concerns. <strong>This is not medical advice</strong>
+                  — please see a doctor to get a diagnosis before treating a
+                  scalp condition.
+                </>
+              }
+            >
+              <div className="flex flex-col gap-3">
+                <button
+                  type="button"
+                  className="btn btn-block justify-start rounded-xl bg-base-100 text-left font-normal"
+                  onClick={() => {
+                    setAnswers((a) => ({ ...a, hasDandruff: true }));
+                    setStep(8);
+                  }}
+                >
+                  Yes
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-block justify-start rounded-xl bg-base-100 text-left font-normal"
+                  onClick={() => {
+                    setAnswers((a) => ({ ...a, hasDandruff: false }));
+                    setStep(8);
+                  }}
+                >
+                  No
+                </button>
+              </div>
+            </Q>
+          )}
+
+          {step === 8 && (
+            <Q
+              title="Any scalp-care goals you want shampoo to support?"
+              details={
+                <>
+                  Abbey&apos;s scalp-health shampoos use actives aimed at these
+                  areas. Growth-stimulating claims are a weak effect — these are
+                  not drugs.
+                </>
+              }
+            >
+              <div className="flex flex-col gap-3">
+                {[
+                  ['buildup', 'Buildup removal'],
+                  ['exfoliation', 'Exfoliation'],
+                  [
+                    'density',
+                    'Density support (roots, retention, anchorage)',
+                  ],
+                  [
+                    'skin-health',
+                    'Scalp skin health (barrier, microbiome, oxidative stress)',
+                  ],
+                  ['growth', 'Growth stimulating (weak / cosmetic effect)'],
+                  ['none', 'None of the above'],
+                ].map(([v, label]) => (
+                  <label
+                    key={v}
+                    className="flex cursor-pointer items-start gap-3 rounded-xl bg-base-100 p-3"
+                  >
+                    <input
+                      type="checkbox"
+                      className="checkbox checkbox-primary mt-0.5"
+                      checked={answers.scalpNeeds.includes(v)}
+                      onChange={() =>
+                        setAnswers((prev) => ({
+                          ...prev,
+                          scalpNeeds: toggleNoneMulti(
+                            prev.scalpNeeds,
+                            v,
+                            'none',
+                          ),
+                        }))
+                      }
+                    />
+                    <span>{label}</span>
+                  </label>
+                ))}
+              </div>
+            </Q>
+          )}
+
+          {step === 9 && (
+            <Q
               title="Do you have hard water?"
               extra={
                 <Link
@@ -457,7 +550,7 @@ export function AbbeyYungQuiz() {
             </Q>
           )}
 
-          {step === 8 && (
+          {step === 10 && (
             <Q title="What type of shampoo do you prefer?">
               <div className="flex flex-col gap-3">
                 {[
@@ -487,7 +580,7 @@ export function AbbeyYungQuiz() {
             </Q>
           )}
 
-          {step === 9 && (
+          {step === 11 && (
             <Q title="How often do you wash your hair?">
               <div className="flex flex-col gap-3">
                 {[
@@ -508,7 +601,7 @@ export function AbbeyYungQuiz() {
             </Q>
           )}
 
-          {step === 10 && (
+          {step === 12 && (
             <Q title="How does your hair react to products?">
               <div className="flex flex-col gap-3">
                 {[
@@ -537,7 +630,7 @@ export function AbbeyYungQuiz() {
             </Q>
           )}
 
-          {step === 11 && (
+          {step === 13 && (
             <Q title="Do you have a budget preference?">
               <div className="flex flex-col gap-3">
                 {(
@@ -560,7 +653,7 @@ export function AbbeyYungQuiz() {
             </Q>
           )}
 
-          {step === 12 && (
+          {step === 14 && (
             <Q title="Do you have any of these between wash day needs?">
               <div className="flex flex-col gap-3">
                 {[
@@ -595,7 +688,7 @@ export function AbbeyYungQuiz() {
             </Q>
           )}
 
-          {step === 13 && (
+          {step === 15 && (
             <Q title="Any optional extras you want in your routine?">
               <div className="flex flex-col gap-3">
                 {[

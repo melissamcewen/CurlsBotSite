@@ -1,4 +1,4 @@
-import type { QuizState, RawAnswers } from './types';
+import type { QuizState, RawAnswers, ScalpNeed } from './types';
 
 function mapTanglyGeneral(
   v: string,
@@ -6,6 +6,14 @@ function mapTanglyGeneral(
   if (v === 'rare' || v === 'sometimes' || v === 'constant') return v;
   return null;
 }
+
+const SCALP_NEED_VALUES: ScalpNeed[] = [
+  'buildup',
+  'exfoliation',
+  'density',
+  'skin-health',
+  'growth',
+];
 
 export function computeQuizState(answers: RawAnswers): QuizState {
   const chemicalDamage = answers.damageTypes.some((t) =>
@@ -126,6 +134,10 @@ export function computeQuizState(answers: RawAnswers): QuizState {
     .map((b) => boostMap[b])
     .filter(Boolean) as QuizState['boosts'];
 
+  const scalpNeeds = answers.scalpNeeds.filter((n): n is ScalpNeed =>
+    SCALP_NEED_VALUES.includes(n as ScalpNeed),
+  );
+
   return {
     chemicalDamage,
     heatDamage,
@@ -135,6 +147,8 @@ export function computeQuizState(answers: RawAnswers): QuizState {
     tanglyDuringShampoo: answers.tanglyDuringShampoo ?? false,
     tanglyGeneral: tangly,
     scalpType,
+    hasDandruff: answers.hasDandruff ?? false,
+    scalpNeeds,
     hardWater,
     cleansingNeeds,
     washFrequency,

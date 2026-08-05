@@ -98,14 +98,37 @@ function formatScalpWash(state: QuizState): string {
   return `Scalp: ${scalp}. ${wash} ${clean}`.trim();
 }
 
+function formatDandruffAndScalpNeeds(state: QuizState): string | null {
+  const parts: string[] = [];
+  if (state.hasDandruff) {
+    parts.push(
+      'You indicated itching, scaling, or flaking (not a diagnosis — see a doctor if needed).',
+    );
+  }
+  if (state.scalpNeeds.length > 0) {
+    const labels: Record<string, string> = {
+      buildup: 'buildup removal',
+      exfoliation: 'exfoliation',
+      density: 'density support',
+      'skin-health': 'scalp skin health',
+      growth: 'growth-stimulating support',
+    };
+    parts.push(
+      `Scalp-care goals: ${oxfordJoin(state.scalpNeeds.map((n) => labels[n] ?? n))}.`,
+    );
+  }
+  if (parts.length === 0) return null;
+  return parts.join(' ');
+}
+
 function formatWater(state: QuizState): string {
   if (state.hardWater === true) {
-    return 'You indicated you wash your hair with hard water, your ideal clarifying shampoo should be able to remove hard water deposits.';
+    return 'You indicated you wash your hair with hard water; your ideal deep cleaning shampoo should remove hard water deposits (chelating).';
   }
   if (state.hardWater === false) {
-    return 'You indicated soft water, you can use any clarifying shampoo.';
+    return 'You indicated soft water; any deep cleaning shampoo can work for mineral concerns.';
   }
-  return 'Hard water: not sure, if you notice a lot of buildup or films on your hair it might be worth testing a clarifying shampoo that can remove hard water deposits.';
+  return 'Hard water: not sure — if you notice a lot of buildup or films on your hair it might be worth testing a deep cleaning shampoo that can remove hard water deposits.';
 }
 
 function formatWeightBudget(state: QuizState): string {
@@ -243,6 +266,8 @@ export function buildHairProfileSections(
   }
 
   const heatScalp = [formatHeatDetail(answers), formatScalpWash(state)];
+  const scalpExtra = formatDandruffAndScalpNeeds(state);
+  if (scalpExtra) heatScalp.push(scalpExtra);
 
   const waterRoutine = [
     formatWater(state),

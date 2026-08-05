@@ -16,16 +16,17 @@ export default function AbbeyYungMethodTable() {
     },
     {
       step: 3,
-      name: 'Clarifying / deep cleaning shampoo',
-      productType: 'Clarifying or purifying shampoos',
+      name: 'Deep cleaning shampoo',
+      productType: 'Residue-free deep cleaning / purifying shampoos',
       frequency: 'At least once a week',
       required: 'Required',
     },
     {
       step: 4,
-      name: 'Gentle cleansing shampoo',
-      productType: 'Shampoos for damaged/dry hair or dandruff shampoos',
-      frequency: 'Other wash days',
+      name: 'Benefit shampoo',
+      productType:
+        'Strengthening, chelating, scalp health, or medicated shampoos',
+      frequency: 'Other wash days / as needed',
       required: 'Optional',
     },
     {

@@ -1,5 +1,25 @@
 import type { AbbeyYungProduct } from '@/data/abbeyYungProducts';
 
+export type ScalpNeed =
+  | 'buildup'
+  | 'exfoliation'
+  | 'density'
+  | 'skin-health'
+  | 'growth';
+
+export type ShampooRole =
+  | 'deep-cleaning'
+  | 'chelating'
+  | 'strengthening'
+  | 'scalp-health'
+  | 'medicated';
+
+export interface ShampooPick {
+  product: AbbeyYungProduct;
+  roles: ShampooRole[];
+  note: string | null;
+}
+
 /** Raw answers from the quiz wizard — stored as the user progresses */
 export interface RawAnswers {
   damageTypes: string[];
@@ -10,6 +30,10 @@ export interface RawAnswers {
   tanglyDuringShampoo?: boolean;
   tanglyGeneral: string;
   scalpType: string;
+  /** Set after dandruff Q; omitted means unanswered */
+  hasDandruff?: boolean;
+  /** Scalp-care needs; empty until answered; includes `none` when none selected */
+  scalpNeeds: string[];
   hardWater: 'yes' | 'no' | 'unknown';
   cleansingNeeds: string;
   washFrequency: string;
@@ -29,6 +53,8 @@ export interface QuizState {
   tanglyDuringShampoo: boolean;
   tanglyGeneral: 'rare' | 'sometimes' | 'constant';
   scalpType: 'dry' | 'normal' | 'oily' | 'extra oily' | 'unknown';
+  hasDandruff: boolean;
+  scalpNeeds: ScalpNeed[];
   hardWater: boolean | null;
   cleansingNeeds: 'gentle' | 'normal' | 'strong';
   washFrequency: 'daily' | 'multi-weekly' | 'weekly-or-less';
@@ -45,9 +71,8 @@ export interface QuizState {
 export interface RoutineResult {
   preShampooOil: AbbeyYungProduct | null;
   preShampooOilNote: string | null;
-  clarifyingShampoo: AbbeyYungProduct | null;
-  everydayShampoo: AbbeyYungProduct | null;
-  everydayShampooNote: string | null;
+  /** Up to 2 shampoo picks with roles they cover */
+  shampoos: ShampooPick[];
   bondRepair: AbbeyYungProduct[];
   bondRepairStrongFallbackNote: string | null;
   conditioner: AbbeyYungProduct | null;
@@ -71,6 +96,8 @@ export function createEmptyRawAnswers(): RawAnswers {
     tanglyDuringShampoo: undefined,
     tanglyGeneral: '',
     scalpType: '',
+    hasDandruff: undefined,
+    scalpNeeds: [],
     hardWater: 'unknown',
     cleansingNeeds: '',
     washFrequency: '',

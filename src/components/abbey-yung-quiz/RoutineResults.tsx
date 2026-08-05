@@ -51,24 +51,50 @@ export function RoutineResults({
         </StepSection>
       ) : null}
 
-      {result.clarifyingShampoo ? (
-        <StepSection
-          title={meta[3].title}
-          description={meta[3].description}
-        >
-          <ProductCard product={result.clarifyingShampoo} />
-        </StepSection>
-      ) : null}
-
-      {result.everydayShampoo ? (
-        <StepSection
-          title={meta[4].title}
-          description={meta[4].description}
-          note={result.everydayShampooNote ?? undefined}
-        >
-          <ProductCard product={result.everydayShampoo} />
-        </StepSection>
-      ) : null}
+      {result.shampoos.map((pick) => {
+        const primaryRole = pick.roles[0];
+        const title =
+          primaryRole === 'deep-cleaning'
+            ? meta[3].title
+            : primaryRole === 'medicated' ||
+                primaryRole === 'scalp-health' ||
+                primaryRole === 'chelating' ||
+                primaryRole === 'strengthening'
+              ? meta[4].title
+              : meta[3].title;
+        const description =
+          primaryRole === 'deep-cleaning'
+            ? meta[3].description
+            : meta[4].description;
+        return (
+          <StepSection
+            key={pick.product.product}
+            title={title}
+            description={description}
+            note={pick.note ?? undefined}
+          >
+            <div className="mb-3 flex flex-wrap gap-2">
+              {pick.roles.map((role) => (
+                <span
+                  key={role}
+                  className="badge badge-outline badge-sm shrink-0 whitespace-nowrap"
+                >
+                  {role === 'deep-cleaning'
+                    ? 'Deep Cleaning'
+                    : role === 'chelating'
+                      ? 'Chelating'
+                      : role === 'strengthening'
+                        ? 'Strengthening'
+                        : role === 'scalp-health'
+                          ? 'Scalp Health'
+                          : 'Medicated'}
+                </span>
+              ))}
+            </div>
+            <ProductCard product={pick.product} />
+          </StepSection>
+        );
+      })}
 
       <RoutineStepBlock
         stepNumber={5}

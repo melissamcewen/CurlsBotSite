@@ -14,6 +14,8 @@ import { createEmptyRawAnswers } from './types';
  * | tds | tangly during shampoo: y / n |
  * | tg | tangly general |
  * | st | scalp type |
+ * | dd | dandruff / itching-flaking: y / n |
+ * | sn | scalp needs |
  * | hw | hard water: yes / no / unknown |
  * | cn | cleansing needs |
  * | wf | wash frequency |
@@ -45,6 +47,8 @@ export function parseQuizSearchParams(
     searchParams.has('tds') ||
     searchParams.has('tg') ||
     searchParams.has('st') ||
+    searchParams.has('dd') ||
+    searchParams.has('sn') ||
     searchParams.has('hw') ||
     searchParams.has('cn') ||
     searchParams.has('wf') ||
@@ -70,6 +74,12 @@ export function parseQuizSearchParams(
 
   base.tanglyGeneral = searchParams.get('tg')?.trim() ?? '';
   base.scalpType = searchParams.get('st')?.trim() ?? '';
+
+  const dd = searchParams.get('dd');
+  if (dd === 'y') base.hasDandruff = true;
+  else if (dd === 'n') base.hasDandruff = false;
+
+  base.scalpNeeds = splitList(searchParams.get('sn'));
 
   const hw = searchParams.get('hw')?.trim();
   if (hw === 'yes' || hw === 'no' || hw === 'unknown') {
@@ -126,6 +136,12 @@ export function serializeQuizSearchParams(
     p.set('tg', answers.tanglyGeneral);
   if (answers.scalpType && answers.scalpType !== empty.scalpType)
     p.set('st', answers.scalpType);
+
+  if (answers.hasDandruff === true) p.set('dd', 'y');
+  else if (answers.hasDandruff === false) p.set('dd', 'n');
+
+  if (answers.scalpNeeds.length)
+    p.set('sn', answers.scalpNeeds.join(','));
 
   if (answers.hardWater !== empty.hardWater) p.set('hw', answers.hardWater);
 
