@@ -1,0 +1,93 @@
+# Abbey Yung Shampoo changes
+
+- originally: clarifying, non-clarifying, medicated
+- new framework
+  - step 3: deep cleaning shampoos
+    - stronger residue-free clean
+      - Everpure clarifying
+      - Garnier Pure Clean
+      - Pantene Volume
+      - k18 peptide prep
+      - Ouai detox
+      - neutrogena hair restore - also for scalp health
+      - OGX progrowth and peptide - also for scalp health
+      - Nioxin- also for scalp health
+      - Dr Groot also for scalp health
+      - Redken Acidic Growth Full also for scalp health
+  - Step 4: Benefit shampoos (optional)
+    - chelating- if you have hard water, once a week or more
+      - Everpure clarifying = also deep cleaning
+      - Loreal Metal Detox = gentler and conditioning
+      - Living Proof clarifying  = gentler and conditioning
+      - k18 Peptide prep = also deep cleaning
+      - Ouai detox= also deep cleaning
+    - Strenthening= softening smoothing makes hair feel more manageable, for days not deep cleaning, or after deep cleaning to make it feel nicer/softer
+      - Elvive Glycolic Gloss
+      - Everpre glossing
+      - Dove Intensive Repair
+      - Dove Bond Strength
+      - Everpure bond repair
+      - Amika the kure
+      - Pureology Strength cure
+      - Redken Acidic bonding
+    - Scalp health: hair retention, exfoliation, use as often as possible
+      - neutrogena hair restore - also for deep cleaning
+      - OGX progrowth and peptide - also for deep cleaning
+      - Nioxin- also for deep cleaning
+      - Dr Groot also for sdeep cleaning
+      - Redken Acidic Growth Full also for deep cleaning
+      - Pantene abundant and strong
+      - Dove derma scalp
+    - Medicated: itching, scaling flaking = actual drugs, prioritize over
+      - Tsal
+      - Nizoral
+      - Derma scalp anti-dandruff
+      - Cerave anti dandruff
+      - head shoulders medicated
+
+Notes on some specific shampoos
+- Neutrogena hair restore detox
+  - Oily scalps
+  - Most hair types
+  - Scalp buildup removal and exfolitation
+  - Strong cleansing
+  - Residue free
+  -
+- OGX Pro Growth and Peptide
+  - Normal to dry scalps for a weekly deep clean
+  - Normal to oily scalps for more frequent deep cleaning
+  - Most hair types
+  - Scalp buildup removal and exfoliation
+  - No residue
+  - Moderate to strong cleansing power
+- Pantene Abundant and Strong
+  - Most scalp types
+  - most hair types esp dry damaged
+  - Improving scalp health reducing shedding and growing healthier hair by reducing scalp oxidative stress
+  - Moderate cleansing
+  - Conditioning/residue
+- Dove Derma Scalp Density Boost
+  - Most scalp types
+  - Most hair types esp dry damaged hair
+  - Strentehening scalps moisture barrier, fortifying roots, improving hair retention
+  - moderate cleansing
+  - Conditioning/residue
+
+- Dr. Groot scalp revitalizing
+  - Most scalp types
+  - most hair types
+  - improving scalp microbiome, fortifying hair follicles, improving hair retention, strenghtening new hair growth
+  - Moderate to strong cleansing
+  - Residue free
+- Redken Acidic grow full
+  - Oily scalps
+  - most hair types
+  - improving scalp barrier, reducing hair fall from brushing, strengthening new growth
+  - Strong cleansing
+  - Residue free
+- Nioxin hair fall defense
+  - Oily scalps
+  - most hair types
+  - stimulates hair follicle, prolongs growth phase, strenghtening new growth improving hair anchorage
+  - strong cleansing
+  - residue free
