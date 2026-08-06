@@ -468,8 +468,7 @@ export function AbbeyYungQuiz() {
               details={
                 <>
                   Abbey&apos;s scalp-health shampoos use actives aimed at these
-                  areas. Growth-stimulating claims are a weak effect — these are
-                  not drugs.
+                  areas. Growth-stimulating shampoos may only offer weak effects, as these are not drugs.
                 </>
               }
             >
@@ -485,7 +484,7 @@ export function AbbeyYungQuiz() {
                     'skin-health',
                     'Scalp skin health (barrier, microbiome, oxidative stress)',
                   ],
-                  ['growth', 'Growth stimulating (weak / cosmetic effect)'],
+                  ['growth', 'Growth stimulating (see more context note for disclaimer)'],
                   ['none', 'None of the above'],
                 ].map(([v, label]) => (
                   <label

@@ -61,7 +61,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
         icon: 'shopping-cart',
       },
       {
-        url: 'https://fave.co/4wvTViv',
+        url: 'https://epres.com/products/epres-healthy-hair-3-step-system-starter-kit',
         text: 'Buy at Eprès',
         retailer: 'epres',
         icon: 'shopping-cart',
@@ -136,13 +136,13 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
         icon: 'shopping-cart',
       },
       {
-        url: 'https://tidd.ly/4tunEpf',
+        url: 'https://www.awin1.com/cread.php?awinmid=77396&awinaffid=2868201&ued=https%3A%2F%2Fwww.k18hair.com%2Fproducts%2Fpeptide-prep-detox-shampoo-8-5oz',
         text: 'Buy at k18',
         retailer: 'k18',
         icon: 'shopping-cart',
       },
       {
-        url: 'https://fave.co/42iAThC',
+        url: 'https://www.sephora.com/product/peptide-prep-clarifying-detox-shampoo-P501449',
         text: 'Buy at Sephora',
         retailer: 'sephora',
         icon: 'shopping-cart',
@@ -242,7 +242,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     tags: ['residue-free', 'deep-cleaning-shampoo', 'daily-shampoo'],
   },
   {
-    product: 'Neutrogena Hair Restore Triple Action Scalp Detox Cleanser,',
+    product: 'Neutrogena Hair Restore Triple Action Scalp Detox Cleanser',
     drugstore: true,
     step: 3,
     steps: [3, 4],
@@ -390,13 +390,13 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
         icon: 'shopping-cart',
       },
       {
-        url: 'https://fave.co/4tfndyH',
+        url: 'https://loveamika.com/products/the-kure-strength-repair-shampoo',
         text: 'Buy at Amika',
         retailer: 'amika',
         icon: 'shopping-cart',
       },
       {
-        url: 'https://fave.co/4es6cOh',
+        url: 'https://www.sephora.com/product/P501714',
         text: 'Buy at Sephora',
         retailer: 'sephora',
         icon: 'shopping-cart',
@@ -573,13 +573,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
         text: 'Buy on Amazon',
         retailer: 'amazon',
         icon: 'shopping-cart',
-      },
-      {
-        url: 'https://fave.co/4uRsvlx',
-        text: 'Buy at Ulta',
-        retailer: 'ulta',
-        icon: 'shopping-cart',
-      },
+      }
     ],
   },
   {
@@ -665,7 +659,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     tags: ['residue-free', 'deep-cleaning-shampoo', 'benefit-medicated'],
   },
   {
-    product: 'Dove Derma Scalp Dandruff Relief Shampoo with Salicylic Acid,',
+    product: 'Dove Derma Scalp Dandruff Relief Shampoo with Salicylic Acid',
     drugstore: true,
     step: 4,
     steps: [4],
@@ -755,13 +749,13 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
         icon: 'shopping-cart',
       },
       {
-        url: 'https://tidd.ly/4ubtv3Z',
+        url: 'https://www.awin1.com/cread.php?awinmid=77396&awinaffid=2868201&ued=https%3A%2F%2Fwww.k18hair.com%2Fproducts%2Fleave-in-molecular-repair-hair-mask-50-ml',
         text: 'Buy at K18',
         retailer: 'k18',
         icon: 'shopping-cart',
       },
       {
-        url: 'https://fave.co/49if6u9',
+        url: 'https://www.sephora.com/product/P505266',
         text: 'Buy at Sephora',
         retailer: 'sephora',
         icon: 'shopping-cart',
@@ -846,13 +840,13 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
         icon: 'shopping-cart',
       },
       {
-        url: 'https://fave.co/42ejTZT',
+        url: 'https://loveamika.com/products/flash-instant-shine-mask',
         text: 'Buy at Amika',
         retailer: 'amika',
         icon: 'shopping-cart',
       },
       {
-        url: 'https://fave.co/4th6fzW',
+        url: 'https://www.sephora.com/product/P501705',
         text: 'Buy at Sephora',
         retailer: 'sephora',
         icon: 'shopping-cart',
@@ -882,13 +876,13 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
         icon: 'shopping-cart',
       },
       {
-        url: 'https://fave.co/48Gj4fZ',
+        url: 'https://loveamika.com/products/the-kure-strength-repair-conditioner',
         text: 'Buy at Amika',
         retailer: 'amika',
         icon: 'shopping-cart',
       },
       {
-        url: 'https://fave.co/4urwiFF',
+        url: 'https://www.sephora.com/product/the-kure-strength-repair-conditioner-P468627',
         text: 'Buy at Sephora',
         retailer: 'sephora',
         icon: 'shopping-cart',
@@ -1167,13 +1161,13 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
         icon: 'shopping-cart',
       },
       {
-        url: 'https://fave.co/4d3iDh6',
+        url: 'https://loveamika.com/products/kure-intense-strength-repair-mask',
         text: 'Buy at Amika',
         retailer: 'amika',
         icon: 'shopping-cart',
       },
       {
-        url: 'https://fave.co/4wbcKHg',
+        url: 'https://www.sephora.com/product/the-kure-intense-strength-repair-mask-P474810',
         text: 'Buy at Sephora',
         retailer: 'sephora',
         icon: 'shopping-cart',
@@ -1204,13 +1198,13 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
         icon: 'shopping-cart',
       },
       {
-        url: 'https://fave.co/4tYo48i',
+        url: 'https://www.livingproof.com/products/triple-bond-complex',
         text: 'Buy at Living Proof',
         retailer: 'livingproof',
         icon: 'shopping-cart',
       },
       {
-        url: 'https://fave.co/3QRNaqU',
+        url: 'https://www.sephora.com/product/triple-bond-complex-leave-in-hair-treatment-P501168',
         text: 'Buy at Sephora',
         retailer: 'sephora',
         icon: 'shopping-cart',
@@ -1256,13 +1250,13 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
         icon: 'shopping-cart',
       },
       {
-        url: 'https://fave.co/3P3VKlK',
+        url: 'https://www.bumbleandbumble.com/product/19055/31247/style/pre-stylers/hairdressers-invisible-oil-heatuv-protective-primer-for-dry-frizzy-hair',
         text: 'Buy at Bumble and bumble',
         retailer: 'bumbleandbumble',
         icon: 'shopping-cart',
       },
       {
-        url: 'https://fave.co/4dtxkv6',
+        url: 'https://www.sephora.com/product/hairdresser-s-invisible-oil-primer-mini-P426163?',
         text: 'Buy at Sephora',
         retailer: 'sephora',
         icon: 'shopping-cart',
@@ -1334,12 +1328,6 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
         retailer: 'amazon',
         icon: 'shopping-cart',
       },
-      {
-        url: 'https://fave.co/4ncrodj',
-        text: 'Buy at Sephora',
-        retailer: 'sephora',
-        icon: 'shopping-cart',
-      },
     ],
   },
   {
@@ -1381,15 +1369,9 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
         icon: 'shopping-cart',
       },
       {
-        url: 'https://fave.co/4tgQGZa',
+        url: 'https://www.redken.com/hair-styling/one-united-leave-in-conditioner.html',
         text: 'Buy at Redken',
         retailer: 'redken',
-        icon: 'shopping-cart',
-      },
-      {
-        url: 'https://fave.co/3QSTtuf',
-        text: 'Buy at Ulta',
-        retailer: 'ulta',
         icon: 'shopping-cart',
       },
     ],
@@ -1449,7 +1431,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
         icon: 'shopping-cart',
       },
       {
-        url: 'https://go.skimresources.com?id=276362X1762442&xs=1&url=https%3A%2F%2Fwww.sephora.com%2Fproduct%2Fmini-astrolift-reparative-volume-spray-P517726%3FskuId%3D2902120',
+        url: 'https://www.sephora.com/product/astrolift-tm-reparative-volume-spray-P515635',
         text: 'Buy at Sephora',
         retailer: 'sephora',
         icon: 'shopping-cart',

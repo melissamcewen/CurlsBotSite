@@ -183,8 +183,12 @@ export default function AbbeyYungProductList({
         <table className="table table-zebra table-sm w-max min-w-full">
           <thead>
             <tr>
-              <th className="min-w-[9rem] align-bottom sm:min-w-[11rem]">Product</th>
-              <th className="min-w-[12rem] align-bottom sm:min-w-[16rem]">Details</th>
+              <th className="w-[9rem] min-w-[8rem] max-w-[12rem] align-bottom sm:w-[11rem] sm:max-w-[14rem]">
+                Product
+              </th>
+              <th className="w-[14rem] min-w-[12rem] max-w-[18rem] align-bottom sm:w-[18rem] sm:max-w-[22rem]">
+                Details
+              </th>
               {visibleExtraFields.map((field) => (
                 <th key={field} className="min-w-[4.5rem] whitespace-nowrap align-bottom sm:min-w-[5.5rem]">
                   {EXTRA_FIELD_LABEL[field]}
@@ -197,7 +201,7 @@ export default function AbbeyYungProductList({
               const links = productLinks(product);
               return (
                 <tr key={product.product}>
-                  <td className="min-w-[9rem] align-top sm:min-w-[11rem]">
+                  <td className="w-[9rem] min-w-[8rem] max-w-[12rem] align-top whitespace-normal sm:w-[11rem] sm:max-w-[14rem]">
                     <div
                       className={
                         product.img
@@ -213,7 +217,9 @@ export default function AbbeyYungProductList({
                         />
                       ) : null}
                       <div className="min-w-0 w-full space-y-2">
-                        <p className="text-sm leading-snug text-base-content">{product.product}</p>
+                        <p className="break-words whitespace-normal text-sm leading-snug text-base-content">
+                          {product.product}
+                        </p>
                         {links.length > 0 ? (
                           <div className="flex flex-wrap gap-2">
                             {links.map((link) => {
@@ -260,13 +266,15 @@ export default function AbbeyYungProductList({
                       </div>
                     </div>
                   </td>
-                  <td className="min-w-[12rem] align-top sm:min-w-[16rem]">
+                  <td className="w-[14rem] min-w-[12rem] max-w-[18rem] align-top whitespace-normal sm:w-[18rem] sm:max-w-[22rem]">
                     <div className="space-y-2 text-sm text-base-content">
                       {product.comments?.trim() ? (
-                        <div className="break-words">{product.comments}</div>
+                        <div className="break-words whitespace-normal">
+                          {product.comments}
+                        </div>
                       ) : null}
                       {product.bestFor?.trim() ? (
-                        <div className="break-words">
+                        <div className="break-words whitespace-normal">
                           <span className="font-medium">Best for: </span>
                           {product.bestFor}
                         </div>
@@ -297,7 +305,7 @@ export default function AbbeyYungProductList({
                               ))
                             : null}
                         {alsoDeepCleaning(product, stepFilter) ? (
-                          <span className="badge badge-primary badge-soft shrink-0 whitespace-nowrap">
+                          <span className="badge badge-primary shrink-0 whitespace-nowrap">
                             Also deep cleaning
                           </span>
                         ) : null}

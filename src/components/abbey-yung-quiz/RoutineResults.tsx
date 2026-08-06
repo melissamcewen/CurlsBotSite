@@ -52,26 +52,39 @@ export function RoutineResults({
       ) : null}
 
       {result.shampoos.map((pick) => {
-        const primaryRole = pick.roles[0];
+        const isDeep = pick.roles.includes('deep-cleaning');
+        const isBenefit = pick.roles.some((role) =>
+          (
+            [
+              'medicated',
+              'scalp-health',
+              'chelating',
+              'strengthening',
+            ] as const
+          ).includes(role),
+        );
         const title =
-          primaryRole === 'deep-cleaning'
-            ? meta[3].title
-            : primaryRole === 'medicated' ||
-                primaryRole === 'scalp-health' ||
-                primaryRole === 'chelating' ||
-                primaryRole === 'strengthening'
-              ? meta[4].title
-              : meta[3].title;
+          isDeep && isBenefit
+            ? 'Benefit + Deep Cleaning shampoo'
+            : isDeep
+              ? meta[3].title
+              : meta[4].title;
         const description =
-          primaryRole === 'deep-cleaning'
-            ? meta[3].description
-            : meta[4].description;
+          isDeep && isBenefit
+            ? 'This pick covers a Benefit shampoo need and also counts as your deep cleaning shampoo.'
+            : isDeep
+              ? meta[3].description
+              : meta[4].description;
+        const weeklyDeepNote = isDeep
+          ? 'Abbey Yung recommends using a deep cleaning shampoo at least once a week to remove buildup.'
+          : null;
+        const note = [pick.note, weeklyDeepNote].filter(Boolean).join(' ');
         return (
           <StepSection
             key={pick.product.product}
             title={title}
             description={description}
-            note={pick.note ?? undefined}
+            note={note || undefined}
           >
             <div className="mb-3 flex flex-wrap gap-2">
               {pick.roles.map((role) => (

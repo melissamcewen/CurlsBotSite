@@ -13,10 +13,11 @@
 
 ## Quiz shampoo logic
 
-- Ask dandruff (with non-medical-advice disclaimer) → medicated first
-- Ask scalp-care needs → match scalp-health tags
-- Prefer ≤2 shampoo products; dual-role products fill deep cleaning / chelating when tagged
-- Hard water → prefer chelating deep cleaners; add separate chelating only if needed and a slot remains
-- Strengthening only if no scalp shampoo, wash more than weekly, and answers indicate gentler/manageability needs
+1. Always pick a **deep cleaning** shampoo first.
+   - Prefer deep cleaners that also match user prefs: medicated (if dandruff), chelating (if hard water), scalp-health (if scalp needs).
+2. If prefs remain uncovered, pick a **second** shampoo for those leftovers
+   (medicated / chelating hard leftovers ranked above scalp / strengthening).
+
+Max 2 shampoos.
 
 Scalp-care video: https://www.youtube.com/watch?v=fZTa84MZfnY

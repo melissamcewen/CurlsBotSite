@@ -133,6 +133,55 @@ describe('abbey-yung-quiz', () => {
     ).toBe(true);
   });
 
+  it('dandruff + hard water: deep first (prefers dual-role), then leftover hard prefs', () => {
+    const raw = baseAnswers({
+      hasDandruff: true,
+      hardWater: 'yes',
+      scalpNeeds: ['exfoliation', 'density', 'skin-health'],
+      drugstore: 'yes',
+    });
+    const state = computeQuizState(raw);
+    const result = selectProducts(state);
+
+    expect(result.shampoos.length).toBe(2);
+    expect(result.shampoos[0].roles).toEqual(
+      expect.arrayContaining(['deep-cleaning']),
+    );
+    expect(
+      result.shampoos.some((s) => s.roles.includes('medicated')),
+    ).toBe(true);
+    expect(
+      result.shampoos.some(
+        (s) =>
+          s.roles.includes('chelating') ||
+          s.product.tags?.includes('benefit-chelating'),
+      ),
+    ).toBe(true);
+    // Second slot used for leftover hard pref, not scalp
+    expect(
+      result.shampoos.some((s) => s.roles.includes('scalp-health')),
+    ).toBe(false);
+  });
+
+  it('deep cleaner that also matches hard water can be the only shampoo', () => {
+    const raw = baseAnswers({
+      hardWater: 'yes',
+      hasDandruff: false,
+      scalpNeeds: ['none'],
+      washFrequency: 'weekly-or-less',
+      cleansingNeeds: 'normal',
+      productWeight: 'light',
+      drugstore: 'yes',
+    });
+    const state = computeQuizState(raw);
+    const result = selectProducts(state);
+
+    expect(result.shampoos.length).toBe(1);
+    expect(result.shampoos[0].roles).toEqual(
+      expect.arrayContaining(['deep-cleaning', 'chelating']),
+    );
+  });
+
   it('strengthening can be assigned when washing often without scalp shampoo', () => {
     const raw = baseAnswers({
       scalpNeeds: ['none'],
