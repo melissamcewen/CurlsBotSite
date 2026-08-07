@@ -122,6 +122,33 @@ export function TikTokEmailSignup({
   );
 }
 
+// Abbey Yung signup (dedicated MailerLite form / group)
+export function AbbeyYungEmailSignup({
+  title = 'Want to get updates on new features and hair science? Join our newsletter.',
+  buttonText = 'Subscribe',
+  placeholder = 'Enter your email',
+  className = '',
+  layout = 'card',
+}: {
+  title?: string;
+  buttonText?: string;
+  placeholder?: string;
+  className?: string;
+  layout?: 'card' | 'compact';
+}) {
+  return (
+    <BaseEmailSignup
+      variant="abbeyYung"
+      fieldValue=""
+      title={title}
+      placeholder={placeholder}
+      buttonText={buttonText}
+      className={className}
+      layout={layout}
+    />
+  );
+}
+
 // Newsletter Signup - Inline Layout
 interface NewsletterSignupProps {
   fieldName?: string;

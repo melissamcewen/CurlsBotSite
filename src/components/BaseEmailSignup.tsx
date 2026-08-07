@@ -36,6 +36,12 @@ export const EMAIL_SIGNUP_CONFIGS = {
     fieldName: 'fields[source]',
     source: 'newsletter-inline',
   },
+  abbeyYung: {
+    formId: '195168260719642545',
+    containerId: 'mlb2-abbey-yung',
+    fieldName: 'fields[email]',
+    source: 'abbey-yung',
+  },
 } as const;
 
 export type EmailSignupVariant = keyof typeof EMAIL_SIGNUP_CONFIGS;

@@ -5,6 +5,7 @@ import type { AbbeyYungProduct } from '@/data/abbeyYungProducts';
 import { abbeyYungMethodSteps } from '@/lib/abbey-yung-quiz/methodSteps';
 import { partitionBondRepairByStep } from '@/lib/abbey-yung-quiz/bondBuckets';
 import type { QuizState, RawAnswers, RoutineResult } from '@/lib/abbey-yung-quiz/types';
+import { AbbeyYungEmailSignup } from '@/components/EmailSignupVariants';
 import { HairProfileSummary } from './HairProfileSummary';
 import { ProductCard } from './ProductCard';
 import { StepSection } from './StepSection';
@@ -33,6 +34,8 @@ export function RoutineResults({
     <div className="flex flex-col gap-6">
 
       <HairProfileSummary state={state} answers={answers} />
+
+      <AbbeyYungEmailSignup />
 
       <RoutineStepBlock
         stepNumber={1}

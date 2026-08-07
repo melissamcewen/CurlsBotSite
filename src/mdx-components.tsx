@@ -29,6 +29,7 @@ import { AuthorBio } from '@/components/mdx/AuthorBio';
 import RoutineTable from '@/components/mdx/RoutineTable';
 import ProductComparisonTable from '@/components/mdx/ProductComparisonTable';
 import NewsletterSignup from '@/components/mdx/NewsletterSignup';
+import AbbeyYungEmailSignup from '@/components/mdx/AbbeyYungEmailSignup';
 import AbbeyYungMethodTable from '@/components/mdx/AbbeyYungMethodTable';
 import AbbeyYungTable from '@/components/mdx/AbbeyYungTable';
 import AbbeyYungProductList from '@/components/mdx/AbbeyYungProductList';
@@ -62,6 +63,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     RoutineTable,
     ProductComparisonTable,
     NewsletterSignup,
+    AbbeyYungEmailSignup,
     AbbeyYungMethodTable,
     AbbeyYungTable,
     AbbeyYungProductList,
