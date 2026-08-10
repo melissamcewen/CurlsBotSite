@@ -4,11 +4,18 @@ import { Info } from 'lucide-react';
 import type { AbbeyYungProduct } from '@/data/abbeyYungProducts';
 import { abbeyYungMethodSteps } from '@/lib/abbey-yung-quiz/methodSteps';
 import { partitionBondRepairByStep } from '@/lib/abbey-yung-quiz/bondBuckets';
-import type { QuizState, RawAnswers, RoutineResult } from '@/lib/abbey-yung-quiz/types';
+import type { QuizState, RawAnswers, RoutineResult, ShampooRole } from '@/lib/abbey-yung-quiz/types';
 import { AbbeyYungEmailSignup } from '@/components/EmailSignupVariants';
 import { HairProfileSummary } from './HairProfileSummary';
 import { ProductCard } from './ProductCard';
 import { StepSection } from './StepSection';
+
+const BENEFIT_SHAMPOO_ROLES: ReadonlySet<ShampooRole> = new Set([
+  'medicated',
+  'scalp-health',
+  'chelating',
+  'strengthening',
+]);
 
 export function RoutineResults({
   state,
@@ -57,14 +64,7 @@ export function RoutineResults({
       {result.shampoos.map((pick) => {
         const isDeep = pick.roles.includes('deep-cleaning');
         const isBenefit = pick.roles.some((role) =>
-          (
-            [
-              'medicated',
-              'scalp-health',
-              'chelating',
-              'strengthening',
-            ] as const
-          ).includes(role),
+          BENEFIT_SHAMPOO_ROLES.has(role),
         );
         const title =
           isDeep && isBenefit
