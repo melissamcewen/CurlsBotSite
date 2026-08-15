@@ -626,17 +626,17 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     step: 4,
     steps: [3, 4],
     comments:
-      'Medicated (OTC). CurlsBot note: I think this functions as a deep-cleaning shampoo',
+      'Medicated (OTC).',
     heaviness: '',
     amazon: 'https://amzn.to/455okYr',
     bestFor:
-      'Itching, scaling, and flaking concerns (see a doctor for diagnosis)',
+      'Exfoliating and clearing oil, flakes, and buildup. Normal to oily scalps, most hair types',
     frequency:
       'As often as directed on the label / as often as possible per Abbey',
     texture: '',
     fragrance: '',
     cleaningPower: ['strong'],
-    scalpType: ['normal', 'dry', 'oily'],
+    scalpType: ['normal', 'oily'],
     tags: ['residue-free', 'deep-cleaning-shampoo', 'benefit-medicated'],
   },
   {
@@ -645,18 +645,18 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     step: 4,
     steps: [3, 4],
     comments:
-      'Medicated (OTC). CurlsBot note: also functions as a deep-cleaning shampoo IMHO.',
+      'Medicated (OTC)',
     heaviness: '',
     amazon: 'https://amzn.to/3ROsQYe',
     bestFor:
-      'Itching, scaling, and flaking concerns (see a doctor for diagnosis)',
+      'Reducing itching, irritation, scaling, and flaking (see a doctor for diagnosis). Most hair types, most scalp types',
     frequency:
       'As often as directed on the label / as often as possible per Abbey',
     texture: '',
     fragrance: '',
-    cleaningPower: ['strong'],
+    cleaningPower: ['moderate'],
     scalpType: ['normal', 'dry', 'oily'],
-    tags: ['residue-free', 'deep-cleaning-shampoo', 'benefit-medicated'],
+    tags: ['residue-free', 'benefit-medicated'],
   },
   {
     product: 'Dove Derma Scalp Dandruff Relief Shampoo with Salicylic Acid',
@@ -664,17 +664,17 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     step: 4,
     steps: [4],
     comments:
-      'Medicated (OTC). CurlsBot note: likely gentler than some other medicated options.',
+      'Medicated (OTC).',
     heaviness: '',
     amazon: 'https://amzn.to/3TUA7WX',
     bestFor:
-      'Itching, scaling, and flaking concerns (see a doctor for diagnosis)',
+      'Reducing itching, irritation, scaling, and flaking (see a doctor for diagnosis). Normal to dry scalps, most hair types but especially good for dry/damaged',
     frequency:
       'As often as directed on the label / as often as possible per Abbey',
     texture: '',
     fragrance: '',
-    cleaningPower: ['light', 'moderate'],
-    scalpType: ['normal', 'dry', 'oily'],
+    cleaningPower: ['moderate'],
+    scalpType: ['normal', 'dry'],
     tags: ['benefit-medicated', 'conditioning-shampoo'],
   },
   {
@@ -682,18 +682,18 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     drugstore: true,
     step: 4,
     steps: [4],
-    comments: 'Medicated (OTC). CurlsBot note: medium cleansing power IMHO.',
+    comments: 'Medicated (OTC).',
     heaviness: '',
     amazon: 'https://amzn.to/45dvKc2',
     bestFor:
-      'Itching, scaling, and flaking concerns (see a doctor for diagnosis)',
+      'Reducing itching, irritation, scaling, and flaking (see a doctor for diagnosis). Normal to dry scalps, sensitive scalps, most hair types but especially good for dry/damaged',
     frequency:
       'As often as directed on the label / as often as possible per Abbey',
     texture: '',
     fragrance: '',
     cleaningPower: ['moderate'],
-    scalpType: ['normal', 'dry', 'oily'],
-    tags: ['benefit-medicated'],
+    scalpType: ['normal', 'dry'],
+    tags: ['benefit-medicated', 'conditioning-shampoo'],
   },
   {
     product: 'Head & Shoulders Classic Clean Anti-Dandruff Shampoo',
@@ -701,7 +701,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     step: 4,
     steps: [3, 4],
     comments:
-      'Medicated (OTC). CurlsBot note: also functions as a deep-cleaning shampoo IMHO.',
+      'Medicated (OTC).',
     heaviness: '',
     amazon: 'https://amzn.to/3TY4FHj',
     bestFor:
@@ -711,7 +711,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: '',
     fragrance: '',
     cleaningPower: ['strong'],
-    scalpType: ['normal', 'dry', 'oily'],
+    scalpType: ['oily'],
     tags: ['residue-free', 'deep-cleaning-shampoo', 'benefit-medicated'],
   },
   /* discontinued
