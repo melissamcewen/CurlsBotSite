@@ -131,6 +131,11 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: '/a-skeptics-guide-to-bond-repair',
+        destination: '/skeptics-guide-bond-repair',
+        permanent: true,
+      },
+      {
         source: '/shea',
         destination: '/blog/is-shea-moisture-curl-friendly',
         permanent: true,
