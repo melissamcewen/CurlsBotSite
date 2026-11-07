@@ -115,7 +115,10 @@ export default function AbbeyYungProductList({
   className = '',
 }: AbbeyYungProductListProps) {
   const [sortBy, setSortBy] = useState<SortBy>('featured');
-  const stepFilter = Array.isArray(steps) ? steps : [steps];
+  const stepFilter = useMemo(
+    () => (Array.isArray(steps) ? steps : [steps]),
+    [steps],
+  );
 
   const filtered = useMemo(() => {
     const base = abbeyYungProducts.filter((product) =>
