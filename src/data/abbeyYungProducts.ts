@@ -2,11 +2,7 @@
 // Run: npm run convert-abbey-yung
 
 export type AbbeyYungWeight =
-  | 'heavy'
-  | 'medium'
-  | 'light'
-  | 'very light'
-  | 'unknown';
+  'heavy' | 'medium' | 'light' | 'very light' | 'unknown';
 type Weight = AbbeyYungWeight;
 type CleaningPower = 'light' | 'moderate' | 'strong';
 type ScalpType = 'normal' | 'dry' | 'oily' | 'extra oily';
@@ -51,7 +47,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     fragrance: 'Fragrance-free',
     bestFor: 'Most hair types, even those that are weighed down easily',
     weight: ['very light'],
-    tags: ['strong-bond-repair'],
+    tags: ['covalent-bond-repair'],
     img: '/images/blog/the-abbey-yung-method/epres.png',
     links: [
       {
@@ -573,7 +569,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
         text: 'Buy on Amazon',
         retailer: 'amazon',
         icon: 'shopping-cart',
-      }
+      },
     ],
   },
   {
@@ -625,8 +621,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     drugstore: true,
     step: 4,
     steps: [3, 4],
-    comments:
-      'Medicated (OTC).',
+    comments: 'Medicated (OTC).',
     heaviness: '',
     amazon: 'https://amzn.to/455okYr',
     bestFor:
@@ -644,8 +639,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     drugstore: true,
     step: 4,
     steps: [3, 4],
-    comments:
-      'Medicated (OTC)',
+    comments: 'Medicated (OTC)',
     heaviness: '',
     amazon: 'https://amzn.to/3ROsQYe',
     bestFor:
@@ -663,8 +657,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     drugstore: true,
     step: 4,
     steps: [4],
-    comments:
-      'Medicated (OTC).',
+    comments: 'Medicated (OTC).',
     heaviness: '',
     amazon: 'https://amzn.to/3TUA7WX',
     bestFor:
@@ -700,8 +693,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     drugstore: true,
     step: 4,
     steps: [3, 4],
-    comments:
-      'Medicated (OTC).',
+    comments: 'Medicated (OTC).',
     heaviness: '',
     amazon: 'https://amzn.to/3TY4FHj',
     bestFor:
@@ -739,7 +731,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Light to medium weight cream',
     fragrance: 'Jasmine, peony',
     weight: ['light', 'medium'],
-    tags: ['strong-bond-repair'],
+    tags: ['covalent-bond-repair'],
     img: '/images/blog/the-abbey-yung-method/k18.png',
     links: [
       {
@@ -777,7 +769,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Moderately thick cream',
     fragrance: 'White rose, lemon zest',
     weight: ['medium', 'heavy'],
-    tags: ['weak-bond-repair'],
+    tags: ['non-covalent-bond-repair'],
   },
   /* discontinued
   {
@@ -793,7 +785,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     product: 'OGX Repair & Protect Bond Protein Repair Pre-Shampoo Treatment',
     drugstore: true,
     step: 5,
-    steps: [5],
+    steps: [1, 5],
     comments:
       'Abbey recommends using this after the shampoo instead of before for boosted effectiveness. Creates new hydrogen & ionic bonds to support internal keratin structure',
     heaviness: 'Medium',
@@ -803,7 +795,19 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Mid weight cream',
     fragrance: 'Fresh and floral',
     weight: ['medium'],
-    tags: ['weak-bond-repair'],
+    tags: ['non-covalent-bond-repair'],
+  },
+  {
+    product: 'Olaplex Nº.3PLUS Complete Repair Treatment',
+    drugstore: false,
+    step: 5,
+    steps: [1, 5],
+    comments:
+      'Bond repair treatment, new version of Olaplex that can be used pre-shampoo.',
+    heaviness: 'Unknown',
+    amazon: 'https://link.amazon/B0iXKRegJ',
+    weight: ['unknown'],
+    tags: ['covalent-bond-repair'],
   },
   {
     product:
@@ -819,7 +823,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Moderately thick cream',
     fragrance: 'Fresh, citrusy, floral',
     weight: ['medium', 'heavy'],
-    tags: ['weak-bond-repair'],
+    tags: ['non-covalent-bond-repair'],
   },
   {
     product: 'Amika flash instant shine mask',
@@ -1006,7 +1010,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     tags: ['gloss'],
   },
   {
-    product: 'Loreal Elvive Glycolic Gloss Conditioner',
+    product: "L'Oreal Elvive Glycolic Gloss Conditioner",
     drugstore: true,
     step: 6,
     steps: [6],
@@ -1020,6 +1024,18 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     fragrance: 'Fresh and floral',
     weight: ['light'],
     tags: ['conditioner'],
+  },
+  {
+    product: 'Kristin Ess High Gloss Instant Rinse',
+    drugstore: true,
+    step: 6,
+    steps: [6],
+    comments: 'Gloss, seems to only be available at Target specifically',
+    heaviness: 'Light',
+    amazon: '',
+    weight: ['light'],
+    tags: ['gloss'],
+    // TODO: No links for this RN
   },
   {
     product: 'Loreal Everpure Glossing Conditioner',
@@ -1188,7 +1204,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Lightweight cream',
     fragrance: 'Fresh and floral',
     weight: ['light', 'medium'],
-    tags: ['strong-bond-repair'],
+    tags: ['covalent-bond-repair'],
     img: '/images/blog/the-abbey-yung-method/triple-bond-complex.png',
     links: [
       {
@@ -1224,7 +1240,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Thin liquidy spray',
     fragrance: 'Warm, tropical, fruity, coconut',
     weight: ['very light'],
-    tags: ['weak-bond-repair'],
+    tags: ['non-covalent-bond-repair'],
   },
 
   {
@@ -1331,6 +1347,17 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     ],
   },
   {
+    product: 'Pantene Pro-V Deep Nourishing Leave-In Cream to Mist',
+    drugstore: true,
+    step: 8,
+    steps: [8],
+    comments:
+      'Leave-in conditioner and heat protection co-developed by Abbey Yung and Pantene, a bit heavier than their 10 in 1 spray',
+    heaviness: 'Medium to Heavy',
+    amazon: 'https://link.amazon/A0hSnKhDA',
+    weight: ['medium'],
+  },
+  {
     product:
       'Pureology Color Fanatic Multi-Tasking Leave-In Spray, 21 Benefits for All Hair Types',
     drugstore: false,
@@ -1407,6 +1434,80 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     weight: ['light'],
   },
   {
+    product: 'L’Oréal Paris EverPure Iron Sleek Coat',
+    drugstore: true,
+    step: 9,
+    steps: [9],
+    comments: 'Smoothing and heat protection',
+    heaviness: 'Unknown',
+    amazon: '',
+    tags: ['style-smoothing', 'style-heat'],
+    weight: ['unknown'],
+    links: [
+      {
+        url: 'https://go.skimresources.com?id=276362X1762442&xs=1&url=https%3A%2F%2Fwww.ulta.com%2Fp%2Feverpure-sulfate-free-iron-sleek-coat-pimprod2057075%3Fsku%3D2649318',
+        text: 'Buy at Ulta',
+        retailer: 'ulta',
+        icon: 'shopping-cart',
+      },
+    ],
+  
+  },
+  {
+    product: 'Pureology Smooth Gloss Silkmorphose Spray',
+    drugstore: false,
+    step: 9,
+    steps: [9],
+    comments: 'Gloss and smoothing',
+    heaviness: 'Unknown',
+    amazon: 'https://link.amazon/B041WhpHv',
+    tags: ['style-smoothing'],
+    weight: ['unknown'],
+    // TODO: add image
+  },
+  {
+    product: 'L’Oréal Paris Elvive Big Lift Volumizing Mousse',
+    drugstore: true,
+    step: 9,
+    steps: [9],
+    comments: 'Volume',
+    heaviness: 'Unknown',
+    amazon: '',
+    tags: ['style-volume'],
+    weight: ['unknown'],
+    links: [
+      {
+        url: 'https://go.skimresources.com?id=276362X1762442&xs=1&url=https%3A%2F%2Fwww.ulta.com%2Fp%2Felvive-collagen-peptide-lifter-volumizing-mousse-pimprod2062918%3Fsku%3D2666834',
+        text: 'Buy at Ulta',
+        retailer: 'ulta',
+        icon: 'shopping-cart',
+      },
+    ],
+   
+  },
+  {
+    product: 'Nexxus Texture Spray Air Shape Workable Hold',
+    drugstore: true,
+    step: 9,
+    steps: [9],
+    comments: 'Flexible hold and texture',
+    heaviness: 'Unknown',
+    amazon: 'https://link.amazon/B0dJ1203A',
+    tags: ['style-hold', 'style-texture'],
+    weight: ['unknown'],
+  },
+  {
+    product: 'Nexxus MVP Styler Multitasking Styler Cream',
+    drugstore: true,
+    step: 9,
+    steps: [9],
+    comments: 'Multitasking styling product',
+    heaviness: 'Unknown',
+    amazon: 'https://link.amazon/B0cRpHE4k',
+    tags: ['style-hold', 'style-smoothing'],
+    weight: ['unknown'],
+  },
+  {
     product: 'K18 AstroLift™ Reparative Volume Spray',
     drugstore: false,
     step: 9,
@@ -1449,6 +1550,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     tags: ['style-texture', 'style-volume'],
     weight: ['medium'],
   },
+  /* removed
   {
     product: 'Oribe Dry Texturizing Spray',
     drugstore: false,
@@ -1460,6 +1562,8 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     tags: ['style-texture'],
     weight: ['medium'],
   },
+  */
+  /* seems to be removed 
   {
     product: 'R+Co Intense Hold shaping balm',
     drugstore: false,
@@ -1469,7 +1573,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     heaviness: '',
     amazon: 'https://amzn.to/4loYO6a',
     tags: ['style-hold'],
-  },
+    }, */
   {
     product: 'TRESemmé Dry Texture Finishing Mist',
     drugstore: true,
@@ -1489,6 +1593,19 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     heaviness: '',
     amazon: 'https://amzn.to/45cJEMj',
     tags: ['style-volume'],
+  },
+
+  {
+    product: 'Amika Soulstruck Nourishing Dry Hair Mask',
+    drugstore: false,
+    step: 9,
+    steps: [9],
+    comments: 'Mask for dry hair between washes',
+    heaviness: 'Unknown',
+    amazon: 'https://link.amazon/B0hWs9r8e',
+    tags: ['style-smoothing'],
+    weight: ['unknown'],
+    // TODO: Add image
   },
   {
     product: 'Bumble & Bumble Invisible Oil Styling Cream',
@@ -1591,6 +1708,30 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     ],
   },
   {
+    product: 'Redken Acidic Bonding Concentrate 24/7 Day and Night Serum',
+    drugstore: false,
+    step: 10,
+    steps: [10, 11],
+    comments: 'Smoothing serum for styling or between-wash conditioning',
+    heaviness: 'Unknown',
+    amazon: 'https://link.amazon/B04RhQCgr',
+    tags: ['style-smoothing', 'between-wash-dryness-relief'],
+    weight: ['unknown'],
+    // TODO: Add images
+  },
+  {
+    product: 'Pureology Strength Cure Dream Healer Serum',
+    drugstore: false,
+    step: 10,
+    steps: [10],
+    comments: 'Style-sealing serum',
+    heaviness: 'Unknown',
+    amazon: 'https://link.amazon/B0gynXv6l',
+    tags: ['style-smoothing'],
+    weight: ['unknown'],
+    // TODO: Add image
+  },
+  {
     product:
       'OGX Renewing + Argan Oil of Morocco Weightless Healing Dry Oil Spray',
     drugstore: true,
@@ -1612,6 +1753,17 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     amazon: 'https://amzn.to/4mw8axI',
     tags: ['style-heat', 'style-smoothing'],
     weight: ['light'],
+  },
+  {
+    product: 'Dove Bond Shield 10-in-1 Serum',
+    drugstore: true,
+    step: 10,
+    steps: [10],
+    comments: 'Style-sealing serum',
+    heaviness: 'Unknown',
+    amazon: 'https://link.amazon/B0fbl4uj0',
+    tags: ['style-smoothing'],
+    weight: ['unknown'],
   },
   {
     product: 'Pantene Miracle Rescue 3 in 1 Leave In Conditioner',
@@ -1801,6 +1953,30 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     weight: ['unknown'],
   },
   {
+    product: 'L’Oréal Paris Elvive Big Fresh Dry Shampoo',
+    drugstore: true,
+    step: 11,
+    steps: [11],
+    comments: 'Dry shampoo',
+    heaviness: 'Unknown',
+    amazon: '',
+    tags: ['between-wash-oil-control-relief'],
+    weight: ['unknown'],
+    // TODO: no affiliate link AFK
+  },
+  {
+    product: 'R+Co BLEU Hypersonic Heat Styling Mist',
+    drugstore: false,
+    step: 11,
+    steps: [11],
+    comments: 'Dry heat styling protection',
+    heaviness: 'Unknown',
+    amazon: 'https://link.amazon/B07LsYjjC',
+    tags: ['between-wash-heat-protection'],
+    weight: ['unknown'],
+    // TODO: add image
+  },
+  {
     product: 'ORIBE Gold Lust Dry Heat Protection Spray',
     drugstore: false,
     step: 11,
@@ -1844,6 +2020,73 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     amazon: 'https://amzn.to/3Vez0yF',
     tags: ['between-wash-dryness-relief'],
     weight: ['medium'],
+  },
+  {
+    product: 'Pantene Abundant & Strong Scalp Serum',
+    drugstore: true,
+    step: 12,
+    steps: [12],
+    comments: 'Leave-on scalp serum for density support',
+    heaviness: 'Unknown',
+    amazon: 'https://link.amazon/B03VjCAM1',
+    tags: ['scalp-serum-density-support'],
+    weight: ['unknown'],
+    
+  },
+  {
+    product: 'Neutrogena Hair Restore Advanced Growth Support Serum',
+    drugstore: true,
+    step: 12,
+    steps: [12],
+    comments: 'Leave-on scalp serum for density support',
+    heaviness: 'Unknown',
+    amazon: 'https://link.amazon/B03u4ojmn',
+    tags: ['scalp-serum-density-support'],
+    weight: ['unknown'],
+  },
+  {
+    product: 'Dove Derma Scalp Density Boost Serum',
+    drugstore: true,
+    step: 12,
+    steps: [12],
+    comments: 'Leave-on scalp serum for density support',
+    heaviness: 'Unknown',
+    amazon: 'https://link.amazon/B05iLIZyx',
+    tags: ['scalp-serum-density-support'],
+    weight: ['unknown'],
+  },
+  {
+    product: 'Nioxin Hair Fall Defense Serum',
+    drugstore: false,
+    step: 12,
+    steps: [12],
+    comments: 'Leave-on scalp serum for density support',
+    heaviness: 'Unknown',
+    amazon: 'https://link.amazon/B0ctiGI7h',
+    tags: ['scalp-serum-density-support'],
+    weight: ['unknown'],
+    // TODO: Add image
+  },
+  {
+    product:
+      'Dr. Groot Scalp Revitalizing Solution Scalp Barrier Boost Oil in Serum',
+    drugstore: false,
+    step: 12,
+    steps: [12],
+    comments: 'Leave-on scalp serum for density support',
+    heaviness: 'Unknown',
+    amazon: '',
+    tags: ['scalp-serum-density-support'],
+    weight: ['unknown'],
+    links: [
+      {
+        url: 'https://go.skimresources.com?id=276362X1762442&xs=1&url=https%3A%2F%2Flgbeauty.com%2Fproducts%2Fscalp-revitalizing-solution-scalp-barrier-boost-oil-in-serum%3FselectedVariant%3D52124359754048',
+        text: 'Buy at LG Beauty',
+        retailer: 'lg-beauty',
+        icon: 'shopping-cart',
+      },
+    ],
+  
   },
   {
     product: 'OGX Renewing + Argan Oil of Morocco Extra Penetrating Oil',

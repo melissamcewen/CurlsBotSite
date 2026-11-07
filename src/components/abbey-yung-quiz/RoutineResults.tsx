@@ -4,7 +4,12 @@ import { Info } from 'lucide-react';
 import type { AbbeyYungProduct } from '@/data/abbeyYungProducts';
 import { abbeyYungMethodSteps } from '@/lib/abbey-yung-quiz/methodSteps';
 import { partitionBondRepairByStep } from '@/lib/abbey-yung-quiz/bondBuckets';
-import type { QuizState, RawAnswers, RoutineResult, ShampooRole } from '@/lib/abbey-yung-quiz/types';
+import type {
+  QuizState,
+  RawAnswers,
+  RoutineResult,
+  ShampooRole,
+} from '@/lib/abbey-yung-quiz/types';
 import { AbbeyYungEmailSignup } from '@/components/EmailSignupVariants';
 import { HairProfileSummary } from './HairProfileSummary';
 import { ProductCard } from './ProductCard';
@@ -28,7 +33,13 @@ export function RoutineResults({
 }) {
   const bond = partitionBondRepairByStep(result.bondRepair);
   const firstBondStepWithProducts =
-    bond.step1.length > 0 ? 1 : bond.step5.length > 0 ? 5 : bond.step7.length > 0 ? 7 : null;
+    bond.step1.length > 0
+      ? 1
+      : bond.step5.length > 0
+        ? 5
+        : bond.step7.length > 0
+          ? 7
+          : null;
 
   const betweenAny =
     result.betweenWashHeatProtection ||
@@ -39,7 +50,6 @@ export function RoutineResults({
 
   return (
     <div className="flex flex-col gap-6">
-
       <HairProfileSummary state={state} answers={answers} />
 
       <AbbeyYungEmailSignup />
@@ -120,10 +130,7 @@ export function RoutineResults({
       />
 
       {result.conditioner ? (
-        <StepSection
-          title={meta[6].title}
-          description={meta[6].description}
-        >
+        <StepSection title={meta[6].title} description={meta[6].description}>
           <ProductCard product={result.conditioner} />
         </StepSection>
       ) : null}
@@ -136,20 +143,19 @@ export function RoutineResults({
       />
 
       {result.leaveIn ? (
-        <StepSection
-          title={meta[8].title}
-          description={meta[8].description}
-        >
+        <StepSection title={meta[8].title} description={meta[8].description}>
           <ProductCard product={result.leaveIn} />
         </StepSection>
       ) : null}
 
-      {result.volumeBoost ||
-      result.textureBoost ||
-      result.holdBoost ? (
+      {result.volumeBoost || result.textureBoost || result.holdBoost ? (
         <section className="rounded-2xl bg-base-200 p-4 md:p-6">
-          <h3 className="text-lg font-bold text-base-content">{meta[9].title}</h3>
-          <p className="mt-2 text-sm text-base-content">{meta[9].description}</p>
+          <h3 className="text-lg font-bold text-base-content">
+            {meta[9].title}
+          </h3>
+          <p className="mt-2 text-sm text-base-content">
+            {meta[9].description}
+          </p>
           <div className="mt-4 flex flex-col gap-4">
             {result.volumeBoost ? (
               <div>
@@ -180,18 +186,25 @@ export function RoutineResults({
       ) : null}
 
       {result.smoothingBoost ? (
-        <StepSection
-          title={meta[10].title}
-          description={meta[10].description}
-        >
+        <StepSection title={meta[10].title} description={meta[10].description}>
           <ProductCard product={result.smoothingBoost} />
+        </StepSection>
+      ) : null}
+
+      {result.scalpSerum ? (
+        <StepSection title={meta[12].title} description={meta[12].description}>
+          <ProductCard product={result.scalpSerum} />
         </StepSection>
       ) : null}
 
       {betweenAny ? (
         <section className="rounded-2xl bg-base-200 p-4 md:p-6">
-          <h3 className="text-lg font-bold text-base-content">{meta[11].title}</h3>
-          <p className="mt-2 text-sm text-base-content">{meta[11].description}</p>
+          <h3 className="text-lg font-bold text-base-content">
+            {meta[11].title}
+          </h3>
+          <p className="mt-2 text-sm text-base-content">
+            {meta[11].description}
+          </p>
           <div className="mt-4 flex flex-col gap-4">
             {result.betweenWashHeatProtection ? (
               <div>
@@ -259,7 +272,10 @@ function RoutineStepBlock({
             className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-info text-info-content sm:h-10 sm:w-10"
             aria-hidden
           >
-            <Info className="h-[18px] w-[18px] sm:h-5 sm:w-5" strokeWidth={1.75} />
+            <Info
+              className="h-[18px] w-[18px] sm:h-5 sm:w-5"
+              strokeWidth={1.75}
+            />
           </div>
           <p className="min-w-0 flex-1 text-sm leading-snug text-base-content sm:leading-relaxed">
             {fallbackNote}

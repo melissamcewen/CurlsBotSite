@@ -59,7 +59,7 @@ describe('abbey-yung-quiz', () => {
     expect(buildHairProfileBullets(state, raw).length).toBeGreaterThan(0);
   });
 
-  it('max damage + strong bond need spreads bond repair across steps 1, 5, and 7', () => {
+  it('max damage + covalent bond  repair need spreads bond repair across steps 1, 5, and 7', () => {
     const raw = baseAnswers({
       damageTypes: ['colored'],
       damageSigns: ['feels-fried'],

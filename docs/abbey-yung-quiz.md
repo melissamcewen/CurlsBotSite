@@ -1,4 +1,5 @@
 # Abbey Yung Routine Quiz — Implementation Spec
+
 **For**: Claude Code / AI coding tool handoff
 **Stack**: Next.js, React, TypeScript, DaisyUI 5, Tailwind CSS
 
@@ -10,7 +11,7 @@
 
 A multi-step wizard quiz that collects hair/scalp information, then outputs a personalized product routine. The product data is a static TypeScript array (`abbeyYungProducts`). All logic is client-side — no backend needed.
 
-The quiz has **16 questions**, followed by a **results page** showing a curated routine.
+The quiz has **16 questions**, followed by a **results page** showing a curated routine. Optional boosts include a scalp-serum choice for density support; it selects a daily leave-on serum when requested.
 
 ---
 
@@ -31,7 +32,7 @@ Key shampoo fields:
 
 ```ts
 hasDandruff?: boolean;       // raw
-scalpNeeds: string[];        // raw: buildup | exfoliation | density | skin-health | growth | none
+scalpNeeds: string[];        // raw: shampoo/scalp goals: buildup | exfoliation | density | skin-health | growth | none
 
 hasDandruff: boolean;        // state
 scalpNeeds: ScalpNeed[];     // state (none filtered out)
@@ -54,8 +55,6 @@ interface RoutineResult {
 
 ---
 
-
-
 ## Questions
 
 All questions use DaisyUI 5 components. Use `card`, `checkbox`, `radio`, `btn` as appropriate.
@@ -69,9 +68,11 @@ Show a **collapsible info block** (`<details>` / DaisyUI collapse) beneath the q
 ---
 
 ### Q1 — Damage Types
+
 **Label**: Has your hair been through any of these?
 **Type**: Multi-select checkbox
 **Options** (values in parentheses):
+
 - `colored` — Oxidative color (most box dye or salon dye)
 - `highlighted` — Highlighted
 - `bleached` — Bleached
@@ -83,14 +84,17 @@ Show a **collapsible info block** (`<details>` / DaisyUI collapse) beneath the q
 **Mutual exclusivity**: If `none` is selected, deselect all others. If any other option is selected, deselect `none`.
 
 **Collapsible info**:
-> These types of damage break strong internal bonds inside the hair fiber. Some bond repair products specifically target these; others don't. You can read more in our [bond repair guide](/blog/skeptics-guide-bond-repair)
+
+> These types of damage break covalent bonds inside the hair fiber. Some bond repair products specifically target those; others work on non-covalent bonds. You can read more in our [bond repair guide](/blog/skeptics-guide-bond-repair)
 
 ---
 
 ### Q2 — Damage Signs
+
 **Label**: Do you notice any of these?
 **Type**: Multi-select checkbox
 **Options**:
+
 - `breakage` — Breakage
 - `split-ends` — Split ends
 - `brittleness` — Brittleness
@@ -99,32 +103,39 @@ Show a **collapsible info block** (`<details>` / DaisyUI collapse) beneath the q
 - `none` — None of the above
 
 **Mutual exclusivity**:
+
 - If `none` selected → deselect all others
 - If any other option selected → deselect `none`
 
 **Collapsible info**:
+
 > More signs of damage = more bond repair products may help. (CurlsBot's interpretation, not Abbey's own framework.)
 
 ---
 
 ### Q3 — Hair Length
+
 **Label**: How long is your hair?
 **Type**: Single select (auto-advance)
 **Options**:
+
 - `very-short` — Very short
 - `short` — Short (chin length or less)
 - `long` — Long (past chin to shoulder)
 - `very-long` — Very long (past shoulders)
 
 **Collapsible info**:
+
 > Longer hair has older ends that tend to be more damaged, regardless of what you do to it.
 
 ---
 
 ### Q4 — Heat Styling
+
 **Label**: Do you use heat on your hair?
 **Type**: Multi-select checkbox
 **Options**:
+
 - `none` — No heat styling
 - `diffuse` — Diffusing
 - `blowdry-low` — Blowdry on low heat
@@ -136,18 +147,22 @@ Show a **collapsible info block** (`<details>` / DaisyUI collapse) beneath the q
 ---
 
 ### Q5 — Shampoo Tangles
+
 **Label**: Does shampooing make your hair really tangled or rough?
 **Type**: Single select (auto-advance)
 **Options**:
+
 - `yes` — Yes, it gets rough/tangled during washing
 - `no` — No, shampooing is fine
 
 ---
 
 ### Q6 — General Tangles
+
 **Label**: How often do you deal with tangles?
 **Type**: Single select (auto-advance)
 **Options**:
+
 - `rare` — Rarely — easy to detangle
 - `sometimes` — Sometimes get tangles
 - `constant` — Constant tangling issues
@@ -155,9 +170,11 @@ Show a **collapsible info block** (`<details>` / DaisyUI collapse) beneath the q
 ---
 
 ### Q7 — Scalp Type
+
 **Label**: How would you describe your scalp?
 **Type**: Single select (auto-advance)
 **Options**:
+
 - `dry` — Dry
 - `normal` — Normal
 - `oily` — Oily
@@ -167,9 +184,11 @@ Show a **collapsible info block** (`<details>` / DaisyUI collapse) beneath the q
 ---
 
 ### Q8 — Hard Water
+
 **Label**: Do you have hard water?
 **Type**: Single select (auto-advance)
 **Options**:
+
 - `yes` — Yes
 - `no` — No
 - `unknown` — Not sure
@@ -179,9 +198,11 @@ Show inline link: "How to tell if you have hard water →" pointing to `/blog/cu
 ---
 
 ### Q9 — Cleansing Needs
+
 **Label**: What type of shampoo do you prefer?
 **Type**: Single select (auto-advance)
 **Options**:
+
 - `strong` — I need a strong shampoo — otherwise my hair still feels dirty
 - `normal` — Most shampoos work fine for me or no preference
 - `gentle` — Shampoo tends to make my hair feel dry or rough — I need something gentle
@@ -189,9 +210,11 @@ Show inline link: "How to tell if you have hard water →" pointing to `/blog/cu
 ---
 
 ### Q10 — Wash Frequency
+
 **Label**: How often do you wash your hair?
 **Type**: Single select (auto-advance)
 **Options**:
+
 - `daily` — Daily
 - `multi-weekly` — A few times a week
 - `weekly-or-less` — Once a week or less
@@ -199,9 +222,11 @@ Show inline link: "How to tell if you have hard water →" pointing to `/blog/cu
 ---
 
 ### Q11 — Product Weight
+
 **Label**: How does your hair react to products?
 **Type**: Single select (auto-advance)
 **Options**:
+
 - `heavy` — Loves lots of product — never weighed down
 - `medium` — Fine with a moderate amount
 - `light` — Easily weighed down
@@ -211,9 +236,11 @@ Show inline link: "How to tell if you have hard water →" pointing to `/blog/cu
 ---
 
 ### Q12 — Drugstore Preference
+
 **Label**: Do you have a budget preference?
 **Type**: Single select (auto-advance)
 **Options**:
+
 - `yes` — Drugstore only
 - `no` — Salon/prestige only
 - `either` — No preference
@@ -221,9 +248,11 @@ Show inline link: "How to tell if you have hard water →" pointing to `/blog/cu
 ---
 
 ### Q13 — Between-Wash Needs
+
 **Label**: Do you have any of these between wash day needs?
 **Type**: Multi-select checkbox
 **Options**:
+
 - `heat` — I heat style between washes
 - `dryness` — My hair feels dry between washes
 - `oiliness` — My scalp gets oily between washes
@@ -234,15 +263,17 @@ Show inline link: "How to tell if you have hard water →" pointing to `/blog/cu
 ---
 
 ### Q14 — Boosts (Optional)
+
 **Label**: Any optional extras you want in your routine?
 **Type**: Multi-select checkbox
 **Options**:
+
 - `smoothing` — Smoothness & shine boost (a finishing oil-type product)
 - `volume` — Volume styling product
 - `texture` — Texture boost (beachy / bedhead look) styling product
 - `hold` — Hold boost (keeps style in place through humidity and wind)
+- `scalp-serum` — Scalp serum for density support (optional daily leave-on)
 - `none` — None, keep it minimal
-
 
 **Note**: This is the last question. The CTA button should read "Build my routine →" instead of "Next".
 
@@ -253,9 +284,11 @@ Show inline link: "How to tell if you have hard water →" pointing to `/blog/cu
 Pure function: `(answers: RawAnswers) => QuizState`
 
 ### chemicalDamage
+
 `true` if `answers.damageTypes` includes any of: `colored`, `highlighted`, `bleached`, `permed`, `relaxed`
 
 ### heatDamage
+
 `true` if `answers.damageTypes` includes `heat-damaged`
 
 ### damageLevel (1–4)
@@ -263,6 +296,7 @@ Pure function: `(answers: RawAnswers) => QuizState`
 **Step 1** — if `answers.damageSigns` includes `feels-fried`: return `damageLevel = 4` immediately.
 
 **Step 2** — score from `damageSigns`:
+
 ```
 breakage     → +1 (also sets fragile = true)
 split-ends   → +1
@@ -271,12 +305,14 @@ feels-dry    → +1
 ```
 
 **Step 3** — score from `hairLength`:
+
 ```
 long       → +1
 very-long  → +1
 ```
 
 **Step 4** — map total score:
+
 ```
 0   → 1
 1   → 2
@@ -285,6 +321,7 @@ very-long  → +1
 ```
 
 ### heatStyling
+
 ```
 if answers.heatStyling includes 'none' only → 'none'
 if includes 'blowdry-high' OR 'heat-tools' → 'high'
@@ -292,6 +329,7 @@ else (diffuse or blowdry-low present) → 'low'
 ```
 
 ### scalpType
+
 ```
 'dry'        → 'dry'
 'normal'     → 'normal'
@@ -301,6 +339,7 @@ else (diffuse or blowdry-low present) → 'low'
 ```
 
 ### hardWater
+
 ```
 'yes'     → true
 'no'      → false
@@ -308,9 +347,11 @@ else (diffuse or blowdry-low present) → 'low'
 ```
 
 ### cleansingNeeds
+
 Direct map from Q9 value: `'strong'` / `'normal'` / `'gentle'`
 
 ### washFrequency
+
 ```
 'daily'          → 'daily'
 'multi-weekly'   → 'multi-weekly'
@@ -318,6 +359,7 @@ Direct map from Q9 value: `'strong'` / `'normal'` / `'gentle'`
 ```
 
 ### weight
+
 ```
 'heavy'     → 'heavy'
 'medium'    → 'medium'
@@ -327,6 +369,7 @@ Direct map from Q9 value: `'strong'` / `'normal'` / `'gentle'`
 ```
 
 ### drugstoreOnly / noPreference
+
 ```
 'yes'    → drugstoreOnly: true,  noPreference: false
 'no'     → drugstoreOnly: false, noPreference: false
@@ -334,6 +377,7 @@ Direct map from Q9 value: `'strong'` / `'normal'` / `'gentle'`
 ```
 
 ### betweenWash booleans
+
 ```
 betweenWashHeat     = answers.betweenWash.includes('heat')
 betweenWashDryness  = answers.betweenWash.includes('dryness')
@@ -341,7 +385,8 @@ betweenWashOiliness = answers.betweenWash.includes('oiliness')
 ```
 
 ### boosts
-Map Q14 values (`smoothing`, `volume`, `texture`, `hold`) to array, excluding `none`.
+
+Map Q14 values (`smoothing`, `volume`, `texture`, `hold`, `scalp-serum`) to array, excluding `none`.
 
 ---
 
@@ -352,11 +397,12 @@ Export one function:
 ```ts
 function weightIsEligible(
   productWeight: Weight | Weight[] | undefined,
-  userWeight: QuizState['weight']
-): boolean
+  userWeight: QuizState['weight'],
+): boolean;
 ```
 
 Weight hierarchy (most to least conditioning):
+
 ```
 heavy > medium > light > very light
 ```
@@ -364,6 +410,7 @@ heavy > medium > light > very light
 A product is eligible if **any** of its weights are ≤ the user's selected weight.
 
 Mapping:
+
 ```
 user 'heavy'      → eligible: PREFER heavy, but medium, light, very light ok if no heavy options
 user 'medium'     → eligible: PREFER medium, but light and very light ok if no medium options
@@ -386,8 +433,8 @@ All selection follows **priority order**: when multiple products qualify, pick t
 ```ts
 function applyDrugstoreFilter(
   candidates: AbbeyYungProduct[],
-  state: QuizState
-): { products: AbbeyYungProduct[]; fallback: boolean }
+  state: QuizState,
+): { products: AbbeyYungProduct[]; fallback: boolean };
 ```
 
 - If `state.drugstoreOnly = true`:
@@ -410,6 +457,7 @@ candidates = abbeyYungProducts.filter(p =>
   weightIsEligible(p.weight, state.weight)
 )
 ```
+
 Pick 1. Note only options are drugstore so far so if they only want salon products don't filter the drugstore products put in a note to say that this product was recommended even though it's drugstore
 
 ---
@@ -424,13 +472,14 @@ candidates = abbeyYungProducts.filter(p =>
 ```
 
 Apply in order:
+
 1. If `state.hardWater === true`: prefer products with `benefit-chelating`
 2. If `state.scalpType !== 'unknown'`: prefer products where `p.scalpType` is `normal`
 3. Prefer products where `cleaningPower` matches:
    - `'strong'` → prefer includes `'strong'`
    - `'gentle'` → prefer includes `'light'`
    - `'normal'` → prefer includes `'moderate'`
-   (Again, sort — don't hard-exclude)
+     (Again, sort — don't hard-exclude)
 4. If `state.fragile === true`: sort products tagged `'fragile'` to the top
 5. Apply drugstore filter
 6. Pick 1
@@ -438,6 +487,7 @@ Apply in order:
 **Determine if everyday shampoo is needed:**
 
 Set `showEverydayShampoo = true` by default, then:
+
 - If `state.washFrequency === 'weekly-or-less'`: `showEverydayShampoo = false`
 - Else if `(state.scalpType === 'oily' || state.scalpType === 'extra oily') && state.cleansingNeeds === 'strong'`:
   - Check if the selected clarifying shampoo has tag `'daily-shampoo'`
@@ -470,6 +520,7 @@ candidates = abbeyYungProducts.filter(p => p.steps.includes(6))
 ```
 
 Determine preferred type:
+
 - `state.weight === 'very light'` → prefer gloss: sort products where `p.heaviness` contains `'light'` or `p.comments` contains `'Gloss'` to top
 - `state.weight === 'heavy'` OR `state.tanglyGeneral === 'constant'` → prefer mask: sort products where `p.comments` contains `'Mask'` to top
 - Otherwise → prefer conditioner: sort products where `p.comments` contains `'Conditioner'` to top
@@ -491,6 +542,7 @@ Apply weight filter, then drugstore filter. Pick 1.
 ### Bond repair
 
 **How many products to select:**
+
 ```
 damageLevel 1 → 0 products
 damageLevel 2 → 1 product
@@ -499,36 +551,42 @@ damageLevel 4 → 3 products
 ```
 
 **Exception — skip bond repair entirely if:**
+
 ```
 state.chemicalDamage === false &&
 state.heatDamage === false &&
 state.heatStyling === 'none' &&
 state.damageLevel === 1
 ```
+
 In this case, return `bondRepair: []`.
 
 **Selection strategy:**
 
-First, determine if strong bond repair is needed:
+First, determine if covalent bond repair is needed:
+
 ```
 needsStrongBond = state.chemicalDamage || state.heatDamage || state.heatStyling === 'high'
 ```
 
 If `needsStrongBond`:
-1. Try to pick 1 strong bond product. Priority order within strong bond products:
+
+1. Try to pick 1 covalent bond product (`tags` includes `'covalent-bond-repair'`). Priority order within covalent bond products:
    - Step 1 products first (Eprès)
    - Step 5 products second (k18)
    - Step 7 products third
-2. Apply drugstore filter. If no drugstore strong bond exists, use the salon product and add to `fallbacksUsed` with note "No drugstore option exists for strong bond repair."
+2. Apply drugstore filter. If no drugstore covalent bond product exists, use the salon product and add to `fallbacksUsed` with note "No drugstore option exists for covalent bond repair." The fallback label is "Bond repair (covalent)". Non-covalent drugstore fallbacks use the label "Bond repair (non-covalent)".
 
-Fill remaining slots with weak bond products (`tags` includes `'weak-bond-repair'`):
-- Prefer covering **method steps** not already filled: pick from Step 5 weak candidates before Step 7 until Step 5 is covered, then Step 7, then any remaining weak (avoids two Step 5 picks when a Step 7 weak exists)
+Fill remaining slots with non-covalent bond products (`tags` includes `'non-covalent-bond-repair'`):
+
+- Prefer covering **method steps** not already filled: pick from Step 5 non-covalent candidates before Step 7 until Step 5 is covered, then Step 7, then any remaining non-covalent product (avoids two Step 5 picks when a Step 7 non-covalent product exists)
 - Apply weight filter
 - Apply drugstore filter
 - Do not duplicate products already selected
 
 If `!needsStrongBond`:
-- Fill all slots from weak bond products using the same logic as above.
+
+- Fill all slots from non-covalent bond products using the same logic as above.
 
 ---
 
@@ -577,25 +635,28 @@ Apply drugstore filter. Pick 1.
 
 ---
 
-### Boosts (Step 9 / 10)
+### Boosts (Step 9 / 10 / 12)
 
 For each boost in `state.boosts`:
 
-| Boost | Step | Tag |
-|---|---|---|
-| `smoothing` | 10 | `'style-smoothing'` |
-| `volume` | 9 | `'style-volume'` |
-| `texture` | 9 | `'style-texture'` |
-| `hold` | 9 | `'style-hold'` |
+| Boost         | Step | Tag                             |
+| ------------- | ---- | ------------------------------- |
+| `smoothing`   | 10   | `'style-smoothing'`             |
+| `volume`      | 9    | `'style-volume'`                |
+| `texture`     | 9    | `'style-texture'`               |
+| `hold`        | 9    | `'style-hold'`                  |
+| `scalp-serum` | 12   | `'scalp-serum-density-support'` |
 
 For each:
+
 ```
 candidates = abbeyYungProducts.filter(p =>
   p.steps.includes(step) &&
   p.tags?.includes(tag)
 )
 ```
-Apply weight filter (for smoothing only — others are style sprays and less weight-sensitive). Apply drugstore filter. Pick 1.
+
+Apply weight filter (for smoothing only — other style products are less weight-sensitive). Apply drugstore filter. Pick 1. For `scalp-serum`, select from step 12 tagged `'scalp-serum-density-support'`, apply the drugstore preference, and pick 1.
 
 ---
 
@@ -620,6 +681,7 @@ Each step uses `<StepSection>` which wraps a labeled heading + `<ProductCard>`.
 ## StepSection
 
 Props:
+
 ```ts
 { label: string; note?: string; children: React.ReactNode }
 ```
@@ -633,6 +695,7 @@ Renders a section heading (e.g., "Clarifying Shampoo") and optional note text be
 Props: `{ product: AbbeyYungProduct; stepLabel?: string }`
 
 Display:
+
 - If `product.img` exists: render image (use Next.js `<Image>`)
 - Product name (bold)
 - Drugstore badge (DaisyUI badge) if `product.drugstore === true`
@@ -654,7 +717,7 @@ Render a section titled "Bond Repair" with a brief intro:
 
 > Bond repair products work during washing to reinforce the internal structure of damaged hair. Use them in wash-day order.
 
-Then render one `<ProductCard>` per product, in the order they were selected (strong bond first, then weak bond).
+Then render one `<ProductCard>` per product, in the order they were selected (covalent bond first, then non-covalent bond).
 
 If `fallbackNote` is set (drugstore unavailable), show a DaisyUI `alert alert-info` with the note.
 
@@ -666,16 +729,16 @@ Props: `{ state: QuizState; result: RoutineResult }`
 
 Render DaisyUI `alert` components for applicable conditions:
 
-| Condition | Alert text |
-|---|---|
-| `state.damageLevel >= 3` | "Your hair shows significant damage. Stick with bond repair consistently for a few months before evaluating whether to cut back." |
-| `state.chemicalDamage === true` | "Chemical treatments like bleach and dye break strong disulfide bonds inside the hair. Strong bond repair (Eprès, k18) is the most targeted treatment for this." |
-| `state.heatStyling === 'high'` | "High heat also breaks inner cotex bonds over time. Strong bond repair helps maintain hair health even with regular heat use." |
-| `(state.chemicalDamage !== true) || state.heatStyling !== 'high'` | "With non chemical/heat damage you won't benefit as much from strong bond builders  (k18, Epres) that target that type of damage, you can pick whatever bond products you prefer but the less strong ones are usually cheaper" |
-| `state.hardWater === null` | "Not sure if you have hard water? [Check our guide →]" |
-| `state.tanglyDuringShampoo === true` | "Apply the pre-shampoo oil mostly to your ends — it protects drier sections while letting you use a stronger shampoo at the roots." |
-| `result.fallbacksUsed.length > 0` | "We couldn't find a drugstore match for: [list]. Showing the closest alternative." |
-| Bond repair skipped entirely | "Your hair sounds healthy — bond repair probably isn't necessary right now. If you start chemical treatments or consistent heat styling, revisit this." |
+| Condition                            | Alert text                                                                                                                                                       |
+| ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `state.damageLevel >= 3`             | "Your hair shows significant damage. Stick with bond repair consistently for a few months before evaluating whether to cut back."                                |
+| `state.chemicalDamage === true`      | "Chemical treatments like bleach and dye break covalent disulfide bonds inside the hair. Covalent bond repair (Eprès, k18) is the most targeted treatment for this." |
+| `state.heatStyling === 'high'`       | "High heat also breaks covalent bonds in the inner cortex over time. Covalent bond repair helps maintain hair health even with regular heat use."                   |
+| `(state.chemicalDamage !== true)     |                                                                                                                                                                      | state.heatStyling !== 'high'` | "With non chemical/heat damage you won't benefit as much from covalent bond builders (k18, Epres) that target that type of damage, you can pick whatever bond products you prefer but the non-covalent ones are usually cheaper" |
+| `state.hardWater === null`           | "Not sure if you have hard water? [Check our guide →]"                                                                                                           |
+| `state.tanglyDuringShampoo === true` | "Apply the pre-shampoo oil mostly to your ends — it protects drier sections while letting you use a stronger shampoo at the roots."                              |
+| `result.fallbacksUsed.length > 0`    | "We couldn't find a drugstore match for: [list]. Showing the closest alternative."                                                                               |
+| Bond repair skipped entirely         | "Your hair sounds healthy — bond repair probably isn't necessary right now. If you start chemical treatments or consistent heat styling, revisit this."          |
 
 Show only the alerts that apply. Do not show all of them every time.
 
@@ -683,15 +746,15 @@ Show only the alerts that apply. Do not show all of them every time.
 
 ## Edge Case Handling (Summary)
 
-| Scenario | Behavior |
-|---|---|
-| No products match all filters | Relax drugstore filter first (set `fallback: true`). If still empty after that, relax weight filter too. Always pick something rather than returning null where possible. |
-| `step: 0` products in data | Always use `product.steps[]` for eligibility, never `product.step`. Some products have `step: 0` as a sentinel — ignore the `step` field. |
-| `productWeight` is `undefined` | Treat as always eligible (never filter out). |
-| Living Proof Triple Bond (Step 7, strong bond) | Only include if `state.heatStyling !== 'none'` — it requires heat to activate. |
-| Bond repair skip condition | Skip entirely if `!chemicalDamage && !heatDamage && heatStyling === 'none' && damageLevel === 1`. Show callout. |
-| Conditioner type detection | Use `p.comments` string to detect gloss/mask/conditioner (values are `'Gloss'`, `'Mask'`, or contain `'Conditioner'`). This is the only available signal in the current data — do not rely on a `type` field. |
-| Multiple weights in `product.weight[]` | A product with `weight: ['light', 'medium']` is eligible for users with `medium` or heavier preference, because it has a `medium` option. Apply `weightIsEligible` to the array — if any weight in the array passes, the product is eligible. |
+| Scenario                                       | Behavior                                                                                                                                                                                                                                      |
+| ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| No products match all filters                  | Relax drugstore filter first (set `fallback: true`). If still empty after that, relax weight filter too. Always pick something rather than returning null where possible.                                                                     |
+| `step: 0` products in data                     | Always use `product.steps[]` for eligibility, never `product.step`. Some products have `step: 0` as a sentinel — ignore the `step` field.                                                                                                     |
+| `productWeight` is `undefined`                 | Treat as always eligible (never filter out).                                                                                                                                                                                                  |
+| Living Proof Triple Bond (Step 7, covalent bond) | Only include if `state.heatStyling !== 'none'` — it requires heat to activate.                                                                                                                                                               |
+| Bond repair skip condition                     | Skip entirely if `!chemicalDamage && !heatDamage && heatStyling === 'none' && damageLevel === 1`. Show callout.                                                                                                                               |
+| Conditioner type detection                     | Use `p.comments` string to detect gloss/mask/conditioner (values are `'Gloss'`, `'Mask'`, or contain `'Conditioner'`). This is the only available signal in the current data — do not rely on a `type` field.                                 |
+| Multiple weights in `product.weight[]`         | A product with `weight: ['light', 'medium']` is eligible for users with `medium` or heavier preference, because it has a `medium` option. Apply `weightIsEligible` to the array — if any weight in the array passes, the product is eligible. |
 
 ---
 
@@ -699,4 +762,4 @@ Show only the alerts that apply. Do not show all of them every time.
 
 Show this at the top of the quiz and/or results page. Match Melissa's writing voice — do not make it sound corporate:
 
-> *This quiz is my interpretation of Abbey Yung's method, built by studying her content. I'm not Abbey and this isn't official — I'm just someone who watched a lot of videos and took notes. Her content is the authoritative source. If you want to learn more about this please read [my guide to the Abbey Yung Method](/blog/the-abbey-yung-method).*
+> _This quiz is my interpretation of Abbey Yung's method, built by studying her content. I'm not Abbey and this isn't official — I'm just someone who watched a lot of videos and took notes. Her content is the authoritative source. If you want to learn more about this please read [my guide to the Abbey Yung Method](/blog/the-abbey-yung-method)._

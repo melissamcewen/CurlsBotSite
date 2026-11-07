@@ -3,14 +3,14 @@ export default function AbbeyYungMethodTable() {
     {
       step: 1,
       name: 'Pre-wash bond repair treatment',
-      productType: 'Bond repair treatment (Eprès Bond Repair Treatment)',
+      productType: 'Pre-shampoo bond repair treatment',
       frequency: '2x a week',
       required: 'Optional',
     },
     {
       step: 2,
       name: 'Pre-shampoo oil treatment',
-      productType: 'Oil treatments (OGX Coconut Oil line)',
+      productType: 'Oil treatments (OGX oil line)',
       frequency: 'As needed',
       required: 'Optional',
     },
@@ -74,8 +74,16 @@ export default function AbbeyYungMethodTable() {
     {
       step: 11,
       name: 'Between-wash care',
-      productType: 'Masks, mist serums, spray leave-ins, dry shampoo',
+      productType:
+        'Masks, serums, spray leave-ins, dry shampoo, dry-hair heat protectants',
       frequency: 'Between washes as needed',
+      required: 'Optional',
+    },
+    {
+      step: 12,
+      name: 'Scalp serum',
+      productType: 'Optional leave-on scalp serums for density support',
+      frequency: 'Daily',
       required: 'Optional',
     },
   ];

@@ -11,7 +11,8 @@
     "test": "jest --env=jsdom",
     "test:watch": "jest --env=jsdom --watch",
     "convert-bond-products": "tsx scripts/convert-bond-products-csv.ts",
-    "audit:external-links": "tsx scripts/audit-external-links.ts --output-json scripts/reports/external-links-audit.json"
+    "audit:external-links": "tsx scripts/audit-external-links.ts --output-json scripts/reports/external-links-audit.json",
+    "check-list": "tsx scripts/compare-abbey-yung-step.ts"
   },
   "dependencies": {
     "@lucide/lab": "^0.1.2",

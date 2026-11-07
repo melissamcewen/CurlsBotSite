@@ -89,7 +89,7 @@ export function Callouts({
       variant: 'info',
       Icon: FlaskConical,
       content:
-        'Chemical treatments like bleach and dye break strong disulfide bonds inside the hair. Strong bond repair (Eprès, k18) is the most targeted treatment for this.',
+        'Chemical treatments like bleach and dye break covalent disulfide bonds inside the hair. Covalent bond repair (Eprès, k18) is the most targeted treatment for this.',
     });
   }
 
@@ -99,7 +99,7 @@ export function Callouts({
       variant: 'info',
       Icon: Flame,
       content:
-        'High heat also breaks inner cortex bonds over time. Strong bond repair helps maintain hair health even with regular heat use.',
+        'High heat also breaks covalent bonds in the inner cortex over time. Covalent bond repair helps maintain hair health even with regular heat use.',
     });
   }
 
@@ -110,7 +110,7 @@ export function Callouts({
       Icon: Info,
       content: (
         <>
-        With non chemical/heat damage you won&apos;t benefit as much from strong bond builders (k18, Epres) that target that type of damage; you can pick whatever bond products you prefer but the less strong ones are usually cheaper. Read more in our <Link href="/blog/skeptics-guide-bond-repair" className="link link-primary font-medium">bond repair guide</Link>.
+        With non chemical/heat damage you won&apos;t benefit as much from covalent bond builders (k18, Epres) that target that type of damage; you can pick whatever bond products you prefer but the non-covalent ones are usually cheaper. Read more in our <Link href="/blog/skeptics-guide-bond-repair" className="link link-primary font-medium">bond repair guide</Link>.
         </>
       ),
     });

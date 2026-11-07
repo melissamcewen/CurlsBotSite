@@ -1,8 +1,6 @@
 import type { QuizState, RawAnswers, ScalpNeed } from './types';
 
-function mapTanglyGeneral(
-  v: string,
-): 'rare' | 'sometimes' | 'constant' | null {
+function mapTanglyGeneral(v: string): 'rare' | 'sometimes' | 'constant' | null {
   if (v === 'rare' || v === 'sometimes' || v === 'constant') return v;
   return null;
 }
@@ -123,13 +121,16 @@ export function computeQuizState(answers: RawAnswers): QuizState {
     noPreference = true;
   }
 
-  const boostMap: Record<string, 'smoothing' | 'volume' | 'texture' | 'hold'> =
-    {
-      smoothing: 'smoothing',
-      volume: 'volume',
-      texture: 'texture',
-      hold: 'hold',
-    };
+  const boostMap: Record<
+    string,
+    'smoothing' | 'volume' | 'texture' | 'hold' | 'scalp-serum'
+  > = {
+    smoothing: 'smoothing',
+    volume: 'volume',
+    texture: 'texture',
+    hold: 'hold',
+    'scalp-serum': 'scalp-serum',
+  };
   const boosts = answers.boosts
     .map((b) => boostMap[b])
     .filter(Boolean) as QuizState['boosts'];

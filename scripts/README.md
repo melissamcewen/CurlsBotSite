@@ -2,6 +2,18 @@
 
 This directory contains utility scripts for the CurlsBot site.
 
+## compare-abbey-yung-step.ts
+
+Compares the products currently assigned to a method step in `src/data/abbeyYungProducts.ts` against an expected list. The default comparison is the styling-products list for step 9. Edit the `comparisons` array in the script to check another step or multiple steps.
+
+### Usage
+
+```bash
+npx tsx scripts/compare-abbey-yung-step.ts
+```
+
+The report lists products currently in the step, expected products missing from the data, and products in the data that are not in the expected list. The script exits with status 1 when it finds differences, so it can also be used in automation.
+
 ## audit-external-links.ts
 
 Audits outbound links by scanning project files for absolute URLs and reporting external domains and occurrences.

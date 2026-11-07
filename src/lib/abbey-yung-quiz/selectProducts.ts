@@ -13,6 +13,12 @@ import { weightIsEligible } from './weightFilter';
 const LIVING_PROOF_TRIPLE = 'Living Proof Triple Bond Complex';
 const MAX_SHAMPOOS = 2;
 
+function hasProductLink(product: AbbeyYungProduct): boolean {
+  return Boolean(
+    product.links?.some((link) => link.url?.trim()) || product.amazon?.trim(),
+  );
+}
+
 const SCALP_NEED_TAG: Record<ScalpNeed, string> = {
   buildup: 'scalp-buildup-removal',
   exfoliation: 'scalp-exfoliation',
@@ -33,17 +39,23 @@ export function applyDrugstoreFilter(
   candidates: AbbeyYungProduct[],
   state: QuizState,
 ): { products: AbbeyYungProduct[]; fallback: boolean } {
+  const linkedCandidates = candidates.filter(hasProductLink);
   if (!state.drugstoreOnly) {
-    return { products: candidates, fallback: false };
+    return { products: linkedCandidates, fallback: false };
   }
-  const filtered = candidates.filter((p) => p.drugstore === true);
+  const filtered = linkedCandidates.filter((p) => p.drugstore === true);
   if (filtered.length === 0) {
-    return { products: candidates, fallback: true };
+    return {
+      products: linkedCandidates,
+      fallback: linkedCandidates.length > 0,
+    };
   }
   return { products: filtered, fallback: false };
 }
 
-function pickPreferred(candidates: AbbeyYungProduct[]): AbbeyYungProduct | null {
+function pickPreferred(
+  candidates: AbbeyYungProduct[],
+): AbbeyYungProduct | null {
   if (candidates.length === 0) return null;
   const withImg = candidates.find((p) => p.img);
   return withImg ?? candidates[0];
@@ -62,11 +74,12 @@ function pickWithFilters(
   result: RoutineResult,
   useWeight: boolean,
 ): AbbeyYungProduct | null {
-  if (candidates.length === 0) return null;
+  const linkedCandidates = candidates.filter(hasProductLink);
+  if (linkedCandidates.length === 0) return null;
 
   const weightFiltered = useWeight
-    ? candidates.filter((p) => weightIsEligible(p.weight, state.weight))
-    : candidates;
+    ? linkedCandidates.filter((p) => weightIsEligible(p.weight, state.weight))
+    : linkedCandidates;
 
   let { products, fallback } = applyDrugstoreFilter(weightFiltered, state);
   if (fallback) pushFallback(result, stepName);
@@ -79,14 +92,14 @@ function pickWithFilters(
   }
 
   if (useWeight) {
-    ({ products, fallback } = applyDrugstoreFilter(candidates, state));
+    ({ products, fallback } = applyDrugstoreFilter(linkedCandidates, state));
     if (fallback) pushFallback(result, stepName);
     picked = pickPreferred(products);
     if (picked) return picked;
   }
 
   pushFallback(result, stepName);
-  return pickPreferred(candidates);
+  return pickPreferred(linkedCandidates);
 }
 
 function hasTag(p: AbbeyYungProduct, tag: string): boolean {
@@ -199,7 +212,10 @@ function noteForProduct(p: AbbeyYungProduct, state: QuizState): string | null {
   return parts.length > 0 ? parts.join(' ') : null;
 }
 
-function toShampooPick(product: AbbeyYungProduct, state: QuizState): ShampooPick {
+function toShampooPick(
+  product: AbbeyYungProduct,
+  state: QuizState,
+): ShampooPick {
   return {
     product,
     roles: rolesFromTags(product),
@@ -271,10 +287,7 @@ function remainingPrefs(
   if (state.hardWater === true && !coversRole(primary, 'chelating')) {
     remaining.push('chelating');
   }
-  if (
-    state.scalpNeeds.length > 0 &&
-    !coversRole(primary, 'scalp-health')
-  ) {
+  if (state.scalpNeeds.length > 0 && !coversRole(primary, 'scalp-health')) {
     remaining.push('scalp-health');
   }
   if (
@@ -292,9 +305,12 @@ function remainingPrefs(
  *    hard-water (and scalp) prefs.
  * 2. If prefs remain uncovered, pick a second shampoo for those leftovers.
  */
-function selectShampoos(state: QuizState, result: RoutineResult): ShampooPick[] {
-  const deepCandidates = abbeyYungProducts.filter((p) =>
-    coversRole(p, 'deep-cleaning'),
+function selectShampoos(
+  state: QuizState,
+  result: RoutineResult,
+): ShampooPick[] {
+  const deepCandidates = abbeyYungProducts.filter(
+    (p) => hasProductLink(p) && coversRole(p, 'deep-cleaning'),
   );
 
   const primary = pickBest(
@@ -313,6 +329,7 @@ function selectShampoos(state: QuizState, result: RoutineResult): ShampooPick[] 
 
   const secondaryCandidates = abbeyYungProducts.filter(
     (p) =>
+      hasProductLink(p) &&
       p.product !== primary.product &&
       remaining.some((role) => coversRole(p, role)),
   );
@@ -360,11 +377,8 @@ function sortConditioner(candidates: AbbeyYungProduct[], state: QuizState) {
   return copy;
 }
 
-function strongBondEligible(
-  p: AbbeyYungProduct,
-  state: QuizState,
-): boolean {
-  if (!p.tags?.includes('strong-bond-repair')) return false;
+function strongBondEligible(p: AbbeyYungProduct, state: QuizState): boolean {
+  if (!p.tags?.includes('covalent-bond-repair')) return false;
   if (p.product === LIVING_PROOF_TRIPLE && state.heatStyling === 'none') {
     return false;
   }
@@ -385,7 +399,7 @@ function orderedStrongBondCandidates(state: QuizState): AbbeyYungProduct[] {
 
 function orderedWeakBondCandidates(): AbbeyYungProduct[] {
   const weak = abbeyYungProducts.filter((p) =>
-    p.tags?.includes('weak-bond-repair'),
+    p.tags?.includes('non-covalent-bond-repair'),
   );
   const step5 = weak.filter((p) => p.steps.includes(5));
   const step7 = weak.filter((p) => p.steps.includes(7) && !p.steps.includes(5));
@@ -416,6 +430,7 @@ export function selectProducts(state: QuizState): RoutineResult {
     volumeBoost: null,
     textureBoost: null,
     holdBoost: null,
+    scalpSerum: null,
     fallbacksUsed: [],
   };
 
@@ -423,7 +438,9 @@ export function selectProducts(state: QuizState): RoutineResult {
   if (state.tanglyDuringShampoo) {
     const cands = abbeyYungProducts.filter(
       (p) =>
-        p.steps.includes(2) && weightIsEligible(p.weight, state.weight),
+        hasProductLink(p) &&
+        p.steps.includes(2) &&
+        weightIsEligible(p.weight, state.weight),
     );
     result.preShampooOil = pickPreferred(cands);
     if (
@@ -449,9 +466,7 @@ export function selectProducts(state: QuizState): RoutineResult {
   if (!skipBond) {
     const slots = bondRepairCount(state.damageLevel);
     const needsStrongBond =
-      state.chemicalDamage ||
-      state.heatDamage ||
-      state.heatStyling === 'high';
+      state.chemicalDamage || state.heatDamage || state.heatStyling === 'high';
 
     const selected: AbbeyYungProduct[] = [];
     const names = new Set<string>();
@@ -466,8 +481,8 @@ export function selectProducts(state: QuizState): RoutineResult {
         const strongFb = strongApplied.fallback;
         if (strongFb) {
           result.bondRepairStrongFallbackNote =
-            'No drugstore option exists for strong bond repair.';
-          pushFallback(result, 'Bond repair (strong)');
+            'No drugstore option exists for covalent bond repair.';
+          pushFallback(result, 'Bond repair (covalent)');
           strongPool = strongOrdered;
         }
         const strongPick = pickPreferred(strongPool);
@@ -503,13 +518,12 @@ export function selectProducts(state: QuizState): RoutineResult {
           tierPreferred = available;
         }
 
-        const pool =
-          tierPreferred.length > 0 ? tierPreferred : available;
+        const pool = tierPreferred.length > 0 ? tierPreferred : available;
 
         const picked = pickWithFilters(
           pool,
           state,
-          'Bond repair (weak)',
+          'Bond repair (non-covalent)',
           result,
           true,
         );
@@ -524,7 +538,9 @@ export function selectProducts(state: QuizState): RoutineResult {
   }
 
   /* Conditioner */
-  let cond = abbeyYungProducts.filter((p) => p.steps.includes(6));
+  let cond = abbeyYungProducts.filter(
+    (p) => p.steps.includes(6) && hasProductLink(p),
+  );
   cond = sortConditioner(cond, state);
   result.conditioner = pickWithFilters(
     cond,
@@ -535,19 +551,16 @@ export function selectProducts(state: QuizState): RoutineResult {
   );
 
   /* Leave-in */
-  const leave = abbeyYungProducts.filter((p) => p.steps.includes(8));
-  result.leaveIn = pickWithFilters(
-    leave,
-    state,
-    'Leave-in',
-    result,
-    true,
+  const leave = abbeyYungProducts.filter(
+    (p) => p.steps.includes(8) && hasProductLink(p),
   );
+  result.leaveIn = pickWithFilters(leave, state, 'Leave-in', result, true);
 
   /* Between-wash */
   if (state.betweenWashHeat) {
     const bw = abbeyYungProducts.filter(
       (p) =>
+        hasProductLink(p) &&
         p.steps.includes(11) &&
         p.tags?.includes('between-wash-heat-protection'),
     );
@@ -563,6 +576,7 @@ export function selectProducts(state: QuizState): RoutineResult {
   if (state.betweenWashDryness) {
     const bw = abbeyYungProducts.filter(
       (p) =>
+        hasProductLink(p) &&
         p.steps.some((s) => s === 11 || s === 10) &&
         p.tags?.includes('between-wash-dryness-relief'),
     );
@@ -578,6 +592,7 @@ export function selectProducts(state: QuizState): RoutineResult {
   if (state.betweenWashOiliness) {
     const bw = abbeyYungProducts.filter(
       (p) =>
+        hasProductLink(p) &&
         p.steps.includes(11) &&
         p.tags?.includes('between-wash-oil-control-relief'),
     );
@@ -595,7 +610,9 @@ export function selectProducts(state: QuizState): RoutineResult {
     if (boost === 'smoothing') {
       const c = abbeyYungProducts.filter(
         (p) =>
-          p.steps.includes(10) && p.tags?.includes('style-smoothing'),
+          hasProductLink(p) &&
+          p.steps.includes(10) &&
+          p.tags?.includes('style-smoothing'),
       );
       result.smoothingBoost = pickWithFilters(
         c,
@@ -606,7 +623,10 @@ export function selectProducts(state: QuizState): RoutineResult {
       );
     } else if (boost === 'volume') {
       const c = abbeyYungProducts.filter(
-        (p) => p.steps.includes(9) && p.tags?.includes('style-volume'),
+        (p) =>
+          hasProductLink(p) &&
+          p.steps.includes(9) &&
+          p.tags?.includes('style-volume'),
       );
       result.volumeBoost = pickWithFilters(
         c,
@@ -617,7 +637,10 @@ export function selectProducts(state: QuizState): RoutineResult {
       );
     } else if (boost === 'texture') {
       const c = abbeyYungProducts.filter(
-        (p) => p.steps.includes(9) && p.tags?.includes('style-texture'),
+        (p) =>
+          hasProductLink(p) &&
+          p.steps.includes(9) &&
+          p.tags?.includes('style-texture'),
       );
       result.textureBoost = pickWithFilters(
         c,
@@ -628,15 +651,34 @@ export function selectProducts(state: QuizState): RoutineResult {
       );
     } else if (boost === 'hold') {
       const c = abbeyYungProducts.filter(
-        (p) => p.steps.includes(9) && p.tags?.includes('style-hold'),
+        (p) =>
+          hasProductLink(p) &&
+          p.steps.includes(9) &&
+          p.tags?.includes('style-hold'),
       );
-      result.holdBoost = pickWithFilters(
+      result.holdBoost = pickWithFilters(c, state, 'Hold boost', result, true);
+    } else if (boost === 'scalp-serum') {
+      const c = abbeyYungProducts.filter(
+        (p) =>
+          hasProductLink(p) &&
+          p.steps.includes(12) &&
+          p.tags?.includes('scalp-serum-density-support'),
+      );
+      result.scalpSerum = pickWithFilters(
         c,
         state,
-        'Hold boost',
+        'Scalp serum',
         result,
-        true,
+        false,
       );
+      if (
+        result.scalpSerum &&
+        !state.drugstoreOnly &&
+        !state.noPreference &&
+        result.scalpSerum.drugstore
+      ) {
+        pushFallback(result, 'Scalp serum (drugstore options only)');
+      }
     }
   }
 

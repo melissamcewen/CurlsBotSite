@@ -1,7 +1,10 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { abbeyYungProducts, type AbbeyYungProduct } from '@/data/abbeyYungProducts';
+import {
+  abbeyYungProducts,
+  type AbbeyYungProduct,
+} from '@/data/abbeyYungProducts';
 import {
   abbeyYungMockProduct,
   retailerFromAbbeyYungLink,
@@ -51,8 +54,7 @@ function shampooTypeBadges(
   stepFilter: number[],
 ): string[] {
   const tags = product.tags ?? [];
-  const benefitOnlyList =
-    stepFilter.includes(4) && !stepFilter.includes(3);
+  const benefitOnlyList = stepFilter.includes(4) && !stepFilter.includes(3);
   return Object.keys(SHAMPOO_TYPE_LABEL).filter((tag) => {
     if (!tags.includes(tag)) return false;
     // On Benefit lists, deep cleaning is shown via "Also deep cleaning" instead
@@ -65,7 +67,10 @@ function isShampooProduct(product: AbbeyYungProduct): boolean {
   return product.steps.some((s) => s === 3 || s === 4);
 }
 
-function alsoDeepCleaning(product: AbbeyYungProduct, stepFilter: number[]): boolean {
+function alsoDeepCleaning(
+  product: AbbeyYungProduct,
+  stepFilter: number[],
+): boolean {
   // On Benefit lists (step 4), note overlap with deep cleaning
   if (!stepFilter.includes(4) || stepFilter.includes(3)) return false;
   return (
@@ -83,7 +88,9 @@ function toListValue(value?: string | string[]): string | null {
   return value.trim() || null;
 }
 
-function productLinks(product: AbbeyYungProduct): Array<{ url: string; text: string }> {
+function productLinks(
+  product: AbbeyYungProduct,
+): Array<{ url: string; text: string }> {
   const links =
     product.links
       ?.filter((link) => Boolean(link.url?.trim()))
@@ -155,15 +162,21 @@ export default function AbbeyYungProductList({
 
   if (filtered.length === 0) {
     return (
-      <div className={`not-prose my-6 rounded-2xl border border-base-300 bg-base-100 p-4 ${className}`}>
-        <p className="text-sm text-base-content">No products found for this step.</p>
+      <div
+        className={`not-prose my-6 rounded-2xl border border-base-300 bg-base-100 p-4 ${className}`}
+      >
+        <p className="text-sm text-base-content">
+          No products found for this step.
+        </p>
       </div>
     );
   }
 
   return (
     <div className={`not-prose my-8 space-y-3 ${className}`}>
-      {title ? <h4 className="text-base font-semibold text-base-content">{title}</h4> : null}
+      {title ? (
+        <h4 className="text-base font-semibold text-base-content">{title}</h4>
+      ) : null}
       <div className="flex items-center justify-between gap-3 rounded-xl border border-base-300 bg-base-100 p-3">
         <label className="flex items-center gap-2 text-sm text-base-content">
           <span className="font-medium">Sort</span>
@@ -177,7 +190,9 @@ export default function AbbeyYungProductList({
             <option value="drugstore">Drugstore first</option>
           </select>
         </label>
-        <span className="text-xs text-base-content">{filtered.length} products</span>
+        <span className="text-xs text-base-content">
+          {filtered.length} products
+        </span>
       </div>
       <div className="max-h-[34rem] overflow-x-auto overflow-y-auto rounded-2xl border border-base-300 bg-base-100">
         <table className="table table-zebra table-sm w-max min-w-full">
@@ -190,7 +205,10 @@ export default function AbbeyYungProductList({
                 Details
               </th>
               {visibleExtraFields.map((field) => (
-                <th key={field} className="min-w-[4.5rem] whitespace-nowrap align-bottom sm:min-w-[5.5rem]">
+                <th
+                  key={field}
+                  className="min-w-[4.5rem] whitespace-nowrap align-bottom sm:min-w-[5.5rem]"
+                >
                   {EXTRA_FIELD_LABEL[field]}
                 </th>
               ))}
@@ -204,16 +222,43 @@ export default function AbbeyYungProductList({
                   <td className="min-w-[14rem] max-w-[22rem] align-top whitespace-normal sm:min-w-[16rem]">
                     <div className="flex flex-col items-start gap-2">
                       {product.img ? (
-                        <img
-                          src={product.img}
-                          alt={product.product}
-                          className="h-20 w-20 shrink-0 rounded-lg border border-base-300 object-cover"
-                        />
+                        links[0] ? (
+                          <a
+                            href={links[0].url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`View ${product.product}`}
+                            className="rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                          >
+                            <img
+                              src={product.img}
+                              alt={product.product}
+                              className="h-20 w-20 shrink-0 rounded-lg border border-base-300 object-cover"
+                            />
+                          </a>
+                        ) : (
+                          <img
+                            src={product.img}
+                            alt={product.product}
+                            className="h-20 w-20 shrink-0 rounded-lg border border-base-300 object-cover"
+                          />
+                        )
                       ) : null}
                       <div className="w-full space-y-2">
-                        <p className="whitespace-normal text-sm leading-snug text-base-content">
-                          {product.product}
-                        </p>
+                        {links[0] ? (
+                          <a
+                            href={links[0].url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="link link-primary whitespace-normal text-sm font-semibold leading-snug"
+                          >
+                            {product.product}
+                          </a>
+                        ) : (
+                          <p className="whitespace-normal text-sm font-semibold leading-snug text-base-content">
+                            {product.product}
+                          </p>
+                        )}
                         {links.length > 0 ? (
                           <div className="flex flex-wrap gap-2">
                             {links.map((link) => {
@@ -280,14 +325,16 @@ export default function AbbeyYungProductList({
                           {product.drugstore ? 'Drugstore' : 'Non-drugstore'}
                         </span>
                         {isShampooProduct(product)
-                          ? shampooTypeBadges(product, stepFilter).map((tag) => (
-                              <span
-                                key={tag}
-                                className="badge badge-outline shrink-0 whitespace-nowrap"
-                              >
-                                {SHAMPOO_TYPE_LABEL[tag]}
-                              </span>
-                            ))
+                          ? shampooTypeBadges(product, stepFilter).map(
+                              (tag) => (
+                                <span
+                                  key={tag}
+                                  className="badge badge-outline shrink-0 whitespace-nowrap"
+                                >
+                                  {SHAMPOO_TYPE_LABEL[tag]}
+                                </span>
+                              ),
+                            )
                           : product.tags && product.tags.length > 0
                             ? product.tags.map((tag) => (
                                 <span
@@ -309,17 +356,24 @@ export default function AbbeyYungProductList({
                   {visibleExtraFields.map((field) => {
                     let value: string | null = null;
                     if (field === 'weight') value = toListValue(product.weight);
-                    if (field === 'cleaningPower') value = toListValue(product.cleaningPower);
-                    if (field === 'scalpType') value = toListValue(product.scalpType);
-                    if (field === 'frequency') value = toListValue(product.frequency);
-                    if (field === 'texture') value = toListValue(product.texture);
-                    if (field === 'fragrance') value = toListValue(product.fragrance);
+                    if (field === 'cleaningPower')
+                      value = toListValue(product.cleaningPower);
+                    if (field === 'scalpType')
+                      value = toListValue(product.scalpType);
+                    if (field === 'frequency')
+                      value = toListValue(product.frequency);
+                    if (field === 'texture')
+                      value = toListValue(product.texture);
+                    if (field === 'fragrance')
+                      value = toListValue(product.fragrance);
                     return (
                       <td
                         key={field}
                         className="min-w-[4.5rem] align-top text-sm text-base-content sm:min-w-[5.5rem]"
                       >
-                        <span className="whitespace-nowrap">{value ?? '-'}</span>
+                        <span className="whitespace-nowrap">
+                          {value ?? '-'}
+                        </span>
                       </td>
                     );
                   })}

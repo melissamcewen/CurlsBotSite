@@ -1,11 +1,7 @@
 import type { AbbeyYungProduct } from '@/data/abbeyYungProducts';
 
 export type ScalpNeed =
-  | 'buildup'
-  | 'exfoliation'
-  | 'density'
-  | 'skin-health'
-  | 'growth';
+  'buildup' | 'exfoliation' | 'density' | 'skin-health' | 'growth';
 
 export type ShampooRole =
   | 'deep-cleaning'
@@ -64,7 +60,7 @@ export interface QuizState {
   betweenWashHeat: boolean;
   betweenWashDryness: boolean;
   betweenWashOiliness: boolean;
-  boosts: Array<'smoothing' | 'volume' | 'texture' | 'hold'>;
+  boosts: Array<'smoothing' | 'volume' | 'texture' | 'hold' | 'scalp-serum'>;
 }
 
 /** Shape returned by selectProducts() */
@@ -84,6 +80,7 @@ export interface RoutineResult {
   volumeBoost: AbbeyYungProduct | null;
   textureBoost: AbbeyYungProduct | null;
   holdBoost: AbbeyYungProduct | null;
+  scalpSerum: AbbeyYungProduct | null;
   fallbacksUsed: string[];
 }
 

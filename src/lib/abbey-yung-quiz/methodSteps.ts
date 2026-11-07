@@ -58,4 +58,9 @@ export const abbeyYungMethodSteps: Record<
     description:
       'Refreshers, dry shampoo, mists, or treatments between full wash days. For heat, dryness, or scalp oiliness as needed.',
   },
+  12: {
+    title: 'Scalp serum',
+    description:
+      'A daily density-supporting serum for scalp health.',
+  },
 };

@@ -61,7 +61,11 @@ function canProceed(step: number, a: RawAnswers): boolean {
     case 12:
       return a.productWeight !== '';
     case 13:
-      return a.drugstore === 'yes' || a.drugstore === 'no' || a.drugstore === 'either';
+      return (
+        a.drugstore === 'yes' ||
+        a.drugstore === 'no' ||
+        a.drugstore === 'either'
+      );
     case 14:
       return a.betweenWash.length > 0;
     case 15:
@@ -140,10 +144,15 @@ export function AbbeyYungQuiz() {
       <div className="flex flex-col gap-6">
         <blockquote className="border-l-4 border-primary pl-4 text-sm italic text-base-content">
           This quiz is my interpretation of Abbey Yung&apos;s method, built by
-          studying her content. I&apos;m not Abbey and this isn&apos;t endorsed by Abbey. I&apos;m just someone who watched a lot of videos and took notes.
-          Her content is the authoritative source. If you want to learn more
-          about this please read{' '}
-          <Link href="/blog/the-abbey-yung-method" className="link link-primary" target="_blank">
+          studying her content. I&apos;m not Abbey and this isn&apos;t endorsed
+          by Abbey. I&apos;m just someone who watched a lot of videos and took
+          notes. Her content is the authoritative source. If you want to learn
+          more about this please read{' '}
+          <Link
+            href="/blog/the-abbey-yung-method"
+            className="link link-primary"
+            target="_blank"
+          >
             my guide to the Abbey Yung Method
           </Link>
           .
@@ -197,9 +206,9 @@ export function AbbeyYungQuiz() {
               title="Has your hair been through any of these?"
               details={
                 <>
-                  These types of damage break strong internal bonds inside the
-                  hair fiber. Some bond repair products specifically target
-                  these; others don&apos;t. You can read more in our{' '}
+                  These types of damage break covalent bonds inside the hair
+                  fiber. Some bond repair products specifically target those;
+                  others work on non-covalent bonds. You can read more in our{' '}
                   <Link
                     href="/blog/skeptics-guide-bond-repair"
                     className="link link-primary"
@@ -326,7 +335,10 @@ export function AbbeyYungQuiz() {
                   ['diffuse', 'Diffusing'],
                   ['blowdry-low', 'Blowdry on low heat'],
                   ['blowdry-high', 'Blowdry on medium/high heat'],
-                  ['heat-tools', 'Heat tools (straighteners, curling irons, etc.)'],
+                  [
+                    'heat-tools',
+                    'Heat tools (straighteners, curling irons, etc.)',
+                  ],
                 ].map(([v, label]) => (
                   <label
                     key={v}
@@ -385,7 +397,7 @@ export function AbbeyYungQuiz() {
             <Q title="How often do you deal with tangles?">
               <div className="flex flex-col gap-3">
                 {[
-                  ['rare', 'Rarely, it\'s easy to detangle'],
+                  ['rare', "Rarely, it's easy to detangle"],
                   ['sometimes', 'Sometimes get tangles'],
                   ['constant', 'Constant tangling issues'],
                 ].map(([v, label]) => (
@@ -431,9 +443,9 @@ export function AbbeyYungQuiz() {
               details={
                 <>
                   This quiz may suggest OTC medicated shampoos that Abbey groups
-                  for these concerns. <strong>This is not medical advice</strong>
-                  — please see a doctor to get a diagnosis before treating a
-                  scalp condition.
+                  for these concerns.{' '}
+                  <strong>This is not medical advice</strong>— please see a
+                  doctor to get a diagnosis before treating a scalp condition.
                 </>
               }
             >
@@ -464,11 +476,13 @@ export function AbbeyYungQuiz() {
 
           {step === 8 && (
             <Q
-              title="Any scalp-care goals you want shampoo to support?"
+              title="Any scalp-care goals you want shampoo or serum to support?"
               details={
                 <>
-                  Abbey&apos;s scalp-health shampoos use actives aimed at these
-                  areas. Growth-stimulating shampoos may only offer weak effects, as these are not drugs.
+                  Abbey&apos;s scalp-health shampoos and optional leave-on
+                  density-support serums use actives aimed at these areas.
+                  Growth-stimulating products may only offer weak effects, as
+                  these are not drugs.
                 </>
               }
             >
@@ -476,15 +490,15 @@ export function AbbeyYungQuiz() {
                 {[
                   ['buildup', 'Buildup removal'],
                   ['exfoliation', 'Exfoliation'],
-                  [
-                    'density',
-                    'Density support (roots, retention, anchorage)',
-                  ],
+                  ['density', 'Density support (roots, retention, anchorage)'],
                   [
                     'skin-health',
                     'Scalp skin health (barrier, microbiome, oxidative stress)',
                   ],
-                  ['growth', 'Growth stimulating (see more context note for disclaimer)'],
+                  [
+                    'growth',
+                    'Growth stimulating (see more context note for disclaimer)',
+                  ],
                   ['none', 'None of the above'],
                 ].map(([v, label]) => (
                   <label
@@ -538,9 +552,7 @@ export function AbbeyYungQuiz() {
                     key={v}
                     type="button"
                     className="btn btn-block justify-start rounded-xl bg-base-100 text-left font-normal"
-                    onClick={() =>
-                      singleAdvance({ hardWater: v })
-                    }
+                    onClick={() => singleAdvance({ hardWater: v })}
                   >
                     {label}
                   </button>
@@ -557,10 +569,7 @@ export function AbbeyYungQuiz() {
                     'strong',
                     'I need a strong shampoo, otherwise my hair still feels dirty',
                   ],
-                  [
-                    'normal',
-                    'Most shampoos work fine for me or no preference',
-                  ],
+                  ['normal', 'Most shampoos work fine for me or no preference'],
                   [
                     'gentle',
                     'Shampoo tends to make my hair feel dry or rough, I need something gentle',
@@ -604,10 +613,7 @@ export function AbbeyYungQuiz() {
             <Q title="How does your hair react to products?">
               <div className="flex flex-col gap-3">
                 {[
-                  [
-                    'heavy',
-                    'Loves lots of product and is never weighed down',
-                  ],
+                  ['heavy', 'Loves lots of product and is never weighed down'],
                   ['medium', 'Fine with a moderate amount'],
                   ['light', 'Easily weighed down'],
                   [
@@ -704,6 +710,7 @@ export function AbbeyYungQuiz() {
                     'hold',
                     'Hold boost (keeps style in place through humidity and wind)',
                   ],
+                  ['scalp-serum', 'Scalp serum for density support'],
                   ['none', 'None, keep it minimal'],
                 ].map(([v, label]) => (
                   <label
