@@ -2137,5 +2137,25 @@ Episode 380: Patented ingredients, porosity, quats and more */
     author: 'Tinoco, A., Martins, M., Cavaco‐Paulo, A., & Ribeiro, A.',
     date: '2021',
     source: 'Trends in Biotechnology',
-  }
+  },
+  /* Cornwell, P.A. (2022, Oct 12) Do bond builders really repair the hair?  TRI Talks 2023, Presented live and on-line on October 12th */
+  '194': {
+    id: '194',
+    url: 'https://library.triprinceton.org/1uojej0//',
+    title: 'Do bond builders really repair the hair?',
+    type: 'science',
+    author: 'Cornwell, P.A.',
+    date: '2022',
+    source: 'TRI Talks',
+  },
+  /*  Wong M. Does Olaplex repair disulfide bonds? Analysing the Cosmetics study. Lab Muffin Beauty Science. October 16, 2026. Accessed November 3, 2026. https://labmuffin.com/does-olaplex-repair-disulfide-bonds-analysing-the-cosmetics-study/ */
+  '195': {
+    id: '195',
+    url: 'https://labmuffin.com/does-olaplex-repair-disulfide-bonds-analysing-the-cosmetics-study/',
+    title: 'Does Olaplex repair disulfide bonds?',
+    type: 'science',
+    author: 'Wong, M.',
+    date: '2026',
+    source: 'Lab Muffin Beauty Science',
+  },
 };
