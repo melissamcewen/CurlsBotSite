@@ -1,6 +1,7 @@
 import createMDX from '@next/mdx'
 import remarkFrontmatter from 'remark-frontmatter'
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
+import rehypeHeadingIds from './src/utils/rehypeHeadingIds.mjs'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -229,7 +230,7 @@ const withMDX = createMDX({
       remarkFrontmatter,
       [remarkMdxFrontmatter, { name: 'frontmatter', exported: true }]
     ],
-    rehypePlugins: [],
+    rehypePlugins: [rehypeHeadingIds],
   },
 })
 
