@@ -327,7 +327,7 @@ export default function NewQuizResult({ patternType }: Props) {
                           }
                         >
                           pro analysis from Strandprint to find your actual
-                          porosity - use code CBOT10 for 10% off
+                          porosity - use code CBOT5 for 5% off
                         </a>
                         .
                       </p>

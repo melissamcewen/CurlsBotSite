@@ -157,7 +157,7 @@ export function PorosityPageClient({ porosityType, porosityInfo }: Props) {
                   Want to know your exact porosity? Strandprint provides
                   scientific analysis of your hair&apos;s porosity with detailed
                   results. Use code{' '}
-                  <strong className="text-primary">CBOT10</strong> for 10% off
+                  <strong className="text-primary">CBOT5</strong> for 5% off
                   your order.
                 </p>
               </div>
