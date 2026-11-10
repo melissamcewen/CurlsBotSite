@@ -33,8 +33,7 @@ function CalloutCard({
   Icon: LucideIcon;
   children: ReactNode;
 }) {
-  const border =
-    variant === 'warning' ? 'border-warning' : 'border-info';
+  const border = variant === 'warning' ? 'border-warning' : 'border-info';
   const iconSurface =
     variant === 'warning'
       ? 'bg-warning text-warning-content'
@@ -89,7 +88,7 @@ export function Callouts({
       variant: 'info',
       Icon: FlaskConical,
       content:
-        'Chemical treatments like bleach and dye break covalent disulfide bonds inside the hair. Covalent bond repair (Eprès, k18) is the most targeted treatment for this.',
+        'Chemical treatments like bleach and dye break covalent disulfide bonds inside the hair. Bond repair products can help mitigate that damage',
     });
   }
 
@@ -99,20 +98,7 @@ export function Callouts({
       variant: 'info',
       Icon: Flame,
       content:
-        'High heat also breaks covalent bonds in the inner cortex over time. Covalent bond repair helps maintain hair health even with regular heat use.',
-    });
-  }
-
-  if (!state.chemicalDamage && state.heatStyling !== 'high') {
-    alerts.push({
-      key: 'weak-bond',
-      variant: 'info',
-      Icon: Info,
-      content: (
-        <>
-        With non chemical/heat damage you won&apos;t benefit as much from covalent bond builders (k18, Epres) that target that type of damage; you can pick whatever bond products you prefer but the non-covalent ones are usually cheaper. Read more in our <Link href="/blog/skeptics-guide-bond-repair" className="link link-primary font-medium">bond repair guide</Link>.
-        </>
-      ),
+        'High heat also breaks covalent bonds in the inner cortex over time. Bond repair helps maintain hair health even with regular heat use.',
     });
   }
 
@@ -124,7 +110,10 @@ export function Callouts({
       content: (
         <>
           Not sure if you have hard water?{' '}
-          <Link href="/blog/curly-hair-hard-water" className="link link-hover font-medium">
+          <Link
+            href="/blog/curly-hair-hard-water"
+            className="link link-hover font-medium"
+          >
             Check our guide →
           </Link>
         </>

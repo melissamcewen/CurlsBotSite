@@ -207,16 +207,7 @@ export function AbbeyYungQuiz() {
               details={
                 <>
                   These types of damage break covalent bonds inside the hair
-                  fiber. Some bond repair products specifically target those;
-                  others work on non-covalent bonds. You can read more in our{' '}
-                  <Link
-                    href="/blog/skeptics-guide-bond-repair"
-                    className="link link-primary"
-                    target="_blank"
-                  >
-                    bond repair guide
-                  </Link>
-                  .
+                  fiber.
                 </>
               }
             >
