@@ -47,7 +47,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     fragrance: 'Fragrance-free',
     bestFor: 'Most hair types, even those that are weighed down easily',
     weight: ['very light'],
-    tags: ['covalent-bond-repair'],
+    tags: ['bond-repair'],
     img: '/images/blog/the-abbey-yung-method/epres.png',
     links: [
       {
@@ -731,7 +731,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Light to medium weight cream',
     fragrance: 'Jasmine, peony',
     weight: ['light', 'medium'],
-    tags: ['covalent-bond-repair'],
+    tags: ['bond-repair'],
     img: '/images/blog/the-abbey-yung-method/k18.png',
     links: [
       {
@@ -769,7 +769,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Moderately thick cream',
     fragrance: 'White rose, lemon zest',
     weight: ['medium', 'heavy'],
-    tags: ['non-covalent-bond-repair'],
+    tags: ['bond-repair'],
   },
   /* discontinued
   {
@@ -795,7 +795,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Mid weight cream',
     fragrance: 'Fresh and floral',
     weight: ['medium'],
-    tags: ['non-covalent-bond-repair'],
+    tags: ['bond-repair'],
   },
   {
     product: 'Olaplex Nº.3PLUS Complete Repair Treatment',
@@ -807,7 +807,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     heaviness: 'Unknown',
     amazon: 'https://link.amazon/B0iXKRegJ',
     weight: ['unknown'],
-    tags: ['covalent-bond-repair'],
+    tags: ['bond-repair'],
   },
   {
     product:
@@ -823,7 +823,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Moderately thick cream',
     fragrance: 'Fresh, citrusy, floral',
     weight: ['medium', 'heavy'],
-    tags: ['non-covalent-bond-repair'],
+    tags: ['bond-repair'],
   },
   {
     product: 'Amika flash instant shine mask',
@@ -1195,7 +1195,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     drugstore: false,
     step: 7,
     steps: [7],
-    comments: 'Create new hydrogen, ionic and covalent bonds',
+    comments: '',
     heaviness: 'Light to Medium',
     amazon: 'https://amzn.to/45yVak5',
     bestFor:
@@ -1204,7 +1204,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Lightweight cream',
     fragrance: 'Fresh and floral',
     weight: ['light', 'medium'],
-    tags: ['covalent-bond-repair'],
+    tags: ['bond-repair'],
     img: '/images/blog/the-abbey-yung-method/triple-bond-complex.png',
     links: [
       {
@@ -1240,7 +1240,7 @@ export const abbeyYungProducts: AbbeyYungProduct[] = [
     texture: 'Thin liquidy spray',
     fragrance: 'Warm, tropical, fruity, coconut',
     weight: ['very light'],
-    tags: ['non-covalent-bond-repair'],
+    tags: ['bond-repair'],
   },
 
   {

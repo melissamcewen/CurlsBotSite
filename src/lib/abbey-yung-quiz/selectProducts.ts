@@ -377,33 +377,16 @@ function sortConditioner(candidates: AbbeyYungProduct[], state: QuizState) {
   return copy;
 }
 
-function strongBondEligible(p: AbbeyYungProduct, state: QuizState): boolean {
-  if (!p.tags?.includes('covalent-bond-repair')) return false;
+function bondRepairEligible(p: AbbeyYungProduct, state: QuizState): boolean {
+  if (!p.tags?.includes('bond-repair')) return false;
   if (p.product === LIVING_PROOF_TRIPLE && state.heatStyling === 'none') {
     return false;
   }
   return true;
 }
 
-function orderedStrongBondCandidates(state: QuizState): AbbeyYungProduct[] {
-  const strong = abbeyYungProducts.filter((p) => strongBondEligible(p, state));
-  const step1 = strong.filter((p) => p.steps.includes(1));
-  const step5 = strong.filter(
-    (p) => p.steps.includes(5) && !p.steps.includes(1),
-  );
-  const step7 = strong.filter(
-    (p) => p.steps.includes(7) && !p.steps.includes(5) && !p.steps.includes(1),
-  );
-  return [...step1, ...step5, ...step7];
-}
-
-function orderedWeakBondCandidates(): AbbeyYungProduct[] {
-  const weak = abbeyYungProducts.filter((p) =>
-    p.tags?.includes('non-covalent-bond-repair'),
-  );
-  const step5 = weak.filter((p) => p.steps.includes(5));
-  const step7 = weak.filter((p) => p.steps.includes(7) && !p.steps.includes(5));
-  return [...step5, ...step7];
+function orderedBondRepairCandidates(state: QuizState): AbbeyYungProduct[] {
+  return abbeyYungProducts.filter((p) => bondRepairEligible(p, state));
 }
 
 /** Bond repair picks by damage level: 1→0, 2→1, 3→2, 4→3 */
@@ -420,7 +403,6 @@ export function selectProducts(state: QuizState): RoutineResult {
     preShampooOilNote: null,
     shampoos: [],
     bondRepair: [],
-    bondRepairStrongFallbackNote: null,
     conditioner: null,
     leaveIn: null,
     betweenWashHeatProtection: null,
@@ -465,8 +447,7 @@ export function selectProducts(state: QuizState): RoutineResult {
 
   if (!skipBond) {
     const slots = bondRepairCount(state.damageLevel);
-    const needsStrongBond =
-      state.chemicalDamage || state.heatDamage || state.heatStyling === 'high';
+    const ordered = orderedBondRepairCandidates(state);
 
     const selected: AbbeyYungProduct[] = [];
     const names = new Set<string>();
@@ -474,29 +455,8 @@ export function selectProducts(state: QuizState): RoutineResult {
     if (slots > 0) {
       let remaining = slots;
 
-      if (needsStrongBond) {
-        const strongOrdered = orderedStrongBondCandidates(state);
-        const strongApplied = applyDrugstoreFilter(strongOrdered, state);
-        let strongPool = strongApplied.products;
-        const strongFb = strongApplied.fallback;
-        if (strongFb) {
-          result.bondRepairStrongFallbackNote =
-            'No drugstore option exists for covalent bond repair.';
-          pushFallback(result, 'Bond repair (covalent)');
-          strongPool = strongOrdered;
-        }
-        const strongPick = pickPreferred(strongPool);
-        if (strongPick && !names.has(strongPick.product) && remaining > 0) {
-          selected.push(strongPick);
-          names.add(strongPick.product);
-          remaining -= 1;
-        }
-      }
-
-      const weakOrdered = orderedWeakBondCandidates();
-
       while (remaining > 0) {
-        const available = weakOrdered.filter((p) => !names.has(p.product));
+        const available = ordered.filter((p) => !names.has(p.product));
         if (available.length === 0) break;
 
         const usedBondSteps = new Set(
@@ -514,6 +474,10 @@ export function selectProducts(state: QuizState): RoutineResult {
           tierPreferred = available.filter(
             (p) => bucketBondRepairProduct(p) === 7,
           );
+        } else if (!usedBondSteps.has(1)) {
+          tierPreferred = available.filter(
+            (p) => bucketBondRepairProduct(p) === 1,
+          );
         } else {
           tierPreferred = available;
         }
@@ -523,7 +487,7 @@ export function selectProducts(state: QuizState): RoutineResult {
         const picked = pickWithFilters(
           pool,
           state,
-          'Bond repair (non-covalent)',
+          'Bond repair',
           result,
           true,
         );

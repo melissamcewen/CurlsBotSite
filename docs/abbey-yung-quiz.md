@@ -85,7 +85,7 @@ Show a **collapsible info block** (`<details>` / DaisyUI collapse) beneath the q
 
 **Collapsible info**:
 
-> These types of damage break covalent bonds inside the hair fiber. Some bond repair products specifically target those; others work on non-covalent bonds. You can read more in our [bond repair guide](/blog/skeptics-guide-bond-repair)
+> These types of damage break covalent bonds inside the hair fiber.
 
 ---
 
@@ -563,30 +563,14 @@ In this case, return `bondRepair: []`.
 
 **Selection strategy:**
 
-First, determine if covalent bond repair is needed:
+All bond repair products are one pool (`tags` includes `'bond-repair'`). Do not separate products by covalent vs other bond claims.
 
-```
-needsStrongBond = state.chemicalDamage || state.heatDamage || state.heatStyling === 'high'
-```
+Fill slots from that pool:
 
-If `needsStrongBond`:
-
-1. Try to pick 1 covalent bond product (`tags` includes `'covalent-bond-repair'`). Priority order within covalent bond products:
-   - Step 1 products first (Eprès)
-   - Step 5 products second (k18)
-   - Step 7 products third
-2. Apply drugstore filter. If no drugstore covalent bond product exists, use the salon product and add to `fallbacksUsed` with note "No drugstore option exists for covalent bond repair." The fallback label is "Bond repair (covalent)". Non-covalent drugstore fallbacks use the label "Bond repair (non-covalent)".
-
-Fill remaining slots with non-covalent bond products (`tags` includes `'non-covalent-bond-repair'`):
-
-- Prefer covering **method steps** not already filled: pick from Step 5 non-covalent candidates before Step 7 until Step 5 is covered, then Step 7, then any remaining non-covalent product (avoids two Step 5 picks when a Step 7 non-covalent product exists)
+- Prefer covering **method steps** not already filled: Step 5, then Step 7, then Step 1, then any remaining product (avoids two picks on the same step while another bond step is still open)
 - Apply weight filter
-- Apply drugstore filter
+- Apply drugstore filter. If that empties the pool, fall back and add `"Bond repair"` to `fallbacksUsed`
 - Do not duplicate products already selected
-
-If `!needsStrongBond`:
-
-- Fill all slots from non-covalent bond products using the same logic as above.
 
 ---
 
@@ -711,15 +695,13 @@ Display:
 
 ## BondRepairSection
 
-Props: `{ products: AbbeyYungProduct[]; state: QuizState; fallbackNote?: string }`
+Props: `{ products: AbbeyYungProduct[]; state: QuizState }`
 
 Render a section titled "Bond Repair" with a brief intro:
 
 > Bond repair products work during washing to reinforce the internal structure of damaged hair. Use them in wash-day order.
 
-Then render one `<ProductCard>` per product, in the order they were selected (covalent bond first, then non-covalent bond).
-
-If `fallbackNote` is set (drugstore unavailable), show a DaisyUI `alert alert-info` with the note.
+Then render one `<ProductCard>` per product, grouped into the method step it belongs to.
 
 ---
 
@@ -732,9 +714,8 @@ Render DaisyUI `alert` components for applicable conditions:
 | Condition                            | Alert text                                                                                                                                                       |
 | ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `state.damageLevel >= 3`             | "Your hair shows significant damage. Stick with bond repair consistently for a few months before evaluating whether to cut back."                                |
-| `state.chemicalDamage === true`      | "Chemical treatments like bleach and dye break covalent disulfide bonds inside the hair. Covalent bond repair (Eprès, k18) is the most targeted treatment for this." |
-| `state.heatStyling === 'high'`       | "High heat also breaks covalent bonds in the inner cortex over time. Covalent bond repair helps maintain hair health even with regular heat use."                   |
-| `(state.chemicalDamage !== true)     |                                                                                                                                                                      | state.heatStyling !== 'high'` | "With non chemical/heat damage you won't benefit as much from covalent bond builders (k18, Epres) that target that type of damage, you can pick whatever bond products you prefer but the non-covalent ones are usually cheaper" |
+| `state.chemicalDamage === true`      | "Chemical treatments like bleach and dye break covalent disulfide bonds inside the hair. Bond repair products can help mitigate that damage" |
+| `state.heatStyling === 'high'`       | "High heat also breaks covalent bonds in the inner cortex over time. Bond repair helps maintain hair health even with regular heat use." |
 | `state.hardWater === null`           | "Not sure if you have hard water? [Check our guide →]"                                                                                                           |
 | `state.tanglyDuringShampoo === true` | "Apply the pre-shampoo oil mostly to your ends — it protects drier sections while letting you use a stronger shampoo at the roots."                              |
 | `result.fallbacksUsed.length > 0`    | "We couldn't find a drugstore match for: [list]. Showing the closest alternative."                                                                               |
@@ -751,7 +732,7 @@ Show only the alerts that apply. Do not show all of them every time.
 | No products match all filters                  | Relax drugstore filter first (set `fallback: true`). If still empty after that, relax weight filter too. Always pick something rather than returning null where possible.                                                                     |
 | `step: 0` products in data                     | Always use `product.steps[]` for eligibility, never `product.step`. Some products have `step: 0` as a sentinel — ignore the `step` field.                                                                                                     |
 | `productWeight` is `undefined`                 | Treat as always eligible (never filter out).                                                                                                                                                                                                  |
-| Living Proof Triple Bond (Step 7, covalent bond) | Only include if `state.heatStyling !== 'none'` — it requires heat to activate.                                                                                                                                                               |
+| Living Proof Triple Bond (Step 7) | Only include if `state.heatStyling !== 'none'` — it requires heat to activate. |
 | Bond repair skip condition                     | Skip entirely if `!chemicalDamage && !heatDamage && heatStyling === 'none' && damageLevel === 1`. Show callout.                                                                                                                               |
 | Conditioner type detection                     | Use `p.comments` string to detect gloss/mask/conditioner (values are `'Gloss'`, `'Mask'`, or contain `'Conditioner'`). This is the only available signal in the current data — do not rely on a `type` field.                                 |
 | Multiple weights in `product.weight[]`         | A product with `weight: ['light', 'medium']` is eligible for users with `medium` or heavier preference, because it has a `medium` option. Apply `weightIsEligible` to the array — if any weight in the array passes, the product is eligible. |

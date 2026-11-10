@@ -1,6 +1,5 @@
 'use client';
 
-import { Info } from 'lucide-react';
 import type { AbbeyYungProduct } from '@/data/abbeyYungProducts';
 import { abbeyYungMethodSteps } from '@/lib/abbey-yung-quiz/methodSteps';
 import { partitionBondRepairByStep } from '@/lib/abbey-yung-quiz/bondBuckets';
@@ -57,7 +56,6 @@ export function RoutineResults({
       <RoutineStepBlock
         stepNumber={1}
         products={bond.step1}
-        fallbackNote={result.bondRepairStrongFallbackNote}
         showBondIntro={firstBondStepWithProducts === 1}
       />
 
@@ -125,7 +123,6 @@ export function RoutineResults({
       <RoutineStepBlock
         stepNumber={5}
         products={bond.step5}
-        fallbackNote={result.bondRepairStrongFallbackNote}
         showBondIntro={firstBondStepWithProducts === 5}
       />
 
@@ -138,7 +135,6 @@ export function RoutineResults({
       <RoutineStepBlock
         stepNumber={7}
         products={bond.step7}
-        fallbackNote={result.bondRepairStrongFallbackNote}
         showBondIntro={firstBondStepWithProducts === 7}
       />
 
@@ -240,12 +236,10 @@ export function RoutineResults({
 function RoutineStepBlock({
   stepNumber,
   products,
-  fallbackNote,
   showBondIntro,
 }: {
   stepNumber: 1 | 5 | 7;
   products: AbbeyYungProduct[];
-  fallbackNote: string | null;
   showBondIntro: boolean;
 }) {
   if (products.length === 0) return null;
@@ -262,25 +256,6 @@ function RoutineStepBlock({
           structure of damaged hair. Use them in the order listed below on that
           wash day.
         </p>
-      ) : null}
-      {showBondIntro && fallbackNote ? (
-        <div
-          role="note"
-          className="mt-4 flex gap-3 rounded-2xl border-2 border-info bg-base-100 p-3 sm:gap-4 sm:p-4"
-        >
-          <div
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-info text-info-content sm:h-10 sm:w-10"
-            aria-hidden
-          >
-            <Info
-              className="h-[18px] w-[18px] sm:h-5 sm:w-5"
-              strokeWidth={1.75}
-            />
-          </div>
-          <p className="min-w-0 flex-1 text-sm leading-snug text-base-content sm:leading-relaxed">
-            {fallbackNote}
-          </p>
-        </div>
       ) : null}
       <div className="mt-4 flex flex-col gap-4">
         {products.map((p) => (

@@ -59,7 +59,7 @@ describe('abbey-yung-quiz', () => {
     expect(buildHairProfileBullets(state, raw).length).toBeGreaterThan(0);
   });
 
-  it('max damage + covalent bond  repair need spreads bond repair across steps 1, 5, and 7', () => {
+  it('max damage spreads bond repair across steps 1, 5, and 7', () => {
     const raw = baseAnswers({
       damageTypes: ['colored'],
       damageSigns: ['feels-fried'],
@@ -75,6 +75,25 @@ describe('abbey-yung-quiz', () => {
     expect(bond.step1.length).toBe(1);
     expect(bond.step5.length).toBe(1);
     expect(bond.step7.length).toBe(1);
+    expect(result.fallbacksUsed.some((name) => /covalent/i.test(name))).toBe(
+      false,
+    );
+  });
+
+  it('drugstore bond repair stays in the drugstore pool', () => {
+    const raw = baseAnswers({
+      damageTypes: ['colored'],
+      damageSigns: ['feels-fried'],
+      drugstore: 'yes',
+    });
+    const state = computeQuizState(raw);
+    const result = selectProducts(state);
+
+    expect(result.bondRepair.length).toBeGreaterThan(0);
+    expect(result.bondRepair.every((p) => p.drugstore)).toBe(true);
+    expect(result.fallbacksUsed.some((name) => /covalent/i.test(name))).toBe(
+      false,
+    );
   });
 
   it('dandruff assigns medicated shampoo that can cover deep cleaning', () => {

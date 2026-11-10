@@ -70,7 +70,6 @@ export interface RoutineResult {
   /** Up to 2 shampoo picks with roles they cover */
   shampoos: ShampooPick[];
   bondRepair: AbbeyYungProduct[];
-  bondRepairStrongFallbackNote: string | null;
   conditioner: AbbeyYungProduct | null;
   leaveIn: AbbeyYungProduct | null;
   betweenWashHeatProtection: AbbeyYungProduct | null;
