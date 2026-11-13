@@ -2158,4 +2158,16 @@ Episode 380: Patented ingredients, porosity, quats and more */
     date: '2026',
     source: 'Lab Muffin Beauty Science',
   },
+
+  /* The Beauty Brains Episode 376 10/07/24 https://podcasts.apple.com/no/podcast/episode-376-collagen-supplements-hair-bonding-and/id733300242?i=1000672134371&l=nb */ 
+  '196': {
+    id: '196',
+    url: 'https://podcasts.apple.com/no/podcast/episode-376-collagen-supplements-hair-bonding-and/id733300242?i=1000672134371&l=nb',
+    title: 'Episode 376: Collagen supplements, hair bonding and more',
+    type: 'science',
+    author: 'The Beauty Brains',
+    date: '2024',
+    source: 'The Beauty Brains',
+  },
+
 };
