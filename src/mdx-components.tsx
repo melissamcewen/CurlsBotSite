@@ -34,6 +34,7 @@ import AbbeyYungMethodTable from '@/components/mdx/AbbeyYungMethodTable';
 import AbbeyYungTable from '@/components/mdx/AbbeyYungTable';
 import AbbeyYungProductList from '@/components/mdx/AbbeyYungProductList';
 import BondProductsTable from '@/components/mdx/BondProductsTable';
+import BondRepairFrameworkTable from '@/components/mdx/BondRepairFrameworkTable';
 import PorosityDefinitionsTable from '@/components/mdx/PorosityDefinitionsTable';
 import HairPatternVisualization from '@/components/HairPatternVisualization';
 
@@ -68,6 +69,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     AbbeyYungTable,
     AbbeyYungProductList,
     BondProductsTable,
+    BondRepairFrameworkTable,
     PorosityDefinitionsTable,
     HairPatternVisualization,
     ...components,
