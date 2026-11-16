@@ -36,11 +36,22 @@ export function BeforeAfterDiff({
 
 interface BeforeAfterDiffGridProps {
   children: React.ReactNode;
+  columns?: number;
 }
 
-export function BeforeAfterDiffGrid({ children }: BeforeAfterDiffGridProps) {
+export function BeforeAfterDiffGrid({
+  children,
+  columns = 3,
+}: BeforeAfterDiffGridProps) {
+  const style: React.CSSProperties & { '--columns': number } = {
+    '--columns': columns,
+  };
+
   return (
-    <div className="not-prose my-8 w-full grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div
+      className="not-prose my-8 w-full grid grid-cols-1 md:grid-cols-[repeat(var(--columns),minmax(0,1fr))] gap-4"
+      style={style}
+    >
       {children}
     </div>
   );
