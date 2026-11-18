@@ -1,15 +1,22 @@
 import Image from 'next/image';
+import type { ReactNode } from 'react';
 
 type AuthorBioProps = {
   name?: string;
   imageSrc?: string;
-  bio?: string;
+  children?: ReactNode;
 };
 
 export function AuthorBio({
   name = 'Melissa McEwen',
   imageSrc = '/headshot.jpg',
-  bio = 'Melissa McEwen is the creator of CurlsBot. She is a software developer with training in science writing and a B.S. in Agriculture. Her writing has appeared in publications such as NPR and Quartz.',
+  children = (
+    <p>
+      Melissa McEwen is the creator of CurlsBot. She is a software developer
+      with training in science writing and a B.S. in Agriculture. Her writing
+      has appeared in publications such as NPR and Quartz.
+    </p>
+  ),
 }: AuthorBioProps) {
   return (
     <div className="card card-side  card-border bg-base-100  not-prose mt-10">
@@ -24,7 +31,7 @@ export function AuthorBio({
       </figure>
       <div className="card-body">
         <h2 className="card-title text-lg">About the Author</h2>
-        <p className="text-sm">{bio}</p>
+        <div className="text-sm">{children}</div>
       </div>
     </div>
   );
