@@ -142,6 +142,7 @@ export const hairPatternTypes: Record<HairPatternType, HairPatternParameters> =
       avoid: ['Heavy products that weigh down waves', 'Cowashes and other cleansers that don\'t cleanse very well'],
       sisterCurlTypes: ['loose-curls', 'swavy'],
       patternGroup: 'Loose Curls/Waves',
+      guideUrl: '/blog/guide-to-wavy-hair',
     },
     swavy: {
       patternType: 'swavy',
