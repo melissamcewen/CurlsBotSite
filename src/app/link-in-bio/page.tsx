@@ -52,9 +52,9 @@ export default function TikTokPage() {
           </div>
         </section>
 
-        {/* blog/hair-porosity-explained */}
+        {/* blog/guide-to-wavy-hair */}
         <Link
-          href="/blog/hair-porosity-explained"
+          href="/blog/guide-to-wavy-hair"
           className="group block rounded-2xl border border-base-300 bg-base-100 p-4 hover:bg-base-200/50 transition mb-6"
         >
           <div className="flex items-center gap-3">
@@ -63,10 +63,10 @@ export default function TikTokPage() {
             </div>
             <div className="min-w-0">
               <div className="text-base font-medium">
-                Hair Porosity Explained
+                Guide to Wavy Hair: How to Care for Your Waves
               </div>
               <div className="text-sm text-base-content/60 truncate">
-                Busting common porosity myths and explaining the science behind it.
+                A complete guide to wavy hair care and styling by @wavyhairroutines. Discover the best clarifying cleansers, lightweight conditioners, and drying hacks
               </div>
             </div>
           </div>
