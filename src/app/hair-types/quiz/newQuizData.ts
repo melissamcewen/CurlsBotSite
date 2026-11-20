@@ -41,7 +41,7 @@ export const quizQuestions: QuizQuestion[] = [
   {
     id: 'straight-gate',
     question:
-      'Does your hair dry perfectly straight — with no bends or curves — naturally, without products, tools, or heat?',
+      'When your hair air-dries without products, tools, or heat, does it dry completely straight with zero waves, bends, or kinks?',
     type: 'yes-no',
   },
   {

@@ -34,7 +34,7 @@ describe('NewQuiz Component', () => {
       render(<NewQuiz />);
       // The component initializes with the first question, so we check for that
       expect(
-        screen.getByText(/does your hair dry perfectly straight/i),
+        screen.getByText(/when your hair air-dries without products, tools, or heat/i),
       ).toBeInTheDocument();
     });
   });
@@ -44,7 +44,7 @@ describe('NewQuiz Component', () => {
       render(<NewQuiz />);
       expect(
         screen.getByText(
-          /does your hair dry perfectly straight/i,
+          /when your hair air-dries without products, tools, or heat/i,
         ),
       ).toBeInTheDocument();
     });
@@ -53,7 +53,7 @@ describe('NewQuiz Component', () => {
       render(<NewQuiz />);
       expect(
         screen.getByText(
-          /does your hair dry perfectly straight/i,
+          /when your hair air-dries without products, tools, or heat/i,
         ),
       ).toBeInTheDocument();
 
@@ -114,7 +114,7 @@ describe('NewQuiz Component', () => {
     test('primary pattern question appears after No on straight gate', async () => {
       render(<NewQuiz />);
       expect(
-        screen.getByText(/does your hair dry perfectly straight/i),
+        screen.getByText(/when your hair air-dries without products, tools, or heat/i),
       ).toBeInTheDocument();
 
       const noRadio = screen.getByRole('radio', { name: /no/i });
@@ -133,7 +133,7 @@ describe('NewQuiz Component', () => {
     test('can select Waves pattern', async () => {
       render(<NewQuiz />);
       expect(
-        screen.getByText(/does your hair dry perfectly straight/i),
+        screen.getByText(/when your hair air-dries without products, tools, or heat/i),
       ).toBeInTheDocument();
 
       const noRadio = screen.getByRole('radio', { name: /no/i });
@@ -156,7 +156,7 @@ describe('NewQuiz Component', () => {
 
       // Answer straight gate
       expect(
-        screen.getByText(/does your hair dry perfectly straight/i),
+        screen.getByText(/when your hair air-dries without products, tools, or heat/i),
       ).toBeInTheDocument();
       const noRadio = screen.getByRole('radio', { name: /no/i });
       fireEvent.click(noRadio);
@@ -196,7 +196,7 @@ describe('NewQuiz Component', () => {
 
       // Answer straight gate
       expect(
-        screen.getByText(/does your hair dry perfectly straight/i),
+        screen.getByText(/when your hair air-dries without products, tools, or heat/i),
       ).toBeInTheDocument();
       const noRadio = screen.getByRole('radio', { name: /no/i });
       fireEvent.click(noRadio);
@@ -236,7 +236,7 @@ describe('NewQuiz Component', () => {
 
       // Answer straight gate
       expect(
-        screen.getByText(/does your hair dry perfectly straight/i),
+        screen.getByText(/when your hair air-dries without products, tools, or heat/i),
       ).toBeInTheDocument();
       const noRadio = screen.getByRole('radio', { name: /no/i });
       fireEvent.click(noRadio);
@@ -289,7 +289,7 @@ describe('NewQuiz Component', () => {
 
       // Answer straight gate
       expect(
-        screen.getByText(/does your hair dry perfectly straight/i),
+        screen.getByText(/when your hair air-dries without products, tools, or heat/i),
       ).toBeInTheDocument();
       const noRadio = screen.getByRole('radio', { name: /no/i });
       fireEvent.click(noRadio);
@@ -333,7 +333,7 @@ describe('NewQuiz Component', () => {
 
       await waitFor(() => {
         expect(
-          screen.getByText(/does your hair dry perfectly straight/i),
+          screen.getByText(/when your hair air-dries without products, tools, or heat/i),
         ).toBeInTheDocument();
       });
 
@@ -344,7 +344,7 @@ describe('NewQuiz Component', () => {
     test('Next button is enabled when answer selected', async () => {
       render(<NewQuiz />);
       expect(
-        screen.getByText(/does your hair dry perfectly straight/i),
+        screen.getByText(/when your hair air-dries without products, tools, or heat/i),
       ).toBeInTheDocument();
 
       const yesRadio = screen.getByRole('radio', { name: /yes/i });
